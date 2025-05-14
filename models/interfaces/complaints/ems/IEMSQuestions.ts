@@ -1,18 +1,23 @@
 import { JSX } from "react";
+import { IPatientData } from "./IPatientData";
+import { DependencyResult } from "./IEMSAnswer";
 
 export interface IEMSQuestions {
     text: JSX.Element;
     questionType: 'input' | 'select' | 'hybrid-select' | 'description';
-    preRenderInstructions?: () => any;
+    preRenderInstructions?: (patient?: IPatientData) => boolean;
     isConscious?: boolean;
     isBreathing?: boolean;
+    omitQuestion?: boolean;
     answers: IAnswers[];
-    availableDeterminants: IResponsePriority[];
 }
 
 interface IAnswers {
     answer: string;
     display: string;
+    preRenderInstructions?: (patient?: IPatientData) => boolean;
+    input?: boolean;
+    send?: boolean;
     continue?: boolean;
     end?: boolean;
     goto?: number;
@@ -20,27 +25,5 @@ interface IAnswers {
     updateCode?: string;
     updateSubCode?: string;
     override?: boolean;
-    dependency?: () => any;
-}
-
-interface IResponsePriority {
-    priority: string;
-    determinants: IDeterminants[];
-}
-
-interface IDeterminants {
-    code: string;
-    text: string;
-    recResponse: number;
-    notBreathing?: boolean;
-    notConscious?: boolean;
-    multVictim?: boolean;
-    unknown?: boolean;
-    subCodes?: ISubCode[];
-}
-
-interface ISubCode {
-    code: string;
-    text: string;
-    recResponse: number;
+    dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
 }

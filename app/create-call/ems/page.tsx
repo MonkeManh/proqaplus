@@ -1,8 +1,13 @@
 "use client";
 
+import CaseEntry from "@/components/create-call/ems/case-entry";
+import EMSDeterminantSelection from "@/components/create-call/ems/determinant-selection";
+import EmsProQA from "@/components/create-call/ems/ems-proqa";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { emsComplaints } from "@/data/protocols/emsProtocols";
+import { IEMSData } from "@/models/interfaces/complaints/ems/IEMSData";
+import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 import { ICallData } from "@/models/interfaces/ICallData";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,6 +24,16 @@ export default function EMSCallPage() {
     callerText: "",
     service: "EMS",
   });
+  const [emsData, setEMSData] = useState<IEMSData>({
+    patientProximity: "Yes",
+    patientCount: 1,
+    patientAge: 0,
+    ageUnit: "Years",
+    gender: "Unknown",
+    isConscious: "Unknown",
+    isBreathing: "Unknown",
+    chiefComplaint: "",
+  });
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedComplaint, setSelectedComplaint] = useState<string>("");
   const [recommendedCode, setRecommendedCode] = useState<string>("");
@@ -34,8 +49,10 @@ export default function EMSCallPage() {
 
   const handleInitialContinue = (
     complaintName: string,
+    data: IEMSData,
     skipQuestions?: boolean
   ) => {
+    setEMSData(data);
     setSelectedComplaint(complaintName);
     return setCurrentStep(skipQuestions ? 3 : 2);
   };
@@ -48,10 +65,19 @@ export default function EMSCallPage() {
     }
   };
 
-  const getPatientData = () => {
+  const getPatientData = (): IPatientData => {
     const patientData = localStorage.getItem("PATIENT_DATA");
-    if (!patientData) return;
-    const data = JSON.parse(patientData);
+    if (!patientData)
+      return {
+        age: 0,
+        ageUnit: "Years",
+        gender: "Unknown",
+        isConscious: "Unknown",
+        isBreathing: "Unknown",
+        patientProximity: "Yes",
+        count: 1,
+      };
+    const data: IPatientData = JSON.parse(patientData);
     return {
       age: data.age,
       ageUnit: data.ageUnit,
@@ -60,7 +86,7 @@ export default function EMSCallPage() {
         data.isConscious === "Unknown" ? "Unknown" : data.isConscious === "Yes",
       isBreathing:
         data.isBreathing === "Unknown" ? "Unknown" : data.isBreathing === "Yes",
-      callerType: data.callerType,
+      patientProximity: data.patientProximity,
       count: data.count,
     };
   };
@@ -107,13 +133,25 @@ export default function EMSCallPage() {
     }
   };
 
-  const handleDeterminantSelect = async (code: string, plan: number, text: string) => {
+  const handleDeterminantSelect = async (
+    code: string,
+    plan: number,
+    text: string
+  ) => {
     const [patientData, proqaAnswers] = await Promise.all([
       getPatientData(),
       getProQAAnswers(),
     ]);
 
-    const finalCallData = {
+    localStorage.removeItem("PATIENT_DATA");
+    localStorage.removeItem("EMS_PROQA_DATA");
+    localStorage.removeItem("EMS_PROQA_ANSWERS");
+
+    const preferences_raw = localStorage.getItem("PREFERENCES");
+    const preferences = preferences_raw ? JSON.parse(preferences_raw) : {};
+
+    if (typeof window !== "undefined" && preferences.advancedMode) {
+      const finalCallData = {
         ...callData,
         complaint: selectedComplaint,
         code: code,
@@ -122,25 +160,54 @@ export default function EMSCallPage() {
         patient: patientData,
         proqaAnswers: proqaAnswers,
         timestamp: new Date().toISOString(),
-    }
-
-    localStorage.setItem('PENDING_ASSIGN_EMS', JSON.stringify(finalCallData));
-    localStorage.removeItem('PATIENT_DATA');
-    localStorage.removeItem("EMS_PROQA_DATA");
-    localStorage.removeItem("EMS_PROQA_ANSWERS");
-
-    if(typeof window !== "undefined") {
+      };
+      localStorage.setItem("PENDING_ASSIGN_EMS", JSON.stringify(finalCallData));
       window.location.href = "/assign/ems";
+    } else {
+      const finalCallData = {
+        ...callData,
+        complaint: selectedComplaint,
+        code: code,
+        codeText: text,
+        plan: plan,
+        patient: patientData,
+        proqaAnswers: proqaAnswers,
+        timestamp: new Date().toISOString(),
+        units: ["Pending"],
+        dispatchTime: new Date().toISOString(),
+      };
+      localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
+      window.location.href = "/summary/ems";
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="w-full flex justify-center flex-1 mt-12">
-            
-        </main>
-        <Footer />
+      <Navbar />
+      <main className="w-full flex justify-center flex-1 mt-12">
+        {currentStep === 1 && <CaseEntry onContinue={handleInitialContinue} />}
+
+        {currentStep === 2 && (
+          <EmsProQA
+            emsData={emsData}
+            complaintName={selectedComplaint}
+            patientData={getPatientData()}
+            onComplete={handleCompleteProQA}
+            onBack={handleBack}
+            onSwitchProtocol={handleProtocolSwitch}
+          />
+        )}
+
+        {currentStep === 3 && (
+          <EMSDeterminantSelection
+            complaintName={selectedComplaint}
+            recommendedCode={recommendedCode}
+            onSelect={handleDeterminantSelect}
+            onBack={handleBack}
+          />
+        )}
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }

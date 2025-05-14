@@ -1,48 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { SettingsMenu } from "./settings";
+
+const ClientNavInfo = dynamic(() => import("./ClientNavInfo"));
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const [callsign, setCallsign] = useState<string>("C-000");
-  const [zuluTime, setZuluTime] = useState<string>("00:00");
-
-  // Define dispatch-related paths
-  const dispatchPaths = [
-    "/dispatch",
-    "/create-call",
-    "/active-calls",
-    "/unit-management",
-  ];
-  const isDispatchPage = dispatchPaths.some((path) =>
-    pathname?.startsWith(path)
-  );
-
-  useEffect(() => {
-    const updateZuluTime = () => {
-      const now = new Date();
-      const hours = String(now.getUTCHours()).padStart(2, "0");
-      const minutes = String(now.getUTCMinutes()).padStart(2, "0");
-      setZuluTime(`${hours}:${minutes}`);
-    };
-
-    updateZuluTime();
-
-    const interval = setInterval(updateZuluTime, 60000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedCallsign = localStorage.getItem("CALLSIGN");
-      setCallsign(storedCallsign || "");
-    }
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -63,46 +27,12 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {isDispatchPage ? (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 hidden h-full items-center justify-center lg:flex">
-              <div className="flex items-center gap-4">
-                {callsign && (
-                  <div className="bg-muted px-3 py-1 rounded-md font-medium text-lg">
-                    Dispatcher: {callsign}
-                  </div>
-                )}
-                <div className="bg-muted px-3 py-1 rounded-md font-medium text-lg">
-                  {zuluTime}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 hidden h-full items-center justify-center lg:flex">
-              <nav className="flex items-center gap-2 text-sm">
-                <Link
-                  href="/protocols"
-                  className="px-4 py-2 rounded-md font-medium transition-all hover:bg-muted hover:text-primary"
-                >
-                  Protocols
-                </Link>
-                <Link
-                  href="/response-plans"
-                  className="px-4 py-2 rounded-md font-medium transition-all hover:bg-muted hover:text-primary"
-                >
-                  Response Plans
-                </Link>
-                <Link
-                  href="/glossary"
-                  className="px-4 py-2 rounded-md font-medium transition-all hover:bg-muted hover:text-primary"
-                >
-                  Glossary
-                </Link>
-              </nav>
-            </div>
-          )}
+          <ClientNavInfo />
+
 
           <div className="flex items-center">
             <ThemeToggle />
+            <SettingsMenu />
           </div>
         </div>
       </div>

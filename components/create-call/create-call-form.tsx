@@ -124,7 +124,7 @@ export default function CreateCallForm() {
           crossStreet2: parsed.crossStreet2 || "",
           callerNumber: parsed.callerNumber || "",
           callerStatement: parsed.callerStatement || "",
-          service: parsed.service || "Police",
+          service: parsed.service || undefined,
         };
         setInitialValues(values);
         setSelectedPostal(getPostal(values.postal));
