@@ -12,8 +12,7 @@ export default function ClientNavInfo() {
   const dispatchPaths = [
     "/dispatch",
     "/create-call",
-    "/active-calls",
-    "/unit-management",
+    '/summary'
   ];
 
   const isDispatchPage = dispatchPaths.some((path) =>
@@ -36,8 +35,6 @@ export default function ClientNavInfo() {
     const interval = setInterval(updateZuluTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  if (!isDispatchPage) return null;
 
   return (
     <div className="absolute top-0 left-1/2 -translate-x-1/2 hidden h-full items-center justify-center lg:flex">

@@ -302,6 +302,7 @@ export default function EmsProQA({
 
     const newAnswer = {
       question: processedQuestion,
+      defultAnswer: selectedAnswer.answer,
       answer: displayText,
       questionIndex: currentQuestionIndex,
       omit: currentQuestion.omitQuestion || false,
@@ -550,16 +551,17 @@ export default function EmsProQA({
           setSelectedAnswerIndex(null);
         }}
         onSubmit={(value) => {
-          if (pendingAnswerIndex !== null) {
-            setIsInputModalOpen(false);
-            setPendingAnswerIndex(null);
-            // Call handleAnswerSelect after modal is closed to prevent double navigation
-            setTimeout(() => {
-              handleAnswerSelect(pendingAnswerIndex, value);
-            }, 0);
+          // First close the modal
+          setIsInputModalOpen(false);
+          const savedIndex = pendingAnswerIndex;
+          setPendingAnswerIndex(null);
+
+          // Then process the answer after modal is fully closed
+          if (savedIndex !== null) {
+            handleAnswerSelect(savedIndex, value);
           }
         }}
-        title="Please describe the pain"
+        title={currentQuestion ? processQuestionText(currentQuestion.text).replace(/\*\*pronoun\*\*/g, getProperPronoun(patientData.gender)) : ""}
       />
     </Card>
   );

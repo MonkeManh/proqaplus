@@ -265,6 +265,9 @@ export default function EMSSummaryPage() {
             audio.volume = 0.5;
           }
 
+          localStorage.removeItem('NEW_CALL');
+          localStorage.removeItem('EMS_DATA');
+
           window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
 
           router.push("/dispatch");
