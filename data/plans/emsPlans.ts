@@ -740,5 +740,190 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       }
     ]
+  },
+  {
+    id: 40,
+    name: "FDALS1",
+    incidentType: "ALARM|CO|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 41,
+    name: "HMADAPT",
+    incidentType: "INHALE|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 42,
+    name: "HMADAPT",
+    incidentType: "INHALE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 43,
+    name: "HMADAPTALS2",
+    incidentType: "INHALE|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 44,
+    name: "HMADAPTALS2",
+    incidentType: "CPRHM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 45,
+    name: "HMADPD",
+    incidentType: "INHALE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 46,
+    name: "SCT",
+    incidentType: "ALARM|CO",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
   }
 ];

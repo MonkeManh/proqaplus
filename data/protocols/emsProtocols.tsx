@@ -3575,4 +3575,906 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 8,
+    name: "Carbon Monoxide/Inhalation/Hazmat/CBRN",
+    description: (
+      <>
+        <p>
+          Key considerations for Inhalation emergencies include the type of
+          substance involved (chemical, biological, gas, carbon monoxide, etc.),
+          the number of patients affected, and whether the scene is safe.
+          Exposure to hazardous materials may result in respiratory distress,
+          unconsciousness, or toxic systemic effects.
+        </p>
+        <p className="mt-2">
+          Determinants are driven by the patient's alertness, breathing status,
+          and ability to speak. Triggers such as carbon monoxide poisoning, gas
+          leaks, and industrial chemical exposure may present with subtle or
+          delayed symptoms. Multiple victim scenarios and known contamination
+          increase priority and resource needs.
+        </p>
+        <p className="mt-2">
+          Consider law enforcement and HazMat response for scene safety and
+          containment, especially if the substance is unknown, still active, or
+          intentionally released. Prompt decontamination and transport to
+          facilities equipped for toxicological emergencies may be necessary.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: 1 },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 40,
+    questions: [
+      {
+        text: <p>Is everyone <b>safe</b> and <b>out of danger</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Out of danger",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "In danger",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if still in danger",
+            continue: true,
+          }
+        ]
+      },
+      
+      {
+        text: <p>What type of incident is this?</p>,
+        questionType: 'select',
+        answers: [
+          {
+            answer: "CO Alarm Activated",
+            display: "CO alarm activated",
+            continue: true,
+            updateCode: "08O02"
+          },
+          {
+            answer: "Inhalation/Other",
+            display: "Hazmat or Inhalation incident",
+            continue: true,
+          },
+          {
+            answer: "Completely Unknown",
+            display: "Completely unknown incident",
+            continue: true,
+            updateCode: "08D06",
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** or anyone else experiencing <b>symptoms</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const secondAnswer = answers?.[1]?.answer;
+          return secondAnswer === "CO alarm activated";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No CO symptoms",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "CO symptoms",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if CO symptoms present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What kind of <b>chemicals/fumes</b> or <b className="text-green-400">hazardous materials</b> are involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Biological:",
+            display: "Biological Hazmat: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "B"
+          },
+          {
+            answer: "Chemical:",
+            display: "Chemical Hazmat: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Gas/Fumes:",
+            display: "Fumes: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "G"
+          },
+          {
+            answer: "Nuclear",
+            continue: true,
+            display: "Nuclear Hazmat",
+            updateSubCode: "N"
+          },
+          {
+            answer: "Radiological:",
+            display: "Radiological Hazmat: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "R"
+          },
+          {
+            answer: "Other:",
+            display: "Other Hazmat: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk Hazmat",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>Where are the chemicals/fumes coming from?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Location:",
+            display: "Chemicals/fumes coming from {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where chemicals/fumes coming from",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** contaminated with chemicals/fumes?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not contaminated",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Contaminated w/ chemicals/fumes",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if contaminated",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            continue: true,
+            updateCode: "08D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer === "Responding nlly") {
+                return { code: "08B01" }
+              }
+              return undefined;
+            }
+          },
+          {
+            answer: "No",
+            display: "NOT breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer === "Responding nlly") {
+                return { code: "08C01" }
+              }
+              return undefined;
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** having difficulty <b>speaking</b> between <b>breaths</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "NOT breathing nlly";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diff speaking btwn breaths",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff speaking btwn breaths",
+            continue: true,
+            updateCode: "08D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff speaking btwn breaths",
+            continue: true,
+          }
+        ]
+      }
+
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "08O01",
+            text: "Carbon Monoxide Detector Alarm (Scene Contact w/o priority symptoms)",
+            recResponse: 46
+          },
+          {
+            code: "08O02",
+            text: "Carbon Monoxide Detector Alarm (No Scene Contact)",
+            recResponse: 46
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "08B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 40,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 40
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 40
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 40
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 40
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 40
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 40
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 40
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 40
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 40
+              }
+            ]
+          },
+          {
+            code: "08B01",
+            text: "Alert w/o Diff Breathing",
+            recResponse: 41,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 41
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 41
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 41
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 41
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 41
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 41
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 41
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 41
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 41
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "08C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 42,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 42
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 42
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 42
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 42
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 42
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 42
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 42
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 42
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 42
+              }
+            ]
+          },
+          {
+            code: "08C01",
+            text: "Alert w/ Diff Breathing",
+            recResponse: 42,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 42
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 42
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 42
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 42
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 42
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 42
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 42
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 42
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 42
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "08D00",
+            text: "ALS Override (Delta)",
+            recResponse: 43,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 43
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 43
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 43
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 43
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 43
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 43
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 43
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 43
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 43
+              }
+            ]
+          },
+          {
+            code: "08D01",
+            text: "Arrest",
+            notBreathing: true,
+            recResponse: 44,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 44
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 44
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 44
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 44
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 44
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 44
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 44
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 44
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 44
+              }
+            ]
+          },
+          {
+            code: "08D02",
+            text: "Unconscious",
+            notConscious: true,
+            recResponse: 43,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 43
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 43
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 43
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 43
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 43
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 43
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 43
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 43
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 43
+              }
+            ]
+          },
+          {
+            code: "08D03",
+            text: "Not Alert",
+            recResponse: 42,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 42
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 42
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 42
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 42
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 42
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 42
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 42
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 42
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 42
+              }
+            ]
+          },
+          {
+            code: "08D04",
+            text: "Diff Speaking Between Breaths",
+            recResponse: 42,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 42
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 42
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 42
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 42
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 42
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 42
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 42
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 42
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 42
+              }
+            ]
+          },
+          {
+            code: "08D05",
+            text: "Mult Victims",
+            multVictim: true,
+            recResponse: 45,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 45
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 45
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 45
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 45
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 45
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 45
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 45
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 45
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 45
+              }
+            ]
+          },
+          {
+            code: "08D06",
+            text: "Unkn Status/Other Codes Not Applicable",
+            recResponse: 42,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "B",
+                text: "Biological",
+                recResponse: 42
+              },
+              {
+                code: "C",
+                text: "Chemical",
+                recResponse: 42
+              },
+              {
+                code: "G",
+                text: "Smell of Gas/Fumes",
+                recResponse: 42
+              },
+              {
+                code: "M",
+                text: "Carbon Monoxide",
+                recResponse: 42
+              },
+              {
+                code: "N",
+                text: "Nuclear",
+                recResponse: 42
+              },
+              {
+                code: "R",
+                text: "Radiological",
+                recResponse: 42
+              },
+              {
+                code: "S",
+                text: "Suicide Attempt (Only Carbon Monoxide)",
+                recResponse: 42
+              },
+              {
+                code: "T",
+                text: "Suicide Attempt (Other Toxic Substances)",
+                recResponse: 42
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 42
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

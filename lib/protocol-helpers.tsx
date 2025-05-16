@@ -71,6 +71,8 @@ export const isAnswerDependent = (preRenderInstructions?: string) => {
 // Get priority color
 export const getPriorityColor = (priority: string) => {
   switch (priority) {
+    case "O": 
+      return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
     case "A":
       return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
     case "B":
