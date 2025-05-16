@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
+import LoadingState from "@/components/loading-state";
 import Navbar from "@/components/navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -176,9 +177,11 @@ export default function EMSSummaryPage() {
                 : "Unk Breathing"
             }`
           : "",
-        dispatchData.reconfigured ? `Call reconfigured from ${dispatchData.reconfigured}` : "",
+        dispatchData.reconfigured
+          ? `Call reconfigured from ${dispatchData.reconfigured}`
+          : "",
 
-          !dispatchData?.proqaAnswers || dispatchData?.isOverriden
+        !dispatchData?.proqaAnswers || dispatchData?.isOverriden
           ? "ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
@@ -251,10 +254,7 @@ export default function EMSSummaryPage() {
             return unit;
           });
 
-          localStorage.setItem(
-            "FIRE_UNITS",
-            JSON.stringify(updatedUnits)
-          );
+          localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
 
           const preferences: any = localStorage.getItem("PREFERENCES");
           const parsedPreferences = JSON.parse(preferences);
@@ -265,8 +265,8 @@ export default function EMSSummaryPage() {
             audio.volume = 0.5;
           }
 
-          localStorage.removeItem('NEW_CALL');
-          localStorage.removeItem('EMS_DATA');
+          localStorage.removeItem("NEW_CALL");
+          localStorage.removeItem("EMS_DATA");
 
           window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
 
@@ -308,18 +308,19 @@ export default function EMSSummaryPage() {
           return unit;
         });
 
-        localStorage.setItem(
-          "FIRE_UNITS",
-          JSON.stringify(updatedUnits)
-        );
+        localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
 
-        router.push('/dispatch')
+        router.push("/dispatch");
       }
     });
   }
 
   if (!dispatchData) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <LoadingState />
+      </div>
+    );
   }
 
   return (
