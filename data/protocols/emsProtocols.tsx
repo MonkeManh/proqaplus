@@ -4551,25 +4551,25 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Witnessed Cardiac Arrest",
             display: "The cardiac arrest was witnessed",
             continue: true,
-            updateCode: '09E01'
+            updateCode: "09E01",
           },
           {
             answer: "Unwitnessed Cardiac Arrest",
             display: "The cardiac arrest was not witnessed",
             continue: true,
-            updateCode: '09E02'
+            updateCode: "09E02",
           },
           {
             answer: "Suspected Cardiac Arrest (3rd/4th Party)",
             display: "Suspected Cardiac Arrest (3rd/4th Party)",
             continue: true,
-            updateCode: '09E02'
+            updateCode: "09E02",
           },
           {
             answer: "Respiratory Arrest",
             display: "Respiratory Arrest",
             continue: true,
-            updateCode: '09D01'
+            updateCode: "09D01",
           },
           {
             answer: "OBVIOUS DEATH (suspected)",
@@ -4585,17 +4585,25 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Completely Unknown Situation",
             display: "Completely Unknown Situation",
             continue: true,
-            updateCode: '09D00'
-          }
-        ]
+            updateCode: "09D00",
+          },
+        ],
       },
 
       {
-        text: <p>Is an <b className="text-red-400">defibrillator (AED)</b> available?</p>,
+        text: (
+          <p>
+            Is an <b className="text-red-400">defibrillator (AED)</b> available?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const firstAnswer = answers?.[0]?.answer;
-          return firstAnswer === "The cardiac arrest was witnessed" || firstAnswer === "The cardiac arrest was not witnessed" || firstAnswer === "Suspected Cardiac Arrest (3rd/4th Party)";
+          return (
+            firstAnswer === "The cardiac arrest was witnessed" ||
+            firstAnswer === "The cardiac arrest was not witnessed" ||
+            firstAnswer === "Suspected Cardiac Arrest (3rd/4th Party)"
+          );
         },
         answers: [
           {
@@ -4615,8 +4623,8 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if AED available",
             gotoInstructions: 1,
             end: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -4639,8 +4647,8 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             updateSubCode: "y",
           },
-        ]
-      }
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -4693,31 +4701,31 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "a",
                 text: "Cold & Stiff in a Warm Environment",
-                recResponse: 48
+                recResponse: 48,
               },
               {
                 code: "b",
                 text: "Decapitation",
-                recResponse: 48
+                recResponse: 48,
               },
               {
                 code: "c",
                 text: "Decomposition",
-                recResponse: 48
+                recResponse: 48,
               },
               {
                 code: "d",
                 text: "Incineration",
-                recResponse: 48
+                recResponse: 48,
               },
               {
-                code: 'e',
+                code: "e",
                 text: "Non-Recent Death",
-                recResponse: 48
-              }
+                recResponse: 48,
+              },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "D",
@@ -4730,32 +4738,32 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "a",
                 text: "Cold & Stiff in a Warm Environment",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "b",
                 text: "Decapitation",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "c",
                 text: "Decomposition",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "d",
                 text: "Incineration",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'e',
+                code: "e",
                 text: "Non-Recent Death",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'f',
+                code: "f",
                 text: "Severe Injs Obviously Incompatible w/ Life",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "x",
@@ -4772,7 +4780,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "09D01",
             text: "Ineffective Breathing",
-            recResponse: 47
+            recResponse: 47,
           },
           {
             code: "09D02",
@@ -4782,32 +4790,32 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "a",
                 text: "Cold & Stiff in a Warm Environment",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "b",
                 text: "Decapitation",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "c",
                 text: "Decomposition",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "d",
                 text: "Incineration",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'e',
+                code: "e",
                 text: "Non-Recent Death",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'f',
+                code: "f",
                 text: "Severe Injs Obviously Incompatible w/ Life",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "x",
@@ -4820,8 +4828,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 47,
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "E",
@@ -4834,32 +4842,32 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "a",
                 text: "Cold & Stiff in a Warm Environment",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "b",
                 text: "Decapitation",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "c",
                 text: "Decomposition",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "d",
                 text: "Incineration",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'e',
+                code: "e",
                 text: "Non-Recent Death",
-                recResponse: 47
+                recResponse: 47,
               },
               {
-                code: 'f',
+                code: "f",
                 text: "Severe Injs Obviously Incompatible w/ Life",
-                recResponse: 47
+                recResponse: 47,
               },
               {
                 code: "x",
@@ -4876,30 +4884,361 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "09E01",
             text: "Suspected Workable Arrest, Not Breathing At All",
-            recResponse: 47
+            recResponse: 47,
           },
           {
             code: "09E02",
             text: "Suspected Workable Arrest, Uncertain Breathing",
-            recResponse: 47
+            recResponse: 47,
           },
           {
             code: "09E03",
             text: "Suspected Workable Arrest, Hanging",
-            recResponse: 47
+            recResponse: 47,
           },
           {
             code: "09E04",
             text: "Suspected Workable Arrest, Strangulation",
-            recResponse: 47
+            recResponse: 47,
           },
           {
             code: "09E05",
             text: "Suspected Workable Arrest, Suffocation",
-            recResponse: 47
-          }
-        ]
-      }
+            recResponse: 47,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 10,
+    name: "Chest Pain",
+    description: (
+      <>
+        <p>
+          Key considerations for Chest Pain include patient alertness, breathing
+          quality, age, and history of cardiac conditions such as{" "}
+          <a className="text-primary" href="/glossary#mi">
+            myocardial infarction (MI)
+          </a>{" "}
+          or{" "}
+          <a className="text-primary" href="/glossary#angina">
+            angina
+          </a>
+          . Symptoms like cold sweats, color changes, or difficulty speaking
+          between breaths suggest higher acuity and possible cardiac compromise.
+        </p>
+        <p className="mt-2">
+          Patients over 35 with chest pain and normal breathing are still
+          considered higher risk due to age-related cardiovascular
+          vulnerability. Any abnormal breathing, altered mental status, or
+          complaint of substance use (e.g., cocaine) requires escalation due to
+          increased risk of acute coronary syndromes or arrhythmias.
+        </p>
+        <p className="mt-2">
+          Additional context such as recent aspirin use, medication intake, or
+          drug exposure helps refine the response plan. ALS response is often
+          necessary for monitoring, advanced airway access, and pharmacological
+          intervention.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 49,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "10D01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** breathing <b>normally</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { age } = _patient;
+              if (age >= 35) {
+                return { code: "10C03" };
+              } else {
+                return { code: "10A01" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "10C01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** having difficulty <b>speaking</b> bewteen{" "}
+            <b>breaths</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Not breathing nlly";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not diff speaking btwn breaths",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff speaking btwn breaths",
+            continue: true,
+            updateCode: "10D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff speaking btwn breaths",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>changing color</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Changing color",
+            continue: true,
+            updateCode: "10D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if changing color",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** clammy or having cold sweats?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not clammy or cold sweats",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Clammy or cold sweats",
+            continue: true,
+            updateCode: "10D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if clammy or cold sweats",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Does **pronoun** have a cardiac history?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No cardiac hx",
+            continue: true,
+          },
+          {
+            answer: "Yes - MI",
+            display: "MI hx",
+            continue: true,
+            updateCode: "10D05",
+          },
+          {
+            answer: "Yes - Angina",
+            display: "Angina hx",
+            continue: true,
+            updateCode: "10D05",
+          },
+          {
+            answer: "Yes - Other/Mltp:",
+            display: "Cardiac hx: {input}",
+            continue: true,
+            updateCode: "10D05",
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if cardiac hx",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Has **pronoun** taken any drugs or medications in the last 12 hours?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No drugs or meds < 12 hrs",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Took {input} < 12 hrs ago",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Yes - Cocaine",
+            display: "Cocaine < 12 hrs ago",
+            continue: true,
+            updateCode: "10C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if took drugs or meds < 12 hrs",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "10A01",
+            text: "Breathing Normally (< 35)",
+            recResponse: 49,
+            defaultCode: true,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "10C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 50,
+          },
+          {
+            code: "10C01",
+            text: "Abnormal Breathing",
+            recResponse: 50,
+          },
+          {
+            code: "10C02",
+            text: "Cocaine",
+            recResponse: 51,
+          },
+          {
+            code: "10C03",
+            text: "Breathing Normally (>= 35)",
+            recResponse: 50,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "10D00",
+            text: "ALS Override (Delta)",
+            recResponse: 52,
+          },
+          {
+            code: "10D01",
+            text: "Not Alert",
+            recResponse: 50,
+          },
+          {
+            code: "10D02",
+            text: "Diff Speaking Between Breaths",
+            recResponse: 50,
+          },
+          {
+            code: "10D03",
+            text: "Changing Color",
+            recResponse: 50,
+          },
+          {
+            code: "10D04",
+            text: "Clammy or Cold Sweats",
+            recResponse: 50,
+          },
+          {
+            code: "10D05",
+            text: "Heart Attack or Angina Hx",
+            recResponse: 50,
+          },
+        ],
+      },
     ],
   },
 ];
