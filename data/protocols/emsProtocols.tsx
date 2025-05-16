@@ -2888,18 +2888,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT responding nlly",
             continue: true,
-            updateCode: "07D04"
+            updateCode: "07D04",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** breathing <b>normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -2917,12 +2921,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** having difficulty <b>speaking</b> between <b>breaths</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** having difficulty <b>speaking</b> between{" "}
+            <b>breaths</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
@@ -2944,8 +2953,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if diff speaking btwn breaths",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -2968,13 +2977,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Fireworks",
             display: "Injured by fireworks",
             continue: true,
-            updateSubCode: "W"
+            updateSubCode: "W",
           },
           {
             answer: "Explosion",
             display: "Injured by explosion",
             continue: true,
-            updateSubCode: "E"
+            updateSubCode: "E",
           },
           {
             answer: "Sunburn",
@@ -2986,8 +2995,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk how injured",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -3009,8 +3018,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk where burned/injured",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -3035,10 +3044,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer === "Burns to face/head") {
-                return { code: "07C04" }
+              if (lastAnswer === "Burns to face/head") {
+                return { code: "07C04" };
               } else {
-                return { code: "07C03" }
+                return { code: "07C03" };
               }
             },
           },
@@ -3053,8 +3062,8 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk how much burned/injured",
             continue: true,
             updateCode: "07B02",
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -3076,10 +3085,9 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk when occurred",
             continue: true,
-          }
-        ]
-      }
-
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -3611,7 +3619,11 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 40,
     questions: [
       {
-        text: <p>Is everyone <b>safe</b> and <b>out of danger</b>?</p>,
+        text: (
+          <p>
+            Is everyone <b>safe</b> and <b>out of danger</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -3628,19 +3640,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if still in danger",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-      
+
       {
         text: <p>What type of incident is this?</p>,
-        questionType: 'select',
+        questionType: "select",
         answers: [
           {
             answer: "CO Alarm Activated",
             display: "CO alarm activated",
             continue: true,
-            updateCode: "08O02"
+            updateCode: "08O02",
           },
           {
             answer: "Inhalation/Other",
@@ -3652,12 +3664,16 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Completely unknown incident",
             continue: true,
             updateCode: "08D06",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** or anyone else experiencing <b>symptoms</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** or anyone else experiencing <b>symptoms</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const secondAnswer = answers?.[1]?.answer;
@@ -3678,12 +3694,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if CO symptoms present",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What kind of <b>chemicals/fumes</b> or <b className="text-green-400">hazardous materials</b> are involved?</p>,
+        text: (
+          <p>
+            What kind of <b>chemicals/fumes</b> or{" "}
+            <b className="text-green-400">hazardous materials</b> are involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -3691,49 +3712,49 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Biological Hazmat: {input}",
             continue: true,
             input: true,
-            updateSubCode: "B"
+            updateSubCode: "B",
           },
           {
             answer: "Chemical:",
             display: "Chemical Hazmat: {input}",
             continue: true,
             input: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Gas/Fumes:",
             display: "Fumes: {input}",
             continue: true,
             input: true,
-            updateSubCode: "G"
+            updateSubCode: "G",
           },
           {
             answer: "Nuclear",
             continue: true,
             display: "Nuclear Hazmat",
-            updateSubCode: "N"
+            updateSubCode: "N",
           },
           {
             answer: "Radiological:",
             display: "Radiological Hazmat: {input}",
             continue: true,
             input: true,
-            updateSubCode: "R"
+            updateSubCode: "R",
           },
           {
             answer: "Other:",
             display: "Other Hazmat: {input}",
             continue: true,
             input: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
             display: "Unk Hazmat",
             continue: true,
-            updateSubCode: "U"
-          }
-        ]
+            updateSubCode: "U",
+          },
+        ],
       },
 
       {
@@ -3750,8 +3771,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk where chemicals/fumes coming from",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -3772,8 +3793,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if contaminated",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -3794,18 +3815,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT responding nlly",
             continue: true,
-            updateCode: "08D03"
+            updateCode: "08D03",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** breathing <b>normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -3814,11 +3839,11 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer === "Responding nlly") {
-                return { code: "08B01" }
+              if (lastAnswer === "Responding nlly") {
+                return { code: "08B01" };
               }
               return undefined;
-            }
+            },
           },
           {
             answer: "No",
@@ -3826,22 +3851,27 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer === "Responding nlly") {
-                return { code: "08C01" }
+              if (lastAnswer === "Responding nlly") {
+                return { code: "08C01" };
               }
               return undefined;
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** having difficulty <b>speaking</b> between <b>breaths</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** having difficulty <b>speaking</b> between{" "}
+            <b>breaths</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
@@ -3857,16 +3887,15 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Diff speaking btwn breaths",
             continue: true,
-            updateCode: "08D05"
+            updateCode: "08D05",
           },
           {
             answer: "Unknown",
             display: "Unk if diff speaking btwn breaths",
             continue: true,
-          }
-        ]
-      }
-
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -3875,14 +3904,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "08O01",
             text: "Carbon Monoxide Detector Alarm (Scene Contact w/o priority symptoms)",
-            recResponse: 46
+            recResponse: 46,
           },
           {
             code: "08O02",
             text: "Carbon Monoxide Detector Alarm (No Scene Contact)",
-            recResponse: 46
-          }
-        ]
+            recResponse: 46,
+          },
+        ],
       },
       {
         priority: "B",
@@ -3895,49 +3924,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 40
+                recResponse: 40,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 40
-              }
-            ]
+                recResponse: 40,
+              },
+            ],
           },
           {
             code: "08B01",
@@ -3947,51 +3976,51 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 41
+                recResponse: 41,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 41
-              }
-            ]
-          }
-        ]
+                recResponse: 41,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -4004,49 +4033,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 42
-              }
-            ]
+                recResponse: 42,
+              },
+            ],
           },
           {
             code: "08C01",
@@ -4056,51 +4085,51 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 42
-              }
-            ]
-          }
-        ]
+                recResponse: 42,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -4113,49 +4142,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 43
-              }
-            ]
+                recResponse: 43,
+              },
+            ],
           },
           {
             code: "08D01",
@@ -4166,49 +4195,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 44
+                recResponse: 44,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 44
-              }
-            ]
+                recResponse: 44,
+              },
+            ],
           },
           {
             code: "08D02",
@@ -4219,49 +4248,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 43
+                recResponse: 43,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 43
-              }
-            ]
+                recResponse: 43,
+              },
+            ],
           },
           {
             code: "08D03",
@@ -4271,49 +4300,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 42
-              }
-            ]
+                recResponse: 42,
+              },
+            ],
           },
           {
             code: "08D04",
@@ -4323,49 +4352,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 42
-              }
-            ]
+                recResponse: 42,
+              },
+            ],
           },
           {
             code: "08D05",
@@ -4376,49 +4405,49 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 45
+                recResponse: 45,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 45
-              }
-            ]
+                recResponse: 45,
+              },
+            ],
           },
           {
             code: "08D06",
@@ -4429,52 +4458,448 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Biological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "C",
                 text: "Chemical",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "G",
                 text: "Smell of Gas/Fumes",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "M",
                 text: "Carbon Monoxide",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "N",
                 text: "Nuclear",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "R",
                 text: "Radiological",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "S",
                 text: "Suicide Attempt (Only Carbon Monoxide)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "T",
                 text: "Suicide Attempt (Other Toxic Substances)",
-                recResponse: 42
+                recResponse: 42,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 42
+                recResponse: 42,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 9,
+    name: "Cardiac Arrest",
+    description: (
+      <>
+        <p>
+          Key considerations for Cardiac Arrest include whether the arrest was
+          witnessed, the time since the patient was last seen responsive, and
+          whether resuscitation is appropriate. Immediate identification of a
+          workable arrest versus signs of obvious or expected death determines
+          both resource deployment and clinical intervention.
+        </p>
+        <p className="mt-2">
+          ALS-level care is required for any suspected arrest without signs of
+          irreversible death. In cases involving DNR orders or terminal illness,
+          responders may adjust interventions accordingly. The dispatcher should
+          be prepared to initiate CPR instructions if the arrest is recent and
+          no contraindications exist.
+        </p>
+        <p className="mt-2">
+          Scene safety and situational context are essential, especially in
+          cases involving hanging, strangulation, suffocation, or potentially
+          suspicious circumstances. Prompt recognition and early defibrillation
+          remain critical in improving survival outcomes.{" "}
+          <b className="font-bold">Always send law enforcement</b> to ensure
+          scene security and to conduct an investigation
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: true },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 47,
+    questions: [
+      {
+        text: <p>What type of situation is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Witnessed Cardiac Arrest",
+            display: "The cardiac arrest was witnessed",
+            continue: true,
+            updateCode: '09E01'
+          },
+          {
+            answer: "Unwitnessed Cardiac Arrest",
+            display: "The cardiac arrest was not witnessed",
+            continue: true,
+            updateCode: '09E02'
+          },
+          {
+            answer: "Suspected Cardiac Arrest (3rd/4th Party)",
+            display: "Suspected Cardiac Arrest (3rd/4th Party)",
+            continue: true,
+            updateCode: '09E02'
+          },
+          {
+            answer: "Respiratory Arrest",
+            display: "Respiratory Arrest",
+            continue: true,
+            updateCode: '09D01'
+          },
+          {
+            answer: "OBVIOUS DEATH (suspected)",
+            display: "Death is obvious",
+            continue: true,
+          },
+          {
+            answer: "EXPECTED DEATH",
+            display: "Death was expected",
+            continue: true,
+          },
+          {
+            answer: "Completely Unknown Situation",
+            display: "Completely Unknown Situation",
+            continue: true,
+            updateCode: '09D00'
+          }
+        ]
+      },
+
+      {
+        text: <p>Is an <b className="text-red-400">defibrillator (AED)</b> available?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "The cardiac arrest was witnessed" || firstAnswer === "The cardiac arrest was not witnessed" || firstAnswer === "Suspected Cardiac Arrest (3rd/4th Party)";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No AED available",
+            gotoInstructions: 1,
+            end: true,
+          },
+          {
+            answer: "Yes",
+            display: "AED available",
+            gotoInstructions: 2,
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if AED available",
+            gotoInstructions: 1,
+            end: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Type of incident?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "EXPECTED DEATH";
+        },
+        answers: [
+          {
+            answer: "Terminal Illness",
+            display: "Terminal Illness",
+            continue: true,
+            updateSubCode: "x",
+          },
+          {
+            answer: "DNR (Do Not Resuscitate) Order",
+            display: "This is a DNR patient",
+            continue: true,
+            updateSubCode: "y",
+          },
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "09O01",
+            text: "Expected Death Unquestionable",
+            recResponse: 47,
+            subCodes: [
+              {
+                code: "x",
+                text: "Terminal Illness",
+                recResponse: 47,
+              },
+              {
+                code: "y",
+                text: "DNR (Do Not Resuscitate) Order",
+                recResponse: 48,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "09B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 47,
+            subCodes: [
+              {
+                code: "x",
+                text: "Terminal Illness",
+                recResponse: 47,
+              },
+              {
+                code: "y",
+                text: "DNR (Do Not Resuscitate) Order",
+                recResponse: 48,
+              },
+            ],
+          },
+          {
+            code: "09B01",
+            text: "Obvious Death Unquestionable",
+            recResponse: 48,
+            subCodes: [
+              {
+                code: "a",
+                text: "Cold & Stiff in a Warm Environment",
+                recResponse: 48
+              },
+              {
+                code: "b",
+                text: "Decapitation",
+                recResponse: 48
+              },
+              {
+                code: "c",
+                text: "Decomposition",
+                recResponse: 48
+              },
+              {
+                code: "d",
+                text: "Incineration",
+                recResponse: 48
+              },
+              {
+                code: 'e',
+                text: "Non-Recent Death",
+                recResponse: 48
               }
-            ]
+            ],
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "09D00",
+            text: "ALS Override (Delta)",
+            recResponse: 47,
+            subCodes: [
+              {
+                code: "a",
+                text: "Cold & Stiff in a Warm Environment",
+                recResponse: 47
+              },
+              {
+                code: "b",
+                text: "Decapitation",
+                recResponse: 47
+              },
+              {
+                code: "c",
+                text: "Decomposition",
+                recResponse: 47
+              },
+              {
+                code: "d",
+                text: "Incineration",
+                recResponse: 47
+              },
+              {
+                code: 'e',
+                text: "Non-Recent Death",
+                recResponse: 47
+              },
+              {
+                code: 'f',
+                text: "Severe Injs Obviously Incompatible w/ Life",
+                recResponse: 47
+              },
+              {
+                code: "x",
+                text: "Terminal Illness",
+                recResponse: 47,
+              },
+              {
+                code: "y",
+                text: "DNR (Do Not Resuscitate) Order",
+                recResponse: 47,
+              },
+            ],
+          },
+          {
+            code: "09D01",
+            text: "Ineffective Breathing",
+            recResponse: 47
+          },
+          {
+            code: "09D02",
+            text: "Obvious or Expected Death Questionable",
+            recResponse: 47,
+            subCodes: [
+              {
+                code: "a",
+                text: "Cold & Stiff in a Warm Environment",
+                recResponse: 47
+              },
+              {
+                code: "b",
+                text: "Decapitation",
+                recResponse: 47
+              },
+              {
+                code: "c",
+                text: "Decomposition",
+                recResponse: 47
+              },
+              {
+                code: "d",
+                text: "Incineration",
+                recResponse: 47
+              },
+              {
+                code: 'e',
+                text: "Non-Recent Death",
+                recResponse: 47
+              },
+              {
+                code: 'f',
+                text: "Severe Injs Obviously Incompatible w/ Life",
+                recResponse: 47
+              },
+              {
+                code: "x",
+                text: "Terminal Illness",
+                recResponse: 47,
+              },
+              {
+                code: "y",
+                text: "DNR (Do Not Resuscitate) Order",
+                recResponse: 47,
+              },
+            ],
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "09E00",
+            text: "ALS Override (Echo)",
+            recResponse: 47,
+            subCodes: [
+              {
+                code: "a",
+                text: "Cold & Stiff in a Warm Environment",
+                recResponse: 47
+              },
+              {
+                code: "b",
+                text: "Decapitation",
+                recResponse: 47
+              },
+              {
+                code: "c",
+                text: "Decomposition",
+                recResponse: 47
+              },
+              {
+                code: "d",
+                text: "Incineration",
+                recResponse: 47
+              },
+              {
+                code: 'e',
+                text: "Non-Recent Death",
+                recResponse: 47
+              },
+              {
+                code: 'f',
+                text: "Severe Injs Obviously Incompatible w/ Life",
+                recResponse: 47
+              },
+              {
+                code: "x",
+                text: "Terminal Illness",
+                recResponse: 47,
+              },
+              {
+                code: "y",
+                text: "DNR (Do Not Resuscitate) Order",
+                recResponse: 47,
+              },
+            ],
+          },
+          {
+            code: "09E01",
+            text: "Suspected Workable Arrest, Not Breathing At All",
+            recResponse: 47
+          },
+          {
+            code: "09E02",
+            text: "Suspected Workable Arrest, Uncertain Breathing",
+            recResponse: 47
+          },
+          {
+            code: "09E03",
+            text: "Suspected Workable Arrest, Hanging",
+            recResponse: 47
+          },
+          {
+            code: "09E04",
+            text: "Suspected Workable Arrest, Strangulation",
+            recResponse: 47
+          },
+          {
+            code: "09E05",
+            text: "Suspected Workable Arrest, Suffocation",
+            recResponse: 47
           }
         ]
       }
-    ]
-  }
+    ],
+  },
 ];
