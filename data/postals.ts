@@ -5928,8 +5928,8 @@ export const postalData: IPostal[] = [
           crossStreet2: "Harmony Ln.",
         },
         "Harmony Ln.": {
-          crossStreet1: "Route 68",
-          crossStreet2: "Senora Rd.",
+          crossStreet1: "Senora Rd.",
+          crossStreet2: "Orbit's Folly Ln.",
         },
       },
     },

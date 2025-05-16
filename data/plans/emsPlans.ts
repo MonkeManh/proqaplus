@@ -430,5 +430,315 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 26,
+    name: "BLSU9",
+    incidentType: "BURN|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 27,
+    name: "FCFMO",
+    incidentType: "BURN|FMO|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 28,
+    name: "FDALS1",
+    incidentType: "ALARM|FIRE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 29,
+    name: "BLSU9",
+    incidentType: "BURN|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 30,
+    name: "FALS1FMO",
+    incidentType: "BURN|FMO|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 31,
+    name: "FJH",
+    incidentType: "FIRE|BLDG|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 32,
+    name: "FJT",
+    incidentType: "FIRE|BLDG|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 33,
+    name: "FDALS1",
+    incidentType: "BURNFD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 34,
+    name: "FDALS2",
+    incidentType: "BURN|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 35,
+    name: "FDMULTP",
+    incidentType: "BURN|MULT",
+    units: [ 
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 36,
+    name: "AL2D",
+    incidentType: "BURN|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 37,
+    name: "HMADAPTALS2",
+    incidentType: "BURN|HM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 38,
+    name: "AL1D",
+    incidentType: "BURN|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 39,
+    name: "FY2",
+    incidentType: "FIRE|PERSON|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Fire Supervisor",
+        quantity: 1
+      }
+    ]
   }
 ];

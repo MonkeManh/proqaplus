@@ -203,10 +203,10 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unk if vomiting", 
+            display: "Unk if vomiting",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -1790,7 +1790,29 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 5,
     name: "Back Pain",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          Key considerations for Back Pain include the cause of pain (traumatic
+          vs. non-traumatic), associated symptoms such as difficulty breathing
+          or altered consciousness, and high-risk pain descriptions (e.g.,
+          ripping or tearing pain in older adults). These factors may indicate
+          vascular emergencies such as aortic aneurysm.
+        </p>
+        <p className="mt-2">
+          Traumatic causes such as recent falls or injuries require additional
+          evaluation for spinal involvement or internal bleeding. Non-traumatic
+          back pain is often less urgent but may still warrant transport
+          depending on the patient's condition and comorbidities.
+        </p>
+        <p className="mt-2">
+          Fainting, color changes (e.g., ashen/grey skin), or chest involvement
+          may indicate systemic compromise and should be prioritized
+          accordingly. Always assess pain characteristics and associated
+          symptoms in patients over 50 with severe or sudden onset.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -2113,7 +2135,28 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 6,
     name: "Breathing Problems",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          Key considerations for Breathing Problems include the patient’s
+          alertness, effectiveness of breathing, and presence of airway
+          interventions such as tracheostomies. Difficulty speaking, skin color
+          changes, and clammy or cold skin may indicate a progression toward
+          respiratory failure and should prompt rapid ALS response.
+        </p>
+        <p className="mt-2">
+          Respiratory history—such as asthma, COPD, or other lung conditions—can
+          impact treatment decisions and prioritization. Confirm whether
+          prescribed inhalers or medications were taken, and assess for
+          tracheostomy use, especially in patients showing signs of distress.
+        </p>
+        <p className="mt-2">
+          Ineffective or absent breathing requires immediate intervention.
+          Always consider airway compromise, oxygenation status, and the need
+          for advanced airway management or ventilatory support.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -2141,12 +2184,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if can talk or cry",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have <b>difficulty</b> speaking <b>between</b> breaths?</p>,
+        text: (
+          <p>
+            Does **pronoun** have <b>difficulty</b> speaking <b>between</b>{" "}
+            breaths?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const firstAnswer = answers?.[0]?.answer;
@@ -2168,8 +2216,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if diff speaking btwn breaths",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -2188,14 +2236,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Did choke prior",
-            goto: 11
+            goto: 11,
           },
           {
             answer: "Unknown",
             display: "Unk if choked prior",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -2222,12 +2270,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>changing color</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>changing color</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -2245,12 +2297,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if changing color",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>clammy</b> (cold sweats)?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>clammy</b> (cold sweats)?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -2268,12 +2324,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if clammy or cold sweats",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have <b>asthma</b> or <b>COPD</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have <b>asthma</b> or <b>COPD</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -2297,7 +2357,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Both",
             display: "Has both asthma and COPD",
             continue: true,
-            updateSubCode: "E"
+            updateSubCode: "E",
           },
           {
             answer: "Other:",
@@ -2309,13 +2369,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if any lung problems",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
-
       {
-        text: <p>Does **pronoun** have a <b>prescribed inhaler</b> or <b>nebulizer</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have a <b>prescribed inhaler</b> or{" "}
+            <b>nebulizer</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
@@ -2342,16 +2406,23 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if has inhaler/nebulizer",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Has **pronoun** used it yet?</p>,
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.question === "Does **pronoun** have a prescribed inhaler or nebulizer?")?.answer;
-          return answer === "Has inahler/nebulizer available now" || answer === "Has inhaler/nebulizer but not available now";
+          const answer = answers?.find(
+            (a) =>
+              a.question ===
+              "Does **pronoun** have a prescribed inhaler or nebulizer?"
+          )?.answer;
+          return (
+            answer === "Has inahler/nebulizer available now" ||
+            answer === "Has inhaler/nebulizer but not available now"
+          );
         },
         answers: [
           {
@@ -2368,16 +2439,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if used inhaler/nebulizer",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Can you, or someone there, <b>go</b> get it <b>now</b>?</p>,
+        text: (
+          <p>
+            Can you, or someone there, <b>go</b> get it <b>now</b>?
+          </p>
+        ),
         questionType: "select",
         omitQuestion: true,
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.question === "Has **pronoun** used it yet?")?.answer;
+          const answer = answers?.find(
+            (a) => a.question === "Has **pronoun** used it yet?"
+          )?.answer;
           return answer === "Has NOT used inhaler/nebulizer";
         },
         answers: [
@@ -2390,15 +2467,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Cannot get inhaler/nebulizer now",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Give instructions on using nebulizer/inhaler</p>,
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.question === "Can you, or someone there, go get it now?")?.answer;
+          const answer = answers?.find(
+            (a) => a.question === "Can you, or someone there, go get it now?"
+          )?.answer;
           return answer === "Can get inhaler/nebulizer now";
         },
         answers: [
@@ -2412,7 +2491,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unable to give inhaler/nebulizer instructions",
             continue: true,
           },
-        ]
+        ],
       },
     ],
     availableDeterminants: [
@@ -2463,7 +2542,7 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 23,
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -2600,8 +2679,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 22,
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "E",
@@ -2650,9 +2729,850 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 25,
               },
             ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 7,
+    name: "Burns/Explosion",
+    description: (
+      <>
+        <p>
+          Key considerations for Burns and Explosions include the mechanism of
+          injury (open flame, explosion, fireworks, etc.), extent and location
+          of burns, and the presence of any active fire or smoldering hazards.
+          Always assess whether this is associated with a structure fire and if
+          victims are still trapped.
+        </p>
+        <p className="mt-2">
+          Significant burn area (≥18%), facial involvement, and signs of
+          inhalation injury (e.g., difficulty breathing, soot in airway, or
+          inability to speak between breaths) may indicate airway compromise and
+          require ALS-level response. Blast injuries may involve multiple trauma
+          mechanisms, including blunt, penetrating, and barotrauma.
+        </p>
+        <p className="mt-2">
+          Scene safety must be prioritized in active fire or explosive
+          environments. In cases involving fireworks or explosions, multiple
+          victims are possible. Consider the potential for toxic inhalation,
+          unconsciousness, and severe systemic burns that demand urgent
+          intervention.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: 3 },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 26,
+    questions: [
+      {
+        text: (
+          <p>
+            Is this a <b className="text-red-400">building fire</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No structure on fire",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Structure on fire",
+            continue: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "Alarm Sounding",
+            display: "Fire alarm sounding",
+            continue: true,
+            updateCode: "07A02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if structure on fire",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there anyone <b>inside</b> the <b>structure</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Structure on fire";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No one rptd inside structure",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Person(s) rptd inside structure",
+            continue: true,
+            updateCode: "07C01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person(s) inside structure",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is <b>anything</b> still <b className="text-red-400">burning</b> or{" "}
+            <b className="text-red-400">smoldering</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Nothing burning or smoldering",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "{input} burning or smoldering",
+            continue: true,
+            input: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "Yes - PERSON",
+            display: "PERSON ON FIRE",
+            end: true,
+            updateCode: "07E01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anything burning or smoldering",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            continue: true,
+            updateCode: "07D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT breathing nlly",
+            continue: true,
+            updateCode: "07C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** having difficulty <b>speaking</b> between <b>breaths</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "NOT breathing nlly";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diff speaking btwn breaths",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff speaking btwn breaths",
+            continue: true,
+            updateCode: "07D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff speaking btwn breaths",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>How was **pronoun** injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Method:",
+            display: "Injured by {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "BLAST",
+            display: "Injured by blast",
+            continue: true,
+            updateCode: "07B01",
+          },
+          {
+            answer: "Fireworks",
+            display: "Injured by fireworks",
+            continue: true,
+            updateSubCode: "W"
+          },
+          {
+            answer: "Explosion",
+            display: "Injured by explosion",
+            continue: true,
+            updateSubCode: "E"
+          },
+          {
+            answer: "Sunburn",
+            display: "Injured by sunburn",
+            end: true,
+            updateCode: "07A04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how injured",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Where was **pronoun** burned/injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Location:",
+            display: "Burns to {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Face/Head",
+            continue: true,
+            display: "Burns to face/head",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where burned/injured",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>How much of the body was burned/injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Minor (< 9% Body Area)",
+            display: "Burns to < 9% body area",
+            continue: true,
+            updateCode: "07A03",
+          },
+          {
+            answer: "> 9% but < 18% Body Area",
+            display: "Burns < 18% body area",
+            continue: true,
+            updateCode: "07A01",
+          },
+          {
+            answer: ">= 18% Body Area",
+            display: "Burns >= 18% body area",
+            continue: true,
+            dependency: (patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer === "Burns to face/head") {
+                return { code: "07C04" }
+              } else {
+                return { code: "07C03" }
+              }
+            },
+          },
+          {
+            answer: "SIGNIFICANT FACIAL BURNS",
+            display: "Significant facial burns",
+            continue: true,
+            updateCode: "07C04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how much burned/injured",
+            continue: true,
+            updateCode: "07B02",
+          }
+        ]
+      },
+
+      {
+        text: <p>When did this occur?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "< 6 hours ago",
+            display: "Occurred < 6 hours ago",
+            continue: true,
+          },
+          {
+            answer: ">= 6 hours ago",
+            display: "Occurred >= 6 hours ago",
+            continue: true,
+            updateCode: "07A05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when occurred",
+            continue: true,
           }
         ]
       }
+
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "07A01",
+            text: "Burns < 18% Body Area",
+            recResponse: 26,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+          {
+            code: "07A02",
+            text: "Fire Alarm (Unkn Situation)",
+            recResponse: 28,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 28,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 28,
+              },
+            ],
+          },
+          {
+            code: "07A03",
+            text: "Minor Burns",
+            recResponse: 29,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+          {
+            code: "07A04",
+            text: "Sunburn",
+            recResponse: 29,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+          {
+            code: "07A05",
+            text: "Non-Recent (>= 6hrs) Burns/Injs (w/o priority symptoms)",
+            recResponse: 29,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "07B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 26,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+          {
+            code: "07B01",
+            text: "Blast Injs (w/o priority symptoms)",
+            recResponse: 26,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+          {
+            code: "07B02",
+            text: "Unkn Status/Other Cods Not Applicable",
+            defaultCode: true,
+            recResponse: 26,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 27,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 27,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 27,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "07C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 31,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 32,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 31,
+              },
+            ],
+          },
+          {
+            code: "07C01",
+            text: "Fire w/ Persons Rptd Inside",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 31,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 32,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 31,
+              },
+            ],
+          },
+          {
+            code: "07C02",
+            text: "Diff Breathing",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 30,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 33,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 30,
+              },
+            ],
+          },
+          {
+            code: "07C03",
+            text: "Burns >= 18% Body Area",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 30,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 33,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 30,
+              },
+            ],
+          },
+          {
+            code: "07C04",
+            text: "Significant Facial Burns",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 30,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 33,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 30,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "07D00",
+            text: "ALS Override (Delta)",
+            recResponse: 34,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 34,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 34,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 34,
+              },
+            ],
+          },
+          {
+            code: "07D01",
+            text: "Mult Victims",
+            recResponse: 35,
+            multVictim: true,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 35,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 35,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 35,
+              },
+            ],
+          },
+          {
+            code: "07D02",
+            text: "Arrest",
+            notBreathing: true,
+            recResponse: 36,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 36,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 36,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 36,
+              },
+            ],
+          },
+          {
+            code: "07D03",
+            text: "Unconscious",
+            notConscious: true,
+            recResponse: 34,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 37,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 34,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 37,
+              },
+            ],
+          },
+          {
+            code: "07D04",
+            text: "Not Alert",
+            recResponse: 38,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 30,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 33,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 30,
+              },
+            ],
+          },
+          {
+            code: "07D05",
+            text: "Diff Speaking Between Breaths",
+            recResponse: 30,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 30,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 33,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 30,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "07E00",
+            text: "ALS Override (Echo)",
+            recResponse: 34,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 37,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 34,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 37,
+              },
+            ],
+          },
+          {
+            code: "07E01",
+            text: "Person on Fire",
+            recResponse: 39,
+            subCodes: [
+              {
+                code: "E",
+                text: "Explosion",
+                recResponse: 39,
+              },
+              {
+                code: "F",
+                text: "Fire Present",
+                recResponse: 39,
+              },
+              {
+                code: "W",
+                text: "Fireworks",
+                recResponse: 39,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];
