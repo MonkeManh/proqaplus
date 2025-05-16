@@ -143,7 +143,7 @@ export default function EMSSummaryPage() {
         `Recc: ${getRecommendedUnits(dispatchData.plan)}`,
         `Disp: ${sortedUnits.join(", ") || "None"}`,
         `Problem: ${dispatchData.complaint} - ${dispatchData.codeText}`,
-        `Dispatch Text: ${dispatchData.callerStatement}`,
+        `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
         "Scene Status: Secure",
         "Scene Com: Not Established",

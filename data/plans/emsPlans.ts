@@ -129,6 +129,10 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
       }
     ]
   },
@@ -184,6 +188,14 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Wildlife Ranger",
         quantity: 1,
       }
     ]
@@ -325,4 +337,98 @@ export const emsPlans: IResponsePlan[] = [
       }
     ]
   },
+  {
+    id: 20,
+    name: "BLSR",
+    incidentType: "BACKPAIN|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 21,
+    name: "ALS1",
+    incidentType: "BACKPAIN|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 22,
+    name: "ALS1",
+    incidentType: "TROUBLEBREATHING|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 23,
+    name: "BLSU9",
+    incidentType: "TROUBLEBREATHING|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 24,
+    name: "ALS2",
+    incidentType: "TROUBLEBREATHING|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 25,
+    name: "AL2D",
+    incidentType: "TROUBLEBREATHING|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  }
 ];

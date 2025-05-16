@@ -1,18 +1,16 @@
+import { IComplaintServices } from "../IComplaintServices";
 import { DependencyResult } from "./IEMSAnswer";
 import { IPatientData } from "./IPatientData";
-import { ReactNode } from "react";
+import { JSX, ReactNode } from "react";
 
 export interface IEMSComplaint {
   protocol: number;
   name: string;
   description: ReactNode;
-  services: {
-    name: string;
-    priority?: number;
-  }[];
+  services: IComplaintServices[];
   defaultPriority: number;
   defaultPlan: number;
-  questions: IEMSQuestion[];
+  questions: IEMSQuestions[];
   availableDeterminants: {
     priority: string;
     determinants: {
@@ -32,25 +30,28 @@ export interface IEMSComplaint {
   }[];
 }
 
-export interface IEMSQuestion {
-  text: ReactNode;
-  questionType: "select" | "input";
-  preRenderInstructions?: (patient?: IPatientData, answers?: any[], currentCode?: string) => boolean;
-  answers: IEMSAnswer[];
-  omitQuestion?: boolean;
+export interface IEMSQuestions {
+    text: JSX.Element;
+    questionType: 'input' | 'select' | 'hybrid-select' | 'description';
+    preRenderInstructions?: (patient?: IPatientData) => boolean;
+    isConscious?: boolean;
+    isBreathing?: boolean;
+    omitQuestion?: boolean;
+    answers: IAnswers[];
 }
 
-export interface IEMSAnswer {
-  answer: string;
-  display: string;
-  continue?: boolean;
-  updateCode?: string;
-  override?: boolean;
-  end?: boolean;
-  input?: boolean;
-  goto?: number;
-  updateSubType?: string;
-  dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
-  preRenderInstructions?: (patient?: IPatientData, answers?: any[], currentCode?: string) => boolean;
-  send?: boolean;
+interface IAnswers {
+    answer: string;
+    display: string;
+    preRenderInstructions?: (patient?: IPatientData) => boolean;
+    input?: boolean;
+    send?: boolean;
+    continue?: boolean;
+    end?: boolean;
+    goto?: number;
+    gotoInstructions?: number;
+    updateCode?: string;
+    updateSubCode?: string;
+    override?: boolean;
+    dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
 }

@@ -347,8 +347,8 @@ export default function EmsProQA({
       return;
     }
 
-    if (selectedAnswer.updateSubType) {
-      setCurrentSubCode(selectedAnswer.updateSubType);
+    if (selectedAnswer.updateSubCode) {
+      setCurrentSubCode(selectedAnswer.updateSubCode);
     }
 
     if (selectedAnswer.dependency) {

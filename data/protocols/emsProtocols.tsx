@@ -53,7 +53,7 @@ export const emsComplaints: IEMSComplaint[] = [
       </>
     ),
     services: [
-      { name: "EMS", priority: 4 },
+      { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
       { name: "Police", priority: undefined },
     ],
@@ -188,12 +188,35 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: <p>Can you describe the pain?</p>,
+        text: <p>Is **pronoun** vomiting?</p>,
         questionType: "select",
         answers: [
           {
             answer: "No",
-            display: "Not able to describe pn",
+            display: "Not vomiting",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Vomiting",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if vomiting", 
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Can you describe the pain?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Pain:",
+            display: "{input} pn",
+            input: true,
             continue: true,
           },
           {
@@ -203,9 +226,8 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
           },
           {
-            answer: "Other:",
-            display: "{input} pn",
-            input: true,
+            answer: "No",
+            display: "Not able to describe pn",
             continue: true,
           },
         ],
@@ -362,7 +384,7 @@ export const emsComplaints: IEMSComplaint[] = [
       </>
     ),
     services: [
-      { name: "EMS", priority: 4 },
+      { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
       { name: "Police", priority: 0 },
     ],
@@ -548,13 +570,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes - Injection",
             display: "Injection Administered or Advised",
             continue: true,
-            updateSubType: "I",
+            updateSubCode: "I",
           },
           {
             answer: "Yes - Medication",
             display: "Medication Administered or Advised",
             continue: true,
-            updateSubType: "M",
+            updateSubCode: "M",
           },
           {
             answer: "Unknown",
@@ -819,33 +841,29 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Animal Bite calls must be evaluated based on immediate danger, the
-          type of animal involved, and the severity and location of injuries. If
-          the attack is still in progress, dispatch must prioritize responder
-          safety and scene control. Multiple animals, large or exotic species,
-          or a mauling scenario always elevate the response.
+          Key considerations for Animal Bites include the type of animal
+          involved, the location and severity of the injury, and whether the
+          attack is ongoing. Certain animals—such as large or exotic
+          species—present increased risk of severe trauma, infection, or
+          envenomation.
         </p>
-
         <p className="mt-2">
-          Breathing issues, unconsciousness, or bites to critical areas such as
-          the head, neck, or chest require urgent response due to the risk of
-          airway compromise, bleeding, or traumatic complications. The
-          dispatcher should also note the patient's alertness and whether
-          bleeding is present or uncontrolled.
+          Body area affected is a major factor; bites to the head, neck, or
+          chest, or those involving dangerous bleeding, airway compromise, or
+          altered consciousness may indicate the need for a higher-level
+          response. Always assess for breathing difficulty when injury involves
+          upper body structures.
         </p>
-
         <p className="mt-2">
-          Finally, determine when the incident occurred and where the animal is
-          now. Delayed incidents without priority symptoms may be downgraded,
-          while unknowns about the animal's location, time of bite, or patient
-          status should err toward caution. Law enforcement involvement is
-          typically required for ongoing threats or when dangerous animals are
-          uncontained.
+          Additional factors such as the presence of multiple bites, evidence of
+          mauling, or uncertainty about the animal's current location should
+          prompt consideration of scene safety and potential law enforcement
+          involvement.
         </p>
       </>
     ),
     services: [
-      { name: "EMS", priority: 4 },
+      { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
       { name: "Police", priority: 3 },
     ],
@@ -959,6 +977,11 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
           },
           {
+            answer: "Gone",
+            display: "Animal is gone",
+            continue: true,
+          },
+          {
             answer: "Unknown",
             display: "Unk where animal is",
             continue: true,
@@ -969,7 +992,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is there any <span className="text-red-400">SERIOUS</span>bleeding?
+            Is there any <span className="text-red-400">SERIOUS</span> bleeding?
           </p>
         ),
         questionType: "select",
@@ -1205,9 +1228,31 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 4,
     name: "Assault",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          Key considerations for Assault incidents include the mechanism and
+          severity of injury, patient consciousness, and the body area affected.
+          Particular attention should be given to injuries involving the head,
+          neck, or chest, as well as signs of serious bleeding or deformity.
+        </p>
+        <p className="mt-2">
+          This protocol also differentiates between general assault, sexual
+          assault, and less common incidents such as stun gun deployment. The
+          patient's alertness level and any difficulty breathing should prompt
+          escalation if airway compromise or decreased consciousness is
+          observed.
+        </p>
+        <p className="mt-2">
+          Ensure scene safety is considered, especially if the assailant is
+          still nearby. In cases of sexual assault, preserve forensic evidence
+          and provide care with sensitivity. Law enforcement involvement is
+          typically required.
+        </p>
+      </>
+    ),
     services: [
-      { name: "EMS", priority: 4 },
+      { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
       { name: "Police", priority: 4 },
     ],
@@ -1215,9 +1260,35 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 14,
     questions: [
       {
-        text: (
-          <p>What type of incident is this?</p>
-        ),
+        text: <p>When did this incident happen?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Just Now",
+            display: "Happened just now",
+            continue: true,
+          },
+          {
+            answer: "< 6 hours ago",
+            display: "Happened < 6 hours ago",
+            continue: true,
+          },
+          {
+            answer: ">= 6 hours ago",
+            display: "Happened >= 6 hours ago",
+            continue: true,
+            updateCode: "04A03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when incident happened",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What type of incident is this?</p>,
         questionType: "select",
         omitQuestion: true,
         answers: [
@@ -1225,27 +1296,25 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Assault",
             display: "Assault",
             continue: true,
-            updateSubType: "A",
+            updateSubCode: "A",
           },
           {
             answer: "Sexual Assault",
             display: "Sexual Assault",
             continue: true,
-            updateSubType: "S",
+            updateSubCode: "S",
           },
           {
             answer: "Stun Gun",
             display: "Stun Gun",
             continue: true,
-            updateSubType: "T",
+            updateSubCode: "T",
           },
-        ]
+        ],
       },
 
       {
-        text: (
-          <p>Where is the assailant now?</p>
-        ),
+        text: <p>Where is the assailant now?</p>,
         questionType: "select",
         answers: [
           {
@@ -1253,14 +1322,19 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Assailant is {input}",
             continue: true,
             input: true,
-          }
-        ]
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where assailant is",
+            continue: true,
+          },
+        ],
       },
 
       {
         text: (
           <p>
-            Is there any <span className="text-red-400">SERIOUS</span>bleeding?
+            Is there any <span className="text-red-400">SERIOUS</span> bleeding?
           </p>
         ),
         questionType: "select",
@@ -1281,8 +1355,8 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if serious bleeding",
             continue: true,
             updateCode: "04B03",
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -1309,33 +1383,31 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: (
-          <p>What part of the body was/is injured?</p>
-        ),
+        text: <p>What part of the body was/is injured?</p>,
         questionType: "select",
         answers: [
           {
             answer: "Not Dangerous Body Area:",
-            display: "Injured on {input}",
+            display: "Injury to {input}",
             input: true,
             continue: true,
             updateCode: "04A02",
           },
           {
             answer: "Possibly Dangerous Body Area:",
-            display: "Injured on {input}",
+            display: "Injury to {input}",
             input: true,
             continue: true,
             updateCode: "04B01",
           },
           {
             answer: "Chest/Neck/Head",
-            display: "Injured on Chest/Neck/Head",
+            display: "Injury to Chest/Neck/Head",
             continue: true,
           },
           {
@@ -1343,14 +1415,14 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk body area injured",
             continue: true,
             updateCode: "04B03",
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Injured on Chest/Neck/Head";
         },
@@ -1376,19 +1448,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if diff breathing or speaking",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: (
-          <p>Is there any deformity from the injury?</p>
-        ),
+        text: <p>Is there any deformity from the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.question === "What part of the body was/is injured?");
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.question === "What part of the body was/is injured?"
+          );
           return answer?.defultAnswer === "Not Dangerous Body Area:";
-        },  
+        },
         answers: [
           {
             answer: "No",
@@ -1405,39 +1477,9 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if deformity present",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-
-      {
-        text: (
-          <p>When did this incident happen?</p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "Just Now",
-            display: "Happened just now",
-            continue: true,
-          },
-          {
-            answer: "< 6 hours ago",
-            display: "Happened < 6 hours ago",
-            continue: true,
-          },
-          {
-            answer: ">= 6 hours ago",
-            display: "Happened >= 6 hours ago",
-            continue: true,
-            updateCode: "04A03",
-          },
-          {
-            answer: "Unknown",
-            display: "Unk when incident happened",
-            continue: true,
-          }
-        ]
-      }
     ],
     availableDeterminants: [
       {
@@ -1451,19 +1493,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
+                recResponse: 14,
+              },
+            ],
           },
           {
             code: "04A02",
@@ -1473,19 +1515,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
+                recResponse: 14,
+              },
+            ],
           },
           {
             code: "04A03",
@@ -1495,21 +1537,21 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 15
+                recResponse: 15,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 15
+                recResponse: 15,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 15
-              }
-            ]
-          }
-        ]
+                recResponse: 15,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -1522,19 +1564,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
+                recResponse: 14,
+              },
+            ],
           },
           {
             code: "04B01",
@@ -1544,19 +1586,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
+                recResponse: 14,
+              },
+            ],
           },
           {
             code: "04B02",
@@ -1566,19 +1608,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
+                recResponse: 14,
+              },
+            ],
           },
           {
             code: "04B03",
@@ -1589,21 +1631,21 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 14
+                recResponse: 14,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 14
-              }
-            ]
-          }
-        ]
+                recResponse: 14,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -1616,19 +1658,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 16
-              }
-            ]
+                recResponse: 16,
+              },
+            ],
           },
           {
             code: "04D01",
@@ -1638,19 +1680,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 17
+                recResponse: 17,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 17
+                recResponse: 17,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 17
-              }
-            ]
+                recResponse: 17,
+              },
+            ],
           },
           {
             code: "04D02",
@@ -1660,19 +1702,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 18
+                recResponse: 18,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 18
+                recResponse: 18,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 18
-              }
-            ]
+                recResponse: 18,
+              },
+            ],
           },
           {
             code: "04D03",
@@ -1682,19 +1724,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 16
-              }
-            ]
+                recResponse: 16,
+              },
+            ],
           },
           {
             code: "04D04",
@@ -1704,19 +1746,19 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 16
+                recResponse: 16,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 16
-              }
-            ]
+                recResponse: 16,
+              },
+            ],
           },
           {
             code: "04D05",
@@ -1727,19 +1769,887 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "A",
                 text: "Assault",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "S",
                 text: "Sexual Assault",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "T",
                 text: "Stun Gun",
-                recResponse: 19
+                recResponse: 19,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 5,
+    name: "Back Pain",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 20,
+    questions: [
+      {
+        text: (
+          <p>
+            What <b>caused</b> the back pain?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Recent Fall",
+            display: "Pain from a recent fall",
+            goto: 17,
+          },
+          {
+            answer: "Recent Trauma",
+            display: "Pain from a recent trauma",
+            goto: 30,
+          },
+          {
+            answer: "Non-Traumatic",
+            display: "Caused by non-trauma",
+            continue: true,
+            updateCode: "05A01",
+          },
+          {
+            answer: "Non-Recent (>= 6hrs ago) Trauma",
+            display: "Caused by non-recent trauma",
+            continue: true,
+            updateCode: "05A02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk cause of pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            <b>When</b> did the pain <b>start</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Time:",
+            display: "Pn started {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when pn started",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Does **pronoun** have any <b>chest pain</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No chest pn",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Has chest pn",
+            goto: 10,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has chest pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            updateCode: "05D01",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Does **pronoun** appear ashen or grey (compared to usual color)</p>
+        ),
+        preRenderInstructions: (patient?: IPatientData) => {
+          if (!patient) return false;
+          const { age } = patient;
+          return age >= 50;
+        },
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            continue: true,
+            display: "Not ashen or grey",
+          },
+          {
+            answer: "Yes",
+            display: "Ashen or grey",
+            dependency: (patient?: IPatientData) => {
+              if (!patient) return undefined;
+              const { age } = patient;
+              if (age >= 50) {
+                return { code: "05D02" };
               }
-            ]
+              return undefined;
+            },
+            send: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if ashen or grey",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** having <b>difficulty breathing</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No diff breathing",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff breathing",
+            continue: true,
+            updateCode: "05C04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff breathing",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>fainting</b> or <b>near fainting</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (patient?: IPatientData) => {
+          if (!patient) return false;
+          const { age } = patient;
+          return age >= 50;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not fainting or near fainting",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Fainting or near fainting",
+            continue: true,
+            updateCode: "05C03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if fainting or near fainting",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Can **pronoun** describe the pain?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Pain:",
+            display: "Pn is {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "RIPPING/TEARING",
+            display: "Pn is ripping or tearing",
+            continue: true,
+            dependency: (patient?: IPatientData) => {
+              if (!patient) return undefined;
+              const { age } = patient;
+              if (age >= 50) {
+                return { code: "05C01" };
+              }
+              return undefined;
+            },
+          },
+          {
+            answer: "No",
+            display: "Unable to describe pn",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "05A01",
+            text: "Non-Traumatic Back Pain",
+            recResponse: 20,
+            defaultCode: true,
+          },
+          {
+            code: "05A02",
+            text: "Non-Recent (>= 6hrs) Traumatic Back Pain (w/o priority symptoms)",
+            recResponse: 20,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "05C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 21,
+          },
+          {
+            code: "05C01",
+            text: "Suspected Aortic Aneurysm (Tearing/Ripping Pain) (>= 50)",
+            recResponse: 21,
+          },
+          {
+            code: "05C02",
+            text: "Diagnosed Aortic Aneurysm",
+            recResponse: 21,
+          },
+          {
+            code: "05C03",
+            text: "Fainting or Near Fainting (>= 50)",
+            recResponse: 21,
+          },
+          {
+            code: "05C04",
+            text: "Diff Breathing",
+            recResponse: 21,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "05D00",
+            text: "ALS Override (Delta)",
+            recResponse: 21,
+          },
+          {
+            code: "05D01",
+            text: "Not Alert",
+            recResponse: 21,
+          },
+          {
+            code: "05D02",
+            text: "Ashen or Gray Color (>= 50)",
+            recResponse: 21,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 6,
+    name: "Breathing Problems",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 2,
+    defaultPlan: 22,
+    questions: [
+      {
+        text: <p>Is **pronoun** able to talk to your (cry) at all?</p>,
+        questionType: "select",
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Yes",
+            display: "Can talk or cry",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Cannot talk or cry",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if can talk or cry",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have <b>difficulty</b> speaking <b>between</b> breaths?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Can talk or cry";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diff speaking btwn breaths",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff speaking btwn breaths",
+            updateCode: "06D02",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff speaking btwn breaths",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Did **pronoun** choke on anything first?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Cannot talk or cry";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Did NOT choke prior",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Did choke prior",
+            goto: 11
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if choked prior",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            updateCode: "06D01",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>changing color</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Changing color",
+            updateCode: "06D03",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if changing color",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>clammy</b> (cold sweats)?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not clammy",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Clammy or cold sweats",
+            updateCode: "06D04",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if clammy or cold sweats",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have <b>asthma</b> or <b>COPD</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No asthma or COPD",
+            continue: true,
+          },
+          {
+            answer: "Asthma",
+            display: "Has asthma",
+            continue: true,
+            updateSubCode: "A",
+          },
+          {
+            answer: "COPD",
+            display: "Has COPD",
+            continue: true,
+            updateSubCode: "E",
+          },
+          {
+            answer: "Both",
+            display: "Has both asthma and COPD",
+            continue: true,
+            updateSubCode: "E"
+          },
+          {
+            answer: "Other:",
+            display: "Has other lung problems: {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if any lung problems",
+            continue: true,
+          }
+        ]
+      },
+
+
+      {
+        text: <p>Does **pronoun** have a <b>prescribed inhaler</b> or <b>nebulizer</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Has asthma" || lastAnswer === "Has COPD";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Yes - available now",
+            display: "Has inhaler/nebulizer available now",
+            continue: true,
+          },
+          {
+            answer: "Yes - but not readily available now",
+            display: "Has inhaler/nebulizer but not available now",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "No inhaler/nebulizer available",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has inhaler/nebulizer",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Has **pronoun** used it yet?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find((a) => a.question === "Does **pronoun** have a prescribed inhaler or nebulizer?")?.answer;
+          return answer === "Has inahler/nebulizer available now" || answer === "Has inhaler/nebulizer but not available now";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Has NOT used inhaler/nebulizer",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Has used inhaler/nebulizer",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if used inhaler/nebulizer",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Can you, or someone there, <b>go</b> get it <b>now</b>?</p>,
+        questionType: "select",
+        omitQuestion: true,
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find((a) => a.question === "Has **pronoun** used it yet?")?.answer;
+          return answer === "Has NOT used inhaler/nebulizer";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Can get inhaler/nebulizer now",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Cannot get inhaler/nebulizer now",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Give instructions on using nebulizer/inhaler</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find((a) => a.question === "Can you, or someone there, go get it now?")?.answer;
+          return answer === "Can get inhaler/nebulizer now";
+        },
+        answers: [
+          {
+            answer: "Complete",
+            display: "Inhaler/Nebulizer instructions given",
+            continue: true,
+          },
+          {
+            answer: "Unable to complete",
+            display: "Unable to give inhaler/nebulizer instructions",
+            continue: true,
+          },
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "06C01",
+            text: "Abnormal Breathing",
+            recResponse: 22,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          },
+          {
+            code: "06C02",
+            text: "Tracheostomy (No Obvious Distress)",
+            recResponse: 23,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 23,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 23,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 23,
+              },
+            ],
+          }
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "06D00",
+            text: "ALS Override (Delta)",
+            recResponse: 24,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 24,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 24,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 24,
+              },
+            ],
+          },
+          {
+            code: "06D01",
+            text: "Not Alert",
+            recResponse: 22,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          },
+          {
+            code: "06D02",
+            text: "Diff Speaking Between Breaths",
+            recResponse: 22,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          },
+          {
+            code: "06D03",
+            text: "Changing Color",
+            recResponse: 22,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          },
+          {
+            code: "06D04",
+            text: "Clammy or Cold Sweats",
+            recResponse: 22,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          },
+          {
+            code: "06D05",
+            text: "Tracheostomy (Obvious Distress)",
+            recResponse: 22,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 22,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 22,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 22,
+              },
+            ],
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "06E00",
+            text: "ALS Override (Echo)",
+            recResponse: 25,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 25,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 25,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 25,
+              },
+            ],
+          },
+          {
+            code: "06E01",
+            text: "Ineffective Breathing",
+            notBreathing: true,
+            recResponse: 25,
+            subCodes: [
+              {
+                code: "A",
+                text: "Asthma",
+                recResponse: 25,
+              },
+              {
+                code: "E",
+                text: "COPD (Emphysema/Chronic Bronchitis)",
+                recResponse: 25,
+              },
+              {
+                code: "O",
+                text: "Other Lung Problems",
+                recResponse: 25,
+              },
+            ],
           }
         ]
       }
