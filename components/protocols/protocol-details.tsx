@@ -53,7 +53,7 @@ export default function ProtocolDetails({
 
     switch (priority) {
       case 0:
-        "Echo Level";
+        return "Echo Level";
       case 1:
         return "Delta Level";
       case 2:
