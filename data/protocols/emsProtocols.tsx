@@ -12,7 +12,8 @@ export function getEMSComplaintOptions() {
 export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 1,
-    name: "Abdominal Pain",
+    name: "Abdominal Pains/Problems",
+    shortName: "Abdo Pain",
     description: (
       <>
         <p>
@@ -352,7 +353,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 2,
-    name: "Allergies",
+    name: "Allergies (Reactions) / Envenomations (Stings, Bites)",
+    shortName: "Allergies",
     description: (
       <>
         <p>
@@ -837,7 +839,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 3,
-    name: "Animal Bite",
+    name: "Animal Bites/Attacks",
+    shortName: "Animal Bite",
     description: (
       <>
         <p>
@@ -1227,7 +1230,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 4,
-    name: "Assault",
+    name: "Assault/Sexual Assault",
+    shortName: "Assault",
     description: (
       <>
         <p>
@@ -1789,7 +1793,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 5,
-    name: "Back Pain",
+    name: "Back Pain (Non-Traumatic or Non-Recent Trauma)",
+    shortName: "Back Pain",
     description: (
       <>
         <p>
@@ -2135,6 +2140,7 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 6,
     name: "Breathing Problems",
+    shortName: "Breathing Prob",
     description: (
       <>
         <p>
@@ -2736,7 +2742,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 7,
-    name: "Burns/Explosion",
+    name: "Burns (Scalds) / Explosion (Blast)",
+    shortName: "Burns/Explosion",
     description: (
       <>
         <p>
@@ -3586,6 +3593,7 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 8,
     name: "Carbon Monoxide/Inhalation/Hazmat/CBRN",
+    shortName: "Inhalation/Hazmat",
     description: (
       <>
         <p>
@@ -4508,7 +4516,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 9,
-    name: "Cardiac Arrest",
+    name: "Cardiac or Repiratory Arrest / Death",
+    shortName: "Cardiac Arrest",
     description: (
       <>
         <p>
@@ -4912,7 +4921,8 @@ export const emsComplaints: IEMSComplaint[] = [
   },
   {
     protocol: 10,
-    name: "Chest Pain",
+    name: "Chest Pain (Non-Traumatic)",
+    shortName: "Chest Pain",
     description: (
       <>
         <p>
@@ -5244,6 +5254,7 @@ export const emsComplaints: IEMSComplaint[] = [
   {
     protocol: 11,
     name: "Choking",
+    shortName: "Choking",
     description: (
       <>
         <p>
@@ -5299,12 +5310,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** breathing <b>normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -5345,17 +5360,24 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if breathing",
             end: true,
             updateCode: "11E00",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** able to <b>talk</b> (or <b>cry</b>)?</p>,
+        text: (
+          <p>
+            Is **pronoun** able to <b>talk</b> (or <b>cry</b>)?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
-          return firstAnswer === "Responding nlly" && secondAnswer === "Breathing nlly";
+          return (
+            firstAnswer === "Responding nlly" &&
+            secondAnswer === "Breathing nlly"
+          );
         },
         answers: [
           {
@@ -5375,12 +5397,16 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if can talk or cry",
             continue: true,
             updateCode: "11D00",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>What</b> did **pronoun** <b>choke</b> on?</p>,
+        text: (
+          <p>
+            <b>What</b> did **pronoun** <b>choke</b> on?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -5421,9 +5447,9 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk what choked on",
             continue: true,
             updateSubCode: "U",
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -5628,6 +5654,285 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "U",
                 text: "Unknown",
                 recResponse: 56,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 12,
+    name: "Convulsions/Seizures",
+    shortName: "Seizures",
+    description: (
+      <>
+        <p>
+          Key considerations for Seizures include the duration and frequency of
+          the seizure, the patient's level of consciousness, and any underlying
+          conditions such as pregnancy, diabetes, or neurological disorders.
+          Status epilepticus (continuous or multiple seizures without full
+          recovery) demands ALS response due to airway and perfusion risks.
+        </p>
+        <p className="mt-2">
+          Secondary factors—such as recent drug ingestion, history of stroke or
+          brain tumor, or atypical presentation—may indicate a more complex
+          medical emergency. Confirming whether the patient is still seizing and
+          if effective breathing is present is crucial for triage.
+        </p>
+        <p className="mt-2">
+          Patients who have stopped seizing but present with abnormal breathing
+          or altered mental status should be closely monitored. For pediatric or
+          known epileptic patients, a stable presentation may not require
+          escalation, though situational context (e.g., seizure length, airway
+          patency) still determines response level.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 57,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "12A01",
+            text: "Not Seizing Now & Effective Breathing Verified (Known Seizure Disorder)",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+          {
+            code: "12A02",
+            text: "Not Seizing Now & Effective Breathing Verified (Seizure Disorder Unkn)",
+            recResponse: 57,
+          },
+          {
+            code: "12A03",
+            text: "Not Seizing Now & Effective Breathing Verified (<= 6, Confirmed No Seizure Disorder)",
+            recResponse: 57,
+          },
+          {
+            code: "12A04",
+            text: "Focal/Absence Seizure (Alert)",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+          {
+            code: "12A05",
+            text: "Impending Seizure (Aura)",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "12B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+          {
+            code: "12B01",
+            text: "Effective Breathing Not Verified (< 35)",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "12C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+          {
+            code: "12C01",
+            text: "Focal/Absence Seizure (Not Alert)",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+          {
+            code: "12C02",
+            text: "Pregnancy",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+          {
+            code: "12C03",
+            text: "Diabetic",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+          {
+            code: "12C04",
+            text: "Not Seizing Now & Effective Breathing Verified (> 6, Confirmed No Seizure Disorder)",
+            recResponse: 57,
+          },
+          {
+            code: "12C05",
+            text: "Hx of Stroke or Brain Tumor",
+            recResponse: 57,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 57,
+              },
+            ],
+          },
+          {
+            code: "12C06",
+            text: "Overdose/Poisoning (Ingestion)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 59,
+              },
+            ],
+          },
+          {
+            code: "12C07",
+            text: "Aytpical Seizure",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "12D00",
+            text: "ALS Override (Delta)",
+            recResponse: 60,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 60,
+              },
+            ],
+          },
+          {
+            code: "12D01",
+            text: "Not Breathing (After Key Questioning)",
+            recResponse: 61,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 61,
+              },
+            ],
+          },
+          {
+            code: "12D02",
+            text: "Continuous or Multiple Seizures",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
+              },
+            ],
+          },
+          {
+            code: "12D03",
+            text: "Agonal/Ineffective Breathing",
+            recResponse: 60,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 60,
+              },
+            ],
+          },
+          {
+            code: "12D04",
+            text: "Effective Breathing Not Verified (>= 35)",
+            recResponse: 58,
+            subCodes: [
+              {
+                code: "E",
+                text: "Epileptic or Previous Seizure Diagnosis",
+                recResponse: 58,
               },
             ],
           },

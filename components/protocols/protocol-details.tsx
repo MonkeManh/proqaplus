@@ -1,6 +1,6 @@
 "use client";
 
-import { Ambulance, CarTaxiFront, Flame } from "lucide-react";
+import { Ambulance, CarTaxiFront, Flame, Link } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -12,9 +12,11 @@ import {
 } from "@/components/ui/table";
 import { QuestionsAccordion } from "./questions-accordion";
 import { motion } from "framer-motion";
+import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
+import { getEmsResponsePlan } from "@/data/plans/emsPlans"; // Adjust the import based on your project structure
 
 interface ProtocolDetailsProps {
-  complaint: any;
+  complaint: IEMSComplaint;
   type: "EMS" | "Fire" | "Police";
 }
 
@@ -22,7 +24,6 @@ export default function ProtocolDetails({
   complaint,
   type,
 }: ProtocolDetailsProps) {
-
   // Update the getPriorityColor function to use grey for "o" priority
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -113,6 +114,29 @@ export default function ProtocolDetails({
   };
 
   const uniqueSuffixes = getUniqueSuffixes();
+
+  // Add this new function after other utility functions
+  const getUniqueResponsePlans = () => {
+    if (!complaint.availableDeterminants) return [];
+
+    // Get all response plan IDs
+    const allResponseIds = complaint.availableDeterminants.flatMap(
+      (priority: any) =>
+        priority.determinants.flatMap((determinant: any) => [
+          determinant.recResponse,
+          ...(determinant.subCodes?.map((sub: any) => sub.recResponse) || []),
+        ])
+    );
+
+    // Get unique IDs
+    const uniqueIds = [...new Set(allResponseIds)];
+
+    // Get plan details for each ID
+    return uniqueIds
+      .map((id) => getEmsResponsePlan(id))
+      .filter((plan): plan is NonNullable<typeof plan> => plan !== undefined)
+      .sort((a, b) => a.id - b.id);
+  };
 
   // Animation variants for staggered children
   const container = {
@@ -242,6 +266,25 @@ export default function ProtocolDetails({
           </Table>
         </motion.div>
       )}
+
+      {/* Response Plans */}
+      <motion.div variants={item}>
+        <h3 className="text-lg font-semibold mb-2">Response Plans</h3>
+        <div className="flex flex-wrap gap-2">
+          {getUniqueResponsePlans().map((plan) => (
+            <a
+              key={plan.id}
+              href={`/response-plans#${plan.id}`}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
+            >
+              <span className="font-medium">{plan.name}</span>
+              <span className="text-sm text-muted-foreground">
+                ({plan.incidentType})
+              </span>
+            </a>
+          ))}
+        </div>
+      </motion.div>
 
       {/* Questions Accordion */}
       {complaint.questions && (

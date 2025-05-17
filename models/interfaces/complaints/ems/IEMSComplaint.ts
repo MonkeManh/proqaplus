@@ -6,6 +6,7 @@ import { JSX, ReactNode } from "react";
 export interface IEMSComplaint {
   protocol: number;
   name: string;
+  shortName: string;
   description: ReactNode;
   services: IComplaintServices[];
   defaultPriority: number;

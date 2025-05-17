@@ -18,6 +18,7 @@ interface CallData {
   code: string;
   codeText: string;
   complaint: string;
+  complaintShort: string;
   crossStreet1: string;
   crossStreet2: string;
   callerStatement: string;
@@ -143,7 +144,7 @@ export default function EMSSummaryPage() {
         }`,
         `Recc: ${getRecommendedUnits(dispatchData.plan)}`,
         `Disp: ${sortedUnits.join(", ") || "None"}`,
-        `Problem: ${dispatchData.complaint} - ${dispatchData.codeText}`,
+        `Problem: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
         "Scene Status: Secure",

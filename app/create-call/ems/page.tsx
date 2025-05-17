@@ -167,6 +167,7 @@ export default function EMSCallPage() {
       const finalCallData = {
         ...callData,
         complaint: selectedComplaint,
+        complaintShort: emsComplaints.find((c) => c.name === selectedComplaint)?.shortName,
         code: code,
         codeText: text,
         plan: plan,
