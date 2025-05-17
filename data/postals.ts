@@ -6317,6 +6317,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Airfield Access Rd.",
+      crossStreet1: "Route 68 Bypass",
+      crossStreet2: "Panorama Dr.",
+    }
   },
   {
     postal: "258",

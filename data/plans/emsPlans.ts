@@ -1468,5 +1468,42 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 76,
+    name: "BLSU9",
+    incidentType: "EYEINJURY|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 77,
+    name: "BLSR",
+    incidentType: "EYEINJURY|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 78,
+    name: "ALS1",
+    incidentType: "EYEINJURY|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
   }
 ];

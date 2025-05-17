@@ -7289,19 +7289,23 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Electrocution and lightning incidents carry significant risk of cardiac arrest, respiratory failure, and hidden
-          traumatic injuries such as long falls or forceful ejection. Immediate assessment of scene safety is critical.
-          Callers should never approach victims unless power has been confirmed off by qualified personnel.
+          Electrocution and lightning incidents carry significant risk of
+          cardiac arrest, respiratory failure, and hidden traumatic injuries
+          such as long falls or forceful ejection. Immediate assessment of scene
+          safety is critical. Callers should never approach victims unless power
+          has been confirmed off by qualified personnel.
         </p>
         <p className="mt-2">
-          Patients not breathing, unresponsive, or still in contact with live power are prioritized for Echo or Delta
-          responses. Power status, presence of hazards, and fall distances must be established quickly to prevent
-          additional victims, including rescuers.
+          Patients not breathing, unresponsive, or still in contact with live
+          power are prioritized for Echo or Delta responses. Power status,
+          presence of hazards, and fall distances must be established quickly to
+          prevent additional victims, including rescuers.
         </p>
         <p className="mt-2">
-          Lightning strike cases can mimic cardiac arrest and often present with neurological deficits. Ensure Fire is
-          dispatched for scene safety and Police if scene access is restricted or if industrial/electrical infrastructure
-          is involved.
+          Lightning strike cases can mimic cardiac arrest and often present with
+          neurological deficits. Ensure Fire is dispatched for scene safety and
+          Police if scene access is restricted or if industrial/electrical
+          infrastructure is involved.
         </p>
       </>
     ),
@@ -7314,7 +7318,11 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 71,
     questions: [
       {
-        text: <p><b>Where</b> is **pronoun** now?</p>,
+        text: (
+          <p>
+            <b>Where</b> is **pronoun** now?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -7327,12 +7335,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk where pt is",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What type of <b>incident</b> is this?</p>,
+        text: (
+          <p>
+            What type of <b>incident</b> is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -7346,12 +7358,16 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Pt was struck by lightning",
             continue: true,
             updateSubCode: "L",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>disconnected</b> from the <b>power</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>disconnected</b> from the <b>power</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const secondAnswer = answers?.[1]?.answer;
@@ -7373,13 +7389,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt is disconnected from power",
             continue: true,
-            updateCode: "15D09"
-          }
-        ]
+            updateCode: "15D09",
+          },
+        ],
       },
 
       {
-        text: <p>Has the <b>power</b> been <b>turned off</b>?</p>,
+        text: (
+          <p>
+            Has the <b>power</b> been <b>turned off</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const secondAnswer = answers?.[1]?.answer;
@@ -7401,12 +7421,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if power is turned off",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Did **pronoun** <b>fall</b> off something when this happened?</p>,
+        text: (
+          <p>
+            Did **pronoun** <b>fall</b> off something when this happened?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -7423,8 +7447,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt fell",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -7461,8 +7485,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk how far pt fell",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -7494,8 +7518,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -7511,7 +7535,7 @@ export const emsComplaints: IEMSComplaint[] = [
               if (lastAnswer === "Responding nlly") {
                 return { code: "15C01" };
               }
-            }
+            },
           },
           {
             answer: "No",
@@ -7531,8 +7555,8 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if breathing nlly",
             continue: true,
             updateCode: "15D09",
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -7556,8 +7580,8 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Unk if hazards present",
             continue: true,
             updateCode: "15D09",
-          }
-        ]
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -7578,10 +7602,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 71,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -7600,8 +7624,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 72,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D01",
@@ -7618,8 +7642,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 73,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D02",
@@ -7636,8 +7660,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 72,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D03",
@@ -7649,7 +7673,7 @@ export const emsComplaints: IEMSComplaint[] = [
                 text: "Electrocution",
                 recResponse: 71,
               },
-            ]
+            ],
           },
           {
             code: "15D04",
@@ -7665,8 +7689,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 71,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D05",
@@ -7682,8 +7706,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 74,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D06",
@@ -7699,8 +7723,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 74,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D07",
@@ -7716,8 +7740,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 71,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D08",
@@ -7733,8 +7757,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 71,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15D09",
@@ -7751,10 +7775,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 71,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "E",
@@ -7773,8 +7797,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 75,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "15E01",
@@ -7791,11 +7815,229 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "L",
                 text: "Lightning",
                 recResponse: 75,
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 16,
+    name: "Eye Problems / Injuries",
+    shortName: "Eye Injs",
+    description: (
+      <>
+        <p>
+          Eye injuries range from minor irritants to penetrating trauma and
+          chemical exposure, all requiring careful triage due to the sensitivity
+          and potential for vision loss. This protocol helps distinguish between
+          routine and sight-threatening conditions.
+        </p>
+        <p className="mt-2">
+          Chemical exposures or signs of globe rupture (fluid leakage,
+          structural deformity) should trigger higher acuity responses. Sudden
+          visual loss, direct trauma, or involvement of penetrating objects may
+          also elevate priority.
+        </p>
+        <p className="mt-2">
+          While many injuries may appear minor (e.g., lens issues, small foreign
+          bodies), any indication of altered consciousness or vision-threatening
+          signs should be treated with ALS response. Fire may be dispatched for
+          flushing or patient assistance, especially in workplace or industrial
+          settings.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 76,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "16D01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            How did the <b>injury</b> occur?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Chemical:",
+            display: "Caused by {input}",
+            continue: true,
+            input: true,
+            updateCode: "16A01",
+          },
+          {
+            answer: "Contact Lens",
+            display: "Contact lens problem",
+            continue: true,
+            updateCode: "16A03",
+          },
+          {
+            answer: "Direct Blow",
+            display: "Caused by direct blow",
+            continue: true,
+            updateCode: "16A01",
+          },
+          {
+            answer: "Flying Object:",
+            display: "Caused by flying object: {input}",
+            continue: true,
+            input: true,
+            updateCode: "16A01",
+          },
+          {
+            answer: "Medical Eye Problem",
+            display: "Medical eye problem",
+            continue: true,
+            updateCode: "16A03",
+          },
+          {
+            answer: "Penetrating Object:",
+            display: "Caused by penetrating object: {input}",
+            continue: true,
+            input: true,
+            updateCode: "16B01",
+          },
+          {
+            answer: "Small Foreign Object",
+            display: "Caused by small foreign object",
+            continue: true,
+            updateCode: "16A02",
+          },
+          {
+            answer: "Other:",
+            display: "Caused by {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how injury occurred",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is the eyeball <b>cut open</b> or is <b>fluid leaking out</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return (
+            lastAnswer.includes("Caused by penetrating object") ||
+            lastAnswer.includes("Caused by flying object") ||
+            lastAnswer.includes("Caused by direct blow")
+          );
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No cut or fluid leaking",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Eyeball cut or fluid leaking",
+            continue: true,
+            updateCode: "16B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if eyeball cut or fluid leaking",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "16A01",
+            text: "Moderate Eye Injs",
+            recResponse: 76,
+          },
+          {
+            code: "16A02",
+            text: "Minor Eye Injs",
+            recResponse: 76,
+          },
+          {
+            code: "16A03",
+            text: "Medical Eye Problems",
+            recResponse: 77,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "16B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 76,
+          },
+          {
+            code: "16B01",
+            text: "Severe Eye Injs",
+            recResponse: 76,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "16D00",
+            text: "ALS Override (Delta)",
+            recResponse: 78,
+          },
+          {
+            code: "16D01",
+            text: "Not Alert",
+            recResponse: 78,
+          },
+        ],
+      },
+    ],
+  },
 ];
