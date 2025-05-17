@@ -5698,7 +5698,12 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 57,
     questions: [
       {
-        text: <p>Has **pronoun** had <b>more than one</b> seizure in row <b>or</b> a seizure longer than <b>5 minutes</b>?</p>,
+        text: (
+          <p>
+            Has **pronoun** had <b>more than one</b> seizure in row <b>or</b> a
+            seizure longer than <b>5 minutes</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -5710,27 +5715,27 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes - More than one seizure",
             display: "More than one seizure",
             continue: true,
-            updateCode: "12D02"
+            updateCode: "12D02",
           },
           {
             answer: "Yes - Seizure > 5 minutes",
             display: "Seizure > 5 minutes",
             continue: true,
-            updateCode: "12D02"
+            updateCode: "12D02",
           },
           {
             answer: "Unknown",
             display: "Unk if more than one seizure or seizure > 5 min",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Is she pregnant?</p>,
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { gender, age } = _patient;
           return gender === "Female" && age >= 12 && age <= 50;
         },
@@ -5744,14 +5749,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "PT is pregnant",
             continue: true,
-            updateCode: "12C02"
+            updateCode: "12C02",
           },
           {
             answer: "Unknown",
             display: "Unk if pt is pregnant",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -5774,12 +5779,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt is diabetic",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have a history of strokes or brain tumors?</p>,
+        text: (
+          <p>Does **pronoun** have a history of strokes or brain tumors?</p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -5791,30 +5798,35 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes - Stroke",
             display: "Stroke hx",
             continue: true,
-            updateCode: "12C05"
+            updateCode: "12C05",
           },
           {
             answer: "Yes - Brain Tumor",
             display: "Brain tumor hx",
             continue: true,
-            updateCode: "12C05"
+            updateCode: "12C05",
           },
           {
             answer: "Yes - Both",
             display: "Stroke and brain tumor hx",
             continue: true,
-            updateCode: "12C05"
+            updateCode: "12C05",
           },
           {
             answer: "Unknown",
             display: "Unk hx of strokes or brain tumors",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Has **pronoun** ingested or taken any <b>drugs</b> before the seizure?</p>,
+        text: (
+          <p>
+            Has **pronoun** ingested or taken any <b>drugs</b> before the
+            seizure?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -5827,14 +5839,14 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Took {input} before seizure",
             continue: true,
             input: true,
-            updateCode: "12C06"
+            updateCode: "12C06",
           },
           {
             answer: "Unknown",
             display: "Unk if took drugs or meds before seizure",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -5846,27 +5858,27 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "PT has stopped seizing",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
-              if(_patient.age < 35) {
-                return { code: "12B01" }
-              } else if(_patient.age >= 35) {
-                return { code: "12D04" }
+              if (!_patient) return undefined;
+              if (_patient.age < 35) {
+                return { code: "12B01" };
+              } else if (_patient.age >= 35) {
+                return { code: "12D04" };
               }
-            }
+            },
           },
           {
             answer: "No",
             display: "PT is still seizing",
             continue: true,
-            updateCode: "12C06"
+            updateCode: "12C06",
           },
           {
             answer: "Unknown",
             display: "Unk if pt has stopped seizing",
             continue: true,
-            updateCode: "12B00"
-          }
-        ]
+            updateCode: "12B00",
+          },
+        ],
       },
 
       {
@@ -5886,20 +5898,20 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            updateCode: "12C00"
+            updateCode: "12C00",
           },
           {
             answer: "AGONAL BREATHING",
             display: "Agonal breathing",
             end: true,
-            updateCode: "12D03"
+            updateCode: "12D03",
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -5911,16 +5923,16 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "No hx of seizures or diagnoses",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer !== "Breathing nlly") return undefined;
+              if (lastAnswer !== "Breathing nlly") return undefined;
               const { age } = _patient;
-              if(age <= 6) {
-                return { code: "12A03" }
-              } else if(age > 6) {
-                return { code: "12C04" }
+              if (age <= 6) {
+                return { code: "12A03" };
+              } else if (age > 6) {
+                return { code: "12C04" };
               }
-            }
+            },
           },
           {
             answer: "Yes",
@@ -5929,9 +5941,9 @@ export const emsComplaints: IEMSComplaint[] = [
             updateSubCode: "E",
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer !== "Breathing nlly") return undefined;
-              return { code: "12A01" }
-            }
+              if (lastAnswer !== "Breathing nlly") return undefined;
+              return { code: "12A01" };
+            },
           },
           {
             answer: "Unknown",
@@ -5939,12 +5951,12 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if(lastAnswer !== "Breathing nlly") return undefined;
-              return { code: "12A02" }
-            }
-          }
-        ]
-      }
+              if (lastAnswer !== "Breathing nlly") return undefined;
+              return { code: "12A02" };
+            },
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -6182,6 +6194,268 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "E",
                 text: "Epileptic or Previous Seizure Diagnosis",
                 recResponse: 58,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 13,
+    name: "Diabetic Problems",
+    shortName: "Diabetic Problem",
+    description: (
+      <>
+        <p>
+          Key considerations for Diabetic Problems include the patient's level
+          of consciousness, respiratory status, and behavior. Hypoglycemia and
+          hyperglycemia can both present with altered mental status, abnormal
+          behavior, or unresponsiveness, requiring prompt assessment and
+          intervention.
+        </p>
+        <p className="mt-2">
+          Patients who are alert, breathing normally, and behaving appropriately
+          are typically low acuity. However, abnormal breathing, confusion, or
+          unresponsiveness may indicate a serious glucose imbalance or
+          underlying complication requiring ALS care.
+        </p>
+        <p className="mt-2">
+          Combative or aggressive behavior, especially in patients with known
+          diabetes, may be the result of severe hypoglycemia. Ensure appropriate
+          safety precautions are taken during response, and prepare for possible
+          de-escalation or sedation protocols if needed.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 62,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "13C01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>behaving normally now</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Behaving nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.answer;
+              if(firstAnswer === "Responding nlly") {
+                return { code: "13A01" };
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "Not behaving nlly",
+            continue: true,
+            updateCode: "13C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if behaving nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "13C03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** acting aggressively or combative?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not acting aggressively or combative",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Acting aggressively or combative",
+            continue: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if acting aggressively or combative",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have <b>access to weapons</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Acting aggressively or combative";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No access to weapons",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Access to weapons: {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if access to weapons",
+            continue: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "13A01",
+            text: "Alert & Behaving Normally",
+            defaultCode: true,
+            recResponse: 62,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "13C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
+              },
+            ],
+          },
+          {
+            code: "13C01",
+            text: "Not Alert",
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
+              },
+            ],
+          },
+          {
+            code: "13C02",
+            text: "Abnormal Behavior",
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
+              },
+            ],
+          },
+          {
+            code: "13C03",
+            text: "Abnormal Breathing",
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "13D00",
+            text: "ALS Override (Delta)",
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
+              },
+            ],
+          },
+          {
+            code: "13D01",
+            text: "Unconscious",
+            notConscious: true,
+            recResponse: 63,
+            subCodes: [
+              {
+                code: "C",
+                text: "Combative or Aggressive",
+                recResponse: 64,
               },
             ],
           },
