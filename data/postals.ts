@@ -18307,6 +18307,18 @@ export const postalData: IPostal[] = [
     fireBox: "0712",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Sustancia Rd.": {
+          crossStreet1: "Fudge Ln.",
+          crossStreet2: "El Burro Blvd."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "777",
@@ -18315,6 +18327,18 @@ export const postalData: IPostal[] = [
     fireBox: "0751",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Sustancia Rd.": {
+          crossStreet1: "Fudge Ln.",
+          crossStreet2: "Noose Approach"
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd." 
+        }
+      }
+    }
   },
   {
     postal: "778",
@@ -18323,6 +18347,12 @@ export const postalData: IPostal[] = [
     fireBox: "0711",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "El Burro Blvd.",
+      crossStreet1: "Route 20",
+      crossStreet2: "Sustancia Rd."
+    }
   },
   {
     postal: "779",
@@ -18331,6 +18361,22 @@ export const postalData: IPostal[] = [
     fireBox: "0711",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "El Rancho Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        },
+        "Sustancia Rd.": {
+          crossStreet1: "El Rancho Blvd.",
+          crossStreet2: "El Burro Blvd."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "780",
@@ -18339,6 +18385,12 @@ export const postalData: IPostal[] = [
     fireBox: "0751",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "El Burro Blvd.",
+      crossStreet1: "Route 20",
+      crossStreet2: "Sustancia Rd."
+    }
   },
   {
     postal: "781",
@@ -18347,6 +18399,18 @@ export const postalData: IPostal[] = [
     fireBox: "0711",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "El Rancho Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Labor Pl."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "782",
@@ -18355,6 +18419,22 @@ export const postalData: IPostal[] = [
     fireBox: "0711",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "El Rancho Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Labor Pl."
+        },
+        "Route 20": {
+          crossStreet1: "El Burro Blvd.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "783",
@@ -18363,6 +18443,12 @@ export const postalData: IPostal[] = [
     fireBox: "0751",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "El Burro Blvd.",
+      crossStreet1: "Route 20",
+      crossStreet2: "Sustancia Rd."
+    }
   },
   {
     postal: "784",
@@ -18371,6 +18457,18 @@ export const postalData: IPostal[] = [
     fireBox: "0710",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "El Burro Blvd.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "785",
@@ -18379,6 +18477,12 @@ export const postalData: IPostal[] = [
     fireBox: "0710",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "El Burro Blvd.",
+      crossStreet1: "Route 20",
+      crossStreet2: "Sustancia Rd."
+    }
   },
   {
     postal: "786",
@@ -18387,6 +18491,12 @@ export const postalData: IPostal[] = [
     fireBox: "0751",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "El Burro Blvd.",
+      crossStreet1: "Route 20",
+      crossStreet2: "Sustancia Rd."
+    }
   },
   {
     postal: "787",
@@ -18395,6 +18505,18 @@ export const postalData: IPostal[] = [
     fireBox: "0710",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "El Burro Blvd.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Burro Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Sustancia Rd."
+        }
+      }
+    }
   },
   {
     postal: "788",
@@ -18403,6 +18525,12 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Route 20",
+      crossStreet1: "Rt. 20 MM01.00",
+      crossStreet2: "El Rancho Blvd."
+    }
   },
   {
     postal: "789",
@@ -18411,6 +18539,18 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "S. Shambles St.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Route 20": {
+          crossStreet1: "El Burro Blvd.",
+          crossStreet2: "El Rancho Blvd."
+        }
+      }
+    }
   },
   {
     postal: "790",
@@ -18419,6 +18559,18 @@ export const postalData: IPostal[] = [
     fireBox: "0711",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "El Burro Blvd.",
+          crossStreet2: "Rt. 20 MM02.00"
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "S. Shambles St.",
+          crossStreet2: "Labor Pl."
+        }
+      }
+    }
   },
   {
     postal: "791",
@@ -18427,6 +18579,26 @@ export const postalData: IPostal[] = [
     fireBox: "0701",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "El Rancho Blvd.",
+          crossStreet2: "Murrieta Exit"
+        },
+        "Labor Pl.": {
+          crossStreet1: "Amarillo Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Route 20",
+          crossStreet2: "Labor Pl."
+        },
+        "Amarillo Way": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        }
+      }
+    }
   },
   {
     postal: "792",
@@ -18435,6 +18607,34 @@ export const postalData: IPostal[] = [
     fireBox: "0701",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Amarillo Way": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        },
+        "Innocence Blvd.": {
+          crossStreet1: "Amarillo Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Amarillo Vista": {
+          crossStreet1: "Innocence Blvd.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Labor Pl.": {
+          crossStreet1: "Amarillo Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Route 20": {
+          crossStreet1: "Rt. 20 MM02.00",
+          crossStreet2: "I4 Interchange"
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        }
+      }
+    }
   },
   {
     postal: "793",
@@ -18443,6 +18643,22 @@ export const postalData: IPostal[] = [
     fireBox: "0701",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Rt. 20 MM02.00",
+          crossStreet2: "I4 Interchange"
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Innocence Blvd.",
+          crossStreet2: "Capital Blvd."
+        },
+        "Fudge Ln.": {
+          crossStreet1: "Innocence Blvd.",
+          crossStreet2: "El Rancho Blvd." 
+        }
+      }
+    }
   },
   {
     postal: "794",
@@ -18451,6 +18667,22 @@ export const postalData: IPostal[] = [
     fireBox: "0701",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Rt. 20 MM02.00",
+          crossStreet2: "I4 Interchange"
+        },
+        "Capital Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Fudge Ln.",
+          crossStreet2: "Capital Blvd."
+        }
+      }
+    }
   },
   {
     postal: "795",
@@ -18459,6 +18691,30 @@ export const postalData: IPostal[] = [
     fireBox: "0716",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 4": {
+          crossStreet1: "I4 MM01.00",
+          crossStreet2: "Rt. 15 MM01.00"
+        },
+        "I4 EB Entrance": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Interstate 4"
+        },
+        "Route 20": {
+          crossStreet1: "Murrieta Exit",
+          crossStreet2: "I4 Interchange"
+        },
+        "Popular St.": {
+          crossStreet1: "Capital Blvd.",
+          crossStreet2: "I4 EB Entrance"
+        },
+        "Capital Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "El Rancho Blvd."
+        }
+      }
+    }
   },
   {
     postal: "796",
@@ -18467,6 +18723,22 @@ export const postalData: IPostal[] = [
     fireBox: "0715",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Murrieta Exit",
+          crossStreet2: "I4 Interchange"
+        },
+        "Popular St.": {
+          crossStreet1: "Innocence Blvd.",
+          crossStreet2: "Capital Blvd."
+        },
+        "Capital Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "El Rancho Blvd."
+        }
+      }
+    }
   },
   {
     postal: "797",
@@ -18475,6 +18747,26 @@ export const postalData: IPostal[] = [
     fireBox: "0715",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Murrieta Exit",
+          crossStreet2: "I4 Interchange"
+        },
+        "Popular St.": {
+          crossStreet1: "Innocence Blvd.",
+          crossStreet2: "Capital Blvd."
+        },
+        "Innocence Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Tower Way"
+        },
+        "Tower Way": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        }
+      }
+    }
   },
   {
     postal: "798",
@@ -18483,6 +18775,30 @@ export const postalData: IPostal[] = [
     fireBox: "0715",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Rt. 20 MM02.00",
+          crossStreet2: "I4 Interchange"
+        },
+        "Innocence Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Amarillo Way"
+        },
+        "Tower Way": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        },
+        "Amarillo Way": {
+          crossStreet1: "Labor Pl.",
+          crossStreet2: "Innocence Blvd."
+        },
+        "Labor Pl.": {
+          crossStreet1: "Orchardville Ave.",
+          crossStreet2: "Amarillo Way"
+        }
+      }
+    }
   },
   {
     postal: "799",
@@ -18491,6 +18807,18 @@ export const postalData: IPostal[] = [
     fireBox: "0715",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "El Rancho Blvd.": {
+          crossStreet1: "Orchardville Ave.",
+          crossStreet2: "S. Shambles St."
+        },
+        "Orchardville Ave.": {
+          crossStreet1: "El Rancho Blvd.",
+          crossStreet2: "Labor Pl."
+        }
+      }
+    }
   },
   {
     postal: "800",
@@ -18499,6 +18827,18 @@ export const postalData: IPostal[] = [
     fireBox: "0715",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "El Rancho Blvd.",
+          crossStreet2: "Murrieta Exit"
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "S. Shambles St.",
+          crossStreet2: "Route 20"
+        }
+      }
+    }
   },
   {
     postal: "801",
@@ -18507,6 +18847,18 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "S. Shambles St.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "S. Shambles St.",
+          crossStreet2: "Route 20"
+        }
+      }
+    }
   },
   {
     postal: "802",
@@ -18515,6 +18867,22 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Orchardville Ave.": {
+          crossStreet1: "Dry Dock St.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Orchardville Ave.",
+          crossStreet2: "S. Shambles St."
+        },
+        "S. Shambles St.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+      }
+    }
   },
   {
     postal: "803",
@@ -18523,6 +18891,22 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Orchardville Ave.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "Dry Dock St."
+        },
+        "S. Shambles St.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Hanger Way": {
+          crossStreet1: "Orchardville Ave.",
+          crossStreet2: "S. Shambles St."
+        }
+      }
+    }
   },
   {
     postal: "804",
@@ -18531,6 +18915,22 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "Rt. 20 MM01.00",
+          crossStreet2: "El Burro Blvd."
+        },
+        "Hanger Way": {
+          crossStreet1: "Orchardville Ave.",
+          crossStreet2: "S. Shambles St."
+        },
+        "S. Shambles St.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "El Rancho Blvd."
+        }
+      }
+    }
   },
   {
     postal: "805",
@@ -18539,6 +18939,18 @@ export const postalData: IPostal[] = [
     fireBox: "0713",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "LS Ports Exit",
+          crossStreet2: "Rt. 20 MM01.00"
+        },
+        "Hanger Way": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "S. Shambles St."
+        }
+      }
+    }
   },
   {
     postal: "806",
@@ -18547,6 +18959,26 @@ export const postalData: IPostal[] = [
     fireBox: "0714",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Popular St.": {
+          crossStreet1: "Chum St.",
+          crossStreet2: "Dry Dock St."
+        },
+        "Dry Dock St.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Orchardville Ave."
+        },
+        "Orchardville Ave.": {
+          crossStreet1: "Hanger Way",
+          crossStreet2: "Dry Dock St."
+        },
+        "Hanger Way": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Orchardville Ave."
+        }
+      }
+    }
   },
   {
     postal: "807",
@@ -18555,6 +18987,26 @@ export const postalData: IPostal[] = [
     fireBox: "0714",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "9", "2", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Popular St.": {
+          crossStreet1: "Dry Dock St.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "El Rancho Blvd.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Orchardville Ave."
+        },
+        "Orchardville Ave.": {
+          crossStreet1: "Dry Dock St.",
+          crossStreet2: "El Rancho Blvd."
+        },
+        "Dry Dock St.": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Orchardville Ave."
+        }
+      }
+    }
   },
   {
     postal: "808",
