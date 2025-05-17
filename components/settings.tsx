@@ -52,6 +52,8 @@ export function SettingsMenu() {
     try {
       localStorage.setItem("PREFERENCES", JSON.stringify(prefs));
       setPreferences(prefs);
+      // Dispatch storage event to notify other components
+      window.dispatchEvent(new Event("storage"));
     } catch (error) {
       console.error("Failed to save preferences:", error);
     }

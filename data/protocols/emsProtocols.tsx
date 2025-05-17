@@ -455,7 +455,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty speaking between breaths?</p>,
         questionType: "select",
-        preRenderInstructions: (patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Diff breathing or swallowing";
         },
@@ -566,24 +566,24 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "No meds or injection for this rx",
-            continue: true,
+            end: true,
           },
           {
             answer: "Yes - Injection",
             display: "Injection Administered or Advised",
-            continue: true,
+            end: true,
             updateSubCode: "I",
           },
           {
             answer: "Yes - Medication",
             display: "Medication Administered or Advised",
-            continue: true,
+            end: true,
             updateSubCode: "M",
           },
           {
             answer: "Unknown",
             display: "Unk if meds or injection have been taken",
-            continue: true,
+            end: true,
           },
         ],
       },
@@ -1056,14 +1056,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Not Dangerous Body Area:",
             display: "Bit on {input}",
             input: true,
-            continue: true,
+            end: true,
             updateCode: "03A01",
           },
           {
             answer: "Possibly Dangerous Body Area:",
             display: "Bit on {input}",
             input: true,
-            continue: true,
+            end: true,
             updateCode: "03B01",
           },
           {
@@ -1076,13 +1076,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Dangerous Body Area:",
             display: "Bit on {input}",
             input: true,
-            continue: true,
+            end: true,
             updateCode: "03D05",
           },
           {
             answer: "Unknown",
             display: "Unk body area bitten",
-            continue: true,
+            end: true,
             updateCode: "03B03",
           },
         ],
@@ -1091,7 +1091,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Bit on Chest/Neck/Head";
         },
@@ -1099,12 +1099,12 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "Not diff breathing or speaking",
-            continue: true,
+            end: true,
           },
           {
             answer: "Yes",
             display: "Diff breathing or speaking",
-            continue: true,
+            end: true,
             updateCode: "03D04",
           },
           {
@@ -1116,7 +1116,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Unknown",
             display: "Unk if diff breathing or speaking",
-            continue: true,
+            end: true,
             updateCode: "03B03",
           },
         ],
@@ -3049,7 +3049,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: ">= 18% Body Area",
             display: "Burns >= 18% body area",
             continue: true,
-            dependency: (patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Burns to face/head") {
                 return { code: "07C04" };
@@ -5696,7 +5696,256 @@ export const emsComplaints: IEMSComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 57,
-    questions: [],
+    questions: [
+      {
+        text: <p>Has **pronoun** had <b>more than one</b> seizure in row <b>or</b> a seizure longer than <b>5 minutes</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No more than one seizure or seizure > 5 min",
+            continue: true,
+          },
+          {
+            answer: "Yes - More than one seizure",
+            display: "More than one seizure",
+            continue: true,
+            updateCode: "12D02"
+          },
+          {
+            answer: "Yes - Seizure > 5 minutes",
+            display: "Seizure > 5 minutes",
+            continue: true,
+            updateCode: "12D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if more than one seizure or seizure > 5 min",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is she pregnant?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { gender, age } = _patient;
+          return gender === "Female" && age >= 12 && age <= 50;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "PT is not pregnant",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "PT is pregnant",
+            continue: true,
+            updateCode: "12C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is pregnant",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** diabetic?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "PT is not diabetic",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "PT is diabetic",
+            continue: true,
+            updateCode: "12C03",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is diabetic",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have a history of strokes or brain tumors?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hx of strokes or brain tumors",
+            continue: true,
+          },
+          {
+            answer: "Yes - Stroke",
+            display: "Stroke hx",
+            continue: true,
+            updateCode: "12C05"
+          },
+          {
+            answer: "Yes - Brain Tumor",
+            display: "Brain tumor hx",
+            continue: true,
+            updateCode: "12C05"
+          },
+          {
+            answer: "Yes - Both",
+            display: "Stroke and brain tumor hx",
+            continue: true,
+            updateCode: "12C05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk hx of strokes or brain tumors",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Has **pronoun** ingested or taken any <b>drugs</b> before the seizure?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No drugs or meds before seizure",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Took {input} before seizure",
+            continue: true,
+            input: true,
+            updateCode: "12C06"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if took drugs or meds before seizure",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Has **pronoun** stopped seizing?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "PT has stopped seizing",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              if(_patient.age < 35) {
+                return { code: "12B01" }
+              } else if(_patient.age >= 35) {
+                return { code: "12D04" }
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "PT is still seizing",
+            continue: true,
+            updateCode: "12C06"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has stopped seizing",
+            continue: true,
+            updateCode: "12B00"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "PT has stopped seizing";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "12C00"
+          },
+          {
+            answer: "AGONAL BREATHING",
+            display: "Agonal breathing",
+            end: true,
+            updateCode: "12D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have a history of seizures or diagnoses?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hx of seizures or diagnoses",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              if(!_patient) return undefined;
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer !== "Breathing nlly") return undefined;
+              const { age } = _patient;
+              if(age <= 6) {
+                return { code: "12A03" }
+              } else if(age > 6) {
+                return { code: "12C04" }
+              }
+            }
+          },
+          {
+            answer: "Yes",
+            display: "Seizure or eplepsy hx",
+            continue: true,
+            updateSubCode: "E",
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer !== "Breathing nlly") return undefined;
+              return { code: "12A01" }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk hx of seizures or diagnoses",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if(lastAnswer !== "Breathing nlly") return undefined;
+              return { code: "12A02" }
+            }
+          }
+        ]
+      }
+    ],
     availableDeterminants: [
       {
         priority: "A",
