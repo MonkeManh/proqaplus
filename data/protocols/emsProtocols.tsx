@@ -6260,12 +6260,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>behaving normally now</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>behaving normally now</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -6274,10 +6278,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.answer;
-              if(firstAnswer === "Responding nlly") {
+              if (firstAnswer === "Responding nlly") {
                 return { code: "13A01" };
               }
-            }
+            },
           },
           {
             answer: "No",
@@ -6289,12 +6293,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if behaving nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>breathing normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -6312,8 +6320,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -6335,12 +6343,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if acting aggressively or combative",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have <b>access to weapons</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have <b>access to weapons</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
@@ -6362,8 +6374,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if access to weapons",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -6458,6 +6470,813 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 64,
               },
             ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 14,
+    name: "Drowning (Near) / Diving / SCUBA Accident",
+    shortName: "Drowning",
+    description: (
+      <>
+        <p>
+          Drowning-related calls require rapid identification of submersion
+          time, level of consciousness, and breathing status. Submersion
+          duration over 5 minutes or unknown submersion time significantly
+          increases the urgency, triggering Echo-level responses due to the risk
+          of hypoxia and cardiac arrest.
+        </p>
+        <p className="mt-2">
+          Specialized rescue types—such as ice, floodwater, or swift water
+          incidents—require appropriate teams and response posture. Subtypes
+          like diving or SCUBA accidents may indicate spinal injuries or air
+          embolism risks.
+        </p>
+        <p className="mt-2">
+          Patients who are alert and breathing normally may be triaged at lower
+          priority, but all drowning events demand careful evaluation for
+          delayed onset respiratory compromise or neurological symptoms,
+          especially in pediatric and cold-water exposures.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 3 },
+      { name: "Police", priority: 0 },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 65,
+    questions: [
+      {
+        text: (
+          <p>
+            <b>Where</b> is **pronoun** <b>now</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "In Water",
+            display: "Pt is in water",
+            continue: true,
+          },
+          {
+            answer: "Out of Water",
+            display: "Pt is out of water",
+            continue: true,
+          },
+          {
+            answer: "In Floodwater",
+            display: "Pt is in floodwater",
+            continue: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "In/On Ice",
+            display: "Pt is in/on ice",
+            continue: true,
+            updateSubCode: "I",
+          },
+          {
+            answer: "Stranded:",
+            display: "Pt is stranded: {input}",
+            continue: true,
+            input: true,
+            updateCode: "14D03",
+          },
+          {
+            answer: "Underwater/Submerged",
+            display: "Pt is underwater",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pt is",
+            continue: true,
+            updateCode: "14B03",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is a <b>defibrillator</b>{" "}
+            <span className="text-red-400">(AED)</span> available?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isBreathing } = _patient;
+          return isBreathing === false;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No AED available",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.answer;
+              if (firstAnswer === "PT is in water") {
+                return { code: "14E02" };
+              } else if (firstAnswer === "PT is out of water") {
+                return { code: "14E01" };
+              }
+            },
+          },
+          {
+            answer: "Yes",
+            display: "AED available",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.answer;
+              if (firstAnswer === "PT is in water") {
+                return { code: "14E02" };
+              } else if (firstAnswer === "PT is out of water") {
+                return { code: "14E01" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if AED available",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.answer;
+              if (firstAnswer === "PT is in water") {
+                return { code: "14E02" };
+              } else if (firstAnswer === "PT is out of water") {
+                return { code: "14E01" };
+              }
+            },
+          },
+        ],
+      },
+
+      // For underwater
+      {
+        text: <p>Is it easy to get to the patient?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Pt is underwater";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Easy to get to pt",
+            end: true,
+            updateCode: "14E02",
+          },
+          {
+            answer: "No",
+            display: "Specialized rescue needed",
+            end: true,
+            updateCode: "14D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if easy to get to pt",
+            end: true,
+            updateCode: "14E02",
+          },
+        ],
+      },
+
+      // For unknown location
+      {
+        text: (
+          <p>
+            Where was **pronoun** <b>last seen</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Unk where pt is";
+        },
+        answers: [
+          {
+            answer: "Location:",
+            display: "Last seen at: {input}",
+            end: true,
+            input: true,
+            updateCode: "14D00",
+            updateSubCode: "W",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pt was last seen",
+            end: true,
+            updateCode: "14D00",
+            updateSubCode: "W",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return (
+            firstAnswer === "Pt is out of water" ||
+            firstAnswer === "Pt is in water"
+          );
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "14D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+            updateCode: "14B03",
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return (
+            firstAnswer === "Pt is out of water" ||
+            firstAnswer === "Pt is in water"
+          );
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.answer;
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if (
+                firstAnswer === "Pt is out of water" &&
+                lastAnswer === "Responding nlly"
+              ) {
+                return { code: "14A01" };
+              } else if (
+                firstAnswer === "Pt is in water" &&
+                lastAnswer === "Responding nlly"
+              ) {
+                return { code: "14B01" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if (lastAnswer === "Responding nlly") {
+                return { code: "14C01" };
+              }
+            },
+          },
+          {
+            answer: "AGONAL BREATHING",
+            display: "Agonal breathing",
+            end: true,
+            updateCode: "14E01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "14B03",
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** injured at all?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return (
+            firstAnswer === "Pt is out of water" ||
+            firstAnswer === "Pt is in water"
+          );
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No injuries",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Injuries: {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const isBreathingNlly =
+                answers?.find((a) => a.answer === "Breathing nlly")?.answer ===
+                "Breathing nlly";
+              const isRespondingNlly =
+                answers?.find((a) => a.answer === "Responding nlly")?.answer ===
+                "Responding nlly";
+              if (isBreathingNlly && isRespondingNlly) {
+                return { code: "14B01" };
+              }
+            },
+          },
+          {
+            answer: "Obious or Suspected Neck/Spinal Injury",
+            display: "Obvious or suspected neck/spinal injury",
+            continue: true,
+            updateCode: "14D06",
+          },
+          {
+            answer: "Yes - Obvious Death",
+            display: "Obvious death",
+            end: true,
+            updateCode: "14B02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injured",
+            continue: true,
+            updateCode: "14B03",
+          },
+        ],
+      },
+
+      {
+        text: <p>What was **pronoun** doing prior to the incident?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Swimming",
+            display: "Swimming prior to incident",
+            continue: true,
+          },
+          {
+            answer: "Diving",
+            display: "Diving prior to incident",
+            continue: true,
+            updateSubCode: "D",
+          },
+          {
+            answer: "SCUBA Diving",
+            display: "SCUBA diving prior to incident",
+            continue: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk activity prior to incident",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "14A01",
+            text: "Alert & Breathing Normally (No Injs & Out of Water)",
+            recResponse: 65,
+            subCodes: [
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 65,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "14B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 65,
+            subCodes: [
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 65,
+              },
+            ],
+          },
+          {
+            code: "14B01",
+            text: "Alert & Breathing Normally (Injs or In Water)",
+            recResponse: 65,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 65,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 65,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14B02",
+            text: "Obvious Death (Submersion >= 6hrs)",
+            recResponse: 68,
+          },
+          {
+            code: "14B03",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 65,
+            defaultCode: true,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "14C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 68,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14C01",
+            text: "Alert w/ Abnormal Breathing",
+            recResponse: 68,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "14D00",
+            text: "ALS Override (Delta)",
+            recResponse: 68,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14D01",
+            text: "Unconscious",
+            recResponse: 69,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 69,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 69,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14D02",
+            text: "Underwater (Specialized Rescue)",
+            recResponse: 66,
+          },
+          {
+            code: "14D03",
+            text: "Standed (Specialized Rescue)",
+            recResponse: 66,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 66,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 66,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14D04",
+            text: "Just Resuscitated &/or Defibrillated (External)",
+            recResponse: 69,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 69,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 69,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14D05",
+            text: "Not Alert",
+            recResponse: 68,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14D06",
+            text: "Suspected Neck Inj",
+            recResponse: 68,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 67,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 68,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "14E00",
+            text: "ALS Override (Echo)",
+            recResponse: 70,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 70,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 70,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 70,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14E01",
+            text: "Arrest (Out of Water)",
+            recResponse: 70,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "D",
+                text: "Diving Inj (Not Underwater)",
+                recResponse: 70,
+              },
+              {
+                code: "F",
+                text: "Floodwater Rescue",
+                recResponse: 66,
+              },
+              {
+                code: "I",
+                text: "Ice Rescue",
+                recResponse: 70,
+              },
+              {
+                code: "S",
+                text: "SCUBA Accident (Not Underwater)",
+                recResponse: 70,
+              },
+              {
+                code: "W",
+                text: "Swift Water Rescue",
+                recResponse: 66,
+              },
+            ],
+          },
+          {
+            code: "14E02",
+            text: "Underwater (Non-Specialized Rescue)",
+            recResponse: 70,
           },
         ],
       },

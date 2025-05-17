@@ -331,20 +331,10 @@ export default function EmsProQA({
     }
     setPreviousAnswers(updatedAnswers);
 
-    const criticalResult = findHighestPriorityDeterminant(
-      complaint,
-      patientData
-    );
+    const criticalResult = findHighestPriorityDeterminant(complaint, patientData);
     if (criticalResult && criticalResult.override) {
       setCurrentCode(criticalResult.code);
       setIsCodeOverridden(true);
-
-      saveProQAState(updatedAnswers);
-
-      if (currentQuestion.questionType === "input" || selectedAnswer.continue) {
-        moveToNextQuestion();
-      }
-      return;
     }
 
     if (selectedAnswer.updateSubCode) {
@@ -384,13 +374,14 @@ export default function EmsProQA({
 
     setSelectedAnswerIndex(answerIndex);
 
+    // End questioning immediately if end: true
     if (selectedAnswer.end) {
       setShouldComplete(true);
       localStorage.removeItem("EMS_PROQA_DATA");
       return;
     }
 
-    // Remove the inputValue check since continue is sufficient
+    // Only move to next question if not ending and continue is true
     if (selectedAnswer.continue) {
       moveToNextQuestion();
     }

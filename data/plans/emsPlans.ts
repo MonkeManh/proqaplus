@@ -532,7 +532,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 2
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       },
       {
@@ -563,7 +563,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 2
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       },
       {
@@ -686,7 +686,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -736,7 +736,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1
       }
     ]
@@ -782,7 +782,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -809,7 +809,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -840,7 +840,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -871,7 +871,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -906,7 +906,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1
       },
       {
-        type: "Fire Supervisor",
+        type: "Chief",
         quantity: 1,
       }
     ]
@@ -1209,6 +1209,132 @@ export const emsPlans: IResponsePlan[] = [
     id: 64,
     name: "AL1D",
     incidentType: "DIABETIC|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 65,
+    name: "BLSU9",
+    incidentType: "DROWN|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 66,
+    name: "WTRALS1",
+    incidentType: "WATER|SWIFT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 3
+      },
+      {
+        type: "Air Rescue",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 67,
+    name: "WTRALS2",
+    incidentType: "WATER|INLAND",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 3
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 68,
+    name: "AL1D",
+    incidentType: "DROWN|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 69,
+    name: "PAALS2",
+    incidentType: "DROWN|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 70,
+    name: "AL2D",
+    incidentType: "DROWN|CPR",
     units: [
       {
         type: "Engine",
