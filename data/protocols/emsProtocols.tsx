@@ -5241,4 +5241,398 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 11,
+    name: "Choking",
+    description: (
+      <>
+        <p>
+          Key considerations for Choking include the presence of partial versus
+          complete airway obstruction, the patient’s level of alertness, and the
+          type of substance involved. Immediate recognition of ineffective or
+          absent breathing is critical and typically warrants an Echo-level
+          response.
+        </p>
+        <p className="mt-2">
+          Patients who are alert and breathing normally may no longer be choking
+          but still require evaluation. Partial obstruction may present with
+          abnormal breathing or inability to speak, while complete obstruction
+          results in silent, ineffective, or absent respirations.
+        </p>
+        <p className="mt-2">
+          The object or substance involved (e.g., food, candy, liquid, toy) may
+          influence clinical management. Ensure responders are prepared for
+          immediate airway intervention, including back blows, abdominal
+          thrusts, or advanced airway maneuvers depending on patient status.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: 0 },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 53,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "11D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing <b>normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "11D01",
+            override: true,
+          },
+          {
+            answer: "COMPLETE OBSTRUCTION",
+            display: "Complete obstruction of airway",
+            end: true,
+            updateCode: "11E01",
+            override: true,
+          },
+          {
+            answer: "NOT BREATHING",
+            display: "Not breathing at all",
+            end: true,
+            updateCode: "11E01",
+            override: true,
+          },
+          {
+            answer: "INEFFECTIVE BREATHING",
+            display: "Ineffective breathing",
+            end: true,
+            updateCode: "11E01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing",
+            end: true,
+            updateCode: "11E00",
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** able to <b>talk</b> (or <b>cry</b>)?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          const secondAnswer = answers?.[1]?.answer;
+          return firstAnswer === "Responding nlly" && secondAnswer === "Breathing nlly";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Can talk or cry",
+            continue: true,
+            updateCode: "11A01",
+          },
+          {
+            answer: "No",
+            display: "Cannot talk or cry",
+            continue: true,
+            updateCode: "11D01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if can talk or cry",
+            continue: true,
+            updateCode: "11D00",
+          }
+        ]
+      },
+
+      {
+        text: <p><b>What</b> did **pronoun** <b>choke</b> on?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Candy",
+            display: "Choked on candy",
+            continue: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Food",
+            display: "Choked on food",
+            continue: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "Milk/Liquid (Non-Toxic):",
+            display: "Choked on liquid: {input}",
+            continue: true,
+            updateSubCode: "M",
+            input: true,
+          },
+          {
+            answer: "Object/Toy:",
+            display: "Choked on object: {input}",
+            continue: true,
+            updateSubCode: "O",
+            input: true,
+          },
+          {
+            answer: "Other:",
+            display: "Choked on: {input}",
+            continue: true,
+            updateSubCode: "U",
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what choked on",
+            continue: true,
+            updateSubCode: "U",
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "11A01",
+            text: "Not Choking Now (Can talk or cry, is alert & breathing nlly)",
+            recResponse: 53,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 53,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 54,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 53,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 53,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 53,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "11D00",
+            text: "ALS Override (Delta)",
+            recResponse: 54,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 54,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 54,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 54,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 54,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 54,
+              },
+            ],
+          },
+          {
+            code: "11D01",
+            text: "Abnormal Breathing (Partial Obstruction)",
+            recResponse: 54,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 54,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 54,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 54,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 54,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 54,
+              },
+            ],
+          },
+          {
+            code: "11D02",
+            text: "Not Alert",
+            recResponse: 55,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 55,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 55,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 55,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 55,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 55,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "11E00",
+            text: "ALS Override (Echo)",
+            recResponse: 55,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 55,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 55,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 55,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 55,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 55,
+              },
+            ],
+          },
+          {
+            code: "11E01",
+            text: "Complete Obstruction/Not Breathing/Ineffective Breathing",
+            recResponse: 56,
+            subCodes: [
+              {
+                code: "C",
+                text: "Candy",
+                recResponse: 56,
+              },
+              {
+                code: "F",
+                text: "Food",
+                recResponse: 56,
+              },
+              {
+                code: "M",
+                text: "Milk/Liquid (Non-Toxic)",
+                recResponse: 56,
+              },
+              {
+                code: "O",
+                text: "Object/Toy",
+                recResponse: 56,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 56,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];

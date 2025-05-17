@@ -1027,5 +1027,73 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,  
       }
     ]
+  },
+  {
+    id: 53,
+    name: "BLSU9",
+    incidentType: "CHOKING|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 54,
+    name: "ALS1",
+    incidentType: "CHOKING|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 55,
+    name: "ALS2",
+    incidentType: "CHOKING|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 56,
+    name: "AL2D",
+    incidentType: "CHOKING|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
   }
 ];
