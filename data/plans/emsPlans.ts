@@ -1353,5 +1353,120 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 71,
+    name: "AL1D",
+    incidentType: "ELECTROCUTION|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 72,
+    name: "AL2D",
+    incidentType: "ELECTROCUTION|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Air Rescue",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 73,
+    name: "MLTP",
+    incidentType: "ELECTROCUTION|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 74,
+    name: "AL2D",
+    incidentType: "ELECTROCUTION|FALL|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Air Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 75,
+    name: "AL2D",
+    incidentType: "ELECTROCUTION|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
   }
 ];

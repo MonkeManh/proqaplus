@@ -7282,4 +7282,520 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 15,
+    name: "Electrocution/Lightning",
+    shortName: "Electrocution/Lightning",
+    description: (
+      <>
+        <p>
+          Electrocution and lightning incidents carry significant risk of cardiac arrest, respiratory failure, and hidden
+          traumatic injuries such as long falls or forceful ejection. Immediate assessment of scene safety is critical.
+          Callers should never approach victims unless power has been confirmed off by qualified personnel.
+        </p>
+        <p className="mt-2">
+          Patients not breathing, unresponsive, or still in contact with live power are prioritized for Echo or Delta
+          responses. Power status, presence of hazards, and fall distances must be established quickly to prevent
+          additional victims, including rescuers.
+        </p>
+        <p className="mt-2">
+          Lightning strike cases can mimic cardiac arrest and often present with neurological deficits. Ensure Fire is
+          dispatched for scene safety and Police if scene access is restricted or if industrial/electrical infrastructure
+          is involved.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: 0 },
+    ],
+    defaultPriority: 2,
+    defaultPlan: 71,
+    questions: [
+      {
+        text: <p><b>Where</b> is **pronoun** now?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Location:",
+            display: "Pt is located at {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pt is",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Electrocution",
+            display: "Pt was electrocuted",
+            continue: true,
+            updateSubCode: "E",
+          },
+          {
+            answer: "Lightning",
+            display: "Pt was struck by lightning",
+            continue: true,
+            updateSubCode: "L",
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>disconnected</b> from the <b>power</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const secondAnswer = answers?.[1]?.answer;
+          return secondAnswer === "Pt was electrocuted";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Pt is disconnected from power",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Pt is not disconnected from power",
+            continue: true,
+            updateCode: "15D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is disconnected from power",
+            continue: true,
+            updateCode: "15D09"
+          }
+        ]
+      },
+
+      {
+        text: <p>Has the <b>power</b> been <b>turned off</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const secondAnswer = answers?.[1]?.answer;
+          return secondAnswer === "Pt was electrocuted";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Power is not turned off",
+            continue: true,
+            updateCode: "15D04",
+          },
+          {
+            answer: "Yes",
+            display: "Power is turned off",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if power is turned off",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Did **pronoun** <b>fall</b> off something when this happened?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "PT did not fall",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "PT fell after incident",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt fell",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>How far did **pronoun** fall?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "PT fell after incident";
+        },
+        answers: [
+          {
+            answer: "Ground Level",
+            display: "Ground level fall",
+            continue: true,
+          },
+          {
+            answer: "< 6ft",
+            display: "Fall < 6ft",
+            continue: true,
+          },
+          {
+            answer: "Long Fall (>= 6ft)",
+            display: "PT fell >= 6ft",
+            continue: true,
+            updateCode: "15D05",
+          },
+          {
+            answer: "EXTREME FALL (>= 30ft/10m)",
+            display: "PT fell >= 30ft/10m",
+            continue: true,
+            updateCode: "15D06",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how far pt fell",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "15D07",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if (lastAnswer === "Responding nlly") {
+                return { code: "15C01" };
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "15D08",
+          },
+          {
+            answer: "AGONAL BREATHING",
+            display: "Agonal breathing",
+            end: true,
+            updateCode: "15E01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "15D09",
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any hazards present?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazards present",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Hazards present: {input}",
+            continue: true,
+            input: true,
+            updateCode: "15D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazards present",
+            continue: true,
+            updateCode: "15D09",
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "15C01",
+            text: "Alert & Breathing Normally",
+            recResponse: 71,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 71,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "15D00",
+            text: "ALS Override (Delta)",
+            recResponse: 72,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 72,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 72,
+              }
+            ]
+          },
+          {
+            code: "15D01",
+            text: "Mult Victims",
+            recResponse: 73,
+            multVictim: true,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 73,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 73,
+              }
+            ]
+          },
+          {
+            code: "15D02",
+            text: "Unconscious",
+            recResponse: 72,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 72,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 72,
+              }
+            ]
+          },
+          {
+            code: "15D03",
+            text: "Not Disconnected from Power",
+            recResponse: 71,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+            ]
+          },
+          {
+            code: "15D04",
+            text: "Powert Not Off or Hazard Present",
+            recResponse: 71,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 71,
+              }
+            ]
+          },
+          {
+            code: "15D05",
+            text: "Extreme Fall (>=30ft/10m)",
+            recResponse: 74,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 74,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 74,
+              }
+            ]
+          },
+          {
+            code: "15D06",
+            text: "EXTREME FALL",
+            recResponse: 74,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 74,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 74,
+              }
+            ]
+          },
+          {
+            code: "15D07",
+            text: "Not Alert",
+            recResponse: 71,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 71,
+              }
+            ]
+          },
+          {
+            code: "15D08",
+            text: "Abnormal Breathing",
+            recResponse: 71,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 71,
+              }
+            ]
+          },
+          {
+            code: "15D09",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 71,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 71,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 71,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "15E00",
+            text: "ALS Override (Echo)",
+            recResponse: 75,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 75,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 75,
+              }
+            ]
+          },
+          {
+            code: "15E01",
+            text: "Not Breathing/Ineffective Breathing",
+            notBreathing: true,
+            recResponse: 75,
+            subCodes: [
+              {
+                code: "E",
+                text: "Electrocution",
+                recResponse: 75,
+              },
+              {
+                code: "L",
+                text: "Lightning",
+                recResponse: 75,
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
