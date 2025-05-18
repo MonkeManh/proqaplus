@@ -10158,4 +10158,444 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 19,
+    name: "Heart Problems / A.I.C.D.",
+    shortName: "Heart Problem/AICD",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 94,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "19D01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "19C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** having difficulty <b>speaking</b> between{" "}
+            <b>breaths</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Not breathing nlly";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diff speaking btwn breaths",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff speaking btwn breaths",
+            continue: true,
+            updateCode: "19D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff speaking btwn breaths",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>changing color</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Changing color",
+            continue: true,
+            updateCode: "19D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if changing color",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>clammy</b> (cold sweats)?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not clammy",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Clammy or cold sweats",
+            continue: true,
+            updateCode: "19D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if clammy",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Does **pronoun** have <b>history</b> of <b>heart problems</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Heart Attack",
+            display: "Heart Attack hx",
+            continue: true,
+            updateCode: "19C04",
+          },
+          {
+            answer: "AICD",
+            display: "Pt has an AICD",
+            continue: true,
+            updateCode: "19C04",
+          },
+          {
+            answer: "Heart Failure",
+            display: "Heart Failure hx",
+            continue: true,
+            updateCode: "19C04",
+          },
+          {
+            answer: "Yes (Other/Mult):",
+            display: "Cardiac hx of {input}",
+            continue: true,
+            input: true,
+            updateCode: "19C04",
+          },
+          {
+            answer: "No",
+            display: "No cardiac hx",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if cardiac hx",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Did the AICD fire (go off) in the last <b>30 minutes</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return (
+            lastAnswer === "Pt has an AICD" ||
+            lastAnswer.includes("AICD") ||
+            lastAnswer.includes("aicd")
+          );
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "AICD did not fire",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "AICD fired < 30 min ago",
+            continue: true,
+            updateCode: "19C01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if AICD fired",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Does **pronoun** have any <b>chest pain</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No chest pain",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Pt has chest pain",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { age } = _patient;
+              if (age < 35) {
+                return { code: "19A02" };
+              } else if (age >= 35) {
+                return { code: "19C03" };
+              } else {
+                return { code: "19C07" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has chest pain",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Did **pronoun** take any <b>drugs</b> or <b>medications</b> in the{" "}
+            <b>past 12 hours</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No drugs/meds taken (< 12hrs)",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Drugs/meds taken (< 12hrs): {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Yes - COCAINE",
+            display: "Cocaine taken (< 12hrs)",
+            continue: true,
+            updateCode: "19C05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if drugs/meds taken (< 12hrs)",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are you able to <b>check</b> their <b>pulse</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "< 50 bpm",
+            display: "Pulse < 50 bpm",
+            continue: true,
+            updateCode: "19C06",
+          },
+          {
+            answer: "50 - 130 bpm",
+            display: "Pulse 50 - 130 bpm",
+            continue: true,
+            updateCode: "19A01",
+          },
+          {
+            answer: "> 130 bpm",
+            display: "Pulse > 130 bpm",
+            continue: true,
+            updateCode: "19C06",
+          },
+          {
+            answer: "Unable to complete",
+            display: "Unable to check pulse",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk pulse rate",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "19A01",
+            text: "Heart Reate >= 50bpm & < 130bpm (w/o Priority Symptoms)",
+            recResponse: 94,
+          },
+          {
+            code: "19A02",
+            text: "Chest Pain/Discomfort (< 35) (w/o Priority Symptoms)",
+            recResponse: 95,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "19C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 96,
+          },
+          {
+            code: "19C01",
+            text: "Firing of A.I.C.D.",
+            recResponse: 96,
+          },
+          {
+            code: "19C02",
+            text: "Abnormal Breathing",
+            recResponse: 96,
+          },
+          {
+            code: "19C03",
+            text: "Chest Pain/Discomfort (>= 35)",
+            recResponse: 97,
+          },
+          {
+            code: "19C04",
+            text: "Cardiac Hx",
+            recResponse: 96,
+          },
+          {
+            code: "19C05",
+            text: "Cocaine",
+            recResponse: 51,
+          },
+          {
+            code: "19C06",
+            text: "Heart Rate < 50bpm or >= 130bpm (w/o Priority Symptoms)",
+            recResponse: 96,
+          },
+          {
+            code: "19C07",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 96,
+            defaultCode: true,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "19D00",
+            text: "ALS Override (Delta)",
+            recResponse: 98,
+          },
+          {
+            code: "19D01",
+            text: "Not Alert",
+            recResponse: 96,
+          },
+          {
+            code: "19D02",
+            text: "Diff Speaking Between Breaths",
+            recResponse: 96,
+          },
+          {
+            code: "19D03",
+            text: "Changing Color",
+            recResponse: 96,
+          },
+          {
+            code: "19D04",
+            text: "Clammy or Cold Sweats",
+            recResponse: 96,
+          },
+          {
+            code: "19D05",
+            text: "Just Resuscitated &/or Defibrillated (External)",
+            recResponse: 98,
+          },
+        ],
+      },
+    ],
+  },
 ];
