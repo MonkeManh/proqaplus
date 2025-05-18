@@ -25,5 +25,5 @@ export type IPostal = {
   fireBox: string;
   fdRunOrder: string[];
   policeRunOrder: PoliceAgencies[];
-  streets?: CrossStreet;
+  streets: CrossStreet;
 };

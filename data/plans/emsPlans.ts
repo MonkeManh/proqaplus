@@ -2518,4 +2518,41 @@ export const emsPlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 139,
+    name: "BLSR",
+    incidentType: "MATERNITY|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 140,
+    name: "BLSU9",
+    incidentType: "MATERNITY|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 141,
+    name: "ALS1",
+    incidentType: "MATERNITY|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  }
 ];

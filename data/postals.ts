@@ -1,7 +1,7 @@
 import { IPostal } from "@/models/interfaces/IPostal";
 
 export function getPostalBox(postal: string): string | undefined {
-  const found = postalData.find((p) => ppostal === postal);
+  const found = postalData.find((p) => p.postal === postal);
   return found?.fireBox;
 }
 
@@ -12,6 +12,7 @@ export function getPostal(postal: string): IPostal | undefined {
 export const postalData: IPostal[] = [
   {
     postal: "001",
+    twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
@@ -26,9 +27,16 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Beach",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "002",
+    twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
@@ -43,9 +51,16 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Beach",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "003",
+    twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
@@ -60,9 +75,16 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Beach",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "004",
+    twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
@@ -77,6 +99,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Beach",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "005",
@@ -269,6 +297,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Great Ocean Hwy",
+      crossStreet2: "Bayview Bridge",
+    },
   },
   {
     postal: "013",
@@ -287,6 +321,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Great Ocean Hwy",
+      crossStreet2: "Bayview Bridge",
+    },
   },
   {
     postal: "014",
@@ -329,6 +369,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Great Ocean Hwy",
+          crossStreet2: "Bayview Bridge",
+        },
+        "Paleto Blvd": {
+          crossStreet1: "Great Ocean Hwy",
+          crossStreet2: "Duluoz Ave",
+        },
+        "Procopio View": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Paleto Blvd",
+        },
+      },
+    },
   },
   {
     postal: "016",
@@ -825,6 +881,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Bayview Bridge",
+      crossStreet2: "Great Ocean Hwy",
+    },
   },
   {
     postal: "033",
@@ -843,6 +905,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Bayview Bridge",
+      crossStreet2: "Great Ocean Hwy",
+    },
   },
   {
     postal: "034",
@@ -885,6 +953,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Bayview Bridge",
+      crossStreet2: "Great Ocean Hwy",
+    },
   },
   {
     postal: "036",
@@ -903,6 +977,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Great Ocean Hwy",
+      crossStreet1: "Procopio Promenade",
+      crossStreet2: "Route 1 MM03.00",
+    },
   },
   {
     postal: "037",
@@ -1313,6 +1393,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Great Ocean Hwy",
+          crossStreet2: "Procopio View",
+        },
+        "Paleto Loop Trail": {
+          crossStreet1: "Pine Tree Trail",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
+    }
   },
   {
     postal: "051",
@@ -1707,7 +1799,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
       crossStreet1: "Procopio Promenade",
-      crossStreet2: "Route 1 MM 0700",
+      crossStreet2: "Route 1 MM 07.00",
     },
   },
   {
@@ -1731,7 +1823,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
       crossStreet1: "Procopio Promenade",
-      crossStreet2: "Route 1 MM 0700",
+      crossStreet2: "Route 1 MM 07.00",
     },
   },
   {
@@ -1753,7 +1845,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Route 1 MM 0700",
+      crossStreet1: "Route 1 MM 07.00",
       crossStreet2: "Procopio Promenade",
     },
   },
@@ -1776,7 +1868,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Route 1 MM 0700",
+      crossStreet1: "Route 1 MM 07.00",
       crossStreet2: "Route 13 MM 01",
     },
   },
@@ -1799,8 +1891,8 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Route 1 MM 0700",
-      crossStreet2: "Route 13 MM 0100",
+      crossStreet1: "Route 1 MM 07.00",
+      crossStreet2: "Route 13 MM 01.00",
     },
   },
   {
@@ -1822,7 +1914,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Route 1 MM 0700",
+      crossStreet1: "Route 1 MM 07.00",
       crossStreet2: "Route 13 MM 01",
     },
   },
@@ -1845,7 +1937,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Route 1 MM 0700",
+      crossStreet1: "Route 1 MM 07.00",
       crossStreet2: "Route 13 MM 01",
     },
   },
@@ -1865,6 +1957,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "074",
@@ -1882,6 +1980,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "075",
@@ -1899,6 +2003,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "076",
@@ -1916,6 +2026,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "077",
@@ -1933,6 +2049,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "078",
@@ -1950,6 +2072,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "079",
@@ -1967,6 +2095,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Gordo Trail",
+      crossStreet1: "Union Rd",
+      crossStreet2: "Gordo Dr",
+    },
   },
   {
     postal: "080",
@@ -2610,6 +2744,10 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
+        "Route 13 NB": {
+          crossStreet1: "Union Rd",
+          crossStreet2: "E. Joshua Rd",
+        },
         "Chianski Passage": {
           crossStreet1: "Grapeseed Ave",
           crossStreet2: "Hayseed Way",
@@ -2625,10 +2763,6 @@ export const postalData: IPostal[] = [
         "Hayseed Way": {
           crossStreet1: "Chianski Passage",
           crossStreet2: "Union Rd",
-        },
-        "Route 13 NB": {
-          crossStreet1: "Union Rd",
-          crossStreet2: "E. Joshua Rd",
         },
       },
     },
@@ -3426,6 +3560,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Union Rd": {
+          crossStreet1: "Dots Ln",
+          crossStreet2: "O'Neil Way",
+        },
+        "Eagle Chilliad Trail": {
+          crossStreet1: "Chilliad Trail",
+          crossStreet2: "Union Rd",
+        }
+      }
+    }
   },
   {
     postal: "125",
@@ -3478,6 +3624,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 13": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Union Rd",
+        },
+        "Falcon Chilliad Trail": {
+          crossStreet1: "Chilliad Trail",
+          crossStreet2: "Falcon Trail Drop",
+        }
+      }
+    }
   },
   {
     postal: "127",
@@ -3519,6 +3677,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Union Rd": {
+          crossStreet1: "Joad Ln",
+          crossStreet2: "Phire Ln",
+        },
+        "Eagle Chilliad Trail": {
+          crossStreet1: "Chilliad Trail",
+          crossStreet2: "Union Rd",
+        }
+      }
+    }
   },
   {
     postal: "129",
@@ -3536,6 +3706,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Eagle Chilliad Trail",
+      crossStreet1: "Chilliad Trail",
+      crossStreet2: "Union Rd",
+    }
   },
   {
     postal: "130",
@@ -3553,6 +3729,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Falcon Chilliad Trail",
+      crossStreet1: "Chilliad Trail",
+      crossStreet2: "Falcon Trail Drop",
+    }
   },
   {
     postal: "131",
@@ -3572,7 +3754,7 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Route 1 EB",
+      mainStreet: "Route 1",
       crossStreet1: "Route 1 MM07.00",
       crossStreet2: "Route 13 MM01.00",
     },
@@ -3593,6 +3775,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Route 1",
+      crossStreet1: "Procopio Promenade",
+      crossStreet2: "Route 1",
+    }
   },
   {
     postal: "133",
@@ -3610,6 +3798,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Falcon Chilliad Trail",
+      crossStreet1: "Chilliad Trail",
+      crossStreet2: "Falcon Trail Drop",
+    }
   },
   {
     postal: "134",
@@ -3627,6 +3821,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Eagle Chilliad Trail",
+      crossStreet1: "Chilliad Trail",
+      crossStreet2: "Union Rd",
+    }
   },
   {
     postal: "135",
@@ -3644,6 +3844,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Chilliad Trail": {
+          crossStreet1: "Base Trail",
+          crossStreet2: "Falcon Chilliad Trail",
+        },
+        "Falcon Chilliad Trail": {
+          crossStreet1: "Chilliad Trail",
+          crossStreet2: "Falcon Trail Drop",
+        },
+        "Eagle Chilliad Trail": {
+          crossStreet1: "Chilliad Trail",
+          crossStreet2: "Union Rd",
+        }
+      }
+    }
   },
   {
     postal: "136",
@@ -3661,6 +3877,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "N. Calfia Way",
+      crossStreet1: "Carlo Ln",
+      crossStreet2: "Fishery Ln",
+    }
   },
   {
     postal: "137",
@@ -3703,7 +3925,6 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
-
     streets: {
       autoFill: true,
       mainStreet: "Fishery Ln",
@@ -3728,7 +3949,6 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
-
     streets: {
       autoFill: true,
       mainStreet: "N. Calfia Way",
@@ -3752,6 +3972,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Marina Dr": {
+          crossStreet1: "Meringue Ln",
+          crossStreet2: "Lesbos Ln",
+        },
+        "Fishery Ln": {
+          crossStreet1: "N. Calafia Way",
+          crossStreet2: "Dead End"
+        },
+        "Carlo Ln": {
+          crossStreet1: "N. Calafia Way",
+          crossStreet2: "Dead End"
+        }
+      }
+    }
   },
   {
     postal: "141",
@@ -3823,6 +4059,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Base Trail",
+      crossStreet2: "Falcon Chilliad Trail",
+    }
   },
   {
     postal: "144",
@@ -3840,6 +4082,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Base Trail",
+      crossStreet2: "Falcon Chilliad Trail",
+    }
   },
   {
     postal: "145",
@@ -3857,6 +4105,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Base Trail",
+      crossStreet2: "Falcon Chilliad Trail",
+    }
   },
   {
     postal: "146",
@@ -3877,7 +4131,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Chiliad Trail",
-      crossStreet1: "Ridgeline Loop Trail",
+      crossStreet1: "Base Trail",
       crossStreet2: "Faclon Chiliad Trail",
     },
   },
@@ -3897,6 +4151,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Base Trail",
+      crossStreet2: "Falcon Chilliad Trail",
+    }
   },
   {
     postal: "148",
@@ -3914,6 +4174,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Base Trail",
+      crossStreet2: "Falcon Chilliad Trail",
+    }
   },
   {
     postal: "149",
@@ -4023,6 +4289,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Route 1",
+      crossStreet1: "Route 1 MM05.00",
+      crossStreet2: "Pine Tree Rd",
+    }
   },
   {
     postal: "154",
@@ -4143,10 +4415,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Basin Dr",
-      crossStreet1: "Route 1 NB",
-      crossStreet2: "Karin Dr",
+      availableRoads: {
+        "Route 1": {
+          crossStreet1: "Raton Pass",
+          crossStreet2: "Submarine Ln",
+        },
+        "Basin Dr": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Karin Dr",
+        }
+      }
     },
   },
   {
@@ -4165,6 +4443,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 1": {
+          crossStreet1: "Raton Pass",
+          crossStreet2: "Submarine Ln"
+        },
+        "Karin Trail": {
+          crossStreet1: "Basin Dr",
+          crossStreet2: "Dead End",
+        }
+      }
+    }
   },
   {
     postal: "160",
@@ -4713,6 +5003,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Raton Pass": {
+          crossStreet1: "Cassidy Trail",
+          crossStreet2: "Calafia Rd",
+        },
+        "Rapid's Edge Rd": {
+          crossStreet1: "Zancudo Relief Rd",
+          crossStreet2: "Calafia Rd",
+        },
+        "Zancudo Relief Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Rapid's Edge Rd"
+        }
+      }
+    }
   },
   {
     postal: "183",
@@ -4753,6 +5059,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Cassidy Trail": {
+          crossStreet1: "Beaver Trail",
+          crossStreet2: "Calafia Rd",
+        },
+        "Raton East": {
+          crossStreet1: "Raton Main",
+          crossStreet2: "Dead End",
+        }
+      }
+    }
   },
   {
     postal: "185",
@@ -4793,6 +5111,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Raton North": {
+          crossStreet1: "Raton Main",
+          crossStreet2: "Dead End",
+        },
+        "Raton West": {
+          crossStreet1: "Raton Main",
+          crossStreet2: "Dead End",
+        },
+        "Raton Main": {
+          crossStreet1: "Raton Pass",
+          crossStreet2: "Raton East"
+        }
+      }
+    }
   },
   {
     postal: "187",
@@ -5068,6 +5402,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 1": {
+          crossStreet1: "Fort Zancudo Approach Rd",
+          crossStreet2: "Route 1 MM04.00",
+        },
+        "Raton Pass": {
+          crossStreet1: "Cassidy Trail",
+          crossStreet2: "Raton Main"
+        }
+      }
+    }
   },
   {
     postal: "198",
@@ -5140,6 +5486,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Zancudo Relief Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Rapids Edge Rd",
+        },
+        "Zancudo Approach Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Route 68",
+        }
+      }
+    }
   },
   {
     postal: "201",
@@ -5158,6 +5516,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 1": {
+          crossStreet1: "Route 1 MM03.00",
+          crossStreet2: "Fort Zancudo Approach Rd",
+        },
+        "Fort Zancudo Approach Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Route 68",
+        }
+      }
+    }
   },
   {
     postal: "202",
@@ -5176,6 +5546,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "203",
@@ -5194,6 +5570,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "204",
@@ -5212,6 +5594,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "205",
@@ -5230,6 +5618,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "206",
@@ -5248,6 +5642,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "207",
@@ -5266,6 +5666,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "208",
@@ -5284,6 +5690,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "209",
@@ -5302,6 +5714,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "210",
@@ -5320,6 +5738,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "211",
@@ -5338,6 +5762,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "212",
@@ -5356,6 +5786,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "213",
@@ -5374,6 +5810,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "214",
@@ -5392,6 +5834,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Zancudo Approach Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Route 68",
+    }
   },
   {
     postal: "215",
@@ -5464,6 +5912,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Zancudo Relief Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Rapids Edge Rd",
+        },
+        "Fort Zancudo Approach Rd": {
+          crossStreet1: "Fort Zancudo",
+          crossStreet2: "Route 68",
+        }
+      }
+    }
   },
   {
     postal: "218",
@@ -5483,12 +5943,10 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      availableRoads: {
-        "Zancudo Relief Rd": {
-          crossStreet1: "Route 1",
-          crossStreet2: "Rapids Edge Rd",
-        },
-      },
+      autoFill: true,
+      mainStreet: "Zancudo Relief Rd",
+      crossStreet1: "Route 1",
+      crossStreet2: "Rapids Edge Rd",
     },
   },
   {
@@ -5538,6 +5996,14 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Zancudo Relief Rd": {
+          crossStreet1: "Route 1",
+          crossStreet2: "Rapids Edge Rd",
+        }
+      }
+    }
   },
   {
     postal: "221",
@@ -6043,6 +6509,22 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Joshua Rd": {
+          crossStreet1: "Route 68",
+          crossStreet2: "Route 68 Approach",
+        },
+        "Route 68 Bypass": {
+          crossStreet1: "Joshua Rd",
+          crossStreet2: "Harmony Loop Rd",
+        },
+        "Harmony Loop Rd": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Route 68"
+        }
+      }
+    }
   },
   {
     postal: "240",
@@ -6061,6 +6543,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Joshua Rd": {
+          crossStreet1: "Route 68",
+          crossStreet2: "Route 68 Approach",
+        },
+        "Harmony Loop Rd": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Route 68"
+        }
+      }
+    }
   },
   {
     postal: "241",
@@ -6205,6 +6699,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 68": {
+          crossStreet1: "Orbit's Folly Ln",
+          crossStreet2: "Rebel Rd",
+        },
+        "Harmony Loop Rd": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Route 68",
+        },
+      },
+    },
   },
   {
     postal: "246",
@@ -6223,6 +6729,18 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Route 68": {
+          crossStreet1: "Orbit's Folly Ln",
+          crossStreet2: "Rebel Rd",
+        },
+        "Harmony Loop Rd": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Route 68",
+        },
+      },
+    },
   },
   {
     postal: "247",
@@ -6607,6 +7125,26 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "Harmony Loop Rd": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Route 68",
+        },
+        "Route 68 Bypass": {
+          crossStreet1: "Harmony Loop Rd",
+          crossStreet2: "Panorama Dr",
+        },
+        "Brook Trail": {
+          crossStreet1: "Route 68 Bypass",
+          crossStreet2: "Dead End",
+        },
+        "Route 68": {
+          crossStreet1: "Harmony Loop Rd",
+          crossStreet2: "Route 68 MM04.00"
+        }
+      }
+    }
   },
   {
     postal: "262",
@@ -7167,6 +7705,26 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      availableRoads: {
+        "E. Joshua Way": {
+          crossStreet1: "Panorama Dr",
+          crossStreet2: "Cat-Claw Ave",
+        },
+        "Nowhere Rd": {
+          crossStreet1: "Smoke-Tree Rd",
+          crossStreet2: "Dead End",
+        },
+        "Cholla Rd": {
+          crossStreet1: "Panorama Dr",
+          crossStreet2: "Smoke Tree Rd",
+        },
+        "Panorama Dr": {
+          crossStreet1: "Cholla Rd",
+          crossStreet2: "E. Joshua Way",
+        }
+      }
+    }
   },
   {
     postal: "282",
@@ -10176,6 +10734,26 @@ export const postalData: IPostal[] = [
     fireBox: "0453",
     fdRunOrder: ["4", "2", "1", "10", "9", "8", "7", "3", "6", "11", "5"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Tongva Dr": {
+          crossStreet1: "Marlowe Dr",
+          crossStreet2: "Zancudo Baranca",
+        },
+        "Zancudo Baranca": {
+          crossStreet1: "Tongva Dr",
+          crossStreet2: "Mt Vinewood Dr",
+        },
+        "Mt Vinewood Dr": {
+          crossStreet1: "Marlowe Dr",
+          crossStreet2: "Zancudo Baranca",
+        },
+        "Marlowe Dr": {
+          crossStreet1: "Tongva Dr",
+          crossStreet2: "Mt Vinewood Dr",
+        }
+      }
+    }
   },
   {
     postal: "396",
@@ -10509,6 +11087,22 @@ export const postalData: IPostal[] = [
     fireBox: "0454",
     fdRunOrder: ["4", "2", "8", "1", "10", "9", "3", "11", "7", "6", "5"],
     policeRunOrder: ["LCSO", "SAHP", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Banham Canyon Dr": {
+          crossStreet1: "Buen Vino Rd",
+          crossStreet2: "Tongva Dr",
+        },
+        "Buen Vino Rd": {
+          crossStreet1: "Banham Canyon Dr",
+          crossStreet2: "Route 68",
+        },
+        "Tongva Dr": {
+          crossStreet1: "Banham Canyon Dr",
+          crossStreet2: "Zancudo Baranca",
+        }
+      }
+    }
   },
   {
     postal: "414",
@@ -10808,6 +11402,18 @@ export const postalData: IPostal[] = [
     fireBox: "0850",
     fdRunOrder: ["8", "1", "4", "10", "6", "2", "7", "5", "9", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Kortz Dr": {
+          crossStreet1: "N. Rockford Dr",
+          crossStreet2: "Dead End",
+        },
+        "Great Ocean Hwy": {
+          crossStreet1: "Route 1 MM01.00",
+          crossStreet2: "Inesno Rd",
+        }
+      }
+    }
   },
   {
     postal: "433",
@@ -13347,6 +13953,18 @@ export const postalData: IPostal[] = [
     fireBox: "0750",
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Tataviam Dr": {
+          crossStreet1: "Reservoir Access Rd",
+          crossStreet2: "Route 15",
+        },
+        "Route 15": {
+          crossStreet1: "Interstate 4",
+          crossStreet2: "Sustancia Rd. Exit"
+        }
+      }
+    }
   },
   {
     postal: "564",
@@ -20786,6 +21404,26 @@ export const postalData: IPostal[] = [
     fireBox: "0609",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 4": {
+          crossStreet1: "I5 Interchange",
+          crossStreet2: "Strawberry Exit",
+        },
+        "Alta St": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "Adam's Apple Blvd",
+        },
+        "Power St": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "Adam's Apple Blvd",
+        },
+        "Innocence Blvd": {
+          crossStreet1: "Alta St",
+          crossStreet2: "Power St",
+        },
+      },
+    },
   },
   {
     postal: "852",
@@ -20795,6 +21433,22 @@ export const postalData: IPostal[] = [
     fireBox: "0601",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Carson Ave": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "Forum Dr",
+        },
+        "Innocence Blvd": {
+          crossStreet1: "Carson Ave",
+          crossStreet2: "Power St",
+        },
+        "Forum Dr": {
+          crossStreet1: "Carson Ave",
+          crossStreet2: "Strawberry Ave",
+        },
+      },
+    },
   },
   {
     postal: "853",
@@ -20804,6 +21458,22 @@ export const postalData: IPostal[] = [
     fireBox: "0601",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Forum Dr": {
+          crossStreet1: "Carson Ave",
+          crossStreet2: "Strawberry Ave",
+        },
+        "Strawberry Ave": {
+          crossStreet1: "Carson Ave",
+          crossStreet2: "Forum Dr",
+        },
+        "Carson Ave": {
+          crossStreet1: "Strawberry Ave",
+          crossStreet2: "Forum Dr",
+        },
+      },
+    },
   },
   {
     postal: "854",
@@ -20813,6 +21483,22 @@ export const postalData: IPostal[] = [
     fireBox: "0601",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Alta St": {
+          crossStreet1: "S. Arsenal St",
+          crossStreet2: "Innocence Blvd",
+        },
+        "Carson Ave": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "Forum Dr",
+        },
+        "Forum Dr": {
+          crossStreet1: "Strawberry Ave",
+          crossStreet2: "Carson Ave",
+        },
+      },
+    },
   },
   {
     postal: "855",
@@ -20822,6 +21508,22 @@ export const postalData: IPostal[] = [
     fireBox: "0601",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Forum Dr": {
+          crossStreet1: "Strawberry Ave",
+          crossStreet2: "Carson Ave",
+        },
+        "Carson Ave": {
+          crossStreet1: "Forum Dr",
+          crossStreet2: "Strawberry Ave",
+        },
+        "Strawberry Ave": {
+          crossStreet1: "Forum Dr",
+          crossStreet2: "Carson Ave",
+        },
+      },
+    },
   },
   {
     postal: "856",
@@ -20831,6 +21533,22 @@ export const postalData: IPostal[] = [
     fireBox: "0603",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Strawberry Ave": {
+          crossStreet1: "Forum Dr",
+          crossStreet2: "Carson Ave",
+        },
+        "Carson Ave": {
+          crossStreet1: "Davis Ave",
+          crossStreet2: "Strawberry Ave",
+        },
+        "Davis Ave": {
+          crossStreet1: "Grove St",
+          crossStreet2: "Carson Ave",
+        },
+      },
+    },
   },
   {
     postal: "857",
@@ -20840,6 +21558,18 @@ export const postalData: IPostal[] = [
     fireBox: "0603",
     fdRunOrder: ["6", "10", "7", "5", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Grove St": {
+          crossStreet1: "Brogue Ave",
+          crossStreet2: "Davis Ave",
+        },
+        "Davis Ave": {
+          crossStreet1: "Alta St",
+          crossStreet2: "Grove St",
+        },
+      },
+    },
   },
   {
     postal: "858",
@@ -20849,6 +21579,39 @@ export const postalData: IPostal[] = [
     fireBox: "0603",
     fdRunOrder: ["6", "5", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+        "Dutch London St": {
+          crossStreet1: "LSIA Exit",
+          crossStreet2: "Roy Lowenstein Blvd",
+        },
+      },
+    },
+  },
+  {
+    postal: "859",
+    twp: "Los Santos City",
+    fdDistrict: "06",
+    policeDistrict: "LSPD",
+    fireBox: "0603",
+    fdRunOrder: ["6", "5", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
+    policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+        "Dutch London St": {
+          crossStreet1: "LSIA Exit",
+          crossStreet2: "Roy Lowenstein Blvd",
+        },
+      },
+    },
   },
   {
     postal: "860",
@@ -20858,6 +21621,12 @@ export const postalData: IPostal[] = [
     fireBox: "0531",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Autopia Pkwy",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "861",
@@ -20867,6 +21636,12 @@ export const postalData: IPostal[] = [
     fireBox: "0531",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Autopia Pkwy",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "862",
@@ -20876,6 +21651,18 @@ export const postalData: IPostal[] = [
     fireBox: "0531",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Dutch London St": {
+          crossStreet1: "LSIA Exit",
+          crossStreet2: "Autopia Pkwy",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+      },
+    },
   },
   {
     postal: "863",
@@ -20885,6 +21672,22 @@ export const postalData: IPostal[] = [
     fireBox: "0531",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Davis Ave": {
+          crossStreet1: "Dutch London St",
+          crossStreet2: "Alta St",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+        "Dutch London St": {
+          crossStreet1: "LSIA Exit",
+          crossStreet2: "Autopia Pkwy",
+        },
+      },
+    },
   },
   {
     postal: "864",
@@ -20894,6 +21697,18 @@ export const postalData: IPostal[] = [
     fireBox: "0631",
     fdRunOrder: ["6", "5", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Alta St": {
+          crossStreet1: "Davis Ave",
+          crossStreet2: "Innocence Blvd",
+        },
+        "Davis Ave": {
+          crossStreet1: "Alta St",
+          crossStreet2: "Grove St",
+        },
+      },
+    },
   },
   {
     postal: "865",
@@ -20903,6 +21718,30 @@ export const postalData: IPostal[] = [
     fireBox: "0607",
     fdRunOrder: ["6", "10", "5", "8", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 4": {
+          crossStreet1: "I5 Interchange",
+          crossStreet2: "Strawberry Exit",
+        },
+        "Interstate 5 [U]": {
+          crossStreet1: "La Puerta Exit",
+          crossStreet2: "I5 MM01.00",
+        },
+        "Interstate 5 [L]": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "I2 Interchange",
+        },
+        "Alta St": {
+          crossStreet1: "Innocence Blvd",
+          crossStreet2: "Adam's Apple Blvd",
+        },
+        "Innocence Blvd": {
+          crossStreet1: "Calais Ave",
+          crossStreet2: "Alta St",
+        },
+      },
+    },
   },
   {
     postal: "866",
@@ -20912,6 +21751,22 @@ export const postalData: IPostal[] = [
     fireBox: "0605",
     fdRunOrder: ["6", "10", "5", "8", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "La Puerta Exit",
+          crossStreet2: "I5 MM01.00",
+        },
+        "Innocence Blvd": {
+          crossStreet1: "Calais Ave",
+          crossStreet2: "Alta St",
+        },
+        "Alta St": {
+          crossStreet1: "S. Arsenal St",
+          crossStreet2: "Innocence Blvd",
+        },
+      },
+    },
   },
   {
     postal: "867",
@@ -20921,6 +21776,22 @@ export const postalData: IPostal[] = [
     fireBox: "0615",
     fdRunOrder: ["6", "5", "10", "8", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "La Puerta Exit",
+          crossStreet2: "I5 MM01.00",
+        },
+        "Alta St": {
+          crossStreet1: "S. Arsenal St",
+          crossStreet2: "Innocence Blvd",
+        },
+        "S. Arsenal St": {
+          crossStreet1: "Mutiny Rd",
+          crossStreet2: "Alta St",
+        },
+      },
+    },
   },
   {
     postal: "868",
@@ -20930,6 +21801,22 @@ export const postalData: IPostal[] = [
     fireBox: "0615",
     fdRunOrder: ["6", "5", "10", "8", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "La Puerta Exit",
+          crossStreet2: "I5 MM01.00",
+        },
+        "S. Arsenal St": {
+          crossStreet1: "Dutch London St",
+          crossStreet2: "Mutiny Rd",
+        },
+        "Mutiny Rd": {
+          crossStreet1: "S. Arsenal St",
+          crossStreet2: "S. Arsenal St",
+        },
+      },
+    },
   },
   {
     postal: "869",
@@ -20939,6 +21826,22 @@ export const postalData: IPostal[] = [
     fireBox: "0611",
     fdRunOrder: ["6", "5", "10", "8", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Davis Ave": {
+          crossStreet1: "Dutch London St",
+          crossStreet2: "Alta St",
+        },
+        "Mutiny Rd": {
+          crossStreet1: "S. Arsenal St",
+          crossStreet2: "S. Arsenal St",
+        },
+        "S. Arsenal St": {
+          crossStreet1: "Mutiny Rd",
+          crossStreet2: "Alta St",
+        },
+      },
+    },
   },
   {
     postal: "870",
@@ -20948,6 +21851,18 @@ export const postalData: IPostal[] = [
     fireBox: "0510",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+      },
+    },
   },
   {
     postal: "871",
@@ -20957,6 +21872,22 @@ export const postalData: IPostal[] = [
     fireBox: "0510",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Exceptionalists Way": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Autopia Pkwy",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Exceptionalists Way",
+          crossStreet2: "Davis Ave",
+        },
+      },
+    },
   },
   {
     postal: "872",
@@ -20966,6 +21897,26 @@ export const postalData: IPostal[] = [
     fireBox: "0514",
     fdRunOrder: ["5", "6", "10", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Davis Ave": {
+          crossStreet1: "New Empire Way",
+          crossStreet2: "Alta St",
+        },
+        "Dutch London St": {
+          crossStreet1: "Interstate 5",
+          crossStreet2: "Autopia Pkwy",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+      },
+    },
   },
   {
     postal: "873",
@@ -20975,6 +21926,18 @@ export const postalData: IPostal[] = [
     fireBox: "0526",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Autopia Pkwy": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+      },
+    },
   },
   {
     postal: "874",
@@ -20984,6 +21947,18 @@ export const postalData: IPostal[] = [
     fireBox: "0526",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Dutch London St": {
+          crossStreet1: "Interstate 5",
+          crossStreet2: "Autopia Pkwy",
+        },
+      },
+    },
   },
   {
     postal: "875",
@@ -20993,6 +21968,18 @@ export const postalData: IPostal[] = [
     fireBox: "5402",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Greenwich Pkwy": {
+          crossStreet1: "Autopia Pkwy",
+          crossStreet2: "Dutch London St",
+        },
+      },
+    },
   },
   {
     postal: "876",
@@ -21002,6 +21989,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Greenwich Pkwy",
+      crossStreet1: "Autopia Pkwy",
+      crossStreet2: "Dutch London St",
+    },
   },
   {
     postal: "877",
@@ -21011,6 +22004,12 @@ export const postalData: IPostal[] = [
     fireBox: "5401",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "878",
@@ -21020,6 +22019,12 @@ export const postalData: IPostal[] = [
     fireBox: "5401",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "879",
@@ -21029,6 +22034,12 @@ export const postalData: IPostal[] = [
     fireBox: "5401",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "880",
@@ -21038,6 +22049,12 @@ export const postalData: IPostal[] = [
     fireBox: "5401",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "881",
@@ -21047,6 +22064,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "882",
@@ -21056,6 +22079,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "883",
@@ -21065,6 +22094,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "884",
@@ -21074,6 +22109,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "885",
@@ -21083,6 +22124,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "886",
@@ -21092,6 +22139,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "887",
@@ -21101,6 +22154,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "888",
@@ -21110,6 +22169,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "889",
@@ -21119,6 +22184,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "890",
@@ -21128,6 +22199,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "891",
@@ -21137,6 +22214,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "892",
@@ -21146,6 +22229,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "893",
@@ -21155,6 +22244,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "894",
@@ -21164,6 +22259,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "895",
@@ -21173,6 +22274,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "896",
@@ -21182,6 +22289,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "897",
@@ -21191,6 +22304,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "898",
@@ -21200,6 +22319,12 @@ export const postalData: IPostal[] = [
     fireBox: "5403",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "899",
@@ -21209,6 +22334,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "900",
@@ -21218,6 +22349,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "901",
@@ -21227,6 +22364,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "902",
@@ -21236,6 +22379,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "903",
@@ -21245,6 +22394,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "904",
@@ -21254,6 +22409,12 @@ export const postalData: IPostal[] = [
     fireBox: "5404",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "905",
@@ -21263,6 +22424,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "New Empire Way",
+      crossStreet1: "Exceptionalists Way",
+      crossStreet2: "Davis Ave",
+    },
   },
   {
     postal: "906",
@@ -21272,6 +22439,22 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Greenwich Pkwy": {
+          crossStreet1: "Autopia Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+        "Exceptionalists Way": {
+          crossStreet1: "New Empire Way",
+          crossStreet2: "Greenwich Pkwy",
+        },
+        "New Empire Way": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Davis Ave",
+        },
+      },
+    },
   },
   {
     postal: "907",
@@ -21281,6 +22464,12 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Exceptionalists Way",
+      crossStreet1: "New Empire Way",
+      crossStreet2: "Autopia Pkwy",
+    },
   },
   {
     postal: "908",
@@ -21290,6 +22479,26 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Davis Ave": {
+          crossStreet1: "New Empire Way",
+          crossStreet2: "Dutch London St",
+        },
+        "Greenwich Pkwy": {
+          crossStreet1: "Autopia Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+        "Exceptionalists Way": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Autopia Pkwy",
+        },
+      },
+    },
   },
   {
     postal: "909",
@@ -21299,6 +22508,18 @@ export const postalData: IPostal[] = [
     fireBox: "5400",
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Exceptionalists Way": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Autopia Pkwy",
+        },
+      },
+    },
   },
   {
     postal: "910",
@@ -21308,6 +22529,18 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "I5 MM03.00",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "911",
@@ -21317,6 +22550,12 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Pliace Pl",
+      crossStreet1: "Chupacabra St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "912",
@@ -21326,6 +22565,12 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Pliace Pl",
+      crossStreet1: "Chupacabra St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "913",
@@ -21335,6 +22580,12 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Pliace Pl",
+      crossStreet1: "Chupacabra St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "914",
@@ -21344,6 +22595,18 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM02.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "915",
@@ -21353,6 +22616,22 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "916",
@@ -21362,6 +22641,18 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "917",
@@ -21371,6 +22662,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "918",
@@ -21380,6 +22683,22 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "919",
@@ -21389,6 +22708,18 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "920",
@@ -21398,6 +22729,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chupacabra St": {
+          crossStreet1: "Pliace Pl",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "921",
@@ -21407,6 +22750,18 @@ export const postalData: IPostal[] = [
     fireBox: "6901",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Plaice Pl": {
+          crossStreet1: "Chupacabra St",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "922",
@@ -21416,6 +22771,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Plaice Pl": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Chum St",
+        },
+        "Chum St": {
+          crossStreet1: "Plaice Pl",
+          crossStreet2: "Signal St",
+        },
+      },
+    },
   },
   {
     postal: "923",
@@ -21425,6 +22792,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Chum St": {
+          crossStreet1: "Plaice Pl",
+          crossStreet2: "Signal St",
+        },
+        "Signal St": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dutch London St",
+        },
+      },
+    },
   },
   {
     postal: "924",
@@ -21434,6 +22813,22 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Chum St": {
+          crossStreet1: "Plaice Pl",
+          crossStreet2: "Signal St",
+        },
+        "Signal St": {
+          crossStreet1: "Voodoo Pl",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "925",
@@ -21443,6 +22838,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "LS Ports Exit",
+          crossStreet2: "Route 20 MM01.00",
+        },
+        "Signal St": {
+          crossStreet1: "Voodoo Pl",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "926",
@@ -21452,6 +22859,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Interstate 5": {
+          crossStreet1: "I5 MM03.00",
+          crossStreet2: "LS Ports Exit",
+        },
+        "Signal St": {
+          crossStreet1: "Voodoo Pl",
+          crossStreet2: "Chum St",
+        },
+      },
+    },
   },
   {
     postal: "927",
@@ -21461,6 +22880,18 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Signal St": {
+          crossStreet1: "Voodoo Pl",
+          crossStreet2: "Chum St",
+        },
+        "Voodoo Pl": {
+          crossStreet1: "Signal St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "928",
@@ -21470,6 +22901,12 @@ export const postalData: IPostal[] = [
     fireBox: "6900",
     fdRunOrder: ["6", "10", "5", "7", "8", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Voodoo Pl",
+      crossStreet1: "Signal St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "929",
@@ -21479,6 +22916,12 @@ export const postalData: IPostal[] = [
     fireBox: "7904",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Abattoir Ave",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "930",
@@ -21488,6 +22931,12 @@ export const postalData: IPostal[] = [
     fireBox: "7903",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Abattoir Ave",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "931",
@@ -21497,6 +22946,18 @@ export const postalData: IPostal[] = [
     fireBox: "7903",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+        "Buccaneer Way": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "932",
@@ -21506,6 +22967,22 @@ export const postalData: IPostal[] = [
     fireBox: "7903",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "LS Ports Exit",
+          crossStreet2: "Route 20 MM01.00",
+        },
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+        "Buccaneer Way": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "933",
@@ -21515,6 +22992,22 @@ export const postalData: IPostal[] = [
     fireBox: "7902",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "LS Ports Exit",
+          crossStreet2: "Route 20 MM01.00",
+        },
+        "Chum St": {
+          crossStreet1: "Signal St",
+          crossStreet2: "Abattoir Ave",
+        },
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "934",
@@ -21524,6 +23017,18 @@ export const postalData: IPostal[] = [
     fireBox: "7902",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Chum St": {
+          crossStreet1: "Signal St",
+          crossStreet2: "Poplar St",
+        },
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "935",
@@ -21533,6 +23038,22 @@ export const postalData: IPostal[] = [
     fireBox: "7902",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Route 20": {
+          crossStreet1: "LS Ports Exit",
+          crossStreet2: "Route 20 MM01.00",
+        },
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+        "Buccaneer Way": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "936",
@@ -21542,6 +23063,18 @@ export const postalData: IPostal[] = [
     fireBox: "7904",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      availableRoads: {
+        "Buccaneer Way": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+        "Abattoir Ave": {
+          crossStreet1: "Chum St",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "937",
@@ -21551,6 +23084,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "938",
@@ -21560,6 +23099,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "939",
@@ -21569,6 +23114,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "940",
@@ -21578,6 +23129,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "941",
@@ -21587,6 +23144,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "942",
@@ -21596,6 +23159,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "943",
@@ -21605,6 +23174,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "944",
@@ -21614,6 +23189,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "945",
@@ -21623,6 +23204,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "946",
@@ -21632,6 +23219,12 @@ export const postalData: IPostal[] = [
     fireBox: "7905",
     fdRunOrder: ["7", "6", "10", "5", "1", "8", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Buccaneer Way",
+      crossStreet1: "Chum St",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "947",
@@ -21641,6 +23234,22 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Bayview Bridge": {
+          crossStreet1: "Great Voyage Rd",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Bayview Dr": {
+          crossStreet1: "Squidrillo Fwy",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Pearl Rd": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "948",
@@ -21650,6 +23259,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Great Voyage Rd": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Dead End",
+        },
+        "Bayview Dr": {
+          crossStreet1: "Squidrillo Fwy",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "949",
@@ -21659,6 +23280,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Bayview Dr": {
+          crossStreet1: "Squidrillo Fwy",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Squidrillo Fwy": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "950",
@@ -21668,6 +23301,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Shell Bead Rd",
+      crossStreet1: "Conny Ln",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "951",
@@ -21677,6 +23316,30 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Sunrise Ln": {
+          crossStreet1: "Conny Ln",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Conny Ln": {
+          crossStreet1: "Pearl Rd",
+          crossStreet2: "Shell Bead Rd",
+        },
+        "Shell Bead Rd": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+        "Pearl Rd": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+        "Riverfront Ave": {
+          crossStreet1: "Pearl Rd",
+          crossStreet2: "Ortega Dr",
+        },
+      },
+    },
   },
   {
     postal: "952",
@@ -21686,6 +23349,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Pearl Rd",
+      crossStreet2: "Shell Bead Rd",
+    },
   },
   {
     postal: "953",
@@ -21695,6 +23364,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Ortega Dr",
+      crossStreet2: "Clam Way",
+    },
   },
   {
     postal: "954",
@@ -21704,6 +23379,22 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Ortega Dr": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Clam Way",
+        },
+        "Riverfront Ave": {
+          crossStreet1: "Ortega Dr",
+          crossStreet2: "Clam Way",
+        },
+        "Clam Way": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "955",
@@ -21713,6 +23404,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Ortega Dr": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Clam Way",
+        },
+        "Clam Way": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "956",
@@ -21722,6 +23425,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Clam Way",
+      crossStreet1: "Riverfront Ave",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "957",
@@ -21731,6 +23440,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Clam Way": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+        "Riverfront Ave": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+      },
+    },
   },
   {
     postal: "958",
@@ -21740,6 +23461,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "959",
@@ -21749,6 +23476,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "960",
@@ -21758,6 +23491,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "961",
@@ -21767,6 +23506,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Riverfront Ave": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Clam Way": {
+          crossStreet1: "Riverfront Ave",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "962",
@@ -21776,6 +23527,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "963",
@@ -21785,6 +23542,12 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Riverfront Ave",
+      crossStreet1: "Not Found",
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "964",
@@ -21794,6 +23557,18 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Riverfront Ave": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Squidrillo Fwy": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "965",
@@ -21803,6 +23578,18 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Riverfront Ave": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Squidrillo Fwy": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "966",
@@ -21812,6 +23599,18 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Riverfront Ave": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Bayview Dr": {
+          crossStreet1: "Squidrillo Fwy",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "967",
@@ -21821,6 +23620,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Bayview Dr",
+      crossStreet1: "Squidrillo Fwy",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "968",
@@ -21830,6 +23635,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Bayview Dr",
+      crossStreet1: "Squidrillo Fwy",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "969",
@@ -21839,6 +23650,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Bayview Dr",
+      crossStreet1: "Squidrillo Fwy",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "970",
@@ -21848,6 +23665,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Bayview Dr",
+      crossStreet1: "Squidrillo Fwy",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "971",
@@ -21857,6 +23680,18 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Bayview Dr": {
+          crossStreet1: "Squidrillo Fwy",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Squidrillo Fwy": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Riverfront Ave",
+        },
+      },
+    },
   },
   {
     postal: "972",
@@ -21866,6 +23701,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Squidrillo Fwy",
+      crossStreet1: "Bayview Dr",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "973",
@@ -21875,6 +23716,18 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Squidrillo Fwy": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Clam Way": {
+          crossStreet1: "Ortega Dr",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "974",
@@ -21884,6 +23737,18 @@ export const postalData: IPostal[] = [
     fireBox: "1102",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      availableRoads: {
+        "Bayview Dr": {
+          crossStreet1: "Great Voyage Rd",
+          crossStreet2: "Squidrillo Fwy",
+        },
+        "Power Station Access Rd": {
+          crossStreet1: "Bayview Dr",
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "975",
@@ -21893,6 +23758,12 @@ export const postalData: IPostal[] = [
     fireBox: "1155",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Bayview Dr",
+      crossStreet1: "Squidrillo Fwy",
+      crossStreet2: "Riverfront Ave",
+    },
   },
   {
     postal: "977",
@@ -21902,5 +23773,11 @@ export const postalData: IPostal[] = [
     fireBox: "1101",
     fdRunOrder: ["11", "3", "4", "9", "2", "1", "8", "10", "7", "6", "5"],
     policeRunOrder: ["MBPD", "SAHP", "BCSO", "PBPD", "SSPD", "LCSO", "LSPD"],
+    streets: {
+      autoFill: true,
+      mainStreet: "Power Station Access Rd",
+      crossStreet1: "Bayview Dr",
+      crossStreet2: "Dead End",
+    },
   },
 ];

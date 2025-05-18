@@ -215,7 +215,7 @@ export default function ProtocolDetails({
                 <TableHead>Priority</TableHead>
                 <TableHead>Code</TableHead>
                 <TableHead>Description</TableHead>
-                <TableHead>Response Level</TableHead>
+                <TableHead>Response Plan</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -232,7 +232,18 @@ export default function ProtocolDetails({
                     <TableCell>{determinant.code}</TableCell>
                     <TableCell>{determinant.text}</TableCell>
                     <TableCell>
-                      {getResponseLevelText(determinant.code, type)}
+                      {type === "EMS" ? (
+                        <Badge variant="outline">
+                          {getEmsResponsePlan(determinant?.recResponse)
+                            ?.incidentType || (
+                            <span className="text-muted-foreground">
+                              No Response Plan
+                            </span>
+                          )}
+                        </Badge>
+                      ) : (
+                        <></>
+                      )}
                     </TableCell>
                   </TableRow>
                 ))
