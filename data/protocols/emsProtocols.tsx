@@ -14861,7 +14861,395 @@ export const emsComplaints: IEMSComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 142,
-    questions: [],
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true
+          },
+          {
+            answer: "Altered LOC",
+            display: "Altered LOC",
+            continue: true,
+            updateCode: "25C02"
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "25D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** talking or thinking about self-harm?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not thinking about self-injury",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              if(!_patient) return;
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const { patientProximity } = _patient
+              if(firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O01" }
+              } else if(firstAnswer === "Yes") {
+                return { code: "25A01" }
+              }
+            }
+          },
+          {
+            answer: "Yes",
+            display: "Thinking about self-injury",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              if(!_patient) return;
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const { patientProximity } = _patient
+              if(firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O02" }
+              } else if(firstAnswer === "Yes") {
+                return { code: "25A02" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if thinking about self-injury",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** suicidal?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not thinking about killing self",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Thinking about killing self",
+            continue: true,
+            updateCode: "25A02",
+          },
+          {
+            answer: "Yes - Intending",
+            display: "Intending to kill self",
+            continue: true,
+            updateCode: "25B03",
+          },
+          {
+            answer: "Yes - Threatening to Jump",
+            display: "Threatening suicide",
+            continue: true,
+            updateCode: "25B04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if thinking about killing self",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Where is **pronoun**</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Location:",
+            display: "Pt is {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Inside same structure",
+            display: "Pt inside same structure",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown where pt is",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** violent?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not violent",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Violent",
+            continue: true,
+            updateSubCode: "V"
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if violent",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have or have access to weapons?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No wpns",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Pt has or has access to wpns: {input}",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Yes:") {
+                return { subCode: "B" }
+              } else {
+                return { subCode: "W" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has wpns",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have any mental health conditions?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Dementia",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C01" }
+              }
+            }
+          },
+          {
+            answer: "Depression",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C01" }
+              }
+            }
+          },
+          {
+            answer: "Bi-Polar",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C01" }
+              }
+            }
+          },
+          {
+            answer: "Schizophrenia",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C01" }
+              }
+            }
+          },
+          {
+            answer: "Other:",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C01" }
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "No mental health conditions",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C02" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if mental health conditions",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Altered LOC") {
+                return { code: "25C02" }
+              }
+            }
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have any injures?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Hemorrhage/Laceration",
+            display: "Pt has a hemorrhage/laceration",
+            continue: true
+          },
+          {
+            answer: "Near Hanging",
+            display: "Pt was near hanging",
+            continue: true
+          },
+          {
+            answer: "Near Strangulation",
+            display: "Pt was near strangulation",
+            continue: true
+          },
+          {
+            answer: "Near Suffocation",
+            display: "Pt was near suffocation",
+            continue: true
+          },
+          {
+            answer: "JUMPED NOW",
+            display: "Pt jumped now",
+            continue: true,
+            updateCode: "25D06"
+          },
+          {
+            answer: "Other:",
+            display: "Pt has injs: {input}",
+            continue: true
+          },
+          {
+            answer: "No Injuries",
+            display: "No inj to self",
+            continue: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs to self",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there <b className="text-red-400">SERIOUS</b> bleeding?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Hemorrhage/Laceration";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+            updateCode: "25B02"
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: '25B01'
+          },
+          {
+            answer: "DANGEROUS HEMORRHAGE",
+            display: "DANGEROUS bleeding",
+            end: true,
+            updateCode: "25D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent of bleeding?",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Near Hanging" || lastAnswer === "Near Strangulation" || lastAnswer === "Near Suffocation";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes") {
+                return { code: "25B05" }
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes") {
+                return { code: "25D05" }
+              }
+            }
+          }
+        ]
+      }
+      
+    ],
     availableDeterminants: [
       {
         priority: "O",
@@ -15244,6 +15632,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "25B06",
             text: "Unkn Status / Other Codes Not Applicable",
             recResponse: 142,
+            defaultCode: true,
             subCodes: [
               {
                 code: "B",
