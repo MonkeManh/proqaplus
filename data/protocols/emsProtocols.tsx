@@ -1949,46 +1949,62 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Back pain—especially when non-traumatic—may seem low acuity, but can conceal
-          <span className="text-red-500 font-semibold"> life-threatening vascular conditions</span> in older adults.
-          Always distinguish between <span className="font-medium">traumatic vs. non-traumatic</span> causes and assess
-          for associated symptoms such as chest pain, fainting, or changes in skin color.
+          Back pain—especially when non-traumatic—may seem low acuity, but can
+          conceal
+          <span className="text-red-500 font-semibold">
+            {" "}
+            life-threatening vascular conditions
+          </span>{" "}
+          in older adults. Always distinguish between{" "}
+          <span className="font-medium">traumatic vs. non-traumatic</span>{" "}
+          causes and assess for associated symptoms such as chest pain,
+          fainting, or changes in skin color.
         </p>
 
         <p className="mt-2">
           <span className="text-yellow-400 font-semibold">Key concern:</span>{" "}
           Sudden, severe pain described as{" "}
-          <span className="text-red-500 font-semibold">"ripping" or "tearing"</span>{" "}
-          in patients over 50 may indicate an <i>aortic aneurysm</i> and warrants immediate ALS response.
+          <span className="text-red-500 font-semibold">
+            "ripping" or "tearing"
+          </span>{" "}
+          in patients over 50 may indicate an <i>aortic aneurysm</i> and
+          warrants immediate ALS response.
         </p>
 
-        <p className="mt-2">
-          Use the following to guide triage:
-        </p>
+        <p className="mt-2">Use the following to guide triage:</p>
 
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="font-semibold">Non-traumatic onset</span> → often Alpha, unless other risk factors present
+            <span className="font-semibold">Non-traumatic onset</span> → often
+            Alpha, unless other risk factors present
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Fainting, grey skin tone, or altered mental status</span> → escalate to Charlie or Delta
+            <span className="text-red-500 font-semibold">
+              Fainting, grey skin tone, or altered mental status
+            </span>{" "}
+            → escalate to Charlie or Delta
           </li>
           <li>
-            <span className="font-semibold">Chest pain + back pain</span> → suspect vascular or cardiac cause
+            <span className="font-semibold">Chest pain + back pain</span> →
+            suspect vascular or cardiac cause
           </li>
           <li>
-            <span className="font-semibold">Known or suspected aneurysm</span> → treat as high-priority
+            <span className="font-semibold">Known or suspected aneurysm</span> →
+            treat as high-priority
           </li>
         </ul>
 
         <p className="mt-2">
-          For <span className="font-medium">traumatic back pain</span> (e.g., from a recent fall), escalate based on the time of injury and signs
-          of spinal involvement. Old injuries without new symptoms may qualify as Alpha-level.
+          For <span className="font-medium">traumatic back pain</span> (e.g.,
+          from a recent fall), escalate based on the time of injury and signs of
+          spinal involvement. Old injuries without new symptoms may qualify as
+          Alpha-level.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> In patients over 50, always ask about chest involvement and
-          check for signs of vascular collapse, even if the chief complaint is "just back pain."
+          <span className="font-medium">REMEMBER:</span> In patients over 50,
+          always ask about chest involvement and check for signs of vascular
+          collapse, even if the chief complaint is "just back pain."
         </p>
       </>
     ),
@@ -2319,51 +2335,68 @@ export const emsComplaints: IEMSComplaint[] = [
       <>
         <p>
           Breathing issues should always be approached with urgency—airway
-          compromise can evolve <span className="text-red-500 font-semibold">rapidly</span>. Start by evaluating
+          compromise can evolve{" "}
+          <span className="text-red-500 font-semibold">rapidly</span>. Start by
+          evaluating
           <span className="font-medium"> alertness</span> and the ability to
-          <span className="text-red-500 font-semibold"> speak between breaths</span>.
-          If the patient can't talk, is changing color, or has cold sweats, assume
-          deteriorating respiratory status and escalate immediately.
+          <span className="text-red-500 font-semibold">
+            {" "}
+            speak between breaths
+          </span>
+          . If the patient can't talk, is changing color, or has cold sweats,
+          assume deteriorating respiratory status and escalate immediately.
         </p>
 
         <p className="mt-2">
           If the patient has a history of
           <span className="text-yellow-400 font-semibold"> asthma</span>,
-          <span className="text-yellow-400 font-semibold"> COPD</span>, or uses a
-          <span className="text-yellow-400 font-semibold"> tracheostomy</span>,
+          <span className="text-yellow-400 font-semibold"> COPD</span>, or uses
+          a<span className="text-yellow-400 font-semibold"> tracheostomy</span>,
           assess for distress and confirm whether a prescribed
-          <span className="font-medium"> inhaler or nebulizer</span> is available and in use.
-          These factors inform both determinant level and field management instructions.
+          <span className="font-medium"> inhaler or nebulizer</span> is
+          available and in use. These factors inform both determinant level and
+          field management instructions.
         </p>
 
         <p className="mt-2">
-          Watch for the following <span className="text-red-500 font-semibold">red flags</span> that indicate ALS or Echo priority:
+          Watch for the following{" "}
+          <span className="text-red-500 font-semibold">red flags</span> that
+          indicate ALS or Echo priority:
         </p>
 
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="font-semibold">Cannot speak or cry</span> → assess for choking or ineffective breathing
+            <span className="font-semibold">Cannot speak or cry</span> → assess
+            for choking or ineffective breathing
           </li>
           <li>
-            <span className="font-semibold">Not alert</span> → possible hypoxia or declining mental status
+            <span className="font-semibold">Not alert</span> → possible hypoxia
+            or declining mental status
           </li>
           <li>
             <span className="font-semibold">Changing skin color</span> or
-            <span className="font-semibold"> clammy/cold sweats</span> → signs of decompensation
+            <span className="font-semibold"> clammy/cold sweats</span> → signs
+            of decompensation
           </li>
           <li>
-            <span className="font-semibold">Known lung disease</span> without meds/inhaler access → increased risk
+            <span className="font-semibold">Known lung disease</span> without
+            meds/inhaler access → increased risk
           </li>
           <li>
-            <span className="font-semibold">Ineffective breathing</span> → treat as an
-            <span className="text-red-500 font-semibold"> Echo-level emergency</span>
+            <span className="font-semibold">Ineffective breathing</span> → treat
+            as an
+            <span className="text-red-500 font-semibold">
+              {" "}
+              Echo-level emergency
+            </span>
           </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> A patient with asthma or COPD may appear stable,
-          but still rapidly deteriorate without proper intervention. If symptoms
-          persist after inhaler/nebulizer use, response level should not be downgraded.
+          <span className="font-medium">REMEMBER:</span> A patient with asthma
+          or COPD may appear stable, but still rapidly deteriorate without
+          proper intervention. If symptoms persist after inhaler/nebulizer use,
+          response level should not be downgraded.
         </p>
       </>
     ),
@@ -2952,55 +2985,92 @@ export const emsComplaints: IEMSComplaint[] = [
       <>
         <p>
           Burn and explosion injuries require immediate triage to assess for:
-          <span className="text-red-500 font-semibold"> airway involvement</span>,
-          <span className="text-red-500 font-semibold"> extent of burn area</span>,
-          and
-          <span className="text-yellow-400 font-semibold"> active hazards</span> (e.g., structure fire or smoldering debris).
-          Always determine whether this is part of a
-          <span className="text-red-400 font-semibold"> structure fire</span> and if
+          <span className="text-red-500 font-semibold">
+            {" "}
+            airway involvement
+          </span>
+          ,
+          <span className="text-red-500 font-semibold">
+            {" "}
+            extent of burn area
+          </span>
+          , and
+          <span className="text-yellow-400 font-semibold">
+            {" "}
+            active hazards
+          </span>{" "}
+          (e.g., structure fire or smoldering debris). Always determine whether
+          this is part of a
+          <span className="text-red-400 font-semibold">
+            {" "}
+            structure fire
+          </span>{" "}
+          and if
           <span className="font-medium"> victims are still inside</span>.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">Critical Indicators</span> of severe burn injury include:
+          <span className="font-medium">Critical Indicators</span> of severe
+          burn injury include:
         </p>
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="text-red-500 font-semibold">Burns ≥ 18%</span> of total body surface area
+            <span className="text-red-500 font-semibold">Burns ≥ 18%</span> of
+            total body surface area
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Significant facial burns</span> or burns involving
+            <span className="text-red-500 font-semibold">
+              Significant facial burns
+            </span>{" "}
+            or burns involving
             <span className="font-medium"> the airway</span>
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Difficulty breathing or speaking</span> after inhalation injury
+            <span className="text-red-500 font-semibold">
+              Difficulty breathing or speaking
+            </span>{" "}
+            after inhalation injury
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Victim on fire</span> or presence of smoldering clothing
+            <span className="text-red-500 font-semibold">Victim on fire</span>{" "}
+            or presence of smoldering clothing
           </li>
           <li>
-            <span className="text-yellow-400 font-semibold">Explosive mechanisms</span> → consider
-            <span className="font-medium"> blast injuries, barotrauma, or penetrating debris</span>
+            <span className="text-yellow-400 font-semibold">
+              Explosive mechanisms
+            </span>{" "}
+            → consider
+            <span className="font-medium">
+              {" "}
+              blast injuries, barotrauma, or penetrating debris
+            </span>
           </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium text-yellow-400">Scene safety</span> is a priority.
-          Explosions and fireworks often involve
+          <span className="font-medium text-yellow-400">Scene safety</span> is a
+          priority. Explosions and fireworks often involve
           <span className="font-semibold"> multiple victims</span> and
-          <span className="font-semibold"> toxic smoke inhalation</span>. When active fire or smoldering materials are present,
-          coordinate with fire services for scene control and potential rescue operations.
+          <span className="font-semibold"> toxic smoke inhalation</span>. When
+          active fire or smoldering materials are present, coordinate with fire
+          services for scene control and potential rescue operations.
         </p>
 
         <p className="mt-2">
-          For <span className="font-medium">sunburns</span> or minor burns <span className="text-muted-foreground">(under 9%)</span>,
-          a lower response level may be appropriate—unless complicated by age, location (e.g., face), or other comorbidities.
+          For <span className="font-medium">sunburns</span> or minor burns{" "}
+          <span className="text-muted-foreground">(under 9%)</span>, a lower
+          response level may be appropriate—unless complicated by age, location
+          (e.g., face), or other comorbidities.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span>{" "}
-          Any indication of altered consciousness, respiratory distress, or blast-related polytrauma should
-          escalate immediately to a <span className="text-red-500 font-semibold">Delta or Echo-level</span> response.
+          <span className="font-medium">REMEMBER:</span> Any indication of
+          altered consciousness, respiratory distress, or blast-related
+          polytrauma should escalate immediately to a{" "}
+          <span className="text-red-500 font-semibold">
+            Delta or Echo-level
+          </span>{" "}
+          response.
         </p>
       </>
     ),
@@ -3832,41 +3902,85 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses emergencies involving inhaled toxins, including
-          <span className="text-green-400 font-semibold"> hazardous materials</span>,
-          <span className="text-green-400 font-semibold"> carbon monoxide</span>, and
-          <span className="text-green-400 font-semibold"> CBRN agents</span> (chemical, biological, radiological, nuclear).
-          Always assess the <span className="font-medium">scene safety</span> and whether exposure is ongoing or contained.
+          This protocol addresses emergencies involving inhaled toxins,
+          including
+          <span className="text-green-400 font-semibold">
+            {" "}
+            hazardous materials
+          </span>
+          ,
+          <span className="text-green-400 font-semibold"> carbon monoxide</span>
+          , and
+          <span className="text-green-400 font-semibold">
+            {" "}
+            CBRN agents
+          </span>{" "}
+          (chemical, biological, radiological, nuclear). Always assess the{" "}
+          <span className="font-medium">scene safety</span> and whether exposure
+          is ongoing or contained.
         </p>
 
-        <p className="mt-2">
-          Key clinical concerns include:
-        </p>
+        <p className="mt-2">Key clinical concerns include:</p>
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
-          <li><span className="font-medium">Alertness</span> and ability to respond appropriately</li>
-          <li><span className="font-medium">Breathing effectiveness</span> and respiratory effort</li>
-          <li><span className="text-red-400 font-semibold">Difficulty speaking between breaths</span> → possible airway irritation or hypoxia</li>
-          <li><span className="text-red-400 font-semibold">Multiple patients</span> → suspect scene-wide contamination</li>
-          <li><span className="text-green-400 font-semibold">Type of material involved</span> → drives response escalation and containment needs</li>
+          <li>
+            <span className="font-medium">Alertness</span> and ability to
+            respond appropriately
+          </li>
+          <li>
+            <span className="font-medium">Breathing effectiveness</span> and
+            respiratory effort
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Difficulty speaking between breaths
+            </span>{" "}
+            → possible airway irritation or hypoxia
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Multiple patients
+            </span>{" "}
+            → suspect scene-wide contamination
+          </li>
+          <li>
+            <span className="text-green-400 font-semibold">
+              Type of material involved
+            </span>{" "}
+            → drives response escalation and containment needs
+          </li>
         </ul>
 
         <p className="mt-2">
-          Exposure to substances such as chlorine gas, carbon monoxide, or unknown fumes may cause
-          <span className="text-red-400 font-semibold"> delayed onset symptoms</span> such as dizziness, confusion, or fainting.
-          For CO detector calls, symptoms like headache or nausea can appear subtle but signal dangerous buildup.
+          Exposure to substances such as chlorine gas, carbon monoxide, or
+          unknown fumes may cause
+          <span className="text-red-400 font-semibold">
+            {" "}
+            delayed onset symptoms
+          </span>{" "}
+          such as dizziness, confusion, or fainting. For CO detector calls,
+          symptoms like headache or nausea can appear subtle but signal
+          dangerous buildup.
         </p>
 
         <p className="mt-2">
-          For <span className="text-green-400 font-semibold">chemical or radiological releases</span>,
-          dispatch Fire and HazMat units. Victims may require
-          <span className="font-medium"> decontamination</span> and transport to specialized toxicology-capable facilities.
+          For{" "}
+          <span className="text-green-400 font-semibold">
+            chemical or radiological releases
+          </span>
+          , dispatch Fire and HazMat units. Victims may require
+          <span className="font-medium"> decontamination</span> and transport to
+          specialized toxicology-capable facilities.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> If the substance is still present,
-          unknown, or actively spreading—assume a
-          <span className="text-green-400 font-semibold"> hazardous materials</span> situation until proven otherwise.
-          Always protect responders and prioritize scene isolation.
+          <span className="font-medium">REMEMBER:</span> If the substance is
+          still present, unknown, or actively spreading—assume a
+          <span className="text-green-400 font-semibold">
+            {" "}
+            hazardous materials
+          </span>{" "}
+          situation until proven otherwise. Always protect responders and
+          prioritize scene isolation.
         </p>
       </>
     ),
@@ -4773,35 +4887,68 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Cardiac Arrest cases require <span className="font-medium">immediate identification</span> of whether the arrest is
-          <span className="text-red-400 font-semibold"> workable</span> or if there are
-          <span className="text-muted-foreground"> obvious/expected signs of death</span>.
-          Early determination drives both dispatch priority and whether CPR or defibrillator instructions should begin.
+          Cardiac Arrest cases require{" "}
+          <span className="font-medium">immediate identification</span> of
+          whether the arrest is
+          <span className="text-red-400 font-semibold"> workable</span> or if
+          there are
+          <span className="text-muted-foreground">
+            {" "}
+            obvious/expected signs of death
+          </span>
+          . Early determination drives both dispatch priority and whether CPR or
+          defibrillator instructions should begin.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">ALS resources</span> are always required unless death is clearly irreversible.
-          If the patient has a known <span className="text-muted-foreground">DNR</span> or terminal condition, adjust appropriately.
-          If not, prioritize resuscitation attempts and get an
-          <span className="text-red-400 font-semibold"> AED</span> to the patient if available.
+          <span className="font-medium">ALS resources</span> are always required
+          unless death is clearly irreversible. If the patient has a known{" "}
+          <span className="text-muted-foreground">DNR</span> or terminal
+          condition, adjust appropriately. If not, prioritize resuscitation
+          attempts and get an
+          <span className="text-red-400 font-semibold"> AED</span> to the
+          patient if available.
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground space-y-1">
-          <li><span className="font-medium">Witnessed vs. Unwitnessed</span> arrest affects survivability and CPR timing.</li>
-          <li><span className="text-red-400 font-semibold">Not Breathing or Agonal</span> → Initiate CPR if appropriate.</li>
-          <li><span className="font-medium">Expected Death</span> (DNR/terminal) may still require unit response for verification.</li>
-          <li><span className="font-medium">Obvious Death</span> signs include decomposition, incineration, or decapitation.</li>
+          <li>
+            <span className="font-medium">Witnessed vs. Unwitnessed</span>{" "}
+            arrest affects survivability and CPR timing.
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Not Breathing or Agonal
+            </span>{" "}
+            → Initiate CPR if appropriate.
+          </li>
+          <li>
+            <span className="font-medium">Expected Death</span> (DNR/terminal)
+            may still require unit response for verification.
+          </li>
+          <li>
+            <span className="font-medium">Obvious Death</span> signs include
+            decomposition, incineration, or decapitation.
+          </li>
         </ul>
 
         <p className="mt-2">
-          <b className="text-red-500">!!!CAUTION!!!</b> Always consider scene safety.
-          For cases involving <span className="text-red-400 font-semibold">hanging, suffocation, strangulation,</span> or suspicious death,
-          <span className="font-bold text-red-500"> law enforcement MUST be dispatched</span> for scene control and investigation.
+          <b className="text-red-500">!!!CAUTION!!!</b> Always consider scene
+          safety. For cases involving{" "}
+          <span className="text-red-400 font-semibold">
+            hanging, suffocation, strangulation,
+          </span>{" "}
+          or suspicious death,
+          <span className="font-bold text-red-500">
+            {" "}
+            law enforcement MUST be dispatched
+          </span>{" "}
+          for scene control and investigation.
         </p>
 
         <p className="mt-2">
-          Dispatcher action may include CPR coaching, AED setup guidance, and emotional support for bystanders.
-          Gather clear information on last seen alive time, current condition, and any advance directives.
+          Dispatcher action may include CPR coaching, AED setup guidance, and
+          emotional support for bystanders. Gather clear information on last
+          seen alive time, current condition, and any advance directives.
         </p>
       </>
     ),
@@ -5187,34 +5334,63 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Chest pain should always be treated as <span className="font-bold text-red-400">potentially cardiac</span> until ruled out.
-          Key factors include <span className="font-medium">alertness, breathing status</span>, age, and history of
-          <a className="text-primary ml-1" href="/glossary#mi">MI</a> or
-          <a className="text-primary ml-1" href="/glossary#angina">angina</a>.
-          Additional red flags include:
+          Chest pain should always be treated as{" "}
+          <span className="font-bold text-red-400">potentially cardiac</span>{" "}
+          until ruled out. Key factors include{" "}
+          <span className="font-medium">alertness, breathing status</span>, age,
+          and history of
+          <a className="text-primary ml-1" href="/glossary#mi">
+            MI
+          </a>{" "}
+          or
+          <a className="text-primary ml-1" href="/glossary#angina">
+            angina
+          </a>
+          . Additional red flags include:
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
-          <li><span className="text-red-400 font-semibold">Cold sweats</span> or <span className="text-red-400 font-semibold">color changes</span></li>
-          <li><span className="text-red-400 font-semibold">Difficulty speaking</span> between breaths</li>
-          <li><span className="font-medium">Known cardiac history</span> or recent drug use</li>
-          <li><span className="font-medium">Abnormal breathing</span> or altered mental status</li>
+          <li>
+            <span className="text-red-400 font-semibold">Cold sweats</span> or{" "}
+            <span className="text-red-400 font-semibold">color changes</span>
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Difficulty speaking
+            </span>{" "}
+            between breaths
+          </li>
+          <li>
+            <span className="font-medium">Known cardiac history</span> or recent
+            drug use
+          </li>
+          <li>
+            <span className="font-medium">Abnormal breathing</span> or altered
+            mental status
+          </li>
         </ul>
 
         <p className="mt-2">
-          Patients <b>35 and older</b> are treated with higher suspicion even if breathing is normal. 
-          <span className="text-red-400 font-semibold">ALS response is indicated</span> for any abnormal signs,
-          especially if <span className="text-red-400">cocaine</span> or similar stimulants are reported, due to risk of arrhythmia or MI.
+          Patients <b>35 and older</b> are treated with higher suspicion even if
+          breathing is normal.
+          <span className="text-red-400 font-semibold">
+            ALS response is indicated
+          </span>{" "}
+          for any abnormal signs, especially if{" "}
+          <span className="text-red-400">cocaine</span> or similar stimulants
+          are reported, due to risk of arrhythmia or MI.
         </p>
 
         <p className="mt-2">
-          Collect info about medications taken (e.g., <i>aspirin</i>) and prior events. ALS crews may need to initiate 
-          <span className="font-medium">advanced airway support, cardiac monitoring,</span> or pharmacological treatment.
+          Collect info about medications taken (e.g., <i>aspirin</i>) and prior
+          events. ALS crews may need to initiate
+          <span className="font-medium">
+            advanced airway support, cardiac monitoring,
+          </span>{" "}
+          or pharmacological treatment.
         </p>
 
-        <p className="mt-2 text-muted-foreground">
-          When in doubt, escalate.
-        </p>
+        <p className="mt-2 text-muted-foreground">When in doubt, escalate.</p>
       </>
     ),
     services: [
@@ -5522,29 +5698,49 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Choking incidents require <span className="text-red-400 font-semibold">immediate assessment</span> of airway patency. The priority is to distinguish between:
+          Choking incidents require{" "}
+          <span className="text-red-400 font-semibold">
+            immediate assessment
+          </span>{" "}
+          of airway patency. The priority is to distinguish between:
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
-          <li><b>Complete obstruction</b> – No breathing, no speech, silent attempts</li>
-          <li><b>Partial obstruction</b> – Noisy breathing, struggling, limited speech</li>
-          <li><b>Resolved episodes</b> – Breathing normally, may still need evaluation</li>
+          <li>
+            <b>Complete obstruction</b> – No breathing, no speech, silent
+            attempts
+          </li>
+          <li>
+            <b>Partial obstruction</b> – Noisy breathing, struggling, limited
+            speech
+          </li>
+          <li>
+            <b>Resolved episodes</b> – Breathing normally, may still need
+            evaluation
+          </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium">High-acuity codes</span> are triggered by signs of
-          <span className="text-red-400 font-semibold"> ineffective or absent breathing</span>,
-          <b> not being alert</b>, or <b>unknown breathing status</b>. These require Echo-level response.
+          <span className="font-medium">High-acuity codes</span> are triggered
+          by signs of
+          <span className="text-red-400 font-semibold">
+            {" "}
+            ineffective or absent breathing
+          </span>
+          ,<b> not being alert</b>, or <b>unknown breathing status</b>. These
+          require Echo-level response.
         </p>
 
         <p className="mt-2">
-          The <b>object involved</b> (e.g., <i>food, candy, liquid, toy</i>) helps anticipate complications
-          like aspiration or persistent airway compromise. Infants and older adults are at particular risk.
+          The <b>object involved</b> (e.g., <i>food, candy, liquid, toy</i>)
+          helps anticipate complications like aspiration or persistent airway
+          compromise. Infants and older adults are at particular risk.
         </p>
 
         <p className="mt-2 text-muted-foreground">
-          Dispatchers should be ready to give <b>Heimlich/back blow instructions</b> or proceed to
-          CPR if patient becomes unresponsive.
+          Dispatchers should be ready to give{" "}
+          <b>Heimlich/back blow instructions</b> or proceed to CPR if patient
+          becomes unresponsive.
         </p>
       </>
     ),
@@ -6482,18 +6678,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Diabetic Problems include the patient's level of consciousness, respiratory status,
-          and behavior. Hypoglycemia and hyperglycemia can both present with altered mental status, abnormal behavior,
-          or unresponsiveness, requiring prompt assessment and intervention.
+          Key considerations for Diabetic Problems include the patient's level
+          of consciousness, respiratory status, and behavior. Hypoglycemia and
+          hyperglycemia can both present with altered mental status, abnormal
+          behavior, or unresponsiveness, requiring prompt assessment and
+          intervention.
         </p>
         <p className="mt-2">
-          Patients who are alert, breathing normally, and behaving appropriately are typically low acuity. However,
-          abnormal breathing, confusion, or unresponsiveness may indicate a serious glucose imbalance or underlying
-          complication requiring ALS care.
+          Patients who are alert, breathing normally, and behaving appropriately
+          are typically low acuity. However, abnormal breathing, confusion, or
+          unresponsiveness may indicate a serious glucose imbalance or
+          underlying complication requiring ALS care.
         </p>
         <p className="mt-2">
-          Combative or aggressive behavior, especially in patients with known diabetes, may be the result of severe
-          hypoglycemia. Ensure appropriate safety precautions are taken during response, and prepare for possible
+          Combative or aggressive behavior, especially in patients with known
+          diabetes, may be the result of severe hypoglycemia. Ensure appropriate
+          safety precautions are taken during response, and prepare for possible
           de-escalation or sedation protocols if needed.
         </p>
       </>
@@ -9237,18 +9437,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Headache calls can range from benign to life-threatening. Protocol 18 captures critical signs of stroke,
-          hemorrhage, or neurologic compromise by assessing alertness, breathing, speech, pain onset, and motor function.
+          Headache calls can range from benign to life-threatening. Protocol 18
+          captures critical signs of stroke, hemorrhage, or neurologic
+          compromise by assessing alertness, breathing, speech, pain onset, and
+          motor function.
         </p>
         <p className="mt-2">
-          A structured stroke evaluation—based on smile symmetry, arm strength, and speech—generates a FAST score and time-based
-          subcode. These differentiate between possible TIA, evolving stroke, or severe neurovascular events, and help
-          prioritize ALS vs. BLS response.
+          A structured stroke evaluation—based on smile symmetry, arm strength,
+          and speech—generates a FAST score and time-based subcode. These
+          differentiate between possible TIA, evolving stroke, or severe
+          neurovascular events, and help prioritize ALS vs. BLS response.
         </p>
         <p className="mt-2">
-          Fire or EMS may be dispatched ALS when stroke is suspected, airway is compromised, or there's behavioral change,
-          paralysis, or abnormal vitals. Proximity-based assessments allow guided testing even via bystanders, improving pre-arrival
-          stroke recognition.
+          Fire or EMS may be dispatched ALS when stroke is suspected, airway is
+          compromised, or there's behavioral change, paralysis, or abnormal
+          vitals. Proximity-based assessments allow guided testing even via
+          bystanders, improving pre-arrival stroke recognition.
         </p>
       </>
     ),
@@ -10458,16 +10662,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses a broad range of cardiac-related complaints, from chest discomfort to AICD (Automated Implantable
-          Cardioverter Defibrillator) activity. It screens for unstable vitals, ischemic symptoms, and high-risk cardiac history.
+          This protocol addresses a broad range of cardiac-related complaints,
+          from chest discomfort to AICD (Automated Implantable Cardioverter
+          Defibrillator) activity. It screens for unstable vitals, ischemic
+          symptoms, and high-risk cardiac history.
         </p>
         <p className="mt-2">
-          Determinants prioritize abnormal breathing, altered mental status, recent AICD firing, or stimulant use (e.g., cocaine)
-          for ALS response. Chest pain is age-differentiated, recognizing younger vs. older cardiac risk profiles.
+          Determinants prioritize abnormal breathing, altered mental status,
+          recent AICD firing, or stimulant use (e.g., cocaine) for ALS response.
+          Chest pain is age-differentiated, recognizing younger vs. older
+          cardiac risk profiles.
         </p>
         <p className="mt-2">
-          ALS is typically dispatched for patients with AICDs, hemodynamic instability, or priority symptoms like color change,
-          clammy skin, or dyspnea. BLS may suffice if symptoms are mild and vitals stable without concerning history.
+          ALS is typically dispatched for patients with AICDs, hemodynamic
+          instability, or priority symptoms like color change, clammy skin, or
+          dyspnea. BLS may suffice if symptoms are mild and vitals stable
+          without concerning history.
         </p>
       </>
     ),
@@ -10913,16 +11123,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses environmental emergencies related to both heat and cold exposure, including heat exhaustion,
-          heat stroke, hypothermia, and frostbite. It evaluates alertness, skin temperature, and cardiac history to assess the risk.
+          This protocol addresses environmental emergencies related to both heat
+          and cold exposure, including heat exhaustion, heat stroke,
+          hypothermia, and frostbite. It evaluates alertness, skin temperature,
+          and cardiac history to assess the risk.
         </p>
         <p className="mt-2">
-          Patients who are not alert, have abnormal skin color, or a cardiac history are considered for ALS responses. Differentiation
-          by skin temperature helps determine whether the condition is heat- or cold-related.
+          Patients who are not alert, have abnormal skin color, or a cardiac
+          history are considered for ALS responses. Differentiation by skin
+          temperature helps determine whether the condition is heat- or
+          cold-related.
         </p>
         <p className="mt-2">
-          Bravo-level responses are typically dispatched when symptoms are unclear or moderate. Multiple victims or severe symptoms
-          escalate the response to Delta or specialized resources.
+          Bravo-level responses are typically dispatched when symptoms are
+          unclear or moderate. Multiple victims or severe symptoms escalate the
+          response to Delta or specialized resources.
         </p>
       </>
     ),
@@ -11271,15 +11486,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol evaluates both traumatic and non-traumatic bleeding incidents, ranging from minor cuts to life-threatening hemorrhages.
-          It also accounts for bleeding from medical devices or body openings, such as dialysis fistulas or internal bleeding.
+          This protocol evaluates both traumatic and non-traumatic bleeding
+          incidents, ranging from minor cuts to life-threatening hemorrhages. It
+          also accounts for bleeding from medical devices or body openings, such
+          as dialysis fistulas or internal bleeding.
         </p>
         <p className="mt-2">
-          Key factors include bleeding severity, patient consciousness, and complicating factors like anticoagulant use or pregnancy.
-          Subtypes distinguish between traumatic (T) and medical (M) causes, influencing response type and resource allocation.
+          Key factors include bleeding severity, patient consciousness, and
+          complicating factors like anticoagulant use or pregnancy. Subtypes
+          distinguish between traumatic (T) and medical (M) causes, influencing
+          response type and resource allocation.
         </p>
         <p className="mt-2">
-          ALS responses are prioritized for patients with significant hemorrhage, altered mental status, or compromised breathing. Determinant codes escalate accordingly.
+          ALS responses are prioritized for patients with significant
+          hemorrhage, altered mental status, or compromised breathing.
+          Determinant codes escalate accordingly.
         </p>
       </>
     ),
@@ -11889,15 +12110,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses incidents involving patients who are currently or were recently trapped in hazardous environments, such as machinery, collapsed structures, trenches, or confined spaces.
-          It prioritizes scene safety, entrapment type, and rescue accessibility.
+          This protocol addresses incidents involving patients who are currently
+          or were recently trapped in hazardous environments, such as machinery,
+          collapsed structures, trenches, or confined spaces. It prioritizes
+          scene safety, entrapment type, and rescue accessibility.
         </p>
         <p className="mt-2">
-          Factors including entrapment severity (e.g., whole-body vs. peripheral), presence of injuries, and difficulty in reaching the patient guide determinant selection.
-          SubCodes account for above/below-ground location and multiple victim scenarios.
+          Factors including entrapment severity (e.g., whole-body vs.
+          peripheral), presence of injuries, and difficulty in reaching the
+          patient guide determinant selection. SubCodes account for
+          above/below-ground location and multiple victim scenarios.
         </p>
         <p className="mt-2">
-          Higher-level Delta determinants are triggered for active extrications, structural failures, or complex rescue environments requiring specialized teams.
+          Higher-level Delta determinants are triggered for active extrications,
+          structural failures, or complex rescue environments requiring
+          specialized teams.
         </p>
       </>
     ),
@@ -12616,15 +12843,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol handles cases involving actual or suspected overdoses and poisonings, including both accidental and intentional exposures.
-          It supports rapid identification of priority symptoms such as altered consciousness, abnormal breathing, and cardiac arrest.
+          This protocol handles cases involving actual or suspected overdoses
+          and poisonings, including both accidental and intentional exposures.
+          It supports rapid identification of priority symptoms such as altered
+          consciousness, abnormal breathing, and cardiac arrest.
         </p>
         <p className="mt-2">
-          Call-takers are prompted to identify specific substances, intent (e.g., accidental vs. intentional), and behavioral risks such as violence or presence of weapons.
-          Special considerations are made for narcotics, especially fentanyl and carfentanil, due to responder safety concerns.
+          Call-takers are prompted to identify specific substances, intent
+          (e.g., accidental vs. intentional), and behavioral risks such as
+          violence or presence of weapons. Special considerations are made for
+          narcotics, especially fentanyl and carfentanil, due to responder
+          safety concerns.
         </p>
         <p className="mt-2">
-          Determinants escalate based on symptoms, known substances, and scene hazards, involving police where required for combative subjects or security risks.
+          Determinants escalate based on symptoms, known substances, and scene
+          hazards, involving police where required for combative subjects or
+          security risks.
         </p>
       </>
     ),
@@ -14040,7 +14274,25 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 24,
     name: "Pregnancy / Childbirth / Miscarriage",
     shortName: "Pregnancy",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol is used for all pregnancy-related complaints including
+          labor, delivery, complications, and miscarriages. It helps determine
+          urgency based on trimester, symptoms, and visible indications of
+          delivery.
+        </p>
+        <p className="mt-2">
+          Key considerations include hemorrhaging, crowning, cord presentation,
+          and whether delivery has occurred, with special attention to
+          complications affecting the mother or baby.
+        </p>
+        <p className="mt-2">
+          Mult birth situations are flagged with subcodes, and responders are
+          guided to escalate response for high-risk or late-stage pregnancies.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -14048,7 +14300,274 @@ export const emsComplaints: IEMSComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 139,
-    questions: [],
+    questions: [
+      {
+        text: (
+          <p>
+            How many <b>weeks</b>{" "}
+            <span className="text-red-400">
+              (or <b>months</b>)
+            </span>{" "}
+            pregnant is she?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "25+ wks (7-9 mos) 3rd TRIMESTER",
+            display: "25+ wks 3rd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "20-24 wks (5-6 mos) 2nd TRIMESTER",
+            display: "20-24 wks 2nd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "13-19 wks (3-4 mos) 2nd TRIMESTER",
+            display: "13-19 wks 2nd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "0-12 wks (0-2 mos) 1st TRIMESTER",
+            display: "0-12 wks 1st TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown how many weeks pregnant",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Can you <b>see</b> any part of the <b>baby</b> now?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No baby visible",
+            continue: true,
+          },
+          {
+            answer: "Baby completely out",
+            display: "Baby completely out",
+            continue: true,
+            updateCode: "24C04",
+          },
+          {
+            answer: "Head visible (crowning)",
+            display: "Head visible (crowning)",
+            continue: true,
+            updateCode: "24D02",
+          },
+          {
+            answer: "Head out",
+            display: "Head is out",
+            continue: true,
+            updateCode: "24D02",
+          },
+          {
+            answer: "Umbilical Cord",
+            display: "Umbilical Cord visible",
+            continue: true,
+            updateCode: "24D01",
+          },
+          {
+            answer: "Hands",
+            display: "Hands visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Feet",
+            display: "Feet visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Buttocks",
+            display: "Buttocks visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Unkown - hasn't checked",
+            display: "Unknown if baby is visible",
+            continue: true,
+            updateCode: "24B02",
+          },
+          {
+            answer: "Unknown - can't check",
+            display: "Unknown if baby is visible",
+            continue: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+
+      // No baby visible
+      {
+        text: <p>Is she having contractions?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "No";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No contractions",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Having contractions",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if having contractions",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>How often is she having contractions?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Having contractions";
+        },
+        answers: [
+          {
+            answer: "< Every 3 minutes",
+            display: "Contractions < every 3 minutes",
+            continue: true,
+            updateCode: "24D03",
+          },
+          {
+            answer: "3-5 minutes apart",
+            display: "Contractions 3-5 minutes apart",
+            continue: true,
+            updateCode: "24D03",
+          },
+          {
+            answer: "> Every 5 minutes",
+            display: "Contractions > every 5 minutes",
+            continue: true,
+            updateCode: "24B01",
+          },
+          {
+            answer: "No contractions",
+            display: "No contractions",
+            continue: true,
+            updateCode: "24O01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown how often contractions are",
+            continue: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+
+      {
+        text: <p>Is there any bleeding?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Minor Bleeding",
+            display: "Minor bleeding",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
+                return { code: "24D04" };
+              } else if (firstAnswer === "20-24 wks (5-6 mos) 2nd TRIMESTER") {
+                return { code: "24C01" };
+              } else if (firstAnswer === "13-19 wks (3-4 mos) 2nd TRIMESTER") {
+                return { code: "24C01" };
+              } else if (firstAnswer === "0-12 wks (0-2 mos) 1st TRIMESTER") {
+                return { code: "24A01" };
+              }
+            },
+          },
+          {
+            answer: "SERIOUS Bleeding",
+            display: "Serious bleeding",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
+                return { code: "24D04" };
+              } else if (firstAnswer === "20-24 wks (5-6 mos) 2nd TRIMESTER") {
+                return { code: "24D00" };
+              } else if (firstAnswer === "13-19 wks (3-4 mos) 2nd TRIMESTER") {
+                return { code: "24D00" };
+              } else if (firstAnswer === "0-12 wks (0-2 mos) 1st TRIMESTER") {
+                return { code: "24C02" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if bleeding",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Are there any complications?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Baby completely out";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No complications",
+            end: true,
+            updateCode: "24C04",
+            override: true,
+          },
+          {
+            answer: "Yes - With Mother:",
+            display: "Complications with mother: {input}",
+            end: true,
+            input: true,
+            updateCode: "24D07",
+          },
+          {
+            answer: "Yes - With Baby:",
+            display: "Complications with baby: {input}",
+            end: true,
+            input: true,
+            updateCode: "24D06",
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if complications",
+            end: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+    ],
     availableDeterminants: [
       {
         priority: "O",
@@ -14062,10 +14581,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 139,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "A",
@@ -14079,8 +14598,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24A01",
@@ -14091,8 +14610,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24A02",
@@ -14103,10 +14622,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -14120,8 +14639,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24B01",
@@ -14132,8 +14651,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24B02",
@@ -14145,10 +14664,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -14162,8 +14681,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C01",
@@ -14174,8 +14693,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C02",
@@ -14186,8 +14705,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C03",
@@ -14198,8 +14717,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C04",
@@ -14210,10 +14729,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -14227,8 +14746,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D01",
@@ -14239,8 +14758,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D02",
@@ -14251,8 +14770,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D03",
@@ -14263,8 +14782,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D04",
@@ -14275,8 +14794,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D05",
@@ -14287,8 +14806,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D06",
@@ -14299,8 +14818,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D07",
@@ -14311,8 +14830,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D08",
@@ -14323,11 +14842,785 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 25,
+    name: "Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
+    shortName: "Psych/Abn Beh",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 142,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "25O01",
+            text: "Non-Suicidal & Alert (w/ 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O02",
+            text: "Suicide Ideation & Alert (w/ 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O03",
+            text: "Non-Suicidal & Alert (w/ 1st Pty Verification & HX of Mental Health Conditions)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O04",
+            text: "Suicide Ideation & Alert (w/ 1st Pty Verification & HX of Mental Health Conditions)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          }
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "25A01",
+            text: "Non-Suicidal & Alert (w/o 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25A02",
+            text: "Suicide Ideation & Alert (w/o 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "25B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25B01",
+            text: "Serious Hemorrhage",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25B02",
+            text: "Non-Serious or Minor Hemorrhage",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25B03",
+            text: "Intending Suicide",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25B04",
+            text: "Jumper (Threatening)",
+            recResponse: 80,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 80
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 80
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 80
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 80
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 80
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 80
+              }
+            ]
+          },
+          {
+            code: "25B05",
+            text: "Near Hanging, Strangulation, or Suffocation (Alert w/o Diff Breathing)",
+            recResponse: 143,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          },
+          {
+            code: "25B06",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "25C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25C01",
+            text: "Altered LOC (Hx of Mental Health Conditions)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25C02",
+            text: "Altered LOC (No or Unk HX of Mental Health Conditions)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25C03",
+            text: "Altered LOC (Ingestion of Medications/Substances)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25C04",
+            text: "Altered LOC (Sudden Change in Behavior/Personality)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "25D00",
+            text: "ALS Override (Delta)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25D01",
+            text: "Arrest",
+            recResponse: 146,
+            notBreathing: true,
+          },
+          {
+            code: "25D02",
+            text: "Unconscious",
+            recResponse: 144,
+            notConscious: true
+          },
+          {
+            code: "25D03",
+            text: "Not Alert",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25D04",
+            text: "Dangerous Hemorrhage",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25D05",
+            text: "Near Hanging, Strangulation, or Suffocation (Alert w/ Diff Breathing)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145
+              }
+            ]
+          },
+          {
+            code: "25D06",
+            text: "Jumped Now",
+            recResponse: 84,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 84
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 84
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 84
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 84
               }
             ]
           }
         ]
       }
-    ]
-  }
+    ],
+  },
 ];

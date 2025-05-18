@@ -350,11 +350,13 @@ export default function EmsProQA({
     }
 
     if (selectedAnswer.dependency) {
+      console.log("Checking dependency with answers:", previousAnswers); // Add debug
       const dependencyResult = evaluateDependencies(
         selectedAnswer.dependency,
         patientData,
         previousAnswers
       );
+      console.log("Dependency result:", dependencyResult); // Add debug
       if (dependencyResult) {
         if (dependencyResult.code) {
           setCurrentCode(dependencyResult.code);
