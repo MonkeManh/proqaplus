@@ -1628,7 +1628,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             code: "04B03",
-            text: "Unkn Code/Other Codes not Applicable",
+            text: "Unkn Status / Other Codes not Applicable",
             recResponse: 14,
             defaultCode: true,
             subCodes: [
@@ -8040,4 +8040,880 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 17,
+    name: "Falls",
+    shortName: "Falls",
+    description: (
+      <>
+        <p>
+          Falls encompass a wide range of trauma scenarios, from minor slips to high-velocity impacts or intentional
+          self-harm. Protocol 17 distinguishes these cases based on fall height, location of impact, patient alertness, and
+          complications like bleeding or respiratory distress.
+        </p>
+        <p className="mt-2">
+          Long or extreme falls (≥ 6ft or ≥ 30ft), head/chest impacts, or altered mental status immediately trigger ALS
+          consideration. Subcodes address environmental hazards, accessibility barriers, or intentional acts (e.g., jumpers)
+          that may affect extrication or scene safety. For calls that are longer than 30 minutes from a major trauma center,
+          consider utilizing air asset(s)
+        </p>
+        <p className="mt-2">
+          Responders should be aware of delayed symptoms in elderly patients or those on blood thinners, and assess for
+          secondary injuries, including spinal trauma. Fire units may assist with lift-assists, difficult access, or
+          extrication support.
+        </p>
+      </>
+    ),
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 79,
+    questions: [
+      {
+        text: <p>When did **pronoun** fall</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Now (less than 6hrs ago)",
+            display: "Fell now (< 6hrs)",
+            continue: true,
+          },
+          {
+            answer: "More than 6hrs ago",
+            display: "Fell earlier (>= 6hrs)",
+            continue: true,
+            updateCode: "17A03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when pt fell",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>How <b>far</b> did **pronoun** <b>fall</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Ground Level",
+            display: "Fell at ground level",
+            continue: true,
+          },
+          {
+            answer: "< 10ft/3m (1 story)",
+            display: "Fell < 10ft/3m (1 story)",
+            continue: true,
+          },
+          {
+            answer: "Fall down (not on) stairs",
+            display: "Fell down stairs",
+            continue: true,
+            updateCode: "17B03"
+          },
+          {
+            answer: "Fall on (not down) stairs",
+            display: "Fell on stairs",
+            continue: true,
+          },
+          {
+            answer: "LONG FALL - 10-29ft (3-9m)",
+            display: "LONG FALL - 10-29ft (3-9m)",
+            continue: true,
+            updateCode: "17D06"
+          },
+          {
+            answer: "EXTREME FALL - >= 30ft (>= 10m)",
+            display: "EXTREME FALL - >= 30ft (>= 10m)",
+            continue: true,
+            updateCode: "17D01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how far pt fell",
+            continue: true,
+            updateCode: "17B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>caused</b> the fall?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Accidental",
+            display: "Accidental fall",
+            continue: true,
+          },
+          {
+            answer: "Electrocution",
+            display: "Electrocution caused fall",
+            goto: 15
+          },
+          {
+            answer: "Dizziness",
+            display: "Dizziness caused fall",
+            continue: true,
+          },
+          {
+            answer: "Jumped/Intentional",
+            display: "Jumped/Intentional fall",
+            continue: true,
+            updateSubCode: "J"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk reason for fall",
+            continue: true,
+            updateCode: '17B04'
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b>SERIOUS</b> <span className="text-4">bleeding</span>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "17B02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "17D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>what <b>part</b> of the body was <b>injured?</b></p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Chest",
+            display: "Injured chest",
+            continue: true,
+          },
+          {
+            answer: "Head",
+            display: "Injured head",
+            continue: true,
+          },
+          {
+            answer: "Neck",
+            display: "Injured neck",
+            continue: true,
+          },
+          {
+            answer: "POSSIBLY DANGEROUS (not Chest/Neck/Head):",
+            display: "Inj to {input}",
+            continue: true,
+            input: true,
+            updateCode: "17B01",
+          },
+          {
+            answer: "NOT DANGEROUS",
+            display: "Inj to {input}",
+            continue: true,
+            input: true,
+            updateCode: "17A02",
+          },
+          {
+            answer: "Unknown area",
+            display: "Unk area of inj",
+            continue: true,
+            updateCode: "17B04"
+          },
+          {
+            answer: "No injuries",
+            display: "No injuries rptd",
+            continue: true,
+            updateCode: "17A04"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** having any <b>difficulty</b> breathing?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          if(!lastAnswer) return false;
+          return lastAnswer === "Injured chest" || lastAnswer === "Injured neck" || lastAnswer === "Injured head";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diff breathing",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diff breathing",
+            continue: true,
+            updateCode: "17D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diff breathing",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the extent of the injury?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const injuryAnswer = answers?.[answers.length - 1]?.answer;
+          return injuryAnswer.includes('Inj to');
+        },
+        answers: [
+          {
+            answer: "Deformity",
+            display: "Inj has deformity",
+            continue: true,
+            updateCode: "17A01"
+          },
+          {
+            answer: "No Deformity",
+            display: "Inj has no deformity",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent of injury",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p><b>Where</b> is **pronoun** now?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "On the ground or floor",
+            display: "Still on grd or floor",
+            continue: true,
+            updateSubCode: "G"
+          },
+          {
+            answer: "Public place",
+            display: "In public place",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if still on floor/grd",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b>special concerns</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Accessibility concerns:",
+            display: "Accessibility concerns - {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Environmental problems:",
+            display: "Environmental concerns - {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "E"
+          },
+          {
+            answer: "No special concerns",
+            display: "No special concerns",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk special concerns",
+            continue: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "17A01",
+            text: "Not Dangerous Body Area w/ Deformity",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17A02",
+            text: "Not Dangerous Body Area",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: '17A03',
+            text: "Non-Recent (>= 6hrs) Injs (w/o priority symptoms)",
+            recResponse: 81,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17A04",
+            text: "Public Assist (No Injs & No Priority Symptoms)",
+            recResponse: 82,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 82,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 82,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 82,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 82
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 82
+              }
+            ]
+          },
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "17B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17B01",
+            text: "Possibly Dangerous Body Area",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17B02",
+            text: "Serious Hemorrhage",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17B03",
+            text: "Down Stairs",
+            recResponse: 79,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          },
+          {
+            code: "17B04",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 79,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 79,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 79,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 79,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 80
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 79
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "17D00",
+            text: "ALS Override (Delta)",
+            recResponse: 83,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 83,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 83,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 83,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 84
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 83
+              }
+            ]
+          },
+          {
+            code: "17D01",
+            text: "Extreme Fall (>= 30ft/10m)",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 85,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 85,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 85,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 86
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "17D02",
+            text: "Arrest",
+            recResponse: 87,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 87,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 87,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 87,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 87
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 87
+              }
+            ]
+          },
+          {
+            code: "17D03",
+            text: "Unconscious",
+            recResponse: 85,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 85,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 85,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 85,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 86
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "17D04",
+            text: "Not Alert",
+            recResponse: 83,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 83,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 83,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 83,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 84
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 83
+              }
+            ]
+          },
+          {
+            code: "17D05",
+            text: "Chest/Neck/Head Inj (w/ Diff Breathing)",
+            recResponse: 83,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 83,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 83,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 83,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 84
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 83
+              }
+            ]
+          },
+          {
+            code: "17D06",
+            text: "Long Fall",
+            recResponse: 83,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accessibility Concerns/Difficulty",
+                recResponse: 83,
+              },
+              {
+                code: "E",
+                text: "Environmental Problems (Rain, Heat, Cold)",
+                recResponse: 83,
+              },
+              {
+                code: "G",
+                text: "On the Ground or Floor",
+                recResponse: 83,
+              },
+              {
+                code: "J",
+                text: "Jumper (Suicide Attempt)",
+                recResponse: 84
+              },
+              {
+                code: "P",
+                text: "Public Place (Street, Parking Garage, Market)",
+                recResponse: 83
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

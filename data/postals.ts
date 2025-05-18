@@ -12302,6 +12302,10 @@ export const postalData: IPostal[] = [
           crossStreet1: "Mt. Haan Rd.",
           crossStreet2: "Senora Rd.",
         },
+        "Senora Rd.": {
+          crossStreet1: "Cat-Tail Rd.",
+          crossStreet2: "Chapparel Dr.",
+        }
       },
     },
   },
