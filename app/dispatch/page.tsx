@@ -6,8 +6,32 @@ import { Button } from "@/components/ui/button";
 import { Phone, Settings } from "lucide-react";
 import DispatchTable from "@/components/dispatch/dispatch-table";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function DispatchPage() {
+  const [preferences, setPreferences] = useState<any>(null);
+
+  const getPreferences = () => {
+    const storedPreferences = localStorage.getItem("PREFERENCES");
+    if (!storedPreferences) return null;
+    const parsedPreferences = JSON.parse(storedPreferences);
+    setPreferences(parsedPreferences);
+  };
+
+  useEffect(() => {
+    getPreferences();
+
+    const handleStorageChange = () => {
+      getPreferences();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    }
+  }, []);
+  
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -24,15 +48,19 @@ export default function DispatchPage() {
               <Settings className="mr-2 h-5 w-5" />
               Reconfigure
             </Button>
-            <Link href="/create-call">
-              <Button
-                variant="destructive"
-                className="flex-1 sm:flex-none cursor-pointer"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Create Call
-              </Button>
-            </Link>
+            {preferences && preferences?.advancedMode ? (
+              <Link href="/create-call">
+                <Button
+                  variant="destructive"
+                  className="flex-1 sm:flex-none cursor-pointer"
+                >
+                  <Phone className="mr-2 h-5 w-5" />
+                  Create Call
+                </Button>
+              </Link>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </header>

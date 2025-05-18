@@ -16,7 +16,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Edit, PlusCircle, Trash2 } from "lucide-react";
+import { Edit, Phone, PlusCircle, Trash2 } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -34,6 +34,7 @@ import CreateFireUnitDialog from "./create-fire-unit";
 
 export default function DispatchTable() {
   const [units, setUnits] = useState<IFireUnitData[]>([]);
+  const [preferences, setPreferences] = useState<any>(null);
   const [filteredUnits, setFilteredUnits] = useState<IFireUnitData[]>([]);
   const [assignmentFilter, setAssignmentFilter] = useState<string>("all");
   const [unitTypeFilter, setUnitTypeFilter] = useState<string>("all");
@@ -66,17 +67,32 @@ export default function DispatchTable() {
     setUnits(validatedUnits);
   };
 
+  const getPreferences = () => {
+    const preferences = localStorage.getItem("PREFERENCES");
+    if (!preferences) return null;
+
+    const parsedPreferences = JSON.parse(preferences);
+    setPreferences(parsedPreferences);
+  };
+
   useEffect(() => {
     loadUnits();
+    getPreferences();
 
     const handleStorageChange = () => {
       loadUnits();
     };
 
+    const handlePreferencesChange = () => {
+      getPreferences();
+    }
+
     window.addEventListener("fire-units-updated", handleStorageChange);
+    window.addEventListener('storage', handlePreferencesChange);
 
     return () => {
       window.removeEventListener("fire-units-updated", handleStorageChange);
+      window.removeEventListener('storage', handlePreferencesChange);
     };
   }, []);
 
@@ -319,7 +335,7 @@ export default function DispatchTable() {
       }));
   };
 
-  return (
+  return preferences && preferences.advancedMode ? (
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
@@ -537,6 +553,19 @@ export default function DispatchTable() {
         onSave={handleSaveUnit}
         existingUnits={units}
       />
+    </div>
+  ) : (
+    <div className="w-full flex justify-center items-center h-100">
+      <Link href="/create-call">
+        <Button
+          variant="destructive"
+          className="flex-1 sm:flex-none cursor-pointer"
+          style={{ scale: "1.5" }}
+        >
+          <Phone className="mr-2 h-5 w-5" />
+          Create Call
+        </Button>
+      </Link>
     </div>
   );
 }

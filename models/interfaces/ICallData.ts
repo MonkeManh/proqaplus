@@ -7,5 +7,5 @@ export interface ICallData {
   callerNumber: string;
   callerText: string;
   service: string;
-  reconfigured?: boolean;
+  reconfigured?: string;
 }

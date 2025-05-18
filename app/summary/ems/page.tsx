@@ -18,6 +18,7 @@ interface CallData {
   code: string;
   codeText: string;
   complaint: string;
+  complaintShort: string;
   crossStreet1: string;
   crossStreet2: string;
   callerStatement: string;
@@ -133,9 +134,10 @@ export default function EMSSummaryPage() {
       const sortedUnits = dispatchData.units
         ? sortFDUnits([...dispatchData.units], dispatchData.postal)
         : [];
+        const township = getPostal(dispatchData.postal)?.twp
       const text = [
         `Code: ${dispatchData.code}`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${
+        `Location: ${dispatchData.postal} ${dispatchData.street}${township && `, ${township}`}${
           dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""
         }`,
         `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
@@ -143,7 +145,7 @@ export default function EMSSummaryPage() {
         }`,
         `Recc: ${getRecommendedUnits(dispatchData.plan)}`,
         `Disp: ${sortedUnits.join(", ") || "None"}`,
-        `Problem: ${dispatchData.complaint} - ${dispatchData.codeText}`,
+        `Problem: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
         "Scene Status: Secure",
@@ -178,11 +180,11 @@ export default function EMSSummaryPage() {
             }`
           : "",
         dispatchData.reconfigured
-          ? `Call reconfigured from ${dispatchData.reconfigured}`
+          ? `- Call reconfigured from ${dispatchData.reconfigured}`
           : "",
 
         !dispatchData?.proqaAnswers || dispatchData?.isOverriden
-          ? "ProQA Override"
+          ? "- ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
                 .filter((qa: any) => !qa.omit)

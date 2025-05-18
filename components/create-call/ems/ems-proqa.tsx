@@ -273,6 +273,13 @@ export default function EmsProQA({
     return "";
   };
 
+  const isHigherPriority = (newCode: string, currentCode: string): boolean => {
+    if (!currentCode) return true;
+    const currentPriority = getPriorityLevel(currentCode);
+    const newPriority = getPriorityLevel(newCode);
+    return newPriority > currentPriority;
+  };
+
   const handleAnswerSelect = (answerIndex: number, inputValue?: string) => {
     if (!complaint) return;
 
@@ -302,6 +309,7 @@ export default function EmsProQA({
 
     const newAnswer = {
       question: processedQuestion,
+      defaultQuestion: rawQuestionText,
       defultAnswer: selectedAnswer.answer,
       answer: displayText,
       questionIndex: currentQuestionIndex,
@@ -331,20 +339,10 @@ export default function EmsProQA({
     }
     setPreviousAnswers(updatedAnswers);
 
-    const criticalResult = findHighestPriorityDeterminant(
-      complaint,
-      patientData
-    );
+    const criticalResult = findHighestPriorityDeterminant(complaint, patientData);
     if (criticalResult && criticalResult.override) {
       setCurrentCode(criticalResult.code);
       setIsCodeOverridden(true);
-
-      saveProQAState(updatedAnswers);
-
-      if (currentQuestion.questionType === "input" || selectedAnswer.continue) {
-        moveToNextQuestion();
-      }
-      return;
     }
 
     if (selectedAnswer.updateSubCode) {
@@ -374,9 +372,12 @@ export default function EmsProQA({
     }
 
     if (selectedAnswer.updateCode && !isCodeOverridden) {
-      setCurrentCode(selectedAnswer.updateCode);
-      if (selectedAnswer.override) {
-        setIsCodeOverridden(true);
+      // Only update code if it's higher priority or has override
+      if (selectedAnswer.override || isHigherPriority(selectedAnswer.updateCode, currentCode)) {
+        setCurrentCode(selectedAnswer.updateCode);
+        if (selectedAnswer.override) {
+          setIsCodeOverridden(true);
+        }
       }
     }
 
@@ -384,13 +385,14 @@ export default function EmsProQA({
 
     setSelectedAnswerIndex(answerIndex);
 
+    // End questioning immediately if end: true
     if (selectedAnswer.end) {
       setShouldComplete(true);
       localStorage.removeItem("EMS_PROQA_DATA");
       return;
     }
 
-    // Remove the inputValue check since continue is sufficient
+    // Only move to next question if not ending and continue is true
     if (selectedAnswer.continue) {
       moveToNextQuestion();
     }

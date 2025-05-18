@@ -189,7 +189,13 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
           isBreathingRef.current?.click();
         }, 100);
       } else if (name === "isBreathing" && value.isBreathing) {
-        chiefComplaintRef.current?.focus();
+        setTimeout(() => {
+          chiefComplaintRef.current?.focus();
+        }, 100);
+      } else if (name === "chiefComplaint" && value.chiefComplaint) {
+        setTimeout(() => {
+          nextRef.current?.focus();
+        }, 100);
       }
     });
 
