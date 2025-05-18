@@ -273,6 +273,13 @@ export default function EmsProQA({
     return "";
   };
 
+  const isHigherPriority = (newCode: string, currentCode: string): boolean => {
+    if (!currentCode) return true;
+    const currentPriority = getPriorityLevel(currentCode);
+    const newPriority = getPriorityLevel(newCode);
+    return newPriority > currentPriority;
+  };
+
   const handleAnswerSelect = (answerIndex: number, inputValue?: string) => {
     if (!complaint) return;
 
@@ -365,9 +372,12 @@ export default function EmsProQA({
     }
 
     if (selectedAnswer.updateCode && !isCodeOverridden) {
-      setCurrentCode(selectedAnswer.updateCode);
-      if (selectedAnswer.override) {
-        setIsCodeOverridden(true);
+      // Only update code if it's higher priority or has override
+      if (selectedAnswer.override || isHigherPriority(selectedAnswer.updateCode, currentCode)) {
+        setCurrentCode(selectedAnswer.updateCode);
+        if (selectedAnswer.override) {
+          setIsCodeOverridden(true);
+        }
       }
     }
 

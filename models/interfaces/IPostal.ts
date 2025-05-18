@@ -19,6 +19,7 @@ type PoliceAgencies = 'MBPD' | 'RCSO' | 'PBPD' | 'BCSO' | 'SSPD' | 'SAHP' | 'LSP
 
 export type IPostal = {
   postal: string;
+  twp?: string;
   fdDistrict: string;
   policeDistrict: string;
   fireBox: string;

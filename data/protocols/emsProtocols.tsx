@@ -557,7 +557,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Do they take any medications or have an injection for this type of
+            Does **pronoun** take any medications or have an injection for this type of
             reaction?
           </p>
         ),
@@ -903,12 +903,12 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "< 6 hours ago",
-            display: "Happened < 6 hours ago",
+            display: "Happened Now (< 6 hours ago)",
             continue: true,
           },
           {
             answer: ">= 6 hours ago",
-            display: "Happened >= 6 hours ago",
+            display: "Happened Eariler (>= 6 hours ago)",
             continue: true,
             updateCode: "03A02",
           },
@@ -1010,6 +1010,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Serious bleeding",
             continue: true,
             updateCode: "03B02",
+            override: true,
           },
           {
             answer: "Unknown",
@@ -1380,7 +1381,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "NOT responding nlly",
-            updateCode: "04D01",
+            updateCode: "04D03",
             continue: true,
           },
           {
@@ -1412,6 +1413,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Chest/Neck/Head",
             display: "Injury to Chest/Neck/Head",
+            updateCode: "04B01",
             continue: true,
           },
           {
@@ -2172,7 +2174,7 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 22,
     questions: [
       {
-        text: <p>Is **pronoun** able to talk to your (cry) at all?</p>,
+        text: <p>Is **pronoun** able to talk to you (cry) at all?</p>,
         questionType: "select",
         omitQuestion: true,
         answers: [
@@ -4602,7 +4604,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is an <b className="text-red-400">defibrillator (AED)</b> available?
+            Is a <b className="text-red-400">defibrillator (AED)</b> available?
           </p>
         ),
         questionType: "select",
@@ -7544,6 +7546,12 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "15D08",
           },
           {
+            answer: "Not Breathing at All",
+            display: "Not breathing at all",
+            end: true,
+            updateCode: "15E01",
+          },
+          {
             answer: "AGONAL BREATHING",
             display: "Agonal breathing",
             end: true,
@@ -8078,7 +8086,7 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 79,
     questions: [
       {
-        text: <p>When did **pronoun** fall</p>,
+        text: <p>When did **pronoun** fall?</p>,
         questionType: "select",
         answers: [
           {
@@ -8247,7 +8255,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            what <b>part</b> of the body was <b>injured?</b>
+            What <b>part</b> of the body was <b>injured?</b>
           </p>
         ),
         questionType: "select",
@@ -8275,7 +8283,7 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "17B01",
           },
           {
-            answer: "NOT DANGEROUS",
+            answer: "Not Dangerous:",
             display: "Inj to {input}",
             continue: true,
             input: true,
@@ -9169,7 +9177,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Say: 'I am ging to have you complete a quick test before the medics
+            Say: 'I am going to have you complete a quick test before the medics
             show up ok?'
           </p>
         ),
@@ -12412,6 +12420,13 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "23C02"
           },
           {
+            answer: "Agonal/Innefective",
+            display: "Agonal/ineffective breathing",
+            end: true,
+            updateCode: "23D01",
+            override: true,
+          },
+          {
             answer: "NOT BREATHING AT ALL",
             display: "Not breathing at all",
             end: true,
@@ -12438,7 +12453,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Pt is changing color",
             continue: true,
-            updateCode: "23D03"
+            updateCode: "23D03",
+            override: true,
           },
           {
             answer: "Unknown",

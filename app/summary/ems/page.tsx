@@ -134,9 +134,10 @@ export default function EMSSummaryPage() {
       const sortedUnits = dispatchData.units
         ? sortFDUnits([...dispatchData.units], dispatchData.postal)
         : [];
+        const township = getPostal(dispatchData.postal)?.twp
       const text = [
         `Code: ${dispatchData.code}`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${
+        `Location: ${dispatchData.postal} ${dispatchData.street}${township && `, ${township}`}${
           dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""
         }`,
         `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
