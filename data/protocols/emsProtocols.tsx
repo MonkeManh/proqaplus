@@ -10612,10 +10612,14 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 99,
     questions: [
       {
-        text: <p>Does **pronoun** have <b>chest pain</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have <b>chest pain</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { age } = _patient;
           return age >= 35;
         },
@@ -10628,14 +10632,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Pt has chest pain",
-            goto: 10
+            goto: 10,
           },
           {
             answer: "Unknown",
             display: "Unk if pt has chest pain",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -10646,26 +10650,26 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        answers:[
+        answers: [
           {
             answer: "Yes",
             display: "Responding nlly",
             continue: true,
-            updateCode: "20A01"
+            updateCode: "20A01",
           },
           {
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "20D01"
+            updateCode: "20D01",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-            updateCode: "20B02"
-          }
-        ]
+            updateCode: "20B02",
+          },
+        ],
       },
 
       {
@@ -10681,13 +10685,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Heart Attack",
             display: "Heart Attack hx",
             continue: true,
-            updateCode: "20C01"
+            updateCode: "20C01",
           },
           {
             answer: "Angina",
             display: "Angina hx",
             continue: true,
-            updateCode: "20C01"
+            updateCode: "20C01",
           },
           {
             answer: "Other:",
@@ -10699,12 +10703,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk cardiac hx",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** had a <b>change</b> in <b>skin color</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** had a <b>change</b> in <b>skin color</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10716,14 +10724,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Change in skin color",
             continue: true,
-            updateCode: "20B01"
+            updateCode: "20B01",
           },
           {
             answer: "Unknown",
             display: "Unk change in skin color",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -10734,13 +10742,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Colder than normal",
             display: "Colder skin temp than nll",
             continue: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Hotter than normal",
             display: "Hotter skin temp than nll",
             continue: true,
-            updateSubCode: "H"
+            updateSubCode: "H",
           },
           {
             answer: "Normal",
@@ -10751,9 +10759,9 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk skin temperature",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -10767,16 +10775,16 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 99
+                recResponse: 99,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 100
-              }
-            ]
-          }
-        ]
+                recResponse: 100,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -10789,14 +10797,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 101
+                recResponse: 101,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 102
-              }
-            ]
+                recResponse: 102,
+              },
+            ],
           },
           {
             code: "20B01",
@@ -10806,14 +10814,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 101
+                recResponse: 101,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 102
-              }
-            ]
+                recResponse: 102,
+              },
+            ],
           },
           {
             code: "20B02",
@@ -10824,16 +10832,16 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 101
+                recResponse: 101,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 102
-              }
-            ]
-          }
-        ]
+                recResponse: 102,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -10846,14 +10854,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 103
+                recResponse: 103,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 104
-              }
-            ]
+                recResponse: 104,
+              },
+            ],
           },
           {
             code: "20C01",
@@ -10863,16 +10871,16 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 101
+                recResponse: 101,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 102
-              }
-            ]
-          }
-        ]
+                recResponse: 102,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -10885,14 +10893,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 103
+                recResponse: 103,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 104
-              }
-            ]
+                recResponse: 104,
+              },
+            ],
           },
           {
             code: "20D01",
@@ -10902,14 +10910,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 103
+                recResponse: 103,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 104
-              }
-            ]
+                recResponse: 104,
+              },
+            ],
           },
           {
             code: "20D02",
@@ -10920,17 +10928,595 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "C",
                 text: "Cold Exposure",
-                recResponse: 105
+                recResponse: 105,
               },
               {
                 code: "H",
                 text: "Heat Exposure",
-                recResponse: 106
-              }
-            ]
+                recResponse: 106,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 21,
+    name: "Hemorrhage/Lacerations",
+    shortName: "Hemorrhage/Laceration",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 107,
+    questions: [
+      {
+        text: <p>What caused the bleeding?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Medical",
+            display: "Medical cause",
+            continue: true,
+            updateSubCode: "M",
+          },
+          {
+            answer: "Trauma (Non-Recent)",
+            display: "Traumatic cause",
+            continue: true,
+            updateSubCode: "T",
+          },
+          {
+            answer: "Recent Trauma",
+            display: "Traumatic cause (recent)",
+            goto: 30
+          },
+          {
+            answer: "Unknown",
+            display: "Unk cause",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p><b>Where</b> is **pronoun** bleeding from?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Dangerous Body Area:",
+            display: "Bleeding from {input}",
+            continue: true,
+            input: true,
+            updateCode: "21B01",
+          },
+          {
+            answer: "Possible Dangerous Body Area:",
+            display: "Bleeding from {input}",
+            continue: true,
+            input: true,
+            updateCode: "21B01",
+          },
+          {
+            answer: "Non-Dangerous Body Area:",
+            display: "Bleeding from {input}",
+            continue: true,
+            input: true,
+            updateCode: "21A01",
+          },
+          {
+            answer: "Tubes",
+            display: "Bleeding from tubes",
+            continue: true,
+            updateCode: "21C01"
+          },
+          {
+            answer: "Dialysis AV Fistula",
+            display: "Bleeding from dialysis AV fistula",
+            continue: true,
+            updateCode: "21C02"
+          },
+          {
+            answer: "Vericose Veins",
+            display: "Bleeding from vericose veins",
+            continue: true,
+            updateCode: "21C03"
+          },
+          {
+            answer: "Vaginal/Rectal/Urinary",
+            display: "Bleeding from genitourinary area",
+            continue: true,
+            updateCode: "21A01",
+          },
+          {
+            answer: "AMPUTATION",
+            display: "Amputation",
+            goto: 30
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where bleeding from",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is she pregnant?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Bleeding from genitourinary area" && _patient?.gender === "Female" && _patient?.age >= 12 && _patient?.age <= 50;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Pt is not pregnant",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Pt is pregnant",
+            goto: 24
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is pregnant",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "21D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "21D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the blood <b className="text-red-400">squirting</b> out?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Traumatic cause";  
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Blood not squirting out",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Blood is squirting out",
+            continue: true,
+            updateCode: '21D04'
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if blood is squirting out",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the bleeding <b className="text-red-400">SERIOUS</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          return firstAnswer === "Medical cause";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "21B02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have a <b>bleeding disorder</b> or is **pronoun** on <b>blood thinners</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No bleeding disorder or blood thinners",
+            continue: true,
+          },
+          {
+            answer: "Bleeding Disorder",
+            display: "Pt has bleeding disorder",
+            continue: true,
+            updateCode: "21B03"
+          },
+          {
+            answer: "Blood Thinners",
+            display: "Pt is on blood thinners",
+            continue: true,
+            updateCode: "21B04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bleeding disorder or blood thinners",
+            continue: true,
           }
         ]
       }
-    ]
-  }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "21A01",
+            text: "Not Dangerous Hemorrhage",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21A02",
+            text: "Minor Hemorrhage",
+            recResponse: 110,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 111,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 112,
+              },
+            ],
+          }
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "21B00",
+            text: "ALS Override (Bravo)",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21B01",
+            text: "Possibly Dangerous Hemorrhage",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21B02",
+            text: "Serious Hemorrhage",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21B03",
+            text: "Bleeding Disorder",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21B04",
+            text: "Blood Thinners",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "21C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 113,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 115,
+              },
+            ],
+          },
+          {
+            code: "21C01",
+            text: "Hemorrhage Through Tubes",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21C02",
+            text: "Hemorrhage of Dialysis AV Fistula",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          },
+          {
+            code: "21C03",
+            text: "Hemorrhage from Varicose Veins",
+            recResponse: 107,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 108,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 109,
+              },
+            ],
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "21D00",
+            text: "ALS Override (Delta)",
+            recResponse: 113,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 115,
+              },
+            ],
+          },
+          {
+            code: "21D01",
+            text: "Arrest",
+            recResponse: 116,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 117,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 118,
+              },
+            ],
+          },
+          {
+            code: "21D02",
+            text: "Unconscious",
+            recResponse: 119,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 120,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 121,
+              },
+            ],
+          },
+          {
+            code: "21D03",
+            text: "Not Alert",
+            recResponse: 113,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 115,
+              },
+            ],
+          },
+          {
+            code: "21D04",
+            text: "Dangerous Hemorrhage",
+            recResponse: 113,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 115,
+              },
+            ],
+          },
+          {
+            code: "21D05",
+            text: "Abnormal Breathing",
+            recResponse: 113,
+            subCodes: [
+              {
+                code: "M",
+                text: "Medical",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Trauma",
+                recResponse: 115,
+              },
+            ],
+          }
+        ]
+      }
+    ],
+  },
 ];

@@ -95,11 +95,11 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true, 
+      autoFill: true,
       mainStreet: "Procopio Promenade",
       crossStreet1: "Bayview Bridge",
       crossStreet2: "Route 1",
-    }
+    },
   },
   {
     postal: "006",
@@ -118,11 +118,11 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true, 
+      autoFill: true,
       mainStreet: "Procopio Promenade",
       crossStreet1: "Bayview Bridge",
       crossStreet2: "Route 1",
-    }
+    },
   },
   {
     postal: "007",
@@ -141,11 +141,11 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true, 
+      autoFill: true,
       mainStreet: "Procopio Promenade",
       crossStreet1: "Bayview Bridge",
       crossStreet2: "Route 1",
-    }
+    },
   },
   {
     postal: "008",
@@ -164,11 +164,11 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true, 
+      autoFill: true,
       mainStreet: "Procopio Promenade",
       crossStreet1: "Bayview Bridge",
       crossStreet2: "Route 1",
-    }
+    },
   },
   {
     postal: "009",
@@ -217,10 +217,10 @@ export const postalData: IPostal[] = [
         },
         "Bayview Bridge": {
           crossStreet1: "Procopio Promenade",
-          crossStreet2: "Riverfront Ave."
-        }
-      }
-    }
+          crossStreet2: "Riverfront Ave.",
+        },
+      },
+    },
   },
   {
     postal: "011",
@@ -372,9 +372,9 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Route 1"
-        }
-      }
+          crossStreet2: "Route 1",
+        },
+      },
     },
   },
   {
@@ -467,9 +467,9 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Route 1"
-        }
-      }
+          crossStreet2: "Route 1",
+        },
+      },
     },
   },
   {
@@ -525,9 +525,9 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Route 1"
-        }
-      }
+          crossStreet2: "Route 1",
+        },
+      },
     },
   },
   {
@@ -620,9 +620,9 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Route 1"
-        }
-      }
+          crossStreet2: "Route 1",
+        },
+      },
     },
   },
   {
@@ -678,9 +678,9 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Route 1"
-        }
-      }
+          crossStreet2: "Route 1",
+        },
+      },
     },
   },
   {
@@ -3763,7 +3763,7 @@ export const postalData: IPostal[] = [
       mainStreet: "Chiliad Trail",
       crossStreet1: "Ridgeline Loop Trail",
       crossStreet2: "Faclon Chiliad Trail",
-    }
+    },
   },
   {
     postal: "147",
@@ -6328,7 +6328,7 @@ export const postalData: IPostal[] = [
       mainStreet: "Airfield Access Rd.",
       crossStreet1: "Route 68 Bypass",
       crossStreet2: "Panorama Dr.",
-    }
+    },
   },
   {
     postal: "258",
@@ -12311,7 +12311,7 @@ export const postalData: IPostal[] = [
         "Senora Rd.": {
           crossStreet1: "Cat-Tail Rd.",
           crossStreet2: "Chapparel Dr.",
-        }
+        },
       },
     },
   },
@@ -12569,17 +12569,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "2", "6", "8", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Senora Rd.": {
-                crossStreet1: "Vinewood Park Dr.",
-                crossStreet2: "Star Ln.",
-            },
-            "Interstate 1": {
-                crossStreet1: "Vinewood Park Dr. Exit",
-                crossStreet2: "Chancy Ln."
-            }
-        }
-    }
+      availableRoads: {
+        "Senora Rd.": {
+          crossStreet1: "Vinewood Park Dr.",
+          crossStreet2: "Star Ln.",
+        },
+        "Interstate 1": {
+          crossStreet1: "Vinewood Park Dr. Exit",
+          crossStreet2: "Chancy Ln.",
+        },
+      },
+    },
   },
   {
     postal: "540",
@@ -12589,11 +12589,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["2", "10", "1", "9", "4", "7", "6", "8", "5", "3", "11"],
     policeRunOrder: ["BCSO", "SAHP", "SSPD", "PBPD", "LCSO", "LSPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Senora Rd.",
-        crossStreet1: "Vinewood Park Dr.",
-        crossStreet2: "Star Ln.",
-    }
+      autoFill: true,
+      mainStreet: "Senora Rd.",
+      crossStreet1: "Vinewood Park Dr.",
+      crossStreet2: "Star Ln.",
+    },
   },
   {
     postal: "541",
@@ -12603,21 +12603,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["2", "10", "1", "9", "4", "7", "6", "8", "5", "3", "11"],
     policeRunOrder: ["BCSO", "SAHP", "SSPD", "PBPD", "LCSO", "LSPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Senora Rd.": {
-                crossStreet1: "Chaparral Dr.",
-                crossStreet2: "Star Ln.",
-            },
-            "Star Ln.": {
-                crossStreet1: "Senora Rd.",
-                crossStreet2: "Roadrunner Rd."
-            },
-            "Roadrunner Rd.": {
-                crossStreet1: "Senora Rd.",
-                crossStreet2: "Chancy Ln."
-            }
-        }
-    }
+      availableRoads: {
+        "Senora Rd.": {
+          crossStreet1: "Chaparral Dr.",
+          crossStreet2: "Star Ln.",
+        },
+        "Star Ln.": {
+          crossStreet1: "Senora Rd.",
+          crossStreet2: "Roadrunner Rd.",
+        },
+        "Roadrunner Rd.": {
+          crossStreet1: "Senora Rd.",
+          crossStreet2: "Chancy Ln.",
+        },
+      },
+    },
   },
   {
     postal: "542",
@@ -12627,17 +12627,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["2", "10", "1", "9", "4", "7", "6", "8", "5", "3", "11"],
     policeRunOrder: ["BCSO", "SAHP", "SSPD", "PBPD", "LCSO", "LSPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Chancy Ln.": {
-                crossStreet1: "Roadrunner Rd.",
-                crossStreet2: "Interstate 1 SB"
-            },
-            "Route 13": {
-                crossStreet1: "Chancy Ln.",
-                crossStreet2: "Route 68 Exit"
-            }
-        }
-    }
+      availableRoads: {
+        "Chancy Ln.": {
+          crossStreet1: "Roadrunner Rd.",
+          crossStreet2: "Interstate 1 SB",
+        },
+        "Route 13": {
+          crossStreet1: "Chancy Ln.",
+          crossStreet2: "Route 68 Exit",
+        },
+      },
+    },
   },
   {
     postal: "543",
@@ -12647,17 +12647,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["9", "2", "10", "7", "1", "6", "4", "8", "5", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Chancy Ln.": {
-                crossStreet1: "Interstate 1 SB",
-                crossStreet2: "Roadrunner Rd."
-            },
-            "Interstate 1": {
-                crossStreet1: "Chancy Ln.",
-                crossStreet2: "Route 68 Exit"
-            }
-        }
-    }
+      availableRoads: {
+        "Chancy Ln.": {
+          crossStreet1: "Interstate 1 SB",
+          crossStreet2: "Roadrunner Rd.",
+        },
+        "Interstate 1": {
+          crossStreet1: "Chancy Ln.",
+          crossStreet2: "Route 68 Exit",
+        },
+      },
+    },
   },
   {
     postal: "544",
@@ -12667,17 +12667,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["10", "9", "7", "2", "1", "6", "4", "8", "5", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Palomino Fwy Exit": {
-                crossStreet1: "Interstate 1 NB",
-                crossStreet2: "Route 15 SB"
-            },
-            "Route 15": {
-                crossStreet1: "Route 15 Senora Way Exit",
-                crossStreet2: "Route 13 Route 68 Exit"
-            }
-        }
-    }
+      availableRoads: {
+        "Palomino Fwy Exit": {
+          crossStreet1: "Interstate 1 NB",
+          crossStreet2: "Route 15 SB",
+        },
+        "Route 15": {
+          crossStreet1: "Route 15 Senora Way Exit",
+          crossStreet2: "Route 13 Route 68 Exit",
+        },
+      },
+    },
   },
   {
     postal: "545",
@@ -12687,17 +12687,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "8", "9", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 1": {
-                crossStreet1: "Chancy Ln.",
-                crossStreet2: "Route 68 Exit"
-            },
-            "Tataviam Dr.": {
-                crossStreet1: "Interstate 1 NB",
-                crossStreet2: "Reservoir Access Rd."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 1": {
+          crossStreet1: "Chancy Ln.",
+          crossStreet2: "Route 68 Exit",
+        },
+        "Tataviam Dr.": {
+          crossStreet1: "Interstate 1 NB",
+          crossStreet2: "Reservoir Access Rd.",
+        },
+      },
+    },
   },
   {
     postal: "546",
@@ -12707,11 +12707,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "2", "8", "9", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Interstate 1",
-        crossStreet1: "Vinewood Park Dr.",
-        crossStreet2: "Chancy Ln."
-    }
+      autoFill: true,
+      mainStreet: "Interstate 1",
+      crossStreet1: "Vinewood Park Dr.",
+      crossStreet2: "Chancy Ln.",
+    },
   },
   {
     postal: "547",
@@ -12721,11 +12721,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "8", "9", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Interstate 1 NB",
-        crossStreet2: "Reservoir Access Rd."
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Interstate 1 NB",
+      crossStreet2: "Reservoir Access Rd.",
+    },
   },
   {
     postal: "548",
@@ -12735,17 +12735,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Route 15": {
-                crossStreet1: "Route 15 MM02.00",
-                crossStreet2: "Route 13 Route 68 Exit"
-            },
-            "Tataviam Dr.": {
-                crossStreet1: "Route 15 SB",
-                crossStreet2: "Reservoir Access Rd."
-            }
-        }
-    }
+      availableRoads: {
+        "Route 15": {
+          crossStreet1: "Route 15 MM02.00",
+          crossStreet2: "Route 13 Route 68 Exit",
+        },
+        "Tataviam Dr.": {
+          crossStreet1: "Route 15 SB",
+          crossStreet2: "Reservoir Access Rd.",
+        },
+      },
+    },
   },
   {
     postal: "549",
@@ -12755,11 +12755,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Senora Way Exit",
-        crossStreet2: "Route 15 MM02.00",
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Senora Way Exit",
+      crossStreet2: "Route 15 MM02.00",
+    },
   },
   {
     postal: "550",
@@ -12769,11 +12769,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Route 15"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Route 15",
+    },
   },
   {
     postal: "551",
@@ -12783,11 +12783,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "552",
@@ -12797,11 +12797,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "553",
@@ -12811,11 +12811,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "554",
@@ -12825,11 +12825,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Route 15"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Route 15",
+    },
   },
   {
     postal: "555",
@@ -12839,11 +12839,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Route 15 MM02.00",
-        crossStreet2: "Senora Way Exit",
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Route 15 MM02.00",
+      crossStreet2: "Senora Way Exit",
+    },
   },
   {
     postal: "556",
@@ -12853,11 +12853,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Route 15 MM02.00",
-        crossStreet2: "Senora Way Exit",
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Route 15 MM02.00",
+      crossStreet2: "Senora Way Exit",
+    },
   },
   {
     postal: "557",
@@ -12867,11 +12867,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Route 15 MM02.00",
-        crossStreet2: "Senora Way Exit",
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Route 15 MM02.00",
+      crossStreet2: "Senora Way Exit",
+    },
   },
   {
     postal: "558",
@@ -12881,11 +12881,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Sustancia Rd. Exit",
-        crossStreet2: "Route 15 MM02.00",
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Sustancia Rd. Exit",
+      crossStreet2: "Route 15 MM02.00",
+    },
   },
   {
     postal: "559",
@@ -12895,11 +12895,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Route 15"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Route 15",
+    },
   },
   {
     postal: "560",
@@ -12909,11 +12909,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "561",
@@ -12923,21 +12923,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Tataviam Dr. [E]": {
-                crossStreet1: "Reservoir Access Rd.",
-                crossStreet2: "Route 15"
-            },
-            "Tataviam Dr. [W]": {
-                crossStreet1: "Reservoir Access Rd.",
-                crossStreet2: "Interstate 1 NB"
-            },
-            "Reservoir Access Rd.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Tataviam Dr."
-            }
-        }
-    }
+      availableRoads: {
+        "Tataviam Dr. [E]": {
+          crossStreet1: "Reservoir Access Rd.",
+          crossStreet2: "Route 15",
+        },
+        "Tataviam Dr. [W]": {
+          crossStreet1: "Reservoir Access Rd.",
+          crossStreet2: "Interstate 1 NB",
+        },
+        "Reservoir Access Rd.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Tataviam Dr.",
+        },
+      },
+    },
   },
   {
     postal: "562",
@@ -12947,11 +12947,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "2", "9", "8", "5", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Tataviam Dr.",
-        crossStreet1: "Reservoir Access Rd.",
-        crossStreet2: "Route 15"
-    }
+      autoFill: true,
+      mainStreet: "Tataviam Dr.",
+      crossStreet1: "Reservoir Access Rd.",
+      crossStreet2: "Route 15",
+    },
   },
   {
     postal: "563",
@@ -12969,17 +12969,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Route 15 [S]": {
-                crossStreet1: "Route 15 MM01.00",
-                crossStreet2: "Sustancia Rd. Exit"
-            },
-            "Route 15 [N]": {
-                crossStreet1: "Sustancia Rd. Exit",
-                crossStreet2: "Route 15 MM02.00"
-            }
-        }
-    }
+      availableRoads: {
+        "Route 15 [S]": {
+          crossStreet1: "Route 15 MM01.00",
+          crossStreet2: "Sustancia Rd. Exit",
+        },
+        "Route 15 [N]": {
+          crossStreet1: "Sustancia Rd. Exit",
+          crossStreet2: "Route 15 MM02.00",
+        },
+      },
+    },
   },
   {
     postal: "565",
@@ -12989,11 +12989,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Noose Approach",
-        crossStreet1: "Sustancia Rd.",
-        crossStreet2: "Dead End"
-    }
+      autoFill: true,
+      mainStreet: "Noose Approach",
+      crossStreet1: "Sustancia Rd.",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "566",
@@ -13003,11 +13003,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Sustancia View",
-        crossStreet1: "Sustancia Rd.",
-        crossStreet2: "Dead End"
-    }
+      autoFill: true,
+      mainStreet: "Sustancia View",
+      crossStreet1: "Sustancia Rd.",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "567",
@@ -13017,11 +13017,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["LCSO", "LSPD", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Sustancia Rd.",
-        crossStreet1: "El Burro Blvd.",
-        crossStreet2: "Noose Approach"
-    }
+      autoFill: true,
+      mainStreet: "Sustancia Rd.",
+      crossStreet1: "El Burro Blvd.",
+      crossStreet2: "Noose Approach",
+    },
   },
   {
     postal: "568",
@@ -13031,11 +13031,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Interstate 2 Exit",
-        crossStreet2: "Sustancia Rd. Exit"
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Interstate 2 Exit",
+      crossStreet2: "Sustancia Rd. Exit",
+    },
   },
   {
     postal: "569",
@@ -13045,11 +13045,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Route 15",
-        crossStreet1: "Interstate 2 Exit",
-        crossStreet2: "Route 15 MM01.00"
-    }
+      autoFill: true,
+      mainStreet: "Route 15",
+      crossStreet1: "Interstate 2 Exit",
+      crossStreet2: "Route 15 MM01.00",
+    },
   },
   {
     postal: "570",
@@ -13059,17 +13059,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Utopia Gardens": {
-                crossStreet1: "E. Mirror Dr.",
-                crossStreet2: "Dead End"
-            },
-            "E. Mirror Dr.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Nikola Pl."
-            }
-        }
-    }
+      availableRoads: {
+        "Utopia Gardens": {
+          crossStreet1: "E. Mirror Dr.",
+          crossStreet2: "Dead End",
+        },
+        "E. Mirror Dr.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Nikola Pl.",
+        },
+      },
+    },
   },
   {
     postal: "571",
@@ -13079,17 +13079,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Nikola Pl.": {
-                crossStreet1: "E. Mirror Dr.",
-                crossStreet2: "Dead End"
-            },
-            "E. Mirror Dr.": {
-                crossStreet1: "Utopia Gardens",
-                crossStreet2: "Mirror Park Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Nikola Pl.": {
+          crossStreet1: "E. Mirror Dr.",
+          crossStreet2: "Dead End",
+        },
+        "E. Mirror Dr.": {
+          crossStreet1: "Utopia Gardens",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "572",
@@ -13099,21 +13099,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Mirror Park Blvd.": {
-                crossStreet1: "E. Mirror Dr.",
-                crossStreet2: "Nikola Ave."
-            },
-            "Nikola Ave.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "E. Mirror Dr."
-            },
-            "E. Mirror Dr.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "Mirror Park Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Mirror Park Blvd.": {
+          crossStreet1: "E. Mirror Dr.",
+          crossStreet2: "Nikola Ave.",
+        },
+        "Nikola Ave.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "E. Mirror Dr.",
+        },
+        "E. Mirror Dr.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "573",
@@ -13123,21 +13123,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Mirror Park Blvd.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "E. Mirror Dr."
-            },
-            "E. Mirror Dr.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Nikola Ave."
-            },
-            "Nikola Ave.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "E. Mirror Dr."
-            }
-        }
-    }
+      availableRoads: {
+        "Mirror Park Blvd.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "E. Mirror Dr.",
+        },
+        "E. Mirror Dr.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Nikola Ave.",
+        },
+        "Nikola Ave.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "E. Mirror Dr.",
+        },
+      },
+    },
   },
   {
     postal: "574",
@@ -13147,25 +13147,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "W. Mirror Dr.": {
-                crossStreet1: "Mirror Pl.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Mirror Pl.": {
-                crossStreet1: "West Mirror Dr.",
-                crossStreet2: "Nikola Ave."
-            },
-            "Nikola Ave.": {
-                crossStreet1: "Mirror Pl.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Nikola Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "W. Mirror Dr.": {
+          crossStreet1: "Mirror Pl.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Mirror Pl.": {
+          crossStreet1: "West Mirror Dr.",
+          crossStreet2: "Nikola Ave.",
+        },
+        "Nikola Ave.": {
+          crossStreet1: "Mirror Pl.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Nikola Ave.",
+        },
+      },
+    },
   },
   {
     postal: "575",
@@ -13175,25 +13175,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Nikola Ave.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Bridge St.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "W. Mirror Dr."
-            },
-            "W. Mirror Dr.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "W. Mirror Dr."
-            }
-        }
-    }
+      availableRoads: {
+        "Nikola Ave.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Bridge St.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "W. Mirror Dr.",
+        },
+        "W. Mirror Dr.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "W. Mirror Dr.",
+        },
+      },
+    },
   },
   {
     postal: "576",
@@ -13203,21 +13203,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "W. Mirror Dr.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "Mirror Pl."
-            },
-            "Nikola Ave.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Mirror Pl."
-            },
-            "Mirror Pl.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Nikola Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "W. Mirror Dr.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "Mirror Pl.",
+        },
+        "Nikola Ave.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Mirror Pl.",
+        },
+        "Mirror Pl.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Nikola Ave.",
+        },
+      },
+    },
   },
   {
     postal: "577",
@@ -13227,21 +13227,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Nikola Ave.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Bridge St."
-            },
-            "W. Mirror Dr.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "Bridge St."
-            },
-            "Bridge St.": {
-                crossStreet1: "Nikola Ave.",
-                crossStreet2: "W. Mirror Dr."
-            }
-        }
-    }
+      availableRoads: {
+        "Nikola Ave.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Bridge St.",
+        },
+        "W. Mirror Dr.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "Bridge St.",
+        },
+        "Bridge St.": {
+          crossStreet1: "Nikola Ave.",
+          crossStreet2: "W. Mirror Dr.",
+        },
+      },
+    },
   },
   {
     postal: "578",
@@ -13251,17 +13251,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Popular St.": {
-                crossStreet1: "Glory Way",
-                crossStreet2: "Supply St."
-            },
-            "Interstate 2": {
-                crossStreet1: "Interstate 2 MM03.00",
-                crossStreet2: "Interstate 2 MM02.00"
-            }
-        }
-    }
+      availableRoads: {
+        "Popular St.": {
+          crossStreet1: "Glory Way",
+          crossStreet2: "Supply St.",
+        },
+        "Interstate 2": {
+          crossStreet1: "Interstate 2 MM03.00",
+          crossStreet2: "Interstate 2 MM02.00",
+        },
+      },
+    },
   },
   {
     postal: "579",
@@ -13271,11 +13271,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Glory Way",
-        crossStreet1: "Popular St.",
-        crossStreet2: "Bridge St."
-    }
+      autoFill: true,
+      mainStreet: "Glory Way",
+      crossStreet1: "Popular St.",
+      crossStreet2: "Bridge St.",
+    },
   },
   {
     postal: "580",
@@ -13285,21 +13285,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "W. Mirror Dr.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Bridge St.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Glory Way"
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Glory Way"
-            }
-        }
-    }
+      availableRoads: {
+        "W. Mirror Dr.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Bridge St.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Glory Way",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Glory Way",
+        },
+      },
+    },
   },
   {
     postal: "581",
@@ -13309,21 +13309,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Mirror Park Blvd.": {
-                crossStreet1: "W. Mirror Dr.",
-                crossStreet2: "Glory Way"
-            },
-            "Reservoir Access Rd.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Tataviam Dr."
-            },
-            "E. Mirror Dr.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Nikola Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Mirror Park Blvd.": {
+          crossStreet1: "W. Mirror Dr.",
+          crossStreet2: "Glory Way",
+        },
+        "Reservoir Access Rd.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Tataviam Dr.",
+        },
+        "E. Mirror Dr.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Nikola Ave.",
+        },
+      },
+    },
   },
   {
     postal: "582",
@@ -13333,11 +13333,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Casino Access Rd.",
-        crossStreet1: "Vinewood Park Dr.",
-        crossStreet2: "Dead End"
-    }
+      autoFill: true,
+      mainStreet: "Casino Access Rd.",
+      crossStreet1: "Vinewood Park Dr.",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "583",
@@ -13347,11 +13347,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Casino Access Rd.",
-        crossStreet1: "Vinewood Park Dr.",
-        crossStreet2: "Dead End"
-    }
+      autoFill: true,
+      mainStreet: "Casino Access Rd.",
+      crossStreet1: "Vinewood Park Dr.",
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "584",
@@ -13361,17 +13361,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 1": {
-                crossStreet1: "Vinewood Park Dr.",
-                crossStreet2: "Tataviam Dr."
-            },
-            "Vinewood Park Dr.": {
-                crossStreet1: "Interstate 1 NB",
-                crossStreet2: "Casino Access Rd."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 1": {
+          crossStreet1: "Vinewood Park Dr.",
+          crossStreet2: "Tataviam Dr.",
+        },
+        "Vinewood Park Dr.": {
+          crossStreet1: "Interstate 1 NB",
+          crossStreet2: "Casino Access Rd.",
+        },
+      },
+    },
   },
   {
     postal: "585",
@@ -13381,11 +13381,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Vinewood Park Dr.",
-        crossStreet1: "Mirror Park Blvd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Vinewood Park Dr.",
+      crossStreet1: "Mirror Park Blvd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "586",
@@ -13395,11 +13395,11 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        autoFill: true,
-        mainStreet: "Vinewood Park Dr.",
-        crossStreet1: "Mirror Park Blvd.",
-        crossStreet2: "Interstate 1 NB"
-    }
+      autoFill: true,
+      mainStreet: "Vinewood Park Dr.",
+      crossStreet1: "Mirror Park Blvd.",
+      crossStreet2: "Interstate 1 NB",
+    },
   },
   {
     postal: "587",
@@ -13409,17 +13409,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Mirror Park Blvd.": {
-                crossStreet1: "Vinewood Park Dr.",
-                crossStreet2: "Tangerine St."
-            },
-            "Vinewood Park Dr.": {
-                crossStreet1: "Mirror Park Blvd.",
-                crossStreet2: "Casino Access Rd."
-            }
-        }
-    }
+      availableRoads: {
+        "Mirror Park Blvd.": {
+          crossStreet1: "Vinewood Park Dr.",
+          crossStreet2: "Tangerine St.",
+        },
+        "Vinewood Park Dr.": {
+          crossStreet1: "Mirror Park Blvd.",
+          crossStreet2: "Casino Access Rd.",
+        },
+      },
+    },
   },
   {
     postal: "588",
@@ -13429,25 +13429,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Bridge St.": {
-                crossStreet1: "York St.",
-                crossStreet2: "Tangerine St."
-            },
-            "York St.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "York St.",
-                crossStreet2: "Tangerine St."
-            },
-            "Tangerine St.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Bridge St.": {
+          crossStreet1: "York St.",
+          crossStreet2: "Tangerine St.",
+        },
+        "York St.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "York St.",
+          crossStreet2: "Tangerine St.",
+        },
+        "Tangerine St.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "589",
@@ -13457,25 +13457,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Bridge St.": {
-                crossStreet1: "Tangerine St.",
-                crossStreet2: "Glory Way"
-            },
-            "Tangerine St.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "Tangerine St.",
-                crossStreet2: "Glory Way"
-            },
-            "Glory Way": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Bridge St.": {
+          crossStreet1: "Tangerine St.",
+          crossStreet2: "Glory Way",
+        },
+        "Tangerine St.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "Tangerine St.",
+          crossStreet2: "Glory Way",
+        },
+        "Glory Way": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "590",
@@ -13485,21 +13485,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Glory Way": {
-                crossStreet1: "Popular St.",
-                crossStreet2: "Bridge St."
-            },
-            "Bridge St.": {
-                crossStreet1: "Tangerine St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Interstate 1 NB": {
-                crossStreet1: "Popular St. Entrance",
-                crossStreet2: "Interstate 1 MM01.00"
-            }
-        }
-    }
+      availableRoads: {
+        "Glory Way": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Bridge St.",
+        },
+        "Bridge St.": {
+          crossStreet1: "Tangerine St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Interstate 1 NB": {
+          crossStreet1: "Popular St. Entrance",
+          crossStreet2: "Interstate 1 MM01.00",
+        },
+      },
+    },
   },
   {
     postal: "591",
@@ -13509,25 +13509,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "1", "6", "8", "5", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Bridge St.": {
-                crossStreet1: "Elgin Ave.",
-                crossStreet2: "York St."
-            },
-            "Mirror Park Blvd.": {
-                crossStreet1: "Elgin Ave.",
-                crossStreet2: "York St."
-            },
-            "York St.": {
-                crossStreet1: "Bridge St.",
-                crossStreet2: "Mirror Park Blvd."
-            },
-            "Interstate 1": {
-                crossStreet1: "Popular St.",
-                crossStreet2: "Interstate 1 MM01.00"
-            }
-        }
-    }
+      availableRoads: {
+        "Bridge St.": {
+          crossStreet1: "Elgin Ave.",
+          crossStreet2: "York St.",
+        },
+        "Mirror Park Blvd.": {
+          crossStreet1: "Elgin Ave.",
+          crossStreet2: "York St.",
+        },
+        "York St.": {
+          crossStreet1: "Bridge St.",
+          crossStreet2: "Mirror Park Blvd.",
+        },
+        "Interstate 1": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Interstate 1 MM01.00",
+        },
+      },
+    },
   },
   {
     postal: "592",
@@ -13537,25 +13537,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Vinewood Blvd.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Meteor St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            },
-            "Clinton Ave.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Elgin Ave.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Vinewood Blvd.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+        "Clinton Ave.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Elgin Ave.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+      },
+    },
   },
   {
     postal: "593",
@@ -13565,25 +13565,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Vinewood Blvd.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Power St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            },
-            "Clinton Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Meteor St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Vinewood Blvd.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Power St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+        "Clinton Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+      },
+    },
   },
   {
     postal: "594",
@@ -13593,21 +13593,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Clinton Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Alta St.": {
-                crossStreet1: "Clinton Ave.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Clinton Ave.",
-                crossStreet2: "Alta St."
-            }
-        }
-    }
+      availableRoads: {
+        "Clinton Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Clinton Ave.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Clinton Ave.",
+          crossStreet2: "Alta St.",
+        },
+      },
+    },
   },
   {
     postal: "595",
@@ -13617,21 +13617,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Clinton Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Clinton Ave.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Clinton Ave.",
-                crossStreet2: "Las Lagunas Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Clinton Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Clinton Ave.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Clinton Ave.",
+          crossStreet2: "Las Lagunas Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "596",
@@ -13641,25 +13641,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Vinewood Blvd.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Alta St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            },
-            "Clinton Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Vinewood Blvd.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+        "Clinton Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+      },
+    },
   },
   {
     postal: "597",
@@ -13669,25 +13669,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Vinewood Blvd.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            },
-            "Clinton Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Vinewood Blvd.",
-                crossStreet2: "Clinton Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Vinewood Blvd.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+        "Clinton Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Vinewood Blvd.",
+          crossStreet2: "Clinton Ave.",
+        },
+      },
+    },
   },
   {
     postal: "598",
@@ -13697,21 +13697,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Vinewood Blvd.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Vinewood Blvd.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "599",
@@ -13721,21 +13721,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Alta St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Vinewood Blvd.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Alta St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Vinewood Blvd.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "600",
@@ -13745,21 +13745,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Power St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Vinewood Blvd.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Meteor St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Power St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Vinewood Blvd.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "601",
@@ -13769,21 +13769,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Meteor St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Vinewood Blvd.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Elgin Ave.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Meteor St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Vinewood Blvd.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Elgin Ave.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "602",
@@ -13793,25 +13793,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 1": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Interstate 1 MM01.00"
-            },
-            "Elgin Ave. [S]": {
-                crossStreet1: "Popular St.",
-                crossStreet2: "Spanish Ave."
-            },
-            "Elgin Ave. [N]": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Bridge St."
-            },
-            "Spanish Ave.": {
-                crossStreet1: "Elgin Ave.",
-                crossStreet2: "Meteor St."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 1": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Interstate 1 MM01.00",
+        },
+        "Elgin Ave. [S]": {
+          crossStreet1: "Popular St.",
+          crossStreet2: "Spanish Ave.",
+        },
+        "Elgin Ave. [N]": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Bridge St.",
+        },
+        "Spanish Ave.": {
+          crossStreet1: "Elgin Ave.",
+          crossStreet2: "Meteor St.",
+        },
+      },
+    },
   },
   {
     postal: "603",
@@ -13821,21 +13821,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Spanish Ave.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Meteor St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Elgin Ave.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Bridge St."
-            }
-        }
-    }
+      availableRoads: {
+        "Spanish Ave.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Elgin Ave.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Bridge St.",
+        },
+      },
+    },
   },
   {
     postal: "604",
@@ -13845,21 +13845,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Spanish Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Power St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Meteor St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Spanish Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Power St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "605",
@@ -13869,21 +13869,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Spanish Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Alta St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Power St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Spanish Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Power St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "606",
@@ -13893,21 +13893,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Spanish Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            },
-            "Alta St.": {
-                crossStreet1: "Spanish Ave.",
-                crossStreet2: "Vinewood Blvd."
-            }
-        }
-    }
+      availableRoads: {
+        "Spanish Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+        "Alta St.": {
+          crossStreet1: "Spanish Ave.",
+          crossStreet2: "Vinewood Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "607",
@@ -13917,25 +13917,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Hawick Ave.": {
-                crossStreet1: "Unknown Rd.",
-                crossStreet2: "Alta St."
-            },
-            "Unknown Rd.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            },
-            "Spanish Ave.": {
-                crossStreet1: "Unknown Rd.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Hawick Ave.": {
+          crossStreet1: "Unknown Rd.",
+          crossStreet2: "Alta St.",
+        },
+        "Unknown Rd.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+        "Spanish Ave.": {
+          crossStreet1: "Unknown Rd.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "608",
@@ -13945,25 +13945,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Hawick Ave.": {
-                crossStreet1: "Alta Pl.",
-                crossStreet2: "Power St."
-            },
-            "Alta Pl.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            },
-            "Spanish Ave.": {
-                crossStreet1: "Alta Pl.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Hawick Ave.": {
+          crossStreet1: "Alta Pl.",
+          crossStreet2: "Power St.",
+        },
+        "Alta Pl.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+        "Spanish Ave.": {
+          crossStreet1: "Alta Pl.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "609",
@@ -13973,25 +13973,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Hawick Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Power St.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            },
-            "Spanish Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Meteor St.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Hawick Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Power St.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+        "Spanish Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "610",
@@ -14001,25 +14001,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Hawick Ave.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Meteor St.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            },
-            "Spanish Ave.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Elgin Ave.": {
-                crossStreet1: "Hawick Ave.",
-                crossStreet2: "Spanish Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Hawick Ave.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+        "Spanish Ave.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Elgin Ave.": {
+          crossStreet1: "Hawick Ave.",
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "611",
@@ -14029,17 +14029,17 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 2": {
-                crossStreet1: "Interstate 2 MM02.00",
-                crossStreet2: "Interstate 2 MM01.00"
-            },
-            "Interstate 1": {
-                crossStreet1: "Integrity Way",
-                crossStreet2: "Interstate 1 MM01.00"
-            },
-        }
-    }
+      availableRoads: {
+        "Interstate 2": {
+          crossStreet1: "Interstate 2 MM02.00",
+          crossStreet2: "Interstate 2 MM01.00",
+        },
+        "Interstate 1": {
+          crossStreet1: "Integrity Way",
+          crossStreet2: "Interstate 1 MM01.00",
+        },
+      },
+    },
   },
   {
     postal: "612",
@@ -14049,21 +14049,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Elgin Ave.": {
-                crossStreet1: "Meteor St.",
-                crossStreet2: "Hawick Ave."
-            },
-            "Meteor St.": {
-                crossStreet1: "Elgin Ave.",
-                crossStreet2: "Hawick Ave."
-            },
-            "Hawick Ave.": {
-                crossStreet1: "Elgin Ave.",
-                crossStreet2: "Meteor St."
-            }
-        }
-    }
+      availableRoads: {
+        "Elgin Ave.": {
+          crossStreet1: "Meteor St.",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Elgin Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Hawick Ave.": {
+          crossStreet1: "Elgin Ave.",
+          crossStreet2: "Meteor St.",
+        },
+      },
+    },
   },
   {
     postal: "613",
@@ -14073,25 +14073,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 2": {
-                crossStreet1: "Interstate 2 MM02.00",
-                crossStreet2: "Interstate 2 MM01.00"
-            },
-            "Power St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Swiss St."
-            },
-            "Occupation Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Elgin Ave."
-            },
-            "Elgin Ave.": {
-                crossStreet1: "Swiss St.",
-                crossStreet2: "Occupation Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 2": {
+          crossStreet1: "Interstate 2 MM02.00",
+          crossStreet2: "Interstate 2 MM01.00",
+        },
+        "Power St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Swiss St.",
+        },
+        "Occupation Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Elgin Ave.",
+        },
+        "Elgin Ave.": {
+          crossStreet1: "Swiss St.",
+          crossStreet2: "Occupation Ave.",
+        },
+      },
+    },
   },
   {
     postal: "614",
@@ -14101,25 +14101,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Occupation Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Power St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            },
-            "Hawick Ave.": {
-                crossStreet1: "Power St.",
-                crossStreet2: "Meteor St."
-            },
-            "Meteor St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Occupation Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Power St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Hawick Ave.": {
+          crossStreet1: "Power St.",
+          crossStreet2: "Meteor St.",
+        },
+        "Meteor St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "615",
@@ -14129,25 +14129,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 2": {
-                crossStreet1: "Interstate 2 MM02.00",
-                crossStreet2: "Interstate 2 MM01.00"
-            },
-            "Alta St.": {
-                crossStreet1: "San Andreas Ave.",
-                crossStreet2: "Occupation Ave."
-            },
-            "Occupation Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Swiss St.",
-                crossStreet2: "Occupation Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 2": {
+          crossStreet1: "Interstate 2 MM02.00",
+          crossStreet2: "Interstate 2 MM01.00",
+        },
+        "Alta St.": {
+          crossStreet1: "San Andreas Ave.",
+          crossStreet2: "Occupation Ave.",
+        },
+        "Occupation Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Swiss St.",
+          crossStreet2: "Occupation Ave.",
+        },
+      },
+    },
   },
   {
     postal: "616",
@@ -14157,25 +14157,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Occupation Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Alta St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            },
-            "Hawick Ave.": {
-                crossStreet1: "Alta St.",
-                crossStreet2: "Power St."
-            },
-            "Power St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Occupation Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Hawick Ave.": {
+          crossStreet1: "Alta St.",
+          crossStreet2: "Power St.",
+        },
+        "Power St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "617",
@@ -14185,25 +14185,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Occupation Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            },
-            "Hawick Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Occupation Ave.",
-                crossStreet2: "Hawick Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Occupation Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Hawick Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Occupation Ave.",
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "618",
@@ -14213,25 +14213,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Interstate 2": {
-                crossStreet1: "Interstate 2 MM02.00",
-                crossStreet2: "Interstate 2 MM01.00"
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Dorset Dr.",
-                crossStreet2: "Occupation Ave."
-            },
-            "Occupation Ave.": {
-                crossStreet1: "Las Lagunas Blvd.",
-                crossStreet2: "Alta St."
-            },
-            "Alta St.": {
-                crossStreet1: "Integrity Way",
-                crossStreet2: "Occupation Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Interstate 2": {
+          crossStreet1: "Interstate 2 MM02.00",
+          crossStreet2: "Interstate 2 MM01.00",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Dorset Dr.",
+          crossStreet2: "Occupation Ave.",
+        },
+        "Occupation Ave.": {
+          crossStreet1: "Las Lagunas Blvd.",
+          crossStreet2: "Alta St.",
+        },
+        "Alta St.": {
+          crossStreet1: "Integrity Way",
+          crossStreet2: "Occupation Ave.",
+        },
+      },
+    },
   },
   {
     postal: "619",
@@ -14241,21 +14241,21 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "San Vitus Blvd.": {
-                crossStreet1: "Dorset Dr.",
-                crossStreet2: "Carcer Way"
-            },
-            "Carcer Way": {
-                crossStreet1: "San Vitus Blvd.",
-                crossStreet2: "Las Lagunas Blvd."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Dorset Dr.",
-                crossStreet2: "Carcer Way"
-            }
-        }
-    }
+      availableRoads: {
+        "San Vitus Blvd.": {
+          crossStreet1: "Dorset Dr.",
+          crossStreet2: "Carcer Way",
+        },
+        "Carcer Way": {
+          crossStreet1: "San Vitus Blvd.",
+          crossStreet2: "Las Lagunas Blvd.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Dorset Dr.",
+          crossStreet2: "Carcer Way",
+        },
+      },
+    },
   },
   {
     postal: "620",
@@ -14265,25 +14265,25 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "10", "7", "6", "8", "2", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-        availableRoads: {
-            "Carcer Way": {
-                crossStreet1: "San Vitus Blvd.",
-                crossStreet2: "Las Lagunas Blvd."
-            },
-            "San Vitus Blvd.": {
-                crossStreet1: "Carcer Way",
-                crossStreet2: "Hawick Ave."
-            },
-            "Hawick Ave.": {
-                crossStreet1: "San Vitus Blvd.",
-                crossStreet2: "Las Lagunas Blvd."
-            },
-            "Las Lagunas Blvd.": {
-                crossStreet1: "Carcer Way",
-                crossStreet2: "Hawick Ave."
-            }
-        }
-    }
+      availableRoads: {
+        "Carcer Way": {
+          crossStreet1: "San Vitus Blvd.",
+          crossStreet2: "Las Lagunas Blvd.",
+        },
+        "San Vitus Blvd.": {
+          crossStreet1: "Carcer Way",
+          crossStreet2: "Hawick Ave.",
+        },
+        "Hawick Ave.": {
+          crossStreet1: "San Vitus Blvd.",
+          crossStreet2: "Las Lagunas Blvd.",
+        },
+        "Las Lagunas Blvd.": {
+          crossStreet1: "Carcer Way",
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "621",
@@ -14296,18 +14296,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Hawick Ave.": {
           crossStreet1: "San Vitus Blvd.",
-          crossStreet2: "Las Lagunas Blvd."
+          crossStreet2: "Las Lagunas Blvd.",
         },
         "Spanish Ave.": {
           crossStreet1: "San Vitus Blvd.",
-          crossStreet2: "Las Lagunas Blvd."
+          crossStreet2: "Las Lagunas Blvd.",
         },
         "Las Lagunas Blvd.": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "622",
@@ -14320,14 +14320,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "San Vitus Blvd.": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "San Vitus Blvd.",
-          crossStreet2: "N. Archer Ave."
-        }
-      }
-    }
+          crossStreet2: "N. Archer Ave.",
+        },
+      },
+    },
   },
   {
     postal: "623",
@@ -14340,22 +14340,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "N. Archer Ave.",
-          crossStreet2: "Las Lagunas Blvd."
+          crossStreet2: "Las Lagunas Blvd.",
         },
         "N. Archer Ave.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
+          crossStreet2: "Eclipse Blvd.",
         },
         "Eclipse Blvd.": {
           crossStreet1: "N. Archer Ave.",
-          crossStreet2: "Las Lagunas Blvd."
+          crossStreet2: "Las Lagunas Blvd.",
         },
         "Las Lagunas Blvd.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "624",
@@ -14368,22 +14368,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "San Vitus Blvd.",
-          crossStreet2: "N. Archer Ave."
+          crossStreet2: "N. Archer Ave.",
         },
         "San Vitus Blvd.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
+          crossStreet2: "Eclipse Blvd.",
         },
         "Eclipse Blvd.": {
           crossStreet1: "San Vitus Blvd.",
-          crossStreet2: "N. Archer Ave."
+          crossStreet2: "N. Archer Ave.",
         },
         "N. Archer Ave.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "625",
@@ -14396,18 +14396,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "Eclipse Blvd.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "San Vitus Blvd.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "626",
@@ -14420,22 +14420,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Hawick Ave.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "Eastbourne Way": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "San Vitus Blvd.": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "627",
@@ -14448,22 +14448,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carcer Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "Eastbourne Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "Hawick Ave."
+          crossStreet2: "Hawick Ave.",
         },
         "Hawick Ave.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "San Vitus Blvd.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Hawick Ave."
-        }
-      }
-    }
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "628",
@@ -14476,18 +14476,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Abe Milton Pkwy.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "Carcer Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "San Vitus Blvd.": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "Carcer Way."
-        }
-      }
-    }
+          crossStreet2: "Carcer Way.",
+        },
+      },
+    },
   },
   {
     postal: "629",
@@ -14500,18 +14500,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dorset Dr.": {
           crossStreet1: "Dorset Pl.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Dorset Pl.": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Abe Milton Pkwy.": {
           crossStreet1: "Dorset Pl.",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "630",
@@ -14524,18 +14524,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "Vinewood Exit"
+          crossStreet2: "Vinewood Exit",
         },
         "Interstate 5": {
           crossStreet1: "Interstate 2",
-          crossStreet2: "Interstate 4 Entrance"
+          crossStreet2: "Interstate 4 Entrance",
         },
         "Dorset Dr.": {
           crossStreet1: "Dorset Pl.",
-          crossStreet2: "Abe Milton Pkwy."
-        }
-      }
-    }
+          crossStreet2: "Abe Milton Pkwy.",
+        },
+      },
+    },
   },
   {
     postal: "631",
@@ -14548,18 +14548,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "Interstate 2 MM02.."
+          crossStreet2: "Interstate 2 MM02..",
         },
         "Palomino Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "632",
@@ -14572,26 +14572,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dorset Dr.": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Dorset Pl."
+          crossStreet2: "Dorset Pl.",
         },
         "Rockford Dr.": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Carcer Way"
+          crossStreet2: "Carcer Way",
         },
         "Carcer Way": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Abe Milton Pkwy.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Dorset Pl."
+          crossStreet2: "Dorset Pl.",
         },
         "Dorset Pl.": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "633",
@@ -14604,18 +14604,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carcer Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "San Vitus Blvd."
+          crossStreet2: "San Vitus Blvd.",
         },
         "Abe Milton Pkwy.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "Hawick Ave."
-        }
-      }
-    }
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "634",
@@ -14628,22 +14628,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Abe Milton Pkwy.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "Milton Rd."
+          crossStreet2: "Milton Rd.",
         },
         "Milton Rd.": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "Hawick Ave."
+          crossStreet2: "Hawick Ave.",
         },
         "Hawick Ave.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Abe Milton Pkwy.",
-          crossStreet2: "Hawick Ave."
-        }
-      }
-    }
+          crossStreet2: "Hawick Ave.",
+        },
+      },
+    },
   },
   {
     postal: "635",
@@ -14656,22 +14656,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Hawick Ave.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Milton Rd.": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Hawick Ave.",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "636",
@@ -14684,18 +14684,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Milton Rd.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "Eclipse Blvd."
+          crossStreet2: "Eclipse Blvd.",
         },
         "Eclipse Blvd.": {
           crossStreet1: "Milton Rd.",
-          crossStreet2: "San Vitus Blvd."
-        }
-      }
-    }
+          crossStreet2: "San Vitus Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "637",
@@ -14708,22 +14708,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Strangeways Dr.",
-          crossStreet2: "Milton Rd."
+          crossStreet2: "Milton Rd.",
         },
         "Strangeways Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Strangeways Dr.",
-          crossStreet2: "Milton Rd."
+          crossStreet2: "Milton Rd.",
         },
         "Milton Rd.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "638",
@@ -14736,22 +14736,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Strangeways Dr.",
-          crossStreet2: "Milton Rd."
+          crossStreet2: "Milton Rd.",
         },
         "Strangeways Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Strangeways Dr.",
-          crossStreet2: "Milton Rd."
+          crossStreet2: "Milton Rd.",
         },
         "Milton Rd.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "639",
@@ -14764,18 +14764,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Eastbourne Way": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Rockford Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Abe Milton Pkwy.": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Eastbourne Way"
-        }
-      }
-    }
+          crossStreet2: "Eastbourne Way",
+        },
+      },
+    },
   },
   {
     postal: "640",
@@ -14788,22 +14788,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carcer Way": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Rockford Dr.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Abe Milton Pkwy."
+          crossStreet2: "Abe Milton Pkwy.",
         },
         "Abe Milton Pkwy.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
-        }
-      }
-    }
+          crossStreet2: "Eastbourne Way",
+        },
+      },
+    },
   },
   {
     postal: "641",
@@ -14816,22 +14816,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dorset Dr.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Carcer Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Carcer Way"
-        }
-      }
-    }
+          crossStreet2: "Carcer Way",
+        },
+      },
+    },
   },
   {
     postal: "642",
@@ -14844,22 +14844,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carcer Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
-        }
-      }
-    }
+          crossStreet2: "Eastbourne Way",
+        },
+      },
+    },
   },
   {
     postal: "643",
@@ -14872,22 +14872,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Eastbourne Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "S. Blvd. Del Perro"
+          crossStreet2: "S. Blvd. Del Perro",
         },
         "S. Blvd. Del Perro": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "S. Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "S. Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "644",
@@ -14900,26 +14900,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Caesars Pl.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Caesars Pl.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "645",
@@ -14932,22 +14932,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Strangeways Dr."
+          crossStreet2: "Strangeways Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Strangeways Dr."
+          crossStreet2: "Strangeways Dr.",
         },
         "Strangeways Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "646",
@@ -14960,22 +14960,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Strangeways Dr."
+          crossStreet2: "Strangeways Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Rockford Dr.",
-          crossStreet2: "Strangeways Dr."
+          crossStreet2: "Strangeways Dr.",
         },
         "Strangeways Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "647",
@@ -14988,26 +14988,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "Edwood Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Rockford Dr."
+          crossStreet2: "Rockford Dr.",
         },
         "Rockford Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "648",
@@ -15020,26 +15020,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Spanish Ave.": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Mad Wayne Thunder Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "Steele Way": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Spanish Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "649",
@@ -15052,26 +15052,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Mad Wayne Thunder Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Caesars Pl.": {
           crossStreet1: "Portola Dr.",
-          crossStreet2: "Spanish Ave."
+          crossStreet2: "Spanish Ave.",
         },
         "Spanish Ave.": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Spanish Ave."
-        }
-      }
-    }
+          crossStreet2: "Spanish Ave.",
+        },
+      },
+    },
   },
   {
     postal: "650",
@@ -15084,22 +15084,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dorset Dr.": {
           crossStreet1: "S. Blvd. Del Perro",
-          crossStreet2: "Mad Wayne Thunder Dr."
+          crossStreet2: "Mad Wayne Thunder Dr.",
         },
         "S. Blvd. Del Perro": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Mad Wayne Thunder Dr."
+          crossStreet2: "Mad Wayne Thunder Dr.",
         },
         "Mad Wayne Thunder Dr.": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "S. Blvd. Del Perro"
+          crossStreet2: "S. Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Mad Wayne Thunder Dr."
-        }
-      }
-    }
+          crossStreet2: "Mad Wayne Thunder Dr.",
+        },
+      },
+    },
   },
   {
     postal: "651",
@@ -15112,22 +15112,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Eastbourne Way": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Mad Wayne Thunder Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "S. Blvd. Del Perro"
+          crossStreet2: "S. Blvd. Del Perro",
         },
         "S. Blvd. Del Perro": {
           crossStreet1: "Mad Wayne Thunder Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "S. Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "S. Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "652",
@@ -15140,22 +15140,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dorset Dr.": {
           crossStreet1: "Eastbourne Way",
-          crossStreet2: "Carcer Way"
+          crossStreet2: "Carcer Way",
         },
         "Eastbourne Way": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Portola Dr."
+          crossStreet2: "Portola Dr.",
         },
         "Portola Dr.": {
           crossStreet1: "Carcer Way",
-          crossStreet2: "Eastbourne Way"
+          crossStreet2: "Eastbourne Way",
         },
         "Carcer Way": {
           crossStreet1: "Dorset Dr.",
-          crossStreet2: "Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "653",
@@ -15168,18 +15168,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "Interstate 2 MM02.00"
+          crossStreet2: "Interstate 2 MM02.00",
         },
         "Dorset Dr.": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Interstate 2 WB Exit",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "654",
@@ -15192,18 +15192,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "Interstate 2 MM02.00"
+          crossStreet2: "Interstate 2 MM02.00",
         },
         "Movie Star Way": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Heritage Way"
+          crossStreet2: "Heritage Way",
         },
         "Heritage Way": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "655",
@@ -15216,22 +15216,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Heritage Way": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Movie Star Way": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Marathon Ave."
+          crossStreet2: "Marathon Ave.",
         },
         "Marathon Ave.": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Marathon Ave."
-        }
-      }
-    }
+          crossStreet2: "Marathon Ave.",
+        },
+      },
+    },
   },
   {
     postal: "656",
@@ -15244,26 +15244,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Movie Star Way": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "S. Blvd. Del Perro"
+          crossStreet2: "S. Blvd. Del Perro",
         },
         "S. Blvd. Del Perro": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "S. Blvd. Del Perro"
+          crossStreet2: "S. Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "S. Blvd. Del Perro",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "657",
@@ -15277,7 +15277,7 @@ export const postalData: IPostal[] = [
       mainStreet: "Dorset Dr.",
       crossStreet1: "Blvd. Del Perro",
       crossStreet2: "W. Eclipse Blvd.",
-    }
+    },
   },
   {
     postal: "658",
@@ -15290,14 +15290,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
 
   {
@@ -15311,18 +15311,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "S. Blvd. Del Perro": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "Movie Star Way": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "S. Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "S. Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "660",
@@ -15335,18 +15335,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Heritage Way": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "Marathon Ave.": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "Movie Star Way": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "Marathon Ave."
-        }
-      }
-    }
+          crossStreet2: "Marathon Ave.",
+        },
+      },
+    },
   },
   {
     postal: "661",
@@ -15359,18 +15359,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "Interstate 2 MM02.00"
+          crossStreet2: "Interstate 2 MM02.00",
         },
         "Heritage Way": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "Movie Star Way": {
           crossStreet1: "San Andreas Ave.",
           crossStreet2: "Heritage Way",
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     postal: "662",
@@ -15383,18 +15383,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Interstate 2 MM01.00",
-          crossStreet2: "Interstate 2 MM02.00"
+          crossStreet2: "Interstate 2 MM02.00",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Interstate 2 WB Exit",
-          crossStreet2: "Marathon Ave."
+          crossStreet2: "Marathon Ave.",
         },
         "Industry Passage": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Heritage Way"
-        }
-      }
-    }
+          crossStreet2: "Heritage Way",
+        },
+      },
+    },
   },
   {
     postal: "663",
@@ -15407,18 +15407,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "Heritage Way"
+          crossStreet2: "Heritage Way",
         },
         "Morningwood Blvd.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "S. Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "S. Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "664",
@@ -15431,14 +15431,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Morningwood Blvd.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "665",
@@ -15451,18 +15451,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Morningwood Blvd.": {
           crossStreet1: "Perth St.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Cougar Ave.": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "Morningwood Blvd.",
-          crossStreet2: "Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "666",
@@ -15475,22 +15475,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Cougar Ave.": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Dorset Dr.": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "Morningwood Blvd.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "667",
@@ -15503,22 +15503,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
+          crossStreet2: "Cougar Ave.",
         },
         "Perth St.": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "Morningwood Blvd.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
-        }
-      }
-    }
+          crossStreet2: "Cougar Ave.",
+        },
+      },
+    },
   },
   {
     postal: "668",
@@ -15531,22 +15531,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Morningwood Blvd."
+          crossStreet2: "Morningwood Blvd.",
         },
         "Morningwood Blvd.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "669",
@@ -15559,22 +15559,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Red Desert Ave.": {
           crossStreet1: "Prosperity St. Promenade",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "Prosperity St. Promenade": {
           crossStreet1: "Red Desert Ave.",
-          crossStreet2: "Marathon Ave."
+          crossStreet2: "Marathon Ave.",
         },
         "Marathon Ave.": {
           crossStreet1: "Prosperity St. Promenade",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Red Desert Ave.",
-          crossStreet2: "Marathon Ave." 
-        }
-      }
-    }
+          crossStreet2: "Marathon Ave.",
+        },
+      },
+    },
   },
   {
     postal: "670",
@@ -15587,22 +15587,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "Prosperity St.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "671",
@@ -15615,22 +15615,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "Prosperity St.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
+          crossStreet2: "Cougar Ave.",
         },
         "Cougar Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
-        }
-      }
-    }
+          crossStreet2: "Cougar Ave.",
+        },
+      },
+    },
   },
   {
     postal: "672",
@@ -15643,18 +15643,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Cougar Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "N. Rockford Dr."
+          crossStreet2: "N. Rockford Dr.",
         },
         "Prosperity St.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "673",
@@ -15667,8 +15667,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "W. Eclipse Blvd.",
       crossStreet1: "Playa Vista",
-      crossStreet2: "Prosperity St."
-    }
+      crossStreet2: "Prosperity St.",
+    },
   },
   {
     postal: "674",
@@ -15681,18 +15681,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Cougar Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "675",
@@ -15705,22 +15705,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Unknown Rd.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Unknown Rd.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
+          crossStreet2: "Cougar Ave.",
         },
         "Cougar Ave.": {
           crossStreet1: "Unknown Rd.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
-        }
-      }
-    }
+          crossStreet2: "Cougar Ave.",
+        },
+      },
+    },
   },
   {
     postal: "676",
@@ -15733,22 +15733,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Marathon Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Bay City Ave.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Blvd. Del Perro": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Marathon Ave.",
-          crossStreet2: "Blvd. Del Perro"
-        }
-      }
-    }
+          crossStreet2: "Blvd. Del Perro",
+        },
+      },
+    },
   },
   {
     postal: "677",
@@ -15761,22 +15761,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Red Desert Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St. Promenade"
+          crossStreet2: "Prosperity St. Promenade",
         },
         "Bay City Ave.": {
           crossStreet1: "Red Desert Ave.",
-          crossStreet2: "Marathon Ave."
+          crossStreet2: "Marathon Ave.",
         },
         "Marathon Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St. Promenade"
+          crossStreet2: "Prosperity St. Promenade",
         },
         "Prosperity St. Promenade": {
           crossStreet1: "Red Desert Ave.",
-          crossStreet2: "Marathon Ave." 
-        }
-      }
-    }
+          crossStreet2: "Marathon Ave.",
+        },
+      },
+    },
   },
   {
     postal: "678",
@@ -15789,22 +15789,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Blvd. Del Perro": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Bay City Ave.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Playa Vista"
+          crossStreet2: "Playa Vista",
         },
         "Cougar Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Unknown Rd."
+          crossStreet2: "Unknown Rd.",
         },
         "Unknown Rd.": {
           crossStreet1: "Blvd. Del Perro",
-          crossStreet2: "Cougar Ave."
-        }
-      }
-    }
+          crossStreet2: "Cougar Ave.",
+        },
+      },
+    },
   },
   {
     postal: "679",
@@ -15817,14 +15817,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Cougar Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Unknown Rd."
+          crossStreet2: "Unknown Rd.",
         },
         "Bay City Ave.": {
           crossStreet1: "Cougar Ave.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "680",
@@ -15837,22 +15837,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Equality Way Exit"
+          crossStreet2: "Equality Way Exit",
         },
         "Bay City Incline": {
           crossStreet1: "Interstate 2",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "Bay City Ave.": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Blvd. Del Perro"
+          crossStreet2: "Blvd. Del Perro",
         },
         "Playa Vista": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Bay City Ave."
-        }
-      }
-    }
+          crossStreet2: "Bay City Ave.",
+        },
+      },
+    },
   },
   {
     postal: "681",
@@ -15865,18 +15865,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Playa Vista": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Interstate 2"
+          crossStreet2: "Interstate 2",
         },
         "Bay City Ave.": {
           crossStreet1: "Playa Vista",
-          crossStreet2: "W. Eclipse Blvd."
-        }
-      }
-    }
+          crossStreet2: "W. Eclipse Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "682",
@@ -15889,18 +15889,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Equality Way Exit"
+          crossStreet2: "Equality Way Exit",
         },
         "Playa Vista": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "W. Eclipse Blvd.": {
           crossStreet1: "Interstate 2",
-          crossStreet2: "Playa Vista"
-        }
-      }
-    }
+          crossStreet2: "Playa Vista",
+        },
+      },
+    },
   },
   {
     postal: "683",
@@ -15913,8 +15913,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "W. Eclipse Blvd.",
       crossStreet1: "Interstate 2",
-      crossStreet2: "Bay City Ave."
-    }
+      crossStreet2: "Bay City Ave.",
+    },
   },
   {
     postal: "684",
@@ -15927,18 +15927,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "W. Eclipse Blvd.": {
           crossStreet1: "Interstate 2",
-          crossStreet2: "Playa Vista"
+          crossStreet2: "Playa Vista",
         },
         "Route 1": {
           crossStreet1: "Inesno Rd.",
-          crossStreet2: "W. Eclipse Blvd."
+          crossStreet2: "W. Eclipse Blvd.",
         },
         "Interstate 2": {
           crossStreet1: "W. Eclipse Blvd.",
-          crossStreet2: "Equality Way Exit"
-        }
-      }
-    }
+          crossStreet2: "Equality Way Exit",
+        },
+      },
+    },
   },
   {
     postal: "685",
@@ -15951,8 +15951,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Del Perro N. Beach",
       crossStreet1: "Not Found",
-      crossStreet2: "Not Found"
-    }
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "686",
@@ -15965,8 +15965,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Del Perro N. Beach",
       crossStreet1: "Not Found",
-      crossStreet2: "Not Found"
-    }
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "687",
@@ -15979,18 +15979,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Red Desert Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Del Perro Beach": {
           crossStreet1: "Not Found",
-          crossStreet2: "Not Found"
+          crossStreet2: "Not Found",
         },
         "Magellan Ave.": {
           crossStreet1: "Interstate 2",
-          crossStreet2: "Sand Castle Way"
-        }
-      }
-    }
+          crossStreet2: "Sand Castle Way",
+        },
+      },
+    },
   },
   {
     postal: "688",
@@ -16003,8 +16003,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Red Desert Ave.",
       crossStreet1: "Bay City Ave.",
-      crossStreet2: "Dead End"
-    }
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "689",
@@ -16017,22 +16017,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Del Perro S. Beach": {
           crossStreet1: "Not Found",
-          crossStreet2: "Not Found"
+          crossStreet2: "Not Found",
         },
         "Conquistador St.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Cortes St.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Magellan Ave.": {
           crossStreet1: "Vitus St.",
-          crossStreet2: "Sand Castle Way"
-        }
-      }
-    }
+          crossStreet2: "Sand Castle Way",
+        },
+      },
+    },
   },
   {
     postal: "690",
@@ -16045,22 +16045,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Del Perro S. Beach": {
           crossStreet1: "Not Found",
-          crossStreet2: "Not Found"
+          crossStreet2: "Not Found",
         },
         "Vitus St.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Magellan Ave.": {
           crossStreet1: "Vitus St.",
-          crossStreet2: "Palomino Ave."
-        }
-      }
-    }
+          crossStreet2: "Palomino Ave.",
+        },
+      },
+    },
   },
   {
     postal: "691",
@@ -16073,26 +16073,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Del Perro S. Beach": {
           crossStreet1: "Not Found",
-          crossStreet2: "Not Found" 
+          crossStreet2: "Not Found",
         },
         "Palomino Ave.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Aguja St.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Goma St.": {
           crossStreet1: "Dead End",
-          crossStreet2: "Magellan Ave."
+          crossStreet2: "Magellan Ave.",
         },
         "Magellan Ave.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Aguja St."
-        }
-      }
-    }
+          crossStreet2: "Aguja St.",
+        },
+      },
+    },
   },
   {
     postal: "692",
@@ -16105,8 +16105,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Del Perro S. Beach",
       crossStreet1: "Not Found",
-      crossStreet2: "Not Found"
-    }
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "693",
@@ -16119,18 +16119,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Melanoma St.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Magellan Ave.": {
           crossStreet1: "Goma St.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "Bay City Ave.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Dead End"
-        }
-      }
-    }
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "694",
@@ -16143,8 +16143,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Del Perro S. Beach",
       crossStreet1: "Not Found",
-      crossStreet2: "Not Found"
-    }
+      crossStreet2: "Not Found",
+    },
   },
   {
     postal: "695",
@@ -16157,26 +16157,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Goma St."
+          crossStreet2: "Goma St.",
         },
         "Magellan Ave.": {
           crossStreet1: "Goma St.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "Melanoma St.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
         "Tug St.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Goma St.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Bay City Ave."
+          crossStreet2: "Bay City Ave.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "696",
@@ -16189,22 +16189,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Goma St.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Aguja St.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Goma St."
+          crossStreet2: "Goma St.",
         },
         "Bay City Ave.": {
           crossStreet1: "Tug St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
-        }
-      }
-    }
+          crossStreet2: "Prosperity St.",
+        },
+      },
+    },
   },
   {
     postal: "697",
@@ -16217,22 +16217,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Invention Ct."
+          crossStreet2: "Invention Ct.",
         },
         "Invention Ct.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Invention Ct.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
-        }
-      }
-    }
+          crossStreet2: "Prosperity St.",
+        },
+      },
+    },
   },
   {
     postal: "698",
@@ -16245,22 +16245,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Invention Ct.",
-          crossStreet2: "Imagination Ct."
+          crossStreet2: "Imagination Ct.",
         },
         "Imagination Ct.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Imagination Ct.",
-          crossStreet2: "Invention Ct."
+          crossStreet2: "Invention Ct.",
         },
         "Invention Ct.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
-        }
-      }
-    }
+          crossStreet2: "Prosperity St.",
+        },
+      },
+    },
   },
   {
     postal: "699",
@@ -16273,22 +16273,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Imagination Ct.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Imagination Ct.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Imagination Ct.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
-        }
-      }
-    }
+          crossStreet2: "Prosperity St.",
+        },
+      },
+    },
   },
   {
     postal: "700",
@@ -16301,22 +16301,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Conquistador St.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St."
+          crossStreet2: "Prosperity St.",
         },
         "Prosperity St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Magellan Ave.",
-          crossStreet2: "Prosperity St."
-        }
-      }
-    }
+          crossStreet2: "Prosperity St.",
+        },
+      },
+    },
   },
   {
     postal: "701",
@@ -16329,18 +16329,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Sandcastle Way"
+          crossStreet2: "Sandcastle Way",
         },
         "Prosperity St. Promenade": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Red Desert Ave."
+          crossStreet2: "Red Desert Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St. Promenade"
-        }
-      }
-    }
+          crossStreet2: "Prosperity St. Promenade",
+        },
+      },
+    },
   },
   {
     postal: "702",
@@ -16353,18 +16353,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Bay City Ave.": {
           crossStreet1: "Sandcastle Way",
-          crossStreet2: "Red Desert Ave."
+          crossStreet2: "Red Desert Ave.",
         },
         "Red Desert Ave.": {
           crossStreet1: "Bay City Ave.",
-          crossStreet2: "Prosperity St. Promenade"
+          crossStreet2: "Prosperity St. Promenade",
         },
         "Prosperity St. Promenade": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Red Desert Ave."
-        }
-      }
-    }
+          crossStreet2: "Red Desert Ave.",
+        },
+      },
+    },
   },
   {
     postal: "703",
@@ -16377,18 +16377,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Prosperity St. Promenade": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Red Desert Ave."
+          crossStreet2: "Red Desert Ave.",
         },
         "N. Rockford Dr.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Red Desert Ave."
+          crossStreet2: "Red Desert Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Prosperity St. Promenade",
-          crossStreet2: "N. Rockford Dr." 
-        }
-      }
-    }
+          crossStreet2: "N. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "704",
@@ -16401,22 +16401,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Prosperity St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "S. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "705",
@@ -16429,18 +16429,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Prosperity St.": {
           crossStreet1: "Imagination Ct.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "Imagination Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "Dead End"
-        }
-      }
-    }
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "706",
@@ -16453,18 +16453,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Prosperity St.": {
           crossStreet1: "Invention Ct.",
-          crossStreet2: "Imagination Ct."
+          crossStreet2: "Imagination Ct.",
         },
         "Imagination Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Invention Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "S. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "707",
@@ -16477,18 +16477,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Prosperity St.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Invention Ct."
+          crossStreet2: "Invention Ct.",
         },
         "Invention Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "Palomino Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "S. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "708",
@@ -16501,8 +16501,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Palomino Ave.",
       crossStreet1: "Goma St.",
-      crossStreet2: "S. Rockford Dr."
-    }
+      crossStreet2: "S. Rockford Dr.",
+    },
   },
   {
     postal: "709",
@@ -16515,8 +16515,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tackle St.",
       crossStreet1: "S. Rockford Dr.",
-      crossStreet2: "Dead End"
-    }
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "710",
@@ -16529,18 +16529,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch Lundon St.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Greenwich Pkwy."
+          crossStreet2: "Greenwich Pkwy.",
         },
         "Greenwich Pkwy.": {
           crossStreet1: "Autopia Pkwy.",
-          crossStreet2: "Dutch Lundon St."
+          crossStreet2: "Dutch Lundon St.",
         },
         "Interstate 5": {
           crossStreet1: "I5 MM02.00",
-          crossStreet2: "Innocence Blvd. Exit"
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd. Exit",
+        },
+      },
+    },
   },
   {
     postal: "711",
@@ -16553,18 +16553,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch Lundon St.": {
           crossStreet1: "S. Arsenal St.",
-          crossStreet2: "Greenwich Pkwy."
+          crossStreet2: "Greenwich Pkwy.",
         },
         "S. Arsenal St.": {
           crossStreet1: "Dutch Lundon St.",
-          crossStreet2: "Muttiny Rd."
+          crossStreet2: "Muttiny Rd.",
         },
         "Interstate 5": {
           crossStreet1: "I5 MM02.00",
-          crossStreet2: "Innocence Blvd. Exit"
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd. Exit",
+        },
+      },
+    },
   },
   {
     postal: "712",
@@ -16577,18 +16577,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Shank St.": {
           crossStreet1: "Dutch Lundon St.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Dutch Lundon St.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "S. Arsenal St."
+          crossStreet2: "S. Arsenal St.",
         },
         "Greenwich Pkwy.": {
           crossStreet1: "Autopia Pkwy.",
-          crossStreet2: "Dutch Lundon St."
-        }
-      }
-    }
+          crossStreet2: "Dutch Lundon St.",
+        },
+      },
+    },
   },
   {
     postal: "713",
@@ -16601,18 +16601,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Tackle St.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Palomino Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Tackle St.",
-          crossStreet2: "Palomino Ave."
-        }
-      }
-    }
+          crossStreet2: "Palomino Ave.",
+        },
+      },
+    },
   },
   {
     postal: "714",
@@ -16625,18 +16625,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Invention Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Invention Ct."
+          crossStreet2: "Invention Ct.",
         },
         "Palomino Ave.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "S. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "715",
@@ -16649,18 +16649,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Imagination Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Invention Ct."
+          crossStreet2: "Invention Ct.",
         },
         "Invention Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
-        }
-      }
-    }
+          crossStreet2: "S. Rockford Dr.",
+        },
+      },
+    },
   },
   {
     postal: "716",
@@ -16673,18 +16673,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Imagination Ct.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Prosperity St.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Decker St.",
-          crossStreet2: "Vespucci Blvd."
-        }
-      }
-    }
+          crossStreet2: "Vespucci Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "717",
@@ -16697,18 +16697,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "I2 MM02.00"
+          crossStreet2: "I2 MM02.00",
         },
         "San Andreas Ave.": {
           crossStreet1: "N. Rockford Dr.",
-          crossStreet2: "Movie Star Way"
+          crossStreet2: "Movie Star Way",
         },
         "Movie Star Way": {
           crossStreet1: "Heritage Way",
-          crossStreet2: "San Andreas Ave."
-        }
-      }
-    }
+          crossStreet2: "San Andreas Ave.",
+        },
+      },
+    },
   },
   {
     postal: "718",
@@ -16721,18 +16721,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "San Andreas Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Decker St."
+          crossStreet2: "Decker St.",
         },
         "Decker St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Decker St."
-        }
-      }
-    }
+          crossStreet2: "Decker St.",
+        },
+      },
+    },
   },
   {
     postal: "719",
@@ -16745,18 +16745,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Vespucci Blvd.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Decker St."
+          crossStreet2: "Decker St.",
         },
         "Decker St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "S. Rockford Dr."
+          crossStreet2: "S. Rockford Dr.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Decker St."
-        }
-      }
-    }
+          crossStreet2: "Decker St.",
+        },
+      },
+    },
   },
   {
     postal: "720",
@@ -16769,22 +16769,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Decker St.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Decker St.",
-          crossStreet2: "Ginger St."
+          crossStreet2: "Ginger St.",
         },
         "Ginger St.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "S. Rockford Dr.": {
           crossStreet1: "Decker St.",
-          crossStreet2: "Ginger St."
-        }
-      }
-    }
+          crossStreet2: "Ginger St.",
+        },
+      },
+    },
   },
   {
     postal: "721",
@@ -16797,22 +16797,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "S. Rockford Dr.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Ginger St."
+          crossStreet2: "Ginger St.",
         },
         "Ginger St.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Lindsay Circus"
+          crossStreet2: "Lindsay Circus",
         },
         "Lindsay Circus": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Lindsay Circus"
-        }
-      }
-    }
+          crossStreet2: "Lindsay Circus",
+        },
+      },
+    },
   },
   {
     postal: "722",
@@ -16825,14 +16825,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "S. Rockford Dr.": {
           crossStreet1: "Tackle St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Lindsay Circus"
-        }
-      }
-    }
+          crossStreet2: "Lindsay Circus",
+        },
+      },
+    },
   },
   {
     postal: "723",
@@ -16845,14 +16845,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "S. Rockford Dr.": {
           crossStreet1: "Dutch Lundon St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Calais Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Adam's Apple Blvd."
-        }
-      }
-    }
+          crossStreet2: "Adam's Apple Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "724",
@@ -16865,14 +16865,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Calais Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Interstate 5"
-        }
-      }
-    }
+          crossStreet2: "Interstate 5",
+        },
+      },
+    },
   },
   {
     postal: "725",
@@ -16885,18 +16885,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Palomino Ave.": {
           crossStreet1: "S. Rockford Dr.",
-          crossStreet2: "Lindsay Circus"
+          crossStreet2: "Lindsay Circus",
         },
         "Lindsay Circus": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Calais Ave."
+          crossStreet2: "Calais Ave.",
         },
         "Calais Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Lindsay Circus"
-        }
-      }
-    }
+          crossStreet2: "Lindsay Circus",
+        },
+      },
+    },
   },
   {
     postal: "726",
@@ -16909,22 +16909,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Ginger St.": {
           crossStreet1: "Lindsay Circus",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Lindsay Circus",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Lindsay Circus": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
-        }
-      }
-    }
+          crossStreet2: "Palomino Ave.",
+        },
+      },
+    },
   },
   {
     postal: "727",
@@ -16937,22 +16937,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Decker St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Decker St.",
-          crossStreet2: "Ginger St."
+          crossStreet2: "Ginger St.",
         },
         "Ginger St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Decker St.",
-          crossStreet2: "Ginger St."
-        }
-      }
-    }
+          crossStreet2: "Ginger St.",
+        },
+      },
+    },
   },
   {
     postal: "728",
@@ -16965,18 +16965,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "I2 MM02.00"
+          crossStreet2: "I2 MM02.00",
         },
         "Movie Star Way": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Heritage Way"
+          crossStreet2: "Heritage Way",
         },
         "San Andreas Ave.": {
           crossStreet1: "Movie Star Way",
-          crossStreet2: "Ginger St."
-        }
-      }
-    }
+          crossStreet2: "Ginger St.",
+        },
+      },
+    },
   },
   {
     postal: "729",
@@ -16989,18 +16989,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "I2 MM02.00"
+          crossStreet2: "I2 MM02.00",
         },
         "Palomino Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
-        }
-      }
-    }
+          crossStreet2: "Palomino Ave.",
+        },
+      },
+    },
   },
   {
     postal: "730",
@@ -17013,22 +17013,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Ginger St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
+          crossStreet2: "Palomino Ave.",
         },
         "Palomino Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Palomino Ave."
-        }
-      }
-    }
+          crossStreet2: "Palomino Ave.",
+        },
+      },
+    },
   },
   {
     postal: "731",
@@ -17041,22 +17041,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Palomino Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Calais Ave."
+          crossStreet2: "Calais Ave.",
         },
         "Calais Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Calais Ave."
-        }
-      }
-    }
+          crossStreet2: "Calais Ave.",
+        },
+      },
+    },
   },
   {
     postal: "732",
@@ -17069,22 +17069,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Palomino Ave.": {
           crossStreet1: "Lindsay Circus",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Calais Ave."
+          crossStreet2: "Calais Ave.",
         },
         "Calais Ave.": {
           crossStreet1: "Lindsay Circus",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Lindsay Circus": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Calais Ave."
-        }
-      }
-    }
+          crossStreet2: "Calais Ave.",
+        },
+      },
+    },
   },
   {
     postal: "733",
@@ -17097,18 +17097,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Calais Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Interstate 5 [L]": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Interstate 5 [U]": {
           crossStreet1: "Interstate 5 MM01.00",
-          crossStreet2: "I2 Interchange"
-        }
-      }
-    }
+          crossStreet2: "I2 Interchange",
+        },
+      },
+    },
   },
   {
     postal: "734",
@@ -17121,22 +17121,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "Interstate 5 MM01.00"
+          crossStreet2: "Interstate 5 MM01.00",
         },
         "Calais Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Ginger St."
+          crossStreet2: "Ginger St.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Peaceful St."
+          crossStreet2: "Peaceful St.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "735",
@@ -17149,26 +17149,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Del Perro Exit",
-          crossStreet2: "I2 MM02.00"
+          crossStreet2: "I2 MM02.00",
         },
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "I5 MM01.00"
+          crossStreet2: "I5 MM01.00",
         },
         "Palomino Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Ginger St.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "San Andreas Ave.": {
           crossStreet1: "Palomino Ave.",
-          crossStreet2: "Ginger St."
-        }
-      }
-    }
+          crossStreet2: "Ginger St.",
+        },
+      },
+    },
   },
   {
     postal: "736",
@@ -17181,22 +17181,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "I5 MM01.00"
+          crossStreet2: "I5 MM01.00",
         },
         "Interstate 2": {
           crossStreet1: "I2 MM02.00",
-          crossStreet2: "Elgin Ave. Exit"
+          crossStreet2: "Elgin Ave. Exit",
         },
         "San Andreas Ave.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Las Lagunas Blvd."
+          crossStreet2: "Las Lagunas Blvd.",
         },
         "Las Lagunas Blvd.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dorset Dr."
-        }
-      }
-    }
+          crossStreet2: "Dorset Dr.",
+        },
+      },
+    },
   },
   {
     postal: "737",
@@ -17209,22 +17209,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "I5 MM01.00"
+          crossStreet2: "I5 MM01.00",
         },
         "San Andreas Ave.": {
           crossStreet1: "Ginger St.",
-          crossStreet2: "Peaceful St."
+          crossStreet2: "Peaceful St.",
         },
         "Peaceful St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Peaceful St."
-        }
-      }
-    }
+          crossStreet2: "Peaceful St.",
+        },
+      },
+    },
   },
   {
     postal: "738",
@@ -17237,18 +17237,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "I5 MM01.00"
+          crossStreet2: "I5 MM01.00",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Alta St."
+          crossStreet2: "Alta St.",
         },
         "Alta St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
-        }
-      }
-    }
+          crossStreet2: "Vespucci Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "739",
@@ -17261,22 +17261,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 5": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "I5 MM01.00"
+          crossStreet2: "I5 MM01.00",
         },
         "Interstate 4": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Strawberry Exit"
+          crossStreet2: "Strawberry Exit",
         },
         "Alta St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Calais Ave.",
-          crossStreet2: "Alta St."
-        }
-      }
-    }
+          crossStreet2: "Alta St.",
+        },
+      },
+    },
   },
   {
     postal: "740",
@@ -17289,26 +17289,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Peaceful St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Alta St."
+          crossStreet2: "Alta St.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Power St."
+          crossStreet2: "Power St.",
         },
         "Alta St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Alta St."
-        }
-      }
-    }
+          crossStreet2: "Alta St.",
+        },
+      },
+    },
   },
   {
     postal: "741",
@@ -17321,26 +17321,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Elgin Ave. Exit"
+          crossStreet2: "Elgin Ave. Exit",
         },
         "Las Lagunas Blvd.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Dorset Dr."
+          crossStreet2: "Dorset Dr.",
         },
         "Alta St.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Alta St."
+          crossStreet2: "Alta St.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Power St."
+          crossStreet2: "Power St.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "742",
@@ -17353,34 +17353,34 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Elgin Ave. Exit"
+          crossStreet2: "Elgin Ave. Exit",
         },
         "Alta St.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "Integrity Way": {
           crossStreet1: "Alta St.",
-          crossStreet2: "Low Power St."
+          crossStreet2: "Low Power St.",
         },
         "Low Power St.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "Power St. (Upper)": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Swiss St."
+          crossStreet2: "Swiss St.",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Alta St."
+          crossStreet2: "Alta St.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Power St."
+          crossStreet2: "Power St.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "743",
@@ -17393,30 +17393,30 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Alta St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Alta St."
+          crossStreet2: "Alta St.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Power St."
+          crossStreet2: "Power St.",
         },
         "Low Power St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave. [L]"
+          crossStreet2: "San Andreas Ave. [L]",
         },
         "Power St. (Upper)": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave. [U]"
+          crossStreet2: "San Andreas Ave. [U]",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Alta St.",
-          crossStreet2: "Power St."
-        }
-      }
-    }
+          crossStreet2: "Power St.",
+        },
+      },
+    },
   },
   {
     postal: "744",
@@ -17429,26 +17429,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Strawberry Exit"
+          crossStreet2: "Strawberry Exit",
         },
         "Alta St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Alta St.",
-          crossStreet2: "Power St."
+          crossStreet2: "Power St.",
         },
         "Power St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Alta St.",
-          crossStreet2: "Power St."
-        }
-      }
-    }
+          crossStreet2: "Power St.",
+        },
+      },
+    },
   },
   {
     postal: "745",
@@ -17461,26 +17461,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Strawberry Exit"
+          crossStreet2: "Strawberry Exit",
         },
         "Power St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "Elgin Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
-        }
-      }
-    }
+          crossStreet2: "Elgin Ave.",
+        },
+      },
+    },
   },
   {
     postal: "746",
@@ -17493,30 +17493,30 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Power St. (Upper)": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave. [U]"
+          crossStreet2: "San Andreas Ave. [U]",
         },
         "Lower Power St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave. [L]"
+          crossStreet2: "San Andreas Ave. [L]",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Power St. (Upper)",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Elgin Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
-        }
-      }
-    }
+          crossStreet2: "Elgin Ave.",
+        },
+      },
+    },
   },
   {
     postal: "747",
@@ -17529,34 +17529,34 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Lower Power St.": {
           crossStreet1: "San Andreas Ave. [L]",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "Power St. (Upper)": {
           crossStreet1: "San Andreas Ave. [U]",
-          crossStreet2: "Swiss St."
+          crossStreet2: "Swiss St.",
         },
         "Integrity Way": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Swiss St.": {
           crossStreet1: "Power St. (Upper)",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "Elgin Ave.": {
           crossStreet1: "San Andreas Ave",
-          crossStreet2: "Swiss St."
+          crossStreet2: "Swiss St.",
         },
         "San Andreas Ave. [L]": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "San Andreas Ave. [U]": {
           crossStreet1: "Peaceful St.",
-          crossStreet2: "Power St. (Upper)"
-        }
-      }
-    }
+          crossStreet2: "Power St. (Upper)",
+        },
+      },
+    },
   },
   {
     postal: "748",
@@ -17569,26 +17569,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Elgin Ave. Exit"
+          crossStreet2: "Elgin Ave. Exit",
         },
         "Power St.": {
           crossStreet1: "Swiss St.",
-          crossStreet2: "Occupation Ave."
+          crossStreet2: "Occupation Ave.",
         },
         "Elgin Ave.": {
           crossStreet1: "Swiss St.",
-          crossStreet2: "Occupation Ave."
+          crossStreet2: "Occupation Ave.",
         },
         "Swiss St.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "Integrity Way": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Strawberry Ave."
-        }
-      }
-    }
+          crossStreet2: "Strawberry Ave.",
+        },
+      },
+    },
   },
   {
     postal: "749",
@@ -17601,26 +17601,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "Elgin Ave. Exit",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Elgin Ave.": {
           crossStreet1: "Swiss St.",
-          crossStreet2: "Occupation Ave."
+          crossStreet2: "Occupation Ave.",
         },
         "Integrity Way": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Interstate 1": {
           crossStreet1: "Integrity Way",
-          crossStreet2: "Popular St. Exit"
+          crossStreet2: "Popular St. Exit",
         },
         "Strawberry Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
-        }
-      }
-    }
+          crossStreet2: "Integrity Way",
+        },
+      },
+    },
   },
   {
     postal: "750",
@@ -17633,22 +17633,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Elgin Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Swiss St."
+          crossStreet2: "Swiss St.",
         },
         "Integrity Way": {
           crossStreet1: "Lower Power St.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "San Andreas Ave.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
-        }
-      }
-    }
+          crossStreet2: "Strawberry Ave.",
+        },
+      },
+    },
   },
   {
     postal: "751",
@@ -17661,22 +17661,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Elgin Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
-        }
-      }
-    }
+          crossStreet2: "Strawberry Ave.",
+        },
+      },
+    },
   },
   {
     postal: "752",
@@ -17689,26 +17689,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Elgin Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
-        }
-      }
-    }
+          crossStreet2: "Strawberry Ave.",
+        },
+      },
+    },
   },
   {
     postal: "753",
@@ -17721,26 +17721,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Strawberry Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Unk Alleyway"
+          crossStreet2: "Unk Alleyway",
         },
         "Unk Alleyway": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Unk Alleyway"
-        }
-      }
-    }
+          crossStreet2: "Unk Alleyway",
+        },
+      },
+    },
   },
   {
     postal: "754",
@@ -17753,26 +17753,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Unk Alleyway": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Unk Alleyway",
-          crossStreet2: "Sinner St."
+          crossStreet2: "Sinner St.",
         },
         "Sinner St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Unk Alleyway",
-          crossStreet2: "Sinner St."
-        }
-      }
-    }
+          crossStreet2: "Sinner St.",
+        },
+      },
+    },
   },
   {
     postal: "755",
@@ -17785,22 +17785,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Strawberry Ave.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Atlee St."
+          crossStreet2: "Atlee St.",
         },
         "Atlee St.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
+          crossStreet2: "Sinner St.",
         },
         "Sinner St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Atlee St."
+          crossStreet2: "Atlee St.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
-        }
-      }
-    }
+          crossStreet2: "Sinner St.",
+        },
+      },
+    },
   },
   {
     postal: "756",
@@ -17813,22 +17813,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Strawberry Ave.": {
           crossStreet1: "Atlee St.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
+          crossStreet2: "Sinner St.",
         },
         "Sinner St.": {
           crossStreet1: "Atlee St.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Atlee St.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
-        }
-      }
-    }
+          crossStreet2: "Sinner St.",
+        },
+      },
+    },
   },
   {
     postal: "757",
@@ -17841,22 +17841,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Strawberry Ave.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "Integrity Way": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
+          crossStreet2: "Sinner St.",
         },
         "Sinner St.": {
           crossStreet1: "San Andreas Ave.",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "San Andreas Ave.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Sinner St."
-        }
-      }
-    }
+          crossStreet2: "Sinner St.",
+        },
+      },
+    },
   },
   {
     postal: "758",
@@ -17869,18 +17869,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I2 MM02.00",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Intgrity Way": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Sinners Passage",
-          crossStreet2: "Integrity Way"
-        }
-      }
-    }
+          crossStreet2: "Integrity Way",
+        },
+      },
+    },
   },
   {
     postal: "759",
@@ -17893,26 +17893,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Sinners Passage": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Sinner St.": {
           crossStreet1: "Sinners Passage",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "Integrity Way": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Sinners Passage",
-          crossStreet2: "Integrity Way"
+          crossStreet2: "Integrity Way",
         },
         "San Andreas Ave.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
-        }
-      }
-    }
+          crossStreet2: "Supply St.",
+        },
+      },
+    },
   },
   {
     postal: "760",
@@ -17925,22 +17925,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Atlee St.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Sinner St.": {
           crossStreet1: "Atlee St.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Atlee St.",
-          crossStreet2: "Sinners Passage"
-        }
-      }
-    }
+          crossStreet2: "Sinners Passage",
+        },
+      },
+    },
   },
   {
     postal: "761",
@@ -17953,22 +17953,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Vespucci Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Sinner St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Atlee St."
+          crossStreet2: "Atlee St.",
         },
         "Atlee St.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Atlee St."
-        }
-      }
-    }
+          crossStreet2: "Atlee St.",
+        },
+      },
+    },
   },
   {
     postal: "762",
@@ -17981,26 +17981,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Adam's Apple Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Sinner St.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Adam's Apple Blvd.",
-          crossStreet2: "Atlee St."
-        }
-      }
-    }
+          crossStreet2: "Atlee St.",
+        },
+      },
+    },
   },
   {
     postal: "763",
@@ -18013,14 +18013,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "La Mesa Exit"
+          crossStreet2: "La Mesa Exit",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Popular St."
-        }
-      }
-    }
+          crossStreet2: "Popular St.",
+        },
+      },
+    },
   },
   {
     postal: "764",
@@ -18033,18 +18033,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "San Andreas Ave.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Popular St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Popular St."
-        }
-      }
-    }
+          crossStreet2: "Popular St.",
+        },
+      },
+    },
   },
   {
     postal: "765",
@@ -18057,14 +18057,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "San Andreas Ave.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Popular St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Supply St."
-        }
-      }
-    }
+          crossStreet2: "Supply St.",
+        },
+      },
+    },
   },
   {
     postal: "766",
@@ -18077,8 +18077,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Interstate 2",
       crossStreet1: "Elgin Ave. Exit",
-      crossStreet2: "Mirror Park Exit"
-    }
+      crossStreet2: "Mirror Park Exit",
+    },
   },
   {
     postal: "767",
@@ -18091,18 +18091,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I2 MM03.00",
-          crossStreet2: "Mirror Park Exit"
+          crossStreet2: "Mirror Park Exit",
         },
         "Popular St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Glory Way"
+          crossStreet2: "Glory Way",
         },
         "Supply St.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "San Andreas Ave."
-        }
-      }
-    }
+          crossStreet2: "San Andreas Ave.",
+        },
+      },
+    },
   },
   {
     postal: "768",
@@ -18115,26 +18115,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I4 Interchange",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Popular St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "San Andreas Ave.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Supply St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
-        }
-      }
-    }
+          crossStreet2: "San Andreas Ave.",
+        },
+      },
+    },
   },
   {
     postal: "769",
@@ -18147,22 +18147,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I4 MM01.00",
-          crossStreet2: "I2 Interchange"
+          crossStreet2: "I2 Interchange",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Sinner St.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Popular St.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Supply St.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "770",
@@ -18175,22 +18175,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I4 MM01.00",
-          crossStreet2: "I2 Interchange"
+          crossStreet2: "I2 Interchange",
         },
         "Interstate 2": {
           crossStreet1: "I4 Interchange",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Supply St.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Supply St."
-        }
-      }
-    }
+          crossStreet2: "Supply St.",
+        },
+      },
+    },
   },
   {
     postal: "771",
@@ -18203,22 +18203,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I4 Interchange",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "San Andreas Ave.": {
           crossStreet1: "Supply St.",
-          crossStreet2: "Mirror Park Blvd."
+          crossStreet2: "Mirror Park Blvd.",
         },
         "Mirror Park Blvd.": {
           crossStreet1: "Vespucci Blvd.",
-          crossStreet2: "San Andreas Ave."
+          crossStreet2: "San Andreas Ave.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Supply St.",
-          crossStreet2: "Mirror Park Blvd."
-        }
-      }
-    }
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "772",
@@ -18231,22 +18231,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I4 Interchange",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Interstate 4": {
           crossStreet1: "I4 MM01.00",
-          crossStreet2: "Rt. 15 MM01.00"
+          crossStreet2: "Rt. 15 MM01.00",
         },
         "Mirror Park Blvd.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Vespucci Blvd."
+          crossStreet2: "Vespucci Blvd.",
         },
         "Vespucci Blvd.": {
           crossStreet1: "Supply St.",
-          crossStreet2: "Mirror Park Blvd."
-        }
-      }
-    }
+          crossStreet2: "Mirror Park Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "773",
@@ -18259,22 +18259,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 2": {
           crossStreet1: "I4 Interchange",
-          crossStreet2: "I2 MM03.00"
+          crossStreet2: "I2 MM03.00",
         },
         "Interstate 4": {
           crossStreet1: "I2 Interchange",
-          crossStreet2: "Rt. 15 MM01.00"
+          crossStreet2: "Rt. 15 MM01.00",
         },
         "Route 20": {
           crossStreet1: "I2 Change",
-          crossStreet2: "Murrieta Exit"
+          crossStreet2: "Murrieta Exit",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Vespucci Blvd."
-        }
-      }
-    }
+          crossStreet2: "Vespucci Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "774",
@@ -18287,14 +18287,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Fudge Ln.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Sustancia Rd."
+          crossStreet2: "Sustancia Rd.",
         },
         "Sustancia Rd.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "El Burro Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Burro Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "775",
@@ -18307,14 +18307,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Sustancia Rd.": {
           crossStreet1: "Fudge Ln.",
-          crossStreet2: "El Burro Blvd."
+          crossStreet2: "El Burro Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "776",
@@ -18327,14 +18327,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Sustancia Rd.": {
           crossStreet1: "Fudge Ln.",
-          crossStreet2: "El Burro Blvd."
+          crossStreet2: "El Burro Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "777",
@@ -18347,14 +18347,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Sustancia Rd.": {
           crossStreet1: "Fudge Ln.",
-          crossStreet2: "Noose Approach"
+          crossStreet2: "Noose Approach",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd." 
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "778",
@@ -18367,8 +18367,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "El Burro Blvd.",
       crossStreet1: "Route 20",
-      crossStreet2: "Sustancia Rd."
-    }
+      crossStreet2: "Sustancia Rd.",
+    },
   },
   {
     postal: "779",
@@ -18381,18 +18381,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
+          crossStreet2: "Sustancia Rd.",
         },
         "Sustancia Rd.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "El Burro Blvd."
+          crossStreet2: "El Burro Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "780",
@@ -18405,8 +18405,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "El Burro Blvd.",
       crossStreet1: "Route 20",
-      crossStreet2: "Sustancia Rd."
-    }
+      crossStreet2: "Sustancia Rd.",
+    },
   },
   {
     postal: "781",
@@ -18419,14 +18419,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Labor Pl."
+          crossStreet2: "Labor Pl.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "782",
@@ -18439,18 +18439,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Labor Pl."
+          crossStreet2: "Labor Pl.",
         },
         "Route 20": {
           crossStreet1: "El Burro Blvd.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "783",
@@ -18463,8 +18463,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "El Burro Blvd.",
       crossStreet1: "Route 20",
-      crossStreet2: "Sustancia Rd."
-    }
+      crossStreet2: "Sustancia Rd.",
+    },
   },
   {
     postal: "784",
@@ -18477,14 +18477,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "El Burro Blvd.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "785",
@@ -18497,8 +18497,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "El Burro Blvd.",
       crossStreet1: "Route 20",
-      crossStreet2: "Sustancia Rd."
-    }
+      crossStreet2: "Sustancia Rd.",
+    },
   },
   {
     postal: "786",
@@ -18511,8 +18511,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "El Burro Blvd.",
       crossStreet1: "Route 20",
-      crossStreet2: "Sustancia Rd."
-    }
+      crossStreet2: "Sustancia Rd.",
+    },
   },
   {
     postal: "787",
@@ -18525,14 +18525,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "El Burro Blvd.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Burro Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Sustancia Rd."
-        }
-      }
-    }
+          crossStreet2: "Sustancia Rd.",
+        },
+      },
+    },
   },
   {
     postal: "788",
@@ -18545,8 +18545,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Route 20",
       crossStreet1: "Rt. 20 MM01.00",
-      crossStreet2: "El Rancho Blvd."
-    }
+      crossStreet2: "El Rancho Blvd.",
+    },
   },
   {
     postal: "789",
@@ -18559,14 +18559,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "S. Shambles St.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Route 20": {
           crossStreet1: "El Burro Blvd.",
-          crossStreet2: "El Rancho Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "790",
@@ -18579,14 +18579,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "El Burro Blvd.",
-          crossStreet2: "Rt. 20 MM02.00"
+          crossStreet2: "Rt. 20 MM02.00",
         },
         "El Rancho Blvd.": {
           crossStreet1: "S. Shambles St.",
-          crossStreet2: "Labor Pl."
-        }
-      }
-    }
+          crossStreet2: "Labor Pl.",
+        },
+      },
+    },
   },
   {
     postal: "791",
@@ -18599,22 +18599,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Murrieta Exit"
+          crossStreet2: "Murrieta Exit",
         },
         "Labor Pl.": {
           crossStreet1: "Amarillo Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Route 20",
-          crossStreet2: "Labor Pl."
+          crossStreet2: "Labor Pl.",
         },
         "Amarillo Way": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "792",
@@ -18627,30 +18627,30 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Amarillo Way": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Amarillo Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Amarillo Vista": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Labor Pl.": {
           crossStreet1: "Amarillo Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Route 20": {
           crossStreet1: "Rt. 20 MM02.00",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "793",
@@ -18663,18 +18663,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Rt. 20 MM02.00",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Fudge Ln.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "El Rancho Blvd." 
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "794",
@@ -18687,18 +18687,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Rt. 20 MM02.00",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "Capital Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Fudge Ln.",
-          crossStreet2: "Capital Blvd."
-        }
-      }
-    }
+          crossStreet2: "Capital Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "795",
@@ -18711,26 +18711,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I4 MM01.00",
-          crossStreet2: "Rt. 15 MM01.00"
+          crossStreet2: "Rt. 15 MM01.00",
         },
         "I4 EB Entrance": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Interstate 4"
+          crossStreet2: "Interstate 4",
         },
         "Route 20": {
           crossStreet1: "Murrieta Exit",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "Popular St.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "I4 EB Entrance"
+          crossStreet2: "I4 EB Entrance",
         },
         "Capital Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "El Rancho Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "796",
@@ -18743,18 +18743,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Murrieta Exit",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "Popular St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Capital Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "El Rancho Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "797",
@@ -18767,22 +18767,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Murrieta Exit",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "Popular St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Tower Way"
+          crossStreet2: "Tower Way",
         },
         "Tower Way": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "798",
@@ -18795,30 +18795,30 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Rt. 20 MM02.00",
-          crossStreet2: "I4 Interchange"
+          crossStreet2: "I4 Interchange",
         },
         "Innocence Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Amarillo Way"
+          crossStreet2: "Amarillo Way",
         },
         "Tower Way": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Amarillo Way": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Labor Pl.": {
           crossStreet1: "Orchardville Ave.",
-          crossStreet2: "Amarillo Way"
+          crossStreet2: "Amarillo Way",
         },
         "Orchardville Ave.": {
           crossStreet1: "Labor Pl.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "799",
@@ -18831,14 +18831,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Orchardville Ave.",
-          crossStreet2: "S. Shambles St."
+          crossStreet2: "S. Shambles St.",
         },
         "Orchardville Ave.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Labor Pl."
-        }
-      }
-    }
+          crossStreet2: "Labor Pl.",
+        },
+      },
+    },
   },
   {
     postal: "800",
@@ -18851,14 +18851,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Murrieta Exit"
+          crossStreet2: "Murrieta Exit",
         },
         "El Rancho Blvd.": {
           crossStreet1: "S. Shambles St.",
-          crossStreet2: "Route 20"
-        }
-      }
-    }
+          crossStreet2: "Route 20",
+        },
+      },
+    },
   },
   {
     postal: "801",
@@ -18871,14 +18871,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "S. Shambles St.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "S. Shambles St.",
-          crossStreet2: "Route 20"
-        }
-      }
-    }
+          crossStreet2: "Route 20",
+        },
+      },
+    },
   },
   {
     postal: "802",
@@ -18891,18 +18891,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Orchardville Ave.": {
           crossStreet1: "Dry Dock St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Orchardville Ave.",
-          crossStreet2: "S. Shambles St."
+          crossStreet2: "S. Shambles St.",
         },
         "S. Shambles St.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "803",
@@ -18915,18 +18915,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Orchardville Ave.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "Dry Dock St."
+          crossStreet2: "Dry Dock St.",
         },
         "S. Shambles St.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Hanger Way": {
           crossStreet1: "Orchardville Ave.",
-          crossStreet2: "S. Shambles St."
-        }
-      }
-    }
+          crossStreet2: "S. Shambles St.",
+        },
+      },
+    },
   },
   {
     postal: "804",
@@ -18939,18 +18939,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "Rt. 20 MM01.00",
-          crossStreet2: "El Burro Blvd."
+          crossStreet2: "El Burro Blvd.",
         },
         "Hanger Way": {
           crossStreet1: "Orchardville Ave.",
-          crossStreet2: "S. Shambles St."
+          crossStreet2: "S. Shambles St.",
         },
         "S. Shambles St.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "El Rancho Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "805",
@@ -18963,14 +18963,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Route 20": {
           crossStreet1: "LS Ports Exit",
-          crossStreet2: "Rt. 20 MM01.00"
+          crossStreet2: "Rt. 20 MM01.00",
         },
         "Hanger Way": {
           crossStreet1: "Popular St.",
-          crossStreet2: "S. Shambles St."
-        }
-      }
-    }
+          crossStreet2: "S. Shambles St.",
+        },
+      },
+    },
   },
   {
     postal: "806",
@@ -18983,22 +18983,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "Chum St.",
-          crossStreet2: "Dry Dock St."
+          crossStreet2: "Dry Dock St.",
         },
         "Dry Dock St.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
+          crossStreet2: "Orchardville Ave.",
         },
         "Orchardville Ave.": {
           crossStreet1: "Hanger Way",
-          crossStreet2: "Dry Dock St."
+          crossStreet2: "Dry Dock St.",
         },
         "Hanger Way": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
-        }
-      }
-    }
+          crossStreet2: "Orchardville Ave.",
+        },
+      },
+    },
   },
   {
     postal: "807",
@@ -19011,22 +19011,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "Dry Dock St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
+          crossStreet2: "Orchardville Ave.",
         },
         "Orchardville Ave.": {
           crossStreet1: "Dry Dock St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Dry Dock St.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
-        }
-      }
-    }
+          crossStreet2: "Orchardville Ave.",
+        },
+      },
+    },
   },
   {
     postal: "808",
@@ -19039,18 +19039,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
+          crossStreet2: "Orchardville Ave.",
         },
         "Popular St.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Orchardville Ave.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Labor Pl."
-        }
-      }
-    }
+          crossStreet2: "Labor Pl.",
+        },
+      },
+    },
   },
   {
     postal: "809",
@@ -19063,18 +19063,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Popular St.",
-          crossStreet2: "Orchardville Ave."
+          crossStreet2: "Orchardville Ave.",
         },
         "Orchardville Ave.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "810",
@@ -19087,18 +19087,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Supply St."
+          crossStreet2: "Supply St.",
         },
         "Interstate 4": {
           crossStreet1: "I4 MM01.00",
-          crossStreet2: "Rt. 15 MM01.00"
+          crossStreet2: "Rt. 15 MM01.00",
         },
         "Capital Blvd.": {
           crossStreet1: "Little Bighorn Ave.",
-          crossStreet2: "El Rancho Blvd."
-        }
-      }
-    }
+          crossStreet2: "El Rancho Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "811",
@@ -19111,18 +19111,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "La Mesa Exit"
+          crossStreet2: "La Mesa Exit",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Crusade Rd."
+          crossStreet2: "Crusade Rd.",
         },
         "Capital Blvd.": {
           crossStreet1: "Little Bighorn Ave.",
-          crossStreet2: "Popular St."
-        }
-      }
-    }
+          crossStreet2: "Popular St.",
+        },
+      },
+    },
   },
   {
     postal: "812",
@@ -19135,14 +19135,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Capital Blvd.": {
           crossStreet1: "Little Bighorn Ave.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Popular St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
-        }
-      }
-    }
+          crossStreet2: "Capital Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "813",
@@ -19155,18 +19155,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Little Bighorn Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Popular St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
-        }
-      }
-    }
+          crossStreet2: "Capital Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "814",
@@ -19179,14 +19179,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Popular St."
-        }
-      }
-    }
+          crossStreet2: "Popular St.",
+        },
+      },
+    },
   },
   {
     postal: "815",
@@ -19199,14 +19199,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Popular St.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "816",
@@ -19219,14 +19219,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Popular St."
-        }
-      }
-    }
+          crossStreet2: "Popular St.",
+        },
+      },
+    },
   },
   {
     postal: "817",
@@ -19239,14 +19239,14 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Popular St.": {
           crossStreet1: "Dry Dock St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
-      }
-    }
+      },
+    },
   },
   {
     postal: "818",
@@ -19259,8 +19259,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Popular St.",
       crossStreet1: "Chum St.",
-      crossStreet2: "Dry Dock St."
-    }
+      crossStreet2: "Dry Dock St.",
+    },
   },
   {
     postal: "819",
@@ -19273,18 +19273,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Popular St.": {
           crossStreet1: "Chum St.",
-          crossStreet2: "Dry Dock St."
+          crossStreet2: "Dry Dock St.",
         },
         "Chum St.": {
           crossStreet1: "Signal St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Bucaneer Way": {
           crossStreet1: "Chum St.",
-          crossStreet2: "Dead End"
-        }
-      }
-    }
+          crossStreet2: "Dead End",
+        },
+      },
+    },
   },
   {
     postal: "820",
@@ -19297,8 +19297,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Unknown Access Rd.",
       crossStreet1: "Dutch London St.",
-      crossStreet2: "Dead End"
-    }
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "821",
@@ -19311,18 +19311,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Access Rd.": {
           crossStreet1: "Dutch London St.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "El Rancho Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Dutch London St.": {
           crossStreet1: "Signal St.",
-          crossStreet2: "Carson Ave."
-        }
-      }
-    }
+          crossStreet2: "Carson Ave.",
+        },
+      },
+    },
   },
   {
     postal: "822",
@@ -19335,18 +19335,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "El Rancho Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Carson Ave.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "El Rancho Blvd."
+          crossStreet2: "El Rancho Blvd.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "El Rancho Blvd.",
-          crossStreet2: "Jamestown St."
-        }
-      }
-    }
+          crossStreet2: "Jamestown St.",
+        },
+      },
+    },
   },
   {
     postal: "823",
@@ -19359,22 +19359,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Macdonald St.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Jamestown St.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Jamestown St."
-        }
-      }
-    }
+          crossStreet2: "Jamestown St.",
+        },
+      },
+    },
   },
   {
     postal: "824",
@@ -19387,18 +19387,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Popular St."
+          crossStreet2: "Popular St.",
         },
         "Jamestown St.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Jamestown St."
-        }
-      }
-    }
+          crossStreet2: "Jamestown St.",
+        },
+      },
+    },
   },
   {
     postal: "825",
@@ -19411,22 +19411,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Jamestown St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Little Bighorn Ave."
-        }
-      }
-    }
+          crossStreet2: "Little Bighorn Ave.",
+        },
+      },
+    },
   },
   {
     postal: "826",
@@ -19439,22 +19439,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Capital Blvd.": {
           crossStreet1: "Crusade Rd.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Crusade Rd.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Crusade Rd."
-        }
-      }
-    }
+          crossStreet2: "Crusade Rd.",
+        },
+      },
+    },
   },
   {
     postal: "827",
@@ -19467,26 +19467,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Davis Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Capital Blvd.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Little Bighorn Ave."
-        }
-      }
-    }
+          crossStreet2: "Little Bighorn Ave.",
+        },
+      },
+    },
   },
   {
     postal: "828",
@@ -19499,22 +19499,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Macdonald St.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Jamestown St.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "829",
@@ -19527,22 +19527,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carson Ave.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Jamestown St.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
+          crossStreet2: "Macdonald St.",
         },
         "Macdonald St.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Little Bighorn Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
-        }
-      }
-    }
+          crossStreet2: "Macdonald St.",
+        },
+      },
+    },
   },
   {
     postal: "830",
@@ -19555,18 +19555,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch London St.": {
           crossStreet1: "Signal St.",
-          crossStreet2: "Carson Ave."
+          crossStreet2: "Carson Ave.",
         },
         "Carson Ave.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Dutch London St."
+          crossStreet2: "Dutch London St.",
         },
         "Signal St.": {
           crossStreet1: "Chum St.",
-          crossStreet2: "Dutch London St."
-        }
-      }
-    }
+          crossStreet2: "Dutch London St.",
+        },
+      },
+    },
   },
   {
     postal: "831",
@@ -19579,22 +19579,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carson Ave.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
+          crossStreet2: "Macdonald St.",
         },
         "Macdonald St.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Jamestown St.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
-        }
-      }
-    }
+          crossStreet2: "Macdonald St.",
+        },
+      },
+    },
   },
   {
     postal: "832",
@@ -19607,22 +19607,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Macdonald St.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Davis Ave.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "833",
@@ -19635,22 +19635,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Crusade Rd.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Crusade Rd.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Capital Blvd.": {
           crossStreet1: "Crusade Rd.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Davis Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
-        }
-      }
-    }
+          crossStreet2: "Capital Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "834",
@@ -19663,22 +19663,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "Strawberry Exit",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Strawberry Ave.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Adam's Apple Blvd."
+          crossStreet2: "Adam's Apple Blvd.",
         },
         "Crusade Rd.": {
           crossStreet1: "Capital Blvd.",
-          crossStreet2: "Little Bighorn Ave."
+          crossStreet2: "Little Bighorn Ave.",
         },
         "Capital Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Crusade Rd."
-        }
-      }
-    }
+          crossStreet2: "Crusade Rd.",
+        },
+      },
+    },
   },
   {
     postal: "835",
@@ -19691,22 +19691,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "I4 MM01.00"
+          crossStreet2: "I4 MM01.00",
         },
         "Elgin Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Adam's Apple Blvd."
+          crossStreet2: "Adam's Apple Blvd.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Adam's Apple Blvd."
+          crossStreet2: "Adam's Apple Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Elgin Ave.",
-          crossStreet2: "Strawberry Ave."
-        }
-      }
-    }
+          crossStreet2: "Strawberry Ave.",
+        },
+      },
+    },
   },
   {
     postal: "836",
@@ -19719,22 +19719,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Innocence Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Crusade Rd."
+          crossStreet2: "Crusade Rd.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
+          crossStreet2: "Capital Blvd.",
         },
         "Capital Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Crusade Rd."
+          crossStreet2: "Crusade Rd.",
         },
         "Crusade Rd.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Capital Blvd."
-        }
-      }
-    }
+          crossStreet2: "Capital Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "837",
@@ -19747,22 +19747,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Macdonald St.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
+          crossStreet2: "Innocence Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Davis Ave.": {
           crossStreet1: "Macdonald St.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "838",
@@ -19775,22 +19775,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carson Ave.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Brogue Ave."
+          crossStreet2: "Brogue Ave.",
         },
         "Davis Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
+          crossStreet2: "Macdonald St.",
         },
         "Macdonald St.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Brogue Ave."
+          crossStreet2: "Brogue Ave.",
         },
         "Brogue Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
-        }
-      }
-    }
+          crossStreet2: "Macdonald St.",
+        },
+      },
+    },
   },
   {
     postal: "839",
@@ -19803,22 +19803,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carson Ave.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Brogue Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
+          crossStreet2: "Macdonald St.",
         },
         "Macdonald St.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
-        }
-      }
-    }
+          crossStreet2: "Macdonald St.",
+        },
+      },
+    },
   },
   {
     postal: "840",
@@ -19831,22 +19831,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Covenant Ave.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Brogue Ave.": {
           crossStreet1: "Covenant Ave.",
-          crossStreet2: "Carson Ave."
+          crossStreet2: "Carson Ave.",
         },
         "Carson Ave.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Roy Lowenstein Blvd.": {
-          crossStreet1: "Covenant Ave.",  
-          crossStreet2: "Carson Ave."
-        }
-      }
-    }
+          crossStreet1: "Covenant Ave.",
+          crossStreet2: "Carson Ave.",
+        },
+      },
+    },
   },
   {
     postal: "841",
@@ -19859,22 +19859,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch London St.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Dutch London St.",
-          crossStreet2: "Carson Ave."
+          crossStreet2: "Carson Ave.",
         },
         "Carson Ave.": {
           crossStreet1: "Roy Lowenstein Blvd.",
-          crossStreet2: "Jamestown St."
+          crossStreet2: "Jamestown St.",
         },
         "Jamestown St.": {
           crossStreet1: "Dutch London St.",
-          crossStreet2: "Carson Ave."
-        }
-      }
-    }
+          crossStreet2: "Carson Ave.",
+        },
+      },
+    },
   },
   {
     postal: "842",
@@ -19887,18 +19887,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch London St.": {
           crossStreet1: "Jamestown St.",
-          crossStreet2: "Signal St."
+          crossStreet2: "Signal St.",
         },
         "Jamestown St.": {
           crossStreet1: "Dutch London St.",
-          crossStreet2: "Carson Ave."
+          crossStreet2: "Carson Ave.",
         },
         "Signal St.": {
           crossStreet1: "Chum St.",
-          crossStreet2: "Dutch London St."
-        }
-      }
-    }
+          crossStreet2: "Dutch London St.",
+        },
+      },
+    },
   },
   {
     postal: "843",
@@ -19911,8 +19911,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Unknown Access Rd.",
       crossStreet1: "Dutch London St.",
-      crossStreet2: "Dead End"
-    }
+      crossStreet2: "Dead End",
+    },
   },
   {
     postal: "844",
@@ -19925,8 +19925,8 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Dutch London St.",
       crossStreet1: "Autopia Pkwy.",
-      crossStreet2: "Jamestown St."
-    }
+      crossStreet2: "Jamestown St.",
+    },
   },
   {
     postal: "845",
@@ -19939,22 +19939,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Dutch London St.": {
           crossStreet1: "Autopia Pkwy.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Grove St.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Brogue Ave."
+          crossStreet2: "Brogue Ave.",
         },
         "Grove St. (End)": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Dutch London St.",
-          crossStreet2: "Covenant Ave."
-        }
-      }
-    }
+          crossStreet2: "Covenant Ave.",
+        },
+      },
+    },
   },
   {
     postal: "846",
@@ -19967,26 +19967,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Grove St.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Brogue Ave."
+          crossStreet2: "Brogue Ave.",
         },
         "Grove St. (End)": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Dead End"
+          crossStreet2: "Dead End",
         },
         "Brogue Ave.": {
           crossStreet1: "Grove St.",
-          crossStreet2: "Covenant Ave."
+          crossStreet2: "Covenant Ave.",
         },
         "Covenant Ave.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Roy Lowenstein Blvd."
+          crossStreet2: "Roy Lowenstein Blvd.",
         },
         "Roy Lowenstein Blvd.": {
           crossStreet1: "Dutch London St.",
           crossStreet2: "Covenant Ave.",
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     postal: "847",
@@ -19999,26 +19999,26 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Grove St.": {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
-        "Alleyway": {
+        Alleyway: {
           crossStreet1: "Brogue Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Davis Ave.": {
           crossStreet1: "Grove St.",
-          crossStreet2: "Carson Ave."
+          crossStreet2: "Carson Ave.",
         },
         "Carson Ave.": {
           crossStreet1: "Davis Ave.",
-          crossStreet2: "Brogue Ave."
+          crossStreet2: "Brogue Ave.",
         },
         "Brogue Ave.": {
           crossStreet1: "Covenant Ave.",
-          crossStreet2: "Carson Ave."
-        }
-      }
-    }
+          crossStreet2: "Carson Ave.",
+        },
+      },
+    },
   },
   {
     postal: "848",
@@ -20031,22 +20031,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Carson Ave.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
+          crossStreet2: "Macdonald St.",
         },
         "Macdonald St.": {
           crossStreet1: "Strawberry Ave.",
-          crossStreet2: "Davis Ave."
+          crossStreet2: "Davis Ave.",
         },
         "Davis Ave.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Macdonald St."
-        }
-      }
-    }
+          crossStreet2: "Macdonald St.",
+        },
+      },
+    },
   },
   {
     postal: "849",
@@ -20059,22 +20059,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Forum Dr.": {
           crossStreet1: "Carson Ave.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
+          crossStreet2: "Elgin Ave.",
         },
         "Elgin Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Strawberry Ave."
+          crossStreet2: "Strawberry Ave.",
         },
         "Strawberry Ave.": {
           crossStreet1: "Forum Dr.",
-          crossStreet2: "Innocence Blvd."
-        }
-      }
-    }
+          crossStreet2: "Innocence Blvd.",
+        },
+      },
+    },
   },
   {
     postal: "850",
@@ -20087,22 +20087,22 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Interstate 4": {
           crossStreet1: "I5 Interchange",
-          crossStreet2: "Strawberry Exit"
+          crossStreet2: "Strawberry Exit",
         },
         "Power St.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Adam's Apple Blvd."
+          crossStreet2: "Adam's Apple Blvd.",
         },
         "Elgin Ave.": {
           crossStreet1: "Innocence Blvd.",
-          crossStreet2: "Adam's Apple Blvd."
+          crossStreet2: "Adam's Apple Blvd.",
         },
         "Innocence Blvd.": {
           crossStreet1: "Power St.",
-          crossStreet2: "Elgin Ave."
-        }
-      }
-    }
+          crossStreet2: "Elgin Ave.",
+        },
+      },
+    },
   },
   {
     postal: "851",
