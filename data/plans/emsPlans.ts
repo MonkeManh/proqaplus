@@ -2178,5 +2178,162 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 122,
+    name: "SE",
+    incidentType: "INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 123,
+    name: "TRAP1",
+    incidentType: "ENTRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 124,
+    name: "TRAPB",
+    incidentType: "ENTRAP|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 125,
+    name: "RES",
+    incidentType: "TECH|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 126,
+    name: "RES",
+    incidentType: "TRENCH|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 127,
+    name: "RES",
+    incidentType: "COLLAPSE|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 128,
+    name: "RES",
+    incidentType: "CONFINEDSPACE|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
   }
 ];

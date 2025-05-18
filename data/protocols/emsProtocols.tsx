@@ -11519,4 +11519,683 @@ export const emsComplaints: IEMSComplaint[] = [
       }
     ],
   },
+  {
+    protocol: 22,
+    name: "Inaccessible Incident / Other Entrapments (Non-Traffic)",
+    shortName: "Inaccess/Entrapment",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: 3 },
+      { name: "Fire", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 122,
+    questions: [
+      {
+        text: <p>Does this incident involve the any <b className="text-green-400">hazardous materials</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat involved",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Hazardous materials involved",
+            goto: 8
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmats are involved",
+            continue: true,
+            updateCode: "22B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is **pronoun** trapped in/by?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Mechanical Equipment",
+            display: "Trapped in mechanical equipment",
+            continue: true,
+          },
+          {
+            answer: "Confined Space",
+            display: "Trapped in confined space",
+            continue: true,
+          },
+          {
+            answer: "Building Collapse",
+            display: "Trapped in building collapse",
+            continue: true,
+          },
+          {
+            answer: "Trench Collapse",
+            display: "Trapped in trench collapse",
+            continue: true,
+          },
+          {
+            answer: "Mudslide/Avalanche",
+            display: "Trapped in mudslide/avalanche",
+            continue: true,
+          },
+          {
+            answer: "Object:",
+            display: "Trapped in/by {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Not trapped now",
+            display: "Not trapped now",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Trapped in/by {input}",
+            continue: true,
+            updateCode: "22B03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what pt is trapped in/by",
+            continue: true,
+            updateCode: "22B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any (obvious) <b>injuries</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+          return answer === "Not trapped now";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No obvious injs",
+            continue: true,
+            updateCode: "22A01"
+          },
+          {
+            answer: "Yes",
+            display: "Obvious injs",
+            goto: 30
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if there are injs",
+            continue: true,
+            updateCode: "22B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>part</b> of the body is <b>trapped</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+          return answer !== "Not trapped now";
+        },
+        answers: [
+          {
+            answer: "Peripheral (Extremities) Entrapment Only",
+            display: "Peripheral entrapment only",
+            continue: true,
+            updateCode: "22B02"
+          },
+          {
+            answer: "Whole Body Entrapment",
+            display: "Whole body is trapped",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+              if(answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" }
+              } else if(answer === "Trench Collapse") {
+                return { code: "22D02" }
+              } else if(answer === "Structure Collapse") {
+                return { code: "22D03" }
+              } else if(answer === "Confined Space") {
+                return { code: "22D04" }
+              } else if(answer === "Mudslide/Avalanche") {
+                return { code: "22D06" }
+              } else {
+                return { code: "22B03" }
+              }
+            }
+          },
+          {
+            answer: "Location:",
+            display: "{input} is trapped",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+              if(answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" }
+              } else if(answer === "Trench Collapse") {
+                return { code: "22D02" }
+              } else if(answer === "Structure Collapse") {
+                return { code: "22D03" }
+              } else if(answer === "Confined Space") {
+                return { code: "22D04" }
+              } else if(answer === "Mudslide/Avalanche") {
+                return { code: "22D06" }
+              } else {
+                return { code: "22B03" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what part of body is trapped",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+              if(answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" }
+              } else if(answer === "Trench Collapse") {
+                return { code: "22D02" }
+              } else if(answer === "Structure Collapse") {
+                return { code: "22D03" }
+              } else if(answer === "Confined Space") {
+                return { code: "22D04" }
+              } else if(answer === "Mudslide/Avalanche") {
+                return { code: "22D06" }
+              } else {
+                return { code: "22B03" }
+              }
+            }
+          }
+        ]
+      },
+
+      {
+        text: <p>Where <b>exactly</b> is **pronoun**</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "At Ground Level",
+            display: "PT is at ground level",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { count } = _patient;
+              if(count > 1) return { subCode: "M" };
+            }
+          },
+          {
+            answer: "Above Ground:",
+            display: "PT is above ground - {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { count } = _patient;
+              if(count > 1) return { subCode: "X" };
+              return { subCode: "A" }
+            }
+          },
+          {
+            answer: "Below Ground:",
+            display: "PT is below ground - {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { count } = _patient;
+              if(count > 1) return { subCode: "Y" };
+              return { subCode: "B" }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pt is",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { count } = _patient;
+              if(count > 1) return { subCode: "M" };
+            }
+          }
+        ]
+      },
+
+      {
+        text: <p>Will we have any <b>problems</b> easily reaching the patient?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No special concerns",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Special concerns - {input}",
+            continue: true,
+            input: true,
+            updateCode: "22D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if there are special concerns",
+            continue: true,
+            updateCode: "22B03"
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "22A01",
+            text: "No Longer Trapped (No Injs)",
+            recResponse: 122,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 122,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 122,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 122,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 122,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 122,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "22B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 123,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 123,
+              }
+            ]
+          },
+          {
+            code: "22B01",
+            text: "No Longer Trapped (Unkn Injs)",
+            recResponse: 124,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 124,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 124,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 124,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 124,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 124,
+              }
+            ]
+          },
+          {
+            code: "22B02",
+            text: "Peripheral Entrapment Only",
+            recResponse: 123,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 123,
+              }
+            ]
+          },
+          {
+            code: "22B03",
+            text: "Unkn Status (Investigation) / Other Codes Not Applicable",
+            recResponse: 123,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 123,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "22D00",
+            text: "ALS Override (Delta)",
+            recResponse: 125,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 125,
+              }
+            ]
+          },
+          {
+            code: "22D01",
+            text: "Mechanical/Machinery/Object Entrapment",
+            recResponse: 123,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 123,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 123,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 123,
+              }
+            ]
+          },
+          {
+            code: "22D02",
+            text: "Trench Collapse",
+            recResponse: 126,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 126,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 126,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 126,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 126,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 126,
+              }
+            ]
+          },
+          {
+            code: "22D03",
+            text: "Structure Collapse",
+            recResponse: 127,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 127,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 127,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 127,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 127,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 127,
+              }
+            ]
+          },
+          {
+            code: "22D04",
+            text: "Confined Space Entrapment",
+            recResponse: 128,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 128,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 128,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 128,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 128,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 128,
+              }
+            ]
+          },
+          {
+            code: "22D05",
+            text: "Inaccessible Terrain Situation",
+            recResponse: 125,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 125,
+              }
+            ]
+          },
+          {
+            code: "22D06",
+            text: "Mudslide/Avalanche",
+            recResponse: 125,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "B",
+                text: "Below Ground (>=6ft/2m)",
+                recResponse: 125,
+              },
+              {
+                code: "M",
+                text: "Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "X",
+                text: "Both Above Ground & Mult Victims",
+                recResponse: 125,
+              },
+              {
+                code: "Y",
+                text: "Both Below Ground & Mult Victims",
+                recResponse: 125,
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
