@@ -1829,5 +1829,117 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 99,
+    name: "BLSR",
+    incidentType: "COLD|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 100,
+    name: "BLSR",
+    incidentType: "HEAT|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 101,
+    name: "BLSU9",
+    incidentType: "COLD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 102,
+    name: "BLSU9",
+    incidentType: "HEAT|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 103,
+    name: "ALS1",
+    incidentType: "COLD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 104,
+    name: "ALS1",
+    incidentType: "HEAT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 105,
+    name: "MLTP",
+    incidentType: "COLD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 106,
+    name: "MLTP",
+    incidentType: "HEAT|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
   }
 ];

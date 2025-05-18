@@ -10598,4 +10598,340 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 20,
+    name: "Heat/Cold Exposure",
+    shortName: "Heat/Cold Exposure",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 99,
+    questions: [
+      {
+        text: <p>Does **pronoun** have <b>chest pain</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { age } = _patient;
+          return age >= 35;
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "No",
+            display: "No chest pain",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Pt has chest pain",
+            goto: 10
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has chest pain",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers:[
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+            updateCode: "20A01"
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "20D01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+            updateCode: "20B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have a history of heart problems?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No cardiac hx",
+            continue: true,
+          },
+          {
+            answer: "Heart Attack",
+            display: "Heart Attack hx",
+            continue: true,
+            updateCode: "20C01"
+          },
+          {
+            answer: "Angina",
+            display: "Angina hx",
+            continue: true,
+            updateCode: "20C01"
+          },
+          {
+            answer: "Other:",
+            display: "Cardiac hx of {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk cardiac hx",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** had a <b>change</b> in <b>skin color</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No change in skin color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Change in skin color",
+            continue: true,
+            updateCode: "20B01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk change in skin color",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is their skin temperature?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Colder than normal",
+            display: "Colder skin temp than nll",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Hotter than normal",
+            display: "Hotter skin temp than nll",
+            continue: true,
+            updateSubCode: "H"
+          },
+          {
+            answer: "Normal",
+            display: "Normal skin temperature",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk skin temperature",
+            continue: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "20A01",
+            text: "Alert",
+            recResponse: 99,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 99
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "20B00",
+            text: "ALS Override (Bravo)",
+            recResponse: 101,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 101
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 102
+              }
+            ]
+          },
+          {
+            code: "20B01",
+            text: "Change in Skin Color",
+            recResponse: 101,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 101
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 102
+              }
+            ]
+          },
+          {
+            code: "20B02",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 101,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 101
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 102
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "20C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 103,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 103
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 104
+              }
+            ]
+          },
+          {
+            code: "20C01",
+            text: "Heart Attack or Angina Hx",
+            recResponse: 101,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 101
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 102
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "20D00",
+            text: "ALS Override (Delta)",
+            recResponse: 103,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 103
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 104
+              }
+            ]
+          },
+          {
+            code: "20D01",
+            text: "Not Alert",
+            recResponse: 103,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 103
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 104
+              }
+            ]
+          },
+          {
+            code: "20D02",
+            text: "Mult Victims (w/ Priority Symptoms)",
+            recResponse: 105,
+            multVictim: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cold Exposure",
+                recResponse: 105
+              },
+              {
+                code: "H",
+                text: "Heat Exposure",
+                recResponse: 106
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

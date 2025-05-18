@@ -102,7 +102,7 @@ export default function EMSCallPage() {
       (complaint) => complaint.protocol === protocolNumber
     );
     if (!newComplaint) return;
-    callData.reconfigured = true;
+    callData.reconfigured = selectedComplaint;
     localStorage.removeItem("EMS_PROQA_DATA");
     localStorage.removeItem("EMS_PROQA_QUESTIONS");
     setSelectedComplaint(newComplaint.name);
