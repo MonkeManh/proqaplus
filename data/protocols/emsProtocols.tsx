@@ -10619,7 +10619,6 @@ export const emsComplaints: IEMSComplaint[] = [
           const { age } = _patient;
           return age >= 35;
         },
-        omitQuestion: true,
         answers: [
           {
             answer: "No",
