@@ -3758,6 +3758,12 @@ export const postalData: IPostal[] = [
       "LCSO",
       "LSPD",
     ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Chiliad Trail",
+      crossStreet1: "Ridgeline Loop Trail",
+      crossStreet2: "Faclon Chiliad Trail",
+    }
   },
   {
     postal: "147",

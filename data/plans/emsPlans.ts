@@ -1672,5 +1672,87 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
-  }
+  },
+  {
+    id: 88,
+    name: "BLSR",
+    incidentType: "HEADACHE|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 89,
+    name: "BLSU9",
+    incidentType: "HEADACHE|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 90,
+    name: "ALS1",
+    incidentType: "HEADACHE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 91,
+    name: "ALS1",
+    incidentType: "STROKE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 92,
+    name: "ALS1",
+    incidentType: "HEADACHE|DELOC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 93,
+    name: "ALS1",
+    incidentType: "HEADACHE|TROUBLEBREATHING|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
 ];

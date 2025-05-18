@@ -8047,20 +8047,25 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Falls encompass a wide range of trauma scenarios, from minor slips to high-velocity impacts or intentional
-          self-harm. Protocol 17 distinguishes these cases based on fall height, location of impact, patient alertness, and
-          complications like bleeding or respiratory distress.
+          Falls encompass a wide range of trauma scenarios, from minor slips to
+          high-velocity impacts or intentional self-harm. Protocol 17
+          distinguishes these cases based on fall height, location of impact,
+          patient alertness, and complications like bleeding or respiratory
+          distress.
         </p>
         <p className="mt-2">
-          Long or extreme falls (≥ 6ft or ≥ 30ft), head/chest impacts, or altered mental status immediately trigger ALS
-          consideration. Subcodes address environmental hazards, accessibility barriers, or intentional acts (e.g., jumpers)
-          that may affect extrication or scene safety. For calls that are longer than 30 minutes from a major trauma center,
+          Long or extreme falls (≥ 6ft or ≥ 30ft), head/chest impacts, or
+          altered mental status immediately trigger ALS consideration. Subcodes
+          address environmental hazards, accessibility barriers, or intentional
+          acts (e.g., jumpers) that may affect extrication or scene safety. For
+          calls that are longer than 30 minutes from a major trauma center,
           consider utilizing air asset(s)
         </p>
         <p className="mt-2">
-          Responders should be aware of delayed symptoms in elderly patients or those on blood thinners, and assess for
-          secondary injuries, including spinal trauma. Fire units may assist with lift-assists, difficult access, or
-          extrication support.
+          Responders should be aware of delayed symptoms in elderly patients or
+          those on blood thinners, and assess for secondary injuries, including
+          spinal trauma. Fire units may assist with lift-assists, difficult
+          access, or extrication support.
         </p>
       </>
     ),
@@ -8091,12 +8096,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk when pt fell",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>How <b>far</b> did **pronoun** <b>fall</b>?</p>,
+        text: (
+          <p>
+            How <b>far</b> did **pronoun** <b>fall</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8113,7 +8122,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Fall down (not on) stairs",
             display: "Fell down stairs",
             continue: true,
-            updateCode: "17B03"
+            updateCode: "17B03",
           },
           {
             answer: "Fall on (not down) stairs",
@@ -8124,25 +8133,29 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "LONG FALL - 10-29ft (3-9m)",
             display: "LONG FALL - 10-29ft (3-9m)",
             continue: true,
-            updateCode: "17D06"
+            updateCode: "17D06",
           },
           {
             answer: "EXTREME FALL - >= 30ft (>= 10m)",
             display: "EXTREME FALL - >= 30ft (>= 10m)",
             continue: true,
-            updateCode: "17D01"
+            updateCode: "17D01",
           },
           {
             answer: "Unknown",
             display: "Unk how far pt fell",
             continue: true,
-            updateCode: "17B04"
-          }
-        ]
+            updateCode: "17B04",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>caused</b> the fall?</p>,
+        text: (
+          <p>
+            What <b>caused</b> the fall?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8153,7 +8166,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Electrocution",
             display: "Electrocution caused fall",
-            goto: 15
+            goto: 15,
           },
           {
             answer: "Dizziness",
@@ -8164,19 +8177,24 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Jumped/Intentional",
             display: "Jumped/Intentional fall",
             continue: true,
-            updateSubCode: "J"
+            updateSubCode: "J",
           },
           {
             answer: "Unknown",
             display: "Unk reason for fall",
             continue: true,
-            updateCode: '17B04'
-          }
-        ]
+            updateCode: "17B04",
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b>SERIOUS</b> <span className="text-4">bleeding</span>?</p>,
+        text: (
+          <p>
+            Is there any <b>SERIOUS</b> <span className="text-4">bleeding</span>
+            ?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8188,14 +8206,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: "17B02"
+            updateCode: "17B02",
           },
           {
             answer: "Unknown",
             display: "Unk if SERIOUS bleeding",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -8216,18 +8234,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "17D04"
+            updateCode: "17D04",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>what <b>part</b> of the body was <b>injured?</b></p>,
+        text: (
+          <p>
+            what <b>part</b> of the body was <b>injured?</b>
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8263,24 +8285,32 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown area",
             display: "Unk area of inj",
             continue: true,
-            updateCode: "17B04"
+            updateCode: "17B04",
           },
           {
             answer: "No injuries",
             display: "No injuries rptd",
             continue: true,
-            updateCode: "17A04"
-          }
-        ]
+            updateCode: "17A04",
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** having any <b>difficulty</b> breathing?</p>,
+        text: (
+          <p>
+            Is **pronoun** having any <b>difficulty</b> breathing?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
-          if(!lastAnswer) return false;
-          return lastAnswer === "Injured chest" || lastAnswer === "Injured neck" || lastAnswer === "Injured head";
+          if (!lastAnswer) return false;
+          return (
+            lastAnswer === "Injured chest" ||
+            lastAnswer === "Injured neck" ||
+            lastAnswer === "Injured head"
+          );
         },
         answers: [
           {
@@ -8292,14 +8322,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Diff breathing",
             continue: true,
-            updateCode: "17D05"
+            updateCode: "17D05",
           },
           {
             answer: "Unknown",
             display: "Unk if diff breathing",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -8307,14 +8337,14 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const injuryAnswer = answers?.[answers.length - 1]?.answer;
-          return injuryAnswer.includes('Inj to');
+          return injuryAnswer.includes("Inj to");
         },
         answers: [
           {
             answer: "Deformity",
             display: "Inj has deformity",
             continue: true,
-            updateCode: "17A01"
+            updateCode: "17A01",
           },
           {
             answer: "No Deformity",
@@ -8325,19 +8355,23 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk extent of injury",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>Where</b> is **pronoun** now?</p>,
+        text: (
+          <p>
+            <b>Where</b> is **pronoun** now?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "On the ground or floor",
             display: "Still on grd or floor",
             continue: true,
-            updateSubCode: "G"
+            updateSubCode: "G",
           },
           {
             answer: "Public place",
@@ -8348,12 +8382,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if still on floor/grd",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are there any <b>special concerns</b>?</p>,
+        text: (
+          <p>
+            Are there any <b>special concerns</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8361,14 +8399,14 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Accessibility concerns - {input}",
             continue: true,
             input: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "Environmental problems:",
             display: "Environmental concerns - {input}",
             continue: true,
             input: true,
-            updateSubCode: "E"
+            updateSubCode: "E",
           },
           {
             answer: "No special concerns",
@@ -8379,8 +8417,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk special concerns",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -8410,14 +8448,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17A02",
@@ -8442,17 +8480,17 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
-            code: '17A03',
+            code: "17A03",
             text: "Non-Recent (>= 6hrs) Injs (w/o priority symptoms)",
             recResponse: 81,
             subCodes: [
@@ -8474,14 +8512,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17A04",
@@ -8506,16 +8544,16 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 82
+                recResponse: 82,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 82
-              }
-            ]
+                recResponse: 82,
+              },
+            ],
           },
-        ]
+        ],
       },
       {
         priority: "B",
@@ -8543,14 +8581,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17B01",
@@ -8575,14 +8613,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17B02",
@@ -8607,14 +8645,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17B03",
@@ -8639,14 +8677,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
+                recResponse: 79,
+              },
+            ],
           },
           {
             code: "17B04",
@@ -8672,16 +8710,16 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 79
-              }
-            ]
-          }
-        ]
+                recResponse: 79,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -8709,14 +8747,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 83
-              }
-            ]
+                recResponse: 83,
+              },
+            ],
           },
           {
             code: "17D01",
@@ -8741,14 +8779,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 86
+                recResponse: 86,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "17D02",
@@ -8774,14 +8812,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 87
+                recResponse: 87,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 87
-              }
-            ]
+                recResponse: 87,
+              },
+            ],
           },
           {
             code: "17D03",
@@ -8807,14 +8845,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 86
+                recResponse: 86,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "17D04",
@@ -8839,14 +8877,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 83
-              }
-            ]
+                recResponse: 83,
+              },
+            ],
           },
           {
             code: "17D05",
@@ -8871,14 +8909,14 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 83
-              }
-            ]
+                recResponse: 83,
+              },
+            ],
           },
           {
             code: "17D06",
@@ -8903,17 +8941,1221 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "J",
                 text: "Jumper (Suicide Attempt)",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "P",
                 text: "Public Place (Street, Parking Garage, Market)",
-                recResponse: 83
+                recResponse: 83,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 18,
+    name: "Headache",
+    shortName: "Headache",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 88,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "18C01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+            updateCode: "18B01",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>breathing</b> normally?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            updateCode: "18A01",
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "18C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "18B01",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** able to <b>speak</b> or <b>talk</b> normally?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Able to speak nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not able to speak nlly",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if able to speak nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Did the pain onset <b>suddenly</b> or gradually?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Suddenly",
+            display: "Sudden onset of pn",
+            continue: true,
+            updateCode: "18C04",
+          },
+          {
+            answer: "Gradually",
+            display: "Gradual onset of pn",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk onset of pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Does **pronoun** have any numbness on one side or paralysis</p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No numbness or paralysis",
+            continue: true,
+          },
+          {
+            answer: "Numbness (on one side)",
+            display: "Numbness on one side",
+            continue: true,
+            updateCode: "18C05",
+          },
+          {
+            answer: "Paralysis (on one side)",
+            display: "Paralysis on one side",
+            continue: true,
+            updateCode: "18C06",
+          },
+          {
+            answer: "Both Numbness and Paralysis",
+            display: "Numbness and Paralysis",
+            continue: true,
+            updateCode: "18C06",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has numbness or paralysis",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Has the patient's behavior changed in the last 3 hours?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No change in behavior",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Change in behavior (<= 3hrs)",
+            continue: true,
+            updateCode: "18C07",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if change in behavior",
+            continue: true,
+          },
+        ],
+      },
+
+      // Symptom Start - 6
+      {
+        text: <p>When did these symptoms start?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Less than 4.5 hours ago (< 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "More than 4.5 hours ago (> 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "G",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when symptoms started",
+            continue: true,
+            updateSubCode: "U",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Say: 'I am ging to have you complete a quick test before the medics
+            show up ok?'
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const firstAnswer = answers?.[0]?.answer;
+          const secondAnswer = answers?.[1]?.answer;
+          const thirdAnswer = answers?.[2]?.answer;
+          const fourthAnswer = answers?.[3]?.answer;
+          const fifthAnswer = answers?.[4]?.answer;
+          const sixthAnswer = answers?.[5]?.answer;
+          if (
+            !firstAnswer ||
+            !secondAnswer ||
+            !thirdAnswer ||
+            !fourthAnswer ||
+            !fifthAnswer ||
+            !sixthAnswer
+          )
+            return false;
+          if (
+            firstAnswer !== "Responding nlly" ||
+            secondAnswer !== "Breathing nlly" ||
+            thirdAnswer !== "Able to speak nlly" ||
+            fourthAnswer !== "Gradual onset of pn" ||
+            fifthAnswer !== "No numbness or paralysis" ||
+            sixthAnswer !== "No change in behavior"
+          )
+            return true;
+          return false;
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Ready",
+            display: "Starting test...",
+            continue: true,
+          },
+          {
+            answer: "Refused to do test",
+            display: "Refused to do test",
+            end: true,
+          },
+          {
+            answer: "Skip",
+            display: "Skip test",
+            end: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say "Can you have the patient smile"</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Smile instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Say: "Was the smile equal on both sides of the patient's mouth?"
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Smile instructions given"
+          )?.answer;
+          return answer === "Smile instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Normal Smile",
+            display: "1: 0",
+            continue: true,
+          },
+          {
+            answer: "Slight difference in smile (possible difference)",
+            display: "1: 1",
+            continue: true,
+          },
+          {
+            answer:
+              "Only one side of mouth or face shows a smile (obvious difference)",
+            display: "1: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "1: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say: "Have the patient raise both arms above their head"</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Raise arms instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What was **pronoun** able to do?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Raise arms instructions given"
+          )?.answer;
+          return answer === "Raise arms instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Both arms raised equally",
+            display: "2: 0",
+            continue: true,
+          },
+          {
+            answer: "One arm raised higher than the other",
+            display: "2: 1",
+            continue: true,
+          },
+          {
+            answer: "Only one arm raised",
+            display: "2: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "2: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Speech instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Was **pronoun** able to say it correctly and understandably</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Speech instructions given"
+          )?.answer;
+          return answer === "Speech instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Said correctly",
+            display: "3: 0",
+            continue: true,
+          },
+          {
+            answer: "Slurred speech",
+            display: "3: 1",
+            continue: true,
+          },
+          {
+            answer: "Garbled or not understandable speech",
+            display: "3: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "3: 0",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Calculate Score</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Calculate Score",
+            display: "Stroke test score calculated",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const smileAnswer = answers?.find((a) =>
+                a.answer.includes("1: ")
+              )?.answer;
+              const armsAnswer = answers?.find((a) =>
+                a.answer.includes("2: ")
+              )?.answer;
+              const speechAnswer = answers?.find((a) =>
+                a.answer.includes("3: ")
+              )?.answer;
+              const symptomStart = answers?.find(
+                (a) => a.question === "When did these symptoms start?"
+              )?.defultAnswer;
+              const smileScore = parseInt(smileAnswer.split(": ")[1]);
+              const armsScore = parseInt(armsAnswer.split(": ")[1]);
+              const speechScore = parseInt(speechAnswer.split(": ")[1]);
+              const totalScore = smileScore + armsScore + speechScore;
+              if (totalScore === 0) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "Z" };
+                }
+              } else if (totalScore > 0 && totalScore <= 2) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "C" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "D" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "E" };
+                }
+              } else if (totalScore > 2 && totalScore <= 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "F" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "H" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "I" };
+                }
+              } else if (totalScore > 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "J" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "K" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "M" };
+                }
               }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+              return undefined;
+            },
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "18A01",
+            text: "Breathing Normally",
+            recResponse: 88,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "18B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 89,
+          },
+          {
+            code: "18B01",
+            text: "Unkn Status / Other Codes Not Applicable",
+            defaultCode: true,
+            recResponse: 89,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "18C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 90,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 90,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 90,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 90,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 90,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 90,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 90,
+              },
+            ],
+          },
+          {
+            code: "18C01",
+            text: "Not Alert",
+            recResponse: 92,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 92,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 92,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 92,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 92,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 92,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 92,
+              },
+            ],
+          },
+          {
+            code: "18C02",
+            text: "Abnormal Breathing",
+            recResponse: 93,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 93,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 93,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 93,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 93,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 93,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 93,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 93,
+              },
+            ],
+          },
+          {
+            code: "18C03",
+            text: "Speech Problems",
+            recResponse: 89,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 89,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "18C04",
+            text: "Sudden Onset of Severe Pain",
+            recResponse: 89,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 89,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "18C05",
+            text: "Numbness",
+            recResponse: 89,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 89,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 89,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 89,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 89,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "18C06",
+            text: "Paralysis",
+            recResponse: 90,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 90,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 90,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 90,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 90,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 90,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 90,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 90,
+              },
+            ],
+          },
+          {
+            code: "18C07",
+            text: "Change in Behavior (<= 3hrs)",
+            recResponse: 92,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 92,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 92,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 92,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 92,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 92,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 92,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 92,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
