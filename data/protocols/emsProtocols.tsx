@@ -358,33 +358,64 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          When handling Allergic Reactions, assess for signs of airway
-          involvement and consciousness first. Ineffective or agonal breathing
-          is treated as a true emergency requiring the highest response level.
-          If the patient is not alert, or is having trouble speaking between
-          breaths, escalate immediately.
+          Allergic Reactions and Envenomations require immediate assessment of
+          airway status, especially signs of ineffective or agonal
+          breathing—these indicate a life-threatening condition and mandate an
+          Echo-level response. Consciousness and the ability to speak between
+          breaths are also early critical factors for triage escalation.
         </p>
 
         <p className="mt-2">
-          Difficulty breathing or swallowing—especially in a patient with a
-          known history of severe reactions—suggests airway compromise and
-          should never be underestimated. Consider whether the patient has used
-          an injection (e.g., EpiPen) or taken medications; this may affect
-          sub-code selection but does not rule out severity. Prior reactions
-          often mean increased risk of rapid progression.
+          If the patient is having{" "}
+          <span className="font-medium">
+            difficulty breathing or swallowing
+          </span>
+          , particularly with a known allergy history, you should assume a
+          rapidly progressing airway compromise until proven otherwise. Past
+          reactions, even if mild, increase risk for future severe responses.
+          Injection use (e.g., EpiPen) or medications may be noted but{" "}
+          <i>do not</i> guarantee symptom relief—severity must still be
+          evaluated based on current presentation.
         </p>
 
         <p className="mt-2">
-          Note what caused the reaction. Insect stings, spider bites, or snake
-          bites may trigger systemic symptoms and need appropriate coding. A
-          swarming attack (e.g., multiple stings) is always treated as a
-          higher-priority event due to increased toxin load and the risk of
-          rapid deterioration. Time of onset, known allergy history, and any
-          treatment taken so far should all be captured to guide proper
-          determinant selection.
+          Understanding the{" "}
+          <span className="font-medium">cause of the reaction</span> is vital.
+          Swarming insect attacks (multiple stings) are higher-risk due to
+          cumulative venom exposure. Bites from snakes or spiders require
+          consideration for systemic toxicity. Always ask about time of onset,
+          previous allergic history, and any interventions already taken (like
+          injections or medications) to ensure accurate coding and proper
+          resource dispatch.
         </p>
+
+        <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="font-medium">Ineffective or Agonal Breathing</span>{" "}
+            → Echo-level emergency
+          </li>
+          <li>
+            <span className="font-medium">
+              Difficulty Speaking Between Breaths
+            </span>{" "}
+            → Delta concern
+          </li>
+          <li>
+            <span className="font-medium">Swarming Attack / Snakebite</span> →
+            High-priority Delta determinant
+          </li>
+          <li>
+            <span className="font-medium">Prior Allergy Hx</span> → Escalates
+            concern, especially with breathing issues
+          </li>
+          <li>
+            <span className="font-medium">Injection or Medication Taken</span> →
+            May trigger sub-code but doesn’t reduce urgency
+          </li>
+        </ul>
       </>
     ),
+
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -557,8 +588,8 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Does **pronoun** take any medications or have an injection for this type of
-            reaction?
+            Does **pronoun** take any medications or have an injection for this
+            type of reaction?
           </p>
         ),
         questionType: "select",
@@ -844,27 +875,76 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Animal Bites include the type of animal
-          involved, the location and severity of the injury, and whether the
-          attack is ongoing. Certain animals—such as large or exotic
-          species—present increased risk of severe trauma, infection, or
-          envenomation.
+          Animal bites can range from minor punctures to life-threatening
+          trauma— it’s essential to identify{" "}
+          <span className="text-red-500 font-semibold">attack severity</span>{" "}
+          and
+          <span className="text-red-500 font-semibold"> scene safety</span>{" "}
+          early. Immediate danger (e.g., attack still in progress) must prompt a
+          high-level response and consideration for{" "}
+          <span className="text-yellow-400 font-semibold">law enforcement</span>{" "}
+          dispatch.
         </p>
+
         <p className="mt-2">
-          Body area affected is a major factor; bites to the head, neck, or
-          chest, or those involving dangerous bleeding, airway compromise, or
-          altered consciousness may indicate the need for a higher-level
-          response. Always assess for breathing difficulty when injury involves
-          upper body structures.
+          Focus on the <span className="font-medium">type of animal</span> and
+          the
+          <span className="font-medium"> area of the body affected</span>.
+          Injuries to the
+          <span className="text-red-400 font-semibold">
+            {" "}
+            head, neck, or chest
+          </span>{" "}
+          carry heightened risk of airway compromise, bleeding, or neurological
+          involvement. Large or exotic animals also present a greater likelihood
+          of deep trauma or envenomation.
         </p>
+
+        <p className="mt-2">Look for these **red flags** during questioning:</p>
+
+        <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="text-red-500 font-semibold">Ongoing attack</span>{" "}
+            or unknown animal location → scene may still be unsafe
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Bites to the airway
+            </span>{" "}
+            or face/chest → high risk of compromised breathing
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Multiple animals or mauling
+            </span>{" "}
+            → assume high trauma burden
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Unconscious or not alert
+            </span>{" "}
+            → immediate ALS-level concern
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">Serious bleeding</span>{" "}
+            → treat as time-sensitive hemorrhage
+          </li>
+        </ul>
+
         <p className="mt-2">
-          Additional factors such as the presence of multiple bites, evidence of
-          mauling, or uncertainty about the animal's current location should
-          prompt consideration of scene safety and potential law enforcement
-          involvement.
+          Document the <span className="font-medium">time of incident</span> and
+          <span className="font-medium"> whether the wound is recent</span>.
+          Bites older than 6 hours without complications may be less urgent but
+          still need evaluation for
+          <span className="text-yellow-400 font-semibold">
+            {" "}
+            rabies exposure
+          </span>{" "}
+          or infection.
         </p>
       </>
     ),
+
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -1236,26 +1316,95 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Assault incidents include the mechanism and
-          severity of injury, patient consciousness, and the body area affected.
-          Particular attention should be given to injuries involving the head,
-          neck, or chest, as well as signs of serious bleeding or deformity.
+          Assault cases require a dual lens: one for{" "}
+          <span className="text-red-500 font-semibold">medical urgency</span>,
+          and another for{" "}
+          <span className="text-yellow-400 font-semibold">
+            scene safety and victim sensitivity
+          </span>
+          . Evaluate the mechanism of injury, the region affected, and whether
+          the patient is{" "}
+          <span className="text-red-500 font-semibold">
+            conscious and alert
+          </span>
+          . Head, neck, and chest injuries raise immediate concern due to
+          possible airway involvement or internal trauma.
         </p>
+
+        <p className="mt-2">This protocol includes:</p>
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="font-medium">Assault</span>
+          </li>
+          <li>
+            <span className="font-medium">Sexual Assault</span>
+          </li>
+          <li>
+            <span className="font-medium">Stun Gun Deployment</span>
+          </li>
+        </ul>
+
         <p className="mt-2">
-          This protocol also differentiates between general assault, sexual
-          assault, and less common incidents such as stun gun deployment. The
-          patient's alertness level and any difficulty breathing should prompt
-          escalation if airway compromise or decreased consciousness is
-          observed.
+          For{" "}
+          <span className="text-pink-400 font-semibold">
+            sexual assault victims
+          </span>
+          , ensure care is trauma-informed. Avoid unnecessary questioning. Focus
+          on safety, preserve any potential evidence, and prioritize{" "}
+          <span className="text-yellow-400 font-semibold">
+            law enforcement notification
+          </span>{" "}
+          where appropriate.
         </p>
+
         <p className="mt-2">
-          Ensure scene safety is considered, especially if the assailant is
-          still nearby. In cases of sexual assault, preserve forensic evidence
-          and provide care with sensitivity. Law enforcement involvement is
-          typically required.
+          Be alert for the following{" "}
+          <span className="text-red-500 font-semibold">
+            escalation triggers
+          </span>
+          :
+        </p>
+
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="text-red-500 font-semibold">Serious bleeding</span>{" "}
+            or signs of internal trauma
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Airway compromise
+            </span>{" "}
+            (e.g., difficulty breathing/speaking)
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Altered consciousness
+            </span>{" "}
+            or unconsciousness
+          </li>
+          <li>
+            <span className="text-yellow-400 font-semibold">
+              Assailant still on scene
+            </span>{" "}
+            → Confirm scene safety
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">
+              Injury to chest, neck, or head
+            </span>{" "}
+            → Consider Delta upgrade
+          </li>
+        </ul>
+
+        <p className="mt-2">
+          <span className="font-medium">REMEMBER:</span> Even when injuries
+          appear minor, if the event is recent or involves psychological trauma,
+          an EMS response is still warranted. Be patient-forward, respectful,
+          and supportive.
         </p>
       </>
     ),
+
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -1800,23 +1949,46 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Back Pain include the cause of pain (traumatic
-          vs. non-traumatic), associated symptoms such as difficulty breathing
-          or altered consciousness, and high-risk pain descriptions (e.g.,
-          ripping or tearing pain in older adults). These factors may indicate
-          vascular emergencies such as aortic aneurysm.
+          Back pain—especially when non-traumatic—may seem low acuity, but can conceal
+          <span className="text-red-500 font-semibold"> life-threatening vascular conditions</span> in older adults.
+          Always distinguish between <span className="font-medium">traumatic vs. non-traumatic</span> causes and assess
+          for associated symptoms such as chest pain, fainting, or changes in skin color.
         </p>
+
         <p className="mt-2">
-          Traumatic causes such as recent falls or injuries require additional
-          evaluation for spinal involvement or internal bleeding. Non-traumatic
-          back pain is often less urgent but may still warrant transport
-          depending on the patient's condition and comorbidities.
+          <span className="text-yellow-400 font-semibold">Key concern:</span>{" "}
+          Sudden, severe pain described as{" "}
+          <span className="text-red-500 font-semibold">"ripping" or "tearing"</span>{" "}
+          in patients over 50 may indicate an <i>aortic aneurysm</i> and warrants immediate ALS response.
         </p>
+
         <p className="mt-2">
-          Fainting, color changes (e.g., ashen/grey skin), or chest involvement
-          may indicate systemic compromise and should be prioritized
-          accordingly. Always assess pain characteristics and associated
-          symptoms in patients over 50 with severe or sudden onset.
+          Use the following to guide triage:
+        </p>
+
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="font-semibold">Non-traumatic onset</span> → often Alpha, unless other risk factors present
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">Fainting, grey skin tone, or altered mental status</span> → escalate to Charlie or Delta
+          </li>
+          <li>
+            <span className="font-semibold">Chest pain + back pain</span> → suspect vascular or cardiac cause
+          </li>
+          <li>
+            <span className="font-semibold">Known or suspected aneurysm</span> → treat as high-priority
+          </li>
+        </ul>
+
+        <p className="mt-2">
+          For <span className="font-medium">traumatic back pain</span> (e.g., from a recent fall), escalate based on the time of injury and signs
+          of spinal involvement. Old injuries without new symptoms may qualify as Alpha-level.
+        </p>
+
+        <p className="mt-2">
+          <span className="font-medium">REMEMBER:</span> In patients over 50, always ask about chest involvement and
+          check for signs of vascular collapse, even if the chief complaint is "just back pain."
         </p>
       </>
     ),
@@ -2146,22 +2318,52 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Breathing Problems include the patient’s
-          alertness, effectiveness of breathing, and presence of airway
-          interventions such as tracheostomies. Difficulty speaking, skin color
-          changes, and clammy or cold skin may indicate a progression toward
-          respiratory failure and should prompt rapid ALS response.
+          Breathing issues should always be approached with urgency—airway
+          compromise can evolve <span className="text-red-500 font-semibold">rapidly</span>. Start by evaluating
+          <span className="font-medium"> alertness</span> and the ability to
+          <span className="text-red-500 font-semibold"> speak between breaths</span>.
+          If the patient can't talk, is changing color, or has cold sweats, assume
+          deteriorating respiratory status and escalate immediately.
         </p>
+
         <p className="mt-2">
-          Respiratory history—such as asthma, COPD, or other lung conditions—can
-          impact treatment decisions and prioritization. Confirm whether
-          prescribed inhalers or medications were taken, and assess for
-          tracheostomy use, especially in patients showing signs of distress.
+          If the patient has a history of
+          <span className="text-yellow-400 font-semibold"> asthma</span>,
+          <span className="text-yellow-400 font-semibold"> COPD</span>, or uses a
+          <span className="text-yellow-400 font-semibold"> tracheostomy</span>,
+          assess for distress and confirm whether a prescribed
+          <span className="font-medium"> inhaler or nebulizer</span> is available and in use.
+          These factors inform both determinant level and field management instructions.
         </p>
+
         <p className="mt-2">
-          Ineffective or absent breathing requires immediate intervention.
-          Always consider airway compromise, oxygenation status, and the need
-          for advanced airway management or ventilatory support.
+          Watch for the following <span className="text-red-500 font-semibold">red flags</span> that indicate ALS or Echo priority:
+        </p>
+
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="font-semibold">Cannot speak or cry</span> → assess for choking or ineffective breathing
+          </li>
+          <li>
+            <span className="font-semibold">Not alert</span> → possible hypoxia or declining mental status
+          </li>
+          <li>
+            <span className="font-semibold">Changing skin color</span> or
+            <span className="font-semibold"> clammy/cold sweats</span> → signs of decompensation
+          </li>
+          <li>
+            <span className="font-semibold">Known lung disease</span> without meds/inhaler access → increased risk
+          </li>
+          <li>
+            <span className="font-semibold">Ineffective breathing</span> → treat as an
+            <span className="text-red-500 font-semibold"> Echo-level emergency</span>
+          </li>
+        </ul>
+
+        <p className="mt-2">
+          <span className="font-medium">REMEMBER:</span> A patient with asthma or COPD may appear stable,
+          but still rapidly deteriorate without proper intervention. If symptoms
+          persist after inhaler/nebulizer use, response level should not be downgraded.
         </p>
       </>
     ),
@@ -2749,25 +2951,56 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Burns and Explosions include the mechanism of
-          injury (open flame, explosion, fireworks, etc.), extent and location
-          of burns, and the presence of any active fire or smoldering hazards.
-          Always assess whether this is associated with a structure fire and if
-          victims are still trapped.
+          Burn and explosion injuries require immediate triage to assess for:
+          <span className="text-red-500 font-semibold"> airway involvement</span>,
+          <span className="text-red-500 font-semibold"> extent of burn area</span>,
+          and
+          <span className="text-yellow-400 font-semibold"> active hazards</span> (e.g., structure fire or smoldering debris).
+          Always determine whether this is part of a
+          <span className="text-red-400 font-semibold"> structure fire</span> and if
+          <span className="font-medium"> victims are still inside</span>.
         </p>
+
         <p className="mt-2">
-          Significant burn area (≥18%), facial involvement, and signs of
-          inhalation injury (e.g., difficulty breathing, soot in airway, or
-          inability to speak between breaths) may indicate airway compromise and
-          require ALS-level response. Blast injuries may involve multiple trauma
-          mechanisms, including blunt, penetrating, and barotrauma.
+          <span className="font-medium">Critical Indicators</span> of severe burn injury include:
         </p>
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li>
+            <span className="text-red-500 font-semibold">Burns ≥ 18%</span> of total body surface area
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">Significant facial burns</span> or burns involving
+            <span className="font-medium"> the airway</span>
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">Difficulty breathing or speaking</span> after inhalation injury
+          </li>
+          <li>
+            <span className="text-red-500 font-semibold">Victim on fire</span> or presence of smoldering clothing
+          </li>
+          <li>
+            <span className="text-yellow-400 font-semibold">Explosive mechanisms</span> → consider
+            <span className="font-medium"> blast injuries, barotrauma, or penetrating debris</span>
+          </li>
+        </ul>
+
         <p className="mt-2">
-          Scene safety must be prioritized in active fire or explosive
-          environments. In cases involving fireworks or explosions, multiple
-          victims are possible. Consider the potential for toxic inhalation,
-          unconsciousness, and severe systemic burns that demand urgent
-          intervention.
+          <span className="font-medium text-yellow-400">Scene safety</span> is a priority.
+          Explosions and fireworks often involve
+          <span className="font-semibold"> multiple victims</span> and
+          <span className="font-semibold"> toxic smoke inhalation</span>. When active fire or smoldering materials are present,
+          coordinate with fire services for scene control and potential rescue operations.
+        </p>
+
+        <p className="mt-2">
+          For <span className="font-medium">sunburns</span> or minor burns <span className="text-muted-foreground">(under 9%)</span>,
+          a lower response level may be appropriate—unless complicated by age, location (e.g., face), or other comorbidities.
+        </p>
+
+        <p className="mt-2">
+          <span className="font-medium">REMEMBER:</span>{" "}
+          Any indication of altered consciousness, respiratory distress, or blast-related polytrauma should
+          escalate immediately to a <span className="text-red-500 font-semibold">Delta or Echo-level</span> response.
         </p>
       </>
     ),
@@ -3599,24 +3832,41 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Inhalation emergencies include the type of
-          substance involved (chemical, biological, gas, carbon monoxide, etc.),
-          the number of patients affected, and whether the scene is safe.
-          Exposure to hazardous materials may result in respiratory distress,
-          unconsciousness, or toxic systemic effects.
+          This protocol addresses emergencies involving inhaled toxins, including
+          <span className="text-green-400 font-semibold"> hazardous materials</span>,
+          <span className="text-green-400 font-semibold"> carbon monoxide</span>, and
+          <span className="text-green-400 font-semibold"> CBRN agents</span> (chemical, biological, radiological, nuclear).
+          Always assess the <span className="font-medium">scene safety</span> and whether exposure is ongoing or contained.
         </p>
+
         <p className="mt-2">
-          Determinants are driven by the patient's alertness, breathing status,
-          and ability to speak. Triggers such as carbon monoxide poisoning, gas
-          leaks, and industrial chemical exposure may present with subtle or
-          delayed symptoms. Multiple victim scenarios and known contamination
-          increase priority and resource needs.
+          Key clinical concerns include:
         </p>
+        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+          <li><span className="font-medium">Alertness</span> and ability to respond appropriately</li>
+          <li><span className="font-medium">Breathing effectiveness</span> and respiratory effort</li>
+          <li><span className="text-red-400 font-semibold">Difficulty speaking between breaths</span> → possible airway irritation or hypoxia</li>
+          <li><span className="text-red-400 font-semibold">Multiple patients</span> → suspect scene-wide contamination</li>
+          <li><span className="text-green-400 font-semibold">Type of material involved</span> → drives response escalation and containment needs</li>
+        </ul>
+
         <p className="mt-2">
-          Consider law enforcement and HazMat response for scene safety and
-          containment, especially if the substance is unknown, still active, or
-          intentionally released. Prompt decontamination and transport to
-          facilities equipped for toxicological emergencies may be necessary.
+          Exposure to substances such as chlorine gas, carbon monoxide, or unknown fumes may cause
+          <span className="text-red-400 font-semibold"> delayed onset symptoms</span> such as dizziness, confusion, or fainting.
+          For CO detector calls, symptoms like headache or nausea can appear subtle but signal dangerous buildup.
+        </p>
+
+        <p className="mt-2">
+          For <span className="text-green-400 font-semibold">chemical or radiological releases</span>,
+          dispatch Fire and HazMat units. Victims may require
+          <span className="font-medium"> decontamination</span> and transport to specialized toxicology-capable facilities.
+        </p>
+
+        <p className="mt-2">
+          <span className="font-medium">REMEMBER:</span> If the substance is still present,
+          unknown, or actively spreading—assume a
+          <span className="text-green-400 font-semibold"> hazardous materials</span> situation until proven otherwise.
+          Always protect responders and prioritize scene isolation.
         </p>
       </>
     ),
@@ -4523,26 +4773,35 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Cardiac Arrest include whether the arrest was
-          witnessed, the time since the patient was last seen responsive, and
-          whether resuscitation is appropriate. Immediate identification of a
-          workable arrest versus signs of obvious or expected death determines
-          both resource deployment and clinical intervention.
+          Cardiac Arrest cases require <span className="font-medium">immediate identification</span> of whether the arrest is
+          <span className="text-red-400 font-semibold"> workable</span> or if there are
+          <span className="text-muted-foreground"> obvious/expected signs of death</span>.
+          Early determination drives both dispatch priority and whether CPR or defibrillator instructions should begin.
         </p>
+
         <p className="mt-2">
-          ALS-level care is required for any suspected arrest without signs of
-          irreversible death. In cases involving DNR orders or terminal illness,
-          responders may adjust interventions accordingly. The dispatcher should
-          be prepared to initiate CPR instructions if the arrest is recent and
-          no contraindications exist.
+          <span className="font-medium">ALS resources</span> are always required unless death is clearly irreversible.
+          If the patient has a known <span className="text-muted-foreground">DNR</span> or terminal condition, adjust appropriately.
+          If not, prioritize resuscitation attempts and get an
+          <span className="text-red-400 font-semibold"> AED</span> to the patient if available.
         </p>
+
+        <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground space-y-1">
+          <li><span className="font-medium">Witnessed vs. Unwitnessed</span> arrest affects survivability and CPR timing.</li>
+          <li><span className="text-red-400 font-semibold">Not Breathing or Agonal</span> → Initiate CPR if appropriate.</li>
+          <li><span className="font-medium">Expected Death</span> (DNR/terminal) may still require unit response for verification.</li>
+          <li><span className="font-medium">Obvious Death</span> signs include decomposition, incineration, or decapitation.</li>
+        </ul>
+
         <p className="mt-2">
-          Scene safety and situational context are essential, especially in
-          cases involving hanging, strangulation, suffocation, or potentially
-          suspicious circumstances. Prompt recognition and early defibrillation
-          remain critical in improving survival outcomes.{" "}
-          <b className="font-bold">Always send law enforcement</b> to ensure
-          scene security and to conduct an investigation
+          <b className="text-red-500">!!!CAUTION!!!</b> Always consider scene safety.
+          For cases involving <span className="text-red-400 font-semibold">hanging, suffocation, strangulation,</span> or suspicious death,
+          <span className="font-bold text-red-500"> law enforcement MUST be dispatched</span> for scene control and investigation.
+        </p>
+
+        <p className="mt-2">
+          Dispatcher action may include CPR coaching, AED setup guidance, and emotional support for bystanders.
+          Gather clear information on last seen alive time, current condition, and any advance directives.
         </p>
       </>
     ),
@@ -4928,30 +5187,33 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Chest Pain include patient alertness, breathing
-          quality, age, and history of cardiac conditions such as{" "}
-          <a className="text-primary" href="/glossary#mi">
-            myocardial infarction (MI)
-          </a>{" "}
-          or{" "}
-          <a className="text-primary" href="/glossary#angina">
-            angina
-          </a>
-          . Symptoms like cold sweats, color changes, or difficulty speaking
-          between breaths suggest higher acuity and possible cardiac compromise.
+          Chest pain should always be treated as <span className="font-bold text-red-400">potentially cardiac</span> until ruled out.
+          Key factors include <span className="font-medium">alertness, breathing status</span>, age, and history of
+          <a className="text-primary ml-1" href="/glossary#mi">MI</a> or
+          <a className="text-primary ml-1" href="/glossary#angina">angina</a>.
+          Additional red flags include:
         </p>
+
+        <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
+          <li><span className="text-red-400 font-semibold">Cold sweats</span> or <span className="text-red-400 font-semibold">color changes</span></li>
+          <li><span className="text-red-400 font-semibold">Difficulty speaking</span> between breaths</li>
+          <li><span className="font-medium">Known cardiac history</span> or recent drug use</li>
+          <li><span className="font-medium">Abnormal breathing</span> or altered mental status</li>
+        </ul>
+
         <p className="mt-2">
-          Patients over 35 with chest pain and normal breathing are still
-          considered higher risk due to age-related cardiovascular
-          vulnerability. Any abnormal breathing, altered mental status, or
-          complaint of substance use (e.g., cocaine) requires escalation due to
-          increased risk of acute coronary syndromes or arrhythmias.
+          Patients <b>35 and older</b> are treated with higher suspicion even if breathing is normal. 
+          <span className="text-red-400 font-semibold">ALS response is indicated</span> for any abnormal signs,
+          especially if <span className="text-red-400">cocaine</span> or similar stimulants are reported, due to risk of arrhythmia or MI.
         </p>
+
         <p className="mt-2">
-          Additional context such as recent aspirin use, medication intake, or
-          drug exposure helps refine the response plan. ALS response is often
-          necessary for monitoring, advanced airway access, and pharmacological
-          intervention.
+          Collect info about medications taken (e.g., <i>aspirin</i>) and prior events. ALS crews may need to initiate 
+          <span className="font-medium">advanced airway support, cardiac monitoring,</span> or pharmacological treatment.
+        </p>
+
+        <p className="mt-2 text-muted-foreground">
+          When in doubt, escalate.
         </p>
       </>
     ),
@@ -5260,23 +5522,29 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Choking include the presence of partial versus
-          complete airway obstruction, the patient’s level of alertness, and the
-          type of substance involved. Immediate recognition of ineffective or
-          absent breathing is critical and typically warrants an Echo-level
-          response.
+          Choking incidents require <span className="text-red-400 font-semibold">immediate assessment</span> of airway patency. The priority is to distinguish between:
         </p>
+
+        <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
+          <li><b>Complete obstruction</b> – No breathing, no speech, silent attempts</li>
+          <li><b>Partial obstruction</b> – Noisy breathing, struggling, limited speech</li>
+          <li><b>Resolved episodes</b> – Breathing normally, may still need evaluation</li>
+        </ul>
+
         <p className="mt-2">
-          Patients who are alert and breathing normally may no longer be choking
-          but still require evaluation. Partial obstruction may present with
-          abnormal breathing or inability to speak, while complete obstruction
-          results in silent, ineffective, or absent respirations.
+          <span className="font-medium">High-acuity codes</span> are triggered by signs of
+          <span className="text-red-400 font-semibold"> ineffective or absent breathing</span>,
+          <b> not being alert</b>, or <b>unknown breathing status</b>. These require Echo-level response.
         </p>
+
         <p className="mt-2">
-          The object or substance involved (e.g., food, candy, liquid, toy) may
-          influence clinical management. Ensure responders are prepared for
-          immediate airway intervention, including back blows, abdominal
-          thrusts, or advanced airway maneuvers depending on patient status.
+          The <b>object involved</b> (e.g., <i>food, candy, liquid, toy</i>) helps anticipate complications
+          like aspiration or persistent airway compromise. Infants and older adults are at particular risk.
+        </p>
+
+        <p className="mt-2 text-muted-foreground">
+          Dispatchers should be ready to give <b>Heimlich/back blow instructions</b> or proceed to
+          CPR if patient becomes unresponsive.
         </p>
       </>
     ),
@@ -5687,7 +5955,11 @@ export const emsComplaints: IEMSComplaint[] = [
           or altered mental status should be closely monitored. For pediatric or
           known epileptic patients, a stable presentation may not require
           escalation, though situational context (e.g., seizure length, airway
-          patency) still determines response level.
+          patency) still determines response level.{" "}
+          <span className="text-purple-500 font-semibold">
+            Ineffective or agonal breathing
+          </span>{" "}
+          should be treated as a highest-level priority.
         </p>
       </>
     ),
@@ -6210,22 +6482,18 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Diabetic Problems include the patient's level
-          of consciousness, respiratory status, and behavior. Hypoglycemia and
-          hyperglycemia can both present with altered mental status, abnormal
-          behavior, or unresponsiveness, requiring prompt assessment and
-          intervention.
+          Key considerations for Diabetic Problems include the patient's level of consciousness, respiratory status,
+          and behavior. Hypoglycemia and hyperglycemia can both present with altered mental status, abnormal behavior,
+          or unresponsiveness, requiring prompt assessment and intervention.
         </p>
         <p className="mt-2">
-          Patients who are alert, breathing normally, and behaving appropriately
-          are typically low acuity. However, abnormal breathing, confusion, or
-          unresponsiveness may indicate a serious glucose imbalance or
-          underlying complication requiring ALS care.
+          Patients who are alert, breathing normally, and behaving appropriately are typically low acuity. However,
+          abnormal breathing, confusion, or unresponsiveness may indicate a serious glucose imbalance or underlying
+          complication requiring ALS care.
         </p>
         <p className="mt-2">
-          Combative or aggressive behavior, especially in patients with known
-          diabetes, may be the result of severe hypoglycemia. Ensure appropriate
-          safety precautions are taken during response, and prepare for possible
+          Combative or aggressive behavior, especially in patients with known diabetes, may be the result of severe
+          hypoglycemia. Ensure appropriate safety precautions are taken during response, and prepare for possible
           de-escalation or sedation protocols if needed.
         </p>
       </>
@@ -8966,7 +9234,24 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 18,
     name: "Headache",
     shortName: "Headache",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          Headache calls can range from benign to life-threatening. Protocol 18 captures critical signs of stroke,
+          hemorrhage, or neurologic compromise by assessing alertness, breathing, speech, pain onset, and motor function.
+        </p>
+        <p className="mt-2">
+          A structured stroke evaluation—based on smile symmetry, arm strength, and speech—generates a FAST score and time-based
+          subcode. These differentiate between possible TIA, evolving stroke, or severe neurovascular events, and help
+          prioritize ALS vs. BLS response.
+        </p>
+        <p className="mt-2">
+          Fire or EMS may be dispatched ALS when stroke is suspected, airway is compromised, or there's behavioral change,
+          paralysis, or abnormal vitals. Proximity-based assessments allow guided testing even via bystanders, improving pre-arrival
+          stroke recognition.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -10170,7 +10455,22 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 19,
     name: "Heart Problems / A.I.C.D.",
     shortName: "Heart Problem/AICD",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol addresses a broad range of cardiac-related complaints, from chest discomfort to AICD (Automated Implantable
+          Cardioverter Defibrillator) activity. It screens for unstable vitals, ischemic symptoms, and high-risk cardiac history.
+        </p>
+        <p className="mt-2">
+          Determinants prioritize abnormal breathing, altered mental status, recent AICD firing, or stimulant use (e.g., cocaine)
+          for ALS response. Chest pain is age-differentiated, recognizing younger vs. older cardiac risk profiles.
+        </p>
+        <p className="mt-2">
+          ALS is typically dispatched for patients with AICDs, hemodynamic instability, or priority symptoms like color change,
+          clammy skin, or dyspnea. BLS may suffice if symptoms are mild and vitals stable without concerning history.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -10610,7 +10910,22 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 20,
     name: "Heat/Cold Exposure",
     shortName: "Heat/Cold Exposure",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol addresses environmental emergencies related to both heat and cold exposure, including heat exhaustion,
+          heat stroke, hypothermia, and frostbite. It evaluates alertness, skin temperature, and cardiac history to assess the risk.
+        </p>
+        <p className="mt-2">
+          Patients who are not alert, have abnormal skin color, or a cardiac history are considered for ALS responses. Differentiation
+          by skin temperature helps determine whether the condition is heat- or cold-related.
+        </p>
+        <p className="mt-2">
+          Bravo-level responses are typically dispatched when symptoms are unclear or moderate. Multiple victims or severe symptoms
+          escalate the response to Delta or specialized resources.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -10953,7 +11268,21 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 21,
     name: "Hemorrhage/Lacerations",
     shortName: "Hemorrhage/Laceration",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol evaluates both traumatic and non-traumatic bleeding incidents, ranging from minor cuts to life-threatening hemorrhages.
+          It also accounts for bleeding from medical devices or body openings, such as dialysis fistulas or internal bleeding.
+        </p>
+        <p className="mt-2">
+          Key factors include bleeding severity, patient consciousness, and complicating factors like anticoagulant use or pregnancy.
+          Subtypes distinguish between traumatic (T) and medical (M) causes, influencing response type and resource allocation.
+        </p>
+        <p className="mt-2">
+          ALS responses are prioritized for patients with significant hemorrhage, altered mental status, or compromised breathing. Determinant codes escalate accordingly.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -11557,7 +11886,21 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 22,
     name: "Inaccessible Incident / Other Entrapments (Non-Traffic)",
     shortName: "Inaccess/Entrapment",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol addresses incidents involving patients who are currently or were recently trapped in hazardous environments, such as machinery, collapsed structures, trenches, or confined spaces.
+          It prioritizes scene safety, entrapment type, and rescue accessibility.
+        </p>
+        <p className="mt-2">
+          Factors including entrapment severity (e.g., whole-body vs. peripheral), presence of injuries, and difficulty in reaching the patient guide determinant selection.
+          SubCodes account for above/below-ground location and multiple victim scenarios.
+        </p>
+        <p className="mt-2">
+          Higher-level Delta determinants are triggered for active extrications, structural failures, or complex rescue environments requiring specialized teams.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: 3 },
       { name: "Fire", priority: true },
@@ -12270,7 +12613,21 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 23,
     name: "Overdose/Poisoning (Ingestion)",
     shortName: "Overdose/Poisoning",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol handles cases involving actual or suspected overdoses and poisonings, including both accidental and intentional exposures.
+          It supports rapid identification of priority symptoms such as altered consciousness, abnormal breathing, and cardiac arrest.
+        </p>
+        <p className="mt-2">
+          Call-takers are prompted to identify specific substances, intent (e.g., accidental vs. intentional), and behavioral risks such as violence or presence of weapons.
+          Special considerations are made for narcotics, especially fentanyl and carfentanil, due to responder safety concerns.
+        </p>
+        <p className="mt-2">
+          Determinants escalate based on symptoms, known substances, and scene hazards, involving police where required for combative subjects or security risks.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -12280,7 +12637,12 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 129,
     questions: [
       {
-        text: <p><span className="text-blue-400">(Appropriate)</span> Was this <b>accidental</b> or <b>intentional</b>?</p>,
+        text: (
+          <p>
+            <span className="text-blue-400">(Appropriate)</span> Was this{" "}
+            <b>accidental</b> or <b>intentional</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12304,21 +12666,25 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Poison Control Referral",
             display: "Poison Control Referral",
             continue: true,
-            updateCode: "23C08"
+            updateCode: "23C08",
           },
           {
             answer: "Unknown",
             display: "Unk if accidental or intentional",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>violent</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>violent</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { age, isConscious } = _patient;
           return age >= 8 && isConscious !== false;
         },
@@ -12338,15 +12704,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt is violent",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have or have access to <b>weapons</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have or have access to <b>weapons</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { age, isConscious } = _patient;
           return age >= 8 && isConscious !== false;
         },
@@ -12366,8 +12736,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt has access to wpns",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -12379,7 +12749,7 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { isConscious } = _patient;
           return isConscious !== false;
         },
@@ -12394,18 +12764,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "23C01"
+            updateCode: "23C01",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>breathing normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12417,7 +12791,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            updateCode: "23C02"
+            updateCode: "23C02",
           },
           {
             answer: "Agonal/Innefective",
@@ -12436,8 +12810,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -12460,8 +12834,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if pt is changing color",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -12472,19 +12846,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Acid or Alkali",
             display: "Pt took acid or alkali",
             continue: true,
-            updateCode: "23C06"
+            updateCode: "23C06",
           },
           {
             answer: "Antidepressants",
             display: "Pt took antidepressants",
             continue: true,
-            updateCode: "23C03"
+            updateCode: "23C03",
           },
           {
             answer: "Cocaine/Methamphetamines",
             display: "Pt took cocaine/methamphetamines",
             continue: true,
-            updateCode: "23C04"
+            updateCode: "23C04",
           },
           {
             answer: "Fentanyl",
@@ -12497,20 +12871,22 @@ export const emsComplaints: IEMSComplaint[] = [
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
               )?.defaultAnswer;
               const weaponsAnswer = answers?.find(
-                (a) => a.defaultQuestion === "Does **pronoun** have or have access to weapons?"
+                (a) =>
+                  a.defaultQuestion ===
+                  "Does **pronoun** have or have access to weapons?"
               )?.defaultAnswer;
-              if(violentAnswer === "Yes") {
-                return { subCode: "Q" }
-              } else if(weaponsAnswer === "Yes:") {
-                return { subCode: "S" }
-              } else if(firstAnswer === 'Accidental') {
-                return { subCode: "D" }
-              } else if(firstAnswer === 'Intentional') {
-                return { subCode: "G" }
+              if (violentAnswer === "Yes") {
+                return { subCode: "Q" };
+              } else if (weaponsAnswer === "Yes:") {
+                return { subCode: "S" };
+              } else if (firstAnswer === "Accidental") {
+                return { subCode: "D" };
+              } else if (firstAnswer === "Intentional") {
+                return { subCode: "G" };
               } else {
-                return { subCode: "F" }
+                return { subCode: "F" };
               }
-            }
+            },
           },
           {
             answer: "Carfentanil",
@@ -12522,27 +12898,29 @@ export const emsComplaints: IEMSComplaint[] = [
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
               )?.defaultAnswer;
               const weaponsAnswer = answers?.find(
-                (a) => a.defaultQuestion === "Does **pronoun** have or have access to weapons?"
+                (a) =>
+                  a.defaultQuestion ===
+                  "Does **pronoun** have or have access to weapons?"
               )?.defaultAnswer;
-              if(violentAnswer === "Yes") {
-                return { subCode: "R" }
-              } else if(weaponsAnswer === "Yes:") {
-                return { subCode: "T" }
-              } else if(firstAnswer === 'Accidental') {
-                return { subCode: "E" }
-              } else if(firstAnswer === 'Intentional') {
-                return { subCode: "H" }
+              if (violentAnswer === "Yes") {
+                return { subCode: "R" };
+              } else if (weaponsAnswer === "Yes:") {
+                return { subCode: "T" };
+              } else if (firstAnswer === "Accidental") {
+                return { subCode: "E" };
+              } else if (firstAnswer === "Intentional") {
+                return { subCode: "H" };
               } else {
-                return { subCode: "C" }
+                return { subCode: "C" };
               }
             },
-            updateCode: "23C05"
+            updateCode: "23C05",
           },
           {
             answer: "Narcotics",
             display: "Pt took narcotics",
             continue: true,
-            updateCode: "23C05"
+            updateCode: "23C05",
           },
           {
             answer: "Other:",
@@ -12554,10 +12932,10 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk what pt took",
             continue: true,
-            updateCode: "23C07"
-          }
-        ]
-      }
+            updateCode: "23C07",
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {

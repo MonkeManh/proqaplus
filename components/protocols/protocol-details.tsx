@@ -274,7 +274,7 @@ export default function ProtocolDetails({
           {getUniqueResponsePlans().map((plan) => (
             <a
               key={plan.id}
-              href={`/response-plans#${plan.id}`}
+              href={`/response-plans?plan=${plan.id}`}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
             >
               <span className="font-medium">{plan.name}</span>
