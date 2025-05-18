@@ -4,20 +4,28 @@ import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint"
 
 export const getEmsResponsePlan = (id: number): IResponsePlan | undefined => {
   return emsPlans.find((plan) => plan.id === id);
-}
+};
 
-export const getEMSResponsePlanFromProtocol = (protocol: number, priority: string, code: string): IResponsePlan | undefined => {
-  const complaint = emsComplaints.find((c: IEMSComplaint) => c.protocol === protocol);
+export const getEMSResponsePlanFromProtocol = (
+  protocol: number,
+  priority: string,
+  code: string
+): IResponsePlan | undefined => {
+  const complaint = emsComplaints.find(
+    (c: IEMSComplaint) => c.protocol === protocol
+  );
   if (!complaint) return undefined;
 
-  const priorityGroup = complaint.availableDeterminants.find(p => p.priority === priority);
+  const priorityGroup = complaint.availableDeterminants.find(
+    (p) => p.priority === priority
+  );
   if (!priorityGroup) return undefined;
 
-  const determinant = priorityGroup.determinants.find(d => d.code === code);
+  const determinant = priorityGroup.determinants.find((d) => d.code === code);
   if (!determinant) return undefined;
 
   return getEmsResponsePlan(determinant.recResponse);
-}
+};
 
 export const emsPlans: IResponsePlan[] = [
   {
@@ -110,8 +118,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 8,
@@ -133,8 +141,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 9,
@@ -171,7 +179,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (ALS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 12,
@@ -197,8 +205,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Wildlife Ranger",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 13,
@@ -216,8 +224,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 14,
@@ -231,7 +239,7 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
+      },
     ],
   },
   {
@@ -246,7 +254,7 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
+      },
     ],
   },
   {
@@ -265,8 +273,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 17,
@@ -288,8 +296,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 2,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 18,
@@ -311,8 +319,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 2,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 19,
@@ -321,7 +329,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Transport (ALS)",
@@ -334,8 +342,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 2,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 20,
@@ -376,7 +384,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (ALS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 23,
@@ -405,8 +413,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 25,
@@ -428,8 +436,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 26,
@@ -458,8 +466,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Fire Investigator",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 28,
@@ -473,8 +481,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Truck",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 29,
@@ -485,7 +493,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 30,
@@ -503,8 +511,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Fire Investigator",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 31,
@@ -513,7 +521,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Truck",
@@ -529,7 +537,7 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Hazmat",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Chief",
@@ -539,7 +547,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Fire Investigator",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 32,
@@ -548,7 +556,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Truck",
@@ -560,7 +568,7 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Chief",
@@ -570,7 +578,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Fire Investigator",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 33,
@@ -589,7 +597,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (ALS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 34,
@@ -607,17 +615,17 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 35,
     name: "FDMULTP",
     incidentType: "BURN|MULT",
-    units: [ 
+    units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
@@ -634,8 +642,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 36,
@@ -657,8 +665,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 37,
@@ -667,7 +675,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
@@ -675,7 +683,7 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "EMS Officer",
@@ -683,13 +691,13 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 38,
@@ -707,8 +715,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 39,
@@ -729,7 +737,7 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "EMS Officer",
@@ -737,9 +745,9 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Chief",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 40,
@@ -757,8 +765,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 41,
@@ -767,25 +775,25 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 42,
@@ -794,25 +802,25 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 43,
@@ -821,15 +829,15 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "EMS Officer",
@@ -837,13 +845,13 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 44,
@@ -852,15 +860,15 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "EMS Officer",
@@ -868,13 +876,13 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 45,
@@ -883,15 +891,15 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Transport (BLS)",
@@ -903,13 +911,13 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 46,
@@ -923,8 +931,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Truck",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 47,
@@ -933,21 +941,21 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "EMS Officer",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Police Patrol",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 48,
@@ -956,13 +964,13 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Medical Examiner",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 49,
@@ -972,8 +980,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 50,
@@ -987,8 +995,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 51,
@@ -1006,8 +1014,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 52,
@@ -1024,9 +1032,9 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "EMS Officer",
-        quantity: 1,  
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 53,
@@ -1036,8 +1044,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 54,
@@ -1051,8 +1059,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 55,
@@ -1070,8 +1078,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 56,
@@ -1093,8 +1101,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 57,
@@ -1104,8 +1112,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 58,
@@ -1119,8 +1127,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 59,
@@ -1134,8 +1142,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 60,
@@ -1153,8 +1161,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 61,
@@ -1176,8 +1184,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 62,
@@ -1187,8 +1195,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 63,
@@ -1202,8 +1210,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 64,
@@ -1225,8 +1233,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 65,
@@ -1236,8 +1244,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 66,
@@ -1254,17 +1262,17 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Air Rescue",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 67,
@@ -1281,13 +1289,13 @@ export const emsPlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 68,
@@ -1306,7 +1314,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 69,
@@ -1315,7 +1323,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Rescue",
@@ -1328,8 +1336,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 70,
@@ -1351,8 +1359,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 71,
@@ -1371,7 +1379,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 72,
@@ -1393,8 +1401,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Air Rescue",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 73,
@@ -1403,7 +1411,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Transport (ALS)",
@@ -1416,8 +1424,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 74,
@@ -1443,8 +1451,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 75,
@@ -1466,8 +1474,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 76,
@@ -1477,8 +1485,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 77,
@@ -1488,8 +1496,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 78,
@@ -1503,8 +1511,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 79,
@@ -1514,8 +1522,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 80,
@@ -1529,8 +1537,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 81,
@@ -1540,8 +1548,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 82,
@@ -1552,7 +1560,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Engine",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 83,
@@ -1570,8 +1578,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Air Rescue",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 84,
@@ -1597,8 +1605,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 85,
@@ -1620,8 +1628,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Air Rescue",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 86,
@@ -1647,8 +1655,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 2,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 87,
@@ -1670,8 +1678,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 88,
@@ -1681,8 +1689,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 89,
@@ -1692,8 +1700,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 90,
@@ -1707,8 +1715,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 91,
@@ -1722,8 +1730,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 92,
@@ -1737,8 +1745,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 93,
@@ -1752,8 +1760,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 94,
@@ -1763,8 +1771,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 95,
@@ -1778,8 +1786,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 96,
@@ -1793,8 +1801,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 97,
@@ -1808,8 +1816,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 98,
@@ -1827,8 +1835,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 99,
@@ -1838,8 +1846,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 100,
@@ -1849,8 +1857,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 101,
@@ -1860,8 +1868,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 102,
@@ -1871,8 +1879,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 103,
@@ -1886,8 +1894,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 104,
@@ -1901,8 +1909,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 105,
@@ -1911,7 +1919,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Transport (ALS)",
@@ -1921,7 +1929,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 106,
@@ -1930,7 +1938,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Transport (ALS)",
@@ -1940,7 +1948,7 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-    ]
+    ],
   },
   {
     id: 107,
@@ -1950,8 +1958,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 108,
@@ -1961,8 +1969,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 109,
@@ -1972,8 +1980,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 110,
@@ -1983,8 +1991,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 111,
@@ -1994,8 +2002,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 112,
@@ -2005,8 +2013,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 113,
@@ -2020,8 +2028,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 114,
@@ -2035,8 +2043,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 115,
@@ -2050,8 +2058,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 116,
@@ -2073,8 +2081,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 117,
@@ -2096,8 +2104,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 118,
@@ -2119,8 +2127,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Police Patrol",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 119,
@@ -2138,8 +2146,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 120,
@@ -2157,8 +2165,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 121,
@@ -2176,8 +2184,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 122,
@@ -2187,8 +2195,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Engine",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 123,
@@ -2197,7 +2205,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Rescue",
@@ -2206,8 +2214,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (ALS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 124,
@@ -2216,7 +2224,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Rescue",
@@ -2225,8 +2233,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 125,
@@ -2235,7 +2243,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Truck",
@@ -2252,8 +2260,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 126,
@@ -2262,7 +2270,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Truck",
@@ -2279,8 +2287,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 127,
@@ -2289,7 +2297,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Truck",
@@ -2306,8 +2314,8 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 128,
@@ -2316,7 +2324,7 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Truck",
@@ -2333,7 +2341,181 @@ export const emsPlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
-  }
+      },
+    ],
+  },
+  {
+    id: 129,
+    name: "BLSU9",
+    incidentType: "OVERDOSE|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 130,
+    name: "BLSU9",
+    incidentType: "OVERDOSE|INTENTIONAL|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 131,
+    name: "BLSU9",
+    incidentType: "OVERDOSE|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 132,
+    name: "ALS1",
+    incidentType: "OVERDOSE|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 133,
+    name: "ALS2",
+    incidentType: "OVERDOSE|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 134,
+    name: "ALS2",
+    incidentType: "OVERDOSE|INTENTIONAL|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 135,
+    name: "ALS2",
+    incidentType: "OVERDOSE|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 136,
+    name: "AL2D",
+    incidentType: "OVERDOSE|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 137,
+    name: "AL2D",
+    incidentType: "OVERDOSE|INTENTIONAL|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 138,
+    name: "BLSR",
+    incidentType: "OVERDOSE|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
 ];

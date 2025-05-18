@@ -10973,18 +10973,22 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Recent Trauma",
             display: "Traumatic cause (recent)",
-            goto: 30
+            goto: 30,
           },
           {
             answer: "Unknown",
             display: "Unk cause",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>Where</b> is **pronoun** bleeding from?</p>,
+        text: (
+          <p>
+            <b>Where</b> is **pronoun** bleeding from?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11012,19 +11016,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Tubes",
             display: "Bleeding from tubes",
             continue: true,
-            updateCode: "21C01"
+            updateCode: "21C01",
           },
           {
             answer: "Dialysis AV Fistula",
             display: "Bleeding from dialysis AV fistula",
             continue: true,
-            updateCode: "21C02"
+            updateCode: "21C02",
           },
           {
             answer: "Vericose Veins",
             display: "Bleeding from vericose veins",
             continue: true,
-            updateCode: "21C03"
+            updateCode: "21C03",
           },
           {
             answer: "Vaginal/Rectal/Urinary",
@@ -11035,14 +11039,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "AMPUTATION",
             display: "Amputation",
-            goto: 30
+            goto: 30,
           },
           {
             answer: "Unknown",
             display: "Unk where bleeding from",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -11050,7 +11054,12 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
-          return lastAnswer === "Bleeding from genitourinary area" && _patient?.gender === "Female" && _patient?.age >= 12 && _patient?.age <= 50;
+          return (
+            lastAnswer === "Bleeding from genitourinary area" &&
+            _patient?.gender === "Female" &&
+            _patient?.age >= 12 &&
+            _patient?.age <= 50
+          );
         },
         answers: [
           {
@@ -11061,14 +11070,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Pt is pregnant",
-            goto: 24
+            goto: 24,
           },
           {
             answer: "Unknown",
             display: "Unk if pt is pregnant",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -11095,12 +11104,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>breathing normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11118,16 +11131,20 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the blood <b className="text-red-400">squirting</b> out?</p>,
+        text: (
+          <p>
+            Is the blood <b className="text-red-400">squirting</b> out?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const firstAnswer = answers?.[0]?.answer;
-          return firstAnswer === "Traumatic cause";  
+          return firstAnswer === "Traumatic cause";
         },
         answers: [
           {
@@ -11139,18 +11156,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Blood is squirting out",
             continue: true,
-            updateCode: '21D04'
+            updateCode: "21D04",
           },
           {
             answer: "Unknown",
             display: "Unk if blood is squirting out",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the bleeding <b className="text-red-400">SERIOUS</b>?</p>,
+        text: (
+          <p>
+            Is the bleeding <b className="text-red-400">SERIOUS</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
           const firstAnswer = answers?.[0]?.answer;
@@ -11166,18 +11187,23 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: "21B02"
+            updateCode: "21B02",
           },
           {
             answer: "Unknown",
             display: "Unk if SERIOUS bleeding",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does **pronoun** have a <b>bleeding disorder</b> or is **pronoun** on <b>blood thinners</b>?</p>,
+        text: (
+          <p>
+            Does **pronoun** have a <b>bleeding disorder</b> or is **pronoun**
+            on <b>blood thinners</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11189,21 +11215,21 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Bleeding Disorder",
             display: "Pt has bleeding disorder",
             continue: true,
-            updateCode: "21B03"
+            updateCode: "21B03",
           },
           {
             answer: "Blood Thinners",
             display: "Pt is on blood thinners",
             continue: true,
-            updateCode: "21B04"
+            updateCode: "21B04",
           },
           {
             answer: "Unknown",
             display: "Unk if bleeding disorder or blood thinners",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -11242,7 +11268,7 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 112,
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -11332,8 +11358,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 109,
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "C",
@@ -11405,8 +11431,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 109,
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "D",
@@ -11514,9 +11540,9 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 115,
               },
             ],
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
   },
   {
@@ -11533,7 +11559,12 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 122,
     questions: [
       {
-        text: <p>Does this incident involve the any <b className="text-green-400">hazardous materials</b>?</p>,
+        text: (
+          <p>
+            Does this incident involve the any{" "}
+            <b className="text-green-400">hazardous materials</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11544,15 +11575,15 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Hazardous materials involved",
-            goto: 8
+            goto: 8,
           },
           {
             answer: "Unknown",
             display: "Unk if hazmats are involved",
             continue: true,
-            updateCode: "22B03"
-          }
-        ]
+            updateCode: "22B03",
+          },
+        ],
       },
 
       {
@@ -11605,16 +11636,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk what pt is trapped in/by",
             continue: true,
-            updateCode: "22B03"
-          }
-        ]
+            updateCode: "22B03",
+          },
+        ],
       },
 
       {
-        text: <p>Are there any (obvious) <b>injuries</b>?</p>,
+        text: (
+          <p>
+            Are there any (obvious) <b>injuries</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+          const answer = answers?.find(
+            (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
+          )?.defaultAnswer;
           return answer === "Not trapped now";
         },
         answers: [
@@ -11622,27 +11659,33 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No obvious injs",
             continue: true,
-            updateCode: "22A01"
+            updateCode: "22A01",
           },
           {
             answer: "Yes",
             display: "Obvious injs",
-            goto: 30
+            goto: 30,
           },
           {
             answer: "Unknown",
             display: "Unk if there are injs",
             continue: true,
-            updateCode: "22B01"
-          }
-        ]
+            updateCode: "22B01",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>part</b> of the body is <b>trapped</b>?</p>,
+        text: (
+          <p>
+            What <b>part</b> of the body is <b>trapped</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
+          const answer = answers?.find(
+            (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
+          )?.defaultAnswer;
           return answer !== "Not trapped now";
         },
         answers: [
@@ -11650,28 +11693,31 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Peripheral (Extremities) Entrapment Only",
             display: "Peripheral entrapment only",
             continue: true,
-            updateCode: "22B02"
+            updateCode: "22B02",
           },
           {
             answer: "Whole Body Entrapment",
             display: "Whole body is trapped",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
-              if(answer === "Mechanical Equipment" || answer === "Object:") {
-                return { code: "22D01" }
-              } else if(answer === "Trench Collapse") {
-                return { code: "22D02" }
-              } else if(answer === "Structure Collapse") {
-                return { code: "22D03" }
-              } else if(answer === "Confined Space") {
-                return { code: "22D04" }
-              } else if(answer === "Mudslide/Avalanche") {
-                return { code: "22D06" }
+              const answer = answers?.find(
+                (a) =>
+                  a.defaultQuestion === "What is **pronoun** trapped in/by?"
+              )?.defaultAnswer;
+              if (answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" };
+              } else if (answer === "Trench Collapse") {
+                return { code: "22D02" };
+              } else if (answer === "Structure Collapse") {
+                return { code: "22D03" };
+              } else if (answer === "Confined Space") {
+                return { code: "22D04" };
+              } else if (answer === "Mudslide/Avalanche") {
+                return { code: "22D06" };
               } else {
-                return { code: "22B03" }
+                return { code: "22B03" };
               }
-            }
+            },
           },
           {
             answer: "Location:",
@@ -11679,48 +11725,58 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             input: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
-              if(answer === "Mechanical Equipment" || answer === "Object:") {
-                return { code: "22D01" }
-              } else if(answer === "Trench Collapse") {
-                return { code: "22D02" }
-              } else if(answer === "Structure Collapse") {
-                return { code: "22D03" }
-              } else if(answer === "Confined Space") {
-                return { code: "22D04" }
-              } else if(answer === "Mudslide/Avalanche") {
-                return { code: "22D06" }
+              const answer = answers?.find(
+                (a) =>
+                  a.defaultQuestion === "What is **pronoun** trapped in/by?"
+              )?.defaultAnswer;
+              if (answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" };
+              } else if (answer === "Trench Collapse") {
+                return { code: "22D02" };
+              } else if (answer === "Structure Collapse") {
+                return { code: "22D03" };
+              } else if (answer === "Confined Space") {
+                return { code: "22D04" };
+              } else if (answer === "Mudslide/Avalanche") {
+                return { code: "22D06" };
               } else {
-                return { code: "22B03" }
+                return { code: "22B03" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk what part of body is trapped",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              const answer = answers?.find((a) => a.defaultQuestion === "What is **pronoun** trapped in/by?")?.defaultAnswer;
-              if(answer === "Mechanical Equipment" || answer === "Object:") {
-                return { code: "22D01" }
-              } else if(answer === "Trench Collapse") {
-                return { code: "22D02" }
-              } else if(answer === "Structure Collapse") {
-                return { code: "22D03" }
-              } else if(answer === "Confined Space") {
-                return { code: "22D04" }
-              } else if(answer === "Mudslide/Avalanche") {
-                return { code: "22D06" }
+              const answer = answers?.find(
+                (a) =>
+                  a.defaultQuestion === "What is **pronoun** trapped in/by?"
+              )?.defaultAnswer;
+              if (answer === "Mechanical Equipment" || answer === "Object:") {
+                return { code: "22D01" };
+              } else if (answer === "Trench Collapse") {
+                return { code: "22D02" };
+              } else if (answer === "Structure Collapse") {
+                return { code: "22D03" };
+              } else if (answer === "Confined Space") {
+                return { code: "22D04" };
+              } else if (answer === "Mudslide/Avalanche") {
+                return { code: "22D06" };
               } else {
-                return { code: "22B03" }
+                return { code: "22B03" };
               }
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
 
       {
-        text: <p>Where <b>exactly</b> is **pronoun**</p>,
+        text: (
+          <p>
+            Where <b>exactly</b> is **pronoun**
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11728,10 +11784,10 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "PT is at ground level",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { count } = _patient;
-              if(count > 1) return { subCode: "M" };
-            }
+              if (count > 1) return { subCode: "M" };
+            },
           },
           {
             answer: "Above Ground:",
@@ -11739,11 +11795,11 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             input: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { count } = _patient;
-              if(count > 1) return { subCode: "X" };
-              return { subCode: "A" }
-            }
+              if (count > 1) return { subCode: "X" };
+              return { subCode: "A" };
+            },
           },
           {
             answer: "Below Ground:",
@@ -11751,27 +11807,31 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             input: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { count } = _patient;
-              if(count > 1) return { subCode: "Y" };
-              return { subCode: "B" }
-            }
+              if (count > 1) return { subCode: "Y" };
+              return { subCode: "B" };
+            },
           },
           {
             answer: "Unknown",
             display: "Unk where pt is",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { count } = _patient;
-              if(count > 1) return { subCode: "M" };
-            }
-          }
-        ]
+              if (count > 1) return { subCode: "M" };
+            },
+          },
+        ],
       },
 
       {
-        text: <p>Will we have any <b>problems</b> easily reaching the patient?</p>,
+        text: (
+          <p>
+            Will we have any <b>problems</b> easily reaching the patient?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11784,15 +11844,15 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Special concerns - {input}",
             continue: true,
             input: true,
-            updateCode: "22D05"
+            updateCode: "22D05",
           },
           {
             answer: "Unknown",
             display: "Unk if there are special concerns",
             continue: true,
-            updateCode: "22B03"
-          }
-        ]
+            updateCode: "22B03",
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -11828,10 +11888,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 122,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -11865,8 +11925,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 123,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22B01",
@@ -11897,8 +11957,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 124,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22B02",
@@ -11929,8 +11989,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 123,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22B03",
@@ -11962,10 +12022,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 123,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -11999,8 +12059,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 125,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D01",
@@ -12031,8 +12091,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 123,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D02",
@@ -12063,8 +12123,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 126,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D03",
@@ -12095,8 +12155,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 127,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D04",
@@ -12127,8 +12187,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 128,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D05",
@@ -12159,8 +12219,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 125,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "22D06",
@@ -12191,11 +12251,1395 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "Y",
                 text: "Both Below Ground & Mult Victims",
                 recResponse: 125,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 23,
+    name: "Overdose/Poisoning (Ingestion)",
+    shortName: "Overdose/Poisoning",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 129,
+    questions: [
+      {
+        text: <p><span className="text-blue-400">(Appropriate)</span> Was this <b>accidental</b> or <b>intentional</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Accidental",
+            display: "Accidental overdose/poisoning",
+            continue: true,
+            updateSubCode: "A",
+          },
+          {
+            answer: "Recreational",
+            display: "Recreational overdose/poisoning",
+            continue: true,
+          },
+          {
+            answer: "Intentional",
+            display: "Intentional overdose/poisoning",
+            continue: true,
+            updateSubCode: "I",
+          },
+          {
+            answer: "Poison Control Referral",
+            display: "Poison Control Referral",
+            continue: true,
+            updateCode: "23C08"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if accidental or intentional",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>violent</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { age, isConscious } = _patient;
+          return age >= 8 && isConscious !== false;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not violent",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Pt is violent",
+            continue: true,
+            updateSubCode: "V",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is violent",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have or have access to <b>weapons</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { age, isConscious } = _patient;
+          return age >= 8 && isConscious !== false;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No wpns",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Access to or has wpns - {input}",
+            continue: true,
+            updateSubCode: "W",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has access to wpns",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+            updateCode: "23A01",
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "23C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "23C02"
+          },
+          {
+            answer: "NOT BREATHING AT ALL",
+            display: "Not breathing at all",
+            end: true,
+            updateCode: "23E01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** changing color at all?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Pt is changing color",
+            continue: true,
+            updateCode: "23D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is changing color",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What did **pronoun** take?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Acid or Alkali",
+            display: "Pt took acid or alkali",
+            continue: true,
+            updateCode: "23C06"
+          },
+          {
+            answer: "Antidepressants",
+            display: "Pt took antidepressants",
+            continue: true,
+            updateCode: "23C03"
+          },
+          {
+            answer: "Cocaine/Methamphetamines",
+            display: "Pt took cocaine/methamphetamines",
+            continue: true,
+            updateCode: "23C04"
+          },
+          {
+            answer: "Fentanyl",
+            display: "Pt took fentanyl",
+            continue: true,
+            updateCode: "23C05",
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              const violentAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is **pronoun** violent?"
+              )?.defaultAnswer;
+              const weaponsAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Does **pronoun** have or have access to weapons?"
+              )?.defaultAnswer;
+              if(violentAnswer === "Yes") {
+                return { subCode: "Q" }
+              } else if(weaponsAnswer === "Yes:") {
+                return { subCode: "S" }
+              } else if(firstAnswer === 'Accidental') {
+                return { subCode: "D" }
+              } else if(firstAnswer === 'Intentional') {
+                return { subCode: "G" }
+              } else {
+                return { subCode: "F" }
               }
-            ]
+            }
+          },
+          {
+            answer: "Carfentanil",
+            display: "Pt took carfentanil",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: any[]) => {
+              const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              const violentAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is **pronoun** violent?"
+              )?.defaultAnswer;
+              const weaponsAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Does **pronoun** have or have access to weapons?"
+              )?.defaultAnswer;
+              if(violentAnswer === "Yes") {
+                return { subCode: "R" }
+              } else if(weaponsAnswer === "Yes:") {
+                return { subCode: "T" }
+              } else if(firstAnswer === 'Accidental') {
+                return { subCode: "E" }
+              } else if(firstAnswer === 'Intentional') {
+                return { subCode: "H" }
+              } else {
+                return { subCode: "C" }
+              }
+            },
+            updateCode: "23C05"
+          },
+          {
+            answer: "Narcotics",
+            display: "Pt took narcotics",
+            continue: true,
+            updateCode: "23C05"
+          },
+          {
+            answer: "Other:",
+            display: "Pt took {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what pt took",
+            continue: true,
+            updateCode: "23C07"
           }
         ]
       }
-    ]
-  }
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "23O01",
+            text: "Poisoning (w/o Priority Symptoms)",
+            recResponse: 138,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 138,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 138,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "23A01",
+            text: "Alert",
+            recResponse: 129,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 129,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 129,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 129,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 129,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 129,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 130,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 130,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 130,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 131,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 131,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "23B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 129,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 129,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 130,
+              },
+            ],
+          },
+          {
+            code: "23B01",
+            text: "Overdose (w/o Priority Symptoms)",
+            recResponse: 129,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 129,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 129,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 129,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 129,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 129,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 130,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 130,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 130,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 131,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 131,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "23C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C01",
+            text: "Not Alert",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C02",
+            text: "Abnormal Breathing",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C03",
+            text: "Antidepressants (Tricyclic)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C04",
+            text: "Cocaine, Methamphetamine (or Derivative)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C05",
+            text: "Narcotics (Heroin, Morphine, Methadone, Oxycontin)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C06",
+            text: "Acid or Alkali (Lye)",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+          {
+            code: "23C07",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 129,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 129,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 129,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 129,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 129,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 129,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 130,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 130,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 130,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 131,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 131,
+              },
+            ],
+          },
+          {
+            code: "23C08",
+            text: "Poison Control Request for Response",
+            recResponse: 129,
+            subCodes: [
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 129,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 129,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 131,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 131,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 131,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 131,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "23D00",
+            text: "ALS Override (Delta)",
+            recResponse: 133,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 133,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 133,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 133,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 133,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 133,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 134,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 134,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 134,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 135,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 135,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 135,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 135,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 135,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 135,
+              },
+            ],
+          },
+          {
+            code: "23D01",
+            text: "Arrest",
+            recResponse: 136,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 136,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 136,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 136,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 136,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 136,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 136,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 136,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 137,
+              },
+            ],
+          },
+          {
+            code: "23D02",
+            text: "Unconscious",
+            recResponse: 59,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+            ],
+          },
+          {
+            code: "23D03",
+            text: "Changing Color",
+            recResponse: 59,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 59,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 59,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 59,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 59,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 59,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 51,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 51,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 51,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 132,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 132,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 132,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 132,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "23E00",
+            text: "ALS Override (Echo)",
+            recResponse: 133,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 133,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 133,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 133,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 133,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 133,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 134,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 134,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 134,
+              },
+              {
+                code: "Q",
+                text: "Violent or Combative (Fentanyl)",
+                recResponse: 135,
+              },
+              {
+                code: "R",
+                text: "Violent or Combative (Carfentanil)",
+                recResponse: 135,
+              },
+              {
+                code: "S",
+                text: "Weapons (Fentanyl)",
+                recResponse: 135,
+              },
+              {
+                code: "T",
+                text: "Weapons (Carfentanil)",
+                recResponse: 135,
+              },
+              {
+                code: "V",
+                text: "Violent or Combative",
+                recResponse: 135,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 135,
+              },
+            ],
+          },
+          {
+            code: "23E01",
+            text: "Obvious Arrest",
+            recResponse: 136,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Accidental",
+                recResponse: 136,
+              },
+              {
+                code: "C",
+                text: "Carfentanil",
+                recResponse: 136,
+              },
+              {
+                code: "D",
+                text: "Accidental (Fentanyl)",
+                recResponse: 136,
+              },
+              {
+                code: "E",
+                text: "Accidental (Carfentanil)",
+                recResponse: 136,
+              },
+              {
+                code: "F",
+                text: "Fentanyl",
+                recResponse: 136,
+              },
+              {
+                code: "G",
+                text: "Intentional (Fentanyl)",
+                recResponse: 136,
+              },
+              {
+                code: "H",
+                text: "Intentional (Carfentanil)",
+                recResponse: 136,
+              },
+              {
+                code: "I",
+                text: "Intentional",
+                recResponse: 137,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
