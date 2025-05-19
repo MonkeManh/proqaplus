@@ -10,7 +10,7 @@ export interface IFireComplaint {
   services: IComplaintServices[];
   defaultPriority: number;
   defaultPlan: number;
-  questions: IEMSQuestions[];
+  questions: IFireQuestions[];
   availableDeterminants: {
     priority: string;
     determinants: {
@@ -30,10 +30,10 @@ export interface IFireComplaint {
   }[];
 }
 
-export interface IEMSQuestions {
+export interface IFireQuestions {
   text: JSX.Element;
   questionType: "input" | "select" | "hybrid-select" | "description";
-  preRenderInstructions?: (answers: IAnswerData[]) => boolean;
+  preRenderInstructions?: (answers?: IAnswerData[]) => boolean;
   isConscious?: boolean;
   isBreathing?: boolean;
   omitQuestion?: boolean;
@@ -43,7 +43,7 @@ export interface IEMSQuestions {
 interface IAnswers {
   answer: string;
   display: string;
-  preRenderInstructions?: (answers: IAnswerData[]) => boolean;
+  preRenderInstructions?: ((answers?: IAnswerData[], currentCode?: string) => boolean);
   input?: boolean;
   send?: boolean;
   continue?: boolean;
@@ -66,7 +66,7 @@ export type DependencyResult = {
 
 export type DependencyFunction = (answers: IAnswerData[]) => DependencyResult | undefined;
 
-export interface IEMSAnswer {
+export interface IFireAnswer {
   answer: string;
   display: string;
   continue?: boolean;

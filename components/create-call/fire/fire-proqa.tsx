@@ -2,23 +2,20 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { emsComplaints } from "@/data/protocols/emsProtocols";
+import { fireProtocols } from "@/data/protocols/fireProtocols";
 import { cn } from "@/lib/utils";
 import {
-  evaluateDependencies,
-  evaluatePreRenderInstructions,
-  replacePronounInNode,
+  evaluateFireDependencies,
+  evaluateFirePreRenderInstructions,
 } from "@/lib/utils/evaluators";
-import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
-import { IEMSData } from "@/models/interfaces/complaints/ems/IEMSData";
-import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 import React, { useEffect, useRef, useState } from "react";
 import { InputModal } from "@/components/modals/input-modal";
+import { IFireData } from "@/models/interfaces/complaints/fire/IFireData";
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
 
-interface EMSProQAProps {
-  emsData: IEMSData;
+interface FireProQAProps {
+  fireData: IFireData;
   complaintName: string;
-  patientData: IPatientData;
   onComplete: (code: string, baseCode?: string, subType?: string) => void;
   onBack: () => void;
   onSwitchProtocol: (protocol: number) => void;
@@ -44,45 +41,7 @@ const getPriorityLevel = (code: string): number => {
   }
 };
 
-const findHighestPriorityDeterminant = (
-  complaint: IEMSComplaint,
-  patientData: IPatientData
-): { code: string; override: boolean } | null => {
-  if (!complaint.availableDeterminants) return null;
-
-  let highestPriorityCode: string | null = null;
-  let shouldOverride = false;
-
-  // First check for notBreathing across all determinants
-  for (const priorityGroup of complaint.availableDeterminants) {
-    for (const determinant of priorityGroup.determinants) {
-      if (determinant.notBreathing && patientData.isBreathing === false) {
-        return { code: determinant.code, override: true };
-      }
-    }
-  }
-
-  // Then check other conditions
-  for (const priorityGroup of complaint.availableDeterminants) {
-    for (const determinant of priorityGroup.determinants) {
-      if (determinant.notConscious && patientData.isConscious === false) {
-        return { code: determinant.code, override: true };
-      }
-      if (determinant.multVictim && patientData.count > 1) {
-        if (!highestPriorityCode) {
-          highestPriorityCode = determinant.code;
-          shouldOverride = true;
-        }
-      }
-    }
-  }
-
-  return highestPriorityCode
-    ? { code: highestPriorityCode, override: shouldOverride }
-    : null;
-};
-
-const findLowestPriorityDeterminant = (complaint: IEMSComplaint): string => {
+const findLowestPriorityDeterminant = (complaint: IFireComplaint): string => {
   if (!complaint.availableDeterminants) return "DEFAULT";
 
   let lowestCode = "DEFAULT";
@@ -101,26 +60,14 @@ const findLowestPriorityDeterminant = (complaint: IEMSComplaint): string => {
   return lowestCode;
 };
 
-const getProperPronoun = (gender: string): string => {
-  switch (gender) {
-    case "Male":
-      return "he";
-    case "Female":
-      return "she";
-    default:
-      return "they";
-  }
-};
-
-export default function EmsProQA({
-  emsData,
+export default function FireProQA({
+  fireData,
   complaintName,
-  patientData,
   onComplete,
   onBack,
   onSwitchProtocol,
-}: EMSProQAProps) {
-  const [complaint, setComplaint] = useState<IEMSComplaint | null>(null);
+}: FireProQAProps) {
+  const [complaint, setComplaint] = useState<IFireComplaint | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(
     null
@@ -139,7 +86,7 @@ export default function EmsProQA({
   const answersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const savedState = localStorage.getItem("EMS_PROQA_DATA");
+    const savedState = localStorage.getItem("FIRE_PROQA_DATA");
     if (!savedState) return;
     const state = JSON.parse(savedState);
     if (state.complaint === complaintName) {
@@ -154,7 +101,7 @@ export default function EmsProQA({
     if (!shouldComplete) return;
 
     let finalCode = currentCode;
-    const storedState = localStorage.getItem("EMS_PROQA_DATA");
+    const storedState = localStorage.getItem("FIRE_PROQA_DATA");
     const storedData = storedState ? JSON.parse(storedState) : null;
 
     if (!finalCode && storedData?.currentCode) {
@@ -188,8 +135,8 @@ export default function EmsProQA({
   ]);
 
   useEffect(() => {
-    const foundComplaint = emsComplaints.find(
-      (c: IEMSComplaint) => c.name === complaintName
+    const foundComplaint = fireProtocols.find(
+      (c: IFireComplaint) => c.name === complaintName
     );
     if (!foundComplaint) return;
     setComplaint(foundComplaint);
@@ -203,16 +150,7 @@ export default function EmsProQA({
     setShouldComplete(false);
     setPreviousAnswers([]);
     setCurrentSubCode("");
-
-    const criticalResult = findHighestPriorityDeterminant(
-      foundComplaint,
-      patientData
-    );
-    if (criticalResult) {
-      setCurrentCode(criticalResult.code);
-      setIsCodeOverridden(criticalResult.override);
-    }
-  }, [complaintName, patientData]);
+  }, [complaintName]);
 
   useEffect(() => {
     const handleKeyDown = (e: globalThis.KeyboardEvent) => {
@@ -255,16 +193,21 @@ export default function EmsProQA({
     if (typeof text === "string") return text;
     if (React.isValidElement(text)) {
       let content = "";
-      const element = text as React.ReactElement<{ children?: React.ReactNode }>;
+      const element = text as React.ReactElement<{
+        children?: React.ReactNode;
+      }>;
 
       if (element.props.children) {
-        React.Children.forEach(element.props.children, (child: React.ReactNode) => {
-          if (typeof child === "string") {
-            content += child;
-          } else if (React.isValidElement(child)) {
-            content += processQuestionText(child);
+        React.Children.forEach(
+          element.props.children,
+          (child: React.ReactNode) => {
+            if (typeof child === "string") {
+              content += child;
+            } else if (React.isValidElement(child)) {
+              content += processQuestionText(child);
+            }
           }
-        });
+        );
       }
       return content;
     }
@@ -289,8 +232,8 @@ export default function EmsProQA({
     // Handle protocol switching first, before any other operations
     if (selectedAnswer.goto !== undefined) {
       // Clear all state and storage
-      localStorage.removeItem("EMS_PROQA_DATA");
-      localStorage.removeItem("EMS_PROQA_ANSWERS");
+      localStorage.removeItem("FIRE_PROQA_DATA");
+      localStorage.removeItem("FIRE_PROQA_ANSWERS");
       setCurrentQuestionIndex(0);
       setSelectedAnswerIndex(null);
       setHoverAnswerIndex(0);
@@ -300,7 +243,7 @@ export default function EmsProQA({
       setShouldComplete(false);
       setPreviousAnswers([]);
       setCurrentSubCode("");
-      
+
       // Switch to new protocol
       if (onSwitchProtocol) {
         onSwitchProtocol(selectedAnswer.goto);
@@ -322,13 +265,9 @@ export default function EmsProQA({
     );
 
     const rawQuestionText = processQuestionText(currentQuestion.text);
-    const processedQuestion = rawQuestionText.replace(
-      /\*\*pronoun\*\*/g,
-      getProperPronoun(patientData.gender)
-    );
 
     const newAnswer = {
-      question: processedQuestion,
+      question: rawQuestionText,
       defaultQuestion: rawQuestionText,
       defaultAnswer: selectedAnswer.answer,
       answer: displayText,
@@ -348,21 +287,14 @@ export default function EmsProQA({
     }
     setPreviousAnswers(updatedAnswers);
 
-    const criticalResult = findHighestPriorityDeterminant(complaint, patientData);
-    if (criticalResult && criticalResult.override) {
-      setCurrentCode(criticalResult.code);
-      setIsCodeOverridden(true);
-    }
-
     if (selectedAnswer.updateSubCode) {
       setCurrentSubCode(selectedAnswer.updateSubCode);
     }
 
     if (selectedAnswer.dependency) {
-      console.log("Checking dependency with answers:", previousAnswers); // Add debug
-      const dependencyResult = evaluateDependencies(
+      console.log("Checking dependency with answers:", previousAnswers);
+      const dependencyResult = evaluateFireDependencies(
         selectedAnswer.dependency,
-        patientData,
         previousAnswers
       );
       console.log("Dependency result:", dependencyResult); // Add debug
@@ -384,7 +316,10 @@ export default function EmsProQA({
 
     if (selectedAnswer.updateCode && !isCodeOverridden) {
       // Only update code if it's higher priority or has override
-      if (selectedAnswer.override || isHigherPriority(selectedAnswer.updateCode, currentCode)) {
+      if (
+        selectedAnswer.override ||
+        isHigherPriority(selectedAnswer.updateCode, currentCode)
+      ) {
         setCurrentCode(selectedAnswer.updateCode);
         if (selectedAnswer.override) {
           setIsCodeOverridden(true);
@@ -399,7 +334,7 @@ export default function EmsProQA({
     // End questioning immediately if end: true
     if (selectedAnswer.end) {
       setShouldComplete(true);
-      localStorage.removeItem("EMS_PROQA_DATA");
+      localStorage.removeItem("FIRE_PROQA_DATA");
       return;
     }
 
@@ -428,8 +363,8 @@ export default function EmsProQA({
         new Date().toISOString(),
     };
 
-    localStorage.setItem("EMS_PROQA_ANSWERS", JSON.stringify(answers));
-    localStorage.setItem("EMS_PROQA_DATA", JSON.stringify(proqaState));
+    localStorage.setItem("FIRE_PROQA_ANSWERS", JSON.stringify(answers));
+    localStorage.setItem("FIRE_PROQA_DATA", JSON.stringify(proqaState));
   };
 
   const moveToNextQuestion = () => {
@@ -439,7 +374,7 @@ export default function EmsProQA({
 
     if (nextIndex >= complaint.questions.length) {
       setShouldComplete(true);
-      localStorage.removeItem("EMS_PROQA_DATA");
+      localStorage.removeItem("FIRE_PROQA_DATA");
       return;
     }
 
@@ -455,9 +390,8 @@ export default function EmsProQA({
     if (!currentQuestion) return false;
 
     if (currentQuestion.preRenderInstructions) {
-      return evaluatePreRenderInstructions(
+      return evaluateFirePreRenderInstructions(
         currentQuestion.preRenderInstructions,
-        patientData,
         previousAnswers,
         currentCode
       );
@@ -505,29 +439,35 @@ export default function EmsProQA({
             <CardContent className="p-6">
               <div className="mb-4">
                 <h4 className="text-lg font-medium mb-4">
-                  {replacePronounInNode(
-                    currentQuestion.text,
-                    getProperPronoun(patientData.gender)
-                  )}
+                  {currentQuestion.text}
                 </h4>
 
                 {currentQuestion.questionType === "select" ? (
                   <div ref={answersRef} className="space-y-2 overflow-y-auto">
-                    {currentQuestion.answers.map((answer, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleAnswerSelect(index)}
-                        className={cn(
-                          "answer-option p-3 rounded-md transition-colors cursor-pointer",
-                          selectedAnswerIndex === index
-                            ? "bg-primary text-primary-foreground"
-                            : hoverAnswerIndex === index
-                            ? "bg-green-500 text-white"
-                            : "bg-muted hover:bg-muted/80"
-                        )}
-                      >
-                        {answer.answer}
-                      </div>
+                    {currentQuestion.answers
+                      .filter(answer => 
+                        !answer.preRenderInstructions || 
+                        evaluateFirePreRenderInstructions(
+                          answer.preRenderInstructions, 
+                          previousAnswers,
+                          currentCode
+                        )
+                      )
+                      .map((answer, index) => (
+                        <div
+                          key={index}
+                          onClick={() => handleAnswerSelect(index)}
+                          className={cn(
+                            "answer-option p-3 rounded-md transition-colors cursor-pointer",
+                            selectedAnswerIndex === index
+                              ? "bg-primary text-primary-foreground"
+                              : hoverAnswerIndex === index
+                              ? "bg-green-500 text-white"
+                              : "bg-muted hover:bg-muted/80"
+                          )}
+                        >
+                          {answer.answer}
+                        </div>
                     ))}
                   </div>
                 ) : (
@@ -564,17 +504,14 @@ export default function EmsProQA({
           setSelectedAnswerIndex(null);
         }}
         onSubmit={(value) => {
-          // First close the modal
           setIsInputModalOpen(false);
           const savedIndex = pendingAnswerIndex;
           setPendingAnswerIndex(null);
-
-          // Then process the answer after modal is fully closed
           if (savedIndex !== null) {
             handleAnswerSelect(savedIndex, value);
           }
         }}
-        title={currentQuestion ? processQuestionText(currentQuestion.text).replace(/\*\*pronoun\*\*/g, getProperPronoun(patientData.gender)) : ""}
+        title={currentQuestion ? processQuestionText(currentQuestion.text) : ""}
       />
     </Card>
   );

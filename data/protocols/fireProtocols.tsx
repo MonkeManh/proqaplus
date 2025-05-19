@@ -1,4 +1,5 @@
 import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
+import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData";
 
 export function getFireComplaintOptions() {
   return fireProtocols.map((complaint: IFireComplaint) => ({
@@ -21,7 +22,338 @@ export const fireProtocols: IFireComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 1,
-    questions: [],
+    questions: [
+      {
+        text: <p>What <b>type</b> of aircraft is <b>involved</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Airship/Blimp",
+            display: "Aircraft is an airship/blimp",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Hot Air Balloon",
+            display: "Aircraft is a hot air balloon",
+            continue: true,
+            updateSubCode: "B"
+          },
+          {
+            answer: "Cargo",
+            display: "Aircraft is a cargo plane",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Helicopter",
+            display: "Aircraft is a helicopter",
+            continue: true,
+            updateSubCode: "H"
+          },
+          {
+            answer: "Large",
+            display: "Aircraft is a large plane",
+            continue: true,
+            updateSubCode: "L"
+          },
+          {
+            answer: "Military",
+            display: "Aircraft is a military plane",
+            continue: true,
+            updateSubCode: "M"
+          },
+          {
+            answer: "Small",
+            display: "Aircraft is a small plane",
+            continue: true,
+            updateSubCode: "S"
+          },
+          {
+            answer: "Light",
+            display: "Aircraft is a light plane",
+            continue: true,
+            updateSubCode: "T"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk aircraft type",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>Was the <b>aircraft</b> carrying <b className="text-red-400">ORDINANCE</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Military"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not carrying ordinance",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Carrying ordinance: {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if carrying ordinance",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>current status</b> of the aircraft?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "In Flight",
+            display: "Aircraft is in flight",
+            continue: true,
+          },
+          {
+            answer: "On Ground",
+            display: "Aircraft is on the ground",
+            continue: true,
+          },
+          {
+            answer: "CRASHED",
+            display: "Aircraft has CRASHED",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk aircraft status",
+            continue: true,
+            updateCode: "51B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>nature</b> of the aircraft situation?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "In Flight"
+        },
+        answers: [
+          {
+            answer: "Normal Flight",
+            display: "No known problems",
+            continue: true,
+            updateCode: "51O01"
+          },
+          {
+            answer: "Standby (No Specific Problem)",
+            display: "Requested to stby",
+            continue: true,
+            updateCode: "51A01"
+          },
+          {
+            answer: "Alert I (Minor Problem)",
+            display: "Minor issue (precautionary landing)",
+            continue: true,
+            updateCode: "51C02"
+          },
+          {
+            answer: "Alert II (Major Problem)",
+            display: "Major issue (possible emergency landing)",
+            continue: true,
+            updateCode: "51C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk nature of emergency",
+            continue: true,
+            updateCode: "51B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">FIRE</b> present?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const answer = answers?.find((a) => a.defaultQuestion === "What is the current status of the aircraft?")?.defaultAnswer;
+          return answer === "On Ground"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No fire",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "On fire",
+            continue: true,
+            updateCode: "51D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if fire present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Where did the aircraft <b className="text-red-400">CRASH</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const answer = answers?.find((a) => a.defaultQuestion === "What is the current status of the aircraft?")?.defaultAnswer;
+          return answer === "CRASHED"
+        },
+        answers: [
+          {
+            answer: "On Land",
+            display: "Crashed on land",
+            continue: true,
+            updateCode: "51D01"
+          },
+          {
+            answer: "In Water",
+            display: "Crashed in water",
+            continue: true,
+          },
+          {
+            answer: "Completely Unknown",
+            display: "Unk where crashed",
+            continue: true,
+            updateCode: "51D00"
+          }
+        ]
+      },
+
+      {
+        text: <p><b>What</b> did the aircraft <b>crash</b> into</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const answer = answers?.find((a) => a.defaultQuestion === "What is the current status of the aircraft?")?.defaultAnswer;
+          return answer === "CRASHED"
+        },
+        answers: [
+          {
+            answer: "Building/Structure",
+            display: "Crashed into building/structure",
+            continue: true,
+            updateCode: "51D02",
+            preRenderInstructions: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              return lastAnswer === "On Land"
+            }
+          },
+          {
+            answer: "Nothing",
+            display: "Did not hit anything addtnl",
+            continue: true,
+            preRenderInstructions: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              return lastAnswer === "On Land"
+            }
+          },
+          {
+            answer: "Costal Water",
+            display: "Crashed into costal water",
+            continue: true,
+            updateCode: "51D04",
+            override: true,
+            preRenderInstructions: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              return lastAnswer === "In Water"
+            }
+          },
+          {
+            answer: "Inland Water",
+            display: "Crashed into inland water",
+            continue: true,
+            updateCode: "51D05",
+            override: true,
+            preRenderInstructions: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              return lastAnswer === "In Water"
+            }
+          },
+          {
+            answer: "Oceanic Water",
+            display: "Crashed into oceanic water",
+            continue: true,
+            updateCode: "51D06",
+            override: true,
+            preRenderInstructions: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              return lastAnswer === "In Water"
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what aircraft crashed into",
+            continue: true,
+            updateCode: "51D01",
+          }
+        ]
+      },
+
+      {
+        text: <p>How many <b>souls</b> are/were <b>on board</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Persons:",
+            display: "{input} persons on board",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how many on board",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any known injures?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes - Multiple Injuries",
+            display: "Multiple injd people",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single Injury",
+            display: "Single injd person",
+            continue: true,
+          },
+          {
+            answer: "Yes - Obvious Fatalities",
+            display: "Obvious fatalities",
+            continue: true,
+          },
+          {
+            answer: "No Injuries",
+            display: "No injuries rptd",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injuries",
+            continue: true,
+          }
+        ]
+      },
+    ],
     availableDeterminants: [
       {
         priority: "O",
@@ -246,8 +578,9 @@ export const fireProtocols: IFireComplaint[] = [
           },
           {
             code: "51B01",
-            text: "Unkn Situation",
+            text: "Unkn Situation (Investigation)",
             recResponse: 2,
+            defaultCode: true,
             subCodes: [
               {
                 code: "A",

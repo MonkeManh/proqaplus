@@ -60,6 +60,11 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const nextRef = useRef<HTMLButtonElement>(null);
   const complaintOptions = getFireComplaintOptions();
 
+  const formattedComplaintOptions = complaintOptions.map((c) => ({
+    value: `${c.protocol} - ${c.value}`,
+    label: `${c.protocol} - ${c.value}`,
+  }));
+
   useEffect(() => {
     const stored = localStorage.getItem("NEW_CALL");
     if (stored) {
@@ -80,11 +85,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      location: "",
-      boxType: "Phone Alarm",
-      chiefComplaint: "",
-    },
   });
 
   useEffect(() => {
@@ -123,7 +123,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
       chiefComplaint: data.chiefComplaint,
     };
 
-    const complaintParts = data.chiefComplaint.split(" ");
+    const complaintParts = data.chiefComplaint.split(" - ");
     const complaint =
       complaintParts.length > 1 ? complaintParts[1] : data.chiefComplaint;
 
@@ -214,7 +214,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                       </FormDescription>
                       <FormControl>
                         <Combobox
-                          options={complaintOptions}
+                          options={formattedComplaintOptions}
                           value={field.value}
                           onValueChange={field.onChange}
                           placeholder="Select chief complaint"
@@ -227,48 +227,48 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                   )}
                 />
               </div>
-            </form>
-            <div className="w-full flex flex-row-reverse justify-between mb-12 mt-10">
-              <div className="flex items-center gap-4">
-                <Button
-                  type="button"
-                  variant="destructive"
-                  className="cursor-pointer"
-                  onClick={() => {
-                    const complaintValue = form.getValues().chiefComplaint;
-                    if (complaintValue) {
-                      const complaintParts = complaintValue.split(" - ");
-                      const complaint =
-                        complaintParts.length > 1
-                          ? complaintParts[1]
-                          : complaintValue;
-                      onContinue(
-                        complaint,
-                        {
-                          location: form.getValues().location,
-                          boxType: form.getValues().boxType,
-                          chiefComplaint: complaint,
-                        },
-                        true
-                      );
-                    }
-                  }}
-                >
-                  ProQA Override
-                </Button>
-                <Button
-                  type="submit"
-                  ref={nextRef}
-                  variant="outline"
-                  className="hover:bg-red-600 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none"
-                >
-                  Continue
+              <div className="w-full flex flex-row-reverse justify-between mb-12 mt-10">
+                <div className="flex items-center gap-4">
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    className="cursor-pointer"
+                    onClick={() => {
+                      const complaintValue = form.getValues().chiefComplaint;
+                      if (complaintValue) {
+                        const complaintParts = complaintValue.split(" - ");
+                        const complaint =
+                          complaintParts.length > 1
+                            ? complaintParts[1]
+                            : complaintValue;
+                        onContinue(
+                          complaint,
+                          {
+                            location: form.getValues().location,
+                            boxType: form.getValues().boxType,
+                            chiefComplaint: complaint,
+                          },
+                          true
+                        );
+                      }
+                    }}
+                  >
+                    ProQA Override
+                  </Button>
+                  <Button
+                    type="submit"
+                    ref={nextRef}
+                    variant="outline"
+                    className="hover:bg-red-600 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  >
+                    Continue
+                  </Button>
+                </div>
+                <Button onClick={handleBack} type="button" variant="outline">
+                  Back
                 </Button>
               </div>
-              <Button onClick={handleBack} type="button" variant="outline">
-                Back
-              </Button>
-            </div>
+            </form>
           </Form>
         </div>
       </CardContent>

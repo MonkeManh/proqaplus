@@ -79,7 +79,7 @@ export default function ResponsePlanCard({
             <CardTitle
               className={`text-xl flex items-center gap-2 ${getServiceColor()}`}
             >
-              <span>{mainIncidentType}</span>
+              <span>{plan.incidentType}</span>
               <span className="text-muted-foreground font-normal text-base">
                 ({plan.name})
               </span>

@@ -35,7 +35,7 @@ export default function ResponsePlanDetails({ plan, serviceType }: ResponsePlanD
     } else if(unitType.includes("Wildlife")) {
       return <PawPrint className="h-4 w-4 text-green-600" />
     } else if (unitType.includes("Hazmat")) {
-      return <AlertTriangle className="h-4 w-4 text-yellow-600" />
+      return <AlertTriangle className="h-4 w-4 text-green-600" />
     } else if (unitType.includes("Rescue") || unitType.includes("Dive")) {
       return <LifeBuoy className="h-4 w-4 text-purple-600" />
     } else if (unitType.includes("Helicopter") || unitType.includes("Air")) {

@@ -1,6 +1,8 @@
 "use client";
 
 import CaseEntry from "@/components/create-call/fire/case-entry";
+import FireDeterminantSelection from "@/components/create-call/fire/determinant-selection";
+import FireProQA from "@/components/create-call/fire/fire-proqa";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { fireProtocols } from "@/data/protocols/fireProtocols";
@@ -106,7 +108,6 @@ export default function FireCallPage() {
   ) => {
     const proqaAnswers = await getProQAAnswers();
 
-    localStorage.removeItem("PATIENT_DATA");
     localStorage.removeItem("FIRE_PROQA_DATA");
     localStorage.removeItem("FIRE_PROQA_ANSWERS");
 
@@ -143,7 +144,7 @@ export default function FireCallPage() {
         dispatchTime: new Date().toISOString(),
       };
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
-      window.location.href = "/summary/ems";
+      window.location.href = "/summary/fire";
     }
   };
 
@@ -155,6 +156,25 @@ export default function FireCallPage() {
           <CaseEntry
             onContinue={handleInitialContinue}
             handleBack={handleBack}
+          />
+        )}
+
+        {currentStep === 2 && (
+          <FireProQA
+            fireData={fireData}
+            complaintName={selectedComplaint}
+            onComplete={handleCompleteProQA}
+            onBack={handleBack}
+            onSwitchProtocol={handleProtocolSwitch}
+          />
+        )}
+
+        {currentStep === 3 && (
+          <FireDeterminantSelection
+            complaintName={selectedComplaint}
+            recommendedCode={recommendedCode}
+            onSelect={handleDeterminantSelect}
+            onBack={handleBack}
           />
         )}
       </main>
