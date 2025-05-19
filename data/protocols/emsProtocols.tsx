@@ -14874,26 +14874,26 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Responding nlly",
-            continue: true
+            continue: true,
           },
           {
             answer: "Altered LOC",
             display: "Altered LOC",
             continue: true,
-            updateCode: "25C02"
+            updateCode: "25C02",
           },
           {
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "25D03"
+            updateCode: "25D03",
           },
           {
             answer: "Unknown",
             display: "Unknown if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -14905,37 +14905,37 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Not thinking about self-injury",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              if(!_patient) return;
+              if (!_patient) return;
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              const { patientProximity } = _patient
-              if(firstAnswer === "Yes" && patientProximity === "First Party") {
-                return { code: "25O01" }
-              } else if(firstAnswer === "Yes") {
-                return { code: "25A01" }
+              const { patientProximity } = _patient;
+              if (firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O01" };
+              } else if (firstAnswer === "Yes") {
+                return { code: "25A01" };
               }
-            }
+            },
           },
           {
             answer: "Yes",
             display: "Thinking about self-injury",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
-              if(!_patient) return;
+              if (!_patient) return;
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              const { patientProximity } = _patient
-              if(firstAnswer === "Yes" && patientProximity === "First Party") {
-                return { code: "25O02" }
-              } else if(firstAnswer === "Yes") {
-                return { code: "25A02" }
+              const { patientProximity } = _patient;
+              if (firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O02" };
+              } else if (firstAnswer === "Yes") {
+                return { code: "25A02" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if thinking about self-injury",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -14969,8 +14969,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if thinking about killing self",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -14992,8 +14992,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unknown where pt is",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -15009,14 +15009,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Violent",
             continue: true,
-            updateSubCode: "V"
+            updateSubCode: "V",
           },
           {
             answer: "Unknown",
             display: "Unknown if violent",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -15034,19 +15034,19 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Yes:") {
-                return { subCode: "B" }
+              if (lastAnswer === "Yes:") {
+                return { subCode: "B" };
               } else {
-                return { subCode: "W" }
+                return { subCode: "W" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if has wpns",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -15059,10 +15059,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C01" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
               }
-            }
+            },
           },
           {
             answer: "Depression",
@@ -15070,10 +15070,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C01" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
               }
-            }
+            },
           },
           {
             answer: "Bi-Polar",
@@ -15081,10 +15081,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C01" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
               }
-            }
+            },
           },
           {
             answer: "Schizophrenia",
@@ -15092,10 +15092,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C01" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
               }
-            }
+            },
           },
           {
             answer: "Other:",
@@ -15104,10 +15104,10 @@ export const emsComplaints: IEMSComplaint[] = [
             input: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C01" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
               }
-            }
+            },
           },
           {
             answer: "No",
@@ -15115,10 +15115,10 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C02" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C02" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
@@ -15126,12 +15126,12 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Altered LOC") {
-                return { code: "25C02" }
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C02" };
               }
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
 
       {
@@ -15141,49 +15141,53 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Hemorrhage/Laceration",
             display: "Pt has a hemorrhage/laceration",
-            continue: true
+            continue: true,
           },
           {
             answer: "Near Hanging",
             display: "Pt was near hanging",
-            continue: true
+            continue: true,
           },
           {
             answer: "Near Strangulation",
             display: "Pt was near strangulation",
-            continue: true
+            continue: true,
           },
           {
             answer: "Near Suffocation",
             display: "Pt was near suffocation",
-            continue: true
+            continue: true,
           },
           {
             answer: "JUMPED NOW",
             display: "Pt jumped now",
             continue: true,
-            updateCode: "25D06"
+            updateCode: "25D06",
           },
           {
             answer: "Other:",
             display: "Pt has injs: {input}",
-            continue: true
+            continue: true,
           },
           {
             answer: "No Injuries",
             display: "No inj to self",
-            continue: true
+            continue: true,
           },
           {
             answer: "Unknown",
             display: "Unk if injs to self",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Is there <b className="text-red-400">SERIOUS</b> bleeding?</p>,
+        text: (
+          <p>
+            Is there <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
@@ -15194,26 +15198,26 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No SERIOUS bleeding",
             continue: true,
-            updateCode: "25B02"
+            updateCode: "25B02",
           },
           {
             answer: "Yes",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: '25B01'
+            updateCode: "25B01",
           },
           {
             answer: "DANGEROUS HEMORRHAGE",
             display: "DANGEROUS bleeding",
             end: true,
-            updateCode: "25D04"
+            updateCode: "25D04",
           },
           {
             answer: "Unknown",
             display: "Unk extent of bleeding?",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
@@ -15221,7 +15225,11 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Near Hanging" || lastAnswer === "Near Strangulation" || lastAnswer === "Near Suffocation";
+          return (
+            lastAnswer === "Near Hanging" ||
+            lastAnswer === "Near Strangulation" ||
+            lastAnswer === "Near Suffocation"
+          );
         },
         answers: [
           {
@@ -15230,10 +15238,10 @@ export const emsComplaints: IEMSComplaint[] = [
             end: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes") {
-                return { code: "25B05" }
+              if (firstAnswer === "Yes") {
+                return { code: "25B05" };
               }
-            }
+            },
           },
           {
             answer: "No",
@@ -15241,14 +15249,13 @@ export const emsComplaints: IEMSComplaint[] = [
             end: true,
             dependency: (_patient?: IPatientData, answers?: any[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes") {
-                return { code: "25D05" }
+              if (firstAnswer === "Yes") {
+                return { code: "25D05" };
               }
-            }
-          }
-        ]
-      }
-      
+            },
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -15321,7 +15328,7 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 142,
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -15335,34 +15342,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25A02",
@@ -15372,36 +15379,36 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
-          }
-        ]
+                recResponse: 143,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -15414,34 +15421,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25B01",
@@ -15451,34 +15458,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25B02",
@@ -15488,34 +15495,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25B03",
@@ -15525,34 +15532,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25B04",
@@ -15562,34 +15569,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 80
+                recResponse: 80,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 80
-              }
-            ]
+                recResponse: 80,
+              },
+            ],
           },
           {
             code: "25B05",
@@ -15599,34 +15606,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
+                recResponse: 143,
+              },
+            ],
           },
           {
             code: "25B06",
@@ -15637,36 +15644,36 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 143
+                recResponse: 143,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 143
-              }
-            ]
-          }
-        ]
+                recResponse: 143,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -15679,34 +15686,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25C01",
@@ -15716,34 +15723,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25C02",
@@ -15753,34 +15760,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25C03",
@@ -15790,34 +15797,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25C04",
@@ -15827,36 +15834,36 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "C",
                 text: "Crisis Team/Alternate Response",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "D",
                 text: "Crisis Team/Alternate Response w/ Violence or Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
-          }
-        ]
+                recResponse: 145,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -15869,24 +15876,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25D01",
@@ -15898,7 +15905,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "25D02",
             text: "Unconscious",
             recResponse: 144,
-            notConscious: true
+            notConscious: true,
           },
           {
             code: "25D03",
@@ -15908,24 +15915,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25D04",
@@ -15935,24 +15942,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25D05",
@@ -15962,24 +15969,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 145
+                recResponse: 145,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 145
-              }
-            ]
+                recResponse: 145,
+              },
+            ],
           },
           {
             code: "25D06",
@@ -15989,27 +15996,1031 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "B",
                 text: "Both Violent & Weapons",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "T",
                 text: "Threateneing Self-Immolation",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "V",
                 text: "Violent",
-                recResponse: 84
+                recResponse: 84,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 84
-              }
-            ]
+                recResponse: 84,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 26,
+    name: "Sick Person (Specfic Diagnosis)",
+    shortName: "Sick Person",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 147,
+    questions: [
+      {
+        text: <p>Does **pronoun** have chest pain?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { age } = _patient;
+          return age >= 35;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No chest pn",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "Chest pn",
+            goto: 10
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has chest pn",
+            continue: true
           }
         ]
-      }
+      },
+
+      {
+        text: <p>Is **pronoun** bleeding or vomitting blood at all?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not bleeiding (or vomit) blood",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "Bleeding (or vomit) blood",
+            goto: 21
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bleeding (or vomit) blood",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "26C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "26B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** completely alert?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "26D01"
+          },
+          {
+            answer: "Altered LOC",
+            display: "Altered LOC",
+            continue: true,
+            updateCode: "26C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the "Primary Problem" one of the listed OMEGA-Level complaints?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "None of These",
+            display: "No priority sx (OMEGA 2-28 not ID'd)",
+            continue: true,
+          },
+          {
+            answer: "Boils",
+            display: "Pt has boils",
+            end: true,
+            updateCode: "26O02"
+          },
+          {
+            answer: "Bumps (Non-Traumatic)",
+            display: "Pt has bumps (non-traumatic)",
+            end: true,
+            updateCode: "26O03"
+          },
+          {
+            answer: "Can't Sleep",
+            display: "Pt can't sleep",
+            end: true,
+            updateCode: "26O04"
+          },
+          {
+            answer: "Can't Urinate (w/o Abdominal Pain)",
+            display: "Pt can't urinate (w/o abdominal pain)",
+            end: true,
+            updateCode: "26O05"
+          },
+          {
+            answer: "Catheter (Urinary-In/Out w/o Hemorrhaging)",
+            display: "Pt has urinary catheter (in/out w/o hemorrhaging)",
+            end: true,
+            updateCode: "26O06"
+          },
+          {
+            answer: "Constipation",
+            display: "Pt has constipation",
+            end: true,
+            updateCode: "26O07"
+          },
+          {
+            answer: "Cramps/Spasms/Join Pain (In Extremities & Non-Traumatic)",
+            display: "Pt has cramps/spasms/joint pn (in extremities & non-traumatic)",
+            end: true,
+            updateCode: "26O08"
+          },
+          {
+            answer: "Cut-Off Ring Request",
+            display: "Cut-off ring request",
+            end: true,
+            updateCode: "26O09"
+          },
+          {
+            answer: "Deafness",
+            display: "Pt has deafness",
+            end: true,
+            updateCode: "26O10"
+          },
+          {
+            answer: "Defecation/Diarrhea",
+            display: "Pt has defecation/diarrhea",
+            end: true,
+            updateCode: "26O11"
+          },
+          {
+            answer: "Earache",
+            display: "Pt has earache",
+            end: true,
+            updateCode: "26O12"
+          },
+          {
+            answer: "Enema",
+            display: "Pt has enema",
+            end: true,
+            updateCode: "26O13"
+          },
+          {
+            answer: "Gout",
+            display: "Pt has gout",
+            end: true,
+            updateCode: "26O14"
+          },
+          {
+            answer: "Hemorrhoids/Piles",
+            display: "Pt has hemorrhoids/piles",
+            end: true,
+            updateCode: "26O15"
+          },
+          {
+            answer: "Hepatitis",
+            display: "Pt has hepatitis",
+            end: true,
+            updateCode: "26O16"
+          },
+          {
+            answer: "Hiccups",
+            display: "Pt has hiccups",
+            end: true,
+            updateCode: "26O17"
+          },
+          {
+            answer: "Itching",
+            display: "Pt has itching",
+            end: true,
+            updateCode: "26O18"
+          },
+          {
+            answer: "Nervous",
+            display: "Pt is nervous",
+            end: true,
+            updateCode: "26O19"
+          },
+          {
+            answer: "Object Stuck (Nose, Ear, Vagina, Rectum, etc.):",
+            display: "Object stuck: {input}",
+            end: true,
+            input: true,
+            updateCode: "26O20"
+          },
+          {
+            answer: "Object Swallowed (No Choking or Diff Breathing):",
+            display: "Swallowed {input} (w/o choking or diff breathing)",
+            end: true,
+            input: true,
+            updateCode: "26O21"
+          },
+          {
+            answer: "Painful Urination",
+            display: "Pt has painful urnination",
+            end: true,
+            updateCode: "26O22"
+          },
+          {
+            answer: "Penis Problems/Pain",
+            display: "Pt has penis problems or pain",
+            end: true,
+            updateCode: "26O23"
+          },
+          {
+            answer: "Rash/Skin Disorder (w/o Diff Breathing or Swallowing)",
+            display: "Pt has rash or skin disorder (no diff breathing or swallowing)",
+            end: true,
+            updateCode: "26O24"
+          },
+          {
+            answer: "Sexually Transmitted Disease (STD)",
+            display: "Pt has sexually transmitted disease (std)",
+            end: true,
+            updateCode: "26O25"
+          },
+          {
+            answer: "Sore Throat (w/o diff breathing or swallowing)",
+            display: "Pt has sore throat (w/o diff breathing or swallowing)",
+            continue: true,
+            updateCode: "26O26"
+          },
+          {
+            answer: "Toothache (w/o Jaw Pain)",
+            display: "Pt has toothache (w/o jaw pain)",
+            continue: true,
+            updateCode: "26O27"
+          },
+          {
+            answer: "Infected Wound (Focal or Surface)",
+            display: "Pt has an infected wound (focal or surface)",
+            end: true,
+            updateCode: "26O28"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "None of These",
+            display: "No priority sx (ALPHA 2-12 not ID'd)",
+            end: true,
+            updateCode: "26A01"
+          },
+          {
+            answer: "Blood pressure abnormality (asymptomatic)",
+            display: "Pt has blood pressure abnormality (asymptomatic)",
+            end: true,
+            updateCode: "26A02"
+          },
+          {
+            answer: "Dizziness/Vertigo",
+            display: "Pt has dizziness/vertigo",
+            end: true,
+            updateCode: "26A03"
+          },
+          {
+            answer: "Fever/Chills",
+            display: "Pt has fever/chills",
+            end: true,
+            updateCode: "26A04"
+          },
+          {
+            answer: "General weakness",
+            display: "Pt has general weakness",
+            end: true,
+            updateCode: "26A05"
+          },
+          {
+            answer: "Nausea",
+            display: "Pt has nausea",
+            end: true,
+            updateCode: "26A06"
+          },
+          {
+            answer: "New (not sudden) onset of immobility",
+            display: "Pt has new (not sudden) onset of immobility",
+            end: true,
+            updateCode: "26A07"
+          },
+          {
+            answer: "Other Pain",
+            display: "Pt has other pain",
+            end: true,
+            updateCode: "26A08"
+          },
+          {
+            answer: "Transportation Only",
+            display: "Pt needs transport only",
+            end: true,
+            updateCode: "26A09"
+          },
+          {
+            answer: "Unwell/Ill",
+            display: "Pt is unwell/ill",
+            end: true,
+            updateCode: "26A10"
+          },
+          {
+            answer: "Vomiting",
+            display: "Pt is vomiting",
+            end: true,
+            updateCode: "26A11"
+          },
+          {
+            answer: "Possible Contaigious Disease",
+            display: "Pt has possible contaigious disease",
+            end: true,
+            updateCode: "26A12"
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "26O01",
+            text: "Code Not in Use",
+            recResponse: 147,
+          },
+          {
+            code: "26O02",
+            text: "Boils",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O03",
+            text: "Bumps (Non-Traumatic)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O04",
+            text: "Can't Sleep",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O05",
+            text: "Can't Urinate (w/o Abdominal Pain)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O06",
+            text: "Catheter (Urinary-In/Out w/o Hemorrhaging)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O07",
+            text: "Constipation",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O08",
+            text: "Cramps/Spasms/Joint Pain (In Extremities & Non-Traumatic)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O09",
+            text: "Cut-Off Ring Request",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O10",
+            text: "Deafness",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O11",
+            text: "Defecation/Diarrhea",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O12",
+            text: "Earache",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O13",
+            text: "Enema",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O14",
+            text: "Gout",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O15",
+            text: "Hemorrhoids/Piles",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O16",
+            text: "Hepatitis",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O17",
+            text: "Hiccups",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O18",
+            text: "Itching",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O19",
+            text: "Nervous",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O20",
+            text: "Object Stuck (Nose, Ear, Vagina, Rectum, etc.)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O21",
+            text: "Object Swallowed (w/o Choking or Diff Breathing, Can Talk)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O22",
+            text: "Painful Urination",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O23",
+            text: "Penis Problems/Pain",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O24",
+            text: "Rash/Skin Disorder (w/o Diff Breathing or Swallowing)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O25",
+            text: "Sexually Transmitted Disease (STD)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O26",
+            text: "Sore Throat (w/o Diff Breathing or Swallowing)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O27",
+            text: "Toothache (w/o Jaw Pain)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O28",
+            text: "Wound Infected (Focal or Surface)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "26A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A01",
+            text: "No Priority Symptoms",
+            defaultCode: true,
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A02",
+            text: "Blood Pressure Abnormality (Asymptomatic)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A03",
+            text: "Dizziness/Vertigo",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A04",
+            text: "Fever/Chills",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A05",
+            text: "General Weakness",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A06",
+            text: "Nausea",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A07",
+            text: "New Onset of Immobility (Not-Sudden)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A08",
+            text: "Other Pain (Non-Omega-Level)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A09",
+            text: "Transportation Only",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A10",
+            text: "Unwell/Ill",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A11",
+            text: "Vomiting",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A12",
+            text: "Possible Contagious Disease",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "26B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26B01",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "26C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 149,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 149,
+              },
+            ],
+          },
+          {
+            code: "26C01",
+            text: "Altered Level of Consciousness",
+            recResponse: 150,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 150,
+              },
+            ],
+          },
+          {
+            code: "26C02",
+            text: "Abnormal Breathing",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C03",
+            text: "Sickle Cell Crisis/Thalassemia",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C04",
+            text: "Autonomic Dysreflexia/Hyperreflexia",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C05",
+            text: "Acute Adrenal Insufficiency/Crisis or Addison's Disease",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "26D00",
+            text: "ALS Override (Delta)",
+            recResponse: 149,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 149,
+              },
+            ],
+          },
+          {
+            code: "26D01",
+            text: "Not Alert",
+            recResponse: 150,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 150,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];

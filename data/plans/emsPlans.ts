@@ -2637,5 +2637,72 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 2,
       },
     ]
+  },
+  {
+    id: 147,
+    name: "BLSR",
+    incidentType: "SICK|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 148,
+    name: "BLSU9",
+    incidentType: "SICK|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 149,
+    name: "ALS1",
+    incidentType: "SICK|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 150,
+    name: "ALS1",
+    incidentType: "DECLOC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 151,
+    name: "ALSR",
+    incidentType: "SICK|ALSR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
   }
 ];
