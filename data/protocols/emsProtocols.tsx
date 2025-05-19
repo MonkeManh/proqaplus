@@ -487,7 +487,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty speaking between breaths?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Diff breathing or swallowing";
         },
@@ -1173,7 +1176,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Bit on Chest/Neck/Head";
         },
@@ -1578,7 +1584,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Injured on Chest/Neck/Head";
         },
@@ -1611,7 +1620,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is there any deformity from the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.question === "What part of the body was/is injured?"
           );
@@ -2440,7 +2452,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Can talk or cry";
         },
@@ -2467,7 +2482,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Did **pronoun** choke on anything first?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Cannot talk or cry";
         },
@@ -2625,7 +2643,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Has asthma" || lastAnswer === "Has COPD";
         },
@@ -2657,7 +2678,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Has **pronoun** used it yet?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) =>
               a.question ===
@@ -2695,7 +2719,10 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         omitQuestion: true,
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.question === "Has **pronoun** used it yet?"
           )?.answer;
@@ -2718,7 +2745,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Give instructions on using nebulizer/inhaler</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.question === "Can you, or someone there, go get it now?"
           )?.answer;
@@ -3123,7 +3153,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Structure on fire";
         },
@@ -3246,7 +3279,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -4050,7 +4086,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "CO alarm activated";
         },
@@ -4248,7 +4287,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -5015,7 +5057,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "The cardiac arrest was witnessed" ||
@@ -5048,7 +5093,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Type of incident?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "EXPECTED DEATH";
         },
@@ -5475,7 +5523,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -5838,7 +5889,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           return (
@@ -6355,7 +6409,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT has stopped seizing";
         },
@@ -6825,7 +6882,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Acting aggressively or combative";
         },
@@ -7092,7 +7152,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is it easy to get to the patient?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Pt is underwater";
         },
@@ -7126,7 +7189,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Unk where pt is";
         },
@@ -7157,7 +7223,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7188,7 +7257,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7246,7 +7318,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** injured at all?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7840,7 +7915,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "Pt was electrocuted";
         },
@@ -7872,7 +7950,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "Pt was electrocuted";
         },
@@ -7925,7 +8006,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>How far did **pronoun** fall?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT fell after incident";
         },
@@ -8436,7 +8520,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           if (!lastAnswer) return false;
           return (
@@ -8781,7 +8868,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           if (!lastAnswer) return false;
           return (
@@ -8813,7 +8903,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What is the extent of the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const injuryAnswer = answers?.[answers.length - 1]?.answer;
           if (!injuryAnswer) return false;
           return injuryAnswer.includes("Inj to");
@@ -9674,7 +9767,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           const thirdAnswer = answers?.[2]?.answer;
@@ -9724,7 +9820,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say "Can you have the patient smile"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9747,7 +9846,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Smile instructions given"
           )?.answer;
@@ -9782,7 +9884,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say: "Have the patient raise both arms above their head"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9801,7 +9906,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What was **pronoun** able to do?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Raise arms instructions given"
           )?.answer;
@@ -9837,7 +9945,10 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9858,7 +9969,10 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Was **pronoun** able to say it correctly and understandably</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Speech instructions given"
           )?.answer;
@@ -9892,7 +10006,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Calculate Score</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9917,13 +10034,15 @@ export const emsComplaints: IEMSComplaint[] = [
               const symptomStart = answers?.find(
                 (a) => a.question === "When did these symptoms start?"
               )?.defaultAnswer;
-              if(!smileAnswer || !armsAnswer || !speechAnswer) {
-                if(symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
-                  return { subCode: "X" }
-                } else if(symptomStart === "More than 4.5 hours ago (> 4.5hrs):") {
-                  return { subCode: "Y" }
+              if (!smileAnswer || !armsAnswer || !speechAnswer) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
                 }
-                return { subCode: "z" }
+                return { subCode: "z" };
               }
               const smileScore = parseInt(smileAnswer.split(": ")[1]);
               const armsScore = parseInt(armsAnswer.split(": ")[1]);
@@ -10759,7 +10878,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -10890,7 +11012,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           if (!lastAnswer) return false;
           return (
@@ -11622,7 +11747,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is she pregnant?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return (
             lastAnswer === "Bleeding from genitourinary area" &&
@@ -11712,7 +11840,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Traumatic cause";
         },
@@ -11743,7 +11874,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Medical cause";
         },
@@ -12238,7 +12372,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -12272,7 +12409,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -14427,7 +14567,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is she having contractions?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "No";
         },
@@ -14453,7 +14596,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>How often is she having contractions?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Having contractions";
         },
@@ -14545,7 +14691,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Are there any complications?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.defaultAnswer;
           return secondAnswer === "Baby completely out";
         },
@@ -15201,7 +15350,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Hemorrhage/Laceration";
         },
@@ -15235,7 +15387,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return (
             lastAnswer === "Near Hanging" ||
@@ -16048,7 +16203,7 @@ export const emsComplaints: IEMSComplaint[] = [
         text: <p>Does **pronoun** have chest pain?</p>,
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { age } = _patient;
           return age >= 35;
         },
@@ -16056,19 +16211,19 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "No chest pn",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "Chest pn",
-            goto: 10
+            goto: 10,
           },
           {
             answer: "Unknown",
             display: "Unk if pt has chest pn",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
@@ -16078,19 +16233,19 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "Not bleeiding (or vomit) blood",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "Bleeding (or vomit) blood",
-            goto: 21
+            goto: 21,
           },
           {
             answer: "Unknown",
             display: "Unk if bleeding (or vomit) blood",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -16100,21 +16255,21 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Breathing nlly",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            updateCode: "26C02"
+            updateCode: "26C02",
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-            updateCode: "26B01"
-          }
-        ]
+            updateCode: "26B01",
+          },
+        ],
       },
 
       {
@@ -16124,30 +16279,34 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Responding nlly",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "26D01"
+            updateCode: "26D01",
           },
           {
             answer: "Altered LOC",
             display: "Altered LOC",
             continue: true,
-            updateCode: "26C01"
+            updateCode: "26C01",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the "Primary Problem" one of the listed OMEGA-Level complaints?</p>,
+        text: (
+          <p>
+            Is the "Primary Problem" one of the listed OMEGA-Level complaints?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16159,246 +16318,252 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Boils",
             display: "Pt has boils",
             end: true,
-            updateCode: "26O02"
+            updateCode: "26O02",
           },
           {
             answer: "Bumps (Non-Traumatic)",
             display: "Pt has bumps (non-traumatic)",
             end: true,
-            updateCode: "26O03"
+            updateCode: "26O03",
           },
           {
             answer: "Can't Sleep",
             display: "Pt can't sleep",
             end: true,
-            updateCode: "26O04"
+            updateCode: "26O04",
           },
           {
             answer: "Can't Urinate (w/o Abdominal Pain)",
             display: "Pt can't urinate (w/o abdominal pain)",
             end: true,
-            updateCode: "26O05"
+            updateCode: "26O05",
           },
           {
             answer: "Catheter (Urinary-In/Out w/o Hemorrhaging)",
             display: "Pt has urinary catheter (in/out w/o hemorrhaging)",
             end: true,
-            updateCode: "26O06"
+            updateCode: "26O06",
           },
           {
             answer: "Constipation",
             display: "Pt has constipation",
             end: true,
-            updateCode: "26O07"
+            updateCode: "26O07",
           },
           {
             answer: "Cramps/Spasms/Join Pain (In Extremities & Non-Traumatic)",
-            display: "Pt has cramps/spasms/joint pn (in extremities & non-traumatic)",
+            display:
+              "Pt has cramps/spasms/joint pn (in extremities & non-traumatic)",
             end: true,
-            updateCode: "26O08"
+            updateCode: "26O08",
           },
           {
             answer: "Cut-Off Ring Request",
             display: "Cut-off ring request",
             end: true,
-            updateCode: "26O09"
+            updateCode: "26O09",
           },
           {
             answer: "Deafness",
             display: "Pt has deafness",
             end: true,
-            updateCode: "26O10"
+            updateCode: "26O10",
           },
           {
             answer: "Defecation/Diarrhea",
             display: "Pt has defecation/diarrhea",
             end: true,
-            updateCode: "26O11"
+            updateCode: "26O11",
           },
           {
             answer: "Earache",
             display: "Pt has earache",
             end: true,
-            updateCode: "26O12"
+            updateCode: "26O12",
           },
           {
             answer: "Enema",
             display: "Pt has enema",
             end: true,
-            updateCode: "26O13"
+            updateCode: "26O13",
           },
           {
             answer: "Gout",
             display: "Pt has gout",
             end: true,
-            updateCode: "26O14"
+            updateCode: "26O14",
           },
           {
             answer: "Hemorrhoids/Piles",
             display: "Pt has hemorrhoids/piles",
             end: true,
-            updateCode: "26O15"
+            updateCode: "26O15",
           },
           {
             answer: "Hepatitis",
             display: "Pt has hepatitis",
             end: true,
-            updateCode: "26O16"
+            updateCode: "26O16",
           },
           {
             answer: "Hiccups",
             display: "Pt has hiccups",
             end: true,
-            updateCode: "26O17"
+            updateCode: "26O17",
           },
           {
             answer: "Itching",
             display: "Pt has itching",
             end: true,
-            updateCode: "26O18"
+            updateCode: "26O18",
           },
           {
             answer: "Nervous",
             display: "Pt is nervous",
             end: true,
-            updateCode: "26O19"
+            updateCode: "26O19",
           },
           {
             answer: "Object Stuck (Nose, Ear, Vagina, Rectum, etc.):",
             display: "Object stuck: {input}",
             end: true,
             input: true,
-            updateCode: "26O20"
+            updateCode: "26O20",
           },
           {
             answer: "Object Swallowed (No Choking or Diff Breathing):",
             display: "Swallowed {input} (w/o choking or diff breathing)",
             end: true,
             input: true,
-            updateCode: "26O21"
+            updateCode: "26O21",
           },
           {
             answer: "Painful Urination",
             display: "Pt has painful urnination",
             end: true,
-            updateCode: "26O22"
+            updateCode: "26O22",
           },
           {
             answer: "Penis Problems/Pain",
             display: "Pt has penis problems or pain",
             end: true,
-            updateCode: "26O23"
+            updateCode: "26O23",
           },
           {
             answer: "Rash/Skin Disorder (w/o Diff Breathing or Swallowing)",
-            display: "Pt has rash or skin disorder (no diff breathing or swallowing)",
+            display:
+              "Pt has rash or skin disorder (no diff breathing or swallowing)",
             end: true,
-            updateCode: "26O24"
+            updateCode: "26O24",
           },
           {
             answer: "Sexually Transmitted Disease (STD)",
             display: "Pt has sexually transmitted disease (std)",
             end: true,
-            updateCode: "26O25"
+            updateCode: "26O25",
           },
           {
             answer: "Sore Throat (w/o diff breathing or swallowing)",
             display: "Pt has sore throat (w/o diff breathing or swallowing)",
             continue: true,
-            updateCode: "26O26"
+            updateCode: "26O26",
           },
           {
             answer: "Toothache (w/o Jaw Pain)",
             display: "Pt has toothache (w/o jaw pain)",
             continue: true,
-            updateCode: "26O27"
+            updateCode: "26O27",
           },
           {
             answer: "Infected Wound (Focal or Surface)",
             display: "Pt has an infected wound (focal or surface)",
             end: true,
-            updateCode: "26O28"
-          }
-        ]
+            updateCode: "26O28",
+          },
+        ],
       },
 
       {
-        text: <p>Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?</p>,
+        text: (
+          <p>
+            Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "None of These",
             display: "No priority sx (ALPHA 2-12 not ID'd)",
             end: true,
-            updateCode: "26A01"
+            updateCode: "26A01",
           },
           {
             answer: "Blood pressure abnormality (asymptomatic)",
             display: "Pt has blood pressure abnormality (asymptomatic)",
             end: true,
-            updateCode: "26A02"
+            updateCode: "26A02",
           },
           {
             answer: "Dizziness/Vertigo",
             display: "Pt has dizziness/vertigo",
             end: true,
-            updateCode: "26A03"
+            updateCode: "26A03",
           },
           {
             answer: "Fever/Chills",
             display: "Pt has fever/chills",
             end: true,
-            updateCode: "26A04"
+            updateCode: "26A04",
           },
           {
             answer: "General weakness",
             display: "Pt has general weakness",
             end: true,
-            updateCode: "26A05"
+            updateCode: "26A05",
           },
           {
             answer: "Nausea",
             display: "Pt has nausea",
             end: true,
-            updateCode: "26A06"
+            updateCode: "26A06",
           },
           {
             answer: "New (not sudden) onset of immobility",
             display: "Pt has new (not sudden) onset of immobility",
             end: true,
-            updateCode: "26A07"
+            updateCode: "26A07",
           },
           {
             answer: "Other Pain",
             display: "Pt has other pain",
             end: true,
-            updateCode: "26A08"
+            updateCode: "26A08",
           },
           {
             answer: "Transportation Only",
             display: "Pt needs transport only",
             end: true,
-            updateCode: "26A09"
+            updateCode: "26A09",
           },
           {
             answer: "Unwell/Ill",
             display: "Pt is unwell/ill",
             end: true,
-            updateCode: "26A10"
+            updateCode: "26A10",
           },
           {
             answer: "Vomiting",
             display: "Pt is vomiting",
             end: true,
-            updateCode: "26A11"
+            updateCode: "26A11",
           },
           {
             answer: "Possible Contaigious Disease",
             display: "Pt has possible contaigious disease",
             end: true,
-            updateCode: "26A12"
-          }
-        ]
+            updateCode: "26A12",
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -17055,12 +17220,12 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Happening Now",
             display: "Incident in progress",
-            continue: true
+            continue: true,
           },
           {
             answer: "< 6 Hours Ago",
             display: "Happened Now (< 6 hours ago)",
-            continue: true
+            continue: true,
           },
           {
             answer: ">= 6 Hours Ago",
@@ -17069,45 +17234,56 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unk when incident happened"
-          }
-        ]
+            display: "Unk when incident happened",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>type</b> of <b>incident</b> is this?</p>,
+        text: (
+          <p>
+            What <b>type</b> of <b>incident</b> is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Gunshot",
             display: "Pt is shot",
             continue: true,
-            updateSubCode: "G"
+            updateSubCode: "G",
           },
           {
             answer: "Stabbed",
             display: "Pt is stabbed",
             continue: true,
-            updateSubCode: "S"
+            updateSubCode: "S",
           },
           {
             answer: "Penetrating Wound",
             display: "Pt has penetrating wound",
             continue: true,
-            updateSubCode: "P"
+            updateSubCode: "P",
           },
           {
             answer: "Unknown",
             display: "Unk type of incident",
-            goto: 30
-          }
-        ]
+            goto: 30,
+          },
+        ],
       },
 
       {
-        text: <p>Is it a <b>self-inflicted</b> wound?</p>,
+        text: (
+          <p>
+            Is it a <b>self-inflicted</b> wound?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Pt is shot" || lastAnswer === "Pt is stabbed";
         },
@@ -17123,14 +17299,14 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Gunshot") {
+              if (lastAnswer === "Gunshot") {
                 return { subCode: "X" };
-              } else if(lastAnswer === "Stabbed") {
+              } else if (lastAnswer === "Stabbed") {
                 return { subCode: "Y" };
               } else {
-                return undefined
+                return undefined;
               }
-            }
+            },
           },
           {
             answer: "Accidental",
@@ -17141,16 +17317,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if wound is self-inflicted",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Is the object still impaled?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Penetrating Wound";      
+          return lastAnswer === "Penetrating Wound";
         },
         answers: [
           {
@@ -17162,38 +17341,42 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Object is impaled",
             continue: true,
-            updateSubCode: "I"
+            updateSubCode: "I",
           },
           {
             answer: "Unknown",
             display: "Unk if object is impaled",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are there <b className="text-red-400">MULTIPLE</b> wounds?</p>,
+        text: (
+          <p>
+            Are there <b className="text-red-400">MULTIPLE</b> wounds?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Single Wound",
             display: "Pt has single wound",
-            continue: true
+            continue: true,
           },
           {
             answer: "Multiple Wounds",
             display: "Pt has multiple wounds",
             continue: true,
-            updateCode: "27D05"
+            updateCode: "27D05",
           },
           {
             answer: "Unknown",
             display: "Unk if pt has multiple wounds",
             continue: true,
-            updateCode: "27B04"
-          }
-        ]
+            updateCode: "27B04",
+          },
+        ],
       },
 
       {
@@ -17207,18 +17390,18 @@ export const emsComplaints: IEMSComplaint[] = [
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Single Wound") {
+              if (lastAnswer === "Single Wound") {
                 return { subCode: "27B02" };
-              } else if(firstAnswer === ">= 6 Hours Ago") {
+              } else if (firstAnswer === ">= 6 Hours Ago") {
                 return { subCode: "27A01" };
               }
-            }
+            },
           },
           {
             answer: "Head",
             display: "Inj(s) to head",
             continue: true,
-            updateCode: "27D04"
+            updateCode: "27D04",
           },
           {
             answer: "Central Wound(s)",
@@ -17227,12 +17410,15 @@ export const emsComplaints: IEMSComplaint[] = [
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(firstAnswer === ">= 6 Hours Ago" && lastAnswer === "Single Wound") {
+              if (
+                firstAnswer === ">= 6 Hours Ago" &&
+                lastAnswer === "Single Wound"
+              ) {
                 return { subCode: "27B01" };
               } else {
                 return { subCode: "27D04" };
               }
-            }
+            },
           },
           {
             answer: "OBVIOUS DEATH",
@@ -17243,15 +17429,23 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk where inj(s) are",
             continue: true,
-            updateCode: "27B04"
-          }
-        ]
+            updateCode: "27B04",
+          },
+        ],
       },
 
       {
-        text: <p><b>Why</b> do you think **pronoun** is <b className="text-red-400">dead</b>?</p>,
+        text: (
+          <p>
+            <b>Why</b> do you think **pronoun** is{" "}
+            <b className="text-red-400">dead</b>?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "OBVIOUS DEATH";
         },
@@ -17302,13 +17496,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown / Unable to Determine",
             display: "Unk / unable to determine why Obvious Death",
             end: true,
-            updateCode: "27D01"
-          }
-        ]
+            updateCode: "27D01",
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b className="text-red-400">SERIOUS</b> bleeding?</p>,
+        text: (
+          <p>
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -17320,16 +17518,16 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: "27B03"
+            updateCode: "27B03",
           },
           {
             answer: "Unknown",
             display: "Unk if SERIOUS bleeding",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-      
+
       {
         text: (
           <p>
@@ -17342,20 +17540,20 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Responding nlly",
-            end: true
+            end: true,
           },
           {
             answer: "No",
             display: "Not responding nlly",
             end: true,
-            updateCode: "27D03"
+            updateCode: "27D03",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
-            end: true
-          }
-        ]
+            end: true,
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -17370,36 +17568,36 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
-        ]
+        ],
       },
       {
         priority: "B",
@@ -17412,34 +17610,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
           {
             code: "27B01",
@@ -17449,34 +17647,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
           {
             code: "27B02",
@@ -17486,34 +17684,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
           {
             code: "27B03",
@@ -17523,34 +17721,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
           {
             code: "27B04",
@@ -17561,34 +17759,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 153
+                recResponse: 153,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 154
+                recResponse: 154,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 152
+                recResponse: 152,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 154
-              }
-            ]
+                recResponse: 154,
+              },
+            ],
           },
           {
             code: "27B05",
@@ -17598,36 +17796,36 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 157
+                recResponse: 157,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 157
-              }
-            ]
-          }
-        ]
+                recResponse: 157,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -17640,34 +17838,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 157
+                recResponse: 157,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 157
-              }
-            ]
+                recResponse: 157,
+              },
+            ],
           },
           {
             code: "27D01",
@@ -17678,34 +17876,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 159
+                recResponse: 159,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 158
+                recResponse: 158,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 158
+                recResponse: 158,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 160
+                recResponse: 160,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 159
+                recResponse: 159,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 160
-              }
-            ]
+                recResponse: 160,
+              },
+            ],
           },
           {
             code: "27D02",
@@ -17716,34 +17914,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 161
+                recResponse: 161,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 162
+                recResponse: 162,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 162
+                recResponse: 162,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 163
+                recResponse: 163,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 161
+                recResponse: 161,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 163
-              }
-            ]
+                recResponse: 163,
+              },
+            ],
           },
           {
             code: "27D03",
@@ -17753,34 +17951,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 161
+                recResponse: 161,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 162
+                recResponse: 162,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 162
+                recResponse: 162,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 163
+                recResponse: 163,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 161
+                recResponse: 161,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 163
-              }
-            ]
+                recResponse: 163,
+              },
+            ],
           },
           {
             code: "27D04",
@@ -17790,34 +17988,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 157
+                recResponse: 157,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 157
-              }
-            ]
+                recResponse: 157,
+              },
+            ],
           },
           {
             code: "27D05",
@@ -17827,34 +18025,34 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 156
+                recResponse: 156,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 157
+                recResponse: 157,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 155
+                recResponse: 155,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 157
-              }
-            ]
+                recResponse: 157,
+              },
+            ],
           },
           {
             code: "27D06",
@@ -17865,37 +18063,1689 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "G",
                 text: "Gunshot",
-                recResponse: 164
+                recResponse: 164,
               },
               {
                 code: "I",
                 text: "Impaled Currently",
-                recResponse: 165
+                recResponse: 165,
               },
               {
                 code: "P",
                 text: "Penetrating Wound (Not Impaled Now)",
-                recResponse: 165
+                recResponse: 165,
               },
               {
                 code: "S",
                 text: "Stab",
-                recResponse: 166
+                recResponse: 166,
               },
               {
                 code: "X",
                 text: "Self-Inflicted GSW (Intentional)",
-                recResponse: 164
+                recResponse: 164,
               },
               {
                 code: "Y",
                 text: "Self-Inflicted Knife/Stab Wound (Intentional)",
-                recResponse: 166
+                recResponse: 166,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 28,
+    name: "Stroke (CVA)/Transient Ischemic Attack (TIA)",
+    shortName: "Stroke",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 167,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "28C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>breathing</b> normally?</p>,
+        questionType: 'select',
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { age } = _patient;
+              if(age >= 35) {
+                return { code: "28C11" }
+              } else {
+                return { code: "28A01" }
               }
-            ]
+            }
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "28C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "28C12"
+          }
+        ]
+      },
+
+      {
+        text: <p><b className="text-blue-400">(No STROKE symptoms mentioned yet)</b> Tell me <b>why</b> you think it's a <b className="text-green-400">STROKE</b> <b className="text-blue-400">(Select the specific symptoms only if a sudden onset was reported)</b></p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Speech problems",
+            display: "Pt has sudden speech problems",
+            continue: true,
+            updateCode: "28C03"
+          },
+          {
+            answer: "Loss of balance or coordination",
+            display: "Pt has sudden loss of balance or coordination",
+            continue: true,
+            updateCode: "28C06"
+          },
+          {
+            answer: "Weakness or numbness (one side)",
+            display: "Pt has sudden weakness or numbness (one side)",
+            continue: true,
+            updateCode: "28C04"
+          },
+          {
+            answer: "Paralysis or facial droop (one side)",
+            display: "Pt has sudden paralysis or facial droop (one side)",
+            continue: true,
+            updateCode: "28C05"
+          },
+          {
+            answer: "Vision problems",
+            display: "Pt has sudden vision problems",
+            continue: true,
+            updateCode: "28C07"
+          },
+          {
+            answer: "Severe headache",
+            display: "Pt has sudden severe headache",
+            continue: true,
+            updateCode: "28C08"
+          },
+          {
+            answer: "Only \"stroke\" mentioned",
+            display: "Only \"stroke\" mentioned",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Pt has {input}",
+            continue: true,
+            input: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Exactly <b>what time</b> did these symptoms <span className="text-red-400">(problem)</span> <b>start</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Less than 4.5 hours ago (< 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "More than 4.5 hours ago (> 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "G",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when symptoms started",
+            continue: true,
+            updateSubCode: "U",
+          },
+        ]
+      },
+
+      {
+        text: <p>Has **pronoun** ever had a <b className="text-green-400">STROKE</b> before?</p>,
+        questionType: 'select',
+        answers: [
+          {
+            answer: "STROKE",
+            display: "Stroke hx",
+            continue: true,
+            updateCode: "28C09"
+          },
+          {
+            answer: "TIA or mini-stroke",
+            display: "TIA hx",
+            continue: true,
+            updateCode: "28C10"
+          },
+          {
+            answer: "No",
+            display: "No hx of stroke or TIA",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk hx of stroke or TIA",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Say: 'I am going to have you complete a quick test before the medics
+            show up ok?'
+          </p>
+        ),
+        questionType: "select",
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Ready",
+            display: "Starting test...",
+            continue: true,
+          },
+          {
+            answer: "Refused to do test",
+            display: "Refused to do test",
+            end: true,
+          },
+          {
+            answer: "Skip",
+            display: "Skip test",
+            end: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say "Can you have the patient smile"</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Smile instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Say: "Was the smile equal on both sides of the patient's mouth?"
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Smile instructions given"
+          )?.answer;
+          return answer === "Smile instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Normal Smile",
+            display: "1: 0",
+            continue: true,
+          },
+          {
+            answer: "Slight difference in smile (possible difference)",
+            display: "1: 1",
+            continue: true,
+          },
+          {
+            answer:
+              "Only one side of mouth or face shows a smile (obvious difference)",
+            display: "1: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "1: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say: "Have the patient raise both arms above their head"</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Raise arms instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What was **pronoun** able to do?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Raise arms instructions given"
+          )?.answer;
+          return answer === "Raise arms instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Both arms raised equally",
+            display: "2: 0",
+            continue: true,
+          },
+          {
+            answer: "One arm raised higher than the other",
+            display: "2: 1",
+            continue: true,
+          },
+          {
+            answer: "Only one arm raised",
+            display: "2: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "2: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Speech instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Was **pronoun** able to say it correctly and understandably</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Speech instructions given"
+          )?.answer;
+          return answer === "Speech instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Said correctly",
+            display: "3: 0",
+            continue: true,
+          },
+          {
+            answer: "Slurred speech",
+            display: "3: 1",
+            continue: true,
+          },
+          {
+            answer: "Garbled or not understandable speech",
+            display: "3: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "3: 0",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Calculate Score</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Calculate Score",
+            display: "Stroke test score calculated",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const smileAnswer = answers?.find((a) =>
+                a.answer.includes("1: ")
+              )?.answer;
+              const armsAnswer = answers?.find((a) =>
+                a.answer.includes("2: ")
+              )?.answer;
+              const speechAnswer = answers?.find((a) =>
+                a.answer.includes("3: ")
+              )?.answer;
+              const symptomStart = answers?.find(
+                (a) => a.question === "Exactly what time did these symptoms (problem) start?"
+              )?.defaultAnswer;
+              if (!smileAnswer || !armsAnswer || !speechAnswer) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                }
+                return { subCode: "z" };
+              }
+              const smileScore = parseInt(smileAnswer.split(": ")[1]);
+              const armsScore = parseInt(armsAnswer.split(": ")[1]);
+              const speechScore = parseInt(speechAnswer.split(": ")[1]);
+              const totalScore = smileScore + armsScore + speechScore;
+              if (totalScore === 0) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "Z" };
+                }
+              } else if (totalScore > 0 && totalScore <= 2) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "C" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "D" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "E" };
+                }
+              } else if (totalScore > 2 && totalScore <= 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "F" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "H" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "I" };
+                }
+              } else if (totalScore > 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "J" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "K" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "M" };
+                }
+              }
+              return undefined;
+            },
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "28A01",
+            text: "Breathing Normally (< 35)",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "28C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C01",
+            text: "Not Alert",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C02",
+            text: "Abnormal Breathing",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C03",
+            text: "Sudden Speech Problems",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C04",
+            text: "Sudden Weakness or Numbness",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C05",
+            text: "Sudden Paralysis or Facial Droop (One Side)",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C06",
+            text: "Sudden Loss of Balance or Coordination",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C07",
+            text: "Sudden Vision Problems",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C08",
+            text: "Sudden Onset of Severe Headache",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C09",
+            text: "Stroke Hx",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C10",
+            text: "TIA (Mini-Stroke) Hx",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C11",
+            text: "Breathing Normally (>= 35)",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C12",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 167,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
           }
         ]
       }
-    ]
-  }
+    ],
+  },
 ];
