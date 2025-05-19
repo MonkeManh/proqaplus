@@ -15,7 +15,7 @@ interface IEMSAnswer {
   end?: boolean
   input?: boolean
   goto?: number
-  updateSubType?: string
+  updateSubCode?: string
   dependency?: any
   preRenderInstructions?: any
   send?: boolean
@@ -136,9 +136,9 @@ function AnswerItem({ answer }: AnswerItemProps) {
               Updates Code to: {answer.updateCode}
             </Badge>
           )}
-          {answer.updateSubType && (
+          {answer.updateSubCode && (
             <Badge className="ml-2" variant="outline">
-              Updates Suffix to: {answer.updateSubType}
+              Updates Suffix to: {answer.updateSubCode}
             </Badge>
           )}
           {answer.goto && (
@@ -159,6 +159,12 @@ function AnswerItem({ answer }: AnswerItemProps) {
           {answer.send && (
             <Badge className="ml-2" variant="outline">
               Send Response
+            </Badge>
+          )}
+
+          {answer.input && (
+            <Badge className="ml-2" variant="outline">
+              Input Required
             </Badge>
           )}
         </div>

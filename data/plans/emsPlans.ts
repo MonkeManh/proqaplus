@@ -1265,7 +1265,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 3,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
       {
@@ -1399,7 +1399,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
     ],
@@ -1445,7 +1445,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
       {
@@ -1576,7 +1576,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
     ],
@@ -1599,7 +1599,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
       {
@@ -1626,7 +1626,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
     ],
@@ -1649,7 +1649,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helicopter",
         quantity: 1,
       },
       {
@@ -3033,6 +3033,832 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 168,
+    name: "MVCB",
+    incidentType: "MVC|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 169,
+    name: "PDC",
+    incidentType: "PropertyDamageCollision",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 170,
+    name: "MVCMCIB",
+    incidentType: "MVC|MULT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 171,
+    name: "MVC1",
+    incidentType: "MVC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 172,
+    name: "MVCMCI1",
+    incidentType: "MVC|MULT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 173,
+    name: "MVC2",
+    incidentType: "MVC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Helicopter",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Traffic",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 174,
+    name: "MVCMCI2",
+    incidentType: "MVC|MULT|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Helicopter",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 175,
+    name: "HMFULL",
+    incidentType: "AIR|CRASH|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Crash",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 2
+      },
+      {
+        type: "Police Supervisor",
+        quantity: 1
+      },
+      {
+        type: "Police Watch Commander",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 176,
+    name: "TRC",
+    incidentType: "TRAIN|CRASH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 4
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 2
+      },
+      {
+        type: "Police Supervisor",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 177,
+    name: "WTRALS2",
+    incidentType: "BOATCRASH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Marine",
+        quantity: 2
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 178,
+    name: "MVCBLDG1",
+    incidentType: "MVC|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      },
+    ]
+  },
+  {
+    id: 179,
+    name: "MVCPC1",
+    incidentType: "MVC|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 180,
+    name: "MVCMECH1",
+    incidentType: "MVC|MECH|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 181,
+    name: "MVCPC1",
+    incidentType: "MVC|PED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 182,
+    name: "MVCEJEC2",
+    incidentType: "MVC|EJEC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 183,
+    name: "MVCROLL1",
+    incidentType: "MVC|ROLL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 184,
+    name: "MVCMECH2",
+    incidentType: "MVC|MECH|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 185,
+    name: "WTR2RS",
+    incidentType: "VEH|SINKING|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Marine",
+        quantity: 1
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      },
+    ]
+  },
+  {
+    id: 186,
+    name: "TRAT",
+    incidentType: "TRAIN|PED",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Helicopter",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 187,
+    name: "MVCHM1",
+    incidentType: "MVC|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 188,
+    name: "MVCTRAP1",
+    incidentType: "MVC|TRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 189,
+    name: "MVCMCI1",
+    incidentType: "MVC|TRAP|MULT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Traffic",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 190,
+    name: "BLSU9",
+    incidentType: "INJURED|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 191,
+    name: "BLSR",
+    incidentType: "INJURED|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 192,
+    name: "ALS1",
+    incidentType: "INJURED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 193,
+    name: "AL2D",
+    incidentType: "INJURED|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
         quantity: 1,
       },
     ]

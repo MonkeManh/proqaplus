@@ -17391,9 +17391,9 @@ export const emsComplaints: IEMSComplaint[] = [
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               if (lastAnswer === "Single Wound") {
-                return { subCode: "27B02" };
+                return { code: "27B02" };
               } else if (firstAnswer === ">= 6 Hours Ago") {
-                return { subCode: "27A01" };
+                return { code: "27A01" };
               }
             },
           },
@@ -17414,9 +17414,9 @@ export const emsComplaints: IEMSComplaint[] = [
                 firstAnswer === ">= 6 Hours Ago" &&
                 lastAnswer === "Single Wound"
               ) {
-                return { subCode: "27B01" };
+                return { code: "27B01" };
               } else {
-                return { subCode: "27D04" };
+                return { code: "27D04" };
               }
             },
           },
@@ -19748,4 +19748,865 @@ export const emsComplaints: IEMSComplaint[] = [
       }
     ],
   },
+  // Questions still required
+  {
+    protocol: 29,
+    name: "Traffic/Transportation Incidents",
+    shortName: "Traffic/Transportation Incidents",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: true },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 168,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "28O01",
+            text: "No Injs (Confirmed for All Persons Up to 4)",
+            recResponse: 169,
+          }
+        ]
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "29A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29A01",
+            text: "1st Party Caller w/ Inj to Not Dangerous Body Area",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29A02",
+            text: "No Injs Rptd (Unconfirmed or >= 5 Persons Involed)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "29B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29B01",
+            text: "Injs",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29B02",
+            text: "Serious Hemorrhage",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29B03",
+            text: "Other Hazards",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29B04",
+            text: "Low Mechanism (1st or 2nd Party Caller)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          },
+          {
+            code: "29B05",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 168,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "29D00",
+            text: "ALS Override (Delta)",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174
+              }
+            ]
+          },
+          {
+            code: "29D01",
+            text: "Major Incident",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "a",
+                text: "Aircraft",
+                recResponse: 175
+              },
+              {
+                code: "B",
+                text: "Bus",
+                recResponse: 172
+              },
+              {
+                code: "C",
+                text: "Subway/Metro",
+                recResponse: 176
+              },
+              {
+                code: "d",
+                text: "Train",
+                recResponse: 176
+              },
+              {
+                code: "E",
+                text: "Watercraft",
+                recResponse: 177
+              },
+              {
+                code: "f",
+                text: "Multi-Vehicle (>= 10) Pile-Up",
+                recResponse: 172
+              },
+              {
+                code: "g",
+                text: "Street Car/Tram/Light Rail",
+                recResponse: 176
+              },
+              {
+                code: "h",
+                text: "Vehicle vs. Building",
+                recResponse: 178
+              },
+            ]
+          },
+          {
+            code: "29D02",
+            text: "High Mechanism",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "i",
+                text: "Auto vs. Bicycle",
+                recResponse: 179
+              },
+              {
+                code: "k",
+                text: "All-Terrain/Snowmobile",
+                recResponse: 180
+              },
+              {
+                code: "l",
+                text: "Auto vs. Motorcycle",
+                recResponse: 179
+              },
+              {
+                code: "m",
+                text: "Auto vs. Pedestrain",
+                recResponse: 181
+              },
+              {
+                code: "n",
+                text: "Ejection",
+                recResponse: 182
+              },
+              {
+                code: "o",
+                text: "Personal Watercraft",
+                recResponse: 177
+              },
+              {
+                code: "p",
+                text: "Rollovers",
+                recResponse: 183
+              },
+              {
+                code: "q",
+                text: "Vehicle Off Bridge/Height",
+                recResponse: 184
+              },
+              {
+                code: "r",
+                text: "Possible Death at Scene",
+                recResponse: 173
+              },
+              {
+                code: "s",
+                text: "Sinking Vehicle/Vehicle in Floodwater",
+                recResponse: 185
+              },
+              {
+                code: "t",
+                text: "Train/Light Rail vs. Pedestrian",
+                recResponse: 186
+              }
+            ]
+          },
+          {
+            code: "29D03",
+            text: "High Velocity Impact",
+            recResponse: 180,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 180
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 180
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 180
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 180
+              }
+            ]
+          },
+          {
+            code: "29D04",
+            text: "Hazmat",
+            recResponse: 187,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 187
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 187
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 187
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 187
+              }
+            ]
+          },
+          {
+            code: "29D05",
+            text: "Trapped or Pinned Victim",
+            recResponse: 188,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 187
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 189
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 187
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 189
+              }
+            ]
+          },
+          {
+            code: "29D06",
+            text: "Arrest",
+            recResponse: 173,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174
+              }
+            ]
+          },
+          {
+            code: "29D07",
+            text: "Unconscious",
+            recResponse: 171,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 171
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 172
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 171
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 172
+              }
+            ]
+          },
+          {
+            code: "29D08",
+            text: "Alert w/ Noisy Breathing (Abnormal)",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174
+              }
+            ]
+          },
+          {
+            code: "29D09",
+            text: "Not Alert w/ Normal Breathing",
+            recResponse: 171,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 171
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 172
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 171
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 172
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    protocol: 30,
+    name: "Traumatic Injs (Specific)",
+    shortName: "Traumatic Injs",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 190,
+    questions: [
+      {
+        text: <p><b>When</b> did this injury occur?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Just Now (< 6hrs)",
+            display: "Happened just now (< 6hrs)",
+            continue: true
+          },
+          {
+            answer: "Earlier (>= 6hrs)",
+            display: "Happened earlier (>= 6hrs)",
+            continue: true,
+            updateCode: "30A03" 
+          },
+          {
+            answer: "Unknown",
+            display: "Unkn when happened",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "30D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Ukn if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">SERIOUS</b> bleeding?</p>,
+        questionType: 'select',
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "30B02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>part</b> of the <b>body</b> is injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Not Dangerous:",
+            display: "Inj to: {input}",
+            continue: true,
+            input: true,
+            updateCode: "30A02"
+          },
+          {
+            answer: "Possibly Dangerous:",
+            display: "Inj to: {input}",
+            continue: true,
+            input: true,
+            updateCode: "30B01"
+          },
+          {
+            answer: "Chest",
+            display: "Inj to chest",
+            continue: true,
+            updateCode: "30B01"
+          },
+          {
+            answer: "Neck",
+            display: "Inj to neck",
+            continue: true,
+            updateCode: "30B01"
+          },
+          {
+            answer: "Head",
+            display: "Inj to head",
+            continue: true,
+            updateCode: "30B01"
+          },
+          {
+            answer: "MASSIVE INJ or HIGH VELOCITY IMPACT",
+            display: "MASSIVE INJ or HIGH VELOCITY IMPACT",
+            continue: true,
+            updateCode: "30D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Inj to unk location",
+            continue: true,
+            updateCode: "30B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>breathing</b> normally?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            end: true
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            end: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            end: true
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "30A01",
+            text: "Not Dangerous Body Area w/ Deformity",
+            recResponse: 190
+          },
+          {
+            code: "30A02",
+            text: "Not Dangerous Body Area",
+            recResponse: 190
+          },
+          {
+            code: "30A03",
+            text: "Non-Recent (>= 6hrs) Injs (w/o Priority Symptoms)",
+            recResponse: 191
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "30B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 190
+          },
+          {
+            code: "30B01",
+            text: "Possibly Dangerous Body Area",
+            recResponse: 190
+          },
+          {
+            code: "30B02",
+            text: "Serious Hemorrhage",
+            recResponse: 190
+          },
+          {
+            code: "30B03",
+            text: "Unkn Body Area (Remote Patient Location)",
+            recResponse: 190
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "30D00",
+            text: "ALS Override (Delta)",
+            recResponse: 192
+          },
+          {
+            code: "30D01",
+            text: "Arrest",
+            recResponse: 158,
+            notBreathing: true
+          },
+          {
+            code: "30D02",
+            text: "Unconscious",
+            recResponse: 193
+          },
+          {
+            code: "30D03",
+            text: "Not Alert",
+            recResponse: 192
+          },
+          {
+            code: "30D04",
+            text: "Chec/Neck/Head Inj (w/ Diff Breathing)",
+            recResponse: 192
+          },
+          {
+            code: "30D05",
+            text: "High Velocity Impact/Mass Inj",
+            recResponse: 192
+          }
+        ]
+      }
+    ]
+  }
 ];
