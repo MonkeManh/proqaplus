@@ -20948,5 +20948,661 @@ export const emsComplaints: IEMSComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 32,
+    name: "Unkn Problem (Person Down)",
+    shortName: "Unkn Problem",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 199,
+    questions: [
+      {
+        text: <p>What type of situation is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Medical Alarm Activation",
+            display: "Medical alarm activation",
+            continue: true,
+          },
+          {
+            answer: "Caller's Language Not Understood",
+            display: "Caller's language not understood",
+            continue: true,
+            updateCode: "32B04"
+          },
+          {
+            answer: "Completely Unknown",
+            display: "Completely unknown situation",
+            updateCode: "32B03",
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b>voice contact</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Medical Alarm Activation";
+        },
+        answers: [
+          {
+            answer: "No Voice Contact",
+            display: "No voice contact",
+            continue: true,
+            updateCode: "32B02"
+          },
+          {
+            answer: "Voice Contact Made",
+            display: "Voice contact made",
+            continue: true,
+          },
+        ]
+      },
+
+      {
+        text: <p>What is the chief complaint?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Voice Contact Made";
+        },
+        answers: [
+          {
+            answer: "1 - Abdominal Pains/Problems",
+            display: "Changing protocols...",
+            goto: 1
+          },
+          {
+            answer: "2 - Allergies (Reactions) / Envenomations (Stings, Bites)",
+            display: "Changing protocols...",
+            goto: 2
+          },
+          {
+            answer: "3 - Animal Bites/Attacks",
+            display: "Changing protocols...",
+            goto: 3
+          },
+          {
+            answer: "4 - Assault/Sexual Assault",
+            display: "Changing protocols...",
+            goto: 4
+          },
+          {
+            answer: "5 - Back Pain (Non-Traumatic or Non-Recent Trauma)",
+            display: "Changing protocols...",
+            goto: 5
+          },
+          {
+            answer: "6 - Breathing Problems",
+            display: "Changing protocols...",
+            goto: 6
+          },
+          {
+            answer: "7 - Burns (Scalds) / Explosion (Blast)",
+            display: "Changing protocols...",
+            goto: 7
+          },
+          {
+            answer: "8 - Carbon Monoxide/Inhalation/Hazmat/CBRN",
+            display: "Changing protocols...",
+            goto: 8
+          },
+          {
+            answer: "9 - Cardiac or Repiratory Arrest / Death",
+            display: "Changing protocols...",
+            goto: 9
+          },
+          {
+            answer: "10 - Chest Pain (Non-Traumatic)",
+            display: "Changing protocols...",
+            goto: 10
+          },
+          {
+            answer: "11 - Choking",
+            display: "Changing protocols...",
+            goto: 11
+          },
+          {
+            answer: "12 - Convulsions/Seizures",
+            display: "Changing protocols...",
+            goto: 12
+          },
+          {
+            answer: "13 - Diabetic Problems",
+            display: "Changing protocols...",
+            goto: 13
+          },
+          {
+            answer: "14 - Drowning (Near) / Diving / SCUBA Accident",
+            display: "Changing protocols...",
+            goto: 14,
+          },
+          {
+            answer: "15 - Electrocution/Lightning",
+            display: "Changing protocols...",
+            goto: 15
+          },
+          {
+            answer: "16 - Eye Problems / Injuries",
+            display: "Changing protocols...",
+            goto: 16
+          },
+          {
+            answer: "17 - Falls",
+            display: "Changing protocols...",
+            goto: 17
+          },
+          {
+            answer: "18 - Headache",
+            display: "Changing protocols...",
+            goto: 18
+          },
+          {
+            answer: "19 - Heart Problems / A.I.C.D.",
+            display: "Changing protocols...",
+            goto: 19
+          },
+          {
+            answer: "20 - Heat/Cold Exposure",
+            display: "Changing protocols...",
+            goto: 20
+          },
+          {
+            answer: "21 - Hemorrhage/Lacerations",
+            display: "Changing protocols...",
+            goto: 21
+          },
+          {
+            answer: "22 - Inaccessible Incident / Other Entrapments (Non-Traffic)",
+            display: "Changing protocols...",
+            goto: 22
+          },
+          {
+            answer: "23 - Overdose/Poisoning (Ingestion)",
+            display: "Changing protocols...",
+            goto: 23
+          },
+          {
+            answer: "24 - Pregnancy / Childbirth / Miscarriage",
+            display: "Changing protocols...",
+            goto: 24
+          },
+          {
+            answer: "25 - Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
+            display: "Changing protocols...",
+            goto: 25
+          },
+          {
+            answer: "26 - Sick Person (Specfic Diagnosis)",
+            display: "Changing protocols...",
+            goto: 26
+          },
+          {
+            answer: "27 - Stab/Gunshot/Penetrating Trauma",
+            display: "Changing protocols...",
+            goto: 27
+          },
+          {
+            answer: "28 - Stroke (CVA)/Transient Ischemic Attack (TIA)",
+            display: "Changing protocols...",
+            goto: 28
+          },
+          {
+            answer: "29 - Traffic/Transportation Incidents",
+            display: "Changing protocols...",
+            goto: 29
+          },
+          {
+            answer: "30 - Traumatic Injs (Specific)",
+            display: "Changing protocols...",
+            goto: 30
+          },
+          {
+            answer: "31 - Unconscious/Fainting (Near)",
+            display: "Changing protocols...",
+            goto: 31
+          },
+          {
+            answer: "Unknown",
+            display: "Completely unknown situation",
+            updateCode: "32B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>Placeholder</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Changing protocols...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Continue...",
+            display: "Continue...",
+            continue: true
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "32B01",
+            text: "Standing, Sitting, Moving, or Talking",
+            recResponse: 199
+          },
+          {
+            code: "32B02",
+            text: "Medical Alarm (Alert) Notifications (No Patient Info)",
+            recResponse: 200
+          },
+          {
+            code: "32B03",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 199
+          },
+          {
+            code: "32B04",
+            text: "Caller's Language Not Understood",
+            recResponse: 199
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "32D00",
+            text: "ALS Override (Delta)",
+            recResponse: 199
+          },
+          {
+            code: "32D01",
+            text: "Life Status Questionable",
+            recResponse: 199
+          }
+        ]
+      }
+    ]
+  },
+  {
+    protocol: 33,
+    name: "Transfer / Interfacility / Palliative Care",
+    shortName: "Transport",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: false },
+      { name: "Police", priority: false },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 201,
+    questions: [
+      {
+        text: <p>Referring Location</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Roxwood",
+            display: "Requested by Roxwood",
+            continue: true,
+          },
+          {
+            answer: "The Bay Care Medical Center",
+            display: "Requested by The Bay Care Medical Center (TBCMC)",
+            continue: true,
+          },
+          {
+            answer: "Sandy Shores Medical Center",
+            display: "Requested by Sandy Shores Medical Center (SSMC)",
+            continue: true,
+          },
+          {
+            answer: "Mount Zonah Medical Center",
+            display: "Requested by Mount Zonah Medical Center (MZMC)",
+            continue: true,
+          },
+          {
+            answer: "Portola Trinity Medical Center",
+            display: "Requested by Portola Trinity Medical Center (PTMC)",
+            continue: true,
+          },
+          {
+            answer: "Pillbox Hill Medical Center",
+            display: "Requested by Pillbox Hill Medical Center (PBMC)",
+            continue: true,
+          },
+          {
+            answer: "Central Los Santos Medical Center",
+            display: "Requested by Central Los Santos Medical Center (CLS)",
+            continue: true,
+          },
+          {
+            answer: "St. Fiacre Hospital",
+            display: "Requested by St. Fiacre Hospital (SFH)",
+            continue: true,
+          },
+          {
+            answer: "Private Residence",
+            display: "Requested by Private Residence",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Requested by {input}",
+            input: true,
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Receiving Location</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Roxwood",
+            display: "To Roxwood",
+            continue: true,
+          },
+          {
+            answer: "The Bay Care Medical Center",
+            display: "To The Bay Care Medical Center (TBCMC)",
+            continue: true,
+          },
+          {
+            answer: "Sandy Shores Medical Center",
+            display: "To Sandy Shores Medical Center (SSMC)",
+            continue: true,
+          },
+          {
+            answer: "Mount Zonah Medical Center",
+            display: "To Mount Zonah Medical Center (MZMC)",
+            continue: true,
+          },
+          {
+            answer: "Portola Trinity Medical Center",
+            display: "To Portola Trinity Medical Center (PTMC)",
+            continue: true,
+          },
+          {
+            answer: "Pillbox Hill Medical Center",
+            display: "To Pillbox Hill Medical Center (PBMC)",
+            continue: true,
+          },
+          {
+            answer: "Central Los Santos Medical Center",
+            display: "To Central Los Santos Medical Center (CLS)",
+            continue: true,
+          },
+          {
+            answer: "St. Fiacre Hospital",
+            display: "To St. Fiacre Hospital (SFH)",
+            continue: true,
+          },
+          {
+            answer: "Private Residence",
+            display: "To Private Residence",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "To {input}",
+            input: true,
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What is the <b>type</b> of transport?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Routine",
+            display: "Routine transport",
+            continue: true,
+          },
+          {
+            answer: "Critical",
+            display: "Critical transport",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>reason</b> for the transport?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Routine";
+        },
+        answers: [
+          {
+            answer: "Acuity Level I (Immediate Transport but Not Critical)",
+            display: "Immediate transport but not critical",
+            continue: true,
+            updateCode: "33A01",
+          },
+          {
+            answer: "Acuity Level II (Time-Specific Transport)",
+            display: "Time-specific transport",
+            continue: true,
+            updateCode: "33A02",
+          },
+          {
+            answer: "Acuity Level III (Non-Time Specific Transport)",
+            display: "Non-time specific transport",
+            continue: true,
+            updateCode: "33A03",
+          },
+          {
+            answer: "None of These",
+            display: "Routine transport rsns not ID'd",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Other reason for transport: {input}",
+            continue: true,
+            input: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>reason</b> for the transport?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Critical" || lastAnswer === "None of These";
+        },
+        answers: [
+          {
+            answer: "Suspected Cardiac or Respiration Arrest",
+            display: "Suspected cardiac or respiration arrest",
+            continue: true,
+            updateCode: "33D01",
+          },
+          {
+            answer: "Just Resuscitated and/or Defibrillated",
+            display: "Just resuscitated and/or defibrillated",
+            continue: true,
+            updateCode: "33D02",
+          },
+          {
+            answer: "Not Alert (Acute Change)",
+            display: "Not alert (acute change)",
+            continue: true,
+            updateCode: "33C01",
+          },
+          {
+            answer: "Abnormal Breathing (Acute Onset)",
+            display: "Abnormal breathing (acute onset)",
+            continue: true,
+            updateCode: "33C02",
+          },
+          {
+            answer: "Significant Hemorrhage or Shock",
+            display: "Significant hemorrhage or shock",
+            continue: true,
+            updateCode: "33C03",
+          },
+          {
+            answer: "Possibly Acute Heart Problems or MI",
+            display: "Possibly acute heart problems or MI",
+            continue: true,
+            updateCode: "33C04",
+          },
+          {
+            answer: "Acute Severe Pain",
+            display: "Acute severe pain",
+            continue: true,
+            updateCode: "33C05",
+          },
+          {
+            answer: "Emergency Response Requested",
+            display: "Emergency response requested",
+            continue: true,
+          },
+          {
+            answer: "Critical Transport",
+            display: "Critical transport",
+            continue: true,
+            updateCode: "33D00",
+          },
+          {
+            answer: "ALS Transport",
+            display: "ALS transport",
+            continue: true,
+            updateCode: "33C00",
+          },
+          {
+            answer: "Other:",
+            display: "Other reason for transport: {input}",
+            continue: true,
+            input: true,
+          },
+        ]
+      },
+      
+      {
+        text: <p>Are there any <b>special instructions</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No special instructions",
+            end: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Special instructions: {input}",
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if special instrcutions",
+            end: true
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "33A01",
+            text: "Acuity Level I",
+            recResponse: 201,
+          },
+          {
+            code: "33A02",
+            text: "Acuity Level II",
+            recResponse: 201,
+          },
+          {
+            code: "33A03",
+            text: "Acuity Level III",
+            recResponse: 201,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "33C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 202,
+          },
+          {
+            code: "33C01",
+            text: "Not Alert (Acute Change)",
+            recResponse: 202,
+          },
+          {
+            code: "33C02",
+            text: "Abnormal Breathing (Acute Onset)",
+            recResponse: 202,
+          },
+          {
+            code: "23C03",
+            text: "Significant Hemorrhage or Shock",
+            recResponse: 202,
+          },
+          {
+            code: "33C04",
+            text: "Possibly Acute Heart Problems or MI",
+            recResponse: 202,
+          },
+          {
+            code: "33C05",
+            text: "Acute Severe Pain",
+            recResponse: 202,
+          },
+          {
+            code: "33C06",
+            text: "Emergency Response Requested",
+            recResponse: 202,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "33D00",
+            text: "ALS Override (Delta)",
+            recResponse: 203,
+          },
+          {
+            code: "33D01",
+            text: "Suspected Cardiac or Respiratory Arrest",
+            recResponse: 203,
+          },
+          {
+            code: "33D02",
+            text: "Just Resuscitated and/or Defibrillated",
+            recResponse: 203,
+          },
+        ],
+      },
+    ],
   }
 ];

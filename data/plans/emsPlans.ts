@@ -3949,5 +3949,27 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 199,
+    name: "BLSU9",
+    incidentType: "ONEDOWN|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 200,
+    name: "BLSM",
+    incidentType: "MedicalAlertAlarm",
+    units: [
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ]
   }
 ];

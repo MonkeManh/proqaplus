@@ -288,6 +288,28 @@ export default function EmsProQA({
 
     if (!currentQuestion || !selectedAnswer) return;
 
+    // Handle protocol switching first, before any other operations
+    if (selectedAnswer.goto !== undefined) {
+      // Clear all state and storage
+      localStorage.removeItem("EMS_PROQA_DATA");
+      localStorage.removeItem("EMS_PROQA_ANSWERS");
+      setCurrentQuestionIndex(0);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+      setCurrentCode("");
+      setCurrentPlan(0);
+      setIsCodeOverridden(false);
+      setShouldComplete(false);
+      setPreviousAnswers([]);
+      setCurrentSubCode("");
+      
+      // Switch to new protocol
+      if (onSwitchProtocol) {
+        onSwitchProtocol(selectedAnswer.goto);
+      }
+      return;
+    }
+
     setSelectedAnswerIndex(answerIndex);
 
     if (selectedAnswer.input && !inputValue) {
@@ -316,17 +338,6 @@ export default function EmsProQA({
       omit: currentQuestion.omitQuestion || false,
       timestamp: new Date().toISOString(),
     };
-
-    if (selectedAnswer.goto !== undefined) {
-      localStorage.removeItem("EMS_PROQA_DATA");
-      localStorage.removeItem("EMS_PROQA_ANSWERS");
-      setPreviousAnswers([]);
-
-      if (onSwitchProtocol) {
-        onSwitchProtocol(selectedAnswer.goto);
-        return;
-      }
-    }
 
     const updatedAnswers = [...previousAnswers];
     const existingIndex = updatedAnswers.findIndex(
