@@ -1,4 +1,4 @@
-import { IAnswerData } from "@/models/interfaces/complaints/ems/IAnswerData";
+import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 
@@ -21511,6 +21511,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Yes:",
+            input: true,
             display: "Special instructions: {input}",
             end: true,
           },

@@ -6,6 +6,7 @@ interface Unit {
 export interface IResponsePlan {
     id: number;
     name: string;
+    text?: string;
     incidentType: string;
     units: Unit[];
 }

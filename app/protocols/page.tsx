@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import ProtocolList from "@/components/protocols/protocol-list"
 import { emsComplaints } from "@/data/protocols/emsProtocols"
+import { fireProtocols } from "@/data/protocols/fireProtocols"
 
 export default function ProtocolsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -19,50 +20,6 @@ export default function ProtocolsPage() {
       protocol.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       protocol.protocol.toString().includes(searchQuery),
   )
-
-  // Placeholder for Fire and Police protocols
-  const fireProtocols = [
-    {
-      protocol: 1,
-      name: "Structure Fire",
-      description: (
-        <p>Protocol for responding to structure fires including residential, commercial, and industrial buildings.</p>
-      ),
-      services: [
-        { name: "Fire", priority: 5 },
-        { name: "EMS", priority: 3 },
-        { name: "Police", priority: 2 },
-      ],
-      defaultPriority: 5,
-      defaultPlan: 1,
-    },
-    {
-      protocol: 2,
-      name: "Vehicle Fire",
-      description: (
-        <p>Protocol for responding to vehicle fires including cars, trucks, buses, and other motor vehicles.</p>
-      ),
-      services: [
-        { name: "Fire", priority: 4 },
-        { name: "EMS", priority: 2 },
-        { name: "Police", priority: 2 },
-      ],
-      defaultPriority: 4,
-      defaultPlan: 1,
-    },
-    {
-      protocol: 3,
-      name: "Wildland Fire",
-      description: <p>Protocol for responding to fires in wildland areas including forests, grasslands, and brush.</p>,
-      services: [
-        { name: "Fire", priority: 5 },
-        { name: "EMS", priority: 2 },
-        { name: "Police", priority: 2 },
-      ],
-      defaultPriority: 5,
-      defaultPlan: 1,
-    },
-  ]
 
   const policeProtocols = [
     {

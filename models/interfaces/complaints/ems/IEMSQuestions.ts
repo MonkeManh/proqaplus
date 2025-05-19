@@ -1,7 +1,7 @@
 import { JSX } from "react";
 import { IPatientData } from "./IPatientData";
 import { DependencyResult } from "./IEMSAnswer";
-import { IAnswerData } from "./IAnswerData";
+import { IAnswerData } from "../IAnswerData";
 
 export interface IEMSQuestions {
     text: JSX.Element;

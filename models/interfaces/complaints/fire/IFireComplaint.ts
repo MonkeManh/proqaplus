@@ -1,10 +1,8 @@
 import { IComplaintServices } from "../IComplaintServices";
 import { IAnswerData } from "../IAnswerData";
-import { DependencyResult } from "./IEMSAnswer";
-import { IPatientData } from "./IPatientData";
 import { JSX, ReactNode } from "react";
 
-export interface IEMSComplaint {
+export interface IFireComplaint {
   protocol: number;
   name: string;
   shortName: string;
@@ -35,7 +33,7 @@ export interface IEMSComplaint {
 export interface IEMSQuestions {
   text: JSX.Element;
   questionType: "input" | "select" | "hybrid-select" | "description";
-  preRenderInstructions?: (patient?: IPatientData) => boolean;
+  preRenderInstructions?: (answers: IAnswerData[]) => boolean;
   isConscious?: boolean;
   isBreathing?: boolean;
   omitQuestion?: boolean;
@@ -45,7 +43,7 @@ export interface IEMSQuestions {
 interface IAnswers {
   answer: string;
   display: string;
-  preRenderInstructions?: (patient?: IPatientData) => boolean;
+  preRenderInstructions?: (answers: IAnswerData[]) => boolean;
   input?: boolean;
   send?: boolean;
   continue?: boolean;
@@ -55,8 +53,30 @@ interface IAnswers {
   updateCode?: string;
   updateSubCode?: string;
   override?: boolean;
-  dependency?: (
-    patient?: IPatientData,
-    answers?: IAnswerData[]
-  ) => DependencyResult | undefined;
+  dependency?: (answers: IAnswerData[]) => DependencyResult | undefined;
+}
+
+
+export type DependencyResult = {
+  code?: string;
+  subCode?: string;
+  plan?: number;
+  override?: boolean;
+};
+
+export type DependencyFunction = (answers: IAnswerData[]) => DependencyResult | undefined;
+
+export interface IEMSAnswer {
+  answer: string;
+  display: string;
+  continue?: boolean;
+  updateCode?: string;
+  override?: boolean;
+  end?: boolean;
+  input?: boolean;
+  goto?: number;
+  updateSubType?: string;
+  dependency?: DependencyFunction;
+  preRenderInstructions?: (answers: IAnswerData[], currentCode?: string) => boolean;
+  send?: boolean;
 }
