@@ -9603,7 +9603,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Both Numbness and Paralysis",
-            display: "Numbness and Paralysis",
+            display: "Numbness and paralysis",
             continue: true,
             updateCode: "18C06",
           },
@@ -9621,18 +9621,18 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "No change in behavior",
+            display: "No chng in behavior",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "Change in behavior (<= 3hrs)",
+            display: "Chng in behavior (<= 3hrs)",
             continue: true,
             updateCode: "18C07",
           },
           {
             answer: "Unknown",
-            display: "Unk if change in behavior",
+            display: "Unk if chng in behavior",
             continue: true,
           },
         ],

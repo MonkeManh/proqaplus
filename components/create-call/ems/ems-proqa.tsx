@@ -310,7 +310,7 @@ export default function EmsProQA({
     const newAnswer = {
       question: processedQuestion,
       defaultQuestion: rawQuestionText,
-      defultAnswer: selectedAnswer.answer,
+      defaultAnswer: selectedAnswer.answer,
       answer: displayText,
       questionIndex: currentQuestionIndex,
       omit: currentQuestion.omitQuestion || false,
