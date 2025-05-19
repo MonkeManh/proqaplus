@@ -20419,7 +20419,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Ukn if responding nlly",
+            display: "Unk if responding nlly",
             continue: true,
           }
         ]
@@ -20524,6 +20524,33 @@ export const emsComplaints: IEMSComplaint[] = [
           }
         ]
       },
+
+      {
+        text: <p>Is there any <b>deformity</b>?</p>,
+        questionType: 'select',
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Not Dangerous:";
+        },
+        answers: [
+          {
+            answer: "No deformity",
+            display: "No deformity",
+            continue: true,
+          },
+          {
+            answer: "Yes deformity",
+            display: "Deformity from inj",
+            continue: true,
+            updateCode: "30A01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent of inj",
+            continue: true
+          }
+        ]
+      }
     ],
     availableDeterminants: [
       {
@@ -20604,6 +20631,319 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "30D05",
             text: "High Velocity Impact/Mass Inj",
             recResponse: 192
+          }
+        ]
+      }
+    ]
+  },
+  {
+    protocol: 31,
+    name: "Unconscious/Fainting (Near)",
+    shortName: "Unco/Fainting",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 194,
+    questions: [
+      {
+        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { isConscious } = _patient;
+              if(!isConscious) {
+                return { code: "31D03" }
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { isConscious } = _patient;
+              if(!isConscious) {
+                return { code: "31D02" }
+              } else {
+                return { code: "31C01" }
+              }
+            }
+          },
+          {
+            answer: "Ineffective/Agonal",
+            display: "Ineffective/Agonal breathing",
+            updateCode: "31D01",
+            end: true
+          },
+          {
+            answer: "Not Breathing AT ALL",
+            display: "Not breathing",
+            updateCode: "31E01",
+            end: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is **pronoun** <b>chainging color</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Changing color",
+            continue: true,
+            updateCode: "31D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if changing color",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are they awake now?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Conscious",
+            display: "Pt is conscious",
+            continue: true
+          },
+          {
+            answer: "Still unconscious",
+            display: "Pt is still unconscious",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is still unconscious",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Does she have abdominal pain?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          if(!_patient) return false;
+          const { age, gender } = _patient;
+          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Are they awake now?")?.defaultAnswer;
+          return lastAnswer === "Conscious" && age >= 12 && age <= 50 && gender === "Female";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No abdo pn",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Has abdo pn",
+            continue: true,
+            updateCode: "31C03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has abdo pn",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Are they awake now?")?.defaultAnswer;
+          return lastAnswer === "Conscious"
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "31D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does **pronoun** have a cardiac history</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Is **pronoun** completely alert (responding appropriately)?")?.defaultAnswer;
+          return lastAnswer === "Yes";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No cardiac history",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { age } = _patient;
+              if(age >= 35) {
+                return { code: "31A01" }
+              } else {
+                return { code: "31A03" }
+              }
+            }
+          },
+          {
+            answer: "Yes",
+            display: "Has cardiac history",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if(!_patient) return undefined;
+              const { age } = _patient;
+              if(age >= 35) {
+                return { code: "31C02" }
+              } else {
+                return { code: "31A02" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk cardiac history",
+            continue: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "31A01",
+            text: "Fainting Episode(s) & Alert >= 35 (w/o Cardiac Hx)",
+            recResponse: 194
+          },
+          {
+            code: "31A02",
+            text: "Fainting Episode(s) & Alert < 35 (w/ Cardiac Hx)",
+            recResponse: 194
+          },
+          {
+            code: "31A03",
+            text: "Fainting Episode(s) & Alert < 35 (w/o Cardiac Hx)",
+            recResponse: 194
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "31C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 195
+          },
+          {
+            code: "31C01",
+            text: "Alert & Abnormal Breathing",
+            recResponse: 195
+          },
+          {
+            code: "31C02",
+            text: "Fainting Episode(s) & Alert >= 35 (w/ Cardiac Hx)",
+            recResponse: 195
+          },
+          {
+            code: "31C03",
+            text: "Females 12-50 w/ Abdominal Pain",
+            recResponse: 195
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "31D00",
+            text: "ALS Override (Delta)",
+            recResponse: 196
+          },
+          {
+            code: "31D01",
+            text: "Unconscious - Agonal/Ineffective Breathing",
+            recResponse: 197
+          },
+          {
+            code: "31D02",
+            text: "Unconscious - Abnormal Breathing",
+            recResponse: 196
+          },
+          {
+            code: "31D03",
+            text: "Unconscious - Effective Breathing Verified",
+            recResponse: 195
+          },
+          {
+            code: "31D04",
+            text: "Not Alert",
+            recResponse: 150
+          },
+          {
+            code: "31D05",
+            text: "Changing Color",
+            recResponse: 195
+          },
+          
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "31E00",
+            text: "ALS Override (Echo)",
+            recResponse: 198
+          },
+          {
+            code: "31E01",
+            text: "Not Breathing/Obvious Arrest",
+            notBreathing: true,
+            recResponse: 198
           }
         ]
       }
