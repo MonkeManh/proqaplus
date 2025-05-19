@@ -1,3 +1,4 @@
+import { IAnswerData } from "@/models/interfaces/complaints/ems/IAnswerData";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 
@@ -486,7 +487,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty speaking between breaths?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Diff breathing or swallowing";
         },
@@ -1172,7 +1173,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Bit on Chest/Neck/Head";
         },
@@ -1577,7 +1578,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Injured on Chest/Neck/Head";
         },
@@ -1610,11 +1611,11 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is there any deformity from the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.question === "What part of the body was/is injured?"
           );
-          return answer?.defultAnswer === "Not Dangerous Body Area:";
+          return answer?.defaultAnswer === "Not Dangerous Body Area:";
         },
         answers: [
           {
@@ -2439,7 +2440,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Can talk or cry";
         },
@@ -2466,7 +2467,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Did **pronoun** choke on anything first?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Cannot talk or cry";
         },
@@ -2624,7 +2625,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Has asthma" || lastAnswer === "Has COPD";
         },
@@ -2656,7 +2657,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Has **pronoun** used it yet?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) =>
               a.question ===
@@ -2694,7 +2695,7 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         omitQuestion: true,
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.question === "Has **pronoun** used it yet?"
           )?.answer;
@@ -2717,7 +2718,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Give instructions on using nebulizer/inhaler</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.question === "Can you, or someone there, go get it now?"
           )?.answer;
@@ -3122,7 +3123,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Structure on fire";
         },
@@ -3245,7 +3246,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -3354,7 +3355,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: ">= 18% Body Area",
             display: "Burns >= 18% body area",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Burns to face/head") {
                 return { code: "07C04" };
@@ -4049,7 +4050,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "CO alarm activated";
         },
@@ -4211,7 +4212,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "08B01" };
@@ -4223,7 +4224,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "08C01" };
@@ -4247,7 +4248,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -5014,7 +5015,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "The cardiac arrest was witnessed" ||
@@ -5047,7 +5048,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Type of incident?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "EXPECTED DEATH";
         },
@@ -5474,7 +5475,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -5837,7 +5838,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           return (
@@ -6354,7 +6355,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT has stopped seizing";
         },
@@ -6392,7 +6393,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No hx of seizures or diagnoses",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               if (!_patient) return undefined;
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
@@ -6409,7 +6410,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Seizure or eplepsy hx",
             continue: true,
             updateSubCode: "E",
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
               return { code: "12A01" };
@@ -6419,7 +6420,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk hx of seizures or diagnoses",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
               return { code: "12A02" };
@@ -6746,7 +6747,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Behaving nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "Responding nlly") {
                 return { code: "13A01" };
@@ -6824,7 +6825,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Acting aggressively or combative";
         },
@@ -7049,7 +7050,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -7062,7 +7063,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -7075,7 +7076,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -7091,7 +7092,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is it easy to get to the patient?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Pt is underwater";
         },
@@ -7125,7 +7126,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Unk where pt is";
         },
@@ -7156,7 +7157,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7187,7 +7188,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7199,7 +7200,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (
@@ -7219,7 +7220,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "14C01" };
@@ -7245,7 +7246,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** injured at all?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7263,7 +7264,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Injuries: {input}",
             continue: true,
             input: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const isBreathingNlly =
                 answers?.find((a) => a.answer === "Breathing nlly")?.answer ===
                 "Breathing nlly";
@@ -7839,7 +7840,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "Pt was electrocuted";
         },
@@ -7871,7 +7872,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "Pt was electrocuted";
         },
@@ -7924,7 +7925,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>How far did **pronoun** fall?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT fell after incident";
         },
@@ -8000,7 +8001,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "15C01" };
@@ -8435,8 +8436,9 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
+          if (!lastAnswer) return false;
           return (
             lastAnswer.includes("Caused by penetrating object") ||
             lastAnswer.includes("Caused by flying object") ||
@@ -8779,7 +8781,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           if (!lastAnswer) return false;
           return (
@@ -8811,8 +8813,9 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What is the extent of the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const injuryAnswer = answers?.[answers.length - 1]?.answer;
+          if (!injuryAnswer) return false;
           return injuryAnswer.includes("Inj to");
         },
         answers: [
@@ -9671,7 +9674,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           const thirdAnswer = answers?.[2]?.answer;
@@ -9721,7 +9724,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say "Can you have the patient smile"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9744,7 +9747,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Smile instructions given"
           )?.answer;
@@ -9779,7 +9782,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say: "Have the patient raise both arms above their head"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9798,7 +9801,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What was **pronoun** able to do?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Raise arms instructions given"
           )?.answer;
@@ -9834,7 +9837,7 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9855,7 +9858,7 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Was **pronoun** able to say it correctly and understandably</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Speech instructions given"
           )?.answer;
@@ -9889,7 +9892,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Calculate Score</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9901,7 +9904,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Calculate Score",
             display: "Stroke test score calculated",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const smileAnswer = answers?.find((a) =>
                 a.answer.includes("1: ")
               )?.answer;
@@ -9913,7 +9916,15 @@ export const emsComplaints: IEMSComplaint[] = [
               )?.answer;
               const symptomStart = answers?.find(
                 (a) => a.question === "When did these symptoms start?"
-              )?.defultAnswer;
+              )?.defaultAnswer;
+              if(!smileAnswer || !armsAnswer || !speechAnswer) {
+                if(symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" }
+                } else if(symptomStart === "More than 4.5 hours ago (> 4.5hrs):") {
+                  return { subCode: "Y" }
+                }
+                return { subCode: "z" }
+              }
               const smileScore = parseInt(smileAnswer.split(": ")[1]);
               const armsScore = parseInt(armsAnswer.split(": ")[1]);
               const speechScore = parseInt(speechAnswer.split(": ")[1]);
@@ -10748,7 +10759,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -10879,8 +10890,9 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
+          if (!lastAnswer) return false;
           return (
             lastAnswer === "Pt has an AICD" ||
             lastAnswer.includes("AICD") ||
@@ -11610,7 +11622,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is she pregnant?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return (
             lastAnswer === "Bleeding from genitourinary area" &&
@@ -11700,7 +11712,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Traumatic cause";
         },
@@ -11731,7 +11743,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Medical cause";
         },
@@ -12226,7 +12238,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -12260,7 +12272,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -12277,7 +12289,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Whole Body Entrapment",
             display: "Whole body is trapped",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -12302,7 +12314,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "{input} is trapped",
             continue: true,
             input: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -12326,7 +12338,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk what part of body is trapped",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -13099,7 +13111,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Pt took fentanyl",
             continue: true,
             updateCode: "23C05",
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               const violentAnswer = answers?.find(
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
@@ -13126,7 +13138,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Carfentanil",
             display: "Pt took carfentanil",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               const violentAnswer = answers?.find(
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
@@ -14415,7 +14427,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is she having contractions?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "No";
         },
@@ -14441,7 +14453,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>How often is she having contractions?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Having contractions";
         },
@@ -14492,7 +14504,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Minor Bleeding",
             display: "Minor bleeding",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
                 return { code: "24D04" };
@@ -14509,7 +14521,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "SERIOUS Bleeding",
             display: "Serious bleeding",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
                 return { code: "24D04" };
@@ -14533,7 +14545,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Are there any complications?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
           const secondAnswer = answers?.[1]?.defaultAnswer;
           return secondAnswer === "Baby completely out";
         },
@@ -14904,7 +14916,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not thinking about self-injury",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               if (!_patient) return;
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const { patientProximity } = _patient;
@@ -14919,7 +14931,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Thinking about self-injury",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               if (!_patient) return;
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const { patientProximity } = _patient;
@@ -15032,7 +15044,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes:",
             display: "Pt has or has access to wpns: {input}",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               if (lastAnswer === "Yes:") {
                 return { subCode: "B" };
@@ -15057,7 +15069,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Dementia",
             display: "MENTAL HEALTH CONDITIONS",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C01" };
@@ -15068,7 +15080,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Depression",
             display: "MENTAL HEALTH CONDITIONS",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C01" };
@@ -15079,7 +15091,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Bi-Polar",
             display: "MENTAL HEALTH CONDITIONS",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C01" };
@@ -15090,7 +15102,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Schizophrenia",
             display: "MENTAL HEALTH CONDITIONS",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C01" };
@@ -15102,7 +15114,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "MENTAL HEALTH CONDITIONS",
             continue: true,
             input: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C01" };
@@ -15113,7 +15125,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No mental health conditions",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C02" };
@@ -15124,7 +15136,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unknown if mental health conditions",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Altered LOC") {
                 return { code: "25C02" };
@@ -15189,7 +15201,7 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Hemorrhage/Laceration";
         },
@@ -15223,7 +15235,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return (
             lastAnswer === "Near Hanging" ||
@@ -15236,7 +15248,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Yes") {
                 return { code: "25B05" };
@@ -15247,7 +15259,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not breathing nlly",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               if (firstAnswer === "Yes") {
                 return { code: "25D05" };
@@ -17023,4 +17035,867 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 27,
+    name: "Stab/Gunshot/Penetrating Trauma",
+    shortName: "Stab/Shot/Trauma",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 152,
+    questions: [
+      {
+        text: <p>When did this happen?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Happening Now",
+            display: "Incident in progress",
+            continue: true
+          },
+          {
+            answer: "< 6 Hours Ago",
+            display: "Happened Now (< 6 hours ago)",
+            continue: true
+          },
+          {
+            answer: ">= 6 Hours Ago",
+            display: "Happened Earlier (>= 6 hours ago)",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when incident happened"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Gunshot",
+            display: "Pt is shot",
+            continue: true,
+            updateSubCode: "G"
+          },
+          {
+            answer: "Stabbed",
+            display: "Pt is stabbed",
+            continue: true,
+            updateSubCode: "S"
+          },
+          {
+            answer: "Penetrating Wound",
+            display: "Pt has penetrating wound",
+            continue: true,
+            updateSubCode: "P"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of incident",
+            goto: 30
+          }
+        ]
+      },
+
+      {
+        text: <p>Is it a <b>self-inflicted</b> wound?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Pt is shot" || lastAnswer === "Pt is stabbed";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Wound is not self-inflicted",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Wound is self-inflicted",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Gunshot") {
+                return { subCode: "X" };
+              } else if(lastAnswer === "Stabbed") {
+                return { subCode: "Y" };
+              } else {
+                return undefined
+              }
+            }
+          },
+          {
+            answer: "Accidental",
+            display: "Wound is accidental",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if wound is self-inflicted",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the object still impaled?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Penetrating Wound";      
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Object is not impaled",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Object is impaled",
+            continue: true,
+            updateSubCode: "I"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if object is impaled",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there <b className="text-red-400">MULTIPLE</b> wounds?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single Wound",
+            display: "Pt has single wound",
+            continue: true
+          },
+          {
+            answer: "Multiple Wounds",
+            display: "Pt has multiple wounds",
+            continue: true,
+            updateCode: "27D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has multiple wounds",
+            continue: true,
+            updateCode: "27B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>Where is **pronoun** injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Peripheral Wound(s) Only",
+            display: "Inj(s) to peripheral area only",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Single Wound") {
+                return { subCode: "27B02" };
+              } else if(firstAnswer === ">= 6 Hours Ago") {
+                return { subCode: "27A01" };
+              }
+            }
+          },
+          {
+            answer: "Head",
+            display: "Inj(s) to head",
+            continue: true,
+            updateCode: "27D04"
+          },
+          {
+            answer: "Central Wound(s)",
+            display: "Inj(s) to central body area",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(firstAnswer === ">= 6 Hours Ago" && lastAnswer === "Single Wound") {
+                return { subCode: "27B01" };
+              } else {
+                return { subCode: "27D04" };
+              }
+            }
+          },
+          {
+            answer: "OBVIOUS DEATH",
+            display: "Possible obvious death",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where inj(s) are",
+            continue: true,
+            updateCode: "27B04"
+          }
+        ]
+      },
+
+      {
+        text: <p><b>Why</b> do you think **pronoun** is <b className="text-red-400">dead</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "OBVIOUS DEATH";
+        },
+        answers: [
+          {
+            answer: "Head Missing",
+            display: "Pt's head is missing",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Injs not compatable with life",
+            display: "Pt has injs not compatable w/ life",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Not Recognizeable",
+            display: "Pt is not recognizeable",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Rigor Mortis",
+            display: "Pt has rigor mortis",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Decomposition",
+            display: "Pt has decomposition",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Dependent Lividity",
+            display: "Pt has dependent lividity",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Unknown / Unable to Determine",
+            display: "Unk / unable to determine why Obvious Death",
+            end: true,
+            updateCode: "27D01"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">SERIOUS</b> bleeding?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "27B03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true,
+          }
+        ]
+      },
+      
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            end: true
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            end: true,
+            updateCode: "27D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            end: true
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "27A01",
+            text: "Non-Recent (>= 6hrs) Peripheral Wounds (w/o Pririty Symptoms)",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "27B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+          {
+            code: "27B01",
+            text: "Non-Recent (>= 6hrs) Single Central Wound",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+          {
+            code: "27B02",
+            text: "Known Single Peripheral Wound",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+          {
+            code: "27B03",
+            text: "Serious Hemorrhage",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+          {
+            code: "27B04",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 153,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154
+              }
+            ]
+          },
+          {
+            code: "27B05",
+            text: "Obvious Death",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "27D00",
+            text: "ALS Override (Delta)",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157
+              }
+            ]
+          },
+          {
+            code: "27D01",
+            text: "Arrest",
+            recResponse: 158,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 159
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 158
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 158
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 160
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 159
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 160
+              }
+            ]
+          },
+          {
+            code: "27D02",
+            text: "Unconscious",
+            recResponse: 162,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 161
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 162
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 162
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 163
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 161
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 163
+              }
+            ]
+          },
+          {
+            code: "27D03",
+            text: "Not Alert",
+            recResponse: 162,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 161
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 162
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 162
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 163
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 161
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 163
+              }
+            ]
+          },
+          {
+            code: "27D04",
+            text: "Central Wounds",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157
+              }
+            ]
+          },
+          {
+            code: "27D05",
+            text: "Mult Wounds",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157
+              }
+            ]
+          },
+          {
+            code: "27D06",
+            text: "Mult Victims",
+            recResponse: 165,
+            multVictim: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 164
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 165
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 165
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 166
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 164
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 166
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

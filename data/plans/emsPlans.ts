@@ -2704,5 +2704,326 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ]
+  },
+  {
+    id: 152,
+    name: "BLSU9",
+    incidentType: "SHOT|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 153,
+    name: "BLSU9",
+    incidentType: "TRAUMA|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 154,
+    name: "BLSU9",
+    incidentType: "STAB|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 155,
+    name: "AL1D",
+    incidentType: "SHOT|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3,
+      }
+    ]
+  },
+  {
+    id: 156,
+    name: "AL1D",
+    incidentType: "TRAUMA|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 157,
+    name: "AL1D",
+    incidentType: "STAB|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3,
+      }
+    ]
+  },
+  {
+    id: 158,
+    name: "AL2D",
+    incidentType: "CPRTRAUMA|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 159,
+    name: "AL2D",
+    incidentType: "CPRSHOT|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      }
+    ]
+  },
+  {
+    id: 160,
+    name: "AL2D",
+    incidentType: "CPRSTAB|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      }
+    ]
+  },
+  {
+    id: 161,
+    name: "AL2D",
+    incidentType: "SHOT|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      }
+    ]
+  },
+  {
+    id: 162,
+    name: "AL2D",
+    incidentType: "TRAUMA|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 163,
+    name: "AL2D",
+    incidentType: "STAB|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      }
+    ]
+  },
+  {
+    id: 164,
+    name: "MLTP",
+    incidentType: "SHOT|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 5
+      }
+    ]
+  },
+  {
+    id: 165,
+    name: "MLTP",
+    incidentType: "TRAUMA|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 4
+      }
+    ]
+  },
+  {
+    id: 166,
+    name: "MLTP",
+    incidentType: "STAB|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 5
+      }
+    ]
   }
 ];

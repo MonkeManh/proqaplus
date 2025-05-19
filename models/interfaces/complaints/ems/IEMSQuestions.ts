@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import { IPatientData } from "./IPatientData";
 import { DependencyResult } from "./IEMSAnswer";
+import { IAnswerData } from "./IAnswerData";
 
 export interface IEMSQuestions {
     text: JSX.Element;
@@ -25,5 +26,5 @@ interface IAnswers {
     updateCode?: string;
     updateSubCode?: string;
     override?: boolean;
-    dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
+    dependency?: (patient?: IPatientData, answers?: IAnswerData[]) => DependencyResult | undefined;
 }

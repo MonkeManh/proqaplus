@@ -1,4 +1,5 @@
 import { IComplaintServices } from "../IComplaintServices";
+import { IAnswerData } from "./IAnswerData";
 import { DependencyResult } from "./IEMSAnswer";
 import { IPatientData } from "./IPatientData";
 import { JSX, ReactNode } from "react";
@@ -54,5 +55,5 @@ interface IAnswers {
     updateCode?: string;
     updateSubCode?: string;
     override?: boolean;
-    dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
+    dependency?: (patient?: IPatientData, answers?: IAnswerData[]) => DependencyResult | undefined;
 }
