@@ -1,13 +1,380 @@
 import { Location } from "@/models/interfaces/ICIDS";
 
 export const getLocation = (location: string): Location | undefined => {
-    const locations = CIDSData.filter((loc) => loc.name === location);
-    if (locations.length > 0) {
-        return locations[0];
-    }
-    return undefined;
-}
+  const locations = CIDSData.filter((loc) => loc.name === location);
+  if (locations.length > 0) {
+    return locations[0];
+  }
+  return undefined;
+};
 
 export const CIDSData: Location[] = [
-
-]
+  {
+    id: 1,
+    name: "PostOP Depot",
+    postal: "016",
+    postalRange: ["016", "018", "015", "046", "017"],
+    cids: `COMM 1 STORY 80X80 CLASS 2 (NON-COMBUSTIBLE)
+      POSTOP DEPOT
+      A SIDE - STREET
+      B SIDE - BRUSH
+      C SIDE - BRUSH
+      D SIDE - STREET
+      UTILITIES AT B/C CORNER EXTERIOR
+      VEHICLE ENTRANCES ON A/B CORNER AND D SIDE
+      HYDRANT AVAILABLE ACROSS STREET ON D SIDE
+      !!!CAUTION!!!
+      STACKED BOXES, UNK CONTENTS`,
+  },
+  {
+    id: 2,
+    name: "0173 Procopio Dr.",
+    postal: "017",
+    postalRange: ["017", "018", "019", "016", "020"],
+    cids: `MULTI-FAMILY PD 3 STRY 50X90 CLASS 3 (ORDINARY)
+      A SIDE - STREET
+      B SIDE - BRUSH
+      C SIDE - CLIFF/STAIRS DOWN HILL
+      D SIDE - BRUSH
+      ATTACHED OVERHEAD PORCH A SIDE ON DIVISION 2
+      STAIRS LOCATED B SIDE TO ACCESS DIVISION SUB 1
+      ATTACHED PORCH ON C SIDE AT DIVISION SUB 1
+      HYDRANT DIRECTLY ACROSS STREET ON A SIDE
+      !!!CAUTION!!!
+      MEMBERS UTILIZE EXTREME CAUTION OPERATING ON SIDES B/C/D DUE TO CLIFF
+      C SIDE IS ON SUPPORTS, CONSIDER DEFENSIVE OPERATIONS IF COMPROMISED`,
+  },
+  {
+    id: 3,
+    name: "0175 Procopio Dr.",
+    postal: "017",
+    postalRange: ["017", "018", "019", "016", "020"],
+    cids: `MULTI-FAMILY PD 2 STRY 115X60 CLASS 3 (ORDINARY)
+      A SIDE - STREET
+      B SIDE - BRUSH
+      C SIDE - CLIFF
+      D SIDE - TREES/BRUSH
+      GARAGES (2) A SIDE ATTACHED TO DWELLING AT D SIDE
+      C SIDE IS SUPPORTED BY STRUTS ON CLIFF FACE, CONSIDER DEFENSIVE OPERATIONS IF COMPROMISED
+      HYDRANT LOCATED AT A/B CORNER BY STREET
+      UTILITIES LOCATED ON GARAGE BY A/B CORNER
+      !!!CAUTION!!!
+      MEMBERS UTILIZE EXTREME CAUTION OPERATING ON SIDES B/C/D DUE TO CLIFF`,
+  },
+  {
+    id: 4,
+    name: "Black Woods Saloon",
+    postal: "019",
+    postalRange: ["019", "018", "017", "020", "021", "044"],
+    cids: `COMM 2 STRY 65X65 CLASS 3 (ORDINARY)
+      BLACK WOODS SALOON FORMERLY HEN HOUSE
+      A SIDE - PALETO BLVD
+      B SIDE - DULOUZ AVE
+      C SIDE - ALLEYWAY
+      D SIDE - DETACHED ABANDONED DWELLING
+      DIVISION 1 - STAIRS TO DIVISION 2 ON B/C CORNER
+      STAIRS TO DIVISION SUB 1 UNDERNEATH STAIRS TO DIVISION 2
+      DIVISION 2 - ELEVATED PATRON AREA, SUPPORTS EXPOSED ON DIVISION 1,
+      CONSIDER EXTERIOR OPERATIONS IF SUPPORTS COMPROMISED
+      DIVISION SUB 1 - BATHROOMS
+      NO SMOKE DETECTORS OR FIRE SPRSN SYSTEM
+      HYDRANTS LOCATED ACROSS STREETS ON A/B SIDES`,
+  },
+  {
+    id: 5,
+    name: "4401 Procopio Dr.",
+    postal: "019",
+    postalRange: ["019", "018", "017", "020", "021", "044"],
+    cids: `SINGLE-FAMILY PD 1 STRY 45X55 CLASS 3 (ORDINARY)
+      A SIDE - PROCOPIO DR
+      B SIDE - DETACHED GARAGE
+      C SIDE - ALLEY
+      D SIDE - DETACHED 1 STRY SINGLE-FAMILY PD
+      CLAY TILE ROOF, UTILIZE ADAPTIVE VENTILATION OPERATIONS
+      WALL ON C & D SIDE BETWEEN EXPOSURES
+      UTILITIES AT C/D CORNER`,
+  },
+  {
+    id: 6,
+    name: "Paleto Pets & Vet",
+    postal: "019",
+    postalRange: ["019", "018", "017", "020", "021", "044"],
+    cids: `COMM 1 STRY 35X75 CLASS 3 (ORDINARY)
+      PALETO PETS & VETERINARY SERVICES
+      A SIDE - PALETO BLVD
+      B SIDE - EMPTY LOT
+      B/C CORNER - DETACHED 1 STRY NON-DWELLING
+      C SIDE - ALLEY
+      D SIDE - ATTACHED 1 STRY COMM
+      INTERCONNECTED COCKLOFT
+      ROOF ON A SIDE ELEVATED
+      !!!CAUTION!!!
+      A SIDE OVERHANGING POWER LINES, USE CAUTION IF EXPOSED
+      B/C CORNER - OVERHANGING WIRES FROM B/C CORNER EXPOSURE
+      HYDRANTS ACCESSIBLE ON A SIDE, SAME STREET SIDE AND ACROSS`,
+  },
+  {
+    id: 7,
+    name: "The Bay Bar",
+    postal: "019",
+    postalRange: ["019", "018", "017", "020", "021", "044"],
+    cids: `COMM 1 STRY 35X95 CLASS 3 (ORDINARY)
+      THE BAY BAR
+      A SIDE - PALETO BLVD
+      B SIDE - ATTACHED 1 STRY COMM
+      C SIDE - ALLEYWAY
+      D SIDE - DETACHED HOSPITAL
+      INTERCONNECTED COCKLOFT
+      ROOF ON A SIDE IS ELEVATED
+      BEST ROOF ACCESS FROM D SIDE
+      HYDRANTS ACCESSIBLE ON A SIDE, SAME STREET SIDE AND ACROSS
+      `,
+  },
+  {
+    id: 8,
+    name: "The Bay Care Center",
+    postal: "021",
+    postalRange: ["021", "019", "020", "023", "044", "043"],
+    cids: `HOSPITAL 1 STRY 75X95 CLASS 2 (NON-COMBUSTIBLE)
+      THE BAY CARE MEDICAL CENTER AKA TBMC AKA BAY CARE
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY COMM
+      C SIDE - PKING
+      D SIDE - DETACHED 1 STRY INTERCONNECTED COMM
+      ER ENTRANCE C/D CORNER
+      AMBULANCE DROP OFF B/C CORNER
+      MAX CAPACITY 15 PTS
+      ALM SYSTEM PRESENT, NO SPRINKLERS IN MAIN HALLWAYS
+      ROOF OVERHANGING A/D SIDES - CONSIDER ALT VENT OPS IF SUPPORTS COMPROMISED
+      HYDRANT ACCESS ON A SIDE
+      CONSIDER AGGRESSIVE ATTACK AND PRIMARY SEARCH/EVAC IF PLAUSIBLE`,
+  },
+  {
+    id: 9,
+    name: "J's Bonds",
+    postal: "021",
+    postalRange: ["021", "019", "020", "023", "044", "043"],
+    cids: `COMM 1 STRY 35X45 CLASS 2 (NON-COMBUSTIBLE)
+      J'S BONDS
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED HOSPITAL
+      C SIDE - ATTACHED GARAGE WITH EXPOSURE TO DETACHED GARAGE
+      D SIDE - PKING
+      UTILITIES ON A SIDE
+      HYDRANT ACCESS ON A SIDE`,
+  },
+  {
+    id: 10,
+    name: "Sally's Surf Shop",
+    postal: "021",
+    postalRange: ["021", "019", "020", "023", "044", "043"],
+    cids: `MIXED USE 2 STRY 55X35 CLASS 2 (NON-COMBUSTIBLE)
+      A SIDE - PALETO BLVD
+      B SIDE - PKING
+      C SIDE - DETACHED 1 STRY SINGLE-FAMILY PD
+      D SIDE - BRUSH / DETACHED 1 STRY SINGLE-FAMILY PD
+      DIVISION 1 - SALLY'S SURF SHOP
+      DIVISION 2 - RESIDENTIAL (2)
+      INTERNAL ACCESS TO DIVISION ONLY, NO EXTERIOR
+      CONSIDER INITIAL PRIMARY SEARCH OF DIVISION 2, ACCESS BY C SIDE
+      WINDOW BARS PRESENT ON DIVISION 1
+      UTILITIES ON C SIDE
+      HYDRANT ACCESS ON A SIDE`,
+  },
+  {
+    id: 11,
+    name: "Bay Side Drugs",
+    postal: "023",
+    postalRange: ["023", "021", "022", "024", "042"],
+    cids: `COMM 1 STRY 35X45 CLASS 3 (ORDINARY)
+      BAY SIDE DRUGS
+      A SIDE - PALETO BLVD
+      B SIDE - BRUSH
+      C SIDE - DETACHED 1 STRY PD
+      D SIDE - ATTACHED 1 STRY COMM WITH EXPOSURE TO MULTI-
+      UTILITIES ON C SIDE
+      HYDRANT ACCESS ON A SIDE`,
+  },
+  {
+    id: 12,
+    name: "South Seas Apartments",
+    postal: "023",
+    postalRange: ["023", "021", "022", "024", "042"],
+    cids: `MULTI-FAMILY APT BLDG 2 STRY 140X125 CLASS A (ATRIUM)
+      SOUTH SEAS APARTMENTS
+      A SIDE - CASCABEL AVE
+      B SIDE - PALETO BLVD
+      B/C SIDE - DETACHED 1 STRY INTERCONNECTED COMM
+      C/D SIDE - DETACHED 1 STRY PD
+      D SIDE - PROCOPIO DR
+      12 UNITS
+      DOOR BARS PRESENT ON SOME UNITS
+      UTILITIES PRESENT ON D SIDE, MAIN ENTRANCE A SIDE, C SIDE D CORNER
+      HYDRANT ACCESS B & D SIDES AND A SIDE ACROSS STREET
+      !!!CAUTION!!!
+      POOL LOCATED ON C/D CORNER, FFS TO UTILIZE EXTREME CAUTION WHILE OPERATING ON C/D CORNER
+      NO ALM, SPRINKLER OR STANDPIPE SYSTEM PRESENT`,
+  },
+  {
+    id: 13,
+    name: "Blaine County Savings Bank - Paleto",
+    postal: "024",
+    postalRange: ["024", "023", "022", "025", "026", "042"],
+    cids: `COMM 1 STRY 105X80 CLASS 2 (NON-COMBUSTIBLE)
+      BLAINE COUNTY SAVINGS BANK
+      A SIDE - CASCABEL AVE (PKING LOT)
+      B SIDE - PROCOPIO DR
+      C SIDE - DETACHED 2 STRY WHSE
+      D SIDE - PALETO BLVD
+      SINGLE ENTRANCE ON A SIDE
+      SAFE IN REAR
+      NO EXIT SIGNAGE
+      UTILITIES ON C SIDE`,
+  },
+  {
+    id: 14,
+    name: "4585 Procopio Dr.",
+    postal: "024",
+    postalRange: ["024", "023", "022", "025", "026", "042"],
+    cids: `SINGLE-FAMILY PD WITH ATTACHED GARAGE 
+      1 STRY 45X50 CLASS 3 (ORDINARY)
+      A SIDE - PROCOPIO DR
+      B SIDE - BRUSH
+      C SIDE - DETACHED 2 STRY MIXED-USE
+      D SIDE - NO EXPOSURE
+      HYDRANT ACCESS ON A SIDE
+      !!!CAUTION!!!
+      OVERHEAD WIRES 
+      MEMBERS UTILIZE CAUTION WHEN OPERATING ON A & D SIDE`,
+  },
+  {
+    id: 15,
+    name: "Willie's Pharmacy & Supermarket",
+    postal: "026",
+    postalRange: ["026", "024", "025", "028", "041"],
+    cids: `SUPMKT 2 STRY 125X145 CLASS 3 (ORDINARY)
+      WILLIE'S PHARMACY & SUPERMARKET AKA WILLIE'S
+      A SIDE - PKING LOT
+      B SIDE - PALETO BLVD
+      C SIDE - DETACHED 1 STRY BANK
+      D SIDE - DETACHED 1 STRY PD
+      A SIDE - SUPMKT, C/D AREA - WHSE
+      SUPMKT UTILITIES AT A/B CORNER, WHSE UTILITIES AT C/D CORNER
+      HYDRANT ACCESS ON B SIDE`,
+  },
+  {
+    id: 16,
+    name: "0232 Paleto Blvd.",
+    postal: "026",
+    postalRange: ["026", "024", "025", "028", "041"],
+    cids: `SINGLE-FAMILY PD 1 STRY 40X65 CLASS 5 (WOOD FRAME)
+      A SIDE - PALETO BLVD
+      B SIDE - PKING LOT
+      C SIDE - DETACHED 1 STRY PD
+      C/D SIDE - DETACHED 1 STRY GARAGE
+      D SIDE - DETACHED 1 STRY PD
+      HYDRANT ACCESS ON A SIDE`,
+  },
+  {
+    id: 17,
+    name: "Don's Country Store",
+    postal: "039",
+    postalRange: ["039", "029", "030"],
+    cids: `COMM 1 STRY 45X45 CLASS 4 (WOOD FRAME)
+      DON'S COUTRY STORE AKA DON'S
+      A SIDE - GAS PUMPS
+      B SIDE - ATTACHED COMM CLASS 2
+      C SIDE - BRUSH
+      D SIDE - GAS PUMPS
+      NO FIRE ALM OR SPRSN SYSTEM
+      GAS SHUTOFF BEHIND COUNTY ON B SIDE
+      !!!CAUTION!!!
+      NO SPRSN SYSTEM FOR A SIDE GAS PUMPS
+      CONSIDER EXPOSURE PROTECTION FOR GAS PUMPS
+      NEAREST HYDRANT AT INTERSECTION OF PROCOPIO DR & PALETO BLVD`,
+  },
+  {
+    id: 18,
+    name: "Pop's Pills",
+    postal: "039",
+    postalRange: ["039", "029", "030"],
+    cids: `COMM 1 STRY 35X40 CLASS 3 (ORDINARY)
+      POP'S PILLS
+      A SIDE - PKING LOT
+      B SIDE - BRUSH
+      C SIDE - BRUSH
+      D SIDE - ATTACHED 1 STRY COMM/GAS STATION
+      NO FIRE ALM OR SPRSN SYSTEM
+      NEAREST HYDRANT AT INTERSECTION OF PROCOPIO DR & PALETO BLVD`,
+  },
+  {
+    id: 19,
+    name: "Beeker's Garage & Parts",
+    postal: "039",
+    postalRange: ["039", "029", "030"],
+    cids: `MVRS 1 STRY 65X40 CLASS 2 (NON-COMBUSTIBLE)
+      BEEKER'S GARAGE & PARTS
+      A SIDE - PKING LOT
+      B SIDE - PROPANE TANK
+      C SIDE - ALLEY
+      B SIDE - ATTACHED 1 STRY COMM
+      NO FIRE ALM OR SPRSN SYSTEM
+      UTILITIES LOCATED B/C CORNER
+      !!!CAUTION!!!
+      2035 CUBIC FT PROPANE TANK LOCATED B SIDE
+      CONSIDER EXPOSURE PROTECTION BEFORE INITIAL ATTACK
+      NUMEROUS ELECTRICAL HAZARDS
+      HAZ MATS PRESENT
+      HYDRANT LOCATED B/C CORNER`,
+  },
+  {
+    id: 20,
+    name: "Bayside Rev & Ride",
+    postal: "040",
+    postalRange: ["040", "028", "026", "041", "039", "063"],
+    cids: `MVRS 2 STRY 125X75 CLASS 2 (NON-COMBUSTIBLE)
+      BAYSIDE REV & RIDE
+      A SIDE - PROCOPIO DR
+      B SIDE - SA ROUTE 1
+      C SIDE - PARKING LOT / ALLEY
+      D SIDE - PALETO BLVD
+      STANDPIPE ACCESS A/B CORNER
+      GAS SHUTOFF LOCATED A/D CORNER
+      NO ALM OR SPRSN SYSTEM
+      UTILS LOCATED C/D CORNER
+      STACKED PALLETS AND VEHICLE PARTS ON C SIDE
+      HYDRANT ACCESS A/B, C/D, & A/D CORNER`,
+  },
+  {
+    id: 21,
+    name: "Discount Clothing Store",
+    postal: "040",
+    postalRange: ["040", "028", "026", "041", "039", "063"],
+    cids: `COMM 1 STRY 60X55 CLASS 2 (NON-COMBUSTIBLE)
+      DISCOUNT CLOTHING STORE
+      A SIDE - PALETO BLVD
+      B SIDE - ALLEY
+      C SIDE - ALLEY
+      D SIDE - DETACHED 1 STRY COMM
+      NO ALM OR SPRSN SYSTEM
+      UTILS A SIDE
+      HYDRANT ACCESS AT A/D CORNER
+      !!!CAUTION!!!
+      EXPECT SIGNIFICANT FIRE GROWTH FROM CONTENTS IGNITION
+      ELECTRICAL WIRES OVERHANG ON A/D SIDE`,
+  },
+  {
+    id: 22,
+    name: "Bay Hardware Store",
+    postal: "041",
+    postalRange: ["041"],
+    cids: `COMM 1 STRY 50X35 CLASS 2 (NON-COMBUSTIBLE)
+      BAY HARDWARE STORE
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY COMM
+      C SIDE - ALLEY
+      D SIDE - ATTACHED COMM WITH INTERCONNECTED COCKLOFT
+      UTILS AT B/C CORNER
+      HYDRANT ACCESS A/B CORNER`,
+  },
+];

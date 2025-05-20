@@ -136,7 +136,7 @@ export default function FireSummaryPage() {
         `Code: ${dispatchData.code}`,
         `${
           dispatchData.boxType
-            ? `Box: ${dispatchData.boxType} ${
+            ? `Box: ${dispatchData.boxType} Box ${
                 getPostal(dispatchData.postal)?.fireBox
               }`
             : ""

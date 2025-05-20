@@ -5802,4 +5802,1205 @@ export const fireProtocols: IFireComplaint[] = [
       }
     ]
   },
+  {
+    protocol: 57,
+    name: "Explosion",
+    shortName: "Explosion",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 3 },
+      { name: "Police", priority: undefined }
+    ],
+    defaultPriority: 3,
+    defaultPlan: 162,
+    questions: [
+      {
+        text: <p>Where/what exploded?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Structure",
+            display: "Structure expl",
+            continue: true,
+          },
+          {
+            answer: "Vehicle",
+            display: "Vehicle expl",
+            continue: true,
+          },
+          {
+            answer: "Manhole",
+            display: "Manhole expl",
+            updateCode: "57C03",
+            continue: true,
+          },
+          {
+            answer: "Open Area",
+            display: "Expl in open area",
+            updateCode: "57C02",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Other explosion - {input}",
+            continue: true,
+            updateCode: "57B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk explosion",
+            continue: true,
+            updateCode: "57B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of <b>structure</b> is involved?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Structure";
+        },
+        answers: [
+          {
+            answer: "Residential (Single Family)",
+            display: "Residential (single) structure",
+            continue: true,
+            updateCode: "57D06"
+          },
+          {
+            answer: "Residential (Multi-Family)",
+            display: "Residential (multi) structure",
+            continue: true,
+            updateCode: "57D05"
+          },
+          {
+            answer: "HIGH RISE",
+            display: "High rise structure",
+            continue: true,
+            updateCode: "57D02"
+          },
+          {
+            answer: "Government Building",
+            display: "Government building",
+            continue: true,
+            updateCode: "57D03"
+          },
+          {
+            answer: "Commercial/Industrial Building",
+            display: "Commercial/Industrial building",
+            continue: true,
+            updateCode: "57D04"
+          },
+          {
+            answer: "Non-Dwelling (Large)",
+            display: "Large non-dwelling structure",
+            continue: true,
+            updateCode: "57D07"
+          },
+          {
+            answer: "Non-Dwelling (Small)",
+            display: "Small non-dwelling structure",
+            continue: true,
+            updateCode: "57D08"
+          },
+          {
+            answer: "Mobile Home",
+            display: "Mobile home",
+            continue: true,
+            updateCode: "57D11"
+          },
+          {
+            answer: "House Trailer",
+            display: "House trailer",
+            continue: true,
+            updateCode: "57D11"
+          },
+          {
+            answer: "Portable Office",
+            display: "Portable office",
+            continue: true,
+            updateCode: "57D11"
+          },
+          {
+            answer: "Other:",
+            display: "Other structure - {input}",
+            continue: true,
+            updateCode: "57D12"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk structure type",
+            continue: true,
+            updateCode: "57D012"
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>vehicle</b> is involved?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Vehicle";
+        },
+        answers: [
+          {
+            answer: "Car",
+            display: "Veh type - car",
+            continue: true,
+            updateCode: "57C01"
+          },
+          {
+            answer: "Commercial Vehicle",
+            display: "Veh type - commercial",
+            continue: true,
+            updateCode: "57D09"
+          },
+          {
+            answer: "High Fuel/Fire Load Vehicle",
+            display: "Veh type - high fuel/fire load",
+            continue: true,
+            updateCode: "57D10"
+          },
+          {
+            answer: "Other:",
+            display: "Veh type - {input}",
+            continue: true,
+            updateCode: "57C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk vehicle type",
+            continue: true,
+            updateCode: "57C01"
+          }
+        ]
+      },
+      
+      {
+        text: <p>Is there a <b className="text-blue-400">HIGH LIFE RISK</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No high life risk ID'd",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "High life risk",
+            continue: true,
+            updateCode: "57D01",
+            override: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if high life risk",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">FIRE</b> present?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No fire present",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Fire present",
+            continue: true,
+            updateSubCode: "F"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if fire present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there anyone injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No Injuries",
+            display: "No injs rptd",
+            continue: true,
+          },
+          {
+            answer: "Single Injured Person",
+            display: "Single inj person rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const isFirePresent = answers?.[answers.length - 1]?.defaultAnswer === "Yes";
+              if(isFirePresent) {
+                return { subCode: "G" }
+              } else {
+                return { subCode: "V" }
+              }
+            }
+          },
+          {
+            answer: "2 Persons Injured",
+            display: "2 persons injured",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const isFirePresent = answers?.[answers.length - 1]?.defaultAnswer === "Yes";
+              if(isFirePresent) {
+                return { subCode: "H" }
+              } else {
+                return { subCode: "W" }
+              }
+            }
+          },
+          {
+            answer: "3-8 Persons Injured:",
+            display: "{input} persons injured",
+            end: true,
+            input: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "9-20 Persons Injured:",
+            display: "{input} persons injured",
+            end: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "20+ Persons Injured:",
+            display: "{input} persons injured",
+            end: true,
+            input: true,
+            updateSubCode: "Z"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injured",
+            end: true
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "57B01",
+            text: "Other Explosion",
+            recResponse: 162,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 162
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 162
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 162
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 162
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 163
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 163
+              }
+            ]
+          },
+          {
+            code: "57B02",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 162,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 162
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 162
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 162
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 162
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 163
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 163
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "57C00",
+            text: "Override (Charlie)",
+            recResponse: 163,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 163
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 163
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 163
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 163
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 163
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 163
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 163
+              }
+            ]
+          },
+          {
+            code: "57C01",
+            text: "Other Vehicle Explosion",
+            recResponse: 164,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 165
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 166
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 167
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 168
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 169
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 169
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 169
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 169
+              }
+            ]
+          },
+          {
+            code: "57C02",
+            text: "Open Area",
+            recResponse: 170,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 171
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 172
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 173
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 174
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 175
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 175
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 175
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 175
+              }
+            ]
+          },
+          {
+            code: "57C03",
+            text: "Manhole (Cover/Underground Vault)",
+            recResponse: 162,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 162
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 176
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 177
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 176
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 177
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 177
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 177
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 177
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "57D00",
+            text: "Override (Delta)",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 178
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 178
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 178
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 178
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 178
+              }
+            ]
+          },
+          {
+            code: "57D01",
+            text: "High Life Hazard",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D02",
+            text: "High Rise",
+            recResponse: 180,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 180
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 180
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 180
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D03",
+            text: "Government Building",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D04",
+            text: "Comm/Ind Building",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D05",
+            text: "Residential (Mult)",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D06",
+            text: "Residential (Single)",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D07",
+            text: "Large Non-Dwelling Structure",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          },
+          {
+            code: "57D08",
+            text: "Small Non-Dwelling Structure",
+            recResponse: 181,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 181
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 181
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 181
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 181
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 181
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 181
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 181
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 181
+              }
+            ]
+          },
+          {
+            code: "57D09",
+            text: "Comm Vehicle",
+            recResponse: 182,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 182
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 182
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 182
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 182
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 182
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 182
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 182
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 182
+              }
+            ]
+          },
+          {
+            code: "57D10",
+            text: "Large Fuel/Fire Load Vehicle",
+            recResponse: 182,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 182
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 182
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 182
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 182
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 182
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 182
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 182
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 182
+              }
+            ]
+          },
+          {
+            code: "57D11",
+            text: "Mobile Home, House Trailer, Portable Office",
+            recResponse: 181,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 181
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 181
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 181
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 181
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 181
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 181
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 181
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 181
+              }
+            ]
+          },
+          {
+            code: "57D12",
+            text: "Unkn Type Building/Structure",
+            recResponse: 178,
+            subCodes: [
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 178
+              },
+              {
+                code: "G",
+                text: "Fire w/ Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "H",
+                text: "Fire w/ Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "V",
+                text: "Single Injured Person",
+                recResponse: 178
+              },
+              {
+                code: "W",
+                text: "Multiple Injured Persons",
+                recResponse: 179
+              },
+              {
+                code: "X",
+                text: "MCI Level 1",
+                recResponse: 179
+              },
+              {
+                code: "Y",
+                text: "MCI Level 2",
+                recResponse: 179
+              },
+              {
+                code: "Z",
+                text: "MCI Level 3",
+                recResponse: 179
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

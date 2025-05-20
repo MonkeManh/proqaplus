@@ -117,7 +117,10 @@ export default function FireCallPage() {
     if (typeof window !== "undefined" && preferences.advancedMode) {
       const finalCallData = {
         ...callData,
+        buildingInfo: fireData.location,
+        boxType: fireData.boxType,
         complaint: selectedComplaint,
+        complaintShort: fireProtocols.find((c) => c.name === selectedComplaint)?.shortName,
         code: code,
         codeText: text,
         plan: plan,
@@ -135,6 +138,8 @@ export default function FireCallPage() {
         complaint: selectedComplaint,
         complaintShort: fireProtocols.find((c) => c.name === selectedComplaint)
           ?.shortName,
+        buildingInfo: fireData.location,
+        boxType: fireData.boxType,
         code: code,
         codeText: text,
         plan: plan,

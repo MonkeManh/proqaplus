@@ -2886,5 +2886,656 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 162,
+    name: "EXPLI",
+    incidentType: "EXPL|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 163,
+    name: "EXPLIHM",
+    incidentType: "EXPL|INVEST|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 164,
+    name: "EXPLV",
+    incidentType: "EXPL|VEH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 165,
+    name: "EXPLVF",
+    incidentType: "FIRE|EXPL|VEH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 166,
+    name: "EXPLVF1",
+    incidentType: "FIRE|EXPL|VEH|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 167,
+    name: "EXPLVFM",
+    incidentType: "FIRE|EXPL|VEH|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 168,
+    name: "EXPLV1",
+    incidentType: "EXPL|VEH|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 169,
+    name: "EXPLVM",
+    incidentType: "EXPL|VEH|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 170,
+    name: "EXPL",
+    incidentType: "EXPL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 171,
+    name: "EXPLF",
+    incidentType: "FIRE|EXPL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 172,
+    name: "EXPLF1",
+    incidentType: "FIRE|EXPL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 173,
+    name: "EXPLFM",
+    incidentType: "FIRE|EXPL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 174,
+    name: "EXPL1",
+    incidentType: "EXPL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 175,
+    name: "EXPLM",
+    incidentType: "EXPL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 176,
+    name: "EXPLI1",
+    incidentType: "EXPL|INVEST|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 177,
+    name: "EXPLIM",
+    incidentType: "EXPL|INVEST|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 178,
+    name: "HMFULLFMO",
+    incidentType: "FIRE|BLDG|EXPL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 179,
+    name: "HMFULLFMO1",
+    incidentType: "FIRE|BLDG|EXPL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 180,
+    name: "HMFULLFMO",
+    incidentType: "FIRE|BLDG|EXPL|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 2
+      },
+      {
+        type: "Police Patrol",
+        quantity: 4
+      }
+    ]
+  },
+  {
+    id: 181,
+    name: "HMADAPTFMO",
+    incidentType: "FIRE|SMALLSTRUC|EXPL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 182,
+    name: "HMADAMPFMO",
+    incidentType: "FIRE|VEH|EXPL|w/PD",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
   }
 ];
