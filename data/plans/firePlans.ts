@@ -1566,4 +1566,204 @@ export const firePlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 83,
+    name: "FE",
+    incidentType: "TECH|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 84,
+    name: "WTR0",
+    incidentType: "TECH|INVEST|WATER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 85,
+    name: "RES",
+    incidentType: "TECH|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 86,
+    name: "RES",
+    incidentType: "CONFINEDSPACE|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 87,
+    name: "RES",
+    incidentType: "COLLAPSE|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 88,
+    name: "RES",
+    incidentType: "TRENCH|RESQ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 89,
+    name: "TECHWTR",
+    incidentType: "TECH|RESQ|WATER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 90,
+    name: "TECHWTR",
+    incidentType: "COLLAPSE|RESQ|WATER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  }
 ];

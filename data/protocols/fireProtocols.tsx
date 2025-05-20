@@ -2693,14 +2693,14 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Service Call w/ Medical Assistance",
             display: "Service call w/ medical assistance",
             continue: true,
-            updateCode: "53B03"
+            updateCode: "53B03",
           },
           {
             answer: "Standby service call",
             display: "Standby service call",
             continue: true,
             updateSubCode: "W",
-            updateCode: "53A05"
+            updateCode: "53A05",
           },
           {
             answer: "Unknown Service Call",
@@ -2893,9 +2893,9 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "None of these",
             display: "No CHARLIE-LEVEL probs ID'd",
             continue: true,
-            updateCode: "53A06"
-          }
-        ]
+            updateCode: "53A06",
+          },
+        ],
       },
 
       // OFI SERVICE CALLS
@@ -2911,29 +2911,29 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "OFI Follow-Up",
             display: "OFI follow-up",
             continue: true,
-            updateSubCode: "S"
+            updateSubCode: "S",
           },
           {
             answer: "OFI Code Enforcement",
             display: "OFI code enforcement",
             continue: true,
-            updateSubCode: "T"
+            updateSubCode: "T",
           },
           {
             answer: "OFI Investigation",
             display: "OFI investigation",
             continue: true,
-            updateSubCode: "U"
+            updateSubCode: "U",
           },
           {
             answer: "OFI Other",
             display: "OFI other",
             continue: true,
-            updateSubCode: "V"
-          }
-        ]
+            updateSubCode: "V",
+          },
+        ],
       },
-      
+
       {
         text: <p>Does the call require medical to standby?</p>,
         questionType: "select",
@@ -2951,14 +2951,14 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Medical required/requested",
             continue: true,
-            updateCode: "53B03"
+            updateCode: "53B03",
           },
           {
             answer: "Unknown",
             display: "Unk if medical required",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -2973,58 +2973,58 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Safe Situation",
             display: "Safe situation",
             continue: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "LSIA Alert II (Stage)",
             display: "LSIA alert II (stage)",
             continue: true,
-            updateSubCode: "B"
+            updateSubCode: "B",
           },
           {
             answer: "Security Sweep",
             display: "Security sweep",
             continue: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Barricade",
             display: "Barricade",
             continue: true,
-            updateSubCode: "D"
+            updateSubCode: "D",
           },
           {
             answer: "Special Ops",
             display: "Special ops",
             continue: true,
-            updateSubCode: "E"
+            updateSubCode: "E",
           },
           {
             answer: "Tac Medic",
             display: "Tac medic",
             continue: true,
-            updateSubCode: "F"
+            updateSubCode: "F",
           },
           {
             answer: "Lockout w/ Food on the Stove",
             display: "Lockout w/ food on the stove",
             continue: true,
-            updateSubCode: "G"
+            updateSubCode: "G",
           },
           {
             answer: "Mental Health Evaluation",
             display: "Mental health evaluation",
             continue: true,
-            updateSubCode: "H"
+            updateSubCode: "H",
           },
           {
             answer: "Community Medicine",
             display: "Community medicine",
             continue: true,
-            updateSubCode: "I"
+            updateSubCode: "I",
           },
-        ]
-      }
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -3489,6 +3489,579 @@ export const fireProtocols: IFireComplaint[] = [
             code: "53C01",
             text: "Water Problem w/ Electrical Hazard",
             recResponse: 82,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 54,
+    name: "Confined Space/Structure Collapse",
+    shortName: "Collapse/Entrapments",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 83,
+    questions: [
+      {
+        text: (
+          <p>
+            What type of <b>incident</b> is this?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Structure Collapse",
+            display: "Structure collapse rptd",
+            continue: true,
+          },
+          {
+            answer: "Confined Space Rescue",
+            display: "Confined space rescue rptd",
+            continue: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Sinkhole",
+            display: "Sinkhole rptd",
+            continue: true,
+            updateSubCode: "H",
+          },
+          {
+            answer: "Landslide/Mudslide",
+            display: "Landslide/mudslide rptd",
+            continue: true,
+            updateSubCode: "M",
+          },
+          {
+            answer: "Trench Rescue/Collapse",
+            display: "Trench rescue/collapse rptd",
+            continue: true,
+            updateSubCode: "T",
+          },
+          {
+            answer: "Unknown Situation",
+            display: "Unknown situation rptd",
+            continue: true,
+            updateSubCode: "U",
+          },
+        ],
+      },
+
+      // Structure Collapse
+      {
+        text: <p>What type of structure collapsed?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Structure Collapse";
+        },
+        answers: [
+          {
+            answer: "Large Building/Structure",
+            display: "Large structure",
+            continue: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "Small Building/Structure",
+            display: "Small structure",
+            continue: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Unknown Structure",
+            display: "Unk structure type",
+            continue: true,
+            updateSubCode: "L",
+          },
+        ],
+      },
+
+      {
+        text: <p>Did the structure collapse into water?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Structure Collapse";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Did not collapse into water",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Collapsed into water",
+            continue: true,
+            updateSubCode: "W",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if collapsed into water",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is anyone <b>trapped</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No entrapment rptd",
+            continue: true,
+            updateCode: "54B02",
+          },
+          {
+            answer: "Yes (Confirmed)",
+            display: "Entrapment rptd",
+            continue: true,
+            updateCode: "54D01",
+          },
+          {
+            answer: "Yes (Suspected)",
+            display: "Entrapment suspected",
+            continue: true,
+            updateCode: "54B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if entrapment",
+            continue: true,
+            updateCode: "54B01",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            How many <b>people</b> are <b>trapped</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return (
+            firstAnswer === "Yes (Confirmed)" ||
+            firstAnswer === "Yes (Suspected)"
+          );
+        },
+        answers: [
+          {
+            answer: "Single Person",
+            display: "Single person trapped",
+            continue: true,
+          },
+          {
+            answer: "Multiple People:",
+            display: "{input} persons trapped",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk how many trapped",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are there any <b className="text-green-400">HAZARDOUS</b> materials
+            involved?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat involved",
+            end: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Hazmat involved - {input}",
+            input: true,
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const trappedAnswer = answers?.find(
+                (a) => a.question === "Is anyone trapped?"
+              )?.defaultAnswer;
+              if (trappedAnswer === "Yes (Confirmed)") {
+                return { code: "54D02" };
+              } else if (
+                trappedAnswer === "Yes (Suspected)" ||
+                trappedAnswer === "Unknown"
+              ) {
+                return { code: "54C01" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat involved",
+            end: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "54B01",
+            text: "Entrapment/Trapped (Unconfirmed)",
+            recResponse: 83,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 83,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 83,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 83,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 83,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 83,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 83,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 84,
+              },
+            ],
+          },
+          {
+            code: "54B02",
+            text: "No On Trapped (Investigation)",
+            recResponse: 83,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 83,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 83,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 83,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 83,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 83,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 83,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 84,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "54C00",
+            text: "Override (Charlie)",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 86,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 86,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 88,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 88,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "54C01",
+            text: "Entrapment/Trapped (Unconfirmed) w/ Hazardous Materials",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 86,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 86,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 88,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 88,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 89,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "54D00",
+            text: "Override (Delta)",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 86,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 86,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 88,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 88,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "54D01",
+            text: "Entrapment/Trapped (Confirmed)",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 86,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 86,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 88,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 88,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 89,
+              },
+            ],
+          },
+          {
+            code: "54D02",
+            text: "Entrapment/Trapped (Confirmed) w/ Hazardous Materials",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "C",
+                text: "Confined Space",
+                recResponse: 86,
+              },
+              {
+                code: "H",
+                text: "Sinkhole",
+                recResponse: 86,
+              },
+              {
+                code: "L",
+                text: "Large Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "M",
+                text: "Landslide/Mudslide",
+                recResponse: 88,
+              },
+              {
+                code: "S",
+                text: "Small Building/Structure Collapse",
+                recResponse: 87,
+              },
+              {
+                code: "T",
+                text: "Trench (Collapse/Rescue)",
+                recResponse: 88,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 83,
+              },
+              {
+                code: "W",
+                text: "Building/Structure Collapse into Water",
+                recResponse: 89,
+              },
+            ],
           },
         ],
       },

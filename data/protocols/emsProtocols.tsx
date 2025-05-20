@@ -18176,37 +18176,37 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Speech problems",
-            display: "Pt has sudden speech problems",
+            display: "Sudden speech problems",
             continue: true,
             updateCode: "28C03"
           },
           {
             answer: "Loss of balance or coordination",
-            display: "Pt has sudden loss of balance or coordination",
+            display: "Sudden loss of balance or coordination",
             continue: true,
             updateCode: "28C06"
           },
           {
             answer: "Weakness or numbness (one side)",
-            display: "Pt has sudden weakness or numbness (one side)",
+            display: "Sudden weakness or numbness (one side)",
             continue: true,
             updateCode: "28C04"
           },
           {
             answer: "Paralysis or facial droop (one side)",
-            display: "Pt has sudden paralysis or facial droop (one side)",
+            display: "Sudden paralysis or facial droop (one side)",
             continue: true,
             updateCode: "28C05"
           },
           {
             answer: "Vision problems",
-            display: "Pt has sudden vision problems",
+            display: "Sudden vision problems",
             continue: true,
             updateCode: "28C07"
           },
           {
             answer: "Severe headache",
-            display: "Pt has sudden severe headache",
+            display: "Sudden severe headache",
             continue: true,
             updateCode: "28C08"
           },
@@ -18217,7 +18217,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Other:",
-            display: "Pt has {input}",
+            display: "{input}",
             continue: true,
             input: true
           }

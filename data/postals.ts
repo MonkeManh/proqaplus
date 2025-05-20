@@ -10445,6 +10445,7 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
+      autoFill: true,
       mainStreet: "Galileo Bybass",
       crossStreet1: "Jobe Ln",
       crossStreet2: "Baytree Canyon Rd",

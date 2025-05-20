@@ -257,23 +257,23 @@ export default function EMSSummaryPage() {
           });
 
           localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
-
-          const preferences: any = localStorage.getItem("PREFERENCES");
-          const parsedPreferences = JSON.parse(preferences);
-
-          if (parsedPreferences && parsedPreferences.soundEffects) {
-            const audio = new Audio("/Dispatch.mp3");
-            audio.play();
-            audio.volume = 0.5;
-          }
-
-          localStorage.removeItem("NEW_CALL");
-          localStorage.removeItem("EMS_DATA");
-
-          window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
-
-          router.push("/dispatch");
         }
+        
+        const preferences: any = localStorage.getItem("PREFERENCES");
+        const parsedPreferences = JSON.parse(preferences);
+
+        if (parsedPreferences && parsedPreferences.soundEffects) {
+          const audio = new Audio("/Dispatch.mp3");
+          audio.play();
+          audio.volume = 0.5;
+        }
+
+        localStorage.removeItem("NEW_CALL");
+        localStorage.removeItem("EMS_DATA");
+
+        window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
+
+        router.push("/dispatch");
       })
       .catch((err) => {
         console.error("Failed to copy:", err);
