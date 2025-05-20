@@ -8294,5 +8294,517 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 60,
+    name: "Gas Leak/Gas Odor (Natural & LP Gases)",
+    shortName: "Gas Leak/Odor",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 200,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "60B01",
+            text: "Outside Residential Line",
+            recResponse: 200,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 201
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 202
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 203
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 204
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 205
+              }
+            ]
+          },
+          {
+            code: "60B02",
+            text: "Outside Tank <= 5 Gallons/20 Liters",
+            recResponse: 206,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 201
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 202
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 203
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 207
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 208
+              }
+            ]
+          },
+          {
+            code: "60B03",
+            text: "Outside Odor (Other/Unkn Source)",
+            recResponse: 201,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 201
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 202
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 203
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 202
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 203
+              }
+            ]
+          },
+          {
+            code: "60B04",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 209,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 209
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 210
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 211
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 210
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 211
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "60C00",
+            text: "Override (Charlie)",
+            recResponse: 206,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 206
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 207
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 208
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 207
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 208
+              }
+            ]
+          },
+          {
+            code: "60C01",
+            text: "Residential (Single)",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          },
+          {
+            code: "60C02",
+            text: "Outside Comm Line",
+            recResponse: 200,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 200
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 204
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 205
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 204
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 205
+              }
+            ]
+          },
+          {
+            code: "60C03",
+            text: "Outside Tank > 5 Gallons/20 Liters",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          },
+          {
+            code: "60C04",
+            text:  "Transmission/Distribution (Main/Service) Pipeline",
+            recResponse: 215,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 215
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 215
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 215
+              }
+            ]
+          },
+          {
+            code: "60C05",
+            text: "High-Pressure Line",
+            recResponse: 215,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 215
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 215
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 215
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "60D00",
+            text: "Override (Delta)",
+            recResponse: 215,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 215
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 215
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 215
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 215
+              }
+            ]
+          },
+          {
+            code: "60D01",
+            text: "High Life Hazard",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          },
+          {
+            code: "60D02",
+            text: "High Rise",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          },
+          {
+            code: "60D03",
+            text: "Comm/Ind Building",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          },
+          {
+            code: "60D04",
+            text: "Residential (Mult)",
+            recResponse: 212,
+            subCodes: [
+              {
+                code: "O",
+                text: "Odor Only",
+                recResponse: 212
+              },
+              {
+                code: "V",
+                text: "Odor w/ Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "W",
+                text: "Odor w/ Mult Sick/Injured Persons",
+                recResponse: 214
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 213
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 214
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];

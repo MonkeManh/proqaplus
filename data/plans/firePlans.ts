@@ -3840,5 +3840,297 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 200,
+    name: "SE",
+    incidentType: "BROKEN OUTSIDE GAS SERVICE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 201,
+    name: "SE",
+    incidentType: "GASODOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 202,
+    name: "FC",
+    incidentType: "GASODOR|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 203,
+    name: "FX",
+    incidentType: "GASODOR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 204,
+    name: "FC",
+    incidentType: "BROKEN OUTSIDE GAS SERVICE|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 205,
+    name: "FX",
+    incidentType: "BROKEN OUTSIDE GAS SERVICE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 206,
+    name: "SE",
+    incidentType: "GASLEAK|OUTSIDE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 207,
+    name: "FC",
+    incidentType: "GASLEAK|OUTSIDE|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 208,
+    name: "FX",
+    incidentType: "GASLEAK|OUTSIDE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 209,
+    name: "SE",
+    incidentType: "INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 210,
+    name: "FC",
+    incidentType: "INVEST|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 211,
+    name: "FX",
+    incidentType: "INVEST|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 212,
+    name: "FE",
+    incidentType: "GASLEAK",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 213,
+    name: "FC",
+    incidentType: "GASLEAK|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 214,
+    name: "FX",
+    incidentType: "GASLEAK|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 215,
+    name: "GASFULL",
+    incidentType: "GASMAJOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
   }
 ];
