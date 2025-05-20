@@ -213,7 +213,7 @@ export default function EMSDeterminantSelection({
 
           <Card>
             <CardContent className="p-4">
-              <div ref={determinantsRef} className="overflow-y-auto max-h-[60vh]">
+              <div ref={determinantsRef} className="overflow-y-auto">
                 <div className="space-y-4">
                   {complaint.availableDeterminants
                     .sort((a, b) => a.priority.localeCompare(b.priority))

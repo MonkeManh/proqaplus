@@ -7418,4 +7418,881 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 59,
+    name: "Fuel Spill/Fuel Odor",
+    shortName: "Fuel Spill/Odor",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 190,
+    questions: [
+      {
+        text: <p>Is there a <b>fuel spill</b>, or <b>odor of fuel</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Fuel Spill",
+            display: "Fuel spill",
+            continue: true,
+          },
+          {
+            answer: "Fuel Odor",
+            display: "Odor of fuel",
+            continue: true,
+            updateCode: "59B03"
+          },
+          {
+            answer: "Completely Unknown",
+            display: "Completely unknown situation",
+            continue: true,
+            updateCode: "59C03"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the size of the spill?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Fuel Spill";
+        },
+        answers: [
+          {
+            answer: "Minor Spill (< 1 gallon)",
+            display: "Minor spill (< 1 gallon)",
+            continue: true,
+            updateCode: "59O01"
+          },
+          {
+            answer: "Small Spill (1-25 gallons)",
+            display: "Small spill (1-25 gallons)",
+            continue: true,
+          },
+          {
+            answer: "Large Spill (> 25 gallons)",
+            display: "Large spill (> 25 gallons)",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of spill",
+            continue: true,
+            updateCode: "59C03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the spill <b>contained</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Fuel Spill";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Spill is contained",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Small Spill (1-25 gallons)") {
+                return { code: "59B02" };
+              } else if(lastAnswer === "Large Spill (> 25 gallons)") {
+                return { code: "59C02" };
+              }
+            }
+          },
+          {
+            answer: "No",
+            display: "Spill is not contained",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Small Spill (1-25 gallons)") {
+                return { code: "59B01" };
+              } else if(lastAnswer === "Large Spill (> 25 gallons)") {
+                return { code: "59C01" };
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if spill is contained",
+            continue: true,
+            updateCode: "59C03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the spill by or spilling into a <b>waterway</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Fuel Spill";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Not by or into a waterway",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "By or into a waterway",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if by or into a waterway",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p><b>What</b> type of waterway is involved?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "By or into a waterway";
+        },
+        answers: [
+          {
+            answer: "Inland Waterway",
+            display: "Threatening inland waterway",
+            continue: true,
+            updateCode: "59D02",
+            updateSubCode: "O"
+          },
+          {
+            answer: "Coastal Waterway",
+            display: "Threatening inland waterway",
+            continue: true,
+            updateCode: "59D01",
+            updateSubCode: "O"
+          },
+          {
+            answer: "Ocean",
+            display: "Threatening oceanic waters",
+            continue: true,
+            updateCode: "59D03",
+            updateSubCode: "O"
+          },
+          {
+            answer: "Sewer",
+            display: "Threatening sewer system",
+            continue: true,
+            updateCode: "59D04",
+            updateSubCode: "O"
+          },
+          {
+            answer: "Storm Drain",
+            display: "Threatening storm drain",
+            continue: true,
+            updateCode: "59D05",
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of waterway",
+            continue: true,
+            updateCode: "59D00"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>location</b> of the spill/odor?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const doesWaterwayQuestionExist = answers?.some(
+            (answer) => answer.defaultQuestion === "What type of waterway is involved?"
+          );
+          return !doesWaterwayQuestionExist;
+        },
+        answers: [
+          {
+            answer: "Inside",
+            display: "Incident is inside",
+            continue: true,
+            updateSubCode: "I"
+          },
+          {
+            answer: "Outside",
+            display: "Incident is outside",
+            continue: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if inside or outside",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b>sick</b> or <b>injured</b> persons?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick/inj'd persons",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person",
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Inside") {
+                return { subCode: "V" }
+              } else if(lastAnswer === "Outside") {
+                return { subCode: "X" }
+              }
+            }
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick/inj'd persons",
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Inside") {
+                return { subCode: "W" }
+              } else if(lastAnswer === "Outside") {
+                return { subCode: "Y" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "59O01",
+            text: "Minor Spill",
+            recResponse: 193,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 193
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 193
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 193
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 191
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 191
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "59B00",
+            text: "Override (Bravo)",
+            recResponse: 190,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 190
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 190
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 191
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 191
+              }
+            ]
+          },
+          {
+            code: "59B01",
+            text: "Uncontained Small Spill",
+            recResponse: 190,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 190
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 190
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 191
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 191
+              }
+            ]
+          },
+          {
+            code: "59B02",
+            text: "Contained Small Spill",
+            recResponse: 193,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 193
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 193
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 193
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 191
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 191
+              }
+            ]
+          },
+          {
+            code: "59B03",
+            text: "Fuel Odor",
+            recResponse: 194,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 194
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 195
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 194
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 191
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 191
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 191
+              }
+            ]
+          },
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "59C00",
+            text: "Override (Charlie)",
+            recResponse: 198,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59C01",
+            text: "Uncontained Large Spill",
+            recResponse: 198,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59C02",
+            text: "Contained Large Spill",
+            recResponse: 198,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59C03",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 198,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 190
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "59D00",
+            text: "Override (Delta)",
+            recResponse: 199,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 199
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59D01",
+            text: "Costal Water",
+            recResponse: 199,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 199
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59D02",
+            text: "Inland Water",
+            recResponse: 199,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 199
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59D03",
+            text: "Oceanic Water",
+            recResponse: 199,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 199
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          },
+          {
+            code: "59D04",
+            text: "Sewer/Drain",
+            recResponse: 199,
+            subCodes: [
+              {
+                code: "I",
+                text: "Inside",
+                recResponse: 199
+              },
+              {
+                code: "O",
+                text: "Outside",
+                recResponse: 199
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 199
+              },
+              {
+                code: "V",
+                text: "Inside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "W",
+                text: "Inside & Mult Sick/Injured Persons",
+                recResponse: 198
+              },
+              {
+                code: "X",
+                text: "Outside & Single Sick/Injured Person",
+                recResponse: 198
+              },
+              {
+                code: "Y",
+                text: "Outside & Mult Sick/Injured Persons",
+                recResponse: 198
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

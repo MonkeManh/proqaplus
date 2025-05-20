@@ -3678,5 +3678,167 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 190,
+    name: "SE",
+    incidentType: "FUEL|SPILL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 191,
+    name: "FC",
+    incidentType: "FUEL|SPILL|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 192,
+    name: "FG",
+    incidentType: "FUEL|SPILL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 193,
+    name: "SE",
+    incidentType: "FUEL|SPILL|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 194,
+    name: "FE",
+    incidentType: "FUEL|ODOR|INSIDE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 195,
+    name: "SE",
+    incidentType: "FUEL|ODOR|OUTSIDE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 196,
+    name: "FF",
+    incidentType: "FUEL|ODOR|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 197,
+    name: "FDMULTP",
+    incidentType: "FUEL|ODOR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 198,
+    name: "HMADAPT",
+    incidentType: "FUEL|SPILL|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 199,
+    name: "HMLOCAL",
+    incidentType: "FUEL|SPILL|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      }
+    ]
   }
 ];

@@ -155,8 +155,8 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                           options={locationOptions}
                           value={field.value ?? ""}
                           onValueChange={field.onChange}
-                          placeholder="Select chief complaint"
-                          searchPlaceholder="Search complaints..."
+                          placeholder="Select a location"
+                          searchPlaceholder="Search locations..."
                           autoFocus
                         />
                       </FormControl>
