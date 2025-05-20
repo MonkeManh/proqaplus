@@ -3537,5 +3537,146 @@ export const firePlans: IResponsePlan[] = [
         quantity: 2
       }
     ]
+  },
+  {
+    id: 183,
+    name: "BLSR",
+    incidentType: "INJURED|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 184,
+    name: "HMINVEST",
+    incidentType: "HMINVEST|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 185,
+    name: "TRAP1",
+    incidentType: "ENTRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 186,
+    name: "TRAPHM1",
+    incidentType: "ENTRAP|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 187,
+    name: "TRAP2",
+    incidentType: "ENTRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ],
+  },
+  {
+    id: 188,
+    name: "TRAPHM2",
+    incidentType: "ENTRAP|HM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ],
+  },
+  {
+    id: 189,
+    name: "ALS1",
+    incidentType: "INJURED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
   }
 ];
