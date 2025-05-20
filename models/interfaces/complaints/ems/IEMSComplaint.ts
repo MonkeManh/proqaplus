@@ -14,7 +14,7 @@ export interface IEMSComplaint {
   defaultPlan: number;
   questions: IEMSQuestions[];
   availableDeterminants: {
-    priority: string;
+    priority: "O" | "A" | "B" | "C" | "D" | "E";
     determinants: {
       code: string;
       text: string;

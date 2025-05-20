@@ -2781,4 +2781,110 @@ export const firePlans: IResponsePlan[] = [
       }
     ]
   },
+  {
+    id: 156,
+    name: "SCT",
+    incidentType: "ELEVATOR|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 157,
+    name: "SCT",
+    incidentType: "ELEVATOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 158,
+    name: "SCT",
+    incidentType: "ALARM|ELEVATOR|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 159,
+    name: "SCTE",
+    incidentType: "ELEVATOR|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 160,
+    name: "ALS1",
+    incidentType: "ELEVATOR|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 161,
+    name: "PAALS1",
+    incidentType: "ELEVATOR|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  }
 ];

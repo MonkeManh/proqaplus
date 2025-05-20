@@ -77,7 +77,7 @@ export default function FireDeterminantSelection({
       setComplaint(foundComplaint);
 
       // Check for stored ProQA data
-      const proqaData = localStorage.getItem("EMS_PROQA_DATA");
+      const proqaData = localStorage.getItem("FIRE_PROQA_DATA");
       const storedData = proqaData ? JSON.parse(proqaData) : null;
 
       const actualRecommendedCode = storedData?.currentSubType
@@ -158,11 +158,26 @@ export default function FireDeterminantSelection({
       if (determinants[focusedIndex]) {
         determinants[focusedIndex].scrollIntoView({
           behavior: "smooth",
-          block: "nearest",
+          block: "center",
         });
       }
     }
   }, [focusedIndex]);
+
+  useEffect(() => {
+    if (determinantsRef.current && recommendedCode) {
+      const determinants = determinantsRef.current.querySelectorAll(".determinant-item");
+      const recommendedIndex = Array.from(determinants).findIndex(
+        el => el.textContent?.includes(recommendedCode)
+      );
+      if (recommendedIndex >= 0) {
+        determinants[recommendedIndex].scrollIntoView({
+          behavior: "auto",
+          block: "center"
+        });
+      }
+    }
+  }, [recommendedCode, complaint]);
 
   const handleSelectDeterminant = (
     code: string,

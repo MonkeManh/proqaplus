@@ -5520,4 +5520,286 @@ export const fireProtocols: IFireComplaint[] = [
       }
     ],
   },
+  {
+    protocol: 56,
+    name: "Elevator/Escelator Incident",
+    shortName: "Elevator/Escalator Incident",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 3 },
+      { name: "Police", priority: undefined }
+    ],
+    defaultPriority: 4,
+    defaultPlan: 156,
+    questions: [
+      {
+        text: <p>Is this an <b>escalator</b> or <b>elevator</b> incident?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Escalator",
+            display: "Escalator incident",
+            continue: true,
+          },
+          {
+            answer: "Elevator",
+            display: "Elevator incident",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk incident",
+            continue: true,
+            updateCode: "56B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone trapped in the escalator?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Escalator";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No one trapped",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Entrapment rptd",
+            continue: true,
+            updateCode: "56B02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if trapped",
+            continue: true,
+            updateCode: "56B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>injured</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Escalator";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Yes") {
+                return { code: "56B02" }
+              } else {
+                return { code: "56O02" }
+              }
+            }
+          },
+          {
+            answer: "Yes",
+            display: "Injs rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Yes") {
+                return { code: "56D02" }
+              } else {
+                return { code: "56D00" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injured",
+            continue: true,
+            updateCode: "56B03",
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>elevator incident</b> is this?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Elevator";
+        },
+        answers: [
+          {
+            answer: "Alarm Activation",
+            display: "Elevator alm activation",
+            updateCode: "56A02",
+            end: true
+          },
+          {
+            answer: "Malfunction",
+            display: "Elevator malfunction",
+            continue: true,
+          },
+          {
+            answer: "Elevator Accident",
+            display: "Elevator accident",
+            updateCode: "56D02",
+            end: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk elevator incident",
+            continue: true,
+            updateCode: "56B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Was the elevator <b>occupied</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Malfunction";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No occupants inside",
+            continue: true,
+            updateCode: "56O01"
+          },
+          {
+            answer: "Yes",
+            display: "Occupants inside",
+            continue: true,
+            updateCode: "56A01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if occupied",
+            continue: true,
+            updateCode: "56B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b>injuries</b> or <b>sick persons</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Occupants inside";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No injs or sick persons rptd",
+            end: true,
+          },
+          {
+            answer: "Yes",
+            display: "Injs or sick persons rptd",
+            continue: true,
+            updateCode: "56B01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs or sick persons",
+            continue: true,
+            updateCode: "56B03"
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "56O01",
+            text: "Elevator Malfunction - No Occupants Inside",
+            recResponse: 156
+          },
+          {
+            code: "56O02",
+            text: "Escalator (Not Trapped) w/ or w/o Injs",
+            recResponse: 156
+          }
+        ]
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "56A00",
+            text: "Override (Alpha)",
+            recResponse: 156
+          },
+          {
+            code: "56A01",
+            text: "Elevator Malfunction - Occupants Inside",
+            recResponse: 157
+          },
+          {
+            code: "56A02",
+            text: "Elevator Alarm",
+            recResponse: 158
+          },
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "56B00",
+            text: "Override (Bravo)",
+            recResponse: 159
+          },
+          {
+            code: "56B01",
+            text: "Elevator Malfunction - Occupants Inside (Medical Condition Present)",
+            recResponse: 159
+          },
+          {
+            code: "56B02",
+            text: "Escalator Entrapment/Trapped w/o Injs",
+            recResponse: 156
+          },
+          {
+            code: "56B03",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 156,
+            defaultCode: true
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "56D00",
+            text: "Override (Delta)",
+            recResponse: 160
+          },
+          {
+            code: "56D01",
+            text: "Escalator Entrapment/Trapped w/ Injs",
+            recResponse: 161
+          },
+          {
+            code: "56D02",
+            text: "Elevator Accident",
+            recResponse: 85
+          }
+        ]
+      }
+    ]
+  },
 ];

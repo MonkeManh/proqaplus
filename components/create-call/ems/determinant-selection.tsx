@@ -158,11 +158,29 @@ export default function EMSDeterminantSelection({
       if (determinants[focusedIndex]) {
         determinants[focusedIndex].scrollIntoView({
           behavior: "smooth",
-          block: "nearest",
+          block: "center",
         });
       }
     }
   }, [focusedIndex]);
+
+  // Add new useEffect for initial recommended code scroll
+  useEffect(() => {
+    if (determinantsRef.current && recommendedCode) {
+      setTimeout(() => {
+        const determinants = determinantsRef.current?.querySelectorAll(".determinant-item");
+        const recommendedIndex = Array.from(determinants || []).findIndex(
+          el => el.textContent?.includes(recommendedCode)
+        );
+        if (recommendedIndex >= 0 && determinants?.[recommendedIndex]) {
+          determinants[recommendedIndex].scrollIntoView({
+            behavior: "auto",
+            block: "center"
+          });
+        }
+      }, 100);
+    }
+  }, [recommendedCode, complaint]);
 
   const handleSelectDeterminant = (
     code: string,
@@ -195,7 +213,7 @@ export default function EMSDeterminantSelection({
 
           <Card>
             <CardContent className="p-4">
-              <div ref={determinantsRef} className="overflow-y-auto">
+              <div ref={determinantsRef} className="overflow-y-auto max-h-[60vh]">
                 <div className="space-y-4">
                   {complaint.availableDeterminants
                     .sort((a, b) => a.priority.localeCompare(b.priority))

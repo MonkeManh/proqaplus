@@ -12,7 +12,7 @@ export interface IFireComplaint {
   defaultPlan: number;
   questions: IFireQuestions[];
   availableDeterminants: {
-    priority: string;
+    priority: "O" | "A" | "B" | "C" | "D" | "E";
     determinants: {
       code: string;
       text: string;
