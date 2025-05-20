@@ -20079,6 +20079,10 @@ export const postalData: IPostal[] = [
           crossStreet1: "El Rancho Blvd",
           crossStreet2: "Labor Pl",
         },
+        "Labor Pl": {
+          crossStreet1: "Orchardville Ave",
+          crossStreet2: "Tower Way",
+        }
       },
     },
   },

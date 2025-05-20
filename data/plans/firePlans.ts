@@ -1573,13 +1573,13 @@ export const firePlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Truck",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 84,
@@ -1588,13 +1588,13 @@ export const firePlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Swift Water",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 85,
@@ -1723,17 +1723,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Transport (ALS)",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Chief",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 90,
@@ -1754,16 +1754,1031 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Transport (ALS)",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 91,
+    name: "TRAR",
+    incidentType: "TRANSFORMER|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 92,
+    name: "TRA",
+    incidentType: "TRANSFORMER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 93,
+    name: "TRA1",
+    incidentType: "TRANSFORMER|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 94,
+    name: "TRA2",
+    incidentType: "TRANSFORMER|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 95,
+    name: "TRAM",
+    incidentType: "TRANSFORMER|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 96,
+    name: "APPR",
+    incidentType: "APPLIANCE|PROBLEM|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 97,
+    name: "APP",
+    incidentType: "APPLIANCE|PROBLEM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 98,
+    name: "APP1",
+    incidentType: "APPLIANCE|PROBLEM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 99,
+    name: "APP2",
+    incidentType: "APPLIANCE|PROBLEM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 100,
+    name: "APPM",
+    incidentType: "APPLIANCE|PROBLEM|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 101,
+    name: "ELECR",
+    incidentType: "ELEC|HAZ|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 102,
+    name: "ELEC",
+    incidentType: "ELEC|HAZ",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 103,
+    name: "ELEC1",
+    incidentType: "ELEC|HAZ|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 104,
+    name: "ELEC2",
+    incidentType: "ELEC|HAZ|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 105,
+    name: "ELECM",
+    incidentType: "ELEC|HAZ|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 106,
+    name: "ELECARR",
+    incidentType: "ELEC|ARC|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 107,
+    name: "ELECARC",
+    incidentType: "ELEC|ARC",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 108,
+    name: "ELECARC1",
+    incidentType: "ELEC|ARC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 109,
+    name: "ELECARC2",
+    incidentType: "ELEC|ARC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 110,
+    name: "ELECARCM",
+    incidentType: "ELEC|ARC|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 111,
+    name: "SE",
+    incidentType: "WIRESDOWN|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 112,
+    name: "WIRES",
+    incidentType: "WIRESDOWN",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 113,
+    name: "WIRES1",
+    incidentType: "WIRESDOWN|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 114,
+    name: "WIRES2",
+    incidentType: "WIRESDOWN|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 115,
+    name: "WIRESM",
+    incidentType: "WIRESDOWN|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 116,
+    name: "APPOR",
+    incidentType: "APPLIANCE|ODOR|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 117,
+    name: "APPO",
+    incidentType: "APPLIANCE|ODOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 118,
+    name: "APPO1",
+    incidentType: "APPLIANCE|ODOR|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 119,
+    name: "APPO2",
+    incidentType: "APPLIANCE|ODOR|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 120,
+    name: "APPOM",
+    incidentType: "APPLIANCE|ODOR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 121,
+    name: "ELECOR",
+    incidentType: "ELEC|ODOR|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 122,
+    name: "ELECO",
+    incidentType: "ELEC|ODOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 123,
+    name: "ELECO1",
+    incidentType: "ELEC|ODOR|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 124,
+    name: "ELECO2",
+    incidentType: "ELEC|ODOR|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 125,
+    name: "ELECOM",
+    incidentType: "ELEC|ODOR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 126,
+    name: "ELECIR",
+    incidentType: "ELEC|INVEST|ROUTINE",
+    units: [
+      {
+        type: "Engine",
         quantity: 1
       }
     ]
-  }
+  },
+  {
+    id: 127,
+    name: "ELECI",
+    incidentType: "ELEC|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 128,
+    name: "ELECI1",
+    incidentType: "ELEC|INVEST|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 129,
+    name: "ELECI2",
+    incidentType: "ELEC|INVEST|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 130,
+    name: "ELECIM",
+    incidentType: "ELEC|INVEST|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 131,
+    name: "ELECWR",
+    incidentType: "ELEC|HAZ|WATER|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 132,
+    name: "ELECW",
+    incidentType: "ELEC|HAZ|WATER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 133,
+    name: "ELECW1",
+    incidentType: "ELEC|HAZ|WATER|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 134,
+    name: "ELECW2",
+    incidentType: "ELEC|HAZ|WATER|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 135,
+    name: "ELECWM",
+    incidentType: "ELEC|HAZ|WATER|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 136,
+    name: "WIRESSMR",
+    incidentType: "WIRESDOWN|ARC|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 137,
+    name: "WIRESAR",
+    incidentType: "WIRESDOWN|ARC",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 138,
+    name: "WIRESAR1",
+    incidentType: "WIRESDOWN|ARC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 139,
+    name: "WIRESAR2",
+    incidentType: "WIRESDOWN|ARC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 140,
+    name: "WIRESARM",
+    incidentType: "WIRESDOWN|ARC|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 141,
+    name: "SUBSR",
+    incidentType: "ELEC|SUBS|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 142,
+    name: "SUBS",
+    incidentType: "ELEC|SUBS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 143,
+    name: "SUBS1",
+    incidentType: "ELEC|SUBS|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 144,
+    name: "SUBS2",
+    incidentType: "ELEC|SUBS|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 145,
+    name: "SUBSM",
+    incidentType: "ELEC|SUBS|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 146,
+    name: "ELECUR",
+    incidentType: "ELEC|UNDER|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 147,
+    name: "ELECU",
+    incidentType: "ELEC|UNDER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 148,
+    name: "ELECU1",
+    incidentType: "ELEC|UNDER|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 149,
+    name: "ELECU2",
+    incidentType: "ELEC|UNDER|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 150,
+    name: "ELECUM",
+    incidentType: "ELEC|UNDER|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 151,
+    name: "SOLARR",
+    incidentType: "SOLAR|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 152,
+    name: "SOLAR",
+    incidentType: "SOLAR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 153,
+    name: "SOLAR1",
+    incidentType: "SOLAR|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 154,
+    name: "SOLAR2",
+    incidentType: "SOLAR|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 155,
+    name: "SOLARM",
+    incidentType: "SOLAR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
 ];

@@ -4067,4 +4067,1457 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 55,
+    name: "Electrical Hazard",
+    shortName: "Electrical Hazard",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 91,
+    questions: [
+      {
+        text: <p>What type of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Transformer Issue",
+            display: "Transformer issue",
+            continue: true,
+            updateCode: "55A01"
+          },
+          {
+            answer: "Appliance Issue",
+            display: "Appliance issue",
+            continue: true,
+          },
+          {
+            answer: "Electrical Arcing",
+            display: "Electrical arcing",
+            continue: true,
+            updateCode: "55B01"
+          },
+          {
+            answer: "Downed Power Lines",
+            display: "Downed power lines",
+            continue: true,
+          },
+          {
+            answer: "Other Electrical Hazard",
+            display: "Other electrical hazard",
+            continue: true,
+          },
+          {
+            answer: "Unknown Situation",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "55B05"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">smoking</b> or <b className="text-red-400">arcing</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Downed Power Lines"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No smoking or arcing",
+            continue: true,
+            updateCode: "55B02"
+          },
+          {
+            answer: "Yes",
+            display: "Smoking or arcing",
+            continue: true,
+            updateCode: "55C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if smoking or arcing",
+            continue: true,
+            updateCode: "55B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b>odor</b> present?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Appliance Issue" || firstAnswer === "Other Electrical Hazard"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No odor present",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Appliance Issue") {
+                return { code: "55A02" }
+              }
+            }
+          },
+          {
+            answer: "Yes",
+            display: "Odor present",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Appliance Issue") {
+                return { code: "55B03" }
+              } else if(firstAnswer === "Other Electrical Hazard") {
+                return { code: "55B04" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if odor present",
+            continue: true,
+            updateCode: "55B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-red-400">SMOKE or FIRE</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Appliance Issue"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No smoke or fire",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Smoke or fire present",
+            goto: 69
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if smoke or fire present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b className="text-green-400">HAZARD</b> in or near water?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Hazard not in or near water",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Hazard in or near water",
+            continue: true,
+            updateCode: "55C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazard in or near water",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>loaction</b> is the hazard at?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer !== "Transformer Issue";
+        },
+        answers: [
+          {
+            answer: "Indoors",
+            display: "Hazard is indoors",
+            continue: true,
+          },
+          {
+            answer: "Outdoors",
+            display: "Hazard is outdoors",
+            continue: true,
+          },
+          {
+            answer: "Substation/Distribution Station",
+            display: "Hazard is at substation/distribution station",
+            continue: true,
+            updateCode: "55C03"
+          },
+          {
+            answer: "Underground",
+            display: "Hazard is underground",
+            continue: true,
+            updateCode: "55C04"
+          },
+          {
+            answer: "Solar Farm",
+            display: "Hazard is at solar farm",
+            continue: true,
+            updateCode: "55C05"
+          },
+          {
+            answer: "Location:",
+            display: "Hazard is at {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk hazard location",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anything (anyone) <b className="text-red-400">THREATENED</b> by the hazard?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No threat",
+            continue: true,
+          },
+          {
+            answer: "People Threatened",
+            display: "Persons threatened",
+            continue: true,
+            updateSubCode: "P"
+          },
+          {
+            answer: "Building (Non-Residential) Threatened",
+            display: "Building (non-residential) threatened",
+            continue: true,
+            updateSubCode: "B"
+          },
+          {
+            answer: "Residential Threatened",
+            display: "Residential threatened",
+            continue: true,
+            updateSubCode: "R"
+          },
+          {
+            answer: "Vehicle Threatened",
+            display: "Vehicle threatened",
+            continue: true,
+            updateSubCode: "V"
+          },
+          {
+            answer: "Animals Threatened",
+            display: "Animals threatened",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Brush/Grass Threatened",
+            display: "Brush/grass threatened",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Wildland Threatened",
+            display: "Wildland threatened",
+            continue: true,
+            updateSubCode: "D"
+          },
+          {
+            answer: "Other:",
+            display: "{input} threatened",
+            input: true,
+            continue: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if threatening anyone/thing",
+            continue: true,
+            updateSubCode: "U"
+          },
+        ]
+      },
+
+      {
+        text: <p>Is <b>anyone</b> in <b>CONTACT</b> with the <b>hazard</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No-one in contact w/ hazard",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Person in contact w/ hazard",
+            continue: true,
+            updateSubCode: "N"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anyone in contact w/ hazard",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>injured</b> or <b>sick</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single Person",
+            display: "Single person injured",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Yes") {
+                return { subCode: "S" }
+              } else {
+                return { subCode: "X" }
+              }
+            }
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} persons injured",
+            input: true,
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Yes") {
+                return { subCode: "T" }
+              } else {
+                return { subCode: "Y" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anyone injured",
+            continue: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "55A01",
+            text: "Transformer Outside (Wire or Pole)",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 91,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 91,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 92,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 92,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 93,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 91,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 92,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 92,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 94,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 95,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 91,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 92,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 93,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 95,
+              },
+            ],
+          },
+          {
+            code: "55A02",
+            text: "Appliance w/o Odor Present",
+            recResponse: 96,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 96,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 96,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 97,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 97,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 98,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 96,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 97,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 97,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 99,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 100,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 96,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 97,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 98,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 100,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "55B00",
+            text: "Override (Bravo)",
+            recResponse: 101,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 103,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 102,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 104,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 105,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 103,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 105,
+              },
+            ],
+          },
+          {
+            code: "55B01",
+            text: "Electrical Arcing",
+            recResponse: 106,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 106,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 106,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 107,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 107,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 108,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 106,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 107,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 107,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 109,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 110,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 106,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 107,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 108,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 110,
+              },
+            ],
+          },
+          {
+            code: "55B02",
+            text: "Wires Down w/o Smoke or Arcing",
+            recResponse: 111,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 111,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 111,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 112,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 112,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 113,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 111,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 112,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 112,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 114,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 115,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 111,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 112,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 113,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 115,
+              },
+            ],
+          },
+          {
+            code: "55B03",
+            text: "Appliance w/ Odor Present",
+            recResponse: 116,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 116,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 116,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 117,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 117,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 118,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 116,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 117,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 117,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 119,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 120,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 116,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 117,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 118,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 120,
+              },
+            ],
+          },
+          {
+            code: "55B04",
+            text: "Electrical Odor",
+            recResponse: 121,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 121,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 121,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 122,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 122,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 123,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 121,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 122,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 122,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 124,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 125,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 121,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 122,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 123,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 125,
+              },
+            ],
+          },
+          {
+            code: "55B05",
+            text: "Unkn Situation (Investigation)",
+            defaultCode: true,
+            recResponse: 126,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 126,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 126,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 127,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 127,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 128,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 126,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 127,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 127,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 129,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 130,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 126,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 127,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 128,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 130,
+              },
+            ],
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "55C00",
+            text: "Override (Charlie)",
+            recResponse: 101,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 103,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 102,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 104,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 105,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 101,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 102,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 103,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 105,
+              },
+            ],
+          },
+          {
+            code: "55C01",
+            text: "Electrical Hazard w/ or Near Water",
+            recResponse: 131,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 131,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 131,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 132,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 132,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 133,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 131,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 132,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 132,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 134,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 135,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 131,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 132,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 133,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 135,
+              },
+            ],
+          },
+          {
+            code: "55C02",
+            text: "Wires Down w/ Smoke or Arcing",
+            recResponse: 136,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 136,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 136,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 137,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 137,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 138,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 136,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 137,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 137,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 139,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 140,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 136,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 137,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 138,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 140,
+              },
+            ],
+          },
+          {
+            code: "55C03",
+            text: "Substation/Distribution Station",
+            recResponse: 141,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 141,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 141,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 142,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 143,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 141,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 142,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 142,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 144,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 145,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 141,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 142,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 143,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "55C04",
+            text: "Underground Electrical Problem (Vault/Manhole)",
+            recResponse: 146,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 146,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 146,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 147,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 147,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 148,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 146,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 147,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 147,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 149,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 150,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 146,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 147,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 148,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 150,
+              },
+            ],
+          },
+          {
+            code: "55C05",
+            text: "Solar Farm",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 151,
+              },
+              {
+                code: "B",
+                text: "Building (Non-Residential) Threatened",
+                recResponse: 151,
+              },
+              {
+                code: "C",
+                text: "Brush/Grass Threatened",
+                recResponse: 152,
+              },
+              {
+                code: "D",
+                text: "Wildland Threatened",
+                recResponse: 152,
+              },
+              {
+                code: "N",
+                text: "Person in Contact w/ Electrical Hazard",
+                recResponse: 153,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 151,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 152,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 152,
+              },
+              {
+                code: "S",
+                text: "Person in Contact w/ Electrical Hazard & Single Injured Person",
+                recResponse: 154,
+              },
+              {
+                code: "T",
+                text: "Person in Contact w/ Electrical Hazard & Mult Injured Persons",
+                recResponse: 155,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 151,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 152,
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 153,
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 155,
+              },
+            ],
+          }
+        ]
+      }
+    ],
+  },
 ];
