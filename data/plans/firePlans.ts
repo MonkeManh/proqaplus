@@ -4315,4 +4315,95 @@ export const firePlans: IResponsePlan[] = [
       }
     ]
   },
+  {
+    id: 222,
+    name: "FE",
+    incidentType: "LIGHTNING",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 223,
+    name: "FG",
+    incidentType: "LIGHTNING|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 224,
+    name: "FDMULTP",
+    incidentType: "LIGHTNING|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 225,
+    name: "AL1D",
+    incidentType: "ELECTROCUTION|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 226,
+    name: "SE",
+    incidentType: "LIGHTNGSE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  }
 ];

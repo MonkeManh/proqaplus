@@ -9943,7 +9943,7 @@ export const fireProtocols: IFireComplaint[] = [
           }
         ]
       },
-      
+
       {
         text: <p>Is the person(s) suicidal?</p>,
         questionType: "select",
@@ -10111,6 +10111,448 @@ export const fireProtocols: IFireComplaint[] = [
                 code: "W",
                 text: "Above Water",
                 recResponse: 85
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    protocol: 63,
+    name: "Lightning Strike (Investigation)",
+    shortName: "Lightning Strike",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: false },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 222,
+    questions: [
+      {
+        text: <p>What did the <b className="text-blue-400">lightning</b> strike?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Outside",
+            display: "Outside strike",
+            continue: true,
+            updateCode: "63B05"
+          },
+          {
+            answer: "Structure",
+            display: "Structure strike",
+            continue: true,
+          },
+          {
+            answer: "Vehicle",
+            display: "Vehicle strike",
+            continue: true,
+            updateCode: "63B06"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what lightning struck",
+            continue: true,
+            updateCode: "63B07"
+          }
+        ]
+      },
+
+      {
+        text: <p>Did the lightning hit <b>anything</b> outside?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Outside"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Nothing struck outside",
+            continue: true,
+          },
+          {
+            answer: "Outdoor Venue",
+            display: "Outdoor venue hit",
+            continue: true,
+            updateCode: "63C05"
+          },
+          {
+            answer: "Structure",
+            display: "Structure hit",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anything struck outside",
+            continue: true,
+            updateCode: "63B07"
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>structure</b> was hit?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return firstAnswer === "Structure" || lastAnswer === "Structure"
+        },
+        answers: [
+          {
+            answer: "Residential (Single)",
+            display: "Single-family residential",
+            continue: true,
+            updateCode: "63B01"
+          },
+          {
+            answer: "Large Non-Dwelling Building/Structure",
+            display: "Large non-dwelling",
+            continue: true,
+            updateCode: "63B02"
+          },
+          {
+            answer: "Small Non-Dwelling Building/Structure",
+            display: "Small non-dwelling",
+            continue: true,
+            updateCode: "63B03"
+          },
+          {
+            answer: "Mobile Home",
+            display: "Mobile home",
+            continue: true,
+            updateCode: "63B04"
+          },
+          {
+            answer: "House Trailer",
+            display: "House trailer",
+            continue: true,
+            updateCode: "63B04"
+          },
+          {
+            answer: "Portable Office",
+            display: "Portable office",
+            continue: true,
+            updateCode: "63B04"
+          },
+          {
+            answer: "HIGH RISE",
+            display: "High rise",
+            continue: true,
+            updateCode: "63C02"
+          },
+          {
+            answer: "Comm/Ind Building",
+            display: "Comm/Ind building",
+            continue: true,
+            updateCode: "63C03"
+          },
+          {
+            answer: "Residential (Mult)",
+            display: "Mult-family residential",
+            continue: true,
+            updateCode: "63C04"
+          },
+          {
+            answer: "Outdoor Venue",
+            display: "Outdoor venue",
+            continue: true,
+            updateCode: "63C05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of structure",
+            continue: true,
+            updateCode: "63B07"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there a high <b className="text-red-400">life hazard</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No life hazard ID'd",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "High life hazard",
+            continue: true,
+            updateCode: "63C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if life hazard present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No inj'd persons rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single inj'd person rptd",
+            continue: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} inj'd persons rptd",
+            continue: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if inj'd persons",
+            continue: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "63B01",
+            text: "Residential (Single)",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B02",
+            text: "Large Non-Dwelling Building/Structure",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B03",
+            text: "Small Non-Dwelling Building/Structure",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B04",
+            text: "Mobile Home, House Trailer, Portable Office",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B05",
+            text: "Outside Lighting Strike",
+            recResponse: 20,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 225
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B06",
+            text: "Vehicle",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63B07",
+            text: "Unkn Situation (Investigation)/Unkn Building Type",
+            recResponse: 20,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "63C00",
+            text: "Override (Charlie)",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63C01",
+            text: "High Life Hazard",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63C02",
+            text: "High Rise",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63C03",
+            text: "Comm/Ind Building",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63C04",
+            text: "Residential (Mult)",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
+              }
+            ]
+          },
+          {
+            code: "63C05",
+            text: "Outdoor Venue (Sporting Event/Concert/Campground)",
+            recResponse: 222,
+            subCodes: [
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 223
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 224
               }
             ]
           }
