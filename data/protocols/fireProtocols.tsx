@@ -7208,8 +7208,8 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            <span className="text-blue-400">(If appropriate)</span> Are there any{" "}
-            <b className="text-green-400">HAZARDOUS</b> materials involved?
+            <span className="text-blue-400">(If appropriate)</span> Are there
+            any <b className="text-green-400">HAZARDOUS</b> materials involved?
           </p>
         ),
         questionType: "select",
@@ -7432,7 +7432,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 190,
     questions: [
       {
-        text: <p>Is there a <b>fuel spill</b>, or <b>odor of fuel</b>?</p>,
+        text: (
+          <p>
+            Is there a <b>fuel spill</b>, or <b>odor of fuel</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -7444,15 +7448,15 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Fuel Odor",
             display: "Odor of fuel",
             continue: true,
-            updateCode: "59B03"
+            updateCode: "59B03",
           },
           {
             answer: "Completely Unknown",
             display: "Completely unknown situation",
             continue: true,
-            updateCode: "59C03"
-          }
-        ]
+            updateCode: "59C03",
+          },
+        ],
       },
 
       {
@@ -7467,7 +7471,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Minor Spill (< 1 gallon)",
             display: "Minor spill (< 1 gallon)",
             continue: true,
-            updateCode: "59O01"
+            updateCode: "59O01",
           },
           {
             answer: "Small Spill (1-25 gallons)",
@@ -7483,13 +7487,17 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk size of spill",
             continue: true,
-            updateCode: "59C03"
-          }
-        ]
+            updateCode: "59C03",
+          },
+        ],
       },
 
       {
-        text: <p>Is the spill <b>contained</b>?</p>,
+        text: (
+          <p>
+            Is the spill <b>contained</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -7502,12 +7510,12 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Small Spill (1-25 gallons)") {
+              if (lastAnswer === "Small Spill (1-25 gallons)") {
                 return { code: "59B02" };
-              } else if(lastAnswer === "Large Spill (> 25 gallons)") {
+              } else if (lastAnswer === "Large Spill (> 25 gallons)") {
                 return { code: "59C02" };
               }
-            }
+            },
           },
           {
             answer: "No",
@@ -7515,24 +7523,28 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Small Spill (1-25 gallons)") {
+              if (lastAnswer === "Small Spill (1-25 gallons)") {
                 return { code: "59B01" };
-              } else if(lastAnswer === "Large Spill (> 25 gallons)") {
+              } else if (lastAnswer === "Large Spill (> 25 gallons)") {
                 return { code: "59C01" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if spill is contained",
             continue: true,
-            updateCode: "59C03"
-          }
-        ]
+            updateCode: "59C03",
+          },
+        ],
       },
 
       {
-        text: <p>Is the spill by or spilling into a <b>waterway</b>?</p>,
+        text: (
+          <p>
+            Is the spill by or spilling into a <b>waterway</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -7553,12 +7565,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if by or into a waterway",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>What</b> type of waterway is involved?</p>,
+        text: (
+          <p>
+            <b>What</b> type of waterway is involved?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
@@ -7570,51 +7586,56 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Threatening inland waterway",
             continue: true,
             updateCode: "59D02",
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Coastal Waterway",
             display: "Threatening inland waterway",
             continue: true,
             updateCode: "59D01",
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Ocean",
             display: "Threatening oceanic waters",
             continue: true,
             updateCode: "59D03",
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Sewer",
             display: "Threatening sewer system",
             continue: true,
             updateCode: "59D04",
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Storm Drain",
             display: "Threatening storm drain",
             continue: true,
             updateCode: "59D05",
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
             display: "Unk type of waterway",
             continue: true,
-            updateCode: "59D00"
-          }
-        ]
+            updateCode: "59D00",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>location</b> of the spill/odor?</p>,
+        text: (
+          <p>
+            What is the <b>location</b> of the spill/odor?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const doesWaterwayQuestionExist = answers?.some(
-            (answer) => answer.defaultQuestion === "What type of waterway is involved?"
+            (answer) =>
+              answer.defaultQuestion === "What type of waterway is involved?"
           );
           return !doesWaterwayQuestionExist;
         },
@@ -7623,25 +7644,29 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Inside",
             display: "Incident is inside",
             continue: true,
-            updateSubCode: "I"
+            updateSubCode: "I",
           },
           {
             answer: "Outside",
             display: "Incident is outside",
             continue: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
             display: "Unk if inside or outside",
             continue: true,
-            updateSubCode: "U"
-          }
-        ]
+            updateSubCode: "U",
+          },
+        ],
       },
 
       {
-        text: <p>Are there any <b>sick</b> or <b>injured</b> persons?</p>,
+        text: (
+          <p>
+            Are there any <b>sick</b> or <b>injured</b> persons?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -7655,12 +7680,12 @@ export const fireProtocols: IFireComplaint[] = [
             end: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Inside") {
-                return { subCode: "V" }
-              } else if(lastAnswer === "Outside") {
-                return { subCode: "X" }
+              if (lastAnswer === "Inside") {
+                return { subCode: "V" };
+              } else if (lastAnswer === "Outside") {
+                return { subCode: "X" };
               }
-            }
+            },
           },
           {
             answer: "Yes - Multiple:",
@@ -7668,20 +7693,20 @@ export const fireProtocols: IFireComplaint[] = [
             end: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Inside") {
-                return { subCode: "W" }
-              } else if(lastAnswer === "Outside") {
-                return { subCode: "Y" }
+              if (lastAnswer === "Inside") {
+                return { subCode: "W" };
+              } else if (lastAnswer === "Outside") {
+                return { subCode: "Y" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -7695,41 +7720,41 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 191
-              }
-            ]
-          }
-        ]
+                recResponse: 191,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -7742,39 +7767,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 191
-              }
-            ]
+                recResponse: 191,
+              },
+            ],
           },
           {
             code: "59B01",
@@ -7784,39 +7809,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 191
-              }
-            ]
+                recResponse: 191,
+              },
+            ],
           },
           {
             code: "59B02",
@@ -7826,39 +7851,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 193
+                recResponse: 193,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 191
-              }
-            ]
+                recResponse: 191,
+              },
+            ],
           },
           {
             code: "59B03",
@@ -7868,41 +7893,41 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 194
+                recResponse: 194,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 195
+                recResponse: 195,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 194
+                recResponse: 194,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 191
+                recResponse: 191,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 191
-              }
-            ]
+                recResponse: 191,
+              },
+            ],
           },
-        ]
+        ],
       },
       {
         priority: "C",
@@ -7915,39 +7940,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59C01",
@@ -7957,39 +7982,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59C02",
@@ -7999,39 +8024,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59C03",
@@ -8042,41 +8067,41 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 190
+                recResponse: 190,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
-          }
-        ]
+                recResponse: 198,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -8089,39 +8114,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59D01",
@@ -8131,39 +8156,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59D02",
@@ -8173,39 +8198,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59D03",
@@ -8215,39 +8240,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
+                recResponse: 198,
+              },
+            ],
           },
           {
             code: "59D04",
@@ -8257,43 +8282,43 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "I",
                 text: "Inside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "O",
                 text: "Outside",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "U",
                 text: "Unkn",
-                recResponse: 199
+                recResponse: 199,
               },
               {
                 code: "V",
                 text: "Inside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "W",
                 text: "Inside & Mult Sick/Injured Persons",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "X",
                 text: "Outside & Single Sick/Injured Person",
-                recResponse: 198
+                recResponse: 198,
               },
               {
                 code: "Y",
                 text: "Outside & Mult Sick/Injured Persons",
-                recResponse: 198
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 198,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 60,
@@ -8321,16 +8346,20 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "No",
             display: "Unk where leak is",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is there an <b>odor</b> of gas (or other)?</p>,
+        text: (
+          <p>
+            Is there an <b>odor</b> of gas (or other)?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "No"
+          return lastAnswer === "No";
         },
         answers: [
           {
@@ -8348,20 +8377,24 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if odor present",
             continue: true,
-            updateCode: "60B04"
-          }
-        ]
+            updateCode: "60B04",
+          },
+        ],
       },
 
       {
-        text: <p>Where is the <b>leak</b> (odor) coming from?</p>,
+        text: (
+          <p>
+            Where is the <b>leak</b> (odor) coming from?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Outside (General)",
             display: "Odor outside",
             continue: true,
-            updateCode: "60B03"
+            updateCode: "60B03",
           },
           {
             answer: "Outside Line",
@@ -8382,25 +8415,29 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Transmission/Distribution Line",
             display: "Coming frm transmission/distribution line",
             continue: true,
-            updateCode: "60C04"
+            updateCode: "60C04",
           },
           {
             answer: "High-Pressure Line",
             display: "Coming frm high-pressure line",
             continue: true,
-            updateCode: "60C05"
+            updateCode: "60C05",
           },
           {
             answer: "Unknown",
             display: "Unk where leak is coming from",
             continue: true,
-            updateCode: "60B04"
-          }
-        ]
+            updateCode: "60B04",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>type</b> of outside line is it?</p>,
+        text: (
+          <p>
+            What <b>type</b> of outside line is it?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
@@ -8411,25 +8448,29 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Residential",
             display: "Residential line",
             continue: true,
-            updateCode: "60B01"
+            updateCode: "60B01",
           },
           {
             answer: "Commercial",
             display: "Comm line",
             continue: true,
-            updateCode: "60C02"
+            updateCode: "60C02",
           },
           {
             answer: "Unknown",
             display: "Unk type of outside line",
             continue: true,
-            updateCode: "60B04"
-          }
-        ]
+            updateCode: "60B04",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>size</b> of the tank?</p>,
+        text: (
+          <p>
+            What is the <b>size</b> of the tank?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
@@ -8440,25 +8481,29 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "<= 5 Gallons",
             display: "Tank <= 5 gallons",
             continue: true,
-            updateCode: "60B02"
+            updateCode: "60B02",
           },
           {
             answer: "> 5 Gallons",
             display: "Tank > 5 gallons",
             continue: true,
-            updateCode: "60C03"
+            updateCode: "60C03",
           },
           {
             answer: "Unknown",
             display: "Unk size of tank",
             continue: true,
-            updateCode: "60B04"
-          }
-        ]
+            updateCode: "60B04",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>type</b> of dwelling is the <b>leak (odor)</b> coming from?</p>,
+        text: (
+          <p>
+            What <b>type</b> of dwelling is the <b>leak (odor)</b> coming from?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
@@ -8469,43 +8514,47 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Residential (Single)",
             display: "Single-family residential",
             continue: true,
-            updateCode: "60C01"
+            updateCode: "60C01",
           },
           {
             answer: "Residential (Multi)",
             display: "Multi-family residential",
             continue: true,
-            updateCode: "60D04"
+            updateCode: "60D04",
           },
           {
             answer: "HIGH RISE",
             display: "High-rise dwelling",
             continue: true,
-            updateCode: "60D02"
+            updateCode: "60D02",
           },
           {
             answer: "Commercial",
             display: "Commercial dwelling",
             continue: true,
-            updateCode: "60D03"
+            updateCode: "60D03",
           },
           {
             answer: "Industrial",
             display: "Industrial dwelling",
             continue: true,
-            updateCode: "60D03"
+            updateCode: "60D03",
           },
           {
             answer: "Unknown",
             display: "Unk type of dwelling",
             continue: true,
-            updateCode: "60B04"
-          }
-        ]
+            updateCode: "60B04",
+          },
+        ],
       },
 
       {
-        text: <p>Is there a high <b className="text-red-400">LIFE HAZARD</b>?</p>,
+        text: (
+          <p>
+            Is there a high <b className="text-red-400">LIFE HAZARD</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8517,18 +8566,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Life hazard present",
             continue: true,
-            updateCode: "60D01"
+            updateCode: "60D01",
           },
           {
             answer: "Unknown",
             display: "Unk if life hazard present",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>sick</b> or <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -8542,13 +8595,13 @@ export const fireProtocols: IFireComplaint[] = [
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const secondAnswer = answers?.[1]?.defaultAnswer;
-              if(firstAnswer === "No" && secondAnswer === "Yes") {
-                return { subCode: "V" }
+              if (firstAnswer === "No" && secondAnswer === "Yes") {
+                return { subCode: "V" };
               } else {
-                return { subCode: "X" }
+                return { subCode: "X" };
               }
             },
-            end: true
+            end: true,
           },
           {
             answer: "Yes - Multiple:",
@@ -8556,21 +8609,21 @@ export const fireProtocols: IFireComplaint[] = [
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const secondAnswer = answers?.[1]?.defaultAnswer;
-              if(firstAnswer === "No" && secondAnswer === "Yes") {
-                return { subCode: "W" }
+              if (firstAnswer === "No" && secondAnswer === "Yes") {
+                return { subCode: "W" };
               } else {
-                return { subCode: "Y" }
+                return { subCode: "Y" };
               }
             },
-            end: true
+            end: true,
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -8584,29 +8637,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 201
+                recResponse: 201,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 202
+                recResponse: 202,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 203
+                recResponse: 203,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 204
+                recResponse: 204,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 205
-              }
-            ]
+                recResponse: 205,
+              },
+            ],
           },
           {
             code: "60B02",
@@ -8616,29 +8669,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 201
+                recResponse: 201,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 202
+                recResponse: 202,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 203
+                recResponse: 203,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 207
+                recResponse: 207,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 208
-              }
-            ]
+                recResponse: 208,
+              },
+            ],
           },
           {
             code: "60B03",
@@ -8648,29 +8701,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 201
+                recResponse: 201,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 202
+                recResponse: 202,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 203
+                recResponse: 203,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 202
+                recResponse: 202,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 203
-              }
-            ]
+                recResponse: 203,
+              },
+            ],
           },
           {
             code: "60B04",
@@ -8681,31 +8734,31 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 210
+                recResponse: 210,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 211
+                recResponse: 211,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 210
+                recResponse: 210,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 211
-              }
-            ]
-          }
-        ]
+                recResponse: 211,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -8718,29 +8771,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 206
+                recResponse: 206,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 207
+                recResponse: 207,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 208
+                recResponse: 208,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 207
+                recResponse: 207,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 208
-              }
-            ]
+                recResponse: 208,
+              },
+            ],
           },
           {
             code: "60C01",
@@ -8750,29 +8803,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
+                recResponse: 214,
+              },
+            ],
           },
           {
             code: "60C02",
@@ -8782,29 +8835,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 200
+                recResponse: 200,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 204
+                recResponse: 204,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 205
+                recResponse: 205,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 204
+                recResponse: 204,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 205
-              }
-            ]
+                recResponse: 205,
+              },
+            ],
           },
           {
             code: "60C03",
@@ -8814,61 +8867,61 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
+                recResponse: 214,
+              },
+            ],
           },
           {
             code: "60C04",
-            text:  "Transmission/Distribution (Main/Service) Pipeline",
+            text: "Transmission/Distribution (Main/Service) Pipeline",
             recResponse: 215,
             subCodes: [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 215
-              }
-            ]
+                recResponse: 215,
+              },
+            ],
           },
           {
             code: "60C05",
@@ -8878,31 +8931,31 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 215
-              }
-            ]
-          }
-        ]
+                recResponse: 215,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -8915,29 +8968,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 215
+                recResponse: 215,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 215
-              }
-            ]
+                recResponse: 215,
+              },
+            ],
           },
           {
             code: "60D01",
@@ -8947,29 +9000,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
+                recResponse: 214,
+              },
+            ],
           },
           {
             code: "60D02",
@@ -8979,29 +9032,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
+                recResponse: 214,
+              },
+            ],
           },
           {
             code: "60D03",
@@ -9011,29 +9064,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
+                recResponse: 214,
+              },
+            ],
           },
           {
             code: "60D04",
@@ -9043,33 +9096,33 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "O",
                 text: "Odor Only",
-                recResponse: 212
+                recResponse: 212,
               },
               {
                 code: "V",
                 text: "Odor w/ Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "W",
                 text: "Odor w/ Mult Sick/Injured Persons",
-                recResponse: 214
+                recResponse: 214,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 213
+                recResponse: 213,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 214
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 214,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 61,
@@ -9085,7 +9138,12 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 184,
     questions: [
       {
-        text: <p>What <b>type</b> of <span className="text-green-400">hazmat</span> is this?</p>,
+        text: (
+          <p>
+            What <b>type</b> of <span className="text-green-400">hazmat</span>{" "}
+            is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -9112,18 +9170,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Other:",
             display: "{input} hazmat",
             continue: true,
-            input: true
+            input: true,
           },
           {
             answer: "Unknown",
             display: "Unk type of hazmat",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the <b className="text-green-400">hazmat</b> <b>contained</b>?</p>,
+        text: (
+          <p>
+            Is the <b className="text-green-400">hazmat</b> <b>contained</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -9135,53 +9197,62 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "No",
             display: "Hazmat not contained",
             continue: true,
-            updateCode: "61D02"
+            updateCode: "61D02",
           },
           {
             answer: "Unknown",
             display: "Unk if hazmat contained",
             continue: true,
-            updateCode: "61C00"
-          }
-        ]
+            updateCode: "61C00",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>size</b> of the incident?</p>,
+        text: (
+          <p>
+            What is the <b>size</b> of the incident?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Yes"
+          return lastAnswer === "Yes";
         },
         answers: [
           {
             answer: "Abandoned Waste only",
             display: "Abandoned waste only",
             continue: true,
-            updateCode: "61A01"
+            updateCode: "61A01",
           },
           {
             answer: "Small Spill (<= 5 Gallons/20 Liters)",
             display: "Small spill rptd",
             continue: true,
-            updateCode: "61B01"
+            updateCode: "61B01",
           },
           {
             answer: "Large Spill (> 5 Gallons/20 Liters)",
             display: "Large spill rptd",
             continue: true,
-            updateCode: "61C01"
+            updateCode: "61C01",
           },
           {
             answer: "Unknown",
             display: "Unk size of incident",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the <b className="text-green-400">hazmat</b> threatening any <b className="text-blue-400">waterways</b>?</p>,
+        text: (
+          <p>
+            Is the <b className="text-green-400">hazmat</b> threatening any{" "}
+            <b className="text-blue-400">waterways</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -9195,27 +9266,32 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "No") {
-                return { code: "61D01" }
+              if (lastAnswer === "No") {
+                return { code: "61D01" };
               } else {
-                return { code: "61C02" }
+                return { code: "61C02" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if waterways threatened",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What <b>type</b> of <b className="text-blue-400">waterway</b> is threatened?</p>,
+        text: (
+          <p>
+            What <b>type</b> of <b className="text-blue-400">waterway</b> is
+            threatened?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Yes"
+          return lastAnswer === "Yes";
         },
         answers: [
           {
@@ -9223,55 +9299,67 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Costal waterway involved",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
-              if(targetAnswer === "No") {
-                return { code: "61D03" }
+              const targetAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is the hazmat contained?"
+              )?.defaultAnswer;
+              if (targetAnswer === "No") {
+                return { code: "61D03" };
               }
-            }
+            },
           },
           {
             answer: "Inland Water",
             display: "Inland waterway involved",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
-              if(targetAnswer === "No") {
-                return { code: "61D04" }
+              const targetAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is the hazmat contained?"
+              )?.defaultAnswer;
+              if (targetAnswer === "No") {
+                return { code: "61D04" };
               }
-            }
+            },
           },
           {
             answer: "Oceanic Water",
             display: "Oceanic waterway involved",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
-              if(targetAnswer === "No") {
-                return { code: "61D05" }
+              const targetAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is the hazmat contained?"
+              )?.defaultAnswer;
+              if (targetAnswer === "No") {
+                return { code: "61D05" };
               }
-            }
+            },
           },
           {
             answer: "Sewer/Drain",
             display: "Sewer/Drain involved",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
-              if(targetAnswer === "No") {
-                return { code: "61D06" }
+              const targetAnswer = answers?.find(
+                (a) => a.defaultQuestion === "Is the hazmat contained?"
+              )?.defaultAnswer;
+              if (targetAnswer === "No") {
+                return { code: "61D06" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk type of waterway",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>sick</b> or <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -9283,42 +9371,42 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes - Single",
             display: "Single sick/inj'd person rptd",
             end: true,
-            updateSubCode: "V"
+            updateSubCode: "V",
           },
           {
             answer: "Yes - Two",
             display: "2 sick/inj'd persons rptd",
             end: true,
-            updateSubCode: "W"
+            updateSubCode: "W",
           },
           {
             answer: "MCI Level I (3-8 pts):",
             display: "{input} sick/inj'd persons rptd",
             end: true,
             input: true,
-            updateSubCode: "X"
+            updateSubCode: "X",
           },
           {
             answer: "MCI Level II (9-20 pts):",
             display: "{input} sick/inj'd persons rptd",
             end: true,
             input: true,
-            updateSubCode: "Y"
+            updateSubCode: "Y",
           },
           {
             answer: "MCI Level III (> 20 pts):",
             display: "{input} sick/inj'd persons rptd",
             end: true,
             input: true,
-            updateSubCode: "Z"
+            updateSubCode: "Z",
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -9332,31 +9420,31 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 184
+                recResponse: 184,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 19
-              }
-            ]
-          }
-        ]
+                recResponse: 19,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -9369,29 +9457,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 19
-              }
-            ]
+                recResponse: 19,
+              },
+            ],
           },
           {
             code: "61B01",
@@ -9401,41 +9489,41 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 216
+                recResponse: 216,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 216
+                recResponse: 216,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 217
-              }
-            ]
+                recResponse: 217,
+              },
+            ],
           },
-        ]
+        ],
       },
       {
         priority: "C",
@@ -9448,39 +9536,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 217
+                recResponse: 217,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 217
-              }
-            ]
+                recResponse: 217,
+              },
+            ],
           },
           {
             code: "61C01",
@@ -9490,39 +9578,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 219
-              }
-            ]
+                recResponse: 219,
+              },
+            ],
           },
           {
             code: "61C02",
@@ -9532,41 +9620,41 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 218
+                recResponse: 218,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 219
+                recResponse: 219,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 219
-              }
-            ]
-          }
-        ]
+                recResponse: 219,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -9579,39 +9667,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D01",
@@ -9621,39 +9709,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D02",
@@ -9663,39 +9751,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D03",
@@ -9705,39 +9793,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D04",
@@ -9747,39 +9835,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D05",
@@ -9789,39 +9877,39 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
+                recResponse: 221,
+              },
+            ],
           },
           {
             code: "61D06",
@@ -9831,43 +9919,43 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "D",
                 text: "Drug Lab",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "S",
                 text: "Chemical Suicide",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "V",
                 text: "Single Sick/Injured Person",
-                recResponse: 220
+                recResponse: 220,
               },
               {
                 code: "W",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "X",
                 text: "MCI Level I",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Y",
                 text: "MCI Level II",
-                recResponse: 221
+                recResponse: 221,
               },
               {
                 code: "Z",
                 text: "MCI Level III",
-                recResponse: 221
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 221,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 62,
@@ -9890,58 +9978,62 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "None",
             display: "No sick/inj'd persons rptd",
             continue: true,
-            updateCode: "62D01"
+            updateCode: "62D01",
           },
           {
             answer: "Single Person",
             display: "Single sick/inj'd person rptd",
             continue: true,
-            updateCode: "62D03"
+            updateCode: "62D03",
           },
           {
             answer: "Multiple Persons:",
             display: "{input} sick/inj'd persons rptd",
             continue: true,
             input: true,
-            updateCode: "62D04"
+            updateCode: "62D04",
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             continue: true,
-            updateCode: "62D05"
-          }
-        ]
+            updateCode: "62D05",
+          },
+        ],
       },
-      
+
       {
-        text: <p>What is the <b>location</b> of the <b>incident</b>?</p>,
+        text: (
+          <p>
+            What is the <b>location</b> of the <b>incident</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Above Grade",
             display: "Incident above grade",
             end: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "Below Grade",
             display: "Incident below grade",
             end: true,
-            updateSubCode: "B"
+            updateSubCode: "B",
           },
           {
             answer: "Above Water",
             display: "Incident above water",
             end: true,
-            updateSubCode: "W"
+            updateSubCode: "W",
           },
           {
             answer: "Unknown",
             display: "Unk location of incident",
-            end: true
-          }
-        ]
+            end: true,
+          },
+        ],
       },
 
       {
@@ -9957,17 +10049,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Suicidal person rptd",
             continue: true,
-            updateCode: "62D02"
+            updateCode: "62D02",
           },
           {
             answer: "Unknown",
             display: "Unk if suicidal persons",
             continue: true,
-            updateCode: "62B01"
-          }
-        ]
+            updateCode: "62B01",
+          },
+        ],
       },
-
     ],
     availableDeterminants: [
       {
@@ -9977,9 +10068,9 @@ export const fireProtocols: IFireComplaint[] = [
             code: "62B01",
             text: "Unkn Situation (Investigation)",
             defaultCode: true,
-            recResponse: 210
-          }
-        ]
+            recResponse: 210,
+          },
+        ],
       },
       {
         priority: "C",
@@ -9987,14 +10078,14 @@ export const fireProtocols: IFireComplaint[] = [
           {
             code: "62C00",
             text: "Override (Charlie)",
-            recResponse: 85
+            recResponse: 85,
           },
           {
             code: "62C01",
             text: "Unkn Situation (Suicidal w/ Injs)",
-            recResponse: 85
-          }
-        ]
+            recResponse: 85,
+          },
+        ],
       },
       {
         priority: "D",
@@ -10002,7 +10093,7 @@ export const fireProtocols: IFireComplaint[] = [
           {
             code: "62D00",
             text: "Override (Delta)",
-            recResponse: 85
+            recResponse: 85,
           },
           {
             code: "62D01",
@@ -10012,19 +10103,19 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Above Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "B",
                 text: "Below Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "W",
                 text: "Above Water",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "62D02",
@@ -10034,19 +10125,19 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Above Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "B",
                 text: "Below Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "W",
                 text: "Above Water",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "62D03",
@@ -10056,19 +10147,19 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Above Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "B",
                 text: "Below Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "W",
                 text: "Above Water",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "62D04",
@@ -10078,19 +10169,19 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Above Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "B",
                 text: "Below Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "W",
                 text: "Above Water",
-                recResponse: 85
-              }
-            ]
+                recResponse: 85,
+              },
+            ],
           },
           {
             code: "62D05",
@@ -10100,23 +10191,23 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Above Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "B",
                 text: "Below Grade",
-                recResponse: 85
+                recResponse: 85,
               },
               {
                 code: "W",
                 text: "Above Water",
-                recResponse: 85
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 85,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 63,
@@ -10132,14 +10223,18 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 222,
     questions: [
       {
-        text: <p>What did the <b className="text-blue-400">lightning</b> strike?</p>,
+        text: (
+          <p>
+            What did the <b className="text-blue-400">lightning</b> strike?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Outside",
             display: "Outside strike",
             continue: true,
-            updateCode: "63B05"
+            updateCode: "63B05",
           },
           {
             answer: "Structure",
@@ -10150,23 +10245,27 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Vehicle",
             display: "Vehicle strike",
             continue: true,
-            updateCode: "63B06"
+            updateCode: "63B06",
           },
           {
             answer: "Unknown",
             display: "Unk what lightning struck",
             continue: true,
-            updateCode: "63B07"
-          }
-        ]
+            updateCode: "63B07",
+          },
+        ],
       },
 
       {
-        text: <p>Did the lightning hit <b>anything</b> outside?</p>,
+        text: (
+          <p>
+            Did the lightning hit <b>anything</b> outside?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Outside"
+          return lastAnswer === "Outside";
         },
         answers: [
           {
@@ -10178,7 +10277,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Outdoor Venue",
             display: "Outdoor venue hit",
             continue: true,
-            updateCode: "63C05"
+            updateCode: "63C05",
           },
           {
             answer: "Structure",
@@ -10189,91 +10288,99 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if anything struck outside",
             continue: true,
-            updateCode: "63B07"
-          }
-        ]
+            updateCode: "63B07",
+          },
+        ],
       },
 
       {
-        text: <p>What type of <b>structure</b> was hit?</p>,
+        text: (
+          <p>
+            What type of <b>structure</b> was hit?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return firstAnswer === "Structure" || lastAnswer === "Structure"
+          return firstAnswer === "Structure" || lastAnswer === "Structure";
         },
         answers: [
           {
             answer: "Residential (Single)",
             display: "Single-family residential",
             continue: true,
-            updateCode: "63B01"
+            updateCode: "63B01",
           },
           {
             answer: "Large Non-Dwelling Building/Structure",
             display: "Large non-dwelling",
             continue: true,
-            updateCode: "63B02"
+            updateCode: "63B02",
           },
           {
             answer: "Small Non-Dwelling Building/Structure",
             display: "Small non-dwelling",
             continue: true,
-            updateCode: "63B03"
+            updateCode: "63B03",
           },
           {
             answer: "Mobile Home",
             display: "Mobile home",
             continue: true,
-            updateCode: "63B04"
+            updateCode: "63B04",
           },
           {
             answer: "House Trailer",
             display: "House trailer",
             continue: true,
-            updateCode: "63B04"
+            updateCode: "63B04",
           },
           {
             answer: "Portable Office",
             display: "Portable office",
             continue: true,
-            updateCode: "63B04"
+            updateCode: "63B04",
           },
           {
             answer: "HIGH RISE",
             display: "High rise",
             continue: true,
-            updateCode: "63C02"
+            updateCode: "63C02",
           },
           {
             answer: "Comm/Ind Building",
             display: "Comm/Ind building",
             continue: true,
-            updateCode: "63C03"
+            updateCode: "63C03",
           },
           {
             answer: "Residential (Mult)",
             display: "Mult-family residential",
             continue: true,
-            updateCode: "63C04"
+            updateCode: "63C04",
           },
           {
             answer: "Outdoor Venue",
             display: "Outdoor venue",
             continue: true,
-            updateCode: "63C05"
+            updateCode: "63C05",
           },
           {
             answer: "Unknown",
             display: "Unk type of structure",
             continue: true,
-            updateCode: "63B07"
-          }
-        ]
+            updateCode: "63B07",
+          },
+        ],
       },
 
       {
-        text: <p>Is there a high <b className="text-red-400">life hazard</b>?</p>,
+        text: (
+          <p>
+            Is there a high <b className="text-red-400">life hazard</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10285,18 +10392,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "High life hazard",
             continue: true,
-            updateCode: "63C01"
+            updateCode: "63C01",
           },
           {
             answer: "Unknown",
             display: "Unk if life hazard present",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10308,22 +10419,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes - Single",
             display: "Single inj'd person rptd",
             continue: true,
-            updateSubCode: "X"
+            updateSubCode: "X",
           },
           {
             answer: "Yes - Multiple:",
             display: "{input} inj'd persons rptd",
             continue: true,
             input: true,
-            updateSubCode: "Y"
+            updateSubCode: "Y",
           },
           {
             answer: "Unknown",
             display: "Unk if inj'd persons",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -10337,14 +10448,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B02",
@@ -10354,14 +10465,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B03",
@@ -10371,14 +10482,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B04",
@@ -10388,14 +10499,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B05",
@@ -10405,14 +10516,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 225
+                recResponse: 225,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B06",
@@ -10422,14 +10533,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63B07",
@@ -10440,16 +10551,16 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
-          }
-        ]
+                recResponse: 224,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -10462,14 +10573,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63C01",
@@ -10479,14 +10590,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63C02",
@@ -10496,14 +10607,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63C03",
@@ -10513,14 +10624,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63C04",
@@ -10530,14 +10641,14 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
-              }
-            ]
+                recResponse: 224,
+              },
+            ],
           },
           {
             code: "63C05",
@@ -10547,17 +10658,866 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 223
+                recResponse: 223,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 224
+                recResponse: 224,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 64,
+    name: "Marine/Boat Fire",
+    shortName: "Marine/Boat Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 227,
+    questions: [
+      {
+        text: <p>Is the boat still <b className="text-red-400">on fire</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Fire confirmed",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Fire rptd out",
+            continue: true,
+            updateCode: "64B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if fire is present",
+            continue: true,
+            updateCode: "64B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the status of the boat?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Docked",
+            display: "Boat is docked",
+            continue: true,
+          },
+          {
+            answer: "Dry Dock",
+            display: "Boat is in dry dock",
+            continue: true,
+            updateCode: "64D01"
+          },
+          {
+            answer: "Beached",
+            display: "Boat is beached",
+            continue: true,
+          },
+          {
+            answer: "At Sea",
+            display: "Boat is at sea",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk status of boat",
+            continue: true,
+            updateCode: "64B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b className="text-blue-400">water</b> is the boat in?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer !== "Dry Dock"
+        },
+        answers: [
+          {
+            answer: "Coastal",
+            display: "Costal water",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "No") return undefined;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Docked") {
+                return { code: "64D02" }
+              } else if(lastAnswer === "Beached") {
+                return { code: "64D04" }
+              } else {
+                return { code: "64D06" }
               }
-            ]
+            },
+          },
+          {
+            answer: "Inland",
+            display: "Inland water",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "No") return undefined;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Docked") {
+                return { code: "64D03" }
+              } else if(lastAnswer === "Beached") {
+                return { code: "64D05" }
+              } else {
+                return { code: "64D08" }
+              }
+            },
+          },
+          {
+            answer: "Oceanic",
+            display: "Oceanic water",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes") {
+                return { code: "64D07" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of water",
+            continue: true,
+            updateCode: "64D08"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the <b>vessel</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Small (< 25ft)",
+            display: "Small vessel (< 25ft)",
+            continue: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Medium (25-49ft)",
+            display: "Medium vessel (25-49ft)",
+            continue: true,
+            updateSubCode: "M",
+          },
+          {
+            answer: "Large (>= 50ft)",
+            display: "Large vessel (>= 50ft)",
+            continue: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of vessel",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there anyone <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No inj'd persons rptd",
+            end: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single inj'd person rptd",
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Small (< 25ft)") {
+                return { subCode: "X" }
+              } else if(lastAnswer === "Medium (25-49ft)") {
+                return { subCode: "V" }
+              } else if(lastAnswer === "Large (>= 50ft)") {
+                return { subCode: "T" }
+              }
+            }
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} inj'd persons rptd",
+            end: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "Small (< 25ft)") {
+                return { subCode: "Y" }
+              } else if(lastAnswer === "Medium (25-49ft)") {
+                return { subCode: "W" }
+              } else if(lastAnswer === "Large (>= 50ft)") {
+                return { subCode: "U" }
+              } 
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if inj'd persons",
+            end: true,
           }
         ]
       }
-    ]
-  }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "64B01",
+            text: "Extinguished Fire",
+            recResponse: 227,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 227,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 227,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 227,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 228,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 229,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 228,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 229,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 228,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 229,
+              },
+            ],
+          },
+          {
+            code: "64B02",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 209,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 209,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 209,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 209,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 210,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 211,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 210,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 211,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 210,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 211,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "64D00",
+            text: "Override (Delta)",
+            recResponse: 230,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 230,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          },
+          {
+            code: "64D01",
+            text: "Threatened Building/Structure or Other Boats",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 233,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 233,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 233,
+              },
+            ],
+          },
+          {
+            code: "64D02",
+            text: "Docked in Costal Water",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          },
+          {
+            code: "64D03",
+            text: "Docked in Inland Water",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          },
+          {
+            code: "64D04",
+            text: "Beached in Costal Water",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          },
+          {
+            code: "64D05",
+            text: "Beached in Inland Water",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          },
+          {
+            code: "64D06",
+            text: "Costal Water",
+            recResponse: 234,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 234,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 234,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 234,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 234,
+              },
+            ],
+          },
+          {
+            code: "64D07",
+            text: "Oceanic Water",
+            recResponse: 234,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 234,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 234,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 234,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 234,
+              },
+            ],
+          },
+          {
+            code: "64D08",
+            text: "Inland Water",
+            recResponse: 234,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 234,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 234,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 234,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 234,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 234,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 234,
+              },
+            ],
+          },
+          {
+            code: "64D09",
+            text: "Dry Dock/On Land",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "L",
+                text: "Large >= 50ft (>=15m)",
+                recResponse: 233,
+              },
+              {
+                code: "M",
+                text: "Medium 25-49ft (8-14m)",
+                recResponse: 230,
+              },
+              {
+                code: "S",
+                text: "Small < 25ft (<8m)",
+                recResponse: 230,
+              },
+              {
+                code: "T",
+                text: "Large & Single Injured Person",
+                recResponse: 233,
+              },
+              {
+                code: "U",
+                text: "Large & Multiple Injured Persons",
+                recResponse: 233,
+              },
+              {
+                code: "V",
+                text: "Medium & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "W",
+                text: "Medium & Multiple Injured Persons",
+                recResponse: 232,
+              },
+              {
+                code: "X",
+                text: "Small & Single Injured Person",
+                recResponse: 231,
+              },
+              {
+                code: "Y",
+                text: "Small & Multiple Injured Persons",
+                recResponse: 232,
+              },
+            ],
+          }
+        ],
+      },
+    ],
+  },
 ];

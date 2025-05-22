@@ -4405,5 +4405,249 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       }
     ]
+  },
+  {
+    id: 227,
+    name: "SE",
+    incidentType: "FIRE|BOAT|OUT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 228,
+    name: "FC",
+    incidentType: "FIRE|BOAT|OUT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 229,
+    name: "FDMULTP",
+    incidentType: "FIRE|BOAT|OUT|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 230,
+    name: "FE",
+    incidentType: "FIRE|BOAT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 2
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 231,
+    name: "FF",
+    incidentType: "FIRE|BOAT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 2
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 232,
+    name: "FDMULTP",
+    incidentType: "FIRE|BOAT|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 2
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 2,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 233,
+    name: "FJ",
+    incidentType: "FIRE|BLDG",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      }
+    ]
+  },
+  {
+    id: 234,
+    name: "BOATFIRE",
+    incidentType: "FIRE|BOAT|WATER",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
   }
 ];
