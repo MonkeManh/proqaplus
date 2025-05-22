@@ -10685,7 +10685,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 227,
     questions: [
       {
-        text: <p>Is the boat still <b className="text-red-400">on fire</b>?</p>,
+        text: (
+          <p>
+            Is the boat still <b className="text-red-400">on fire</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10703,9 +10707,9 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if fire is present",
             continue: true,
-            updateCode: "64B02"
-          }
-        ]
+            updateCode: "64B02",
+          },
+        ],
       },
 
       {
@@ -10721,7 +10725,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Dry Dock",
             display: "Boat is in dry dock",
             continue: true,
-            updateCode: "64D01"
+            updateCode: "64D01",
           },
           {
             answer: "Beached",
@@ -10737,17 +10741,21 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk status of boat",
             continue: true,
-            updateCode: "64B02"
-          }
-        ]
+            updateCode: "64B02",
+          },
+        ],
       },
 
       {
-        text: <p>What type of <b className="text-blue-400">water</b> is the boat in?</p>,
+        text: (
+          <p>
+            What type of <b className="text-blue-400">water</b> is the boat in?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer !== "Dry Dock"
+          return lastAnswer !== "Dry Dock";
         },
         answers: [
           {
@@ -10756,14 +10764,14 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "No") return undefined;
+              if (firstAnswer === "No") return undefined;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Docked") {
-                return { code: "64D02" }
-              } else if(lastAnswer === "Beached") {
-                return { code: "64D04" }
+              if (lastAnswer === "Docked") {
+                return { code: "64D02" };
+              } else if (lastAnswer === "Beached") {
+                return { code: "64D04" };
               } else {
-                return { code: "64D06" }
+                return { code: "64D06" };
               }
             },
           },
@@ -10773,14 +10781,14 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "No") return undefined;
+              if (firstAnswer === "No") return undefined;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Docked") {
-                return { code: "64D03" }
-              } else if(lastAnswer === "Beached") {
-                return { code: "64D05" }
+              if (lastAnswer === "Docked") {
+                return { code: "64D03" };
+              } else if (lastAnswer === "Beached") {
+                return { code: "64D05" };
               } else {
-                return { code: "64D08" }
+                return { code: "64D08" };
               }
             },
           },
@@ -10790,22 +10798,26 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes") {
-                return { code: "64D07" }
+              if (firstAnswer === "Yes") {
+                return { code: "64D07" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk type of water",
             continue: true,
-            updateCode: "64D08"
-          }
-        ]
+            updateCode: "64D08",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>size</b> of the <b>vessel</b>?</p>,
+        text: (
+          <p>
+            What is the <b>size</b> of the <b>vessel</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10830,12 +10842,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk size of vessel",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is there anyone <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is there anyone <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -10849,14 +10865,14 @@ export const fireProtocols: IFireComplaint[] = [
             end: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Small (< 25ft)") {
-                return { subCode: "X" }
-              } else if(lastAnswer === "Medium (25-49ft)") {
-                return { subCode: "V" }
-              } else if(lastAnswer === "Large (>= 50ft)") {
-                return { subCode: "T" }
+              if (lastAnswer === "Small (< 25ft)") {
+                return { subCode: "X" };
+              } else if (lastAnswer === "Medium (25-49ft)") {
+                return { subCode: "V" };
+              } else if (lastAnswer === "Large (>= 50ft)") {
+                return { subCode: "T" };
               }
-            }
+            },
           },
           {
             answer: "Yes - Multiple:",
@@ -10865,22 +10881,22 @@ export const fireProtocols: IFireComplaint[] = [
             input: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "Small (< 25ft)") {
-                return { subCode: "Y" }
-              } else if(lastAnswer === "Medium (25-49ft)") {
-                return { subCode: "W" }
-              } else if(lastAnswer === "Large (>= 50ft)") {
-                return { subCode: "U" }
-              } 
-            }
+              if (lastAnswer === "Small (< 25ft)") {
+                return { subCode: "Y" };
+              } else if (lastAnswer === "Medium (25-49ft)") {
+                return { subCode: "W" };
+              } else if (lastAnswer === "Large (>= 50ft)") {
+                return { subCode: "U" };
+              }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -11515,7 +11531,7 @@ export const fireProtocols: IFireComplaint[] = [
                 recResponse: 232,
               },
             ],
-          }
+          },
         ],
       },
     ],
@@ -11534,7 +11550,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 235,
     questions: [
       {
-        text: <p>What type of <b>mutual aid</b> incident is this?</p>,
+        text: (
+          <p>
+            What type of <b>mutual aid</b> incident is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11551,20 +11571,20 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Station Coverage",
             display: "Station coverage",
             continue: true,
-            updateCode: "65A05"
+            updateCode: "65A05",
           },
           {
             answer: "Mutual Aid to Staging Area",
             display: "MA to staging area",
             continue: true,
-            updateCode: "65A06"
+            updateCode: "65A06",
           },
           {
             answer: "Unknown",
             display: "Unk type of mutual aid",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -11585,12 +11605,17 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk number of units",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are the units requested <b className="text-red-400">hot</b> or <b className="text-blue-400">cold</b>?</p>,
+        text: (
+          <p>
+            Are the units requested <b className="text-red-400">hot</b> or{" "}
+            <b className="text-blue-400">cold</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11600,16 +11625,28 @@ export const fireProtocols: IFireComplaint[] = [
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Single Unit") {
-                return { code: "65B01" }
-              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Single Unit") {
-                return { code: "65B02" }
-              } else if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Multiple Units") {
-                return { code: "65D01" }
-              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Multiple Units") {
-                return { code: "65D02" }
+              if (
+                firstAnswer === "Mutual Aid to Incident" &&
+                lastAnswer === "Single Unit"
+              ) {
+                return { code: "65B01" };
+              } else if (
+                firstAnswer === "Assist Outside Agency" &&
+                lastAnswer === "Single Unit"
+              ) {
+                return { code: "65B02" };
+              } else if (
+                firstAnswer === "Mutual Aid to Incident" &&
+                lastAnswer === "Multiple Units"
+              ) {
+                return { code: "65D01" };
+              } else if (
+                firstAnswer === "Assist Outside Agency" &&
+                lastAnswer === "Multiple Units"
+              ) {
+                return { code: "65D02" };
               }
-            }
+            },
           },
           {
             answer: "Cold",
@@ -11618,16 +11655,28 @@ export const fireProtocols: IFireComplaint[] = [
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Single Unit") {
-                return { code: "65A03" }
-              } else if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Multiple Units") {
-                return { code: "65A01" }
-              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Single Unit") {
-                return { code: "65A04" }
-              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Multiple Units") {
-                return { code: "65A02" }
+              if (
+                firstAnswer === "Mutual Aid to Incident" &&
+                lastAnswer === "Single Unit"
+              ) {
+                return { code: "65A03" };
+              } else if (
+                firstAnswer === "Mutual Aid to Incident" &&
+                lastAnswer === "Multiple Units"
+              ) {
+                return { code: "65A01" };
+              } else if (
+                firstAnswer === "Assist Outside Agency" &&
+                lastAnswer === "Single Unit"
+              ) {
+                return { code: "65A04" };
+              } else if (
+                firstAnswer === "Assist Outside Agency" &&
+                lastAnswer === "Multiple Units"
+              ) {
+                return { code: "65A02" };
               }
-            }
+            },
           },
           {
             answer: "Not Specified",
@@ -11638,12 +11687,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if hot or cold",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are the any <b>special instructions</b>?</p>,
+        text: (
+          <p>
+            Are the any <b>special instructions</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11661,6 +11714,207 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if special instructions",
             end: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "65A00",
+            text: "Override (Alpha)",
+            recResponse: 235,
+          },
+          {
+            code: "65A01",
+            text: "Mutual Aid to Incident (Mult Units-Cold)",
+            recResponse: 236,
+          },
+          {
+            code: "65A02",
+            text: "Assist Outside Agency (Mult Units-Cold)",
+            recResponse: 236,
+          },
+          {
+            code: "65A03",
+            text: "Mutual Aid to Incident (Single Unit-Cold)",
+            recResponse: 237,
+          },
+          {
+            code: "65A04",
+            text: "Assist Outside Agency (Single Unit-Cold)",
+            recResponse: 237,
+          },
+          {
+            code: "65A05",
+            text: "Mutual Aid Move-Up/Cover (Station Assignment)",
+            recResponse: 238,
+          },
+          {
+            code: "65A06",
+            text: "Mutual Aid to Staging Area",
+            recResponse: 239,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "65B00",
+            text: "Override (Bravo)",
+            recResponse: 240,
+          },
+          {
+            code: "65B01",
+            text: "Mutual Aid to Incident (Single Unit-Hot)",
+            recResponse: 241,
+          },
+          {
+            code: "65B02",
+            text: "Assist Outside Agency (Single Unit-Hot)",
+            recResponse: 241,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "65D00",
+            text: "Override (Delta)",
+            recResponse: 242,
+          },
+          {
+            code: "65D01",
+            text: "Mutual Aid to Incident (Mult Units-Hot)",
+            recResponse: 240,
+          },
+          {
+            code: "65D02",
+            text: "Assist Outside Agency (Mult Units-Hot)",
+            recResponse: 240,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 66,
+    name: "Odor (Strange/Unkn)",
+    shortName: "Unknown Odors",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 3 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 243,
+    questions: [
+      {
+        text: <p><b>Where</b> is the <b className="text-yellow-400">odor</b> located?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Inside:",
+            display: "Located inside - {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Outside:",
+            display: "Located outside - {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk location of odor",
+            continue: true,
+            updateCode: "66A03",
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat involved",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Hazmat involved - {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "H"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat involved",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone sick or experiencing symptoms <small className="text-blue-400">(Nausea, Vomiting, Headache)</small>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick persons rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Inside:") {
+                return { code: "66A01" };
+              } else if(firstAnswer === "Outside:") {
+                return { code: "66A02" };
+              }
+            }
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick person rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Inside:") {
+                return { code: "66C01" };
+              } else if(firstAnswer === "Outside:") {
+                return { code: "66C03" };
+              } else {
+                return { code: "66B01" };
+              }
+            }
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick persons rptd",
+            continue: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Inside:") {
+                return { code: "66C02" };
+              } else if(firstAnswer === "Outside:") {
+                return { code: "66C04" };
+              } else {
+                return { code: "66B01" };
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick persons",
+            continue: true,
           }
         ]
       }
@@ -11670,82 +11924,138 @@ export const fireProtocols: IFireComplaint[] = [
         priority: "A",
         determinants: [
           {
-            code: "65A00",
-            text: "Override (Alpha)",
-            recResponse: 235
+            code: "66A01",
+            text: "Odor Inside",
+            recResponse: 243,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 244,
+              },
+            ],
           },
           {
-            code: "65A01",
-            text: "Mutual Aid to Incident (Mult Units-Cold)",
-            recResponse: 236
+            code: "66A02",
+            text: "Odor Outside",
+            recResponse: 243,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 244,
+              },
+            ],
           },
           {
-            code: "65A02",
-            text: "Assist Outside Agency (Mult Units-Cold)",
-            recResponse: 236
+            code: "66A03",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 243,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 244,
+              },
+            ],
           },
-          {
-            code: "65A03",
-            text: "Mutual Aid to Incident (Single Unit-Cold)",
-            recResponse: 237
-          },
-          {
-            code: "65A04",
-            text: "Assist Outside Agency (Single Unit-Cold)",
-            recResponse: 237
-          },
-          {
-            code: "65A05",
-            text: "Mutual Aid Move-Up/Cover (Station Assignment)",
-            recResponse: 238
-          },
-          {
-            code: "65A06",
-            text: "Mutual Aid to Staging Area",
-            recResponse: 239
-          }
-        ]
+        ],
       },
       {
         priority: "B",
         determinants: [
           {
-            code: "65B00",
+            code: "66B00",
             text: "Override (Bravo)",
-            recResponse: 240
+            recResponse: 245,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
           },
           {
-            code: "65B01",
-            text: "Mutual Aid to Incident (Single Unit-Hot)",
-            recResponse: 241
+            code: "66B01",
+            text: "Unkn Situation (Investigation) w/ Sick Person(s)",
+            recResponse: 245,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
           },
-          {
-            code: "65B02",
-            text: "Assist Outside Agency (Single Unit-Hot)",
-            recResponse: 241
-          },
-        ]
+        ],
       },
       {
-        priority: "D",
+        priority: "C",
         determinants: [
           {
-            code: "65D00",
-            text: "Override (Delta)",
-            recResponse: 242
+            code: "66C00",
+            text: "Override (Charlie)",
+            recResponse: 245,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
           },
           {
-            code: "65D01",
-            text: "Mutual Aid to Incident (Mult Units-Hot)",
-            recResponse: 240
+            code: "66C01",
+            text: "Odor Inside w/ Single Sick Person",
+            recResponse: 245,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
           },
           {
-            code: "65D02",
-            text: "Assist Outside Agency (Mult Units-Hot)",
-            recResponse: 240
-          }
-        ]
-      }
-    ]
-  }
+            code: "66C02",
+            text: "Odor Inside w/ Multiple Sick Persons",
+            recResponse: 246,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
+          },
+          {
+            code: "66C03",
+            text: "Odor Outside w/ Single Sick Person",
+            recResponse: 245,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
+          },
+          {
+            code: "66C04",
+            text: "Odor Outside w/ Multiple Sick Persons",
+            recResponse: 246,
+            subCodes: [
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 19,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];

@@ -4703,8 +4703,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Truck",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 239,
@@ -4718,8 +4718,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Truck",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 240,
@@ -4733,8 +4733,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Truck",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 241,
@@ -4744,8 +4744,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Engine",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 242,
@@ -4758,8 +4758,80 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Truck",
-        quantity: 2
-      }
-    ]
-  }
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 243,
+    name: "SE",
+    incidentType: "ODOR|UNK|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 244,
+    name: "HMINVEST",
+    incidentType: "HM|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 245,
+    name: "FG",
+    incidentType: "ODOR|UNK|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 246,
+    name: "FDMULTP",
+    incidentType: "ODOR|UNK|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
 ];
