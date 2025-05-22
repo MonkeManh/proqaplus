@@ -8307,7 +8307,271 @@ export const fireProtocols: IFireComplaint[] = [
     ],
     defaultPriority: 3,
     defaultPlan: 200,
-    questions: [],
+    questions: [
+      {
+        text: <p>Do you know where the leak is? (Is coming from)?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Leak located",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Unk where leak is",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there an <b>odor</b> of gas (or other)?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "No"
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Odor present",
+            continue: true,
+            updateSubCode: "O",
+          },
+          {
+            answer: "No",
+            display: "No odor present",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if odor present",
+            continue: true,
+            updateCode: "60B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>Where is the <b>leak</b> (odor) coming from?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Outside (General)",
+            display: "Odor outside",
+            continue: true,
+            updateCode: "60B03"
+          },
+          {
+            answer: "Outside Line",
+            display: "Coming frm outside line",
+            continue: true,
+          },
+          {
+            answer: "Outside Tank",
+            display: "Coming frm outside tank",
+            continue: true,
+          },
+          {
+            answer: "Dwelling",
+            display: "Coming frm dwelling",
+            continue: true,
+          },
+          {
+            answer: "Transmission/Distribution Line",
+            display: "Coming frm transmission/distribution line",
+            continue: true,
+            updateCode: "60C04"
+          },
+          {
+            answer: "High-Pressure Line",
+            display: "Coming frm high-pressure line",
+            continue: true,
+            updateCode: "60C05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where leak is coming from",
+            continue: true,
+            updateCode: "60B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of outside line is it?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Outside Line";
+        },
+        answers: [
+          {
+            answer: "Residential",
+            display: "Residential line",
+            continue: true,
+            updateCode: "60B01"
+          },
+          {
+            answer: "Commercial",
+            display: "Comm line",
+            continue: true,
+            updateCode: "60C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of outside line",
+            continue: true,
+            updateCode: "60B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the tank?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Outside Tank";
+        },
+        answers: [
+          {
+            answer: "<= 5 Gallons",
+            display: "Tank <= 5 gallons",
+            continue: true,
+            updateCode: "60B02"
+          },
+          {
+            answer: "> 5 Gallons",
+            display: "Tank > 5 gallons",
+            continue: true,
+            updateCode: "60C03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of tank",
+            continue: true,
+            updateCode: "60B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of dwelling is the <b>leak (odor)</b> coming from?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Dwelling";
+        },
+        answers: [
+          {
+            answer: "Residential (Single)",
+            display: "Single-family residential",
+            continue: true,
+            updateCode: "60C01"
+          },
+          {
+            answer: "Residential (Multi)",
+            display: "Multi-family residential",
+            continue: true,
+            updateCode: "60D04"
+          },
+          {
+            answer: "HIGH RISE",
+            display: "High-rise dwelling",
+            continue: true,
+            updateCode: "60D02"
+          },
+          {
+            answer: "Commercial",
+            display: "Commercial dwelling",
+            continue: true,
+            updateCode: "60D03"
+          },
+          {
+            answer: "Industrial",
+            display: "Industrial dwelling",
+            continue: true,
+            updateCode: "60D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of dwelling",
+            continue: true,
+            updateCode: "60B04"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there a high <b className="text-red-400">LIFE HAZARD</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No life hazard ID'd",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Life hazard present",
+            continue: true,
+            updateCode: "60D01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if life hazard present",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick/inj'd persons rptd",
+            end: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person rptd",
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const secondAnswer = answers?.[1]?.defaultAnswer;
+              if(firstAnswer === "No" && secondAnswer === "Yes") {
+                return { subCode: "V" }
+              } else {
+                return { subCode: "X" }
+              }
+            },
+            end: true
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick/inj'd persons rptd",
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const secondAnswer = answers?.[1]?.defaultAnswer;
+              if(firstAnswer === "No" && secondAnswer === "Yes") {
+                return { subCode: "W" }
+              } else {
+                return { subCode: "Y" }
+              }
+            },
+            end: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            end: true,
+          }
+        ]
+      }
+    ],
     availableDeterminants: [
       {
         priority: "B",
