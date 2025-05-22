@@ -4709,10 +4709,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Basin Dr",
-      crossStreet1: "Beaver Trail",
-      crossStreet2: "N. Calfia Way",
+      availableRoads: {
+        "Basin Dr": {
+          crossStreet1: "Beaver Trail",
+          crossStreet2: "N. Calfia Way",
+        },
+        "Beaver Trail": {
+          crossStreet1: "Basin Dr",
+          crossStreet2: "Cassidy Trail",
+        }
+      }
     },
   },
   {

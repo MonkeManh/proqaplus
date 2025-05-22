@@ -9868,5 +9868,254 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 62,
+    name: "High Angle Rescue",
+    shortName: "High Angle Rescue",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 210,
+    questions: [
+      {
+        text: <p>How many people are injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "None",
+            display: "No sick/inj'd persons rptd",
+            continue: true,
+            updateCode: "62D01"
+          },
+          {
+            answer: "Single Person",
+            display: "Single sick/inj'd person rptd",
+            continue: true,
+            updateCode: "62D03"
+          },
+          {
+            answer: "Multiple Persons:",
+            display: "{input} sick/inj'd persons rptd",
+            continue: true,
+            input: true,
+            updateCode: "62D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            continue: true,
+            updateCode: "62D05"
+          }
+        ]
+      },
+      
+      {
+        text: <p>What is the <b>location</b> of the <b>incident</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Above Grade",
+            display: "Incident above grade",
+            end: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Below Grade",
+            display: "Incident below grade",
+            end: true,
+            updateSubCode: "B"
+          },
+          {
+            answer: "Above Water",
+            display: "Incident above water",
+            end: true,
+            updateSubCode: "W"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk location of incident",
+            end: true
+          }
+        ]
+      },
+      
+      {
+        text: <p>Is the person(s) suicidal?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No suicidal persons rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Suicidal person rptd",
+            continue: true,
+            updateCode: "62D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if suicidal persons",
+            continue: true,
+            updateCode: "62B01"
+          }
+        ]
+      },
+
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "62B01",
+            text: "Unkn Situation (Investigation)",
+            defaultCode: true,
+            recResponse: 210
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "62C00",
+            text: "Override (Charlie)",
+            recResponse: 85
+          },
+          {
+            code: "62C01",
+            text: "Unkn Situation (Suicidal w/ Injs)",
+            recResponse: 85
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "62D00",
+            text: "Override (Delta)",
+            recResponse: 85
+          },
+          {
+            code: "62D01",
+            text: "High Angle Rescue",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Grade",
+                recResponse: 85
+              },
+              {
+                code: "B",
+                text: "Below Grade",
+                recResponse: 85
+              },
+              {
+                code: "W",
+                text: "Above Water",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "62D02",
+            text: "High Angle Rescue (Suicidal Person)",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Grade",
+                recResponse: 85
+              },
+              {
+                code: "B",
+                text: "Below Grade",
+                recResponse: 85
+              },
+              {
+                code: "W",
+                text: "Above Water",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "62D03",
+            text: "High Angle Rescue w/ Single Injured Person",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Grade",
+                recResponse: 85
+              },
+              {
+                code: "B",
+                text: "Below Grade",
+                recResponse: 85
+              },
+              {
+                code: "W",
+                text: "Above Water",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "62D04",
+            text: "High Angle Rescue w/ Mult Injured Persons",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Grade",
+                recResponse: 85
+              },
+              {
+                code: "B",
+                text: "Below Grade",
+                recResponse: 85
+              },
+              {
+                code: "W",
+                text: "Above Water",
+                recResponse: 85
+              }
+            ]
+          },
+          {
+            code: "62D05",
+            text: "High Angle Rescue w/ Unkn Number of Injs",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "A",
+                text: "Above Grade",
+                recResponse: 85
+              },
+              {
+                code: "B",
+                text: "Below Grade",
+                recResponse: 85
+              },
+              {
+                code: "W",
+                text: "Above Water",
+                recResponse: 85
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];

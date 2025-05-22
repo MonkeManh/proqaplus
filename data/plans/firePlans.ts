@@ -4314,5 +4314,5 @@ export const firePlans: IResponsePlan[] = [
         quantity: 2,
       }
     ]
-  }
+  },
 ];
