@@ -21605,5 +21605,275 @@ export const emsComplaints: IEMSComplaint[] = [
         ],
       },
     ],
+  },
+  {
+    protocol: 34,
+    name: "Automatic Crash Notification (ACN)",
+    shortName: "Crash Notification",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: 3 },
+      { name: "Fire", priority: 3 },
+      { name: "Police", priority: true }
+    ],
+    defaultPriority: 3,
+    defaultPlan: 168,
+    questions: [
+      {
+        text: <p>Button push, airbag deploy, or other automatic sensor?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Airbag",
+            display: "Airbag sensor",
+            continue: true,
+            updateCode: "34B04"
+          },
+          {
+            answer: "Button push",
+            display: "Button push notification",
+            continue: true,
+            updateCode: "34B04"
+          },
+          {
+            answer: "Other automatic sensor",
+            display: "Other automatic sensor",
+            continue: true,
+            updateCode: "34B04"
+          },
+          {
+            answer: "Other:",
+            display: "{input}",
+            continue: true,
+            updateCode: "34B04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk situation",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b>voice contact</b> inside the vehicle?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Voice contact",
+            continue: true
+          },
+          {
+            answer: "No contact at all",
+            display: "No voice contact",
+            continue: true
+          },
+          {
+            answer: "Yes - critical noise(s) heard",
+            display: "Critical noises heard",
+            continue: true,
+            updateCode: "34D04"
+          },
+          {
+            answer: "Yes - normal voice(s) heard",
+            display: "Normal voices heard",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any injuries?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Yes - normal voice(s) heard"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            updateCode: "34O01",
+            end: true,
+            override: true
+          },
+          {
+            answer: "Yes",
+            display: "Injs rptd",
+            updateCode: "34B01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Any vehicle descriptions?</p>,
+        questionType: 'select',
+        answers: [
+          {
+            answer: "Description:",
+            display: "Vehicles: {input}",
+            end: true,
+            input: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk vehicle description(s)",
+            end: true
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "34O01",
+            text: "No Injuries",
+            recResponse: 169
+          }
+        ]
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "34A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 168
+          },
+          {
+            code: "34A01",
+            text: "Not Dangerous Injs (1st party)",
+            recResponse: 168
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "34B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 168
+          },
+          {
+            code: "34B01",
+            text: "Injuries",
+            recResponse: 168
+          },
+          {
+            code: "34B02",
+            text: "Mult Victims (One Unit)",
+            recResponse: 168
+          },
+          {
+            code: "34B03",
+            text: "Mulitple Victims",
+            recResponse: 170
+          },
+          {
+            code: "34B04",
+            text: "Air Bag/Other Automatic Sensor",
+            recResponse: 168
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "34D00",
+            text: "ALS Override (Delta)",
+            recResponse: 171
+          },
+          {
+            code: "34D01",
+            text: "Arrest",
+            recResponse: 173,
+            notBreathing: true
+          },
+          {
+            code: "34D02",
+            text: "Unconscious",
+            recResponse: 173,
+            notConscious: true
+          },
+          {
+            code: "34D03",
+            text: "High Mechanism",
+            recResponse: 180,
+            subCodes: [
+              {
+                code: "i",
+                text: "Auto vs. Bicycle",
+                recResponse: 179
+              },
+              {
+                code: "k",
+                text: "All-Terrain/Snowmobile",
+                recResponse: 180
+              },
+              {
+                code: "l",
+                text: "Auto vs. Motorcycle",
+                recResponse: 179
+              },
+              {
+                code: "m",
+                text: "Auto vs. Pedestrain",
+                recResponse: 181
+              },
+              {
+                code: "n",
+                text: "Ejection",
+                recResponse: 182
+              },
+              {
+                code: "o",
+                text: "Personal Watercraft",
+                recResponse: 177
+              },
+              {
+                code: "p",
+                text: "Rollovers",
+                recResponse: 183
+              },
+              {
+                code: "q",
+                text: "Vehicle Off Bridge/Height",
+                recResponse: 184
+              },
+              {
+                code: "r",
+                text: "Possible Death at Scene",
+                recResponse: 173
+              },
+              {
+                code: "s",
+                text: "Sinking Vehicle/Vehicle in Floodwater",
+                recResponse: 185
+              },
+              {
+                code: "t",
+                text: "Train/Light Rail vs. Pedestrian",
+                recResponse: 186
+              }
+            ]
+          },
+          {
+            code: "34D04",
+            text: "Life Status Questionable",
+            recResponse: 173
+          }
+        ]
+      },
+    ]
   }
 ];
