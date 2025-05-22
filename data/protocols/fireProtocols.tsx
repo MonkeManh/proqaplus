@@ -9070,5 +9070,803 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 61,
+    name: "Hazmat",
+    shortName: "Hazmat",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 3 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 184,
+    questions: [
+      {
+        text: <p>What <b>type</b> of <span className="text-green-400">hazmat</span> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Biological",
+            display: "Biological hazmat",
+            continue: true,
+          },
+          {
+            answer: "Chemical",
+            display: "Chemical hazmat",
+            continue: true,
+          },
+          {
+            answer: "Nuclear",
+            display: "Nuclear hazmat",
+            continue: true,
+          },
+          {
+            answer: "Radiological",
+            display: "Radiological hazmat",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "{input} hazmat",
+            continue: true,
+            input: true
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of hazmat",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b className="text-green-400">hazmat</b> <b>contained</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Hazmat contained",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Hazmat not contained",
+            continue: true,
+            updateCode: "61D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat contained",
+            continue: true,
+            updateCode: "61C00"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the incident?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Yes"
+        },
+        answers: [
+          {
+            answer: "Abandoned Waste only",
+            display: "Abandoned waste only",
+            continue: true,
+            updateCode: "61A01"
+          },
+          {
+            answer: "Small Spill (<= 5 Gallons/20 Liters)",
+            display: "Small spill rptd",
+            continue: true,
+            updateCode: "61B01"
+          },
+          {
+            answer: "Large Spill (> 5 Gallons/20 Liters)",
+            display: "Large spill rptd",
+            continue: true,
+            updateCode: "61C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of incident",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b className="text-green-400">hazmat</b> threatening any <b className="text-blue-400">waterways</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No waterways threatened",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Waterways threatened",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(lastAnswer === "No") {
+                return { code: "61D01" }
+              } else {
+                return { code: "61C02" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if waterways threatened",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of <b className="text-blue-400">waterway</b> is threatened?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Yes"
+        },
+        answers: [
+          {
+            answer: "Costal Water",
+            display: "Costal waterway involved",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
+              if(targetAnswer === "No") {
+                return { code: "61D03" }
+              }
+            }
+          },
+          {
+            answer: "Inland Water",
+            display: "Inland waterway involved",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
+              if(targetAnswer === "No") {
+                return { code: "61D04" }
+              }
+            }
+          },
+          {
+            answer: "Oceanic Water",
+            display: "Oceanic waterway involved",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
+              if(targetAnswer === "No") {
+                return { code: "61D05" }
+              }
+            }
+          },
+          {
+            answer: "Sewer/Drain",
+            display: "Sewer/Drain involved",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is the hazmat contained?")?.defaultAnswer;
+              if(targetAnswer === "No") {
+                return { code: "61D06" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of waterway",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick/inj'd persons rptd",
+            end: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person rptd",
+            end: true,
+            updateSubCode: "V"
+          },
+          {
+            answer: "Yes - Two",
+            display: "2 sick/inj'd persons rptd",
+            end: true,
+            updateSubCode: "W"
+          },
+          {
+            answer: "MCI Level I (3-8 pts):",
+            display: "{input} sick/inj'd persons rptd",
+            end: true,
+            input: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "MCI Level II (9-20 pts):",
+            display: "{input} sick/inj'd persons rptd",
+            end: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "MCI Level III (> 20 pts):",
+            display: "{input} sick/inj'd persons rptd",
+            end: true,
+            input: true,
+            updateSubCode: "Z"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "61A01",
+            text: "Abandoned Waste",
+            recResponse: 184,
+            subCodes: [
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 184
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 19
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 19
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 19
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 19
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "61B00",
+            text: "Override (Bravo)",
+            recResponse: 184,
+            subCodes: [
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 19
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 19
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 19
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 19
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 19
+              }
+            ]
+          },
+          {
+            code: "61B01",
+            text: "Small Spill (<= 5 Gallons/20 Liters)",
+            recResponse: 216,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 216
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 216
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 217
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 217
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 217
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 217
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 217
+              }
+            ]
+          },
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "61C00",
+            text: "Override (Charlie)",
+            recResponse: 217,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 217
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 217
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 217
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 217
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 217
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 217
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 217
+              }
+            ]
+          },
+          {
+            code: "61C01",
+            text: "Contained Hazmat",
+            recResponse: 218,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 218
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 218
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 218
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 219
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 219
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 219
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 219
+              }
+            ]
+          },
+          {
+            code: "61C02",
+            text: "Contained In/Near Other Waterway",
+            recResponse: 218,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 218
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 218
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 218
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 219
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 219
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 219
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 219
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "61D00",
+            text: "Override (Delta)",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D01",
+            text: "Uncontained In/Near Other Waterway",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D02",
+            text: "Uncontained Hazmat",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D03",
+            text: "In/Near Costal Water",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D04",
+            text: "In/Near Inland Water",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D05",
+            text: "In/Near Oceanic Water",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          },
+          {
+            code: "61D06",
+            text: "In/Near Sewer Drain",
+            recResponse: 220,
+            subCodes: [
+              {
+                code: "D",
+                text: "Drug Lab",
+                recResponse: 220
+              },
+              {
+                code: "S",
+                text: "Chemical Suicide",
+                recResponse: 220
+              },
+              {
+                code: "V",
+                text: "Single Sick/Injured Person",
+                recResponse: 220
+              },
+              {
+                code: "W",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 221
+              },
+              {
+                code: "X",
+                text: "MCI Level I",
+                recResponse: 221
+              },
+              {
+                code: "Y",
+                text: "MCI Level II",
+                recResponse: 221
+              },
+              {
+                code: "Z",
+                text: "MCI Level III",
+                recResponse: 221
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];

@@ -143,7 +143,7 @@ export default function FireSummaryPage() {
               }`
             : ""
         }`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${township && `, ${township}`}${
+        `Location: ${dispatchData.postal} ${dispatchData.street}${township ? `, ${township}` : ""}${
           dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""
         }`,
         `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
