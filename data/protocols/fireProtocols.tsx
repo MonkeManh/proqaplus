@@ -11520,4 +11520,232 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 65,
+    name: "Mutual Aid/Assist Outside Agency",
+    shortName: "Muautal Aid",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 235,
+    questions: [
+      {
+        text: <p>What type of <b>mutual aid</b> incident is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Mutual Aid to Incident",
+            display: "MA to incident",
+            continue: true,
+          },
+          {
+            answer: "Assist Outside Agency",
+            display: "Assist outside agency",
+            continue: true,
+          },
+          {
+            answer: "Station Coverage",
+            display: "Station coverage",
+            continue: true,
+            updateCode: "65A05"
+          },
+          {
+            answer: "Mutual Aid to Staging Area",
+            display: "MA to staging area",
+            continue: true,
+            updateCode: "65A06"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of mutual aid",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>How many units are responding?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single Unit",
+            display: "Single unit response",
+            continue: true,
+          },
+          {
+            answer: "Multiple Units",
+            display: "Multiple unit response",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk number of units",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are the units requested <b className="text-red-400">hot</b> or <b className="text-blue-400">cold</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Hot",
+            display: "Hot response requested",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Single Unit") {
+                return { code: "65B01" }
+              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Single Unit") {
+                return { code: "65B02" }
+              } else if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Multiple Units") {
+                return { code: "65D01" }
+              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Multiple Units") {
+                return { code: "65D02" }
+              }
+            }
+          },
+          {
+            answer: "Cold",
+            display: "Cold response requested",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Single Unit") {
+                return { code: "65A03" }
+              } else if(firstAnswer === "Mutual Aid to Incident" && lastAnswer === "Multiple Units") {
+                return { code: "65A01" }
+              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Single Unit") {
+                return { code: "65A04" }
+              } else if(firstAnswer === "Assist Outside Agency" && lastAnswer === "Multiple Units") {
+                return { code: "65A02" }
+              }
+            }
+          },
+          {
+            answer: "Not Specified",
+            display: "Response mode not specified",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hot or cold",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are the any <b>special instructions</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No special instructions/details",
+            end: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Special instructions: {input}",
+            end: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if special instructions",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "65A00",
+            text: "Override (Alpha)",
+            recResponse: 235
+          },
+          {
+            code: "65A01",
+            text: "Mutual Aid to Incident (Mult Units-Cold)",
+            recResponse: 236
+          },
+          {
+            code: "65A02",
+            text: "Assist Outside Agency (Mult Units-Cold)",
+            recResponse: 236
+          },
+          {
+            code: "65A03",
+            text: "Mutual Aid to Incident (Single Unit-Cold)",
+            recResponse: 237
+          },
+          {
+            code: "65A04",
+            text: "Assist Outside Agency (Single Unit-Cold)",
+            recResponse: 237
+          },
+          {
+            code: "65A05",
+            text: "Mutual Aid Move-Up/Cover (Station Assignment)",
+            recResponse: 238
+          },
+          {
+            code: "65A06",
+            text: "Mutual Aid to Staging Area",
+            recResponse: 239
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "65B00",
+            text: "Override (Bravo)",
+            recResponse: 240
+          },
+          {
+            code: "65B01",
+            text: "Mutual Aid to Incident (Single Unit-Hot)",
+            recResponse: 241
+          },
+          {
+            code: "65B02",
+            text: "Assist Outside Agency (Single Unit-Hot)",
+            recResponse: 241
+          },
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "65D00",
+            text: "Override (Delta)",
+            recResponse: 242
+          },
+          {
+            code: "65D01",
+            text: "Mutual Aid to Incident (Mult Units-Hot)",
+            recResponse: 240
+          },
+          {
+            code: "65D02",
+            text: "Assist Outside Agency (Mult Units-Hot)",
+            recResponse: 240
+          }
+        ]
+      }
+    ]
+  }
 ];
