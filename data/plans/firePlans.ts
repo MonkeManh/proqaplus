@@ -5102,4 +5102,26 @@ export const firePlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 259,
+    name: "SE",
+    incidentType: "INVEST|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 260,
+    name: "SE",
+    incidentType: "SMOKE|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
 ];

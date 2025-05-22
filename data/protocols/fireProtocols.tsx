@@ -13079,5 +13079,192 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 68,
+    name: "Smoke Investigation (Outside)",
+    shortName: "Smoke Investigation (Outside)",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 259,
+    questions: [
+      {
+        text: <p>Can you see <b>smoke</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No smoke rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Smoke rptd",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if smoke",
+            continue: true,
+            updateCode: "68A03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there an <b>odor</b> of smoke?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "No"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No odor of smoke rptd",
+            continue: true,
+            updateCode: "68A03"
+          },
+          {
+            answer: "Yes",
+            display: "Odor of smoke rptd",
+            continue: true,
+            updateCode: "68A02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if odor of smoke",
+            continue: true,
+            updateCode: "68A03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Where is the <b>odor</b> coming from?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is there an odor of smoke?")?.defaultAnswer;
+          return targetAnswer === "Yes"
+        },
+        answers: [
+          {
+            answer: "Outside:",
+            display: "Odor coming from {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Structure",
+            display: "Odor coming from structure",
+            goto: 69
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where odor is coming from",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Where is the <b>smoke</b> coming from?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Yes";
+        },
+        answers: [
+          {
+            answer: "Outside:",
+            display: "Smoke is coming from {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Structure",
+            display: "Smoke coming from structure",
+            goto: 69
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where smoke is coming from",
+            continue: true,
+            updateCode: "68A03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are <b>you</b> able to see <b>through</b> the smoke?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Yes";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Light smoke rptd",
+            continue: true,
+            updateCode: "68A01"
+          },
+          {
+            answer: "No",
+            display: "Heavy smoke rptd",
+            continue: true,
+            updateCode: "68C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of smoke",
+            continue: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "68A01",
+            text: "Light Smoke",
+            recResponse: 259
+          },
+          {
+            code: "68A02",
+            text: "Odor of Smoke",
+            recResponse: 259
+          },
+          {
+            code: "68A03",
+            text: "Unkn Situation (Investigation)",
+            defaultCode: true,
+            recResponse: 259,
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "68C00",
+            text: "Override (Charlie)",
+            recResponse: 260
+          },
+          {
+            code: "68C01",
+            text: "Heavy Smoke",
+            recResponse: 260
+          }
+        ]
+      }
+    ]
   }
 ];
