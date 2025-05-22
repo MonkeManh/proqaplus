@@ -12058,4 +12058,1026 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 67,
+    name: "Outside/Other Fires",
+    shortName: "Outside/Other Fires",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: undefined },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 247,
+    questions: [
+      {
+        text: <p>What exactly is on <b className="text-red-400">fire</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "General Outside",
+            display: "General outside fire",
+            continue: true,
+          },
+          {
+            answer: "Trash",
+            display: "Trash fire",
+            continue: true,
+          },
+          {
+            answer: "Grass/Wildland",
+            display: "Grass/wildland fire",
+            goto: 82
+          },
+          {
+            answer: "Elevated Structure",
+            display: "Elevated structure fire",
+            continue: true,
+          },
+          {
+            answer: "PERSON",
+            display: "Person on fire",
+            end: true,
+            updateCode: "67E01"
+          },
+          {
+            answer: "Extinguished Now",
+            display: "Extinguished fire",
+            updateCode: "67A01",
+            end: true,
+          },
+          {
+            answer: "Illegal Burning",
+            display: "Illegal burning",
+            continue: true,
+            updateCode: "67A02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of fire",
+            continue: true,
+            updateCode: "67B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the elevated structure?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Elevated Structure"
+        },
+        answers: [
+          {
+            answer: "Small",
+            display: "Small elevated structure",
+            continue: true,
+            updateCode: "67C01"
+          },
+          {
+            answer: "Large",
+            display: "Large elevated structure",
+            continue: true,
+            updateCode: "67D01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of elevated structure",
+            continue: true,
+            updateCode: "67D01"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the <b className="text-red-400">fire</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer !== "Elevated Structure"
+        },
+        answers: [
+          {
+            answer: "Small (< 1 Acre)",
+            display: "Small fire (< 1 Acre)",
+            continue: true,
+            updateCode: "67B01"
+          },
+          {
+            answer: "Large (>= 1 Acre)",
+            display: "Large fire (>= 1 Acre)",
+            continue: true,
+            updateCode: "67D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of fire",
+            continue: true,
+            updateCode: "67B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Hazmat involved - {input}",
+            continue: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const answer = answers?.find((a) => a.defaultQuestion === "What is the size of the fire?")?.defaultAnswer;
+              if (answer === "Small (< 1 Acre)") {
+                return { code: "67B02" }
+              } else if (answer === "Large (>= 1 Acre)") {
+                return { code: "67D03" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat involved",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b className="text-red-400">trapped</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one trapped",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Person(s) rptd trapped",
+            continue: true,
+            updateSubCode: "T"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person(s) trapped",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b className="text-red-400">threatened</b> or <b className="text-red-400">in danger</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No-one/nothing threatened",
+            continue: true,
+          },
+          {
+            answer: "Animals",
+            display: "Animals threatened",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Buildings (Non-Residential)",
+            display: "Buildings (Non-Residential) threatened",
+            continue: true,
+            updateSubCode: "B"
+          },
+          {
+            answer: "People",
+            display: "People in danger",
+            continue: true,
+            updateSubCode: "P"
+          },
+          {
+            answer: "Residential",
+            display: "Residential threatened",
+            continue: true,
+            updateSubCode: "R"
+          },
+          {
+            answer: "Other:",
+            display: "{input} threatened",
+            continue: true,
+            input: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anything threatened",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there anyone <b>sick</b> or <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick/inj'd persons rptd",
+            end: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person rptd",
+            end: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick/inj'd persons rptd",
+            end: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "67A01",
+            text: "Extinguished Fire (1st/2nd Party)",
+            recResponse: 247,
+            subCodes: [
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 247
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "67A02",
+            text: "Illegal Burning",
+            recResponse: 34,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 247
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 250
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 247
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 247
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 250
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 247
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 247
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "67B00",
+            text: "Override (Bravo)",
+            recResponse: 247,
+            subCodes: [
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 247
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "67B01",
+            text: "Small Outside Fire",
+            recResponse: 247,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 247
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 250
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 250
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 247
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 250
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 247
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 247
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "67B02",
+            text: "Small Outside Fire w/ Hazardous Materials",
+            recResponse: 251,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 251
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 251
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 251
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 251
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 251
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 251
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 251
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 251
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 251
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 251
+              }
+            ]
+          },
+          {
+            code: "67B03",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 209,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 209
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 209
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 209
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 209
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 209
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 209
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 209
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 209
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 210
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 211
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "67C00",
+            text: "Override (Charlie)",
+            recResponse: 250,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 250
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 250
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 250
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 250
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 250
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 250
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 250
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 250
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 252
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "67C01",
+            text: "Small Elevated Structures",
+            recResponse: 253,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 253
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 253
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 253
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 253
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 253
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 254
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 253
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 253
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 254
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 255
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "67D00",
+            text: "Override (Delta)",
+            recResponse: 256,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 256
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 256
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 256
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 256
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 256
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 256
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 256
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 256
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 256
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 256
+              }
+            ]
+          },
+          {
+            code: "67D01",
+            text: "Large Elevated Structures",
+            recResponse: 256,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 256
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 256
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 256
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 256
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 256
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 256
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 256
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 256
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 256
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 256
+              }
+            ]
+          },
+          {
+            code: "67D02",
+            text: "Large Outside Fire",
+            recResponse: 250,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 250
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 250
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 250
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 250
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 250
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 252
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 250
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 250
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 252
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "67D03",
+            text: "Large Outside Fire w/ Hazardous Materials",
+            recResponse: 251,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 251
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 251
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 251
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 251
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 251
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 251
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 251
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 251
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 251
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 251
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "67E00",
+            text: "Override (Echo)",
+            recResponse: 257,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 257
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 257
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 257
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 257
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 257
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 257
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 257
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 257
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 257
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 257
+              }
+            ]
+          },
+          {
+            code: "67E01",
+            text: "Person on Fire (Outside)",
+            recResponse: 258,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 258
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 258
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 258
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 258
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 258
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 258
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 258
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 258
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 258
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

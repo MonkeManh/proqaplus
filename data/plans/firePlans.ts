@@ -4834,4 +4834,272 @@ export const firePlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 247,
+    name: "SE",
+    incidentType: "FIRE|OUTSIDE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 248,
+    name: "FC",
+    incidentType: "FIRE|OUTSIDE|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ]
+  },
+  {
+    id: 249,
+    name: "FDMULTP",
+    incidentType: "FIRE|OUTSIDE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 250,
+    name: "FE",
+    incidentType: "FIRE|OUTSIDE|ADAPT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 251,
+    name: "HMADAPT",
+    incidentType: "FIRE|OUTSIDE|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 252,
+    name: "FF",
+    incidentType: "FIRE|OUTSIDE|ADAPT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 253,
+    name: "FE",
+    incidentType: "ElevatedStructureFire",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 254,
+    name: "FF",
+    incidentType: "ElevatedStructureFire|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 255,
+    name: "FDMULTP",
+    incidentType: "ElevatedStructureFire|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 256,
+    name: "FH",
+    incidentType: "ElevatedStructureFireLG",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 257,
+    name: "ADA",
+    incidentType: "BURN|ADAPT|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 258,
+    name: "FY2",
+    incidentType: "FIRE|PERSON|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
 ];
