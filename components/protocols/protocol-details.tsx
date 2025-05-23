@@ -14,6 +14,8 @@ import { QuestionsAccordion } from "./questions-accordion";
 import { motion } from "framer-motion";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { getEmsResponsePlan } from "@/data/plans/emsPlans"; // Adjust the import based on your project structure
+import { getFireResponsePlan } from "@/data/plans/firePlans";
+import { getPoliceResponsePlan } from "@/data/plans/policePlans";
 
 interface ProtocolDetailsProps {
   complaint: IEMSComplaint;
@@ -70,27 +72,17 @@ export default function ProtocolDetails({
     }
   };
 
-  const getResponseLevelText = (code: string, service: string) => {
-    // Extract the priority level from the code (e.g., "01D01" -> "D")
-    const priorityLevel = code.charAt(2);
-
-    switch (priorityLevel) {
-      case "A":
-        return "Alpha Response";
-      case "B":
-        return "Bravo Response";
-      case "C":
-        return "Charlie Response";
-      case "D":
-        return "Delta Response";
-      case "E":
-        return "Echo Response";
-      case "O":
-        return "Omega Response";
-      default:
-        return "Standard Response";
+  const getResponsePlan = (id: number) => {
+    if(type === "EMS") {
+      return getEmsResponsePlan(id);
+    } else if(type === "Fire") {
+      return getFireResponsePlan(id);
+    } else if(type === "Police") {
+      return getPoliceResponsePlan(id);
     }
-  };
+  }
+
+
 
   // Extract unique suffixes from determinants if they exist
   const getUniqueSuffixes = () => {
@@ -133,7 +125,7 @@ export default function ProtocolDetails({
 
     // Get plan details for each ID
     return uniqueIds
-      .map((id) => getEmsResponsePlan(id))
+      .map((id) => getResponsePlan(id))
       .filter((plan): plan is NonNullable<typeof plan> => plan !== undefined)
       .sort((a, b) => a.id - b.id);
   };

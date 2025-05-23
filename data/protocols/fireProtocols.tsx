@@ -13201,6 +13201,33 @@ export const fireProtocols: IFireComplaint[] = [
       },
 
       {
+        text: <p>Is there any <b className="text-red-400">flames</b> visible?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return firstAnswer === "Yes" && lastAnswer === "Outside:";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No flames visible",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Flames visible",
+            goto: 67
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if flames visible",
+            continue: true,
+          }
+        ]
+      },
+
+      {
         text: <p>Are <b>you</b> able to see <b>through</b> the smoke?</p>,
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
@@ -13226,7 +13253,8 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
           }
         ]
-      }
+      },
+      
     ],
     availableDeterminants: [
       {
@@ -13262,6 +13290,1506 @@ export const fireProtocols: IFireComplaint[] = [
             code: "68C01",
             text: "Heavy Smoke",
             recResponse: 260
+          }
+        ]
+      }
+    ]
+  },
+  {
+    protocol: 69,
+    name: "Structure Fire",
+    shortName: "Structure Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 1,
+    defaultPlan: 261,
+    questions: [
+      {
+        text: <p>Are you <b>at that location now</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes (1st party)",
+            display: "Caller is on scene (1st pty)",
+            continue: true,
+          },
+          {
+            answer: "Yes (2nd party)",
+            display: "Caller is on scene (2nd pty)",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Caller is not on scene",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Do you see <b>flames</b> or <b>smoke</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No (Odor of smoke)",
+            display: "Odor of smoke only",
+            continue: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Flames",
+            display: "Flames are visible",
+            continue: true,
+          },
+          {
+            answer: "Smoke",
+            display: "Smoke is visible",
+            continue: true,
+          },
+          {
+            answer: "Both",
+            display: "Flames and smoke are visible",
+            continue: true,
+          },
+          {
+            answer: "Extinguished Fire",
+            display: "Fire rptd extinguished",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "No") return undefined;
+              return { subCode: "E" }
+            }
+          },
+          {
+            answer: "LIGHT smoke",
+            display: "Light smoke rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer !== "Yes (1st party)") return undefined;
+              return { subCode: "K" }
+            }
+          },
+          {
+            answer: "Burned food",
+            display: "Burned food rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "No") return undefined;
+              return { subCode: "F" }
+            }
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>type</b> of <b>building</b> is involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Chimney",
+            display: "Chimney fire",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Appliance (contained)",
+            display: "Appliance fire (contained)",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Commercial/Industrial building",
+            display: "Involves commercial/industrial bldg",
+            continue: true,
+            updateCode: "69D03"
+          },
+          {
+            answer: "HIGH RISE",
+            display: "Involves high rise bldg",
+            continue: true,
+            updateCode: "69D02"
+          },
+          {
+            answer: "HIGH LIFE HAZARD",
+            display: "Involves high life hazard bldg",
+            continue: true,
+            updateCode: "69D01"
+          },
+          {
+            answer: "Large NON-DWELLING (barn, storage building):",
+            display: "{input} on fire",
+            continue: true,
+            input: true,
+            updateCode: "69D07"
+          },
+          {
+            answer: "Small NON-DWELLING (shed, garage):",
+            display: "{input} on fire",
+            continue: true,
+            input: true,
+            updateCode: "69D08"
+          },
+          {
+            answer: "Mixed-use building",
+            display: "Involves mixed-use bldg",
+            continue: true,
+            updateCode: "69D11"
+          },
+          {
+            answer: "Residential (multiple)",
+            display: "Involves multi-family residential bldg",
+            continue: true,
+            updateCode: "69D05"
+          },
+          {
+            answer: "Residential (single)",
+            display: "Involves single-family residential bldg",
+            continue: true,
+            updateCode: "69D06"
+          },
+          {
+            answer: "Mobile home",
+            display: "Involves mobile home",
+            continue: true,
+            updateCode: "69D09"
+          },
+          {
+            answer: "House trailer",
+            display: "Involves house trailer",
+            continue: true,
+            updateCode: "69D09"
+          },
+          {
+            answer: "Portable office",
+            display: "Involves portable office",
+            continue: true,
+            updateCode: "69D09"
+          },
+          {
+            answer: "Parking garage",
+            display: "Involves parking garage",
+            continue: true,
+            updateCode: "69D12"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of bldg",
+            continue: true,
+            updateCode: "69D13"
+          }
+        ]
+      },
+
+      {
+        text: <p>How many <b>floors</b> or <b>stories</b> are there?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single level",
+            display: "Bldg is 1 story",
+            continue: true,
+          },
+          {
+            answer: "> 7 stories:",
+            display: "Bldg has {input} stories",
+            continue: true,
+            updateCode: "69D02"
+          },
+          {
+            answer: "3-7 stories:",
+            display: "Bldg has {input} stories",
+            continue: true,
+          },
+          {
+            answer: "Doesn't know",
+            display: "Unk number of stories",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is <b>anyone trapped</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one rptd to be trapped",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Person(s) rptd trapped",
+            continue: true,
+            updateSubCode: "R"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person(s) trapped",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is <b>anyone injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            end: true
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single inj'd person rptd",
+            end: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} inj'd persons rptd",
+            end: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if inj'd persons",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "69D01",
+            text: "High Life Hazard",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 267
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "69D02",
+            text: "High Rise",
+            recResponse: 270,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 270
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 271
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 272
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 273
+              }
+            ]
+          },
+          {
+            code: "69D03",
+            text: "Comm/Ind Building",
+            recResponse: 274,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 275
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 276
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 277
+              }
+            ]
+          },
+          {
+            code: "69D04",
+            text: "Comm/Ind Building w/ Hazardous Materials",
+            recResponse: 278,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 279
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 278
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 280
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 280
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 19
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 281
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 19
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 282
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 283
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 284
+              }
+            ]
+          },
+          {
+            code: "69D05",
+            text: "Residential (Mult)",
+            recResponse: 285,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 286
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 287
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 288
+              }
+            ]
+          },
+          {
+            code: "69D06",
+            text: "Residential (Single)",
+            recResponse: 289,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 290
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 291
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 292
+              }
+            ]
+          },
+          {
+            code: "69D07",
+            text: "Large Non-Dwelling Building/Structure",
+            recResponse: 293,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 294
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 295
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 296
+              }
+            ]
+          },
+          {
+            code: "69D08",
+            text: "Small Non-Dwelling Building/Structure",
+            recResponse: 297,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 298
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 299
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 300
+              }
+            ]
+          },
+          {
+            code: "69D09",
+            text: "Mobile Home, House Trailer, or Portable Office",
+            recResponse: 297,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 298
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 299
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 300
+              }
+            ]
+          },
+          {
+            code: "69D10",
+            text: "Building/Structure Over Water",
+            recResponse: 301,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 302
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 303
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 304
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 304
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 305
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 306
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 307
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 308
+              }
+            ]
+          },
+          {
+            code: "69D11",
+            text: "Mixed-Use Occupancy Building",
+            recResponse: 309,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 310
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 311
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 312
+              }
+            ]
+          },
+          {
+            code: "69D12",
+            text: "Parking Garage",
+            recResponse: 313,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 314
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 315
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 316
+              }
+            ]
+          },
+          {
+            code: "69D13",
+            text: "Unkn Structure Type",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 261
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 262
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 263
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 263
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 264
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 265
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 266
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 267
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 269
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "69E00",
+            text: "Override (Echo)",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Appliance (Contained)",
+                recResponse: 233
+              },
+              {
+                code: "C",
+                text: "Chimney",
+                recResponse: 233
+              },
+              {
+                code: "E",
+                text: "Extinguished Fire (1st/2nd Party)",
+                recResponse: 233
+              },
+              {
+                code: "F",
+                text: "Burned Food (1st Pty)",
+                recResponse: 233
+              },
+              {
+                code: "K",
+                text: "Light Smoke (1st Pty)",
+                recResponse: 233
+              },
+              {
+                code: "L",
+                text: "Electrical Problem",
+                recResponse: 233
+              },
+              {
+                code: "O",
+                text: "Odor of Smoke",
+                recResponse: 233
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 267
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "69E01",
+            text: "High Life Hazard",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 267
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 317
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "69E02",
+            text: "High Rise",
+            recResponse: 270,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 271
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 318
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 272
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 273
+              }
+            ]
+          },
+          {
+            code: "69E03",
+            text: "Comm/Ind Building",
+            recResponse: 274,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 275
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 319
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 276
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 277
+              }
+            ]
+          },
+          {
+            code: "69E04",
+            text: "Comm/Ind Building w/ Hazardous Materials",
+            recResponse: 320,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 321
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 322
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 323
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 324
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 325
+              }
+            ]
+          },
+          {
+            code: "69E05",
+            text: "Residential (Mult)",
+            recResponse: 285,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 286
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 326
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 287
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 288
+              }
+            ]
+          },
+          {
+            code: "69E06",
+            text: "Residential (Single)",
+            recResponse: 289,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 290
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 327
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 291
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 292
+              }
+            ]
+          },
+          {
+            code: "69E07",
+            text: "Large Non-Dwelling Building/Structure",
+            recResponse: 293,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 294
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 328
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 295
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 296
+              }
+            ]
+          },
+          {
+            code: "69E08",
+            text: "Small Non-Dwelling Building/Structure",
+            recResponse: 297,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 298
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 329
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 299
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 300
+              }
+            ]
+          },
+          {
+            code: "69E09",
+            text: "Mobile Home, House Trailer, or Portable Office",
+            recResponse: 297,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 298
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 329
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 299
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 300
+              }
+            ]
+          },
+          {
+            code: "69E10",
+            text: "Building/Structure Over Water",
+            recResponse: 301,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 330
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 306
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 331
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 307
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 308
+              }
+            ]
+          },
+          {
+            code: "69E11",
+            text: "Mixed-Use Occupancy Building",
+            recResponse: 309,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 310
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 332
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 311
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 312
+              }
+            ]
+          },
+          {
+            code: "69E12",
+            text: "Parking Garage",
+            recResponse: 313,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 314
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 333
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 315
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 316
+              }
+            ]
+          },
+          {
+            code: "69E13",
+            text: "Unkn Building/Structure Type",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "P",
+                text: "Person on Fire (Inside)",
+                recResponse: 258
+              },
+              {
+                code: "R",
+                text: "Trapped Person(s)",
+                recResponse: 267
+              },
+              {
+                code: "T",
+                text: "Trapped Person(s) (Inside)",
+                recResponse: 317
+              },
+              {
+                code: "X",
+                text: "Single Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Injured Persons",
+                recResponse: 269
+              }
+            ]
           }
         ]
       }

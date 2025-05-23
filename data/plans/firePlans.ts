@@ -5124,4 +5124,2347 @@ export const firePlans: IResponsePlan[] = [
       }
     ]
   },
+  {
+    id: 261,
+    name: "FU",
+    incidentType: "FIRE|APPLIANCE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 262,
+    name: "FR",
+    incidentType: "FIRE|CHIMNEY",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 263,
+    name: "FW",
+    incidentType: "FIRE|OUT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 264,
+    name: "FE",
+    incidentType: "SMOKE|HAZE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 265,
+    name: "FE",
+    incidentType: "FIRE|ELECTRICALSHORT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 266,
+    name: "FE",
+    incidentType: "SMOKE|ODOR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 267,
+    name: "FJT",
+    incidentType: "FIRE|BLDG|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 268,
+    name: "FJ1",
+    incidentType: "FIRE|BLDG|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 269,
+    name: "FJM",
+    incidentType: "FIRE|BLDG|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 270,
+    name: "FK",
+    incidentType: "FIRE|HIGHRISE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 4,
+      },
+      {
+        type: "Truck",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 2,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 271,
+    name: "FKT",
+    incidentType: "FIRE|HIGHRISE|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 4,
+      },
+      {
+        type: "Truck",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 2,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 272,
+    name: "FK1",
+    incidentType: "FIRE|HIGHRISE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 4,
+      },
+      {
+        type: "Truck",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 2,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 273,
+    name: "FKM",
+    incidentType: "FIRE|HIGHRISE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 4,
+      },
+      {
+        type: "Truck",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 2,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
+  },
+  {
+    id: 274,
+    name: "FL",
+    incidentType: "FIRE|COMM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 275,
+    name: "FLT",
+    incidentType: "FIRE|COMM|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 276,
+    name: "FL1",
+    incidentType: "FIRE|COMM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 277,
+    name: "FLM",
+    incidentType: "FIRE|COMM|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 278,
+    name: "HMFULL",
+    incidentType: "FIRE|BLDG|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 279,
+    name: "HMADAPT",
+    incidentType: "APPLIANCEH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 280,
+    name: "FWH",
+    incidentType: "FIRE|OUT|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 281,
+    name: "HMADAPT",
+    incidentType: "FIRE|ELECTRICALSHORT|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 282,
+    name: "HMFULL",
+    incidentType: "FIRE|BLDG|HM|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 283,
+    name: "FJH1",
+    incidentType: "FIRE|BLDG|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 284,
+    name: "FJHM",
+    incidentType: "FIRE|BLDG|HM|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Hazmat",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 285,
+    name: "FL",
+    incidentType: "FIRE|MULTI",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 286,
+    name: "FLT",
+    incidentType: "FIRE|MULTI|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 287,
+    name: "FL1",
+    incidentType: "FIRE|MULTI|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 288,
+    name: "FLM",
+    incidentType: "FIRE|MULTI|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 289,
+    name: "FJ",
+    incidentType: "FIRE|HOUSE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 290,
+    name: "FJT",
+    incidentType: "FIRE|HOUSE|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 291,
+    name: "FJ1",
+    incidentType: "FIRE|HOUSE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 292,
+    name: "FJM",
+    incidentType: "FIRE|HOUSE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 293,
+    name: "FL",
+    incidentType: "FIRE|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 294,
+    name: "FLT",
+    incidentType: "FIRE|LARGE|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 295,
+    name: "FL1",
+    incidentType: "FIRE|LARGE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 296,
+    name: "FLM",
+    incidentType: "FIRE|LARGE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 297,
+    name: "FS",
+    incidentType: "FIRE|SMALL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 298,
+    name: "FST",
+    incidentType: "FIRE|SMALL|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 299,
+    name: "FS1",
+    incidentType: "FIRE|SMALL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 300,
+    name: "FSM",
+    incidentType: "FIRE|SMALL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 301,
+    name: "FJW",
+    incidentType: "FIRE|WATER|BLDG",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 302,
+    name: "FUW",
+    incidentType: "FIRE|WATER|APPLIANCE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 303,
+    name: "FRW",
+    incidentType: "FIRE|WATER|CHIMNEY",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 304,
+    name: "FWW",
+    incidentType: "FIRE|WATER|OUT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 305,
+    name: "FEW",
+    incidentType: "FIRE|WATER|ELECTRICALSHORT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Swift Water",
+        quantity: 1
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 306,
+    name: "FJTW",
+    incidentType: "FIRE|WATER|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 307,
+    name: "FJW1",
+    incidentType: "FIRE|WATER|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 308,
+    name: "FJMW",
+    incidentType: "FIRE|WATER|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 309,
+    name: "FL",
+    incidentType: "FIRE|MIXED",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 310,
+    name: "FLT",
+    incidentType: "FIRE|MIXED|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 311,
+    name: "FL1",
+    incidentType: "FIRE|MIXED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 312,
+    name: "FLM",
+    incidentType: "FIRE|MIXED|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 313,
+    name: "FP",
+    incidentType: "FIRE|PKG",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 314,
+    name: "FPT",
+    incidentType: "FIRE|PKG|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 315,
+    name: "FP1",
+    incidentType: "FIRE|PKG|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 316,
+    name: "FPM",
+    incidentType: "FIRE|PKG|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 317,
+    name: "FJT2",
+    incidentType: "FIRE|BLDG|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 318,
+    name: "FKT2",
+    incidentType: "FIRE|HIGHRISE|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 4,
+      },
+      {
+        type: "Truck",
+        quantity: 2
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 2,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 319,
+    name: "FLT2",
+    incidentType: "FIRE|COMM|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 320,
+    name: "FLH",
+    incidentType: "FIRE|COMM|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 321,
+    name: "FYH2",
+    incidentType: "FIRE|PERSON|HM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 322,
+    name: "FLTH",
+    incidentType: "FIRE|COMM|TRAP|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 323,
+    name: "FLTH2",
+    incidentType: "FIRE|COMM|TRAP|HM|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 324,
+    name: "FLH1",
+    incidentType: "FIRE|COMM|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 325,
+    name: "FLHM",
+    incidentType: "FIRE|COMM|HM|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 326,
+    name: "FLT2",
+    incidentType: "FIRE|MULTI|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 327,
+    name: "FJT2",
+    incidentType: "FIRE|HOUSE|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 328,
+    name: "FLT2",
+    incidentType: "FIRE|LARGE|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 329,
+    name: "FST2",
+    incidentType: "FIRE|SMALL|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 330,
+    name: "FYW2",
+    incidentType: "FIRE|WATER|PERSON|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 331,
+    name: "FJTW2",
+    incidentType: "FIRE|WATER|BLDG|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 1,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 332,
+    name: "FLT2",
+    incidentType: "FIRE|MIXED|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 333,
+    name: "FPT2",
+    incidentType: "FIRE|PKG|TRAP|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  }
 ];
