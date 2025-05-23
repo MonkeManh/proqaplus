@@ -8344,7 +8344,7 @@ export const fireProtocols: IFireComplaint[] = [
           },
           {
             answer: "No",
-            display: "Unk where leak is",
+            display: "No obvious leak",
             continue: true,
           },
         ],
@@ -11815,7 +11815,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 243,
     questions: [
       {
-        text: <p><b>Where</b> is the <b className="text-yellow-400">odor</b> located?</p>,
+        text: (
+          <p>
+            <b>Where</b> is the <b className="text-yellow-400">odor</b> located?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11835,12 +11839,17 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Unk location of odor",
             continue: true,
             updateCode: "66A03",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        text: (
+          <p>
+            Are there any <b className="text-green-400">hazardous materials</b>{" "}
+            involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11853,18 +11862,26 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Hazmat involved - {input}",
             continue: true,
             input: true,
-            updateSubCode: "H"
+            updateSubCode: "H",
           },
           {
             answer: "Unknown",
             display: "Unk if hazmat involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone sick or experiencing symptoms <small className="text-blue-400">(Nausea, Vomiting, Headache)</small>?</p>,
+        text: (
+          <p>
+            Is anyone sick or experiencing symptoms{" "}
+            <small className="text-blue-400">
+              (Nausea, Vomiting, Headache)
+            </small>
+            ?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -11873,12 +11890,12 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Inside:") {
+              if (firstAnswer === "Inside:") {
                 return { code: "66A01" };
-              } else if(firstAnswer === "Outside:") {
+              } else if (firstAnswer === "Outside:") {
                 return { code: "66A02" };
               }
-            }
+            },
           },
           {
             answer: "Yes - Single",
@@ -11886,14 +11903,14 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Inside:") {
+              if (firstAnswer === "Inside:") {
                 return { code: "66C01" };
-              } else if(firstAnswer === "Outside:") {
+              } else if (firstAnswer === "Outside:") {
                 return { code: "66C03" };
               } else {
                 return { code: "66B01" };
               }
-            }
+            },
           },
           {
             answer: "Yes - Multiple:",
@@ -11902,22 +11919,22 @@ export const fireProtocols: IFireComplaint[] = [
             input: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Inside:") {
+              if (firstAnswer === "Inside:") {
                 return { code: "66C02" };
-              } else if(firstAnswer === "Outside:") {
+              } else if (firstAnswer === "Outside:") {
                 return { code: "66C04" };
               } else {
                 return { code: "66B01" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if sick persons",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -12072,7 +12089,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 247,
     questions: [
       {
-        text: <p>What exactly is on <b className="text-red-400">fire</b>?</p>,
+        text: (
+          <p>
+            What exactly is on <b className="text-red-400">fire</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12088,7 +12109,7 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "Grass/Wildland",
             display: "Grass/wildland fire",
-            goto: 82
+            goto: 82,
           },
           {
             answer: "Elevated Structure",
@@ -12099,7 +12120,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "PERSON",
             display: "Person on fire",
             end: true,
-            updateCode: "67E01"
+            updateCode: "67E01",
           },
           {
             answer: "Extinguished Now",
@@ -12111,77 +12132,90 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Illegal Burning",
             display: "Illegal burning",
             continue: true,
-            updateCode: "67A02"
+            updateCode: "67A02",
           },
           {
             answer: "Unknown",
             display: "Unk type of fire",
             continue: true,
-            updateCode: "67B03"
-          }
-        ]
+            updateCode: "67B03",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>size</b> of the elevated structure?</p>,
+        text: (
+          <p>
+            What is the <b>size</b> of the elevated structure?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Elevated Structure"
+          return firstAnswer === "Elevated Structure";
         },
         answers: [
           {
             answer: "Small",
             display: "Small elevated structure",
             continue: true,
-            updateCode: "67C01"
+            updateCode: "67C01",
           },
           {
             answer: "Large",
             display: "Large elevated structure",
             continue: true,
-            updateCode: "67D01"
+            updateCode: "67D01",
           },
           {
             answer: "Unknown",
             display: "Unk size of elevated structure",
             continue: true,
-            updateCode: "67D01"
-          }
-        ]
+            updateCode: "67D01",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>size</b> of the <b className="text-red-400">fire</b>?</p>,
+        text: (
+          <p>
+            What is the <b>size</b> of the <b className="text-red-400">fire</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer !== "Elevated Structure"
+          return firstAnswer !== "Elevated Structure";
         },
         answers: [
           {
             answer: "Small (< 1 Acre)",
             display: "Small fire (< 1 Acre)",
             continue: true,
-            updateCode: "67B01"
+            updateCode: "67B01",
           },
           {
             answer: "Large (>= 1 Acre)",
             display: "Large fire (>= 1 Acre)",
             continue: true,
-            updateCode: "67D02"
+            updateCode: "67D02",
           },
           {
             answer: "Unknown",
             display: "Unk size of fire",
             continue: true,
-            updateCode: "67B03"
-          }
-        ]
+            updateCode: "67B03",
+          },
+        ],
       },
 
       {
-        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        text: (
+          <p>
+            Are there any <b className="text-green-400">hazardous materials</b>{" "}
+            involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12195,24 +12229,30 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             input: true,
             dependency: (answers?: IAnswerData[]) => {
-              const answer = answers?.find((a) => a.defaultQuestion === "What is the size of the fire?")?.defaultAnswer;
+              const answer = answers?.find(
+                (a) => a.defaultQuestion === "What is the size of the fire?"
+              )?.defaultAnswer;
               if (answer === "Small (< 1 Acre)") {
-                return { code: "67B02" }
+                return { code: "67B02" };
               } else if (answer === "Large (>= 1 Acre)") {
-                return { code: "67D03" }
+                return { code: "67D03" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if hazmat involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b className="text-red-400">trapped</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b className="text-red-400">trapped</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12224,18 +12264,23 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Person(s) rptd trapped",
             continue: true,
-            updateSubCode: "T"
+            updateSubCode: "T",
           },
           {
             answer: "Unknown",
             display: "Unk if person(s) trapped",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b className="text-red-400">threatened</b> or <b className="text-red-400">in danger</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b className="text-red-400">threatened</b> or{" "}
+            <b className="text-red-400">in danger</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12247,44 +12292,48 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Animals",
             display: "Animals threatened",
             continue: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "Buildings (Non-Residential)",
             display: "Buildings (Non-Residential) threatened",
             continue: true,
-            updateSubCode: "B"
+            updateSubCode: "B",
           },
           {
             answer: "People",
             display: "People in danger",
             continue: true,
-            updateSubCode: "P"
+            updateSubCode: "P",
           },
           {
             answer: "Residential",
             display: "Residential threatened",
             continue: true,
-            updateSubCode: "R"
+            updateSubCode: "R",
           },
           {
             answer: "Other:",
             display: "{input} threatened",
             continue: true,
             input: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
             display: "Unk if anything threatened",
             continue: true,
-            updateSubCode: "U"
-          }
-        ]
+            updateSubCode: "U",
+          },
+        ],
       },
 
       {
-        text: <p>Is there anyone <b>sick</b> or <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is there anyone <b>sick</b> or <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -12296,22 +12345,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes - Single",
             display: "Single sick/inj'd person rptd",
             end: true,
-            updateSubCode: "X"
+            updateSubCode: "X",
           },
           {
             answer: "Yes - Multiple:",
             display: "{input} sick/inj'd persons rptd",
             end: true,
             input: true,
-            updateSubCode: "Y"
+            updateSubCode: "Y",
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -12325,24 +12374,24 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 248
+                recResponse: 248,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
+                recResponse: 249,
+              },
+            ],
           },
           {
             code: "67A02",
@@ -12352,56 +12401,56 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 248
+                recResponse: 248,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
-          }
-        ]
+                recResponse: 249,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -12414,24 +12463,24 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 248
+                recResponse: 248,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
+                recResponse: 249,
+              },
+            ],
           },
           {
             code: "67B01",
@@ -12441,54 +12490,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 247
+                recResponse: 247,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 248
+                recResponse: 248,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
+                recResponse: 249,
+              },
+            ],
           },
           {
             code: "67B02",
@@ -12498,54 +12547,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 251
-              }
-            ]
+                recResponse: 251,
+              },
+            ],
           },
           {
             code: "67B03",
@@ -12556,56 +12605,56 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 209
+                recResponse: 209,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 210
+                recResponse: 210,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 211
-              }
-            ]
-          }
-        ]
+                recResponse: 211,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -12618,54 +12667,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 252
+                recResponse: 252,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
+                recResponse: 249,
+              },
+            ],
           },
           {
             code: "67C01",
@@ -12675,56 +12724,56 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 254
+                recResponse: 254,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 253
+                recResponse: 253,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 254
+                recResponse: 254,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 255
-              }
-            ]
-          }
-        ]
+                recResponse: 255,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -12737,54 +12786,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 256
-              }
-            ]
+                recResponse: 256,
+              },
+            ],
           },
           {
             code: "67D01",
@@ -12794,54 +12843,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 256
+                recResponse: 256,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 256
-              }
-            ]
+                recResponse: 256,
+              },
+            ],
           },
           {
             code: "67D02",
@@ -12851,54 +12900,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 252
+                recResponse: 252,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 250
+                recResponse: 250,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 252
+                recResponse: 252,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 249
-              }
-            ]
+                recResponse: 249,
+              },
+            ],
           },
           {
             code: "67D03",
@@ -12908,56 +12957,56 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 251
+                recResponse: 251,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 251
-              }
-            ]
-          }
-        ]
+                recResponse: 251,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "E",
@@ -12970,54 +13019,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 257
+                recResponse: 257,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 257
-              }
-            ]
+                recResponse: 257,
+              },
+            ],
           },
           {
             code: "67E01",
@@ -13027,58 +13076,58 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Animals Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "B",
                 text: "Buildings (Non-Residential) Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "O",
                 text: "Other Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "P",
                 text: "People in Danger",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Residential Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "T",
                 text: "Trapped",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "U",
                 text: "Unkn Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "V",
                 text: "Vehicle Threatened",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "X",
                 text: "Single Sick/Injured Person",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
-                recResponse: 258
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 258,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 68,
@@ -13094,7 +13143,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 259,
     questions: [
       {
-        text: <p>Can you see <b>smoke</b>?</p>,
+        text: (
+          <p>
+            Can you see <b>smoke</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -13111,46 +13164,56 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if smoke",
             continue: true,
-            updateCode: "68A03"
-          }
-        ]
+            updateCode: "68A03",
+          },
+        ],
       },
 
       {
-        text: <p>Is there an <b>odor</b> of smoke?</p>,
+        text: (
+          <p>
+            Is there an <b>odor</b> of smoke?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "No"
+          return lastAnswer === "No";
         },
         answers: [
           {
             answer: "No",
             display: "No odor of smoke rptd",
             continue: true,
-            updateCode: "68A03"
+            updateCode: "68A03",
           },
           {
             answer: "Yes",
             display: "Odor of smoke rptd",
             continue: true,
-            updateCode: "68A02"
+            updateCode: "68A02",
           },
           {
             answer: "Unknown",
             display: "Unk if odor of smoke",
             continue: true,
-            updateCode: "68A03"
-          }
-        ]
+            updateCode: "68A03",
+          },
+        ],
       },
 
       {
-        text: <p>Where is the <b>odor</b> coming from?</p>,
+        text: (
+          <p>
+            Where is the <b>odor</b> coming from?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
-          const targetAnswer = answers?.find((a) => a.defaultQuestion === "Is there an odor of smoke?")?.defaultAnswer;
-          return targetAnswer === "Yes"
+          const targetAnswer = answers?.find(
+            (a) => a.defaultQuestion === "Is there an odor of smoke?"
+          )?.defaultAnswer;
+          return targetAnswer === "Yes";
         },
         answers: [
           {
@@ -13162,18 +13225,22 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "Structure",
             display: "Odor coming from structure",
-            goto: 69
+            goto: 69,
           },
           {
             answer: "Unknown",
             display: "Unk where odor is coming from",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Where is the <b>smoke</b> coming from?</p>,
+        text: (
+          <p>
+            Where is the <b>smoke</b> coming from?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -13189,19 +13256,23 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "Structure",
             display: "Smoke coming from structure",
-            goto: 69
+            goto: 69,
           },
           {
             answer: "Unknown",
             display: "Unk where smoke is coming from",
             continue: true,
-            updateCode: "68A03"
-          }
-        ]
+            updateCode: "68A03",
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b className="text-red-400">flames</b> visible?</p>,
+        text: (
+          <p>
+            Is there any <b className="text-red-400">flames</b> visible?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -13217,18 +13288,22 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "Yes",
             display: "Flames visible",
-            goto: 67
+            goto: 67,
           },
           {
             answer: "Unknown",
             display: "Unk if flames visible",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are <b>you</b> able to see <b>through</b> the smoke?</p>,
+        text: (
+          <p>
+            Are <b>you</b> able to see <b>through</b> the smoke?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -13239,22 +13314,21 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Light smoke rptd",
             continue: true,
-            updateCode: "68A01"
+            updateCode: "68A01",
           },
           {
             answer: "No",
             display: "Heavy smoke rptd",
             continue: true,
-            updateCode: "68C01"
+            updateCode: "68C01",
           },
           {
             answer: "Unknown",
             display: "Unk type of smoke",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-      
     ],
     availableDeterminants: [
       {
@@ -13263,20 +13337,20 @@ export const fireProtocols: IFireComplaint[] = [
           {
             code: "68A01",
             text: "Light Smoke",
-            recResponse: 259
+            recResponse: 259,
           },
           {
             code: "68A02",
             text: "Odor of Smoke",
-            recResponse: 259
+            recResponse: 259,
           },
           {
             code: "68A03",
             text: "Unkn Situation (Investigation)",
             defaultCode: true,
             recResponse: 259,
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "C",
@@ -13284,16 +13358,16 @@ export const fireProtocols: IFireComplaint[] = [
           {
             code: "68C00",
             text: "Override (Charlie)",
-            recResponse: 260
+            recResponse: 260,
           },
           {
             code: "68C01",
             text: "Heavy Smoke",
-            recResponse: 260
-          }
-        ]
-      }
-    ]
+            recResponse: 260,
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 69,
@@ -13309,7 +13383,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 261,
     questions: [
       {
-        text: <p>Are you <b>at that location now</b>?</p>,
+        text: (
+          <p>
+            Are you <b>at that location now</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -13320,25 +13398,29 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "Yes (2nd party)",
             display: "Caller is on scene (2nd pty)",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Caller is not on scene",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Do you see <b>flames</b> or <b>smoke</b>?</p>,
+        text: (
+          <p>
+            Do you see <b>flames</b> or <b>smoke</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No (Odor of smoke)",
             display: "Odor of smoke only",
             continue: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Flames",
@@ -13361,9 +13443,9 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "No") return undefined;
-              return { subCode: "E" }
-            }
+              if (firstAnswer === "No") return undefined;
+              return { subCode: "E" };
+            },
           },
           {
             answer: "LIGHT smoke",
@@ -13371,9 +13453,9 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer !== "Yes (1st party)") return undefined;
-              return { subCode: "K" }
-            }
+              if (firstAnswer !== "Yes (1st party)") return undefined;
+              return { subCode: "K" };
+            },
           },
           {
             answer: "Burned food",
@@ -13381,114 +13463,122 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "No") return undefined;
-              return { subCode: "F" }
-            }
-          }
-        ]
+              if (firstAnswer === "No") return undefined;
+              return { subCode: "F" };
+            },
+          },
+        ],
       },
 
       {
-        text: <p>What <b>type</b> of <b>building</b> is involved?</p>,
+        text: (
+          <p>
+            What <b>type</b> of <b>building</b> is involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Chimney",
             display: "Chimney fire",
             continue: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Appliance (contained)",
             display: "Appliance fire (contained)",
             continue: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "Commercial/Industrial building",
             display: "Involves commercial/industrial bldg",
             continue: true,
-            updateCode: "69D03"
+            updateCode: "69D03",
           },
           {
             answer: "HIGH RISE",
             display: "Involves high rise bldg",
             continue: true,
-            updateCode: "69D02"
+            updateCode: "69D02",
           },
           {
             answer: "HIGH LIFE HAZARD",
             display: "Involves high life hazard bldg",
             continue: true,
-            updateCode: "69D01"
+            updateCode: "69D01",
           },
           {
             answer: "Large NON-DWELLING (barn, storage building):",
             display: "{input} on fire",
             continue: true,
             input: true,
-            updateCode: "69D07"
+            updateCode: "69D07",
           },
           {
             answer: "Small NON-DWELLING (shed, garage):",
             display: "{input} on fire",
             continue: true,
             input: true,
-            updateCode: "69D08"
+            updateCode: "69D08",
           },
           {
             answer: "Mixed-use building",
             display: "Involves mixed-use bldg",
             continue: true,
-            updateCode: "69D11"
+            updateCode: "69D11",
           },
           {
             answer: "Residential (multiple)",
             display: "Involves multi-family residential bldg",
             continue: true,
-            updateCode: "69D05"
+            updateCode: "69D05",
           },
           {
             answer: "Residential (single)",
             display: "Involves single-family residential bldg",
             continue: true,
-            updateCode: "69D06"
+            updateCode: "69D06",
           },
           {
             answer: "Mobile home",
             display: "Involves mobile home",
             continue: true,
-            updateCode: "69D09"
+            updateCode: "69D09",
           },
           {
             answer: "House trailer",
             display: "Involves house trailer",
             continue: true,
-            updateCode: "69D09"
+            updateCode: "69D09",
           },
           {
             answer: "Portable office",
             display: "Involves portable office",
             continue: true,
-            updateCode: "69D09"
+            updateCode: "69D09",
           },
           {
             answer: "Parking garage",
             display: "Involves parking garage",
             continue: true,
-            updateCode: "69D12"
+            updateCode: "69D12",
           },
           {
             answer: "Unknown",
             display: "Unk type of bldg",
             continue: true,
-            updateCode: "69D13"
-          }
-        ]
+            updateCode: "69D13",
+          },
+        ],
       },
 
       {
-        text: <p>How many <b>floors</b> or <b>stories</b> are there?</p>,
+        text: (
+          <p>
+            How many <b>floors</b> or <b>stories</b> are there?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -13500,23 +13590,28 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "> 7 stories:",
             display: "Bldg has {input} stories",
             continue: true,
-            updateCode: "69D02"
+            updateCode: "69D02",
           },
           {
             answer: "3-7 stories:",
             display: "Bldg has {input} stories",
+            input: true,
             continue: true,
           },
           {
             answer: "Doesn't know",
             display: "Unk number of stories",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is <b>anyone trapped</b>?</p>,
+        text: (
+          <p>
+            Is <b>anyone trapped</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -13528,45 +13623,49 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Person(s) rptd trapped",
             continue: true,
-            updateSubCode: "R"
+            updateSubCode: "R",
           },
           {
             answer: "Unknown",
             display: "Unk if person(s) trapped",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is <b>anyone injured</b>?</p>,
+        text: (
+          <p>
+            Is <b>anyone injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No injs rptd",
-            end: true
+            end: true,
           },
           {
             answer: "Yes - Single",
             display: "Single inj'd person rptd",
             end: true,
-            updateSubCode: "X"
+            updateSubCode: "X",
           },
           {
             answer: "Yes - Multiple:",
             display: "{input} inj'd persons rptd",
             end: true,
             input: true,
-            updateSubCode: "Y"
+            updateSubCode: "Y",
           },
           {
             answer: "Unknown",
             display: "Unk if inj'd persons",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -13580,54 +13679,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 267
+                recResponse: 267,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 268
+                recResponse: 268,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 269
-              }
-            ]
+                recResponse: 269,
+              },
+            ],
           },
           {
             code: "69D02",
@@ -13637,54 +13736,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 270
+                recResponse: 270,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 271
+                recResponse: 271,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 272
+                recResponse: 272,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 273
-              }
-            ]
+                recResponse: 273,
+              },
+            ],
           },
           {
             code: "69D03",
@@ -13694,54 +13793,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 275
+                recResponse: 275,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 276
+                recResponse: 276,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 277
-              }
-            ]
+                recResponse: 277,
+              },
+            ],
           },
           {
             code: "69D04",
@@ -13751,54 +13850,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 279
+                recResponse: 279,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 278
+                recResponse: 278,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 280
+                recResponse: 280,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 280
+                recResponse: 280,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 281
+                recResponse: 281,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 19
+                recResponse: 19,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 282
+                recResponse: 282,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 283
+                recResponse: 283,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 284
-              }
-            ]
+                recResponse: 284,
+              },
+            ],
           },
           {
             code: "69D05",
@@ -13808,54 +13907,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 286
+                recResponse: 286,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 287
+                recResponse: 287,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 288
-              }
-            ]
+                recResponse: 288,
+              },
+            ],
           },
           {
             code: "69D06",
@@ -13865,54 +13964,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 290
+                recResponse: 290,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 291
+                recResponse: 291,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 292
-              }
-            ]
+                recResponse: 292,
+              },
+            ],
           },
           {
             code: "69D07",
@@ -13922,54 +14021,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 294
+                recResponse: 294,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 295
+                recResponse: 295,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 296
-              }
-            ]
+                recResponse: 296,
+              },
+            ],
           },
           {
             code: "69D08",
@@ -13979,54 +14078,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 298
+                recResponse: 298,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 299
+                recResponse: 299,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 300
-              }
-            ]
+                recResponse: 300,
+              },
+            ],
           },
           {
             code: "69D09",
@@ -14036,54 +14135,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 298
+                recResponse: 298,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 299
+                recResponse: 299,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 300
-              }
-            ]
+                recResponse: 300,
+              },
+            ],
           },
           {
             code: "69D10",
@@ -14093,54 +14192,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 302
+                recResponse: 302,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 303
+                recResponse: 303,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 304
+                recResponse: 304,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 304
+                recResponse: 304,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 305
+                recResponse: 305,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 306
+                recResponse: 306,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 307
+                recResponse: 307,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 308
-              }
-            ]
+                recResponse: 308,
+              },
+            ],
           },
           {
             code: "69D11",
@@ -14150,54 +14249,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 310
+                recResponse: 310,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 311
+                recResponse: 311,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 312
-              }
-            ]
+                recResponse: 312,
+              },
+            ],
           },
           {
             code: "69D12",
@@ -14207,54 +14306,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 314
+                recResponse: 314,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 315
+                recResponse: 315,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 316
-              }
-            ]
+                recResponse: 316,
+              },
+            ],
           },
           {
             code: "69D13",
@@ -14264,56 +14363,56 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 261
+                recResponse: 261,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 262
+                recResponse: 262,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 263
+                recResponse: 263,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 264
+                recResponse: 264,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 265
+                recResponse: 265,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 266
+                recResponse: 266,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 267
+                recResponse: 267,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 268
+                recResponse: 268,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 269
-              }
-            ]
-          }
-        ]
+                recResponse: 269,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "E",
@@ -14326,54 +14425,54 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "A",
                 text: "Appliance (Contained)",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "C",
                 text: "Chimney",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "E",
                 text: "Extinguished Fire (1st/2nd Party)",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "F",
                 text: "Burned Food (1st Pty)",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "K",
                 text: "Light Smoke (1st Pty)",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "L",
                 text: "Electrical Problem",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "O",
                 text: "Odor of Smoke",
-                recResponse: 233
+                recResponse: 233,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 267
+                recResponse: 267,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 268
+                recResponse: 268,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 269
-              }
-            ]
+                recResponse: 269,
+              },
+            ],
           },
           {
             code: "69E01",
@@ -14383,29 +14482,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 267
+                recResponse: 267,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 317
+                recResponse: 317,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 268
+                recResponse: 268,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 269
-              }
-            ]
+                recResponse: 269,
+              },
+            ],
           },
           {
             code: "69E02",
@@ -14415,29 +14514,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 271
+                recResponse: 271,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 318
+                recResponse: 318,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 272
+                recResponse: 272,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 273
-              }
-            ]
+                recResponse: 273,
+              },
+            ],
           },
           {
             code: "69E03",
@@ -14447,29 +14546,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 275
+                recResponse: 275,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 319
+                recResponse: 319,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 276
+                recResponse: 276,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 277
-              }
-            ]
+                recResponse: 277,
+              },
+            ],
           },
           {
             code: "69E04",
@@ -14479,29 +14578,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 321
+                recResponse: 321,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 322
+                recResponse: 322,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 323
+                recResponse: 323,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 324
+                recResponse: 324,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 325
-              }
-            ]
+                recResponse: 325,
+              },
+            ],
           },
           {
             code: "69E05",
@@ -14511,29 +14610,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 286
+                recResponse: 286,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 326
+                recResponse: 326,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 287
+                recResponse: 287,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 288
-              }
-            ]
+                recResponse: 288,
+              },
+            ],
           },
           {
             code: "69E06",
@@ -14543,29 +14642,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 290
+                recResponse: 290,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 327
+                recResponse: 327,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 291
+                recResponse: 291,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 292
-              }
-            ]
+                recResponse: 292,
+              },
+            ],
           },
           {
             code: "69E07",
@@ -14575,29 +14674,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 294
+                recResponse: 294,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 328
+                recResponse: 328,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 295
+                recResponse: 295,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 296
-              }
-            ]
+                recResponse: 296,
+              },
+            ],
           },
           {
             code: "69E08",
@@ -14607,29 +14706,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 298
+                recResponse: 298,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 329
+                recResponse: 329,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 299
+                recResponse: 299,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 300
-              }
-            ]
+                recResponse: 300,
+              },
+            ],
           },
           {
             code: "69E09",
@@ -14639,29 +14738,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 298
+                recResponse: 298,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 329
+                recResponse: 329,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 299
+                recResponse: 299,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 300
-              }
-            ]
+                recResponse: 300,
+              },
+            ],
           },
           {
             code: "69E10",
@@ -14671,29 +14770,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 330
+                recResponse: 330,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 306
+                recResponse: 306,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 331
+                recResponse: 331,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 307
+                recResponse: 307,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 308
-              }
-            ]
+                recResponse: 308,
+              },
+            ],
           },
           {
             code: "69E11",
@@ -14703,29 +14802,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 310
+                recResponse: 310,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 332
+                recResponse: 332,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 311
+                recResponse: 311,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 312
-              }
-            ]
+                recResponse: 312,
+              },
+            ],
           },
           {
             code: "69E12",
@@ -14735,29 +14834,29 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 314
+                recResponse: 314,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 333
+                recResponse: 333,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 315
+                recResponse: 315,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 316
-              }
-            ]
+                recResponse: 316,
+              },
+            ],
           },
           {
             code: "69E13",
@@ -14767,32 +14866,2958 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "P",
                 text: "Person on Fire (Inside)",
-                recResponse: 258
+                recResponse: 258,
               },
               {
                 code: "R",
                 text: "Trapped Person(s)",
-                recResponse: 267
+                recResponse: 267,
               },
               {
                 code: "T",
                 text: "Trapped Person(s) (Inside)",
-                recResponse: 317
+                recResponse: 317,
               },
               {
                 code: "X",
                 text: "Single Injured Person",
-                recResponse: 268
+                recResponse: 268,
               },
               {
                 code: "Y",
                 text: "Mult Injured Persons",
-                recResponse: 269
+                recResponse: 269,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 70,
+    name: "Train & Rail Collision/Derailment",
+    shortName: "Train & Rail Collision/Derailment",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: 1 },
+    ],
+    defaultPriority: 2,
+    defaultPlan: 334,
+    questions: [
+      {
+        text: (
+          <p>
+            What type of <b>incident</b> is this?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Vehicle on tracks",
+            display: "A vehicle is on the tracks",
+            continue: true,
+          },
+          {
+            answer: "Stranded on train",
+            display: "A person is stranded on a train",
+            continue: true,
+            updateCode: "70C04",
+          },
+          {
+            answer: "Collision/Derailment",
+            display: "There is a collision or derailment",
+            continue: true,
+          },
+          {
+            answer: "Unknown situation",
+            display: "Unk situation (investigation required)",
+            continue: true,
+            updateCode: "70C05",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What <b>type</b> of <b>vehicle</b> is on <b>the tracks</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Vehicle on tracks";
+        },
+        answers: [
+          {
+            answer: "Large fuel/fire load vehicle",
+            display: "Large fuel/fire load vehicle on tracks",
+            continue: true,
+            updateCode: "70C01",
+          },
+          {
+            answer: "Commercial vehicle",
+            display: "Commercial vehicle on tracks",
+            continue: true,
+            updateCode: "70C02",
+          },
+          {
+            answer: "Other vehicle:",
+            display: "{input} on tracks",
+            continue: true,
+            updateCode: "70C03",
+          },
+          {
+            answer: "Unknown vehicle",
+            display: "Unknown vehicle on tracks",
+            continue: true,
+            updateCode: "70C03",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Can you <b>describe</b> the <b>vehicle</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return (
+            firstAnswer === "Vehicle on tracks" &&
+            lastAnswer !== "Unknown vehicle"
+          );
+        },
+        answers: [
+          {
+            answer: "Description:",
+            display: "Vehicle description is {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown vehicle description",
+            display: "Unk vehcile description",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What did the train <b>hit</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Collision/Derailment";
+        },
+        answers: [
+          {
+            answer: "Pedestrian(s)",
+            display: "Train hit a pedestrian",
+            continue: true,
+            override: true,
+            updateCode: "70D01",
+          },
+          {
+            answer: "Structure/Building",
+            display: "Train hit a structure/building",
+            continue: true,
+            override: true,
+            updateCode: "70D02",
+          },
+          {
+            answer: "Vehicle(s)",
+            display: "Train hit vehicle(s)",
+            continue: true,
+            override: true,
+            updateCode: "70D03",
+          },
+          {
+            answer: "Other Ttain(s)",
+            display: "Train hit other train(s)",
+            continue: true,
+            override: true,
+            updateCode: "70D03",
+          },
+          {
+            answer: "Derailment only",
+            display: "Derailment only",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what the train hit",
+            continue: true,
+            updateCode: "70C05",
+          },
+        ],
+      },
+
+      {
+        text: <p>Where did the incident occur?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Collision/Derailment";
+        },
+        answers: [
+          {
+            answer: "At ground level",
+            display: "Occurred at ground level",
+            continue: true,
+            updateCode: "70D06",
+          },
+          {
+            answer: "Below ground level",
+            display: "Occurred below ground level",
+            continue: true,
+            updateCode: "70D04",
+          },
+          {
+            answer: "Above ground level",
+            display: "Occurred above ground level",
+            continue: true,
+            updateCode: "70D05",
+          },
+          {
+            answer: "In a tunnel",
+            display: "Occurred in a tunnel",
+            continue: true,
+            updateCode: "70D07",
+          },
+          {
+            answer: "Bridge/Trestle",
+            display: "Occurred on a bridge/trestle",
+            continue: true,
+            updateCode: "70D08",
+          },
+          {
+            answer: "Into/Over water",
+            display: "Occurred into/over water",
+            continue: true,
+            updateCode: "70D09",
+          },
+          {
+            answer: "Unknown location",
+            display: "Unk location",
+            continue: true,
+            updateCode: "70C05",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What type of <b>train</b> or <b>rail</b> vehicle is involved?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Cable car",
+            display: "Cable car involved",
+            end: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Freight train",
+            display: "Freight train involved",
+            end: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "Light rail",
+            display: "Light rail involved",
+            end: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "Monorail",
+            display: "Monorail involved",
+            end: true,
+            updateSubCode: "M",
+          },
+          {
+            answer: "Passenger (commuter) train",
+            display: "Passenger (commuter) train involved",
+            end: true,
+            updateSubCode: "P",
+          },
+          {
+            answer: "Subway",
+            display: "Subway involved",
+            end: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Trolley/streetcar",
+            display: "Trolley/streetcar involved",
+            end: true,
+            updateSubCode: "T",
+          },
+          {
+            answer: "Other:",
+            display: "{input} involved",
+            end: true,
+            input: true,
+            updateSubCode: "O",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk train/rail vehicle involved",
+            end: true,
+            updateSubCode: "U",
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "70C01",
+            text: "Large Fuel/Fire Load Vehicle on Tracks",
+            recResponse: 334,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 334,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 334,
+              },
+            ],
+          },
+          {
+            code: "70C02",
+            text: "Comm Vehicle on Tracks",
+            recResponse: 334,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 334,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 334,
+              },
+            ],
+          },
+          {
+            code: "70C03",
+            text: "Other Vehicle on Tracks",
+            recResponse: 334,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 334,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 334,
+              },
+            ],
+          },
+          {
+            code: "70C04",
+            text: "Stranded on Train",
+            recResponse: 334,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 334,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 334,
+              },
+            ],
+          },
+          {
+            code: "70C05",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 334,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 334,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 334,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "70D00",
+            text: "Override (Delta)",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D01",
+            text: "Person Trapped/Struck by Train (No Collision/Derailment)",
+            recResponse: 337,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 337,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 337,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 337,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 337,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 337,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 337,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 337,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 337,
+              },
+            ],
+          },
+          {
+            code: "70D02",
+            text: "Collision/Derailment Involving Buildings/Structures",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D03",
+            text: "Collision/Derailment Involving Vehicles",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D04",
+            text: "Collision/Derailment Below Ground Level",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D05",
+            text: "Collision/Derailment Above Ground Level",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D06",
+            text: "Collision/Derailment at Ground Level",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D07",
+            text: "Collision/Derailment in Tunnel",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D08",
+            text: "Collision/Derailment on Bridge/Trestle",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+          {
+            code: "70D09",
+            text: "Collision/Derailment into/over Water",
+            recResponse: 336,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cabe Car",
+                recResponse: 336,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 336,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 336,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 336,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 336,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 336,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335,
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 336,
+              },
+              {
+                code: "U",
+                text: "Unkn",
+                recResponse: 336,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 71,
+    name: "Vehicle Fire",
+    shortName: "Vehicle Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 338,
+    questions: [
+      {
+        text: (
+          <p>
+            <b className="text-blue-400">(Appropriate)</b> Is the vehicle{" "}
+            <b>still</b> on <b className="text-red-400">fire</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Vehicle is on fire",
+            continue: true,
+          },
+          {
+            answer: "No - Extinguished",
+            display: "Vehicle rptd extinguished",
+            continue: true,
+            updateCode: "71A01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if vehicle is on fire",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What type of <b>vehicle</b> is on <b>involved</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Passenger vehicle",
+            display: "Passenger vehicle rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer !== "No") {
+                return { code: "71B01" };
+              } else if (firstAnswer === "No") {
+                return { code: "71A01" };
               }
-            ]
+            },
+          },
+          {
+            answer: "Commercial Vehicle",
+            display: "Commercial vehicle rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer !== "No") {
+                return { code: "71D04" };
+              } else if (firstAnswer === "No") {
+                return { code: "71B03" };
+              }
+            },
+          },
+          {
+            answer: "Large Fuel/Fire Load Vehicle",
+            display: "Large fuel/fire load vehicle rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer !== "No") {
+                return { code: "71D05" };
+              } else if (firstAnswer === "No") {
+                return { code: "71B04" };
+              }
+            },
+          },
+          {
+            answer: "Agricultural Vehicle",
+            display: "Agricultural vehicle rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer !== "No") {
+                return { code: "71D06" };
+              } else if (firstAnswer === "No") {
+                return { code: "71B05" };
+              }
+            },
+          },
+          {
+            answer: "Construction Vehicle",
+            display: "Construction vehicle rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer !== "No") {
+                return { code: "71D06" };
+              } else if (firstAnswer === "No") {
+                return { code: "71B05" };
+              }
+            },
+          },
+          {
+            answer: "Delivery Vehicle",
+            display: "Delivery vehicle rptd",
+            continue: true,
+            updateCode: "71C03",
+          },
+          {
+            answer: "Electric Vehicle",
+            display: "Electric vehicle rptd",
+            continue: true,
+            updateCode: "71C02",
+          },
+          {
+            answer: "Motorcycle",
+            display: "Motorcycle rptd",
+            continue: true,
+            updateCode: "71B02",
+          },
+          {
+            answer: "Scooter",
+            display: "Scooter rptd",
+            continue: true,
+            updateCode: "71B02",
+          },
+          {
+            answer: "ATV",
+            display: "ATV rptd",
+            continue: true,
+            updateCode: "71B02",
+          },
+          {
+            answer: "Other:",
+            display: "{input} rptd",
+            continue: true,
+            input: true,
+            updateCode: "71B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk vehicle rptd",
+            continue: true,
+            updateCode: "71B01",
+          },
+        ],
+      },
+
+      {
+        text: <p>How many <b>vehicles</b> are <b>involved</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single Vehicle",
+            display: "Single vehicle involved",
+            continue: true,
+          },
+          {
+            answer: "Multiple:",
+            display: "{input} vehicles involved",
+            continue: true,
+            updateCode: "71D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk number of vehicles involved",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b className="text-red-400">trapped</b> in the vehicle?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one rptd trapped",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single Person",
+            display: "Single person rptd trapped",
+            continue: true,
+            updateCode: "71E01"
+          },
+          {
+            answer: "Yes - Multiple Persons:",
+            display: "{input} persons rptd trapped",
+            continue: true,
+            updateCode: "71E01"
+          },
+          {
+            answer: "Yes - Unknown (Suspected)",
+            display: "Person(s) rptd trapped",
+            continue: true,
+            updateCode: "71D01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person(s) trapped",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b>incident</b> inside a <b>tunnel</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Incident not in a tunnel",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Incident in a tunnel",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "How many vehicles are involved?")?.defaultAnswer;
+              if(targetAnswer === "Single Vehicle") {
+                return { code: "71D07" };
+              } else if(targetAnswer === "Multiple:") {
+                return { code: "71D08" };
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if incident in a tunnel",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is the <b>fire</b> <b className="text-red-400">threatening</b> anything?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Fire not rpdt threatening anything",
+            continue: true,
+          },
+          {
+            answer: "Non-Structure Object(s)",
+            display: "Fire threatening non-structure object(s)",
+            continue: true,
+            updateCode: "71C01"
+          },
+          {
+            answer: "Structure(s)",
+            display: "Fire threatening structure(s)",
+            continue: true,
+            updateCode: "71D03"
+          },
+          {
+            answer: "Vegitation/Brush",
+            display: "Fire threatening vegitation/brush",
+            continue: true,
+            updateCode: "71C04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if fire threatening anything",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does the vehicle run on <b className="text-green-400">alternate fuel</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Unknown",
+            display: "Unk if vehicle has alt fuel",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Vehicle has alt fuel",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "No",
+            display: "Vehicle does not have alt fuel",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Does the vehicle have <b className="text-green-400">hazardous materials</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Unknown",
+            display: "Unk if vehicle has hazmat",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Vehicle has hazmat",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer;
+              if(targetAnswer === "Yes") {
+                return { subCode: "M" }
+              } else {
+                return { subCode: "H" }
+              }   
+            }
+          },
+          {
+            answer: "No",
+            display: "Vehicle does not have hazmat",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick or injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rpd",
+            end: true
+          },
+          {
+            answer: "Yes - Single Person",
+            display: "Single inj'd person rptd",
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const hasAlt = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer === "Yes";
+              const hasHaz = answers?.find((a) => a.defaultQuestion === "Does the vehicle have hazardous materials?")?.defaultAnswer === "Yes";
+              if(hasAlt && hasHaz) {
+                return { subCode: "V" }
+              } else if(hasAlt && !hasHaz) {
+                return { subCode: "R" }
+              } else if(!hasAlt && hasHaz) {
+                return { subCode: "T" }
+              } else if(!hasAlt && !hasHaz) {
+                return { subCode: "X" }
+              }
+            }
+          },
+          {
+            answer: "Yes - Multiple Persons:",
+            display: "{input} inj'd persons rptd",
+            end: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const hasAlt = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer === "Yes";
+              const hasHaz = answers?.find((a) => a.defaultQuestion === "Does the vehicle have hazardous materials?")?.defaultAnswer === "Yes";
+              if(hasAlt && hasHaz) {
+                return { subCode: "W" }
+              } else if(hasAlt && !hasHaz) {
+                return { subCode: "S" }
+              } else if(!hasAlt && hasHaz) {
+                return { subCode: "U" }
+              } else if(!hasAlt && !hasHaz) {
+                return { subCode: "Y" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if inj'd persons rptd",
+            end: true,
           }
         ]
       }
-    ]
-  }
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "71A01",
+            text: "Vehicle Fire (Extinguished)",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "71B00",
+            text: "Override (Bravo)",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+          {
+            code: "71B01",
+            text: "Vehicle Fire",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+          {
+            code: "71B02",
+            text: "Motorcycle/Scooter/ATV",
+            recResponse: 350,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 351,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 352,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 353,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 354,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 355,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 356,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 357,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 358,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 359,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 360,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 361,
+              },
+            ],
+          },
+          {
+            code: "71B03",
+            text: "Comm Vehicle (Extinguished)",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+          {
+            code: "71B04",
+            text: "Large Fuel/Fire Load Vehicle (Extinguished)",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+          {
+            code: "71B05",
+            text: "Agricultural/Farm/Excavation/Construction Machinery (Extinguished)",
+            recResponse: 338,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 339,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 342,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 343,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 344,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 346,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 348,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 349,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "71C00",
+            text: "Override (Charlie)",
+            recResponse: 362,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 363,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 364,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 365,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 366,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 367,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 368,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 369,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 370,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 371,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 372,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 373,
+              },
+            ],
+          },
+          {
+            code: "71C01",
+            text: "Vehicle Fire Threatening Non-Structure Object(s)",
+            recResponse: 362,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 363,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 364,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 365,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 366,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 367,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 368,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 369,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 370,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 371,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 372,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 373,
+              },
+            ],
+          },
+          {
+            code: "71C02",
+            text: "Electrical Vehicle",
+            recResponse: 340,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 341,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 340,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 341,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 374,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 375,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 345,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 374,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 347,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 375,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 345,
+              },
+            ],
+          },
+          {
+            code: "71C03",
+            text: "Delivery Vehicle",
+            recResponse: 376,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 377,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 378,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 379,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 380,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 381,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 382,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 383,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 384,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 385,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 386,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 397,
+              },
+            ],
+          },
+          {
+            code: "71C04",
+            text: "Vehicle Fire Threatening Vegitation/Wildland/Brush/Gass",
+            recResponse: 362,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 363,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 364,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 365,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 366,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 367,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 368,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 369,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 370,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 371,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 372,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 373,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "71D00",
+            text: "Override (Delta)",
+            recResponse: 388,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 389,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 390,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 391,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 392,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 393,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 394,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 395,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 396,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 397,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 398,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 399,
+              },
+            ],
+          },
+          {
+            code: "71D01",
+            text: "Vehicle Fire (Occupants Trapped)",
+            recResponse: 388,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 389,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 390,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 391,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 392,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 393,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 394,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 395,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 396,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 397,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 398,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 399,
+              },
+            ],
+          },
+          {
+            code: "71D02",
+            text: "Mult Vehicles on Fire",
+            recResponse: 400,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 401,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 402,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 403,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 404,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 405,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 406,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 407,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 408,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 409,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 410,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 411,
+              },
+            ],
+          },
+          {
+            code: "71D03",
+            text: "Vehicle Fire w/ Threatened Building/Structure",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 278,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 278,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 278,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 283,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 284,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 283,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 284,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 283,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 284,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 268,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 269,
+              },
+            ],
+          },
+          {
+            code: "71D04",
+            text: "Comm Vehicle",
+            recResponse: 376,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 377,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 378,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 379,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 380,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 381,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 382,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 383,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 384,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 385,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 386,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 397,
+              },
+            ],
+          },
+          {
+            code: "71D05",
+            text: "Large Fuel/Fire Load Vehicle",
+            recResponse: 376,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 377,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 378,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 379,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 380,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 381,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 382,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 383,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 384,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 385,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 386,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 397,
+              },
+            ],
+          },
+          {
+            code: "71D06",
+            text: "Agricultural/Farm/Excavation/Construction Machinery",
+            recResponse: 376,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 377,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 378,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 379,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 380,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 381,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 382,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 383,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 384,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 385,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 386,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 397,
+              },
+            ],
+          },
+          {
+            code: "71D07",
+            text: "Vehicle Fire in Tunnel",
+            recResponse: 412,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 413,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 414,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 415,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 416,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 417,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 418,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 419,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 420,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 421,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 422,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 423,
+              },
+            ],
+          },
+          {
+            code: "71D08",
+            text: "Mult Vehicles on Fire in Tunnel",
+            recResponse: 412,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 413,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 414,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 415,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 416,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 417,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 418,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 419,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 420,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 421,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 422,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 423,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "71E00",
+            text: "Override (Echo)",
+            recResponse: 388,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 389,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 390,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 391,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 392,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 393,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 394,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 395,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 396,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 397,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 398,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 399,
+              },
+            ],
+          },
+          {
+            code: "71E01",
+            text: "Vehicle Fire (Occupants Trapped)",
+            recResponse: 388,
+            subCodes: [
+              {
+                code: "A",
+                text: "Alternative Fuel",
+                recResponse: 389,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 390,
+              },
+              {
+                code: "M",
+                text: "Alternative Fuel & Hazmat",
+                recResponse: 391,
+              },
+              {
+                code: "R",
+                text: "Alternative Fuel w/ Single Injured Person",
+                recResponse: 392,
+              },
+              {
+                code: "S",
+                text: "Alternative Fuel w/ Mult Injured Persons",
+                recResponse: 393,
+              },
+              {
+                code: "T",
+                text: "Hazmat w/ Single Injured Person",
+                recResponse: 394,
+              },
+              {
+                code: "U",
+                text: "Hazmat w/ Mult Injured Persons",
+                recResponse: 395,
+              },
+              {
+                code: "V",
+                text: "Alternative Fuel & Hazmat w/ Single Injured Person",
+                recResponse: 396,
+              },
+              {
+                code: "W",
+                text: "Alternative Fuel & Hazmat w/ Mult Injured Persons",
+                recResponse: 397,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 398,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 399,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];

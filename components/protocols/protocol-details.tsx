@@ -224,18 +224,14 @@ export default function ProtocolDetails({
                     <TableCell>{determinant.code}</TableCell>
                     <TableCell>{determinant.text}</TableCell>
                     <TableCell>
-                      {type === "EMS" ? (
                         <Badge variant="outline">
-                          {getEmsResponsePlan(determinant?.recResponse)
+                          {getResponsePlan(determinant?.recResponse)
                             ?.incidentType || (
                             <span className="text-muted-foreground">
                               No Response Plan
                             </span>
                           )}
                         </Badge>
-                      ) : (
-                        <></>
-                      )}
                     </TableCell>
                   </TableRow>
                 ))

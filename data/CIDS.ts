@@ -67,7 +67,7 @@ export const CIDSData: Location[] = [
     postal: "019",
     postalRange: ["019", "018", "017", "020", "021", "044"],
     cids: `COMM 2 STRY 65X65 CLASS 3 (ORDINARY)
-      BLACK WOODS SALOON FORMERLY HEN HOUSE
+      BLACK WOODS SALOON FRMRLY HEN HOUSE
       A SIDE - PALETO BLVD
       B SIDE - DULOUZ AVE
       C SIDE - ALLEYWAY

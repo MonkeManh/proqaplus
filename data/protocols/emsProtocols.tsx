@@ -1844,6 +1844,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "04D01",
             text: "Arrest",
             recResponse: 17,
+            notBreathing: true,
             subCodes: [
               {
                 code: "A",
@@ -1866,6 +1867,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "04D02",
             text: "Unconscious",
             recResponse: 18,
+            notConscious: true,
             subCodes: [
               {
                 code: "A",
@@ -2424,7 +2426,6 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** able to talk to you (cry) at all?</p>,
         questionType: "select",
-        omitQuestion: true,
         answers: [
           {
             answer: "Yes",
@@ -12351,12 +12352,6 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
           },
           {
-            answer: "Other:",
-            display: "Trapped in/by {input}",
-            continue: true,
-            updateCode: "22B03",
-          },
-          {
             answer: "Unknown",
             display: "Unk what pt is trapped in/by",
             continue: true,
@@ -19761,7 +19756,259 @@ export const emsComplaints: IEMSComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 168,
-    questions: [],
+    questions: [
+      {
+        text: <p>Are you <b>at that location now</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes (1st party)",
+            display: "Caller is on scene (1st pty)",
+            continue: true,
+          },
+          {
+            answer: "Yes (2nd party)",
+            display: "Caller is on scene (2nd pty)",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Caller is not on scene",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Major Incident",
+            display: "Major incident id'd",
+            continue: true,
+            updateCode: "29D01"
+          },
+          {
+            answer: "Rollover",
+            display: "This is a rollover incident",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "p"
+          },
+          {
+            answer: "Ejection",
+            display: "There is an ejection",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "n"
+          },
+          {
+            answer: "High Mechanism",
+            display: "High mechanism of injury",
+            continue: true,
+            updateCode: "29D02",
+          },
+          {
+            answer: "Trapped or Pinned Victim",
+            display: "Trapped or pinned victim",
+            continue: true,
+            updateCode: "29D05",
+          },
+          {
+            answer: "High Velocity Impact",
+            display: "High velocity impact",
+            continue: true,
+            updateCode: "29D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown mechanism of injury",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat rptd",
+            continue: true
+          },
+          {
+            answer: "Yes:",
+            display: "Hazmat rptd - {input}",
+            continue: true,
+            input: true,
+            updateCode: "29D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat involved",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>major incident</b> is this?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const secondAnswer = answers?.[1]?.answer;
+          return secondAnswer === "Major Incident";
+        },
+        answers: [
+          {
+            answer: "Aircraft",
+            display: "Aircraft is involved",
+            continue: true,
+            updateSubCode: "a"
+          },
+          {
+            answer: "Bus",
+            display: "Bus is involved",
+            continue: true,
+            updateSubCode: "b"
+          },
+          {
+            answer: "Subway/Metro",
+            display: "Subway/Metro is involved",
+            continue: true,
+            updateSubCode: "c"
+          },
+          {
+            answer: "Train",
+            display: "Train is involved",
+            continue: true,
+            updateSubCode: "d"
+          },
+          {
+            answer: "Watercraft",
+            display: "Watercraft is involved",
+            continue: true,
+            updateSubCode: "e"
+          },
+          {
+            answer: "Multi-Vehicle Pileup (>= 10)",
+            display: "Multi-Vehicle Pileup (>= 10)",
+            continue: true,
+            updateSubCode: "f"
+          },
+          {
+            answer: "Street Car/Light Rail",
+            display: "Street Car/Light Rail is involved",
+            continue: true,
+            updateSubCode: "g"
+          },
+          {
+            answer: "Vehicle v. Building",
+            display: "Car vs Bldg",
+            continue: true,
+            updateSubCode: "h"
+          },
+          {
+            answer: "None of These",
+            display: "No major incident factors ID'd",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of high mechanism accident is this?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const secondAnswer = answers?.[1]?.answer;
+          const lastAnswer = answers?.[2]?.answer;
+          return secondAnswer === "High Mechanism" || lastAnswer === "None of These";
+        },
+        answers: [
+          {
+            answer: "Auto v. Auto",
+            display: "Auto vs Auto",
+            continue: true,
+            updateCode: "29D02",
+          },
+          {
+            answer: "Auto v. Bicycle",
+            display: "Auto vs Bicycle",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "i"
+          },
+          {
+            answer: "All-Terrain/Snowmobile",
+            display: "Auto vs Motorcycle",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "k"
+          },
+          {
+            answer: "Auto v. Motorcycle",
+            display: "Auto vs Motorcycle",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "l"
+          },
+          {
+            answer: "Auto v. Pedestrian",
+            display: "Auto vs Pedestrian",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "m"
+          },
+          {
+            answer: "Personal Watercraft",
+            display: "Personal watercraft involved",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "o"
+          },
+          {
+            answer: "Vehicle off Bridge/Height",
+            display: "Vehicle off Bridge/Height",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "q"
+          },
+          {
+            answer: "Train/Light Rail v. Pedestrian",
+            display: "Train/Light Rail v. Pedestrian",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "t"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any injuries on scene?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            continue: true,
+            updateCode: "29A02"
+          },
+          {
+            answer: "Yes",
+            display: "Injs rptd",
+            continue: true,
+            updateCode: "29B01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs",
+            continue: true,
+            updateCode: "29B05"
+          }
+        ]
+      }
+    ],
     availableDeterminants: [
       {
         priority: "O",
