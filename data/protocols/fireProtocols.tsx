@@ -5906,6 +5906,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Other:",
             display: "Other explosion - {input}",
             continue: true,
+            input: true,
             updateCode: "57B01",
           },
           {
@@ -6038,6 +6039,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Other:",
             display: "Veh type - {input}",
             continue: true,
+            input: true,
             updateCode: "57C01",
           },
           {
@@ -16137,7 +16139,11 @@ export const fireProtocols: IFireComplaint[] = [
       },
 
       {
-        text: <p>How many <b>vehicles</b> are <b>involved</b>?</p>,
+        text: (
+          <p>
+            How many <b>vehicles</b> are <b>involved</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16149,18 +16155,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Multiple:",
             display: "{input} vehicles involved",
             continue: true,
-            updateCode: "71D02"
+            updateCode: "71D02",
           },
           {
             answer: "Unknown",
             display: "Unk number of vehicles involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b className="text-red-400">trapped</b> in the vehicle?</p>,
+        text: (
+          <p>
+            Is anyone <b className="text-red-400">trapped</b> in the vehicle?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16172,30 +16182,34 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes - Single Person",
             display: "Single person rptd trapped",
             continue: true,
-            updateCode: "71E01"
+            updateCode: "71E01",
           },
           {
             answer: "Yes - Multiple Persons:",
             display: "{input} persons rptd trapped",
             continue: true,
-            updateCode: "71E01"
+            updateCode: "71E01",
           },
           {
             answer: "Yes - Unknown (Suspected)",
             display: "Person(s) rptd trapped",
             continue: true,
-            updateCode: "71D01"
+            updateCode: "71D01",
           },
           {
             answer: "Unknown",
             display: "Unk if person(s) trapped",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the <b>incident</b> inside a <b>tunnel</b>?</p>,
+        text: (
+          <p>
+            Is the <b>incident</b> inside a <b>tunnel</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16208,24 +16222,31 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Incident in a tunnel",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "How many vehicles are involved?")?.defaultAnswer;
-              if(targetAnswer === "Single Vehicle") {
+              const targetAnswer = answers?.find(
+                (a) => a.defaultQuestion === "How many vehicles are involved?"
+              )?.defaultAnswer;
+              if (targetAnswer === "Single Vehicle") {
                 return { code: "71D07" };
-              } else if(targetAnswer === "Multiple:") {
+              } else if (targetAnswer === "Multiple:") {
                 return { code: "71D08" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if incident in a tunnel",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is the <b>fire</b> <b className="text-red-400">threatening</b> anything?</p>,
+        text: (
+          <p>
+            Is the <b>fire</b> <b className="text-red-400">threatening</b>{" "}
+            anything?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16237,30 +16258,35 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Non-Structure Object(s)",
             display: "Fire threatening non-structure object(s)",
             continue: true,
-            updateCode: "71C01"
+            updateCode: "71C01",
           },
           {
             answer: "Structure(s)",
             display: "Fire threatening structure(s)",
             continue: true,
-            updateCode: "71D03"
+            updateCode: "71D03",
           },
           {
             answer: "Vegitation/Brush",
             display: "Fire threatening vegitation/brush",
             continue: true,
-            updateCode: "71C04"
+            updateCode: "71C04",
           },
           {
             answer: "Unknown",
             display: "Unk if fire threatening anything",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does the vehicle run on <b className="text-green-400">alternate fuel</b>?</p>,
+        text: (
+          <p>
+            Does the vehicle run on{" "}
+            <b className="text-green-400">alternate fuel</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16272,18 +16298,23 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Vehicle has alt fuel",
             continue: true,
-            updateSubCode: "A"
+            updateSubCode: "A",
           },
           {
             answer: "No",
             display: "Vehicle does not have alt fuel",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Does the vehicle have <b className="text-green-400">hazardous materials</b>?</p>,
+        text: (
+          <p>
+            Does the vehicle have{" "}
+            <b className="text-green-400">hazardous materials</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -16296,48 +16327,66 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Vehicle has hazmat",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const targetAnswer = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer;
-              if(targetAnswer === "Yes") {
-                return { subCode: "M" }
+              const targetAnswer = answers?.find(
+                (a) =>
+                  a.defaultQuestion ===
+                  "Does the vehicle run on alternate fuel?"
+              )?.defaultAnswer;
+              if (targetAnswer === "Yes") {
+                return { subCode: "M" };
               } else {
-                return { subCode: "H" }
-              }   
-            }
+                return { subCode: "H" };
+              }
+            },
           },
           {
             answer: "No",
             display: "Vehicle does not have hazmat",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>sick or injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>sick or injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No injs rpd",
-            end: true
+            end: true,
           },
           {
             answer: "Yes - Single Person",
             display: "Single inj'd person rptd",
             end: true,
             dependency: (answers?: IAnswerData[]) => {
-              const hasAlt = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer === "Yes";
-              const hasHaz = answers?.find((a) => a.defaultQuestion === "Does the vehicle have hazardous materials?")?.defaultAnswer === "Yes";
-              if(hasAlt && hasHaz) {
-                return { subCode: "V" }
-              } else if(hasAlt && !hasHaz) {
-                return { subCode: "R" }
-              } else if(!hasAlt && hasHaz) {
-                return { subCode: "T" }
-              } else if(!hasAlt && !hasHaz) {
-                return { subCode: "X" }
+              const hasAlt =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does the vehicle run on alternate fuel?"
+                )?.defaultAnswer === "Yes";
+              const hasHaz =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does the vehicle have hazardous materials?"
+                )?.defaultAnswer === "Yes";
+              if (hasAlt && hasHaz) {
+                return { subCode: "V" };
+              } else if (hasAlt && !hasHaz) {
+                return { subCode: "R" };
+              } else if (!hasAlt && hasHaz) {
+                return { subCode: "T" };
+              } else if (!hasAlt && !hasHaz) {
+                return { subCode: "X" };
               }
-            }
+            },
           },
           {
             answer: "Yes - Multiple Persons:",
@@ -16345,26 +16394,36 @@ export const fireProtocols: IFireComplaint[] = [
             end: true,
             input: true,
             dependency: (answers?: IAnswerData[]) => {
-              const hasAlt = answers?.find((a) => a.defaultQuestion === "Does the vehicle run on alternate fuel?")?.defaultAnswer === "Yes";
-              const hasHaz = answers?.find((a) => a.defaultQuestion === "Does the vehicle have hazardous materials?")?.defaultAnswer === "Yes";
-              if(hasAlt && hasHaz) {
-                return { subCode: "W" }
-              } else if(hasAlt && !hasHaz) {
-                return { subCode: "S" }
-              } else if(!hasAlt && hasHaz) {
-                return { subCode: "U" }
-              } else if(!hasAlt && !hasHaz) {
-                return { subCode: "Y" }
+              const hasAlt =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does the vehicle run on alternate fuel?"
+                )?.defaultAnswer === "Yes";
+              const hasHaz =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does the vehicle have hazardous materials?"
+                )?.defaultAnswer === "Yes";
+              if (hasAlt && hasHaz) {
+                return { subCode: "W" };
+              } else if (hasAlt && !hasHaz) {
+                return { subCode: "S" };
+              } else if (!hasAlt && hasHaz) {
+                return { subCode: "U" };
+              } else if (!hasAlt && !hasHaz) {
+                return { subCode: "Y" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk if inj'd persons rptd",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -17813,6 +17872,426 @@ export const fireProtocols: IFireComplaint[] = [
                 code: "Y",
                 text: "Mult Sick/Injured Persons",
                 recResponse: 399,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 72,
+    name: "Water/Ice/Mud Rescue",
+    shortName: "Water/Ice/Mud Rescue",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 424,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "72A01",
+            text: "Animal Rescue",
+            recResponse: 424,
+          },
+          {
+            code: "72A02",
+            text: "Body Recovery",
+            recResponse: 425,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "72B00",
+            text: "Override (Bravo)",
+            recResponse: 426,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 427,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 428,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 427,
+              },
+            ],
+          },
+          {
+            code: "72B01",
+            text: "Stranded Person (Non-Threatened)",
+            recResponse: 429,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 427,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 428,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 427,
+              },
+            ],
+          },
+          {
+            code: "72B02",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 426,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 427,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 428,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 427,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "72C00",
+            text: "Override (Charlie)",
+            recResponse: 430,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 431,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 432,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 431,
+              },
+            ],
+          },
+          {
+            code: "72C01",
+            text: "Stranded in Building/Structure Due to Flood",
+            recResponse: 433,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 434,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 435,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 434,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "72D00",
+            text: "Override (Delta)",
+            recResponse: 430,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 431,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 432,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 431,
+              },
+            ],
+          },
+          {
+            code: "72D01",
+            text: "Ice Rescue",
+            recResponse: 436,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 436,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 438,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 436,
+              },
+            ],
+          },
+          {
+            code: "72D02",
+            text: "Swift Water Rescue",
+            recResponse: 430,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 431,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 432,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 431,
+              },
+            ],
+          },
+          {
+            code: "72D03",
+            text: "Scuba Dive Accident",
+            recResponse: 439,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 427,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 428,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 427,
+              },
+            ],
+          },
+          {
+            code: "72D04",
+            text: "Swimming Pool Rescue",
+            recResponse: 440,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 441,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 442,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 441,
+              },
+            ],
+          },
+          {
+            code: "72D05",
+            text: "Costal Water Rescue",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 444,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 444,
+              },
+            ],
+          },
+          {
+            code: "72D06",
+            text: "Inland Water Rescue",
+            recResponse: 446,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 447,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 447,
+              },
+            ],
+          },
+          {
+            code: "72D07",
+            text: "Oceanic Water Rescue",
+            recResponse: 449,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 450,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 450,
+              },
+            ],
+          },
+          {
+            code: "72D08",
+            text: "Surf Rescue",
+            recResponse: 452,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 453,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 454,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 453,
+              },
+            ],
+          },
+          {
+            code: "72D09",
+            text: "Large Flood Water Rescue",
+            recResponse: 433,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 434,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 435,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 434,
+              },
+            ],
+          },
+          {
+            code: "72D10",
+            text: "Small Flood Water Rescue",
+            recResponse: 455,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 456,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 457,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 456,
+              },
+            ],
+          },
+          {
+            code: "72D11",
+            text: "Quicksand/Marsh/Mud Resuce",
+            recResponse: 458,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult-Person Rescue",
+                recResponse: 459,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 460,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 459,
               },
             ],
           },

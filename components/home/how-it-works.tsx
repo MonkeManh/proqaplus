@@ -2,7 +2,7 @@ import { Headset, ClipboardList, Phone, CheckCircle, ArrowDown } from "lucide-re
 
 export default function HowItWorks() {
   return (
-    <section className="py-16 flex justify-center bg-gradient-to-b from-background to-muted/30">
+    <section className="py-40 flex justify-center bg-gradient-to-b from-background to-muted/30">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold tracking-tighter mb-2">How ProQA Plus Works</h2>

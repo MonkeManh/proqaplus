@@ -162,14 +162,14 @@ export default function FireSummaryPage() {
         "==============================",
         "ProQA Information:",
         dispatchData.reconfigured
-          ? `- Call reconfigured from ${dispatchData.reconfigured}`
+          ? `-- Call reconfigured from ${dispatchData.reconfigured}`
           : "",
         !dispatchData?.proqaAnswers || dispatchData?.isOverriden
-          ? "- ProQA Override"
+          ? "-- ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
                 .filter((qa: any) => !qa.omit)
-                .map((qa: any) => `- ${qa.answer}`),
+                .map((qa: any) => `-- ${qa.answer}`),
             ],
         `ProQA completed by: Dispatcher ${
           localStorage.getItem("CALLSIGN") || "UNKNOWN"

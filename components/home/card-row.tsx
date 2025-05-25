@@ -2,7 +2,7 @@ import { ClipboardCheck, FileText, Headphones } from "lucide-react"
 
 export default function CardRow() {
   return (
-    <section className="flex justify-center py-12 bg-muted/50">
+    <section className="flex justify-center py-30 bg-muted/50">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-3 items-start">
           <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">

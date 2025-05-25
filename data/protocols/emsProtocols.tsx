@@ -8822,16 +8822,19 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Chest",
             display: "Injured chest",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "Head",
             display: "Injured head",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "Neck",
             display: "Injured neck",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "POSSIBLY DANGEROUS (not Chest/Neck/Head):",
@@ -8950,6 +8953,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Public place",
             display: "In public place",
             continue: true,
+            updateSubCode: "P",
           },
           {
             answer: "Unknown",
@@ -18122,7 +18126,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "28C01"
+            updateCode: "28C01",
+            override: true,
           },
           {
             answer: "Unknown",
