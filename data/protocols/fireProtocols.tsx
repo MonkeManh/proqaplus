@@ -21234,5 +21234,289 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 76,
+    name: "Bomb Threat",
+    shortName: "Bomb Threat",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: true }
+    ],
+    defaultPriority: 3,
+    defaultPlan: 472,
+    questions: [
+      {
+        text: <p>Who is the <b>caller</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Suspect caller (known)",
+            display: "Suspect caller (known)",
+            continue: true,
+            updateCode: "76C01"
+          },
+          {
+            answer: "Suspect caller (suspected)",
+            display: "Suspect caller (suspected)",
+            continue: true,
+            updateCode: "76C01"
+          },
+          {
+            answer: "2nd party caller",
+            display: "2nd pty caller",
+            continue: true,
+            updateCode: "76B01"
+          },
+          {
+            answer: "3rd party caller",
+            display: "3rd pty caller",
+            continue: true,
+            updateCode: "76B01"
+          },
+          {
+            answer: "4th party caller",
+            display: "4th pty caller",
+            continue: true,
+            updateCode: "76B01"
+          },
+          {
+            answer: "Unknown caller",
+            display: "Unk caller",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is <b>your name</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Suspect caller (known)" || lastAnswer === "Suspect caller (suspected)";
+        },
+        answers: [
+          {
+            answer: "Name:",
+            display: "RP: {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Refused to give name",
+            display: "RP refused to give name",
+            continue: true
+          },
+          {
+            answer: "Unknown",
+            display: "RP unknown",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>location</b> of the bomb threat?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Comm/Ind building",
+            display: "Comm/Ind bldg involved",
+            continue: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Residential building",
+            display: "Residential bldg involved",
+            continue: true,
+            updateSubCode: "R",
+          },
+          {
+            answer: "Open area",
+            display: "Open area involved",
+            continue: true,
+            updateSubCode: "O",
+          },
+          {
+            answer: "Government building",
+            display: "Government bldg involved",
+            continue: true,
+            updateSubCode: "G",
+          },
+          {
+            answer: "High rise building",
+            display: "High rise bldg involved",
+            continue: true,
+            updateSubCode: "H",
+          },
+          {
+            answer: "Non-dwelling building/structure",
+            display: "Non-dwelling bldg/structure involved",
+            continue: true,
+            updateSubCode: "N",
+          },
+          {
+            answer: "Other:",
+            display: "{input} involved",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk location",
+            continue: true,
+            updateSubCode: "U",
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there a <b className="text-red-400">HIGH LIFE HAZARD</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No high life hazard ID'd",
+            end: true
+          },
+          {
+            answer: "Yes",
+            display: "High life hazard",
+            end: true,
+            updateSubCode: "H"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if high life hazard",
+            end: true
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "76B01",
+            text: "Bomb Threat (Not 1st Pty)",
+            recResponse: 472,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 472,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 472,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 472,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 472,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 472,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 472,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "76C00",
+            text: "Override (Charlie)",
+            recResponse: 472,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 472,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 472,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 472,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 472,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 472,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 472,
+              }
+            ]
+          },
+          {
+            code: "76C01",
+            text: "Bomb Threat (Suspect Caller)",
+            recResponse: 472,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 472,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 472,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 472,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 472,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 472,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 472,
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];
