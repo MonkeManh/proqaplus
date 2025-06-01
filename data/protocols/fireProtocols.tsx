@@ -17892,46 +17892,49 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPriority: 4,
     defaultPlan: 424,
     questions: [
-
       {
-        text: <p>What type of <b>incident</b> is this?</p>,
+        text: (
+          <p>
+            What type of <b>incident</b> is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Rescue",
             display: "This is a rescue incident",
-            continue: true
+            continue: true,
           },
           {
             answer: "Stranded",
             display: "This is a stranded incident",
-            continue: true
+            continue: true,
           },
           {
             answer: "Animal rescue",
             display: "This is an animal rescue",
             continue: true,
-            updateCode: "72A01"
+            updateCode: "72A01",
           },
           {
             answer: "Body recovery",
             display: "This is a body recovery",
             continue: true,
-            updateCode: "72A02"
+            updateCode: "72A02",
           },
           {
             answer: "Scuba diving accident",
             display: "This is a scuba diving accident",
             continue: true,
-            updateCode: "72D03"
+            updateCode: "72D03",
           },
           {
             answer: "Completely unknown situation",
             display: "This is a completely unk situation",
             continue: true,
-            updateCode: "72B02"
-          }
-        ]
+            updateCode: "72B02",
+          },
+        ],
       },
 
       {
@@ -17939,88 +17942,88 @@ export const fireProtocols: IFireComplaint[] = [
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Rescue"
+          return firstAnswer === "Rescue";
         },
         answers: [
           {
             answer: "Ice rescue",
             display: "Ice rescue ID'd",
             continue: true,
-            updateCode: "72D01"
+            updateCode: "72D01",
           },
           {
             answer: "Swift water rescue",
             display: "Swift water rescue ID'd",
             continue: true,
-            updateCode: "72D02"
+            updateCode: "72D02",
           },
           {
             answer: "Swimming pool rescue",
             display: "Swimming pool rescue ID'd",
             continue: true,
-            updateCode: "72D04"
+            updateCode: "72D04",
           },
           {
             answer: "Costal water rescue",
             display: "Costal water rescue ID'd",
             continue: true,
-            updateCode: "72D05"
+            updateCode: "72D05",
           },
           {
             answer: "Inland water rescue",
             display: "Inland water rescue ID'd",
             continue: true,
-            updateCode: "72D06"
+            updateCode: "72D06",
           },
           {
             answer: "Oceanic water rescue",
             display: "Oceanic water rescue ID'd",
             continue: true,
-            updateCode: "72D07"
+            updateCode: "72D07",
           },
           {
             answer: "Surf rescue",
             display: "Surf rescue ID'd",
             continue: true,
-            updateCode: "72D08"
+            updateCode: "72D08",
           },
           {
             answer: "Large flood rescue",
             display: "Large flood rescue ID'd",
             continue: true,
-            updateCode: "72D09"
+            updateCode: "72D09",
           },
           {
             answer: "Small flood rescue",
             display: "Small flood rescue ID'd",
             continue: true,
-            updateCode: "72D10"
+            updateCode: "72D10",
           },
           {
             answer: "Quick sand rescue",
             display: "Quicksand rescue",
             continue: true,
-            updateCode: "72D11"
+            updateCode: "72D11",
           },
           {
             answer: "Marsh rescue",
             display: "Marsh rescue",
             continue: true,
-            updateCode: "72D11"
+            updateCode: "72D11",
           },
           {
             answer: "Mud rescue",
             display: "Mud rescue",
             continue: true,
-            updateCode: "72D11"
+            updateCode: "72D11",
           },
           {
             answer: "Unknown situation",
             display: "Unk situation",
             continue: true,
-            updateCode: "72B02"
-          }
-        ]
+            updateCode: "72B02",
+          },
+        ],
       },
 
       {
@@ -18028,32 +18031,36 @@ export const fireProtocols: IFireComplaint[] = [
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Stranded"
+          return firstAnswer === "Stranded";
         },
         answers: [
           {
             answer: "Stranded person (non-threatened)",
             display: "Stranded person (non-threatened)",
             continue: true,
-            updateCode: "72B01"
+            updateCode: "72B01",
           },
           {
             answer: "Stranded in building/structure due to flood",
             display: "Stranded in building/structure due to flood",
             continue: true,
-            updateCode: "72C01"
+            updateCode: "72C01",
           },
           {
             answer: "Unknown situation",
             display: "Unk situation",
             continue: true,
-            updateCode: "72B02"
-          }
-        ]
+            updateCode: "72B02",
+          },
+        ],
       },
 
       {
-        text: <p>Do <b>multiple</b> people need rescuing/help?</p>,
+        text: (
+          <p>
+            Do <b>multiple</b> people need rescuing/help?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -18066,18 +18073,22 @@ export const fireProtocols: IFireComplaint[] = [
             display: "{input} persons need rescuing",
             continue: true,
             input: true,
-            updateSubCode: "M"
+            updateSubCode: "M",
           },
           {
             answer: "Unknown",
             display: "Unk number of persons involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>sick</b> or <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -18089,22 +18100,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes - Single",
             display: "Single sick/inj'd person rptd",
             continue: true,
-            updateSubCode: "X"
+            updateSubCode: "X",
           },
           {
             answer: "Yes - Multiple:",
             display: "{input} sick/inj'd persons rptd",
             continue: true,
             input: true,
-            updateSubCode: "Y"
+            updateSubCode: "Y",
           },
           {
             answer: "Unknown",
             display: "Unk if sick/inj'd persons",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -18528,7 +18539,11 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 461,
     questions: [
       {
-        text: <p>What type of <b>situation</b> is <b>this</b>?</p>,
+        text: (
+          <p>
+            What type of <b>situation</b> is <b>this</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -18545,25 +18560,25 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Watercraft COLLISION",
             display: "Watercraft collision",
             continue: true,
-            updateCode: "73D04"
+            updateCode: "73D04",
           },
           {
             answer: "Welfare check",
             display: "Welfare check on watercraft",
             continue: true,
-            updateCode: "73A01"
+            updateCode: "73A01",
           },
           {
             answer: "PERSON(s) OVERBOARD",
             display: "Person(s) overboard",
             continue: true,
-            updateCode: "73D01"
+            updateCode: "73D01",
           },
           {
             answer: "Medical emergency on board",
             display: "Medical emergency on board watercraft",
             continue: true,
-            updateCode: "73B02"
+            updateCode: "73B02",
           },
           {
             answer: "Flare/Smoke sighting",
@@ -18573,78 +18588,89 @@ export const fireProtocols: IFireComplaint[] = [
           {
             answer: "FIRE on watercraft",
             display: "Fire on watercraft",
-            goto: 64
+            goto: 64,
           },
           {
             answer: "Taking on water/SINKING",
             display: "Watercraft taking on water/sinking",
             continue: true,
-            updateCode: "73D02"
+            updateCode: "73D02",
           },
           {
             answer: "Run aground",
             display: "Watercraft run aground",
             continue: true,
-            updateCode: "73B04"
+            updateCode: "73B04",
           },
           {
             answer: "Unknown situation",
             display: "Unk situation",
             continue: true,
-            updateCode: "73D05"
-          }
-        ]
+            updateCode: "73D05",
+          },
+        ],
       },
 
       {
-        text: <p><b>Why</b> (how) is the watercraft disabled?</p>,
+        text: (
+          <p>
+            <b>Why</b> (how) is the watercraft disabled?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[0]?.defaultAnswer;
-          return lastAnswer === "Watercraft disabled" || lastAnswer === "Watercraft won't start";
+          return (
+            lastAnswer === "Watercraft disabled" ||
+            lastAnswer === "Watercraft won't start"
+          );
         },
         answers: [
           {
             answer: "Out of fuel",
             display: "Out of fuel",
             continue: true,
-            updateCode: "73B01"
+            updateCode: "73B01",
           },
           {
             answer: "Engine problems",
             display: "Engine problems",
             continue: true,
-            updateCode: "73B01"
+            updateCode: "73B01",
           },
           {
             answer: "Engine won't start",
             display: "Engine won't start",
             continue: true,
-            updateCode: "73B03"
+            updateCode: "73B03",
           },
           {
             answer: "Broken sail",
             display: "Broken sail",
             continue: true,
-            updateCode: "73B01"
+            updateCode: "73B01",
           },
           {
             answer: "Lost oars",
             display: "Lost oars",
             continue: true,
-            updateCode: "73B01"
+            updateCode: "73B01",
           },
           {
             answer: "Unknown",
             display: "Unk reason for watercraft disabled",
             continue: true,
-            updateCode: "73B01"
-          }
-        ]
+            updateCode: "73B01",
+          },
+        ],
       },
 
       {
-        text: <p>What did the watercraft <b>hit</b>?</p>,
+        text: (
+          <p>
+            What did the watercraft <b>hit</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -18670,12 +18696,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk what watercraft struck",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b className="text-blue-400">medical emergency</b>?</p>,
+        text: (
+          <p>
+            What is the <b className="text-blue-400">medical emergency</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -18692,16 +18722,20 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk medical emergency on board",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What can you <b>see</b>?</p>,
+        text: (
+          <p>
+            What can you <b>see</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Flare/Smoke sighting"
+          return firstAnswer === "Flare/Smoke sighting";
         },
         answers: [
           {
@@ -18723,9 +18757,9 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk what is sighted",
             continue: true,
-            updateCode: "73D05"
-          }
-        ]
+            updateCode: "73D05",
+          },
+        ],
       },
 
       {
@@ -18733,35 +18767,38 @@ export const fireProtocols: IFireComplaint[] = [
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Flare(s) sighted" || lastAnswer === "Flare(s) and smoke sighted";
+          return (
+            lastAnswer === "Flare(s) sighted" ||
+            lastAnswer === "Flare(s) and smoke sighted"
+          );
         },
         answers: [
           {
             answer: "Red",
             display: "Red flare(s) sighted",
             continue: true,
-            updateCode: "73D03"
+            updateCode: "73D03",
           },
           {
             answer: "Orange",
             display: "Orange flare(s) sighted",
             continue: true,
-            updateCode: "73D03"
+            updateCode: "73D03",
           },
           {
             answer: "Other:",
             display: "{input} flare(s) sighted",
             continue: true,
             input: true,
-            updateCode: "73B05"
+            updateCode: "73B05",
           },
           {
             answer: "Unknown",
             display: "Unk color of flare(s) sighted",
             continue: true,
-            updateCode: "73D05"
-          }
-        ]
+            updateCode: "73D05",
+          },
+        ],
       },
 
       {
@@ -18769,65 +18806,72 @@ export const fireProtocols: IFireComplaint[] = [
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Smoke sighted" || lastAnswer === "Flare(s) and smoke sighted";
+          return (
+            lastAnswer === "Smoke sighted" ||
+            lastAnswer === "Flare(s) and smoke sighted"
+          );
         },
         answers: [
           {
             answer: "Red",
             display: "Red smoke sighted",
             continue: true,
-            updateCode: "73D03"
+            updateCode: "73D03",
           },
           {
             answer: "Orange",
             display: "Orange smoke sighted",
             continue: true,
-            updateCode: "73D03"
+            updateCode: "73D03",
           },
           {
             answer: "Other:",
             display: "{input} smoke sighted",
             continue: true,
             input: true,
-            updateCode: "73B05"
+            updateCode: "73B05",
           },
           {
             answer: "Unknown",
             display: "Unk color of smoke sighted",
             continue: true,
-            updateCode: "73D05"
-          }
-        ]
+            updateCode: "73D05",
+          },
+        ],
       },
 
       {
-        text: <p>What <b>body of water</b> is the incident occurring?</p>,
+        text: (
+          <p>
+            What <b>body of water</b> is the incident occurring?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Costal",
             display: "Costal water incident",
             continue: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Inland",
             display: "Inland water incident",
             continue: true,
-            updateSubCode: "I"
+            updateSubCode: "I",
           },
           {
             answer: "Oceanic",
             display: "Oceanic water incident",
             continue: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
             display: "Unk body of water",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -18844,8 +18888,8 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk watercraft(s) involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -18867,8 +18911,8 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk landmarks visible",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -18885,15 +18929,19 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Single sick/injured person rptd",
             end: true,
             dependency: (answers?: IAnswerData[]) => {
-              const waterBodyType = answers?.find((a) => a.defaultQuestion === "What body of water is the incident occurring?")?.defaultAnswer;
-              if(waterBodyType === "Costal") {
-                return { subCode: "T" }
-              } else if(waterBodyType === "Inland") {
-                return { subCode: "V" }
-              } else if(waterBodyType === "Oceanic") {
-                return { subCode: "X" }
+              const waterBodyType = answers?.find(
+                (a) =>
+                  a.defaultQuestion ===
+                  "What body of water is the incident occurring?"
+              )?.defaultAnswer;
+              if (waterBodyType === "Costal") {
+                return { subCode: "T" };
+              } else if (waterBodyType === "Inland") {
+                return { subCode: "V" };
+              } else if (waterBodyType === "Oceanic") {
+                return { subCode: "X" };
               }
-            }
+            },
           },
           {
             answer: "Multiple sick/injured persons:",
@@ -18901,22 +18949,26 @@ export const fireProtocols: IFireComplaint[] = [
             end: true,
             input: true,
             dependency: (answers?: IAnswerData[]) => {
-              const waterBodyType = answers?.find((a) => a.defaultQuestion === "What body of water is the incident occurring?")?.defaultAnswer;
-              if(waterBodyType === "Costal") {
-                return { subCode: "U" }
-              } else if(waterBodyType === "Inland") {
-                return { subCode: "W" }
-              } else if(waterBodyType === "Oceanic") {
-                return { subCode: "Y" }
+              const waterBodyType = answers?.find(
+                (a) =>
+                  a.defaultQuestion ===
+                  "What body of water is the incident occurring?"
+              )?.defaultAnswer;
+              if (waterBodyType === "Costal") {
+                return { subCode: "U" };
+              } else if (waterBodyType === "Inland") {
+                return { subCode: "W" };
+              } else if (waterBodyType === "Oceanic") {
+                return { subCode: "Y" };
               }
-            }
+            },
           },
           {
             answer: "Unknown if sick/injured persons",
             display: "Unk if sick/injured persons",
             end: true,
-          }
-        ]
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -18951,7 +19003,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -18961,7 +19013,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -18971,11 +19023,11 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
-          }
-        ]
+                recResponse: 450,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -19008,7 +19060,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19018,7 +19070,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19028,9 +19080,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73B01",
@@ -19060,7 +19112,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19070,7 +19122,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19080,9 +19132,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73B02",
@@ -19112,7 +19164,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19122,7 +19174,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19132,9 +19184,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73B03",
@@ -19164,7 +19216,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19174,7 +19226,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19184,9 +19236,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73B04",
@@ -19216,7 +19268,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19226,7 +19278,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19236,9 +19288,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73B05",
@@ -19268,7 +19320,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19278,7 +19330,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19288,11 +19340,11 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
-          }
-        ]
+                recResponse: 450,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -19325,7 +19377,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19335,7 +19387,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19345,9 +19397,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73D01",
@@ -19377,7 +19429,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19387,7 +19439,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19397,9 +19449,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73D02",
@@ -19429,7 +19481,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19439,7 +19491,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19449,9 +19501,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73D03",
@@ -19481,7 +19533,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19491,7 +19543,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19501,9 +19553,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73D04",
@@ -19533,7 +19585,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19543,7 +19595,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19553,9 +19605,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
+                recResponse: 450,
+              },
+            ],
           },
           {
             code: "73D05",
@@ -19586,7 +19638,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "U",
                 text: "Costal w/ Mult Sick/Injured Persons",
-                recResponse: 444
+                recResponse: 444,
               },
               {
                 code: "V",
@@ -19596,7 +19648,7 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "W",
                 text: "Inland w/ Mult Sick/Injured Persons",
-                recResponse: 447
+                recResponse: 447,
               },
               {
                 code: "X",
@@ -19606,13 +19658,13 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "Y",
                 text: "Oceanic w/ Mult Sick/Injured Persons",
-                recResponse: 450
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 450,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 74,
@@ -19622,48 +19674,57 @@ export const fireProtocols: IFireComplaint[] = [
     services: [
       { name: "Fire", priority: true },
       { name: "EMS", priority: true },
-      { name: "Police", priority: true }
+      { name: "Police", priority: true },
     ],
     defaultPriority: 3,
     defaultPlan: 468,
     questions: [
       {
-        text: <p>What is the current <b>situation</b>?</p>,
+        text: (
+          <p>
+            What is the current <b>situation</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Suspicious package",
             display: "Suspicious package rptd",
             continue: true,
-            updateCode: "74C02"
+            updateCode: "74C02",
           },
           {
             answer: "Military ordnance",
             display: "Military ordnance rptd",
             continue: true,
-            updateCode: "74B01"
+            updateCode: "74B01",
           },
           {
             answer: "Explosives (known or suspected)",
             display: "Explosives rptd",
             continue: true,
-            updateCode: "74B02"
+            updateCode: "74B02",
           },
           {
             answer: "Unknown situation",
             display: "Unk situation",
             continue: true,
-            updateCode: "74B03"
-          }
-        ]
+            updateCode: "74B03",
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b className="text-green-400">leakage</b> or <b className="text-green-400">residue</b>?</p>,
+        text: (
+          <p>
+            Is there any <b className="text-green-400">leakage</b> or{" "}
+            <b className="text-green-400">residue</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Suspicious package"
+          return firstAnswer === "Suspicious package";
         },
         answers: [
           {
@@ -19675,18 +19736,22 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Yes",
             display: "Leakage or residue",
             continue: true,
-            updateCode: "74C01"
+            updateCode: "74C01",
           },
           {
             answer: "Unknown",
             display: "Unk if leakage or residue",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>sick</b> or <b>injured</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -19700,17 +19765,21 @@ export const fireProtocols: IFireComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              const isLeakage = answers?.find((a) => a.defaultQuestion === "Is there any leakage or residue?")?.defaultAnswer === "Yes";
-              if(firstAnswer === "Suspicious package") {
-                if(isLeakage) {
-                  return { code: "74D01" }
+              const isLeakage =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion === "Is there any leakage or residue?"
+                )?.defaultAnswer === "Yes";
+              if (firstAnswer === "Suspicious package") {
+                if (isLeakage) {
+                  return { code: "74D01" };
                 } else {
-                  return { code: "74D03" }
+                  return { code: "74D03" };
                 }
-              } else if(firstAnswer === "Military ordnance") {
-                return { code: "74D05" }
+              } else if (firstAnswer === "Military ordnance") {
+                return { code: "74D05" };
               }
-            }
+            },
           },
           {
             answer: "Multiple sick/injured persons:",
@@ -19719,15 +19788,19 @@ export const fireProtocols: IFireComplaint[] = [
             input: true,
             dependency: (answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              const isLeakage = answers?.find((a) => a.defaultQuestion === "Is there any leakage or residue?")?.defaultAnswer === "Yes";
-              if(firstAnswer === "Suspicious package") {
-                if(isLeakage) {
-                  return { code: "74D02" }
+              const isLeakage =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion === "Is there any leakage or residue?"
+                )?.defaultAnswer === "Yes";
+              if (firstAnswer === "Suspicious package") {
+                if (isLeakage) {
+                  return { code: "74D02" };
                 } else {
-                  return { code: "74D04" }
+                  return { code: "74D04" };
                 }
-              } else if(firstAnswer === "Military ordnance") {
-                return { code: "74D06" }
+              } else if (firstAnswer === "Military ordnance") {
+                return { code: "74D06" };
               }
             },
           },
@@ -19735,54 +19808,62 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk if sick/injured persons",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>location</b> of the incident?</p>,
+        text: (
+          <p>
+            What is the <b>location</b> of the incident?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Open area",
             display: "Incident in open area",
             continue: true,
-            updateSubCode: "O"
+            updateSubCode: "O",
           },
           {
             answer: "Comm/Ind building",
             display: "Incident in comm/ind bldg",
             continue: true,
-            updateSubCode: "C"
+            updateSubCode: "C",
           },
           {
             answer: "Government building",
             display: "Incident in government bldg",
             continue: true,
-            updateSubCode: "G"
+            updateSubCode: "G",
           },
           {
             answer: "High rise",
             display: "Incident in high rise bldg",
             continue: true,
-            updateSubCode: "H"
+            updateSubCode: "H",
           },
           {
             answer: "Non-dwelling building/structure",
             display: "Incident in non-dwelling bldg/structure",
             continue: true,
-            updateSubCode: "N"
+            updateSubCode: "N",
           },
           {
             answer: "Unknown",
             display: "Unk incident location",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Can you <b>describe</b> the package/explosive?</p>,
+        text: (
+          <p>
+            Can you <b>describe</b> the package/explosive?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -19795,12 +19876,16 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk package/explosive description",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-      
+
       {
-        text: <p>How big is the <b>package/explosive</b>?</p>,
+        text: (
+          <p>
+            How big is the <b>package/explosive</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -19813,9 +19898,9 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Unknown",
             display: "Unk package/explosive size",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -19854,9 +19939,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 467
+                recResponse: 467,
               },
-            ]
+            ],
           },
           {
             code: "74B02",
@@ -19891,9 +19976,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 468
+                recResponse: 468,
               },
-            ]
+            ],
           },
           {
             code: "74B03",
@@ -19929,11 +20014,11 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 468
+                recResponse: 468,
               },
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -19971,9 +20056,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74C01",
@@ -20008,9 +20093,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74C02",
@@ -20045,11 +20130,11 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 468
+                recResponse: 468,
               },
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -20087,9 +20172,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D01",
@@ -20124,9 +20209,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D02",
@@ -20161,9 +20246,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D03",
@@ -20198,9 +20283,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D04",
@@ -20235,9 +20320,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D05",
@@ -20272,9 +20357,9 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
-            ]
+            ],
           },
           {
             code: "74D06",
@@ -20309,8 +20394,841 @@ export const fireProtocols: IFireComplaint[] = [
               {
                 code: "R",
                 text: "Residential Building",
-                recResponse: 469
+                recResponse: 469,
               },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 75,
+    name: "Train & Rail Fire",
+    shortName: "Train/Rail Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 470,
+    questions: [
+      {
+        text: <p>What <b>type</b> of <b>train</b> is involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Cable car",
+            display: "Cable car involved",
+            continue: true,
+            updateSubCode: "C",
+          },
+          {
+            answer: "Freight train",
+            display: "Freight train involved",
+            continue: true,
+            updateSubCode: "F",
+          },
+          {
+            answer: "Light rail",
+            display: "Light rail involved",
+            continue: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "Monorail",
+            display: "Monorail involved",
+            continue: true,
+            updateSubCode: "M",
+          },
+          {
+            answer: "Other:",
+            display: "Other train type: {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "O",
+          },
+          {
+            answer: "Passenger (commuter) train",
+            display: "Passenger train involved",
+            continue: true,
+            updateSubCode: "P",
+          },
+          {
+            answer: "Subway",
+            display: "Subway involved",
+            continue: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Trolley/streetcar",
+            display: "Trolley/streetcar involved",
+            continue: true,
+            updateSubCode: "T",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk train type",
+            continue: true,
+            updateSubCode: "U",
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Train fire",
+            display: "Train fire",
+            continue: true,
+          },
+          {
+            answer: "Train fire (contents only and still moving)",
+            display: "Contents fire (moving train)",
+            continue: true,
+            updateCode: "75O01",
+          },
+          {
+            answer: "Train collision/derailment",
+            display: "Train collision/derailment",
+            goto: 70
+          },
+          {
+            answer: "Unknown situation (investigation)",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "75C01",
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>location</b> of the incident?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Train fire"
+        },
+        answers: [
+          {
+            answer: "At ground level",
+            display: "At grd level",
+            continue: true,
+            updateCode: "75D05"
+          },
+          {
+            answer: "Above ground level",
+            display: "Above grd level",
+            continue: true,
+            updateCode: "75D03"
+          },
+          {
+            answer: "Below ground level",
+            display: "Below grd level",
+            continue: true,
+            updateCode: "75D04"
+          },
+          {
+            answer: "In tunnel",
+            display: "In tunnel",
+            continue: true,
+            updateCode: "75D06"
+          },
+          {
+            answer: "On bridge/trestle",
+            display: "On bridge/trestle",
+            continue: true,
+            updateCode: "75D07"
+          },
+          {
+            answer: "In/over water",
+            display: "In/over water",
+            continue: true,
+            updateCode: "75D08"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk incident location",
+            continue: true,
+            updateCode: "75D00"
+          }
+        ]
+      },
+
+      {
+        text: <p>Does the train fire <b>involve</b> or <b>threaten</b> anything?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 2]?.defaultAnswer;
+          return lastAnswer === "Train fire";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Nothing rptd threatened",
+            end: true,
+          },
+          {
+            answer: "Yes - Building/structure",
+            display: "Building/structure involved or threatened",
+            end: true,
+            updateCode: "75D01",
+          },
+          {
+            answer: "Yes - Vehicles",
+            display: "Vehicles involved or threatened",
+            end: true,
+            updateCode: "75D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anything threatened",
+            end: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "75O01",
+            text: "Moving Train",
+            recResponse: 470,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 470,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 470,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 470,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 470,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 470,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 470,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 470,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 470,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "75C00",
+            text: "Override (Charlie)",
+            recResponse: 334,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 334,
+              }
+            ]
+          },
+          {
+            code: "75C01",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 334,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 334,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 334,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 334,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 334,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 334,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 334,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 335
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 334,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 334,
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "75D00",
+            text: "Override (Delta)",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D01",
+            text: "Train Fire Involving Building/Structure",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D02",
+            text: "Train Fire Involving Vehicles",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D03",
+            text: "Train Fire Below Ground Level",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D04",
+            text: "Train Fire Above Ground Level",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D05",
+            text: "Train Fire At Ground Level",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D06",
+            text: "Train Fire In Tunnel",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D07",
+            text: "Train Fire on Bridge/Trestle",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
+            ]
+          },
+          {
+            code: "75D08",
+            text: "Train Fire in/over Water",
+            recResponse: 471,
+            subCodes: [
+              {
+                code: "C",
+                text: "Cable Car",
+                recResponse: 471,
+              },
+              {
+                code: "F",
+                text: "Freight Train",
+                recResponse: 471,
+              },
+              {
+                code: "L",
+                text: "Light Rail",
+                recResponse: 471,
+              },
+              {
+                code: "M",
+                text: "Monorail",
+                recResponse: 471,
+              },
+              {
+                code: "O",
+                text: "Other",
+                recResponse: 471,
+              },
+              {
+                code: "P",
+                text: "Passenger (Commuter) Train",
+                recResponse: 471,
+              },
+              {
+                code: "S",
+                text: "Subway",
+                recResponse: 471
+              },
+              {
+                code: "T",
+                text: "Trolley/Streetcar",
+                recResponse: 471,
+              },
+              {
+                code: "U",
+                text: "Unknown",
+                recResponse: 471,
+              }
             ]
           }
         ]

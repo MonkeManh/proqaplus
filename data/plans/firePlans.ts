@@ -7488,6 +7488,10 @@ export const firePlans: IResponsePlan[] = [
         type: "Chief",
         quantity: 1,
       },
+      {
+        type: "Port Authority",
+        quantity: 1,
+      }
     ],
   },
   {
@@ -7519,6 +7523,14 @@ export const firePlans: IResponsePlan[] = [
         type: "Chief",
         quantity: 1,
       },
+      {
+        type: "Police Patrol",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 2,
+      }
     ],
   },
   {
@@ -11912,6 +11924,88 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Port Authority",
         quantity: 1
+      }
+    ]
+  },
+  {
+    id: 470,
+    name: "TRMR",
+    incidentType: "TRAIN|INVEST|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 471,
+    name: "TRF",
+    incidentType: "FIRE|TRAIN",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3
+      },
+      {
+        type: "Truck",
+        quantity: 1
+      },
+      {
+        type: "Rescue",
+        quantity: 1
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 4
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1
+      },
+      {
+        type: "Tanker",
+        quantity: 2
+      },
+      {
+        type: "Hazmat",
+        quantity: 1
+      },
+      {
+        type: "Chief",
+        quantity: 1
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3
+      },
+      {
+        type: "Police Supervisor",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 2
       }
     ]
   }
