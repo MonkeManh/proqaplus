@@ -19613,5 +19613,708 @@ export const fireProtocols: IFireComplaint[] = [
         ]
       }
     ]
+  },
+  {
+    protocol: 74,
+    name: "Suspicious Package (Letter,Item, Substance) / Explosives",
+    shortName: "Suspicious Package/Explosives",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: true }
+    ],
+    defaultPriority: 3,
+    defaultPlan: 468,
+    questions: [
+      {
+        text: <p>What is the current <b>situation</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Suspicious package",
+            display: "Suspicious package rptd",
+            continue: true,
+            updateCode: "74C02"
+          },
+          {
+            answer: "Military ordnance",
+            display: "Military ordnance rptd",
+            continue: true,
+            updateCode: "74B01"
+          },
+          {
+            answer: "Explosives (known or suspected)",
+            display: "Explosives rptd",
+            continue: true,
+            updateCode: "74B02"
+          },
+          {
+            answer: "Unknown situation",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "74B03"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is there any <b className="text-green-400">leakage</b> or <b className="text-green-400">residue</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Suspicious package"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No leakage or residue",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Leakage or residue",
+            continue: true,
+            updateCode: "74C01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if leakage or residue",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick/injured person(s) rptd",
+            continue: true,
+          },
+          {
+            answer: "Single sick/injured person",
+            display: "Single sick/injured person rptd",
+            continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const isLeakage = answers?.find((a) => a.defaultQuestion === "Is there any leakage or residue?")?.defaultAnswer === "Yes";
+              if(firstAnswer === "Suspicious package") {
+                if(isLeakage) {
+                  return { code: "74D01" }
+                } else {
+                  return { code: "74D03" }
+                }
+              } else if(firstAnswer === "Military ordnance") {
+                return { code: "74D05" }
+              }
+            }
+          },
+          {
+            answer: "Multiple sick/injured persons:",
+            display: "{input} sick/injured persons rptd",
+            continue: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const isLeakage = answers?.find((a) => a.defaultQuestion === "Is there any leakage or residue?")?.defaultAnswer === "Yes";
+              if(firstAnswer === "Suspicious package") {
+                if(isLeakage) {
+                  return { code: "74D02" }
+                } else {
+                  return { code: "74D04" }
+                }
+              } else if(firstAnswer === "Military ordnance") {
+                return { code: "74D06" }
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/injured persons",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>location</b> of the incident?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Open area",
+            display: "Incident in open area",
+            continue: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Comm/Ind building",
+            display: "Incident in comm/ind bldg",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Government building",
+            display: "Incident in government bldg",
+            continue: true,
+            updateSubCode: "G"
+          },
+          {
+            answer: "High rise",
+            display: "Incident in high rise bldg",
+            continue: true,
+            updateSubCode: "H"
+          },
+          {
+            answer: "Non-dwelling building/structure",
+            display: "Incident in non-dwelling bldg/structure",
+            continue: true,
+            updateSubCode: "N"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk incident location",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Can you <b>describe</b> the package/explosive?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Description:",
+            display: "Description: {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk package/explosive description",
+            continue: true,
+          }
+        ]
+      },
+      
+      {
+        text: <p>How big is the <b>package/explosive</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Size:",
+            display: "Size: {input}",
+            end: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk package/explosive size",
+            end: true,
+          }
+        ]
+      }
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "74B01",
+            text: "Military Ordnance",
+            recResponse: 467,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 467,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 467,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 467,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 467,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 467,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 467
+              },
+            ]
+          },
+          {
+            code: "74B02",
+            text: "Explosives",
+            recResponse: 468,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 468,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 468,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 468,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 468,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 468,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 468
+              },
+            ]
+          },
+          {
+            code: "74B03",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 468,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 468,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 468,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 468,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 468,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 468,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 468
+              },
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "74C00",
+            text: "Override (Charlie)",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74C01",
+            text: "Suspicious Package w/ Leakage/Residue",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74C02",
+            text: "Suspicious Package",
+            recResponse: 468,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 468,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 468,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 468,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 468,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 468,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 468
+              },
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "74D00",
+            text: "Override (Delta)",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D01",
+            text: "Suspicious Package w/ Leakage/Residue & Single Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D02",
+            text: "Suspicious Package w/ Leakage/Residue & Mult Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D03",
+            text: "Suspicious Package w/ Single Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D04",
+            text: "Suspicious Package w/ Mult Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D05",
+            text: "Military Ordinance/Explosives w/ Single Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          },
+          {
+            code: "74D06",
+            text: "Military Ordinance/Explosives w/ Mult Sick/Injured Person",
+            recResponse: 469,
+            subCodes: [
+              {
+                code: "C",
+                text: "Comm/Ind Building",
+                recResponse: 469,
+              },
+              {
+                code: "G",
+                text: "Government Building",
+                recResponse: 469,
+              },
+              {
+                code: "H",
+                text: "High Life Hazard/High Rise",
+                recResponse: 469,
+              },
+              {
+                code: "N",
+                text: "Non-Dwelling Building/Structure",
+                recResponse: 469,
+              },
+              {
+                code: "O",
+                text: "Open Area",
+                recResponse: 469,
+              },
+              {
+                code: "R",
+                text: "Residential Building",
+                recResponse: 469
+              },
+            ]
+          }
+        ]
+      }
+    ]
   }
 ];

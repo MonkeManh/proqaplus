@@ -1,6 +1,6 @@
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
 import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan";
-import { emsComplaints } from "../protocols/emsProtocols";
-import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
+import { fireProtocols } from "../protocols/fireProtocols";
 
 export const getFireResponsePlan = (id: number): IResponsePlan | undefined => {
   return firePlans.find((plan) => plan.id === id);
@@ -11,8 +11,8 @@ export const getFireResponsePlanFromProtocol = (
   priority: string,
   code: string
 ): IResponsePlan | undefined => {
-  const complaint = emsComplaints.find(
-    (c: IEMSComplaint) => c.protocol === protocol
+  const complaint = fireProtocols.find(
+    (c: IFireComplaint) => c.protocol === protocol
   );
   if (!complaint) return undefined;
 
@@ -11795,6 +11795,119 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Marine",
         quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 467,
+    name: "EX",
+    incidentType: "MilitaryOrdnance",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "EOD",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 2
+      },
+      {
+        type: "Police Patrol",
+        quantity: 4
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 468,
+    name: "EX",
+    incidentType: "SuspiciousPackage",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "EOD",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 2
+      },
+      {
+        type: "Police Patrol",
+        quantity: 4
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 469,
+    name: "HMLOCALM",
+    incidentType: "SuspiciousPackage|INVEST",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Fire Investigator",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2
       },
       {
         type: "Port Authority",
