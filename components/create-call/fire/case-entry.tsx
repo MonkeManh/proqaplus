@@ -41,7 +41,7 @@ interface CaseEntryProps {
 const formSchema = z.object({
   location: z.string().optional(),
   boxType: z
-    .enum(["Phone Alarm", "Still Alarm", "Rescue", "High Rise"])
+    .enum(["Phone Alarm", "Still Alarm", "Rescue", "High Rise", "Marine"])
     .optional(),
   chiefComplaint: z.string({
     required_error: "Please seelect a chief complaint",
@@ -194,6 +194,9 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                             </SelectItem>
                             <SelectItem value="Still Alarm">
                               Still Alarm Box
+                            </SelectItem>
+                            <SelectItem value="Marine">
+                              Marine
                             </SelectItem>
                           </SelectContent>
                         </Select>

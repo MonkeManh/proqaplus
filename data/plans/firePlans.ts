@@ -11664,4 +11664,142 @@ export const firePlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 461,
+    name: "WTRRESCOR",
+    incidentType: "WTR|RES|COASTAL|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 462,
+    name: "WTRRESINR",
+    incidentType: "WTR|RES|INLAND|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 463,
+    name: "WTRRESOCOR",
+    incidentType: "WTR|RES|OCEANIC|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 464,
+    name: "WTRRESCOB",
+    incidentType: "WTR|RES|COASTAL|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 465,
+    name: "WTRRESINB",
+    incidentType: "WTR|RES|INLAND|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  },
+  {
+    id: 466,
+    name: "WTRRESOCB",
+    incidentType: "WTR|RES|OCEANIC|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2
+      },
+      {
+        type: "Marine",
+        quantity: 1
+      },
+      {
+        type: "Port Authority",
+        quantity: 1
+      }
+    ]
+  }
 ];

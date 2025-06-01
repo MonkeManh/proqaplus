@@ -18514,4 +18514,1104 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  {
+    protocol: 73,
+    name: "Watercraft in Distress/Collision",
+    shortName: "Watercraft in Distress/Collision",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 3 },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 461,
+    questions: [
+      {
+        text: <p>What type of <b>situation</b> is <b>this</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Watercraft disabled",
+            display: "Watercraft disabled",
+            continue: true,
+          },
+          {
+            answer: "Watercraft won't start",
+            display: "Watercraft engine won't start",
+            continue: true,
+          },
+          {
+            answer: "Watercraft COLLISION",
+            display: "Watercraft collision",
+            continue: true,
+            updateCode: "73D04"
+          },
+          {
+            answer: "Welfare check",
+            display: "Welfare check on watercraft",
+            continue: true,
+            updateCode: "73A01"
+          },
+          {
+            answer: "PERSON(s) OVERBOARD",
+            display: "Person(s) overboard",
+            continue: true,
+            updateCode: "73D01"
+          },
+          {
+            answer: "Medical emergency on board",
+            display: "Medical emergency on board watercraft",
+            continue: true,
+            updateCode: "73B02"
+          },
+          {
+            answer: "Flare/Smoke sighting",
+            display: "Flare/Smoke sighting",
+            continue: true,
+          },
+          {
+            answer: "FIRE on watercraft",
+            display: "Fire on watercraft",
+            goto: 64
+          },
+          {
+            answer: "Taking on water/SINKING",
+            display: "Watercraft taking on water/sinking",
+            continue: true,
+            updateCode: "73D02"
+          },
+          {
+            answer: "Run aground",
+            display: "Watercraft run aground",
+            continue: true,
+            updateCode: "73B04"
+          },
+          {
+            answer: "Unknown situation",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "73D05"
+          }
+        ]
+      },
+
+      {
+        text: <p><b>Why</b> (how) is the watercraft disabled?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[0]?.defaultAnswer;
+          return lastAnswer === "Watercraft disabled" || lastAnswer === "Watercraft won't start";
+        },
+        answers: [
+          {
+            answer: "Out of fuel",
+            display: "Out of fuel",
+            continue: true,
+            updateCode: "73B01"
+          },
+          {
+            answer: "Engine problems",
+            display: "Engine problems",
+            continue: true,
+            updateCode: "73B01"
+          },
+          {
+            answer: "Engine won't start",
+            display: "Engine won't start",
+            continue: true,
+            updateCode: "73B03"
+          },
+          {
+            answer: "Broken sail",
+            display: "Broken sail",
+            continue: true,
+            updateCode: "73B01"
+          },
+          {
+            answer: "Lost oars",
+            display: "Lost oars",
+            continue: true,
+            updateCode: "73B01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk reason for watercraft disabled",
+            continue: true,
+            updateCode: "73B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>What did the watercraft <b>hit</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Watercraft COLLISION";
+        },
+        answers: [
+          {
+            answer: "Other watercraft:",
+            display: "Struck other watercraft: {input}",
+            continue: true,
+          },
+          {
+            answer: "Dock/wharf",
+            display: "Struck dock/wharf",
+            continue: true,
+          },
+          {
+            answer: "Bridge",
+            display: "Struck bridge",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what watercraft struck",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b className="text-blue-400">medical emergency</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Medical emergency on board";
+        },
+        answers: [
+          {
+            answer: "Complaint:",
+            display: "Medical complaint - {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk medical emergency on board",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>What can you <b>see</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Flare/Smoke sighting"
+        },
+        answers: [
+          {
+            answer: "Flare(s)",
+            display: "Flare(s) sighted",
+            continue: true,
+          },
+          {
+            answer: "Smoke",
+            display: "Smoke sighted",
+            continue: true,
+          },
+          {
+            answer: "Flare(s) and smoke",
+            display: "Flare(s) and smoke sighted",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what is sighted",
+            continue: true,
+            updateCode: "73D05"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the color of the flare(s)?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Flare(s) sighted" || lastAnswer === "Flare(s) and smoke sighted";
+        },
+        answers: [
+          {
+            answer: "Red",
+            display: "Red flare(s) sighted",
+            continue: true,
+            updateCode: "73D03"
+          },
+          {
+            answer: "Orange",
+            display: "Orange flare(s) sighted",
+            continue: true,
+            updateCode: "73D03"
+          },
+          {
+            answer: "Other:",
+            display: "{input} flare(s) sighted",
+            continue: true,
+            input: true,
+            updateCode: "73B05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk color of flare(s) sighted",
+            continue: true,
+            updateCode: "73D05"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the color of the smoke?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Smoke sighted" || lastAnswer === "Flare(s) and smoke sighted";
+        },
+        answers: [
+          {
+            answer: "Red",
+            display: "Red smoke sighted",
+            continue: true,
+            updateCode: "73D03"
+          },
+          {
+            answer: "Orange",
+            display: "Orange smoke sighted",
+            continue: true,
+            updateCode: "73D03"
+          },
+          {
+            answer: "Other:",
+            display: "{input} smoke sighted",
+            continue: true,
+            input: true,
+            updateCode: "73B05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk color of smoke sighted",
+            continue: true,
+            updateCode: "73D05"
+          }
+        ]
+      },
+
+      {
+        text: <p>What <b>body of water</b> is the incident occurring?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Costal",
+            display: "Costal water incident",
+            continue: true,
+            updateSubCode: "C"
+          },
+          {
+            answer: "Inland",
+            display: "Inland water incident",
+            continue: true,
+            updateSubCode: "I"
+          },
+          {
+            answer: "Oceanic",
+            display: "Oceanic water incident",
+            continue: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk body of water",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Can you describe the watercraft(s) involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Description:",
+            display: "Watercraft(s) description - {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk watercraft(s) involved",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Can you see any landmarks?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Landmark(s):",
+            display: "Landmark(s) - {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "No landmarks",
+            display: "No landmarks visible",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk landmarks visible",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone sick or injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No injuries",
+            display: "No sick/injured person(s) rptd",
+            end: true,
+          },
+          {
+            answer: "Single sick/injured person",
+            display: "Single sick/injured person rptd",
+            end: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const waterBodyType = answers?.find((a) => a.defaultQuestion === "What body of water is the incident occurring?")?.defaultAnswer;
+              if(waterBodyType === "Costal") {
+                return { subCode: "T" }
+              } else if(waterBodyType === "Inland") {
+                return { subCode: "V" }
+              } else if(waterBodyType === "Oceanic") {
+                return { subCode: "X" }
+              }
+            }
+          },
+          {
+            answer: "Multiple sick/injured persons:",
+            display: "{input} sick/injured persons rptd",
+            end: true,
+            input: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const waterBodyType = answers?.find((a) => a.defaultQuestion === "What body of water is the incident occurring?")?.defaultAnswer;
+              if(waterBodyType === "Costal") {
+                return { subCode: "U" }
+              } else if(waterBodyType === "Inland") {
+                return { subCode: "W" }
+              } else if(waterBodyType === "Oceanic") {
+                return { subCode: "Y" }
+              }
+            }
+          },
+          {
+            answer: "Unknown if sick/injured persons",
+            display: "Unk if sick/injured persons",
+            end: true,
+          }
+        ]
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "73A01",
+            text: "Watercraft Welfare Check",
+            recResponse: 461,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 461,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 462,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 463,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "73B00",
+            text: "Override (Bravo)",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73B01",
+            text: "Watercraft Disabled (Out of Fuel, Broken Sail, Lost Oars, Engine Problems)",
+            recResponse: 461,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 461,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 462,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 463,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73B02",
+            text: "Medical Emergency on Board",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73B03",
+            text: "Engine Will not Start",
+            recResponse: 461,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 461,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 462,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 463,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73B04",
+            text: "Run Aground",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73B05",
+            text: "Flare Sighting (Other than Orange or Red)",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 464,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 465,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 466,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "73D00",
+            text: "Override (Delta)",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73D01",
+            text: "People in Water",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73D02",
+            text: "Taking on Water",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73D03",
+            text: "Flare/Smoke Sighting (Orange or Red)",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73D04",
+            text: "Collision",
+            recResponse: 443,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          },
+          {
+            code: "73D05",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 443,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Costal",
+                recResponse: 443,
+              },
+              {
+                code: "I",
+                text: "Inland",
+                recResponse: 446,
+              },
+              {
+                code: "O",
+                text: "Oceanic",
+                recResponse: 449,
+              },
+              {
+                code: "T",
+                text: "Costal w/ Single Sick/Injured Person",
+                recResponse: 445,
+              },
+              {
+                code: "U",
+                text: "Costal w/ Mult Sick/Injured Persons",
+                recResponse: 444
+              },
+              {
+                code: "V",
+                text: "Inland w/ Single Sick/Injured Person",
+                recResponse: 448,
+              },
+              {
+                code: "W",
+                text: "Inland w/ Mult Sick/Injured Persons",
+                recResponse: 447
+              },
+              {
+                code: "X",
+                text: "Oceanic w/ Single Sick/Injured Person",
+                recResponse: 451,
+              },
+              {
+                code: "Y",
+                text: "Oceanic w/ Mult Sick/Injured Persons",
+                recResponse: 450
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
