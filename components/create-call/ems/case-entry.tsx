@@ -121,12 +121,41 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
   };
 
   const breathingStatus = form.watch("isBreathing");
+  const concsiousness = form.watch("isConscious");
 
   const sortedComplaintOptions = useMemo(() => {
     const allComplaints = getEMSComplaintOptions();
 
     if (breathingStatus === "No" || breathingStatus === "INEFFECTIVE/AGONAL") {
       const priorityComplaints = [9, 11, 12, 14, 15];
+
+      const priority = allComplaints.filter((c) =>
+        priorityComplaints.includes(c.protocol)
+      );
+      const others = allComplaints.filter(
+        (c) => !priorityComplaints.includes(c.protocol)
+      );
+
+      priority.sort((a, b) => {
+        const aIndex = priorityComplaints.indexOf(a.protocol);
+        const bIndex = priorityComplaints.indexOf(b.protocol);
+        return aIndex - bIndex;
+      });
+
+      const priorityOptions = priority.map((c) => ({
+        value: `${c.protocol} - ${c.value}`,
+        label: `${c.protocol} - ${c.label}`,
+        className: "bg-red-500/20 hover:bg-red-500/40 transition-colors",
+      }));
+
+      const otherOptions = others.map((c) => ({
+        value: `${c.protocol} - ${c.value}`,
+        label: `${c.protocol} - ${c.value}`,
+      }));
+
+      return [...priorityOptions, ...otherOptions];
+    } else if(concsiousness === "No") {
+      const priorityComplaints = [31, 9, 11, 12, 14, 15];
 
       const priority = allComplaints.filter((c) =>
         priorityComplaints.includes(c.protocol)

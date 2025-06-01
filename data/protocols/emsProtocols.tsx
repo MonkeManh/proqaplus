@@ -270,6 +270,17 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "01A02",
             end: true,
           },
+          {
+            answer: "Other:",
+            display: "Pn in {input}",
+            input: true,
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pn is",
+            end: true,
+          }
         ],
       },
     ],
@@ -556,13 +567,18 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: <p>When did the reaction start?</p>,
-        questionType: "input",
+        questionType: "select",
         answers: [
           {
             answer: "Time of reaction...",
             display: "Rx started {input}",
             continue: true,
           },
+          {
+            answer: "Unknown",
+            display: "Unk when rx started",
+            continue: true,
+          }
         ],
       },
 
@@ -669,6 +685,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "02B01",
             text: "Unk Code/Other Codes not Applicable",
             recResponse: 4,
+            defaultCode: true,
             subCodes: [
               {
                 code: "I",
@@ -948,7 +965,6 @@ export const emsComplaints: IEMSComplaint[] = [
         </p>
       </>
     ),
-
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -1113,6 +1129,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -1152,8 +1173,20 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "03B01",
           },
           {
-            answer: "Chest/Neck/Head",
-            display: "Bit on Chest/Neck/Head",
+            answer: "Chest",
+            display: "Bit on Chest",
+            continue: true,
+            updateCode: "03D05",
+          },
+          {
+            answer: "Neck",
+            display: "Bit on Neck",
+            continue: true,
+            updateCode: "03D05",
+          },
+          {
+            answer: "Head",
+            display: "Bit on Head",
             continue: true,
             updateCode: "03D05",
           },
@@ -1180,8 +1213,8 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
-          const lastAnswer = answers?.[answers.length - 1]?.answer;
-          return lastAnswer === "Bit on Chest/Neck/Head";
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
         },
         answers: [
           {
@@ -1528,6 +1561,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if(!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -1567,8 +1605,20 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "04B01",
           },
           {
-            answer: "Chest/Neck/Head",
-            display: "Injury to Chest/Neck/Head",
+            answer: "Chest",
+            display: "Injury to Chest",
+            updateCode: "04B01",
+            continue: true,
+          },
+          {
+            answer: "Neck",
+            display: "Injury to Neck",
+            updateCode: "04B01",
+            continue: true,
+          },
+          {
+            answer: "Head",
+            display: "Injury to Head",
             updateCode: "04B01",
             continue: true,
           },
@@ -1588,8 +1638,8 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
-          const lastAnswer = answers?.[answers.length - 1]?.answer;
-          return lastAnswer === "Injured on Chest/Neck/Head";
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
         },
         answers: [
           {
@@ -2159,11 +2209,11 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             continue: true,
-            display: "Not ashen or grey",
+            display: "Ashen or grey not rptd",
           },
           {
             answer: "Yes",
-            display: "Ashen or grey",
+            display: "Ashen or grey color rptd",
             dependency: (patient?: IPatientData) => {
               if (!patient) return undefined;
               const { age } = patient;
@@ -2272,6 +2322,34 @@ export const emsComplaints: IEMSComplaint[] = [
           },
         ],
       },
+
+      {
+        text: <p>Has **pronoun** been diagnosed with an Aortic Aneurysm</p>,
+        questionType: "select",
+        preRenderInstructions: (patient?: IPatientData) => {
+          if(!patient) return false;
+          const { age } = patient;
+          return age >= 50
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diagnosed aortic aneurysm",
+            end: true
+          },
+          {
+            answer: "Yes",
+            display: "Diagnosed aortic aneurysm",
+            end: true,
+            updateCode: "05C02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diagnosed aority aneurysm",
+            end: true
+          }
+        ]
+      }
     ],
     availableDeterminants: [
       {
@@ -2627,6 +2705,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Has other lung problems: {input}",
             input: true,
             continue: true,
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
@@ -2751,7 +2830,7 @@ export const emsComplaints: IEMSComplaint[] = [
           answers?: IAnswerData[]
         ) => {
           const answer = answers?.find(
-            (a) => a.question === "Can you, or someone there, go get it now?"
+            (a) => a.defaultQuestion === "Can you, or someone there, go get it now?"
           )?.answer;
           return answer === "Can get inhaler/nebulizer now";
         },
@@ -4073,7 +4152,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Completely Unknown",
-            display: "Completely unknown incident",
+            display: "Completely unk incident",
             continue: true,
             updateCode: "08D06",
           },
@@ -6772,6 +6851,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -8086,12 +8170,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-              const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if (lastAnswer === "Responding nlly") {
-                return { code: "15C01" };
-              }
-            },
+            updateCode: "15C01"
           },
           {
             answer: "No",
@@ -8911,9 +8990,9 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
-          const injuryAnswer = answers?.[answers.length - 1]?.answer;
+          const injuryAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           if (!injuryAnswer) return false;
-          return injuryAnswer.includes("Inj to");
+          return injuryAnswer === "Not Dangerous:";
         },
         answers: [
           {
@@ -8921,6 +9000,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Inj has deformity",
             continue: true,
             updateCode: "17A01",
+            override: true,
           },
           {
             answer: "No Deformity",
@@ -15050,7 +15130,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unknown if responding nlly",
+            display: "Unk if responding nlly",
             continue: true,
           },
         ],
@@ -15150,7 +15230,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unknown where pt is",
+            display: "Unk where pt is",
             continue: true,
           },
         ],
@@ -15173,7 +15253,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unknown if violent",
+            display: "Unk if violent",
             continue: true,
           },
         ],
@@ -15192,6 +15272,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes:",
             display: "Pt has or has access to wpns: {input}",
             continue: true,
+            input: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               if (lastAnswer === "Yes:") {
@@ -15282,7 +15363,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unknown if mental health conditions",
+            display: "Unk if mental health conditions",
             continue: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
@@ -21231,8 +21312,9 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Completely Unknown",
-            display: "Completely unknown situation",
+            display: "Completely unk situation",
             updateCode: "32B03",
+            continue: true
           }
         ]
       },

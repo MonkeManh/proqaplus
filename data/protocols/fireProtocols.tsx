@@ -17891,7 +17891,221 @@ export const fireProtocols: IFireComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 424,
-    questions: [],
+    questions: [
+
+      {
+        text: <p>What type of <b>incident</b> is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Rescue",
+            display: "This is a rescue incident",
+            continue: true
+          },
+          {
+            answer: "Stranded",
+            display: "This is a stranded incident",
+            continue: true
+          },
+          {
+            answer: "Animal rescue",
+            display: "This is an animal rescue",
+            continue: true,
+            updateCode: "72A01"
+          },
+          {
+            answer: "Body recovery",
+            display: "This is a body recovery",
+            continue: true,
+            updateCode: "72A02"
+          },
+          {
+            answer: "Scuba diving accident",
+            display: "This is a scuba diving accident",
+            continue: true,
+            updateCode: "72D03"
+          },
+          {
+            answer: "Completely unknown situation",
+            display: "This is a completely unk situation",
+            continue: true,
+            updateCode: "72B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of rescue is this?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Rescue"
+        },
+        answers: [
+          {
+            answer: "Ice rescue",
+            display: "Ice rescue ID'd",
+            continue: true,
+            updateCode: "72D01"
+          },
+          {
+            answer: "Swift water rescue",
+            display: "Swift water rescue ID'd",
+            continue: true,
+            updateCode: "72D02"
+          },
+          {
+            answer: "Swimming pool rescue",
+            display: "Swimming pool rescue ID'd",
+            continue: true,
+            updateCode: "72D04"
+          },
+          {
+            answer: "Costal water rescue",
+            display: "Costal water rescue ID'd",
+            continue: true,
+            updateCode: "72D05"
+          },
+          {
+            answer: "Inland water rescue",
+            display: "Inland water rescue ID'd",
+            continue: true,
+            updateCode: "72D06"
+          },
+          {
+            answer: "Oceanic water rescue",
+            display: "Oceanic water rescue ID'd",
+            continue: true,
+            updateCode: "72D07"
+          },
+          {
+            answer: "Surf rescue",
+            display: "Surf rescue ID'd",
+            continue: true,
+            updateCode: "72D08"
+          },
+          {
+            answer: "Large flood rescue",
+            display: "Large flood rescue ID'd",
+            continue: true,
+            updateCode: "72D09"
+          },
+          {
+            answer: "Small flood rescue",
+            display: "Small flood rescue ID'd",
+            continue: true,
+            updateCode: "72D10"
+          },
+          {
+            answer: "Quick sand rescue",
+            display: "Quicksand rescue",
+            continue: true,
+            updateCode: "72D11"
+          },
+          {
+            answer: "Marsh rescue",
+            display: "Marsh rescue",
+            continue: true,
+            updateCode: "72D11"
+          },
+          {
+            answer: "Mud rescue",
+            display: "Mud rescue",
+            continue: true,
+            updateCode: "72D11"
+          },
+          {
+            answer: "Unknown situation",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "72B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>What type of stranded situation is this?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Stranded"
+        },
+        answers: [
+          {
+            answer: "Stranded person (non-threatened)",
+            display: "Stranded person (non-threatened)",
+            continue: true,
+            updateCode: "72B01"
+          },
+          {
+            answer: "Stranded in building/structure due to flood",
+            display: "Stranded in building/structure due to flood",
+            continue: true,
+            updateCode: "72C01"
+          },
+          {
+            answer: "Unknown situation",
+            display: "Unk situation",
+            continue: true,
+            updateCode: "72B02"
+          }
+        ]
+      },
+
+      {
+        text: <p>Do <b>multiple</b> people need rescuing/help?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Single person rescue",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "{input} persons need rescuing",
+            continue: true,
+            input: true,
+            updateSubCode: "M"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk number of persons involved",
+            continue: true,
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick</b> or <b>injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No sick or inj'd person(s) rptd",
+            continue: true,
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person rptd",
+            continue: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick/inj'd persons rptd",
+            continue: true,
+            input: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            continue: true,
+          }
+        ]
+      }
+    ],
     availableDeterminants: [
       {
         priority: "A",
@@ -17959,6 +18173,7 @@ export const fireProtocols: IFireComplaint[] = [
             code: "72B02",
             text: "Unkn Situation (Investigation)",
             recResponse: 426,
+            defaultCode: true,
             subCodes: [
               {
                 code: "M",
