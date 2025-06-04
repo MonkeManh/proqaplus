@@ -5896,34 +5896,6 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is **pronoun** <b>completely alert</b>{" "}
-            <span className="text-red-400">(responding appropriately)</span>?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "Yes",
-            display: "Responding nlly",
-            continue: true,
-          },
-          {
-            answer: "No",
-            display: "Not responding nlly",
-            continue: true,
-            updateCode: "11D02",
-          },
-          {
-            answer: "Unknown",
-            display: "Unk if responding nlly",
-            continue: true,
-          },
-        ],
-      },
-
-      {
-        text: (
-          <p>
             Is **pronoun** breathing <b>normally</b>?
           </p>
         ),
@@ -5974,6 +5946,35 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "11D02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+
+      {
+        text: (
+          <p>
             Is **pronoun** able to <b>talk</b> (or <b>cry</b>)?
           </p>
         ),
@@ -5985,8 +5986,8 @@ export const emsComplaints: IEMSComplaint[] = [
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           return (
-            firstAnswer === "Responding nlly" &&
-            secondAnswer === "Breathing nlly"
+            firstAnswer === "Breathing nlly" &&
+            secondAnswer === "Responding nlly"
           );
         },
         answers: [
@@ -6314,35 +6315,55 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Has **pronoun** had <b>more than one</b> seizure in row <b>or</b> a
-            seizure longer than <b>5 minutes</b>?
+            Has **pronoun** had <b>more than one</b> seizure in row?
           </p>
         ),
         questionType: "select",
         answers: [
           {
             answer: "No",
-            display: "No more than one seizure or seizure > 5 min",
+            display: "Single seizure episode",
             continue: true,
           },
           {
-            answer: "Yes - More than one seizure",
+            answer: "Yes",
             display: "More than one seizure",
             continue: true,
             updateCode: "12D02",
           },
           {
-            answer: "Yes - Seizure > 5 minutes",
-            display: "Seizure > 5 minutes",
-            continue: true,
-            updateCode: "12D02",
-          },
-          {
             answer: "Unknown",
-            display: "Unk if more than one seizure or seizure > 5 min",
+            display: "Unk if more than one seizure",
             continue: true,
           },
         ],
+      },
+
+      {
+        text: <p>Has the seizure been <b>longer</b> than 5 minutes?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "No"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "< 5 minutes long",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "> 5 minutes long",
+            continue: true,
+            updateCode: "12D02"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if > 5 minutes long",
+            continue: true
+          }
+        ]
       },
 
       {
