@@ -1,6 +1,6 @@
 "use client";
 
-import { getFireComplaintOptions } from "@/data/protocols/fireProtocols";
+import { getPoliceComplaintOptions } from "@/data/protocols/policeProtocols";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Combobox } from "@/components/ui/combobox";
@@ -13,14 +13,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { IFireData } from "@/models/interfaces/complaints/fire/IFireData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { CIDSData } from "@/data/CIDS";
 import { ICallData } from "@/models/interfaces/ICallData";
-import { Location } from "@/models/interfaces/ICIDS";
 import {
   Select,
   SelectContent,
@@ -28,21 +25,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IPoliceData } from "@/models/interfaces/complaints/police/IPoliceData";
+import { Input } from "@/components/ui/input";
 
 interface CaseEntryProps {
   onContinue: (
     complaintName: string,
-    data: IFireData,
+    data: IPoliceData,
     skipQuestions?: boolean
   ) => void;
   handleBack: () => void;
 }
 
 const formSchema = z.object({
-  location: z.string().optional(),
-  boxType: z
-    .enum(["Phone Alarm", "Still Alarm", "Rescue", "High Rise", "Marine"])
-    .optional(),
+  callerName: z.string().optional(),
   chiefComplaint: z.string({
     required_error: "Please select a chief complaint",
   }),
@@ -52,13 +48,10 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const [storedData, setStoredData] = useState<ICallData | null>(null);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const location = useRef<HTMLButtonElement>(null);
-  const boxType = useRef<HTMLButtonElement>(null);
+  const callerName = useRef<HTMLInputElement>(null);
   const chiefComplaint = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const complaintOptions = getFireComplaintOptions();
+  const complaintOptions = getPoliceComplaintOptions();
 
   const formattedComplaintOptions = complaintOptions.map((c) => ({
     value: `${c.protocol} - ${c.value}`,
@@ -72,41 +65,13 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
     }
   }, []);
 
-  const locationOptions = storedData
-    ? CIDSData.filter(
-        (location: Location) =>
-          location.postal === storedData.postal ||
-          location.postalRange.includes(storedData.postal)
-      ).map((location: Location) => ({
-        value: location.name,
-        label: location.name,
-      }))
-    : [];
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
   useEffect(() => {
-    if (!location.current) return;
-    location.current.focus();
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const subscription = form.watch((vale, { name }) => {
-      const state = form.getValues();
-      const isValid = state.chiefComplaint ? true : false;
-      setIsFormValid(isValid);
-      if (name === "location") {
-        setTimeout(() => {
-          boxType.current?.focus();
-        }, 100);
-      } else if (name === "boxType") {
-        setTimeout(() => {
-          chiefComplaint.current?.focus();
-        }, 100);
-      } else if (name === "chiefComplaint") {
+    const subscription = form.watch((value, { name }) => {
+      if (name === "chiefComplaint") {
         setTimeout(() => {
           nextRef.current?.focus();
         }, 100);
@@ -118,8 +83,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
 
   const onSubmit = (data: FormValues) => {
     const callData = {
-      location: data.location,
-      boxType: data.boxType,
+      callerName: data.callerName || "",
       chiefComplaint: data.chiefComplaint,
     };
 
@@ -142,64 +106,20 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
               <div className="space-y-6">
                 <FormField
                   control={form.control}
-                  name="location"
+                  name="callerName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Location</FormLabel>
+                      <FormLabel>Caller Name</FormLabel>
                       <FormDescription className="mb-1">
-                        Select a specific location that has CIDS information
-                        available
+                        The name of the person calling
                       </FormDescription>
                       <FormControl>
-                        <Combobox
-                          options={locationOptions}
-                          value={field.value ?? ""}
-                          onValueChange={field.onChange}
-                          placeholder="Select a location"
-                          searchPlaceholder="Search locations..."
-                          autoFocus
+                        <Input
+                            placeholder="Enter caller name"
+                            value={field.value}
+                            onChange={(e) => field.onChange(e.target.value)}
+                            ref={callerName}
                         />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="boxType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Alarm Type</FormLabel>
-                      <FormDescription className="mb-1">
-                        Select a specific call location (optional)
-                      </FormDescription>
-                      <FormControl>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger ref={boxType}>
-                              <SelectValue placeholder="Select Box Type" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Phone Alarm">
-                              Phone Alarm Box
-                            </SelectItem>
-                            <SelectItem value="Rescue">Rescue Box</SelectItem>
-                            <SelectItem value="High Rise">
-                              High Rise Box
-                            </SelectItem>
-                            <SelectItem value="Still Alarm">
-                              Still Alarm Box
-                            </SelectItem>
-                            <SelectItem value="Marine">
-                              Marine
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -247,8 +167,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                         onContinue(
                           complaint,
                           {
-                            location: form.getValues().location,
-                            boxType: form.getValues().boxType,
+                            callerName: form.getValues().callerName || "",
                             chiefComplaint: complaint,
                           },
                           true

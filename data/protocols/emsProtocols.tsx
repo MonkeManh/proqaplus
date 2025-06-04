@@ -280,7 +280,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk where pn is",
             end: true,
-          }
+          },
         ],
       },
     ],
@@ -578,7 +578,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk when rx started",
             continue: true,
-          }
+          },
         ],
       },
 
@@ -1130,7 +1130,7 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { isConscious } = _patient;
           return isConscious !== false;
         },
@@ -1214,7 +1214,11 @@ export const emsComplaints: IEMSComplaint[] = [
           answers?: IAnswerData[]
         ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
+          return (
+            lastAnswer === "Chest" ||
+            lastAnswer === "Neck" ||
+            lastAnswer === "Head"
+          );
         },
         answers: [
           {
@@ -1562,7 +1566,7 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         preRenderInstructions: (_patient?: IPatientData) => {
-          if(!_patient) return false;
+          if (!_patient) return false;
           const { isConscious } = _patient;
           return isConscious !== false;
         },
@@ -1639,7 +1643,11 @@ export const emsComplaints: IEMSComplaint[] = [
           answers?: IAnswerData[]
         ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
+          return (
+            lastAnswer === "Chest" ||
+            lastAnswer === "Neck" ||
+            lastAnswer === "Head"
+          );
         },
         answers: [
           {
@@ -2327,29 +2335,29 @@ export const emsComplaints: IEMSComplaint[] = [
         text: <p>Has **pronoun** been diagnosed with an Aortic Aneurysm</p>,
         questionType: "select",
         preRenderInstructions: (patient?: IPatientData) => {
-          if(!patient) return false;
+          if (!patient) return false;
           const { age } = patient;
-          return age >= 50
+          return age >= 50;
         },
         answers: [
           {
             answer: "No",
             display: "No diagnosed aortic aneurysm",
-            end: true
+            end: true,
           },
           {
             answer: "Yes",
             display: "Diagnosed aortic aneurysm",
             end: true,
-            updateCode: "05C02"
+            updateCode: "05C02",
           },
           {
             answer: "Unknown",
             display: "Unk if diagnosed aority aneurysm",
-            end: true
-          }
-        ]
-      }
+            end: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -2830,7 +2838,8 @@ export const emsComplaints: IEMSComplaint[] = [
           answers?: IAnswerData[]
         ) => {
           const answer = answers?.find(
-            (a) => a.defaultQuestion === "Can you, or someone there, go get it now?"
+            (a) =>
+              a.defaultQuestion === "Can you, or someone there, go get it now?"
           )?.answer;
           return answer === "Can get inhaler/nebulizer now";
         },
@@ -8170,7 +8179,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            updateCode: "15C01"
+            updateCode: "15C01",
           },
           {
             answer: "No",
@@ -11470,7 +11479,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Does **pronoun** had a <b>change</b> in <b>skin color</b>?
+            Has **pronoun** had a <b>change</b> in <b>skin color</b>?
           </p>
         ),
         questionType: "select",
@@ -18214,99 +18223,117 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>breathing</b> normally?</p>,
-        questionType: 'select',
+        text: (
+          <p>
+            Is **pronoun** <b>breathing</b> normally?
+          </p>
+        ),
+        questionType: "select",
         answers: [
           {
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { age } = _patient;
-              if(age >= 35) {
-                return { code: "28C11" }
+              if (age >= 35) {
+                return { code: "28C11" };
               } else {
-                return { code: "28A01" }
+                return { code: "28A01" };
               }
-            }
+            },
           },
           {
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            updateCode: "28C02"
+            updateCode: "28C02",
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-            updateCode: "28C12"
-          }
-        ]
+            updateCode: "28C12",
+          },
+        ],
       },
 
       {
-        text: <p><b className="text-blue-400">(No STROKE symptoms mentioned yet)</b> Tell me <b>why</b> you think it's a <b className="text-green-400">STROKE</b> <b className="text-blue-400">(Select the specific symptoms only if a sudden onset was reported)</b></p>,
+        text: (
+          <p>
+            <b className="text-blue-400">(No STROKE symptoms mentioned yet)</b>{" "}
+            Tell me <b>why</b> you think it's a{" "}
+            <b className="text-green-400">STROKE</b>{" "}
+            <b className="text-blue-400">
+              (Select the specific symptoms only if a sudden onset was reported)
+            </b>
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Speech problems",
             display: "Sudden speech problems",
             continue: true,
-            updateCode: "28C03"
+            updateCode: "28C03",
           },
           {
             answer: "Loss of balance or coordination",
             display: "Sudden loss of balance or coordination",
             continue: true,
-            updateCode: "28C06"
+            updateCode: "28C06",
           },
           {
             answer: "Weakness or numbness (one side)",
             display: "Sudden weakness or numbness (one side)",
             continue: true,
-            updateCode: "28C04"
+            updateCode: "28C04",
           },
           {
             answer: "Paralysis or facial droop (one side)",
             display: "Sudden paralysis or facial droop (one side)",
             continue: true,
-            updateCode: "28C05"
+            updateCode: "28C05",
           },
           {
             answer: "Vision problems",
             display: "Sudden vision problems",
             continue: true,
-            updateCode: "28C07"
+            updateCode: "28C07",
           },
           {
             answer: "Severe headache",
             display: "Sudden severe headache",
             continue: true,
-            updateCode: "28C08"
+            updateCode: "28C08",
           },
           {
-            answer: "Only \"stroke\" mentioned",
-            display: "Only \"stroke\" mentioned",
+            answer: 'Only "stroke" mentioned',
+            display: 'Only "stroke" mentioned',
             continue: true,
           },
           {
             answer: "Other:",
             display: "{input}",
             continue: true,
-            input: true
-          }
-        ]
+            input: true,
+          },
+        ],
       },
 
       {
-        text: <p>Exactly <b>what time</b> did these symptoms <span className="text-red-400">(problem)</span> <b>start</b>?</p>,
+        text: (
+          <p>
+            Exactly <b>what time</b> did these symptoms{" "}
+            <span className="text-red-400">(problem)</span> <b>start</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -18329,24 +18356,29 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             updateSubCode: "U",
           },
-        ]
+        ],
       },
 
       {
-        text: <p>Has **pronoun** ever had a <b className="text-green-400">STROKE</b> before?</p>,
-        questionType: 'select',
+        text: (
+          <p>
+            Has **pronoun** ever had a <b className="text-green-400">STROKE</b>{" "}
+            before?
+          </p>
+        ),
+        questionType: "select",
         answers: [
           {
             answer: "STROKE",
             display: "Stroke hx",
             continue: true,
-            updateCode: "28C09"
+            updateCode: "28C09",
           },
           {
             answer: "TIA or mini-stroke",
             display: "TIA hx",
             continue: true,
-            updateCode: "28C10"
+            updateCode: "28C10",
           },
           {
             answer: "No",
@@ -18357,8 +18389,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk hx of stroke or TIA",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -18604,7 +18636,9 @@ export const emsComplaints: IEMSComplaint[] = [
                 a.answer.includes("3: ")
               )?.answer;
               const symptomStart = answers?.find(
-                (a) => a.question === "Exactly what time did these symptoms (problem) start?"
+                (a) =>
+                  a.question ===
+                  "Exactly what time did these symptoms (problem) start?"
               )?.defaultAnswer;
               if (!smileAnswer || !armsAnswer || !speechAnswer) {
                 if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
@@ -19824,9 +19858,9 @@ export const emsComplaints: IEMSComplaint[] = [
                 recResponse: 167,
               },
             ],
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
   },
   // Questions still required
@@ -19844,7 +19878,11 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 168,
     questions: [
       {
-        text: <p>Are you <b>at that location now</b>?</p>,
+        text: (
+          <p>
+            Are you <b>at that location now</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -19855,39 +19893,43 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes (2nd party)",
             display: "Caller is on scene (2nd pty)",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Caller is not on scene",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>What type of <b>incident</b> is this?</p>,
+        text: (
+          <p>
+            What type of <b>incident</b> is this?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Major Incident",
             display: "Major incident id'd",
             continue: true,
-            updateCode: "29D01"
+            updateCode: "29D01",
           },
           {
             answer: "Rollover",
             display: "This is a rollover incident",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "p"
+            updateSubCode: "p",
           },
           {
             answer: "Ejection",
             display: "There is an ejection",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "n"
+            updateSubCode: "n",
           },
           {
             answer: "High Mechanism",
@@ -19905,44 +19947,56 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "High Velocity Impact",
             display: "High velocity impact",
             continue: true,
-            updateCode: "29D03"
+            updateCode: "29D03",
           },
           {
             answer: "Unknown",
             display: "Unknown mechanism of injury",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Are there any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        text: (
+          <p>
+            Are there any <b className="text-green-400">hazardous materials</b>{" "}
+            involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No hazmat rptd",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes:",
             display: "Hazmat rptd - {input}",
             continue: true,
             input: true,
-            updateCode: "29D04"
+            updateCode: "29D04",
           },
           {
             answer: "Unknown",
             display: "Unk if hazmat involved",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>What type of <b>major incident</b> is this?</p>,
+        text: (
+          <p>
+            What type of <b>major incident</b> is this?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "Major Incident";
         },
@@ -19951,65 +20005,70 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Aircraft",
             display: "Aircraft is involved",
             continue: true,
-            updateSubCode: "a"
+            updateSubCode: "a",
           },
           {
             answer: "Bus",
             display: "Bus is involved",
             continue: true,
-            updateSubCode: "b"
+            updateSubCode: "b",
           },
           {
             answer: "Subway/Metro",
             display: "Subway/Metro is involved",
             continue: true,
-            updateSubCode: "c"
+            updateSubCode: "c",
           },
           {
             answer: "Train",
             display: "Train is involved",
             continue: true,
-            updateSubCode: "d"
+            updateSubCode: "d",
           },
           {
             answer: "Watercraft",
             display: "Watercraft is involved",
             continue: true,
-            updateSubCode: "e"
+            updateSubCode: "e",
           },
           {
             answer: "Multi-Vehicle Pileup (>= 10)",
             display: "Multi-Vehicle Pileup (>= 10)",
             continue: true,
-            updateSubCode: "f"
+            updateSubCode: "f",
           },
           {
             answer: "Street Car/Light Rail",
             display: "Street Car/Light Rail is involved",
             continue: true,
-            updateSubCode: "g"
+            updateSubCode: "g",
           },
           {
             answer: "Vehicle v. Building",
             display: "Car vs Bldg",
             continue: true,
-            updateSubCode: "h"
+            updateSubCode: "h",
           },
           {
             answer: "None of These",
             display: "No major incident factors ID'd",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
         text: <p>What type of high mechanism accident is this?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           const lastAnswer = answers?.[2]?.answer;
-          return secondAnswer === "High Mechanism" || lastAnswer === "None of These";
+          return (
+            secondAnswer === "High Mechanism" || lastAnswer === "None of These"
+          );
         },
         answers: [
           {
@@ -20023,51 +20082,51 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Auto vs Bicycle",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "i"
+            updateSubCode: "i",
           },
           {
             answer: "All-Terrain/Snowmobile",
             display: "Auto vs Motorcycle",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "k"
+            updateSubCode: "k",
           },
           {
             answer: "Auto v. Motorcycle",
             display: "Auto vs Motorcycle",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "l"
+            updateSubCode: "l",
           },
           {
             answer: "Auto v. Pedestrian",
             display: "Auto vs Pedestrian",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "m"
+            updateSubCode: "m",
           },
           {
             answer: "Personal Watercraft",
             display: "Personal watercraft involved",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "o"
+            updateSubCode: "o",
           },
           {
             answer: "Vehicle off Bridge/Height",
             display: "Vehicle off Bridge/Height",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "q"
+            updateSubCode: "q",
           },
           {
             answer: "Train/Light Rail v. Pedestrian",
             display: "Train/Light Rail v. Pedestrian",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "t"
-          }
-        ]
+            updateSubCode: "t",
+          },
+        ],
       },
 
       {
@@ -20078,22 +20137,22 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No injs rptd",
             continue: true,
-            updateCode: "29A02"
+            updateCode: "29A02",
           },
           {
             answer: "Yes",
             display: "Injs rptd",
             continue: true,
-            updateCode: "29B01"
+            updateCode: "29B01",
           },
           {
             answer: "Unknown",
             display: "Unk if injs",
             continue: true,
-            updateCode: "29B05"
-          }
-        ]
-      }
+            updateCode: "29B05",
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -20103,8 +20162,8 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "28O01",
             text: "No Injs (Confirmed for All Persons Up to 4)",
             recResponse: 169,
-          }
-        ]
+          },
+        ],
       },
       {
         priority: "A",
@@ -20117,24 +20176,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29A01",
@@ -20144,24 +20203,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29A02",
@@ -20171,26 +20230,26 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
-        ]
+        ],
       },
       {
         priority: "B",
@@ -20203,24 +20262,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29B01",
@@ -20230,24 +20289,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29B02",
@@ -20257,24 +20316,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29B03",
@@ -20284,24 +20343,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29B04",
@@ -20311,24 +20370,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
+                recResponse: 170,
+              },
+            ],
           },
           {
             code: "29B05",
@@ -20339,26 +20398,26 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 170
+                recResponse: 170,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 168
+                recResponse: 168,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 170
-              }
-            ]
-          }
-        ]
+                recResponse: 170,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -20371,24 +20430,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 174
+                recResponse: 174,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 174
-              }
-            ]
+                recResponse: 174,
+              },
+            ],
           },
           {
             code: "29D01",
@@ -20398,44 +20457,44 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "a",
                 text: "Aircraft",
-                recResponse: 175
+                recResponse: 175,
               },
               {
                 code: "B",
                 text: "Bus",
-                recResponse: 172
+                recResponse: 172,
               },
               {
                 code: "C",
                 text: "Subway/Metro",
-                recResponse: 176
+                recResponse: 176,
               },
               {
                 code: "d",
                 text: "Train",
-                recResponse: 176
+                recResponse: 176,
               },
               {
                 code: "E",
                 text: "Watercraft",
-                recResponse: 177
+                recResponse: 177,
               },
               {
                 code: "f",
                 text: "Multi-Vehicle (>= 10) Pile-Up",
-                recResponse: 172
+                recResponse: 172,
               },
               {
                 code: "g",
                 text: "Street Car/Tram/Light Rail",
-                recResponse: 176
+                recResponse: 176,
               },
               {
                 code: "h",
                 text: "Vehicle vs. Building",
-                recResponse: 178
+                recResponse: 178,
               },
-            ]
+            ],
           },
           {
             code: "29D02",
@@ -20445,59 +20504,59 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "i",
                 text: "Auto vs. Bicycle",
-                recResponse: 179
+                recResponse: 179,
               },
               {
                 code: "k",
                 text: "All-Terrain/Snowmobile",
-                recResponse: 180
+                recResponse: 180,
               },
               {
                 code: "l",
                 text: "Auto vs. Motorcycle",
-                recResponse: 179
+                recResponse: 179,
               },
               {
                 code: "m",
                 text: "Auto vs. Pedestrain",
-                recResponse: 181
+                recResponse: 181,
               },
               {
                 code: "n",
                 text: "Ejection",
-                recResponse: 182
+                recResponse: 182,
               },
               {
                 code: "o",
                 text: "Personal Watercraft",
-                recResponse: 177
+                recResponse: 177,
               },
               {
                 code: "p",
                 text: "Rollovers",
-                recResponse: 183
+                recResponse: 183,
               },
               {
                 code: "q",
                 text: "Vehicle Off Bridge/Height",
-                recResponse: 184
+                recResponse: 184,
               },
               {
                 code: "r",
                 text: "Possible Death at Scene",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "s",
                 text: "Sinking Vehicle/Vehicle in Floodwater",
-                recResponse: 185
+                recResponse: 185,
               },
               {
                 code: "t",
                 text: "Train/Light Rail vs. Pedestrian",
-                recResponse: 186
-              }
-            ]
+                recResponse: 186,
+              },
+            ],
           },
           {
             code: "29D03",
@@ -20507,24 +20566,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 180
+                recResponse: 180,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 180
+                recResponse: 180,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 180
+                recResponse: 180,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 180
-              }
-            ]
+                recResponse: 180,
+              },
+            ],
           },
           {
             code: "29D04",
@@ -20534,24 +20593,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 187
+                recResponse: 187,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 187
+                recResponse: 187,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 187
+                recResponse: 187,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 187
-              }
-            ]
+                recResponse: 187,
+              },
+            ],
           },
           {
             code: "29D05",
@@ -20561,24 +20620,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 187
+                recResponse: 187,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 189
+                recResponse: 189,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 187
+                recResponse: 187,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 189
-              }
-            ]
+                recResponse: 189,
+              },
+            ],
           },
           {
             code: "29D06",
@@ -20589,24 +20648,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 174
+                recResponse: 174,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 174
-              }
-            ]
+                recResponse: 174,
+              },
+            ],
           },
           {
             code: "29D07",
@@ -20617,24 +20676,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 171
+                recResponse: 171,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 172
+                recResponse: 172,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 171
+                recResponse: 171,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 172
-              }
-            ]
+                recResponse: 172,
+              },
+            ],
           },
           {
             code: "29D08",
@@ -20644,24 +20703,24 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 174
+                recResponse: 174,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 174
-              }
-            ]
+                recResponse: 174,
+              },
+            ],
           },
           {
             code: "29D09",
@@ -20671,28 +20730,28 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "U",
                 text: "Unkn Number of Patients",
-                recResponse: 171
+                recResponse: 171,
               },
               {
                 code: "V",
                 text: "Mult Patients",
-                recResponse: 172
+                recResponse: 172,
               },
               {
                 code: "X",
                 text: "Unkn Number of Patients & Additional Response Required",
-                recResponse: 171
+                recResponse: 171,
               },
               {
                 code: "Y",
                 text: "Mult Patients & Additional Response Required",
-                recResponse: 172
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                recResponse: 172,
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 30,
@@ -20708,26 +20767,30 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 190,
     questions: [
       {
-        text: <p><b>When</b> did this injury occur?</p>,
+        text: (
+          <p>
+            <b>When</b> did this injury occur?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Just Now (< 6hrs)",
             display: "Happened just now (< 6hrs)",
-            continue: true
+            continue: true,
           },
           {
             answer: "Earlier (>= 6hrs)",
             display: "Happened earlier (>= 6hrs)",
             continue: true,
-            updateCode: "30A03" 
+            updateCode: "30A03",
           },
           {
             answer: "Unknown",
             display: "Unkn when happened",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -20742,47 +20805,55 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Responding nlly",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "30D03"
+            updateCode: "30D03",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b className="text-red-400">SERIOUS</b> bleeding?</p>,
-        questionType: 'select',
+        text: (
+          <p>
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
+        questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No SERIOUS bleeding",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: "30B02"
+            updateCode: "30B02",
           },
           {
             answer: "Unknown",
             display: "Unk if SERIOUS bleeding",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>What <b>part</b> of the <b>body</b> is injured?</p>,
+        text: (
+          <p>
+            What <b>part</b> of the <b>body</b> is injured?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -20790,78 +20861,96 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Inj to: {input}",
             continue: true,
             input: true,
-            updateCode: "30A02"
+            updateCode: "30A02",
           },
           {
             answer: "Possibly Dangerous:",
             display: "Inj to: {input}",
             continue: true,
             input: true,
-            updateCode: "30B01"
+            updateCode: "30B01",
           },
           {
             answer: "Chest",
             display: "Inj to chest",
             continue: true,
-            updateCode: "30B01"
+            updateCode: "30B01",
           },
           {
             answer: "Neck",
             display: "Inj to neck",
             continue: true,
-            updateCode: "30B01"
+            updateCode: "30B01",
           },
           {
             answer: "Head",
             display: "Inj to head",
             continue: true,
-            updateCode: "30B01"
+            updateCode: "30B01",
           },
           {
             answer: "MASSIVE INJ or HIGH VELOCITY IMPACT",
             display: "MASSIVE INJ or HIGH VELOCITY IMPACT",
             continue: true,
-            updateCode: "30D05"
+            updateCode: "30D05",
           },
           {
             answer: "Unknown",
             display: "Inj to unk location",
             continue: true,
-            updateCode: "30B03"
-          }
-        ]
+            updateCode: "30B03",
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>breathing</b> normally?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>breathing</b> normally?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Chest" || lastAnswer === "Neck" || lastAnswer === "Head";
+          return (
+            lastAnswer === "Chest" ||
+            lastAnswer === "Neck" ||
+            lastAnswer === "Head"
+          );
         },
         answers: [
           {
             answer: "Yes",
             display: "Breathing nlly",
-            end: true
+            end: true,
           },
           {
             answer: "No",
             display: "Not breathing nlly",
-            end: true
+            end: true,
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
-            end: true
-          }
-        ]
+            end: true,
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b>deformity</b>?</p>,
-        questionType: 'select',
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        text: (
+          <p>
+            Is there any <b>deformity</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Not Dangerous:";
         },
@@ -20875,15 +20964,15 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes deformity",
             display: "Deformity from inj",
             continue: true,
-            updateCode: "30A01"
+            updateCode: "30A01",
           },
           {
             answer: "Unknown",
             display: "Unk extent of inj",
-            continue: true
-          }
-        ]
-      }
+            continue: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -20892,19 +20981,19 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "30A01",
             text: "Not Dangerous Body Area w/ Deformity",
-            recResponse: 190
+            recResponse: 190,
           },
           {
             code: "30A02",
             text: "Not Dangerous Body Area",
-            recResponse: 190
+            recResponse: 190,
           },
           {
             code: "30A03",
             text: "Non-Recent (>= 6hrs) Injs (w/o Priority Symptoms)",
-            recResponse: 191
-          }
-        ]
+            recResponse: 191,
+          },
+        ],
       },
       {
         priority: "B",
@@ -20912,24 +21001,24 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "30B00",
             text: "BLS Override (Bravo)",
-            recResponse: 190
+            recResponse: 190,
           },
           {
             code: "30B01",
             text: "Possibly Dangerous Body Area",
-            recResponse: 190
+            recResponse: 190,
           },
           {
             code: "30B02",
             text: "Serious Hemorrhage",
-            recResponse: 190
+            recResponse: 190,
           },
           {
             code: "30B03",
             text: "Unkn Body Area (Remote Patient Location)",
-            recResponse: 190
-          }
-        ]
+            recResponse: 190,
+          },
+        ],
       },
       {
         priority: "D",
@@ -20937,37 +21026,37 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "30D00",
             text: "ALS Override (Delta)",
-            recResponse: 192
+            recResponse: 192,
           },
           {
             code: "30D01",
             text: "Arrest",
             recResponse: 158,
-            notBreathing: true
+            notBreathing: true,
           },
           {
             code: "30D02",
             text: "Unconscious",
-            recResponse: 193
+            recResponse: 193,
           },
           {
             code: "30D03",
             text: "Not Alert",
-            recResponse: 192
+            recResponse: 192,
           },
           {
             code: "30D04",
             text: "Chec/Neck/Head Inj (w/ Diff Breathing)",
-            recResponse: 192
+            recResponse: 192,
           },
           {
             code: "30D05",
             text: "High Velocity Impact/Mass Inj",
-            recResponse: 192
-          }
-        ]
-      }
-    ]
+            recResponse: 192,
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 31,
@@ -20983,7 +21072,11 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 194,
     questions: [
       {
-        text: <p>Is **pronoun** <b>breathing normally</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>breathing normally</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -20991,49 +21084,53 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Breathing nlly",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { isConscious } = _patient;
-              if(!isConscious) {
-                return { code: "31D03" }
+              if (!isConscious) {
+                return { code: "31D03" };
               }
-            }
+            },
           },
           {
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { isConscious } = _patient;
-              if(!isConscious) {
-                return { code: "31D02" }
+              if (!isConscious) {
+                return { code: "31D02" };
               } else {
-                return { code: "31C01" }
+                return { code: "31C01" };
               }
-            }
+            },
           },
           {
             answer: "Ineffective/Agonal",
             display: "Ineffective/Agonal breathing",
             updateCode: "31D01",
-            end: true
+            end: true,
           },
           {
             answer: "Not Breathing AT ALL",
             display: "Not breathing",
             updateCode: "31E01",
-            end: true
+            end: true,
           },
           {
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is **pronoun** <b>chainging color</b>?</p>,
+        text: (
+          <p>
+            Is **pronoun** <b>chainging color</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -21045,14 +21142,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Changing color",
             continue: true,
-            updateCode: "31D05"
+            updateCode: "31D05",
           },
           {
             answer: "Unknown",
             display: "Unk if changing color",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -21062,7 +21159,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Conscious",
             display: "Pt is conscious",
-            continue: true
+            continue: true,
           },
           {
             answer: "Still unconscious",
@@ -21072,19 +21169,29 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Unknown",
             display: "Unk if pt is still unconscious",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
         text: <p>Does she have abdominal pain?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-          if(!_patient) return false;
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          if (!_patient) return false;
           const { age, gender } = _patient;
-          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Are they awake now?")?.defaultAnswer;
-          return lastAnswer === "Conscious" && age >= 12 && age <= 50 && gender === "Female";
+          const lastAnswer = answers?.find(
+            (a) => a.defaultQuestion === "Are they awake now?"
+          )?.defaultAnswer;
+          return (
+            lastAnswer === "Conscious" &&
+            age >= 12 &&
+            age <= 50 &&
+            gender === "Female"
+          );
         },
         answers: [
           {
@@ -21096,14 +21203,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Has abdo pn",
             continue: true,
-            updateCode: "31C03"
+            updateCode: "31C03",
           },
           {
             answer: "Unknown",
             display: "Unk if has abdo pn",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -21114,9 +21221,14 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Are they awake now?")?.defaultAnswer;
-          return lastAnswer === "Conscious"
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (a) => a.defaultQuestion === "Are they awake now?"
+          )?.defaultAnswer;
+          return lastAnswer === "Conscious";
         },
         answers: [
           {
@@ -21128,21 +21240,28 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not responding nlly",
             continue: true,
-            updateCode: "31D04"
+            updateCode: "31D04",
           },
           {
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
         text: <p>Does **pronoun** have a cardiac history</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-          const lastAnswer = answers?.find((a) => a.defaultQuestion === "Is **pronoun** completely alert (responding appropriately)?")?.defaultAnswer;
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (a) =>
+              a.defaultQuestion ===
+              "Is **pronoun** completely alert (responding appropriately)?"
+          )?.defaultAnswer;
           return lastAnswer === "Yes";
         },
         answers: [
@@ -21151,35 +21270,35 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "No cardiac history",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { age } = _patient;
-              if(age >= 35) {
-                return { code: "31A01" }
+              if (age >= 35) {
+                return { code: "31A01" };
               } else {
-                return { code: "31A03" }
+                return { code: "31A03" };
               }
-            }
+            },
           },
           {
             answer: "Yes",
             display: "Has cardiac history",
             continue: true,
             dependency: (_patient?: IPatientData) => {
-              if(!_patient) return undefined;
+              if (!_patient) return undefined;
               const { age } = _patient;
-              if(age >= 35) {
-                return { code: "31C02" }
+              if (age >= 35) {
+                return { code: "31C02" };
               } else {
-                return { code: "31A02" }
+                return { code: "31A02" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Unk cardiac history",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
     ],
     availableDeterminants: [
@@ -21189,19 +21308,19 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "31A01",
             text: "Fainting Episode(s) & Alert >= 35 (w/o Cardiac Hx)",
-            recResponse: 194
+            recResponse: 194,
           },
           {
             code: "31A02",
             text: "Fainting Episode(s) & Alert < 35 (w/ Cardiac Hx)",
-            recResponse: 194
+            recResponse: 194,
           },
           {
             code: "31A03",
             text: "Fainting Episode(s) & Alert < 35 (w/o Cardiac Hx)",
-            recResponse: 194
-          }
-        ]
+            recResponse: 194,
+          },
+        ],
       },
       {
         priority: "C",
@@ -21209,24 +21328,24 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "31C00",
             text: "ALS Override (Charlie)",
-            recResponse: 195
+            recResponse: 195,
           },
           {
             code: "31C01",
             text: "Alert & Abnormal Breathing",
-            recResponse: 195
+            recResponse: 195,
           },
           {
             code: "31C02",
             text: "Fainting Episode(s) & Alert >= 35 (w/ Cardiac Hx)",
-            recResponse: 195
+            recResponse: 195,
           },
           {
             code: "31C03",
             text: "Females 12-50 w/ Abdominal Pain",
-            recResponse: 195
-          }
-        ]
+            recResponse: 195,
+          },
+        ],
       },
       {
         priority: "D",
@@ -21234,35 +21353,34 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "31D00",
             text: "ALS Override (Delta)",
-            recResponse: 196
+            recResponse: 196,
           },
           {
             code: "31D01",
             text: "Unconscious - Agonal/Ineffective Breathing",
-            recResponse: 197
+            recResponse: 197,
           },
           {
             code: "31D02",
             text: "Unconscious - Abnormal Breathing",
-            recResponse: 196
+            recResponse: 196,
           },
           {
             code: "31D03",
             text: "Unconscious - Effective Breathing Verified",
-            recResponse: 195
+            recResponse: 195,
           },
           {
             code: "31D04",
             text: "Not Alert",
-            recResponse: 150
+            recResponse: 150,
           },
           {
             code: "31D05",
             text: "Changing Color",
-            recResponse: 195
+            recResponse: 195,
           },
-          
-        ]
+        ],
       },
       {
         priority: "E",
@@ -21270,17 +21388,17 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "31E00",
             text: "ALS Override (Echo)",
-            recResponse: 198
+            recResponse: 198,
           },
           {
             code: "31E01",
             text: "Not Breathing/Obvious Arrest",
             notBreathing: true,
-            recResponse: 198
-          }
-        ]
-      }
-    ]
+            recResponse: 198,
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 32,
@@ -21308,21 +21426,28 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Caller's Language Not Understood",
             display: "Caller's language not understood",
             continue: true,
-            updateCode: "32B04"
+            updateCode: "32B04",
           },
           {
             answer: "Completely Unknown",
             display: "Completely unk situation",
             updateCode: "32B03",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b>voice contact</b>?</p>,
+        text: (
+          <p>
+            Is there any <b>voice contact</b>?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Medical Alarm Activation";
         },
@@ -21331,20 +21456,23 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No Voice Contact",
             display: "No voice contact",
             continue: true,
-            updateCode: "32B02"
+            updateCode: "32B02",
           },
           {
             answer: "Voice Contact Made",
             display: "Voice contact made",
             continue: true,
           },
-        ]
+        ],
       },
 
       {
         text: <p>What is the chief complaint?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Voice Contact Made";
         },
@@ -21352,67 +21480,67 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "1 - Abdominal Pains/Problems",
             display: "Changing protocols...",
-            goto: 1
+            goto: 1,
           },
           {
             answer: "2 - Allergies (Reactions) / Envenomations (Stings, Bites)",
             display: "Changing protocols...",
-            goto: 2
+            goto: 2,
           },
           {
             answer: "3 - Animal Bites/Attacks",
             display: "Changing protocols...",
-            goto: 3
+            goto: 3,
           },
           {
             answer: "4 - Assault/Sexual Assault",
             display: "Changing protocols...",
-            goto: 4
+            goto: 4,
           },
           {
             answer: "5 - Back Pain (Non-Traumatic or Non-Recent Trauma)",
             display: "Changing protocols...",
-            goto: 5
+            goto: 5,
           },
           {
             answer: "6 - Breathing Problems",
             display: "Changing protocols...",
-            goto: 6
+            goto: 6,
           },
           {
             answer: "7 - Burns (Scalds) / Explosion (Blast)",
             display: "Changing protocols...",
-            goto: 7
+            goto: 7,
           },
           {
             answer: "8 - Carbon Monoxide/Inhalation/Hazmat/CBRN",
             display: "Changing protocols...",
-            goto: 8
+            goto: 8,
           },
           {
             answer: "9 - Cardiac or Repiratory Arrest / Death",
             display: "Changing protocols...",
-            goto: 9
+            goto: 9,
           },
           {
             answer: "10 - Chest Pain (Non-Traumatic)",
             display: "Changing protocols...",
-            goto: 10
+            goto: 10,
           },
           {
             answer: "11 - Choking",
             display: "Changing protocols...",
-            goto: 11
+            goto: 11,
           },
           {
             answer: "12 - Convulsions/Seizures",
             display: "Changing protocols...",
-            goto: 12
+            goto: 12,
           },
           {
             answer: "13 - Diabetic Problems",
             display: "Changing protocols...",
-            goto: 13
+            goto: 13,
           },
           {
             answer: "14 - Drowning (Near) / Diving / SCUBA Accident",
@@ -21422,100 +21550,105 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "15 - Electrocution/Lightning",
             display: "Changing protocols...",
-            goto: 15
+            goto: 15,
           },
           {
             answer: "16 - Eye Problems / Injuries",
             display: "Changing protocols...",
-            goto: 16
+            goto: 16,
           },
           {
             answer: "17 - Falls",
             display: "Changing protocols...",
-            goto: 17
+            goto: 17,
           },
           {
             answer: "18 - Headache",
             display: "Changing protocols...",
-            goto: 18
+            goto: 18,
           },
           {
             answer: "19 - Heart Problems / A.I.C.D.",
             display: "Changing protocols...",
-            goto: 19
+            goto: 19,
           },
           {
             answer: "20 - Heat/Cold Exposure",
             display: "Changing protocols...",
-            goto: 20
+            goto: 20,
           },
           {
             answer: "21 - Hemorrhage/Lacerations",
             display: "Changing protocols...",
-            goto: 21
+            goto: 21,
           },
           {
-            answer: "22 - Inaccessible Incident / Other Entrapments (Non-Traffic)",
+            answer:
+              "22 - Inaccessible Incident / Other Entrapments (Non-Traffic)",
             display: "Changing protocols...",
-            goto: 22
+            goto: 22,
           },
           {
             answer: "23 - Overdose/Poisoning (Ingestion)",
             display: "Changing protocols...",
-            goto: 23
+            goto: 23,
           },
           {
             answer: "24 - Pregnancy / Childbirth / Miscarriage",
             display: "Changing protocols...",
-            goto: 24
+            goto: 24,
           },
           {
-            answer: "25 - Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
+            answer:
+              "25 - Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
             display: "Changing protocols...",
-            goto: 25
+            goto: 25,
           },
           {
             answer: "26 - Sick Person (Specfic Diagnosis)",
             display: "Changing protocols...",
-            goto: 26
+            goto: 26,
           },
           {
             answer: "27 - Stab/Gunshot/Penetrating Trauma",
             display: "Changing protocols...",
-            goto: 27
+            goto: 27,
           },
           {
             answer: "28 - Stroke (CVA)/Transient Ischemic Attack (TIA)",
             display: "Changing protocols...",
-            goto: 28
+            goto: 28,
           },
           {
             answer: "29 - Traffic/Transportation Incidents",
             display: "Changing protocols...",
-            goto: 29
+            goto: 29,
           },
           {
             answer: "30 - Traumatic Injs (Specific)",
             display: "Changing protocols...",
-            goto: 30
+            goto: 30,
           },
           {
             answer: "31 - Unconscious/Fainting (Near)",
             display: "Changing protocols...",
-            goto: 31
+            goto: 31,
           },
           {
             answer: "Unknown",
             display: "Completely unknown situation",
-            updateCode: "32B02"
-          }
-        ]
+            updateCode: "32B02",
+          },
+        ],
       },
 
       {
         text: <p>Placeholder</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Changing protocols...";
         },
@@ -21524,10 +21657,10 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Continue...",
             display: "Continue...",
-            continue: true
-          }
-        ]
-      }
+            continue: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -21536,24 +21669,24 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "32B01",
             text: "Standing, Sitting, Moving, or Talking",
-            recResponse: 199
+            recResponse: 199,
           },
           {
             code: "32B02",
             text: "Medical Alarm (Alert) Notifications (No Patient Info)",
-            recResponse: 200
+            recResponse: 200,
           },
           {
             code: "32B03",
             text: "Unkn Status / Other Codes Not Applicable",
-            recResponse: 199
+            recResponse: 199,
           },
           {
             code: "32B04",
             text: "Caller's Language Not Understood",
-            recResponse: 199
-          }
-        ]
+            recResponse: 199,
+          },
+        ],
       },
       {
         priority: "D",
@@ -21561,16 +21694,16 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "32D00",
             text: "ALS Override (Delta)",
-            recResponse: 199
+            recResponse: 199,
           },
           {
             code: "32D01",
             text: "Life Status Questionable",
-            recResponse: 199
-          }
-        ]
-      }
-    ]
+            recResponse: 199,
+          },
+        ],
+      },
+    ],
   },
   {
     protocol: 33,
@@ -21702,7 +21835,11 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: <p>What is the <b>type</b> of transport?</p>,
+        text: (
+          <p>
+            What is the <b>type</b> of transport?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -21714,14 +21851,21 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Critical",
             display: "Critical transport",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>reason</b> for the transport?</p>,
+        text: (
+          <p>
+            What is the <b>reason</b> for the transport?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Routine";
         },
@@ -21754,14 +21898,21 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Other reason for transport: {input}",
             continue: true,
             input: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b>reason</b> for the transport?</p>,
+        text: (
+          <p>
+            What is the <b>reason</b> for the transport?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return lastAnswer === "Critical" || lastAnswer === "None of These";
         },
@@ -21831,11 +21982,15 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             input: true,
           },
-        ]
+        ],
       },
-      
+
       {
-        text: <p>Are there any <b>special instructions</b>?</p>,
+        text: (
+          <p>
+            Are there any <b>special instructions</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -21852,10 +22007,10 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Unknown",
             display: "Unk if special instrcutions",
-            end: true
-          }
-        ]
-      }
+            end: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -21948,7 +22103,7 @@ export const emsComplaints: IEMSComplaint[] = [
     services: [
       { name: "EMS", priority: 3 },
       { name: "Fire", priority: 3 },
-      { name: "Police", priority: true }
+      { name: "Police", priority: true },
     ],
     defaultPriority: 3,
     defaultPlan: 168,
@@ -21961,68 +22116,75 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Airbag",
             display: "Airbag sensor",
             continue: true,
-            updateCode: "34B04"
+            updateCode: "34B04",
           },
           {
             answer: "Button push",
             display: "Button push notification",
             continue: true,
-            updateCode: "34B04"
+            updateCode: "34B04",
           },
           {
             answer: "Other automatic sensor",
             display: "Other automatic sensor",
             continue: true,
-            updateCode: "34B04"
+            updateCode: "34B04",
           },
           {
             answer: "Other:",
             display: "{input}",
             continue: true,
-            updateCode: "34B04"
+            updateCode: "34B04",
           },
           {
             answer: "Unknown",
             display: "Unk situation",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Is the <b>voice contact</b> inside the vehicle?</p>,
+        text: (
+          <p>
+            Is the <b>voice contact</b> inside the vehicle?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Yes",
             display: "Voice contact",
-            continue: true
+            continue: true,
           },
           {
             answer: "No contact at all",
             display: "No voice contact",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes - critical noise(s) heard",
             display: "Critical noises heard",
             continue: true,
-            updateCode: "34D04"
+            updateCode: "34D04",
           },
           {
             answer: "Yes - normal voice(s) heard",
             display: "Normal voices heard",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
         text: <p>Are there any injuries?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Yes - normal voice(s) heard"
+          return lastAnswer === "Yes - normal voice(s) heard";
         },
         answers: [
           {
@@ -22030,38 +22192,38 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "No injs rptd",
             updateCode: "34O01",
             end: true,
-            override: true
+            override: true,
           },
           {
             answer: "Yes",
             display: "Injs rptd",
-            updateCode: "34B01"
+            updateCode: "34B01",
           },
           {
             answer: "Unknown",
             display: "Unk if injs",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
         text: <p>Any vehicle descriptions?</p>,
-        questionType: 'select',
+        questionType: "select",
         answers: [
           {
             answer: "Description:",
             display: "Vehicles: {input}",
             end: true,
-            input: true
+            input: true,
           },
           {
             answer: "Unknown",
             display: "Unk vehicle description(s)",
-            end: true
-          }
-        ]
-      }
+            end: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -22070,9 +22232,9 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "34O01",
             text: "No Injuries",
-            recResponse: 169
-          }
-        ]
+            recResponse: 169,
+          },
+        ],
       },
       {
         priority: "A",
@@ -22080,14 +22242,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "34A00",
             text: "BLS Override (Alpha)",
-            recResponse: 168
+            recResponse: 168,
           },
           {
             code: "34A01",
             text: "Not Dangerous Injs (1st party)",
-            recResponse: 168
-          }
-        ]
+            recResponse: 168,
+          },
+        ],
       },
       {
         priority: "B",
@@ -22095,29 +22257,29 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "34B00",
             text: "BLS Override (Bravo)",
-            recResponse: 168
+            recResponse: 168,
           },
           {
             code: "34B01",
             text: "Injuries",
-            recResponse: 168
+            recResponse: 168,
           },
           {
             code: "34B02",
             text: "Mult Victims (One Unit)",
-            recResponse: 168
+            recResponse: 168,
           },
           {
             code: "34B03",
             text: "Mulitple Victims",
-            recResponse: 170
+            recResponse: 170,
           },
           {
             code: "34B04",
             text: "Air Bag/Other Automatic Sensor",
-            recResponse: 168
-          }
-        ]
+            recResponse: 168,
+          },
+        ],
       },
       {
         priority: "D",
@@ -22125,19 +22287,19 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "34D00",
             text: "ALS Override (Delta)",
-            recResponse: 171
+            recResponse: 171,
           },
           {
             code: "34D01",
             text: "Arrest",
             recResponse: 173,
-            notBreathing: true
+            notBreathing: true,
           },
           {
             code: "34D02",
             text: "Unconscious",
             recResponse: 173,
-            notConscious: true
+            notConscious: true,
           },
           {
             code: "34D03",
@@ -22147,67 +22309,67 @@ export const emsComplaints: IEMSComplaint[] = [
               {
                 code: "i",
                 text: "Auto vs. Bicycle",
-                recResponse: 179
+                recResponse: 179,
               },
               {
                 code: "k",
                 text: "All-Terrain/Snowmobile",
-                recResponse: 180
+                recResponse: 180,
               },
               {
                 code: "l",
                 text: "Auto vs. Motorcycle",
-                recResponse: 179
+                recResponse: 179,
               },
               {
                 code: "m",
                 text: "Auto vs. Pedestrain",
-                recResponse: 181
+                recResponse: 181,
               },
               {
                 code: "n",
                 text: "Ejection",
-                recResponse: 182
+                recResponse: 182,
               },
               {
                 code: "o",
                 text: "Personal Watercraft",
-                recResponse: 177
+                recResponse: 177,
               },
               {
                 code: "p",
                 text: "Rollovers",
-                recResponse: 183
+                recResponse: 183,
               },
               {
                 code: "q",
                 text: "Vehicle Off Bridge/Height",
-                recResponse: 184
+                recResponse: 184,
               },
               {
                 code: "r",
                 text: "Possible Death at Scene",
-                recResponse: 173
+                recResponse: 173,
               },
               {
                 code: "s",
                 text: "Sinking Vehicle/Vehicle in Floodwater",
-                recResponse: 185
+                recResponse: 185,
               },
               {
                 code: "t",
                 text: "Train/Light Rail vs. Pedestrian",
-                recResponse: 186
-              }
-            ]
+                recResponse: 186,
+              },
+            ],
           },
           {
             code: "34D04",
             text: "Life Status Questionable",
-            recResponse: 173
-          }
-        ]
+            recResponse: 173,
+          },
+        ],
       },
-    ]
-  }
+    ],
+  },
 ];

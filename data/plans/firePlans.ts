@@ -7491,7 +7491,7 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Port Authority",
         quantity: 1,
-      }
+      },
     ],
   },
   {
@@ -7525,12 +7525,12 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Police Patrol",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Port Authority",
         quantity: 2,
-      }
+      },
     ],
   },
   {
@@ -11687,13 +11687,13 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 462,
@@ -11706,13 +11706,13 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 463,
@@ -11725,13 +11725,13 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 464,
@@ -11748,17 +11748,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Marine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 465,
@@ -11775,17 +11775,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Marine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 466,
@@ -11802,17 +11802,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Swift Water",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Marine",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 467,
@@ -11837,17 +11837,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Fire Investigator",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Police Patrol",
-        quantity: 4
+        quantity: 4,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 468,
@@ -11872,17 +11872,17 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Fire Investigator",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Police Patrol",
-        quantity: 4
+        quantity: 4,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 469,
@@ -11919,13 +11919,13 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Police Patrol",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 470,
@@ -11950,9 +11950,9 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Port Authority",
-        quantity: 1
-      }
-    ]
+        quantity: 1,
+      },
+    ],
   },
   {
     id: 471,
@@ -11961,53 +11961,53 @@ export const firePlans: IResponsePlan[] = [
     units: [
       {
         type: "Engine",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Truck",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Rescue",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Transport (ALS)",
-        quantity: 4
+        quantity: 4,
       },
       {
         type: "Transport (BLS)",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "EMS Officer",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Tanker",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "Hazmat",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Chief",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Police Patrol",
-        quantity: 3
+        quantity: 3,
       },
       {
         type: "Police Supervisor",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Port Authority",
-        quantity: 2
-      }
-    ]
+        quantity: 2,
+      },
+    ],
   },
   {
     id: 472,
@@ -12032,12 +12032,462 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Fire Investigator",
-        quantity: 2
+        quantity: 2,
       },
       {
         type: "TSU",
         quantity: 1,
       },
-    ]
-  }
+    ],
+  },
+  {
+    id: 473,
+    name: "1P",
+    incidentType: "MVC|PD",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 474,
+    name: "HMADAPT",
+    incidentType: "HM|CONTAINED",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 475,
+    name: "MVCTRAPB",
+    incidentType: "MVC|TRAP|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 476,
+    name: "MVCB",
+    incidentType: "MVC|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 477,
+    name: "MVCFIREB",
+    incidentType: "FIRE|MVC|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 478,
+    name: "MVCHMB",
+    incidentType: "MVC|HM|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 479,
+    name: "MVCFIREHMB",
+    incidentType: "FIRE|MVC|HM|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 480,
+    name: "MVCFIRETRAPB",
+    incidentType: "FIRE|MVC|TRAP|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 481,
+    name: "MVCTRAPHMB",
+    incidentType: "MVC|TRAP|HM|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 482,
+    name: "MVCFIRETRAPHMB",
+    incidentType: "FIRE|MVC|TRAP|HM|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 483,
+    name: "MVC1",
+    incidentType: "MVC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 484,
+    name: "MVCFIRE1",
+    incidentType: "FIRE|MVC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 485,
+    name: "MVCHM1",
+    incidentType: "MVC|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 486,
+    name: "MVCFIREHM1",
+    incidentType: "FIRE|MVC|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 487,
+    name: "MVCFIRETRAP1",
+    incidentType: "FIRE|MVC|TRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 488,
+    name: "MVCTRAPHM1",
+    incidentType: "MVC|TRAP|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 489,
+    name: "MVCTRAP1",
+    incidentType: "MVC|TRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 490,
+    name: "MVCFIRETRAPHM1",
+    incidentType: "FIRE|MVC|TRAP|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+  },
 ];
