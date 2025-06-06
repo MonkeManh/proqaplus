@@ -200,7 +200,7 @@ export const CIDSData: Location[] = [
     name: "South Seas Apartments",
     postal: "023",
     postalRange: ["023", "021", "022", "024", "042"],
-    cids: `MULTI-FAMILY APT BLDG 2 STRY 140X125 CLASS A (ATRIUM)
+    cids: `APT 2 STRY 140X125 CLASS A (ATRIUM)
       SOUTH SEAS APARTMENTS
       A SIDE - CASCABEL AVE
       B SIDE - PALETO BLVD
@@ -220,7 +220,7 @@ export const CIDSData: Location[] = [
     name: "Blaine County Savings Bank - Paleto",
     postal: "024",
     postalRange: ["024", "023", "022", "025", "026", "042"],
-    cids: `COMM 1 STRY 105X80 CLASS 2 (NON-COMBUSTIBLE)
+    cids: `BANK 1 STRY 105X80 CLASS 2 (NON-COMBUSTIBLE)
       BLAINE COUNTY SAVINGS BANK
       A SIDE - CASCABEL AVE (PKING LOT)
       B SIDE - PROCOPIO DR
@@ -280,7 +280,7 @@ export const CIDSData: Location[] = [
     name: "Don's Country Store",
     postal: "039",
     postalRange: ["039", "029", "030"],
-    cids: `COMM 1 STRY 45X45 CLASS 4 (WOOD FRAME)
+    cids: `GAS STATION 1 STRY 45X45 CLASS 4 (WOOD FRAME)
       DON'S COUTRY STORE AKA DON'S
       A SIDE - GAS PUMPS
       B SIDE - ATTACHED COMM CLASS 2
@@ -367,7 +367,7 @@ export const CIDSData: Location[] = [
     id: 22,
     name: "Bay Hardware Store",
     postal: "041",
-    postalRange: ["041"],
+    postalRange: ["041", "026"],
     cids: `COMM 1 STRY 50X35 CLASS 2 (NON-COMBUSTIBLE)
       BAY HARDWARE STORE
       A SIDE - PALETO BLVD
@@ -379,19 +379,143 @@ export const CIDSData: Location[] = [
   },
   {
     id: 23,
-    name: "Ursula Residence",
-    postal: "081",
-    postalRange: ["080", "081", "082"],
-    cids: `SINGLE-FAM PD 2 STRY 75X50 CLASS 4 (WOOD FRAME)
-      A SIDE - DRIVEWAY (FACING LIGHTHOUSE)
-      B SIDE - BRUSH
-      C SIDE - BRUSH
-      D SIDE - OCEAN
-      310 CUBIC FT PROPANE TANK ON C SIDE
-      DIVISION SUB 1 ACCESS ON A SIDE VIA BILCO DOORS
-      DIVISION 2 ACCESS FROM EXTERNAL STAIRCASE B SIDE
-      WRAPAROUND BALCONY ON 2ND DIVISION, UTILIZE CAUTION IF COMPROMISED
-      CONSIDER EXPOSURE PROTECTION
-      CONSIDER DRAFTING OPTIONS FROM GORDO BAY OR CATFISH LANDING`
+    name: "Ray's Electronics",
+    postal: "041",
+    postalRange: ["041", "026"],
+    cids: `COMM 1 STRY 35X55 CLASS 2 (NON-COMBUSTIBLE)
+      RAY'S ELECTRONICS
+      A SIDE - PALETO BLVD
+      B SIDE - ATTACHED 1 STRY COMM
+      C SIDE - ALLEYWAY
+      D SIDE - DETACHED 1 STRY COMM
+      BOARDED WINDOWS
+      UTILS ON C SIDE
+      LADDER WITH ROOF ACCESS ON C SIDE
+      HYDRANT ACCESS ON A SIDE`
+  },
+  {
+    id: 24,
+    name: "Belinda May's Beauty Salon",
+    postal: "041",
+    postalRange: ["041", "026", "024"],
+    cids: `COMM 1 STRY 25X50 CLASS 3 (ORDINARY)
+      BELINDA MAY'S BEAUTY SALON
+      A SIDE - PALETO BLVD
+      B SIDE - INTERCON 1 STRY COMM
+      C SIDE - ALLEYWAY
+      D SIDE - INTERCON 1 STRY COMM
+      INTERCON COCKLOFT W/ D SIDE
+      HYDRANT ACCESS ON A SIDE`
+  },
+  {
+    id: 25,
+    name: "No Marks Cleaners",
+    postal: "041",
+    postalRange: ["041", "026", "024"],
+    cids: `COMM 1 STRY 25X50 CLASS 3 (ORDINARY)
+      NO MARKS CLEANERS
+      A SIDE - PALETO BLVD
+      B SIDE - INTERCON 1 STRY COMM
+      C SIDE - ALLEYWAY
+      D SIDE - DETACHED 2 STRY WHSE
+      INTERCON COCKLOFT W/ B SIDE
+      UTILS ON C SIDE
+      HYDRANT ACCESS A SIDE`
+  },
+  {
+    id: 26,
+    name: "Morris & Sons Feed and Supplies (Warehouse)",
+    postal: "041",
+    postalRange: ["041", "042", "026", "024"],
+    cids: `COMM WHSE 2 STRY 50X115 CLASS 2 (NON-COMBUSTIBLE)
+      MORRIS & SONS FEED AND SUPPLIES (WHSE)
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY COMM
+      C SIDE - PARKING LOT / 2 STRY MIXED USE
+      D SIDE - DETACHED 1 STRY GARAGE
+      DIVISION 1 - STORAGE (MAINLY AG GOODS, POSS COMBUSTIBLES)
+      DIVISION 2 - OFFICES
+      NO ALM OR SPRSN SYSTEM
+      UTILS ON A & C SIDE
+      HYDRANT ACCESS ON A SIDE`
+  },
+  {
+    id: 27,
+    name: "Xero Gas Station",
+    postal: "042",
+    postalRange: ["042", "041", "023", "024"],
+    cids: `GAS STATION 1 STRY 70X35 CLASS 3 (ORDINARY)
+      XERO GAS STATION
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY GARAGE
+      C SIDE - ALLEYWAY
+      D SIDE - DETACHED 1 STRY COMM
+      PUMPS ON A SIDE
+      GAS SHUT OFF AT MAIN COUNTER
+      ATTACHED OVERHANG OVER PUMPS
+      EXTERIOR PROPANE STORAGE AT C/D CORNER
+      UTILS ON C SIDE
+      HYDRANT ACCESS A SIDE ACROSS STREET`
+  },
+  {
+    id: 28,
+    name: "Mojito Inn",
+    postal: "042",
+    postalRange: ["042", "041", "023", "024", "043"],
+    cids: `RESTAURANT 1 STRY 125X80 CLASS 3 (ORDINARY)
+      MOJITO INN
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY COMM
+      C SIDE - DETACHED 2 STRY HOTEL
+      D SIDE - PYRITE AVE
+      UTILS C AND D SIDE
+      HYDRANT ACCESS A SIDE`
+  },
+  {
+    id: 29,
+    name: "Wilson Hatcheries",
+    postal: "041",
+    postalRange: ["041", "042", "043", "044"],
+    cids: `COMM 2 STRY 80X100 CLASS 3 (ORDINARY)
+      WILSON HATCHERIES
+      A SIDE - ROUTE 1
+      B SIDE - DETACHED 2 STRY COMM
+      C SIDE - DETACHED 2 STRY WHSE
+      D SIDE - DETACHED 2 STRY COMM
+      LIVESTOCK ON C SIDE
+      HYDRANT ACCESS A/B SIDE
+      !!!CAUTION!!!
+      EXTENSION TO POWER LINES/POLES LIKELY`
+  },
+  {
+    id: 30,
+    name: "Morris & Sons Feed and Supplies",
+    postal: "041",
+    postalRange: ["041", "042", "043", "044"],
+    cids: `COMM 2 STRY 84X145 CLASS 2 (NON-COMBUSTIBLE)
+      MORRIS & SONS FEED AND SUPPLIES
+      A SIDE - PARKING (WITH DETACHED 2 STRY COMM)
+      B SIDE - ROUTE 1
+      C SIDE - DETACHED 2 STRY HOTEL
+      D SIDE - DETACHED 1 STRY GAS STATION
+      UTILS B SIDE
+      HYDRANT ACCESS A/B SIDE`
   }
+  // {
+  //   id: 23,
+  //   name: "Ursula Residence",
+  //   postal: "081",
+  //   postalRange: ["080", "081", "082"],
+  //   cids: `SINGLE-FAM PD 2 STRY 75X50 CLASS 4 (WOOD FRAME)
+  //     A SIDE - DRIVEWAY (FACING LIGHTHOUSE)
+  //     B SIDE - BRUSH
+  //     C SIDE - BRUSH
+  //     D SIDE - OCEAN
+  //     310 CUBIC FT PROPANE TANK ON C SIDE
+  //     DIVISION SUB 1 ACCESS ON A SIDE VIA BILCO DOORS
+  //     DIVISION 2 ACCESS FROM EXTERNAL STAIRCASE B SIDE
+  //     WRAPAROUND BALCONY ON 2ND DIVISION, UTILIZE CAUTION IF COMPROMISED
+  //     CONSIDER EXPOSURE PROTECTION
+  //     CONSIDER DRAFTING OPTIONS FROM GORDO BAY OR CATFISH LANDING`
+  // }
 ];
