@@ -1,6 +1,8 @@
 "use client";
 
 import CaseEntry from "@/components/create-call/police/case-entry";
+import PoliceDeterminantSelection from "@/components/create-call/police/determinant-selection";
+import PoliceProQA from "@/components/create-call/police/police-proqa";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { policeProtocols } from "@/data/protocols/policeProtocols";
@@ -152,36 +154,36 @@ export default function PoliceCallPage() {
   };
 
   return (
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="w-full flex justify-center flex-1 mt-12">
-          {currentStep === 1 && (
-            <CaseEntry
-              onContinue={handleInitialContinue}
-              handleBack={handleBack}
-            />
-          )}
-  
-          {/* {currentStep === 2 && (
-            // <FireProQA
-            //   fireData={fireData}
-            //   complaintName={selectedComplaint}
-            //   onComplete={handleCompleteProQA}
-            //   onBack={handleBack}
-            //   onSwitchProtocol={handleProtocolSwitch}
-            // />
-          )}
-  
-          {currentStep === 3 && (
-            // <FireDeterminantSelection
-            //   complaintName={selectedComplaint}
-            //   recommendedCode={recommendedCode}
-            //   onSelect={handleDeterminantSelect}
-            //   onBack={handleBack}
-            // />
-          )} */}
-        </main>
-        <Footer />
-      </div>
-    );
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="w-full flex justify-center flex-1 mt-12">
+        {currentStep === 1 && (
+          <CaseEntry
+            onContinue={handleInitialContinue}
+            handleBack={handleBack}
+          />
+        )}
+
+        {currentStep === 2 && (
+          <PoliceProQA
+            policeData={policeData}
+            complaintName={selectedComplaint}
+            onComplete={handleCompleteProQA}
+            onBack={handleBack}
+            onSwitchProtocol={handleProtocolSwitch}
+          />
+        )}
+
+        {currentStep === 3 && (
+          <PoliceDeterminantSelection
+            complaintName={selectedComplaint}
+            recommendedCode={recommendedCode}
+            onSelect={handleDeterminantSelect}
+            onBack={handleBack}
+          />
+        )}
+      </main>
+      <Footer />
+    </div>
+  );
 }

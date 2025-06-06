@@ -39,7 +39,9 @@ interface CallData {
   isOverriden?: boolean;
   boxType?: string;
   units: string[];
+  notSecure?: boolean;
   reconfigured?: string;
+  fromPolice?: boolean;
 }
 
 export default function FireSummaryPage() {
@@ -132,7 +134,7 @@ export default function FireSummaryPage() {
       const sortedUnits = dispatchData.units
         ? sortFDUnits([...dispatchData.units], dispatchData.postal)
         : [];
-        const township = getPostal(dispatchData.postal)?.twp
+      const township = getPostal(dispatchData.postal)?.twp;
 
       const text = [
         `Code: ${dispatchData.code}`,
@@ -143,9 +145,9 @@ export default function FireSummaryPage() {
               }`
             : ""
         }`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${township ? `, ${township}` : ""}${
-          dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""
-        }`,
+        `Location: ${dispatchData.postal} ${dispatchData.street}${
+          township ? `, ${township}` : ""
+        }${dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""}`,
         `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
           dispatchData.crossStreet2 || "N/A"
         }`,
@@ -154,7 +156,7 @@ export default function FireSummaryPage() {
         `Problem: ${dispatchData.complaint} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
-        "Scene Status: Secure",
+        `Scene Status: ${dispatchData?.notSecure ? "Not Secure" : "Secure"}`,
         "Scene Com: Not Established",
         "Channel: Fire Response",
         "Staging Location: N/A",
@@ -214,6 +216,14 @@ export default function FireSummaryPage() {
     navigator.clipboard
       .writeText(summaryText)
       .then(() => {
+        const hasPolicetoAssign =
+          (firePlans.find((p) => p.id === dispatchData?.plan)?.policePlan ?? 0) >
+          0;
+
+        if (hasPolicetoAssign && !dispatchData.fromPolice) {
+          return handleContinue();
+        }
+
         toast.success("Case Created", {
           description: "Dispatch summary has been copied",
         });
@@ -267,34 +277,23 @@ export default function FireSummaryPage() {
   function handleContinue() {
     navigator.clipboard.writeText(summaryText).then(() => {
       toast.success("Case Created", {
-        description: "Create fire call before starting the LEO call",
+        description: "Call created, creating dispatch for POLICE",
       });
 
-      const storedUnits = localStorage.getItem("FIRE_UNITS");
-      if (storedUnits) {
-        const units = JSON.parse(storedUnits);
-        if (!dispatchData) return;
-        const updatedUnits = units.map((unit: any) => {
-          if (dispatchData.units.includes(unit.name)) {
-            return { ...unit, status: "On Call" };
-          }
+      const newCall = {
+        postal: dispatchData?.postal || "",
+        buildingInfo: dispatchData?.buildingInfo || "",
+        street: dispatchData?.street || "",
+        crossStreet1: dispatchData?.crossStreet1 || "",
+        crossStreet2: dispatchData?.crossStreet2 || "",
+        callerNumber: dispatchData?.callerNumber || "",
+        callerStatement: dispatchData?.callerStatement || "",
+        service: "Police",
+        fromOther: true,
+      };
 
-          const isUnitCrossStaffed = dispatchData.units.some(
-            (dispatchedUnit: string) =>
-              unit.crossStaffing?.includes(dispatchedUnit)
-          );
-
-          if (isUnitCrossStaffed) {
-            return { ...unit, status: "Out of Service" };
-          }
-
-          return unit;
-        });
-
-        localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
-
-        router.push("/summary/police");
-      }
+      localStorage.setItem("NEW_CALL", JSON.stringify(newCall));
+      window.location.href = "/create-call/police";
     });
   }
 

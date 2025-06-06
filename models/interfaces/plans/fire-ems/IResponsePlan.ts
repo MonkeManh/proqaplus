@@ -10,5 +10,7 @@ export interface IResponsePlan {
     incidentType: string;
     sendPolice?: boolean;
     policePlan?: number;
+    firePlan?: number;
+    emsPlan?: number;
     units: Unit[];
 }

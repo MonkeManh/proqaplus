@@ -384,4 +384,16 @@ export const policePlans: IResponsePlan[] = [
       },
     ],
   },
+  {
+    id: 27,
+    name: "4P",
+    incidentType: "CID",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 4,
+      },
+    ],
+    emsPlan: 1,
+  }
 ];

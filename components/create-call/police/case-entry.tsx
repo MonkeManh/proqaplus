@@ -67,6 +67,10 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      callerName: "",
+      chiefComplaint: "",
+    },
   });
 
   useEffect(() => {
@@ -115,10 +119,10 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                       </FormDescription>
                       <FormControl>
                         <Input
-                            placeholder="Enter caller name"
-                            value={field.value}
-                            onChange={(e) => field.onChange(e.target.value)}
-                            ref={callerName}
+                          placeholder="Enter caller name"
+                          {...field}
+                          ref={callerName}
+                          autoFocus
                         />
                       </FormControl>
                       <FormMessage />
