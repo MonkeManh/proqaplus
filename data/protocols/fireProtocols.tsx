@@ -23723,6 +23723,593 @@ export const fireProtocols: IFireComplaint[] = [
           },
         ],
       },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "77D00",
+            text: "Override (Delta)",
+            recResponse: 491,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 491,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 491,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 491,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 492,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 493,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 491,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 494,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 492,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 493,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 494,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+            ],
+          },
+          {
+            code: "77D01",
+            text: "High Occupancy Vehicle (High Mechanism)",
+            recResponse: 499,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 499,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 499,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 499,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 500,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 501,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 499,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 502,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 500,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 503,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 501,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 504,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 505,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 502,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 506,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 503,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 504,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 505,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 506,
+              },
+            ],
+          },
+          {
+            code: "77D02",
+            text: "High Mechanism",
+            recResponse: 507,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 507,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 507,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 507,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 508,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 509,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 507,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 510,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 508,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 509,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 510,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D03",
+            text: "Multi-Vehicle (>= 10) Pile-Up",
+            recResponse: 499,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 499,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 499,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 499,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 500,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 501,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 499,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 502,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 500,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 503,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 501,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 504,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 505,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 502,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 506,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 503,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 504,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 505,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 506,
+              },
+            ],
+          },
+          {
+            code: "77D04",
+            text: "Trapped (Pinned) Victim",
+            recResponse: 489,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 489,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 489,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 489,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 487,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 488,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 489,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 490,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 488,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 488,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 490,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D05",
+            text: "Ejection",
+            recResponse: 511,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 511,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 511,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 511,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 512,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 513,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 511,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 514,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 512,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 513,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 514,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+            ],
+          }
+        ]
+      }
     ],
   },
 ];

@@ -394,6 +394,5 @@ export const policePlans: IResponsePlan[] = [
         quantity: 4,
       },
     ],
-    emsPlan: 1,
   }
 ];

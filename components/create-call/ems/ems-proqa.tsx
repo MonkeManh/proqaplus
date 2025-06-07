@@ -108,7 +108,7 @@ const getProperPronoun = (gender: string): string => {
     case "Female":
       return "she";
     default:
-      return "they";
+      return "the patient";
   }
 };
 

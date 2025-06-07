@@ -1642,12 +1642,14 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
+          if (!_patient) return false;
+          const { isBreathing } = _patient;
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return (
             lastAnswer === "Chest" ||
             lastAnswer === "Neck" ||
             lastAnswer === "Head"
-          );
+          ) && isBreathing !== false;
         },
         answers: [
           {
@@ -2103,9 +2105,9 @@ export const emsComplaints: IEMSComplaint[] = [
             goto: 17,
           },
           {
-            answer: "Recent Trauma",
-            display: "Pain from a recent trauma",
-            goto: 30,
+            answer: "Trauma",
+            display: "Pn from a recent trauma",
+            continue: true
           },
           {
             answer: "Non-Traumatic",
@@ -2114,17 +2116,38 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "05A01",
           },
           {
-            answer: "Non-Recent (>= 6hrs ago) Trauma",
-            display: "Caused by non-recent trauma",
-            continue: true,
-            updateCode: "05A02",
-          },
-          {
             answer: "Unknown",
             display: "Unk cause of pn",
             continue: true,
           },
         ],
+      },
+
+      {
+        text: <p>When did the trauma happen?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Trauma"
+        },
+        answers: [
+          {
+            answer: "Just now (< 6 hours ago)",
+            display: "Occurred just now (< 6 hours ago)",
+            goto: 30
+          },
+          {
+            answer: "Earlier (>= 6 hours ago)",
+            display: "Occurred earlier (>= 6 hours ago)",
+            continue: true,
+            updateCode: "05A02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when trauma happened",
+            continue: true,
+          }
+        ]
       },
 
       {
@@ -2510,7 +2533,7 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 22,
     questions: [
       {
-        text: <p>Is **pronoun** able to talk to you (cry) at all?</p>,
+        text: <p>Is **pronoun** able to talk to you <span className='text-blue-400'>(cry)</span> at all?</p>,
         questionType: "select",
         answers: [
           {
@@ -3313,6 +3336,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -4307,6 +4335,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -8020,6 +8053,11 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             updateSubCode: "L",
           },
+          {
+            answer: "Unknown",
+            display: "Unk type of incident",
+            continue: true
+          }
         ],
       },
 
@@ -8034,8 +8072,8 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
-          const secondAnswer = answers?.[1]?.answer;
-          return secondAnswer === "Pt was electrocuted";
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Electrocution";
         },
         answers: [
           {
@@ -8069,8 +8107,8 @@ export const emsComplaints: IEMSComplaint[] = [
           _patient?: IPatientData,
           answers?: IAnswerData[]
         ) => {
-          const secondAnswer = answers?.[1]?.answer;
-          return secondAnswer === "Pt was electrocuted";
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Lightning";
         },
         answers: [
           {
@@ -8866,8 +8904,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is there any <b>SERIOUS</b> <span className="text-4">bleeding</span>
-            ?
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
           </p>
         ),
         questionType: "select",
@@ -8899,6 +8936,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -15139,6 +15181,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -16414,6 +16461,89 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
+            Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "None of These",
+            display: "No priority sx (ALPHA 2-12 not ID'd)",
+            end: true,
+            updateCode: "26A01",
+          },
+          {
+            answer: "Blood pressure abnormality (asymptomatic)",
+            display: "Pt has blood pressure abnormality (asymptomatic)",
+            end: true,
+            updateCode: "26A02",
+          },
+          {
+            answer: "Dizziness/Vertigo",
+            display: "Pt has dizziness/vertigo",
+            end: true,
+            updateCode: "26A03",
+          },
+          {
+            answer: "Fever/Chills",
+            display: "Pt has fever/chills",
+            end: true,
+            updateCode: "26A04",
+          },
+          {
+            answer: "General weakness",
+            display: "Pt has general weakness",
+            end: true,
+            updateCode: "26A05",
+          },
+          {
+            answer: "Nausea",
+            display: "Pt has nausea",
+            end: true,
+            updateCode: "26A06",
+          },
+          {
+            answer: "New (not sudden) onset of immobility",
+            display: "Pt has new (not sudden) onset of immobility",
+            end: true,
+            updateCode: "26A07",
+          },
+          {
+            answer: "Other Pain",
+            display: "Pt has other pain",
+            end: true,
+            updateCode: "26A08",
+          },
+          {
+            answer: "Transportation Only",
+            display: "Pt needs transport only",
+            end: true,
+            updateCode: "26A09",
+          },
+          {
+            answer: "Unwell/Ill",
+            display: "Pt is unwell/ill",
+            end: true,
+            updateCode: "26A10",
+          },
+          {
+            answer: "Vomiting",
+            display: "Pt is vomiting",
+            end: true,
+            updateCode: "26A11",
+          },
+          {
+            answer: "Possible Contaigious Disease",
+            display: "Pt has possible contaigious disease",
+            end: true,
+            updateCode: "26A12",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
             Is the "Primary Problem" one of the listed OMEGA-Level complaints?
           </p>
         ),
@@ -16589,89 +16719,6 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Pt has an infected wound (focal or surface)",
             end: true,
             updateCode: "26O28",
-          },
-        ],
-      },
-
-      {
-        text: (
-          <p>
-            Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "None of These",
-            display: "No priority sx (ALPHA 2-12 not ID'd)",
-            end: true,
-            updateCode: "26A01",
-          },
-          {
-            answer: "Blood pressure abnormality (asymptomatic)",
-            display: "Pt has blood pressure abnormality (asymptomatic)",
-            end: true,
-            updateCode: "26A02",
-          },
-          {
-            answer: "Dizziness/Vertigo",
-            display: "Pt has dizziness/vertigo",
-            end: true,
-            updateCode: "26A03",
-          },
-          {
-            answer: "Fever/Chills",
-            display: "Pt has fever/chills",
-            end: true,
-            updateCode: "26A04",
-          },
-          {
-            answer: "General weakness",
-            display: "Pt has general weakness",
-            end: true,
-            updateCode: "26A05",
-          },
-          {
-            answer: "Nausea",
-            display: "Pt has nausea",
-            end: true,
-            updateCode: "26A06",
-          },
-          {
-            answer: "New (not sudden) onset of immobility",
-            display: "Pt has new (not sudden) onset of immobility",
-            end: true,
-            updateCode: "26A07",
-          },
-          {
-            answer: "Other Pain",
-            display: "Pt has other pain",
-            end: true,
-            updateCode: "26A08",
-          },
-          {
-            answer: "Transportation Only",
-            display: "Pt needs transport only",
-            end: true,
-            updateCode: "26A09",
-          },
-          {
-            answer: "Unwell/Ill",
-            display: "Pt is unwell/ill",
-            end: true,
-            updateCode: "26A10",
-          },
-          {
-            answer: "Vomiting",
-            display: "Pt is vomiting",
-            end: true,
-            updateCode: "26A11",
-          },
-          {
-            answer: "Possible Contaigious Disease",
-            display: "Pt has possible contaigious disease",
-            end: true,
-            updateCode: "26A12",
           },
         ],
       },
@@ -17645,6 +17692,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -19925,262 +19977,287 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: (
-          <p>
-            What type of <b>incident</b> is this?
-          </p>
-        ),
+        text: <p>How many vehicles are involved?</p>,
         questionType: "select",
         answers: [
           {
-            answer: "Major Incident",
-            display: "Major incident id'd",
-            continue: true,
-            updateCode: "29D01",
+            answer: "Single vehicle",
+            display: "Single veh",
+            continue: true
           },
           {
-            answer: "Rollover",
-            display: "This is a rollover incident",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "p",
+            answer: "Two vehicles",
+            display: "Two vehicles",
+            continue: true
           },
           {
-            answer: "Ejection",
-            display: "There is an ejection",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "n",
-          },
-          {
-            answer: "High Mechanism",
-            display: "High mechanism of injury",
-            continue: true,
-            updateCode: "29D02",
-          },
-          {
-            answer: "Trapped or Pinned Victim",
-            display: "Trapped or pinned victim",
-            continue: true,
-            updateCode: "29D05",
-          },
-          {
-            answer: "High Velocity Impact",
-            display: "High velocity impact",
-            continue: true,
-            updateCode: "29D03",
-          },
-          {
-            answer: "Unknown",
-            display: "Unknown mechanism of injury",
-            continue: true,
-          },
-        ],
-      },
-
-      {
-        text: (
-          <p>
-            Are there any <b className="text-green-400">hazardous materials</b>{" "}
-            involved?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "No",
-            display: "No hazmat rptd",
-            continue: true,
-          },
-          {
-            answer: "Yes:",
-            display: "Hazmat rptd - {input}",
+            answer: "Multiple (< 10):",
+            display: "{input} vehicles",
             continue: true,
             input: true,
-            updateCode: "29D04",
+          },
+          {
+            answer: "Multiple (>= 10):",
+            display: "{input} vehicles",
+            continue: true,
+            input: true,
+            updateCode: "29D01",
+            updateSubCode: "f"
           },
           {
             answer: "Unknown",
-            display: "Unk if hazmat involved",
-            continue: true,
-          },
-        ],
+            display: "Unk num of vehs",
+            continue: true
+          }
+        ]
       },
 
       {
-        text: (
-          <p>
-            What type of <b>major incident</b> is this?
-          </p>
-        ),
-        questionType: "select",
-        preRenderInstructions: (
-          _patient?: IPatientData,
-          answers?: IAnswerData[]
-        ) => {
-          const secondAnswer = answers?.[1]?.answer;
-          return secondAnswer === "Major Incident";
-        },
-        answers: [
-          {
-            answer: "Aircraft",
-            display: "Aircraft is involved",
-            continue: true,
-            updateSubCode: "a",
-          },
-          {
-            answer: "Bus",
-            display: "Bus is involved",
-            continue: true,
-            updateSubCode: "b",
-          },
-          {
-            answer: "Subway/Metro",
-            display: "Subway/Metro is involved",
-            continue: true,
-            updateSubCode: "c",
-          },
-          {
-            answer: "Train",
-            display: "Train is involved",
-            continue: true,
-            updateSubCode: "d",
-          },
-          {
-            answer: "Watercraft",
-            display: "Watercraft is involved",
-            continue: true,
-            updateSubCode: "e",
-          },
-          {
-            answer: "Multi-Vehicle Pileup (>= 10)",
-            display: "Multi-Vehicle Pileup (>= 10)",
-            continue: true,
-            updateSubCode: "f",
-          },
-          {
-            answer: "Street Car/Light Rail",
-            display: "Street Car/Light Rail is involved",
-            continue: true,
-            updateSubCode: "g",
-          },
-          {
-            answer: "Vehicle v. Building",
-            display: "Car vs Bldg",
-            continue: true,
-            updateSubCode: "h",
-          },
-          {
-            answer: "None of These",
-            display: "No major incident factors ID'd",
-            continue: true,
-          },
-        ],
-      },
-
-      {
-        text: <p>What type of high mechanism accident is this?</p>,
-        questionType: "select",
-        preRenderInstructions: (
-          _patient?: IPatientData,
-          answers?: IAnswerData[]
-        ) => {
-          const secondAnswer = answers?.[1]?.answer;
-          const lastAnswer = answers?.[2]?.answer;
-          return (
-            secondAnswer === "High Mechanism" || lastAnswer === "None of These"
-          );
-        },
-        answers: [
-          {
-            answer: "Auto v. Auto",
-            display: "Auto vs Auto",
-            continue: true,
-            updateCode: "29D02",
-          },
-          {
-            answer: "Auto v. Bicycle",
-            display: "Auto vs Bicycle",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "i",
-          },
-          {
-            answer: "All-Terrain/Snowmobile",
-            display: "Auto vs Motorcycle",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "k",
-          },
-          {
-            answer: "Auto v. Motorcycle",
-            display: "Auto vs Motorcycle",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "l",
-          },
-          {
-            answer: "Auto v. Pedestrian",
-            display: "Auto vs Pedestrian",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "m",
-          },
-          {
-            answer: "Personal Watercraft",
-            display: "Personal watercraft involved",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "o",
-          },
-          {
-            answer: "Vehicle off Bridge/Height",
-            display: "Vehicle off Bridge/Height",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "q",
-          },
-          {
-            answer: "Train/Light Rail v. Pedestrian",
-            display: "Train/Light Rail v. Pedestrian",
-            continue: true,
-            updateCode: "29D02",
-            updateSubCode: "t",
-          },
-        ],
-      },
-
-      {
-        text: <p>Are there any injuries on scene?</p>,
+        text: <p>Was anyone <b className="text-red-400">thrown</b> from the vehicle?</p>,
         questionType: "select",
         answers: [
           {
             answer: "No",
-            display: "No injs rptd",
-            continue: true,
-            updateCode: "29A02",
+            display: "No one thrown out",
+            continue: true
           },
           {
             answer: "Yes",
-            display: "Injs rptd",
+            display: "Person thrown from veh",
             continue: true,
-            updateCode: "29B01",
+            updateCode: "29D02",
+            updateSubCode: "n"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person thrown out",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone trapped or pinned in the vehicle?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one trapped/pinned",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "Trapped/pinned victim(s)",
+            continue: true,
+            updateCode: "29D05"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anyone trapped/pinned",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Are any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No chems/hazmat involved",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "Chems/hazmat involved",
+            continue: true,
+            updateCode: "29D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if chems/hazmat involved",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any injuries?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No injuries",
+            display: "No injs rptd",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes (1st party)" || firstAnswer === "Yes (2nd party)") {
+                return { code: "29O01" }
+              } else {
+                return { code: "29A02" }
+              }
+            }
+          },
+          {
+            answer: "Injuries",
+            display: "Injuries rptd",
+            continue: true,
+            updateCode: "29B01"
           },
           {
             answer: "Unknown",
             display: "Unk if injs",
             continue: true,
-            updateCode: "29B05",
-          },
-        ],
+          }
+        ]
       },
+
+      {
+        text: <p>Is there any <b className="text-red-400">bleeding</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.find((q) => q.defaultQuestion === "Are there any injuries?")?.defaultAnswer;
+          return lastAnswer === "Injuries"
+        },
+        answers: [
+          {
+            answer: "No bleeding (now)",
+            display: "No bleeding now",
+            continue: true,
+          },
+          {
+            answer: "SERIOUS bleeding",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "29B02"
+          },
+          {
+            answer: "No bleeding",
+            display: "No bleeding",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bleeding",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is everyone involved <b>completely alert</b> <span className="text-red-400">(responding appropriately)</span>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Everyone completetly awake",
+            continue: true
+          },
+          {
+            answer: "No",
+            display: "Person(s) not completely awake",
+            continue: true,
+            updateCode: "29D09"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if everyone completely awake",
+            continue: true,
+            updateCode: "29B05"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b className="text-red-400">nature</b> of the injury?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.find((q) => q.defaultQuestion === "Are there any injuries?")?.defaultAnswer;
+          return lastAnswer === "Injuries"
+        },
+        answers: [
+          {
+            answer: "Possibly dangerous body area:",
+            display: "Inj to {input}",
+            continue: true,
+            input: true
+          },
+          {
+            answer: "Not dangerous body area:",
+            display: "Inj to {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes (1st party)") {
+                return { code: "29A01" }
+              } 
+            },
+          },
+          {
+            answer: "Low mechanism",
+            display: "Low mechanism rptd",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if(firstAnswer === "Yes (1st party)" || firstAnswer === "Yes (2nd party)") {
+                return { code: "29B04" }
+              }
+            }
+          },
+          {
+            answer: "Rollover",
+            display: "Veh rollover",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "p"
+          },
+          {
+            answer: "High velocity impact?",
+            display: "High velocity impact rptd",
+            continue: true,
+            updateCode: "29D03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent/nature of inj",
+            continue: true,
+            updateCode: "29B05"
+          }
+        ]
+      },
+
+      {
+        text: <p>Are there any other <b className="text-green-400">hazards</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No other hazards",
+            continue: true
+          },
+          {
+            answer: "Yes:",
+            display: "Other hazards - {input}",
+            continue: true,
+            input: true,
+            updateCode: "29B03"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if other hazards",
+            continue: true
+          }
+        ]
+      }
     ],
     availableDeterminants: [
       {
         priority: "O",
         determinants: [
           {
-            code: "28O01",
+            code: "29O01",
             text: "No Injs (Confirmed for All Persons Up to 4)",
             recResponse: 169,
           },
@@ -20821,6 +20898,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
