@@ -10,6 +10,8 @@ import {
 } from "@/lib/utils/evaluators";
 import React, { useEffect, useRef, useState } from "react";
 import { InputModal } from "@/components/modals/input-modal";
+import { VehicleInputModal } from "@/components/modals/vehicle-input-modal";
+import { PersonInputModal } from "@/components/modals/person-input-modal";
 import { IPoliceData } from "@/models/interfaces/complaints/police/IPoliceData";
 import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint";
 
@@ -80,6 +82,8 @@ export default function PoliceProQA({
   const [previousAnswers, setPreviousAnswers] = useState<any[]>([]);
   const [currentSubCode, setCurrentSubCode] = useState<string>("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
+  const [isVehicleModalOpen, setIsVehicleModalOpen] = useState(false);
+  const [isPersonModalOpen, setIsPersonModalOpen] = useState(false);
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
@@ -221,7 +225,11 @@ export default function PoliceProQA({
     return newPriority > currentPriority;
   };
 
-  const handleAnswerSelect = (answerIndex: number, inputValue?: string) => {
+  const handleAnswerSelect = (
+    answerIndex: number,
+    inputValue?: string,
+    nextQuestion: boolean = true
+  ) => {
     if (!complaint) return;
 
     const currentQuestion = complaint.questions[currentQuestionIndex];
@@ -229,28 +237,20 @@ export default function PoliceProQA({
 
     if (!currentQuestion || !selectedAnswer) return;
 
-    // Handle protocol switching first, before any other operations
-    if (selectedAnswer.goto !== undefined) {
-      // Clear all state and storage
-      localStorage.removeItem("FIRE_PROQA_DATA");
-      localStorage.removeItem("FIRE_PROQA_ANSWERS");
-      setCurrentQuestionIndex(0);
-      setSelectedAnswerIndex(null);
-      setHoverAnswerIndex(0);
-      setCurrentCode("");
-      setCurrentPlan(0);
-      setIsCodeOverridden(false);
-      setShouldComplete(false);
-      setPreviousAnswers([]);
-      setCurrentSubCode("");
-
-      // Switch to new protocol
-      if (onSwitchProtocol) {
-        onSwitchProtocol(selectedAnswer.goto);
-      }
+    // Handle special input types first - early return to prevent state updates
+    if (selectedAnswer.vehicleInput && !inputValue) {
+      setIsVehicleModalOpen(true);
+      setPendingAnswerIndex(answerIndex);
       return;
     }
 
+    if (selectedAnswer.personInput && !inputValue) {
+      setIsPersonModalOpen(true);
+      setPendingAnswerIndex(answerIndex);
+      return;
+    }
+
+    // Set selected answer index after confirming we're not showing a modal
     setSelectedAnswerIndex(answerIndex);
 
     if (selectedAnswer.input && !inputValue) {
@@ -259,10 +259,22 @@ export default function PoliceProQA({
       return;
     }
 
-    const displayText = selectedAnswer.display.replace(
-      "{input}",
-      inputValue || selectedAnswer.answer
-    );
+    // Modify the display text based on the input type
+    let displayText = selectedAnswer.display;
+    if (inputValue) {
+      if (selectedAnswer.vehicleInput) {
+        displayText = selectedAnswer.display.replace("{vehicle}", inputValue);
+      } else if (selectedAnswer.personInput) {
+        displayText = selectedAnswer.display.replace("{person}", inputValue);
+      } else {
+        displayText = selectedAnswer.display.replace("{input}", inputValue);
+      }
+    } else {
+      displayText = selectedAnswer.display.replace(
+        "{input}",
+        selectedAnswer.answer
+      );
+    }
 
     const rawQuestionText = processQuestionText(currentQuestion.text);
 
@@ -299,6 +311,25 @@ export default function PoliceProQA({
       );
       console.log("Dependency result:", dependencyResult); // Add debug
       if (dependencyResult) {
+        if (dependencyResult.goto !== undefined) {
+          localStorage.removeItem("POLICE_PROQA_DATA");
+          localStorage.removeItem("POLICE_PROQA_ANSWERS");
+          setCurrentQuestionIndex(0);
+          setSelectedAnswerIndex(null);
+          setHoverAnswerIndex(0);
+          setCurrentCode("");
+          setCurrentPlan(0);
+          setIsCodeOverridden(false);
+          setShouldComplete(false);
+          setPreviousAnswers([]);
+          setCurrentSubCode("");
+
+          // Switch to new protocol
+          if (onSwitchProtocol) {
+            onSwitchProtocol(dependencyResult.goto);
+          }
+          return;
+        }
         if (dependencyResult.code) {
           setCurrentCode(dependencyResult.code);
         }
@@ -334,12 +365,12 @@ export default function PoliceProQA({
     // End questioning immediately if end: true
     if (selectedAnswer.end) {
       setShouldComplete(true);
-      localStorage.removeItem("FIRE_PROQA_DATA");
+      localStorage.removeItem("POLICE_PROQA_DATA");
       return;
     }
 
-    // Only move to next question if not ending and continue is true
-    if (selectedAnswer.continue) {
+    // Only move to next question if not ending and continue is true or nextQuestion is true
+    if ((selectedAnswer.continue || nextQuestion) && !selectedAnswer.end) {
       moveToNextQuestion();
     }
   };
@@ -374,7 +405,7 @@ export default function PoliceProQA({
 
     if (nextIndex >= complaint.questions.length) {
       setShouldComplete(true);
-      localStorage.removeItem("FIRE_PROQA_DATA");
+      localStorage.removeItem("POLICE_PROQA_DATA");
       return;
     }
 
@@ -510,6 +541,40 @@ export default function PoliceProQA({
           setPendingAnswerIndex(null);
           if (savedIndex !== null) {
             handleAnswerSelect(savedIndex, value);
+          }
+        }}
+        title={currentQuestion ? processQuestionText(currentQuestion.text) : ""}
+      />
+      <VehicleInputModal
+        isOpen={isVehicleModalOpen}
+        onClose={() => {
+          setIsVehicleModalOpen(false);
+          setPendingAnswerIndex(null);
+          setSelectedAnswerIndex(null);
+        }}
+        onSubmit={(value) => {
+          if (pendingAnswerIndex !== null) {
+            setIsVehicleModalOpen(false);
+            const savedIndex = pendingAnswerIndex;
+            setPendingAnswerIndex(null);
+            handleAnswerSelect(savedIndex, value, true);
+          }
+        }}
+        title={currentQuestion ? processQuestionText(currentQuestion.text) : ""}
+      />
+      <PersonInputModal
+        isOpen={isPersonModalOpen}
+        onClose={() => {
+          setIsPersonModalOpen(false);
+          setPendingAnswerIndex(null);
+          setSelectedAnswerIndex(null);
+        }}
+        onSubmit={(value) => {
+          if (pendingAnswerIndex !== null) {
+            setIsPersonModalOpen(false);
+            const savedIndex = pendingAnswerIndex;
+            setPendingAnswerIndex(null);
+            handleAnswerSelect(savedIndex, value, true);
           }
         }}
         title={currentQuestion ? processQuestionText(currentQuestion.text) : ""}

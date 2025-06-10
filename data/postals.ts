@@ -9238,8 +9238,8 @@ export const postalData: IPostal[] = [
           crossStreet2: "Dead End",
         },
         "Senora Way": {
-          crossStreet1: "Rt 13",
-          crossStreet2: "Dynomite Approach Rd",
+          crossStreet1: "Rt 13 NB",
+          crossStreet2: "Dynamite Approach Rd",
         },
       },
     },
@@ -22171,9 +22171,9 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       autoFill: true,
-      mainStreet: "New Empire Way",
-      crossStreet1: "Exceptionalists Way",
-      crossStreet2: "Davis Ave",
+      mainStreet: "Greenwich Pkwy",
+      crossStreet1: "Dutch London St",
+      crossStreet2: "Autopia Pkwy",
     },
   },
   {
@@ -22185,10 +22185,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "New Empire Way",
-      crossStreet1: "Exceptionalists Way",
-      crossStreet2: "Davis Ave",
+      availableRoads: {
+        "Autopia Pkwy": {
+          crossStreet1: "Greenwich Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+        "Greenwich Pkwy": {
+          crossStreet1: "Autopia Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        }
+      }
     },
   },
   {
@@ -22200,10 +22206,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["5", "6", "8", "10", "7", "1", "2", "9", "4", "3", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "New Empire Way",
-      crossStreet1: "Exceptionalists Way",
-      crossStreet2: "Davis Ave",
+      availableRoads: {
+        "Greenwich Pkwy": {
+          crossStreet1: "Autopia Pkwy",
+          crossStreet2: "Exceptionalists Way",
+        },
+        "New Empire Way": {
+          crossStreet1: "Dutch London St",
+          crossStreet2: "Exceptionalists Way",
+        }
+      }
     },
   },
   {

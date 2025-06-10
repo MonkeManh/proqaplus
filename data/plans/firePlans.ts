@@ -216,7 +216,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 2,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -420,7 +420,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 2,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -7567,7 +7567,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -7606,7 +7606,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11064,7 +11064,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11111,7 +11111,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11154,7 +11154,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11310,7 +11310,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11357,7 +11357,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -11400,7 +11400,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12396,7 +12396,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12424,7 +12424,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12456,7 +12456,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12488,7 +12488,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12512,7 +12512,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12540,7 +12540,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -12568,7 +12568,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12600,7 +12600,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12640,7 +12640,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12676,7 +12676,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12712,7 +12712,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12748,7 +12748,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12784,7 +12784,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12820,7 +12820,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12856,7 +12856,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12896,7 +12896,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12932,7 +12932,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -12968,7 +12968,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13004,7 +13004,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13044,7 +13044,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13076,7 +13076,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13108,7 +13108,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13144,7 +13144,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13180,7 +13180,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -13212,7 +13212,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13244,7 +13244,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13276,7 +13276,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13312,7 +13312,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13332,7 +13332,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13356,7 +13356,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -13384,9 +13384,9 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
-      }
+      },
     ],
     policePlan: 21,
   },
@@ -13416,14 +13416,1677 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
         type: "Chief",
         quantity: 1,
-      }
+      },
     ],
     policePlan: 21,
-  }
+  },
+  {
+    id: 519,
+    name: "MVCPC1",
+    incidentType: "MVC|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 520,
+    name: "MVCFIRE1",
+    incidentType: "FIRE|MVC|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 521,
+    name: "MVCHM1",
+    incidentType: "MVC|HM|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 522,
+    name: "MVCFIREHM1",
+    incidentType: "FIRE|MVC|HM|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 523,
+    name: "MVCBLDG1",
+    incidentType: "MVC|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 524,
+    name: "FJ",
+    incidentType: "FIRE|MVC|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 525,
+    name: "MVCHMBLDG1",
+    incidentType: "MVC|HM|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 526,
+    name: "HMFULL",
+    incidentType: "FIRE|MVC|HM|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 21,
+  },
+  {
+    id: 527,
+    name: "BCR",
+    incidentType: "BackCountryRescue",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 528,
+    name: "BCRXM",
+    incidentType: "BackCountryRescue|WX|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 529,
+    name: "BCRWM",
+    incidentType: "BackCountryRescue|WTR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 530,
+    name: "BCRW",
+    incidentType: "BackCountryRescue|WTR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 531,
+    name: "BCRM",
+    incidentType: "BackCountryRescue|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 532,
+    name: "BCRX",
+    incidentType: "BackCountryRescue|WX",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 533,
+    name: "AVAM",
+    incidentType: "AVALANCHE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 534,
+    name: "AVAMX",
+    incidentType: "AVALANCHE|WX|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 535,
+    name: "AVAWM",
+    incidentType: "AVALANCHE|WTR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 536,
+    name: "AVA1",
+    incidentType: "AVALANCHE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 537,
+    name: "AVAW",
+    incidentType: "AVALANCHE|WTR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 538,
+    name: "AVAX",
+    incidentType: "AVALANCHE|WX",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 539,
+    name: "BCRC",
+    incidentType: "BackCountryRescue|CREVASSE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 540,
+    name: "BCRI",
+    incidentType: "BackCountryRescue|INACCESS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 541,
+    name: "BCRT",
+    incidentType: "BackCountryRescue|TERRAIN",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 542,
+    name: "CAVE1",
+    incidentType: "CAVE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 543,
+    name: "CAVEXM",
+    incidentType: "CAVE|WX|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 544,
+    name: "CAVEWM",
+    incidentType: "CAVE|WTR|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 545,
+    name: "CAVEW",
+    incidentType: "CAVE|WTR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 546,
+    name: "CAVEM",
+    incidentType: "CAVE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 547,
+    name: "CAVEX",
+    incidentType: "CAVE|WX",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 548,
+    name: "LOST",
+    incidentType: "LOSTPERSON|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 549,
+    name: "LOST1",
+    incidentType: "LOSTPERSON",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 550,
+    name: "SE",
+    incidentType: "FIRE|TANK|SMALL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 551,
+    name: "FC",
+    incidentType: "FIRE|TANK|SMALL|MULT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 552,
+    name: "FX",
+    incidentType: "FIRE|TANK|SMALL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 553,
+    name: "FE",
+    incidentType: "FIRE|TANK|STRUC",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 554,
+    name: "SE",
+    incidentType: "FIRE|OUT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 555,
+    name: "FWB",
+    incidentType: "FIRE|OUT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 556,
+    name: "FW1",
+    incidentType: "FIRE|OUT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 557,
+    name: "HMADAPT",
+    incidentType: "FIRE|TANK|SMALL|MULT|HM",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 558,
+    name: "SE",
+    incidentType: "FIRE|TANK|OUT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 559,
+    name: "FC",
+    incidentType: "FIRE|TANK|OUT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 560,
+    name: "FX",
+    incidentType: "FIRE|TANK|OUT|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 561,
+    name: "GASFULL",
+    incidentType: "FIRE|TANK|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 562,
+    name: "WTR2RS",
+    incidentType: "VEH|SINKING",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 563,
+    name: "WTR2RS",
+    incidentType: "VEH|SINKING|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 25,
+  },
+  {
+    id: 564,
+    name: "WTR2RS",
+    incidentType: "FLOODINGVEH|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    policePlan: 25,
+  },
 ];

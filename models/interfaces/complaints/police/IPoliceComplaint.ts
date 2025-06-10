@@ -32,7 +32,7 @@ export interface IPoliceComplaint {
 
 export interface IPoliceQuestions {
   text: JSX.Element;
-  questionType: "input" | "select" | "hybrid-select" | "description";
+  questionType: "input" | "select" | "hybrid-select" | "description" | "vehicle-description";
   preRenderInstructions?: (answers?: IAnswerData[]) => boolean;
   isConscious?: boolean;
   isBreathing?: boolean;
@@ -45,6 +45,8 @@ interface IAnswers {
   display: string;
   preRenderInstructions?: ((answers?: IAnswerData[], currentCode?: string) => boolean);
   input?: boolean;
+  vehicleInput?: boolean;
+  personInput?: boolean;
   send?: boolean;
   continue?: boolean;
   end?: boolean;
@@ -62,6 +64,7 @@ export type DependencyResult = {
   subCode?: string;
   plan?: number;
   override?: boolean;
+  goto?: number;
 };
 
 export type DependencyFunction = (answers: IAnswerData[]) => DependencyResult | undefined;
@@ -74,6 +77,8 @@ export interface IPoliceAnswer {
   override?: boolean;
   end?: boolean;
   input?: boolean;
+  vehicleInput?: boolean;
+  personInput?: boolean;
   goto?: number;
   updateSubType?: string;
   dependency?: DependencyFunction;

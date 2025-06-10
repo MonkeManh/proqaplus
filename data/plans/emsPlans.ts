@@ -1238,7 +1238,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 3,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -1370,7 +1370,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1416,7 +1416,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1543,7 +1543,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1566,7 +1566,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1591,7 +1591,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1614,7 +1614,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3044,7 +3044,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 2,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3073,7 +3073,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3102,7 +3102,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3143,7 +3143,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3184,7 +3184,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3217,7 +3217,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3254,7 +3254,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3279,7 +3279,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3316,7 +3316,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3341,7 +3341,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3366,7 +3366,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 2,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3399,7 +3399,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -3428,7 +3428,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3473,7 +3473,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -3506,7 +3506,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Helicopter",
+        type: "Helo",
         quantity: 1,
       },
       {

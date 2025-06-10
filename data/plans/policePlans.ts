@@ -394,5 +394,31 @@ export const policePlans: IResponsePlan[] = [
         quantity: 4,
       },
     ],
+  },
+  {
+    id: 28,
+    name: "4P1S",
+    incidentType: "HOSIT",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 4,
+      },
+      {
+        type: "Supervisor",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 29,
+    name: "2P",
+    incidentType: "HOSTO",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      }
+    ]
   }
 ];

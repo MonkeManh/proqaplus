@@ -23,6 +23,7 @@ interface CallData {
   dispatchTime: string;
   plan: number;
   postal: string;
+  complaintShort: string;
   proqaAnswers: {
     question: string;
     answer: string;
@@ -40,6 +41,112 @@ interface CallData {
   reconfigured?: string;
   fromOther?: boolean;
 }
+
+// Add this helper function before the component
+const formatPersonDescription = (answer: string): string => {
+  if (!answer.includes("Subject: {")) return answer;
+
+  const parseSubject = (subjectStr: string) => {
+    // Extract the prefix/label from the original answer
+    const label = subjectStr.split("Subject: {")[0].trim();
+    const fields = subjectStr.match(/\{([^}]+)\}/)?.[1].split(", ") || [];
+    const data: Record<string, string> = {};
+
+    fields.forEach((field) => {
+      const [key, value] = field.split(":");
+      if (value && value.trim()) {
+        data[key] = value.trim();
+      }
+    });
+
+    // Race/Gender abbreviations
+    const raceAbbr: Record<string, string> = {
+      White: "W",
+      white: "W",
+      Black: "B",
+      black: "B",
+      Hispanic: "H",
+      hispanic: "H",
+      Asian: "A",
+      asian: "A",
+      "Pacific Islander": "PI",
+      "Native American": "NA",
+    };
+
+    const race = raceAbbr[data.Race] || data.Race?.[0] || "";
+    const gender = data.Gender?.[0] || "";
+    const raceGender = (race + gender).toUpperCase();
+
+    // Build description parts
+    const parts = [];
+
+    // Core description
+    if (raceGender) parts.push(raceGender);
+    if (data.Age) parts.push(`${data.Age}YO`);
+    if (data.Hair) parts.push(`w/ ${data.Hair} hair`);
+
+    // Physical description
+    const physical = [];
+    if (data.Height) physical.push(`- ${data.Height}`);
+    if (data.Weight) physical.push(data.Weight);
+    if (physical.length) parts.push(physical.join("/"));
+
+    // Clothing
+    if (data.Clothing) parts.push(`// WEARING: ${data.Clothing}`);
+
+    // Additional details
+    if (data.Name) parts.push(`// NAME: ${data.Name}`);
+    if (data.Other) parts.push(`// ${data.Other}`);
+
+    return `${label} ${parts.join(" ")}`;
+  };
+
+  // Handle multiple subjects
+  const subjects = answer.split(" | ");
+  return subjects
+    .map((subject) => {
+      if (subject.includes("Subject: {")) {
+        return `-- ${parseSubject(subject)}`;
+      }
+      return `-- ${subject}`;
+    })
+    .join("\n");
+};
+
+const formatVehicleDescription = (vehicleStr: string): string => {
+  if (!vehicleStr.includes("Vehicle: {")) return vehicleStr;
+
+  const formatSingleVehicle = (singleVehicleStr: string) => {
+    const label = singleVehicleStr.split("Vehicle: {")[0].trim();
+    const fields = singleVehicleStr.match(/\{([^}]+)\}/)?.[1].split(", ") || [];
+    const data: Record<string, string> = {};
+
+    fields.forEach((field) => {
+      const [key, value] = field.split(":");
+      if (value && value.trim() && value.trim() !== "Unk") {
+        data[key] = value.trim();
+      }
+    });
+
+    const parts = [];
+    const core = [];
+    if (data.Color) core.push(data.Color.toUpperCase());
+    if (data.Year) core.push(data.Year);
+    if (data.Make) core.push(data.Make);
+    if (data.Model) core.push(data.Model);
+    if (core.length) parts.push(core.join(" "));
+
+    if (data.LP) parts.push(`// LP: ${data.LP}`);
+    if (data.Occ) parts.push(`// ${data.Occ}x OCC`);
+    if (data.Other) parts.push(`// ${data.Other}`);
+
+    return `-- ${label} ${parts.join(" ")}`;
+  };
+
+  // Handle multiple vehicles
+  const vehicles = vehicleStr.split("|");
+  return vehicles.map(formatSingleVehicle).join("\n");
+};
 
 export default function FireSummaryPage() {
   const [dispatchData, setDispatchData] = useState<CallData | null>(null);
@@ -74,9 +181,10 @@ export default function FireSummaryPage() {
         }`,
         `Recc: ${getRecommendedUnits(dispatchData.plan)}`,
         `Disp: ${sortedUnits.join(", ") || "None"}`,
-        `Complaint: ${dispatchData.complaint} - ${dispatchData.codeText}`,
+        `Complaint: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
+        `Caller: ${dispatchData.callerName || "Unknown"} | Phone: ${dispatchData.callerNumber || "N/A"}`,
         "ProQA Information:",
         dispatchData.reconfigured
           ? `-- Call reconfigured from ${dispatchData.reconfigured}`
@@ -86,7 +194,15 @@ export default function FireSummaryPage() {
           : [
               ...(dispatchData.proqaAnswers || [])
                 .filter((qa: any) => !qa.omit)
-                .map((qa: any) => `-- ${qa.answer}`),
+                .map((qa: any) => {
+                  if (qa.answer.includes("Subject: {")) {
+                    return formatPersonDescription(qa.answer);
+                  }
+                  if (qa.answer.includes("Vehicle: {")) {
+                    return formatVehicleDescription(qa.answer);
+                  }
+                  return `-- ${qa.answer}`;
+                }),
             ],
         `ProQA completed by: Dispatcher ${
           localStorage.getItem("CALLSIGN") || "UNKNOWN"
@@ -190,10 +306,10 @@ export default function FireSummaryPage() {
       };
 
       localStorage.setItem("NEW_CALL", JSON.stringify(newCall));
-      if(type === "EMS") {
-        return window.location.href = "/create-call/ems";
-      } else if(type === "FIRE") {
-        return window.location.href = "/create-call/fire";
+      if (type === "EMS") {
+        return (window.location.href = "/create-call/ems");
+      } else if (type === "FIRE") {
+        return (window.location.href = "/create-call/fire");
       }
     });
   }

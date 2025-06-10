@@ -62,6 +62,7 @@ export type DependencyResult = {
   subCode?: string;
   plan?: number;
   override?: boolean;
+  goto?: number;
 };
 
 export type DependencyFunction = (answers: IAnswerData[]) => DependencyResult | undefined;

@@ -21554,6 +21554,7 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+  // Needs Questions
   {
     protocol: 77,
     name: "Motor Vehicle Collision",
@@ -24307,9 +24308,2588 @@ export const fireProtocols: IFireComplaint[] = [
                 recResponse: 498,
               },
             ],
-          }
-        ]
-      }
+          },
+          {
+            code: "77D06",
+            text: "Vehicle vs. Pedestrian/Bicycle",
+            recResponse: 515,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 515,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 515,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 515,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 516,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 517,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 515,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 518,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 516,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 517,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 518,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D07",
+            text: "Vehicle/Motorcycle vs. Motorcycle",
+            recResponse: 519,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 519,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 519,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 519,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 520,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 521,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 519,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 522,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 520,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 521,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 522,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D08",
+            text: "Vehicle vs. Building",
+            recResponse: 523,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 523,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 523,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 523,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 524,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 525,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 523,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 526,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 524,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 524,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 525,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 525,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 523,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 526,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 525,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 524,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 525,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 523,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 526,
+              },
+            ],
+          },
+          {
+            code: "77D09",
+            text: "Unstable Vehicle",
+            recResponse: 507,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 507,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 507,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 507,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 508,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 509,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 507,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 510,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 508,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 509,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 510,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D10",
+            text: "Comm Vehicle",
+            recResponse: 507,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 507,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 507,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 507,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 508,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 509,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 507,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 510,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 508,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 509,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 510,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D11",
+            text: "Arrest",
+            recResponse: 491,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 491,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 491,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 491,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 492,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 493,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 491,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 494,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 492,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 493,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 494,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 495,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 496,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 497,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 498,
+              },
+            ],
+          },
+          {
+            code: "77D12",
+            text: "Unconscious",
+            recResponse: 483,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 483,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 483,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 483,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 484,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 485,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 483,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 486,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 484,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 485,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 486,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D13",
+            text: "Not Alert w/ Abnormal Breathing",
+            recResponse: 483,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 483,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 483,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 483,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 484,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 485,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 483,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 486,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 484,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 485,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 486,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+          {
+            code: "77D14",
+            text: "Not Alert w/ Normal Breathing",
+            recResponse: 483,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animal",
+                recResponse: 483,
+              },
+              {
+                code: "B",
+                text: "Blocking or Slowing Traffic",
+                recResponse: 483,
+              },
+              {
+                code: "D",
+                text: "Airbags Deployed",
+                recResponse: 483,
+              },
+              {
+                code: "F",
+                text: "Fire",
+                recResponse: 484,
+              },
+              {
+                code: "H",
+                text: "Hazmat",
+                recResponse: 485,
+              },
+              {
+                code: "I",
+                text: "Interstate/Fwy/Hwy",
+                recResponse: 483,
+              },
+              {
+                code: "J",
+                text: "Fire & Hazmat",
+                recResponse: 486,
+              },
+              {
+                code: "K",
+                text: "Fire & Interstate/Fwy/Hwy",
+                recResponse: 484,
+              },
+              {
+                code: "L",
+                text: "Fire & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "M",
+                text: "Hazmat & Interstate/Fwy/Hwy",
+                recResponse: 485,
+              },
+              {
+                code: "N",
+                text: "Hazmat & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "O",
+                text: "Interstate/Fwy/Hwy & Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "P",
+                text: "Fire, Hazmat, & Interstate/Fwy/Hwy",
+                recResponse: 486,
+              },
+              {
+                code: "Q",
+                text: "Fire, Hazmat, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+              {
+                code: "R",
+                text: "Fire, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 487,
+              },
+              {
+                code: "S",
+                text: "Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 488,
+              },
+              {
+                code: "T",
+                text: "Trapped/Pinned Victim",
+                recResponse: 489,
+              },
+              {
+                code: "U",
+                text: "Fire, Hazmat, Interstate/Fwy/Hwy, & Trapped/Pinned Victim",
+                recResponse: 490,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // Needs Questions
+  {
+    protocol: 78,
+    name: "Backcountry Rescue",
+    shortName: "Backcountry Rescue",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 527,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "78B01",
+            text: "Unkn Situation (Investigation)",
+            defaultCode: true,
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "78C00",
+            text: "Override (Charlie)",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+          {
+            code: "78C01",
+            text: "Avalanche (Unkn Number of Trapped Persons)",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+          {
+            code: "78C02",
+            text: "Injured in Accessible Area",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+          {
+            code: "78C03",
+            text: "Not Injured in Inaccessible Area",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+          {
+            code: "78C04",
+            text: "Not Injured in High Angle Terrain",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 527,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 527,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 527,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 527,
+              },
+            ],
+          },
+          {
+            code: "78C05",
+            text: "Backcountry Rescue",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 85,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 85,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 85,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 85,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 85,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "78D00",
+            text: "Override (Delta)",
+            recResponse: 527,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 528,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 529,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 530,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 531,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 532,
+              },
+            ],
+          },
+          {
+            code: "78D01",
+            text: "Avalanche (Mult Trapped Persons)",
+            recResponse: 533,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 534,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 535,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 535,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 533,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 534,
+              },
+            ],
+          },
+          {
+            code: "78D02",
+            text: "Avalanche (Single Trapped Person)",
+            recResponse: 536,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 534,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 535,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 537,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 533,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 538,
+              },
+            ],
+          },
+          {
+            code: "78D03",
+            text: "Trapped/Injured in Crevasse",
+            recResponse: 539,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 539,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 539,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 539,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 539,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 539,
+              },
+            ],
+          },
+          {
+            code: "78D04",
+            text: "Trapped/Injured in Inaccessible Area",
+            recResponse: 540,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 540,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 540,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 540,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 540,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 540,
+              },
+            ],
+          },
+          {
+            code: "78D05",
+            text: "Trapped/Injured in High Angle Terrain",
+            recResponse: 541,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 541,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 541,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 541,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 541,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 541,
+              },
+            ],
+          },
+          {
+            code: "78D06",
+            text: "Cave/Abandoned Mine",
+            recResponse: 542,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 543,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 544,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 545,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 546,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 547,
+              },
+            ],
+          },
+          {
+            code: "78D07",
+            text: "Backcountry Rescue",
+            recResponse: 85,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 85,
+              },
+              {
+                code: "C",
+                text: "Both Rising Water & Mult Sick/Injured Persons",
+                recResponse: 85,
+              },
+              {
+                code: "H",
+                text: "Rising Water",
+                recResponse: 85,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 85,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 85,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // Needs Questions
+  {
+    protocol: 79,
+    name: "Lost Person",
+    shortName: "Lost Person",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 2,
+    defaultPlan: 548,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "79C01",
+            text: "Lost Person",
+            recResponse: 548,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 548,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 548,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 548,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "79D00",
+            text: "Override (Delta)",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+          {
+            code: "79D01",
+            text: "Complex Terrain w/ Mult Sick/Injured Persons",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+          {
+            code: "79D02",
+            text: "Complex Terrain w/ Single Sick/Injured Person",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+          {
+            code: "79D03",
+            text: "Mult Sick/Injured Persons",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+          {
+            code: "79D04",
+            text: "Single Sick/Injured Person",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+          {
+            code: "79D05",
+            text: "Complex Terrain",
+            recResponse: 549,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Inclement Weather & Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "M",
+                text: "Mult People Involved",
+                recResponse: 549,
+              },
+              {
+                code: "W",
+                text: "Inclement Weather",
+                recResponse: 549,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // Needs Questions
+  {
+    protocol: 80,
+    name: "Outside Tank Fire",
+    shortName: "Outside Tank Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 550,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "80B01",
+            text: "Single Natrual/LP Gas Storage Tank (<= 5 Gallons/20 Liters)",
+            recResponse: 550,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 551,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 553,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 550,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 551,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 551,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 550,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 550,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 551,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 552,
+              },
+            ],
+          },
+          {
+            code: "80B02",
+            text: "Extinguished Fire - Small Tank (1st/2nd Pty)",
+            recResponse: 554,
+            subCodes: [
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 555,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 555,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 556,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "80C00",
+            text: "Override (Charlie)",
+            recResponse: 553,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 553,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 551,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 551,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 551,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 551,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 553,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 551,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 552,
+              },
+            ],
+          },
+          {
+            code: "80C01",
+            text: "Small Natural/LP Gas Storage Tank",
+            recResponse: 557,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 557,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 557,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 557,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 557,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 557,
+              },
+            ],
+          },
+          {
+            code: "80C02",
+            text: "Small Chemical Storage Tank",
+            recResponse: 557,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 557,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 557,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 557,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 557,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 557,
+              },
+            ],
+          },
+          {
+            code: "80C03",
+            text: "Small Fuel Storage Tank",
+            recResponse: 557,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 557,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 557,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 557,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 557,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 557,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 557,
+              },
+            ],
+          },
+          {
+            code: "80C04",
+            text: "Extinguished Fire - Large Tank (1st/2nd Pty)",
+            recResponse: 558,
+            subCodes: [
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 559,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 559,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 560,
+              },
+            ],
+          },
+          {
+            code: "80C05",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 209,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 209,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 210,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 210,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 209,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 210,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 211,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "80D00",
+            text: "Override (Delta)",
+            recResponse: 561,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 561,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 561,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 561,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 561,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 561,
+              },
+            ],
+          },
+          {
+            code: "80D01",
+            text: "Large Natrual/LP Gas Storage Tank",
+            recResponse: 561,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 561,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 561,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 561,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 561,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 561,
+              },
+            ],
+          },
+          {
+            code: "80D02",
+            text: "Large Chemical Storage Tank",
+            recResponse: 561,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 561,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 561,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 561,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 561,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 561,
+              },
+            ],
+          },
+          {
+            code: "80D03",
+            text: "Large Fuel Storage Tank",
+            recResponse: 561,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 561,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 561,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 561,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 561,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 561,
+              },
+            ],
+          },
+          {
+            code: "80D04",
+            text: "Refinery/Tank Farm Fire",
+            recResponse: 561,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "B",
+                text: "Buildings (Non-Residential) Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "D",
+                text: "Additional/Other Tanks",
+                recResponse: 561,
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 561,
+              },
+              {
+                code: "R",
+                text: "Residential Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 561,
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 561,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 561,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 561,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // Needs Questions
+  {
+    protocol: 81,
+    name: "Sinking Vehicle/Vehicle in Floodwater",
+    shortName: "Sinking Vehicle",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: true },
+      { name: "Police", priority: 1 },
+    ],
+    defaultPriority: 2,
+    defaultPlan: 562,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "81C01",
+            text: "Mult Vehicles in Floodwater (Non-Threatened)",
+            recResponse: 82,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 82,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 82,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 82,
+              },
+            ],
+          },
+          {
+            code: "81C02",
+            text: "Vehicle in Floodwater (Non-Threatened",
+            recResponse: 82,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 82,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 82,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 82,
+              },
+            ],
+          },
+          {
+            code: "81C03",
+            text: "Sinking Vehicle (No People Rptd Inside)",
+            recResponse: 82,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 82,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 82,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 82,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "81D00",
+            text: "Override (Delta)",
+            recResponse: 562,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 562,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 562,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 562,
+              },
+            ],
+          },
+          {
+            code: "81D01",
+            text: "Sinking Vehicle - Costal Water Rescue (People in Water)",
+            recResponse: 562,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 562,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 562,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 562,
+              },
+            ],
+          },
+          {
+            code: "81D02",
+            text: "Sinking Vehicle - Inland Water Rescue (People in Water)",
+            recResponse: 562,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 562,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 562,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 562,
+              },
+            ],
+          },
+          {
+            code: "81D03",
+            text: "Sinking Vehicle - Ocean Water Rescue (People in Water)",
+            recResponse: 562,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 562,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 562,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 562,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "81E00",
+            text: "Override (Echo)",
+            recResponse: 563,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 563,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 563,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 563,
+              },
+            ],
+          },
+          {
+            code: "81E01",
+            text: "Sinking Vehicle (People Inside)",
+            recResponse: 563,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 563,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 563,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 563,
+              },
+            ],
+          },
+          {
+            code: "81E02",
+            text: "Vehicle in Floodwater (Threatened)",
+            recResponse: 564,
+            subCodes: [
+              {
+                code: "M",
+                text: "Mult Person Rescue",
+                recResponse: 564,
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 564,
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Person",
+                recResponse: 564,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];
