@@ -16,7 +16,8 @@ export const postalData: IPostal[] = [
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    hasHeli: true,
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -40,7 +41,8 @@ export const postalData: IPostal[] = [
     fdDistrict: "03",
     policeDistrict: "PBPD",
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    hasHeli: true,
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -63,8 +65,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -77,7 +80,7 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Procopio Beach",
+      mainStreet: "Paleto Beach",
       crossStreet1: "Not Found",
       crossStreet2: "Not Found",
     },
@@ -87,8 +90,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -101,7 +105,7 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Procopio Beach",
+      mainStreet: "Paleto Beach",
       crossStreet1: "Not Found",
       crossStreet2: "Not Found",
     },
@@ -111,128 +115,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Rt 1",
-    },
-  },
-  {
-    postal: "006",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Rt 1",
-    },
-  },
-  {
-    postal: "007",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Rt 1",
-    },
-  },
-  {
-    postal: "008",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Rt 1",
-    },
-  },
-  {
-    postal: "009",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Bayview Bridge",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Riverfront Ave",
-    },
-  },
-  {
-    postal: "010",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -246,7 +131,166 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Procopio Promenade": {
-          crossStreet1: "Rt 1",
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB"
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "006",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB"
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "007",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB"
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "008",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB"
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "009",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB"
+        },
+        "Bayview Bridge": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Riverfront Ave",
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "010",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Rt 1 SB",
           crossStreet2: "Bayview Bridge",
         },
         "Bayview Bridge": {
@@ -261,8 +305,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -275,9 +320,16 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
-      crossStreet2: "Riverfront Ave",
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Bayview Bridge",
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
     },
   },
   {
@@ -285,8 +337,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -299,8 +352,8 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
+      mainStreet: "Paleto Beach",
+      crossStreet1: "Procopio Promenade",
       crossStreet2: "Bayview Bridge",
     },
   },
@@ -309,56 +362,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
-      crossStreet2: "Bayview Bridge",
-    },
-  },
-  {
-    postal: "014",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
-      crossStreet2: "Riverfront Ave",
-    },
-  },
-  {
-    postal: "015",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -372,11 +378,67 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Procopio Promenade": {
-          crossStreet1: "Great Ocean Hwy",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Bayview Bridge",
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      }
+    },
+  },
+  {
+    postal: "014",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0303",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      autoFill: true,
+      mainStreet: "Procopio Promenade",
+      crossStreet1: "Rt 1 SB",
+      crossStreet2: "Bayview Bridge",
+    },
+  },
+  {
+    postal: "015",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0301",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Procopio Promenade": {
+          crossStreet1: "Rt 1 SB",
           crossStreet2: "Bayview Bridge",
         },
         "Paleto Blvd": {
-          crossStreet1: "Great Ocean Hwy",
+          crossStreet1: "Rt 1 SB",
           crossStreet2: "Duluoz Ave",
         },
         "Procopio View": {
@@ -391,8 +453,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -411,7 +474,7 @@ export const postalData: IPostal[] = [
         },
         "Paleto Blvd": {
           crossStreet1: "Duluoz Ave",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -421,8 +484,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -441,7 +505,7 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Rt 1",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -451,8 +515,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -485,8 +550,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -519,8 +585,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -539,7 +606,7 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Rt 1",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -549,8 +616,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -579,8 +647,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -599,7 +668,7 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Rt 1",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -609,8 +678,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0302",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -643,8 +713,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -677,8 +748,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0306",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -697,7 +769,7 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Rt 1",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -707,8 +779,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -737,8 +810,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0306",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -757,7 +831,7 @@ export const postalData: IPostal[] = [
         },
         "Procopio Promenade": {
           crossStreet1: "Bayview Bridge",
-          crossStreet2: "Rt 1",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -767,8 +841,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -797,8 +872,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -810,10 +886,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Procopio Dr",
-      crossStreet1: "Cascabel Ave",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Procopio Dr": {
+          crossStreet1: "Cascabel Ave",
+          crossStreet2: "Paleto Blvd",
+        },
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB",
+        }
+      },
     },
   },
   {
@@ -821,8 +903,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0306",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -836,7 +919,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
+      crossStreet1: "Rt 1 SB",
       crossStreet2: "Bayview Bridge",
     },
   },
@@ -845,8 +928,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -860,7 +944,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
+      crossStreet1: "Rt 1 SB",
       crossStreet2: "Bayview Bridge",
     },
   },
@@ -869,8 +953,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -885,7 +970,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Procopio Promenade",
       crossStreet1: "Bayview Bridge",
-      crossStreet2: "Great Ocean Hwy",
+      crossStreet2: "Rt 1 SB",
     },
   },
   {
@@ -893,8 +978,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0320",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -907,9 +993,16 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Great Ocean Hwy",
+      availableRoads: {
+        "Procopio Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB",
+        }
+      }
     },
   },
   {
@@ -917,8 +1010,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0318",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -930,10 +1024,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
-      crossStreet2: "Bayview Bridge",
+      availableRoads: {
+        "Procopio Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB",
+        }
+      }
     },
   },
   {
@@ -941,8 +1041,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0320",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -954,10 +1055,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Procopio Promenade",
-      crossStreet1: "Bayview Bridge",
-      crossStreet2: "Great Ocean Hwy",
+      availableRoads: {
+        "Procopio Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        },
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB",
+        }
+      }
     },
   },
   {
@@ -965,8 +1072,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0320",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -978,10 +1086,20 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Rt 1 MM03.00",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Rt 1 MM07.00"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Procopio Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
+        }
+      },
     },
   },
   {
@@ -989,8 +1107,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0316",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1003,15 +1122,19 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Procopio Dr",
           crossStreet2: "Procopio Promenade",
         },
-        "Procopio Promenade": {
-          crossStreet1: "Great Ocean Hwy",
-          crossStreet2: "Bayview Bridge",
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Rt 1 MM07.00",
         },
-      },
+        "Procopio Promenade": {
+          crossStreet1: "Bayview Bridge",
+          crossStreet2: "Rt 1 SB",
+        }
+      }
     },
   },
   {
@@ -1019,32 +1142,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0306",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
-    policeRunOrder: [
-      "PBPD",
-      "BCSO",
-      "SAHP",
-      "MBPD",
-      "RCSO",
-      "SSPD",
-      "LCSO",
-      "LSPD",
-    ],
-    streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Dr",
-      crossStreet2: "Procopio Promenade",
-    },
-  },
-  {
-    postal: "039",
-    twp: "Paleto Bay",
-    fdDistrict: "03",
-    policeDistrict: "PBPD",
-    fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1057,13 +1157,48 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Procopio Dr",
           crossStreet2: "Procopio Promenade",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Procopio Dr",
+        },
+      }
+    },
+  },
+  {
+    postal: "039",
+    twp: "Paleto Bay",
+    fdDistrict: "03",
+    policeDistrict: "PBPD",
+    hasHeli: true,
+    fireBox: "0304",
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
+    policeRunOrder: [
+      "PBPD",
+      "BCSO",
+      "SAHP",
+      "MBPD",
+      "RCSO",
+      "SSPD",
+      "LCSO",
+      "LSPD",
+    ],
+    streets: {
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Pyrite Ave",
+        },
         "Procopio Dr": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
       },
     },
@@ -1073,8 +1208,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "3132",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1087,13 +1223,17 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Dr"
+        },
+        "Rt 1 NB": {
           crossStreet1: "Procopio Dr",
           crossStreet2: "Pyrite Ave",
         },
         "Procopio Dr": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Paleto Blvd": {
           crossStreet1: "Cascabel Ave",
@@ -1107,8 +1247,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0304",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1125,9 +1266,13 @@ export const postalData: IPostal[] = [
           crossStreet1: "Cascabel Ave",
           crossStreet2: "Procopio Dr",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Pyrite Ave",
-          crossStreet2: "Procopio Dr",
+          crossStreet2: "Procopio Dr"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Dr",
+          crossStreet2: "Pyrite Ave",
         },
       },
     },
@@ -1137,8 +1282,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0302",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1159,9 +1305,13 @@ export const postalData: IPostal[] = [
           crossStreet1: "Pyrite Ave",
           crossStreet2: "Cascabel Ave",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Pyrite Ave",
-          crossStreet2: "Procopio Dr",
+          crossStreet2: "Procopio Dr"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Dr",
+          crossStreet2: "Pyrite Ave",
         },
       },
     },
@@ -1171,8 +1321,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0302",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1193,10 +1344,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Paleto Blvd",
           crossStreet2: "Great Ocean Hwy",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
+          crossStreet1: "Duluoz Ave",
+          crossStreet2: "Pyrite Ave",
+        },
+        "Rt 1 NB": {
           crossStreet1: "Pyrite Ave",
           crossStreet2: "Duluoz Ave",
-        },
+        }
       },
     },
   },
@@ -1205,8 +1360,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1227,10 +1383,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Duluoz Ave",
           crossStreet2: "Pyrite Ave",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Duluoz Ave",
           crossStreet2: "Pyrite Ave",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Duluoz Ave",
+        }
       },
     },
   },
@@ -1239,8 +1399,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1261,10 +1422,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Paleto Blvd",
           crossStreet2: "Great Ocean Hwy",
         },
-        "Great Ocean Hwy": {
-          crossStreet1: "Duluoz Ave",
-          crossStreet2: "Paleto Blvd",
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM06.00",
+          crossStreet2: "Duluoz Ave",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Duluoz Ave",
+          crossStreet2: "Rt 1 MM06.00",
+        }
       },
     },
   },
@@ -1273,8 +1438,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1291,10 +1457,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Great Ocean Hwy",
           crossStreet2: "Procopio Dr",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 SB": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Duluoz Ave",
+          crossStreet2: "Rt 1 MM06.00",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM06.00",
+          crossStreet2: "Paleto Blvd",
+        }
       },
     },
   },
@@ -1303,8 +1473,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0301",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1321,10 +1492,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Procopio Dr",
           crossStreet2: "Great Ocean Hwy",
         },
-        "Great Ocean Hwy": {
-          crossStreet1: "Procopio Promenade",
-          crossStreet2: "Paleto Blvd",
+        "Rt 1 SB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Procopio Promenade",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Rt 1 MM06.00",
+        }
       },
     },
   },
@@ -1333,8 +1508,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1346,10 +1522,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Paleto Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
     },
   },
   {
@@ -1357,8 +1539,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1372,7 +1555,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Procopio Promenade",
-      crossStreet1: "Great Ocean Hwy",
+      crossStreet1: "Rt 1 SB",
       crossStreet2: "Bayview Bridge",
     },
   },
@@ -1381,8 +1564,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1396,12 +1580,16 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Procopio Promenade": {
-          crossStreet1: "Great Ocean Hwy",
-          crossStreet2: "Procopio View",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Bayview Bridge",
+        },
+        "Paleto Beach": {
+          crossStreet1: "Not Found",
+          crossStreet2: "Not Found",
         },
         "Paleto Loop Trail": {
           crossStreet1: "Pine Tree Trail",
-          crossStreet2: "Procopio Promenade",
+          crossStreet2: "Procopio Trail"
         }
       }
     }
@@ -1411,8 +1599,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1426,13 +1615,21 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Procopio Promenade": {
-          crossStreet1: "Bayview Bridge",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Bayview Bridge",
         },
-        "Great Ocean Hwy": {
-          crossStreet1: "Pine Tree Rd",
-          crossStreet2: "Paleto Blvd",
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM05.00",
+          crossStreet2: "Procopio Promenade",
         },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Rt 1 MM05.00",
+        },
+        "Paleto Loop Trail": {
+          crossStreet1: "Pine Tree Trail",
+          crossStreet2: "Procopio Trail"
+        }
       },
     },
   },
@@ -1441,8 +1638,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0350",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1457,12 +1655,24 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Fallen Tree Rd": {
           crossStreet1: "Pine Tree Rd",
-          crossStreet2: "Pine Tree Rd",
+          crossStreet2: "Dead End",
         },
         "Pine Tree Rd": {
           crossStreet1: "Fallen Tree Rd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 NB",
         },
+        "Base Trail": {
+          crossStreet1: "Pine Tree Rd",
+          crossStreet2: "Dead End",
+        },
+        "Paleto Loop Trail": {
+          crossStreet1: "Pine Tree Trail",
+          crossStreet2: "Procopio Trail",
+        },
+        "Pine Tree Trail": {
+          crossStreet1: "Paleto Loop Trail",
+          crossStreet2: "Fallen Tree Rd",
+        }
       },
     },
   },
@@ -1471,8 +1681,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0350",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1484,10 +1695,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Fallen Tree Rd",
-      crossStreet1: "Pine Tree Rd",
-      crossStreet2: "Dead End",
+      availableRoads: {
+        "Fallen Tree Rd": {
+          crossStreet1: "Pine Tree Rd",
+          crossStreet2: "Dead End",
+        },
+        "Ridgeline Loop Trail": {
+          crossStreet1: "Fallen Tree Rd",
+          crossStreet2: "Pine Tree Rd",
+        }
+      }
     },
   },
   {
@@ -1495,8 +1712,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0350",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1509,9 +1727,9 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Fallen Tree Rd",
-      crossStreet1: "Pine Tree Rd",
-      crossStreet2: "Dead End",
+      mainStreet: "Pine Tree Trail",
+      crossStreet1: "Fallen Tree Rd",
+      crossStreet2: "Paleto Loop Trail",
     },
   },
   {
@@ -1519,8 +1737,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1532,10 +1751,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Paleto Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
     },
   },
   {
@@ -1543,8 +1768,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1556,10 +1782,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Paleto Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
     },
   },
   {
@@ -1567,8 +1799,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "4", "9", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1580,10 +1813,20 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Paleto Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Pine Tree Trail": {
+          crossStreet1: "Paleto Loop Trail",
+          crossStreet2: "Rt 1 NB"
+        }
+      }
     },
   },
   {
@@ -1591,8 +1834,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0303",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1604,10 +1848,20 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Paleto Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Rt 1 MM06.00",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM06.00",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Pine Tree Trail": {
+          crossStreet1: "Paleto Loop Trail",
+          crossStreet2: "Rt 1 NB",
+        }
+      }
     },
   },
   {
@@ -1615,8 +1869,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0305",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1628,10 +1883,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Paleto Blvd",
-      crossStreet2: "Duluoz Ave",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Paleto Blvd",
+          crossStreet2: "Duluoz Ave",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Duluoz Ave",
+          crossStreet2: "Paleto Blvd",
+        }
+      }
     },
   },
   {
@@ -1639,8 +1900,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0305",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1652,10 +1914,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Duluoz Ave",
-      crossStreet2: "Pyrite Ave",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM06.00",
+          crossStreet2: "Pyrite Ave",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Rt 1 MM06.00",
+        }
+      }
     },
   },
   {
@@ -1663,8 +1931,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0308",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1676,10 +1945,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Duluoz Ave",
-      crossStreet2: "Procopio Dr",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Duluoz Ave",
+          crossStreet2: "Procopio Dr",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Dr",
+          crossStreet2: "Duluoz Ave",
+        }
+      }
     },
   },
   {
@@ -1687,8 +1962,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0310",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1700,10 +1976,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Pyrite Ave",
-      crossStreet2: "Procopio Dr",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Dr",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Dr",
+          crossStreet2: "Pyrite Ave",
+        }
+      }
     },
   },
   {
@@ -1711,8 +1993,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0310",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1724,10 +2007,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Pyrite Ave",
-      crossStreet2: "Procopio Dr",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Dr",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Dr",
+          crossStreet2: "Pyrite Ave",
+        }
+      }
     },
   },
   {
@@ -1735,8 +2024,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0310",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1748,10 +2038,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Pyrite Ave",
-      crossStreet2: "Procopio Promenade",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Pyrite Ave",
+        }
+      }
     },
   },
   {
@@ -1759,8 +2055,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0312",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1772,10 +2069,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Dr",
-      crossStreet2: "Procopio Promenade",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Pyrite Ave",
+          crossStreet2: "Procopio Promenade",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Pyrite Ave",
+        }
+      }
     },
   },
   {
@@ -1783,8 +2086,9 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "PBPD",
+    hasHeli: true,
     fireBox: "0314",
-    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
+    fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "8", "7", "6", "5"],
     policeRunOrder: [
       "PBPD",
       "BCSO",
@@ -1796,10 +2100,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Rt 1 MM 07.00",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Rt 1 MM07.00",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
     },
   },
   {
@@ -1807,6 +2117,7 @@ export const postalData: IPostal[] = [
     twp: "Paleto Bay",
     fdDistrict: "03",
     policeDistrict: "SAHP",
+    hasHeli: true,
     fireBox: "0322",
     fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1820,21 +2131,28 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Procopio Promenade",
-      crossStreet2: "Rt 1 MM 07.00",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Procopio Promenade",
+          crossStreet2: "Rt 1 MM07.00",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Procopio Promenade",
+        }
+      }
     },
   },
   {
     postal: "068",
     fdDistrict: "03",
-    policeDistrict: "BCSO",
+    policeDistrict: "SAHP",
+    hasHeli: true,
     fireBox: "0322",
     fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
-      "BCSO",
       "SAHP",
+      "BCSO",
       "PBPD",
       "MBPD",
       "RCSO",
@@ -1843,21 +2161,28 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Rt 1 MM 07.00",
-      crossStreet2: "Procopio Promenade",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Rt 13"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 13",
+          crossStreet2: "Rt 1 MM07.00",
+        }
+      }
     },
   },
   {
     postal: "069",
     fdDistrict: "03",
-    policeDistrict: "BCSO",
+    policeDistrict: "SHAP",
+    hasHeli: true,
     fireBox: "0322",
     fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
-      "BCSO",
       "SAHP",
+      "BCSO",
       "PBPD",
       "MBPD",
       "RCSO",
@@ -1866,16 +2191,23 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Rt 1 MM 07.00",
-      crossStreet2: "Rt 13 MM 01",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Rt 13"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 13",
+          crossStreet2: "Rt 1 MM07.00",
+        }
+      }
     },
   },
   {
     postal: "070",
     fdDistrict: "03",
     policeDistrict: "SAHP",
+    hasHeli: true,
     fireBox: "0322",
     fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1889,16 +2221,23 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Rt 1 MM 07.00",
-      crossStreet2: "Rt 13 MM 01.00",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Rt 13"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 13",
+          crossStreet2: "Rt 1 MM07.00",
+        }
+      }
     },
   },
   {
     postal: "071",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "11", "9", "4", "2", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1912,16 +2251,23 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Rt 1 MM 07.00",
-      crossStreet2: "Rt 13 MM 01",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Rt 13"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 13",
+          crossStreet2: "Rt 1 MM07.00",
+        }
+      }
     },
   },
   {
     postal: "072",
     fdDistrict: "03",
     policeDistrict: "SAHP",
+    hasHeli: true,
     fireBox: "3141",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1935,16 +2281,23 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Great Ocean Hwy",
-      crossStreet1: "Rt 1 MM 07.00",
-      crossStreet2: "Rt 13 MM 01",
+      availableRoads: {
+        "Rt 13 SB": {
+          crossStreet1: "Rt 13 MM01.00",
+          crossStreet2: "Rt 1"
+        },
+        "Rt 13 NB": {
+          crossStreet1: "Rt 1",
+          crossStreet2: "Rt 13 MM01.00",
+        }
+      }
     },
   },
   {
     postal: "073",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1968,6 +2321,7 @@ export const postalData: IPostal[] = [
     postal: "074",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -1991,6 +2345,7 @@ export const postalData: IPostal[] = [
     postal: "075",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2014,6 +2369,7 @@ export const postalData: IPostal[] = [
     postal: "076",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2037,6 +2393,7 @@ export const postalData: IPostal[] = [
     postal: "077",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0951",
     fdRunOrder: ["9", "3", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2060,6 +2417,7 @@ export const postalData: IPostal[] = [
     postal: "078",
     fdDistrict: "03",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0351",
     fdRunOrder: ["3", "9", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2083,6 +2441,7 @@ export const postalData: IPostal[] = [
     postal: "079",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0951",
     fdRunOrder: ["9", "3", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2107,6 +2466,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0951",
     fdRunOrder: ["9", "3", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2131,6 +2491,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0920",
     fdRunOrder: ["9", "3", "11", "2", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2155,6 +2516,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0952",
     fdRunOrder: ["9", "3", "2", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2185,6 +2547,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0952",
     fdRunOrder: ["9", "3", "2", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2209,6 +2572,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0952",
     fdRunOrder: ["9", "3", "2", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2233,6 +2597,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0952",
     fdRunOrder: ["9", "3", "2", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2257,6 +2622,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0952",
     fdRunOrder: ["9", "3", "2", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2281,6 +2647,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0912",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2315,6 +2682,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0912",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2353,6 +2721,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2391,6 +2760,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2426,6 +2796,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2464,6 +2835,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2502,6 +2874,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2540,6 +2913,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2578,6 +2952,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0912",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2616,6 +2991,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2650,6 +3026,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0906",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2688,6 +3065,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0912",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2730,6 +3108,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0912",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -2772,6 +3151,7 @@ export const postalData: IPostal[] = [
     twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
+    hasHeli: true,
     fireBox: "0910",
     fdRunOrder: ["9", "2", "3", "11", "4", "1", "10", "7", "8", "6", "5"],
     policeRunOrder: [
@@ -3753,10 +4133,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 1",
-      crossStreet1: "Rt 1 MM07.00",
-      crossStreet2: "Rt 13 MM01.00",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM07.00",
+          crossStreet2: "Rt 13"
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 13",
+          crossStreet2: "Rt 1 MM07.00",
+        }
+      }
     },
   },
   {

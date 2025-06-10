@@ -15089,4 +15089,395 @@ export const firePlans: IResponsePlan[] = [
     ],
     policePlan: 25,
   },
+  {
+    id: 565,
+    name: "SE",
+    incidentType: "FIRE|CONTROLLEDBURN|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 566,
+    name: "SE",
+    incidentType: "FIRE|CONTROLLEDBURN",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 567,
+    name: "FC",
+    incidentType: "FIRE|CONTROLLEDBURN|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 568,
+    name: "FX",
+    incidentType: "FIRE|CONTROLLEDBURN|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 569,
+    name: "SE",
+    incidentType: "FIRE|OUTSIDE|ROUTINE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 570,
+    name: "BRUSHSMT",
+    incidentType: "FIRE|BRUSH|SMALL|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 571,
+    name: "BRUSHSM",
+    incidentType: "FIRE|BRUSH|SMALL",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 572,
+    name: "BRUSHSMB",
+    incidentType: "FIRE|BRUSH|SMALL|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 573,
+    name: "BRUSHSMM",
+    incidentType: "FIRE|BRUSH|SMALL|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 1,
+      },
+      {
+        type: "Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 574,
+    name: "BRUSHLG",
+    incidentType: "FIRE|BRUSH|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 2,
+      },
+      {
+        type: "Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Wildland",
+        quantity: 1,
+      },
+      {
+        type: "Firehawk",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 575,
+    name: "BRUSHLGB",
+    incidentType: "FIRE|BRUSH|LARGE|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 2,
+      },
+      {
+        type: "Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Wildland",
+        quantity: 1,
+      },
+      {
+        type: "Firehawk",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 576,
+    name: "BRUSHLGT",
+    incidentType: "FIRE|BRUSH|LARGE|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 2,
+      },
+      {
+        type: "Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Wildland",
+        quantity: 1,
+      },
+      {
+        type: "Firehawk",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  },
+  {
+    id: 577,
+    name: "BRUSHLGM",
+    incidentType: "FIRE|BRUSH|LARGE|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+      {
+        type: "Tanker",
+        quantity: 1
+      },
+      {
+        type: "Type III Engine",
+        quantity: 2,
+      },
+      {
+        type: "Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Knight Truck",
+        quantity: 1,
+      },
+      {
+        type: "Wildland",
+        quantity: 1,
+      },
+      {
+        type: "Firehawk",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      }
+    ]
+  }
 ];

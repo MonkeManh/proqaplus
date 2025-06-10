@@ -23,6 +23,7 @@ export type IPostal = {
   fdDistrict: string;
   policeDistrict: string;
   fireBox: string;
+  hasHeli?: boolean;
   fdRunOrder: string[];
   policeRunOrder: PoliceAgencies[];
   streets: CrossStreet;

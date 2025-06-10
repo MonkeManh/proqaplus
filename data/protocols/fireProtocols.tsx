@@ -26892,4 +26892,1038 @@ export const fireProtocols: IFireComplaint[] = [
       },
     ],
   },
+
+  {
+    protocol: 82,
+    name: "Vegitation/Wildland/Burhs/Grass Fire",
+    shortName: "Brush Fire",
+    description: <></>,
+    services: [
+      { name: "Fire", priority: true },
+      { name: "EMS", priority: 4 },
+      { name: "Police", priority: undefined }
+    ],
+    defaultPriority: 4,
+    defaultPlan: 569,
+    questions: [],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "82O01",
+            text: "Controlled Burn",
+            recResponse: 565,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 566
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 565
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 567
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 567
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 565
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 566
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 567
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 568
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "82A00",
+            text: "Override (Alpha)",
+            recResponse: 569,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 247
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 569
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 248
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 570
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 569
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          },
+          {
+            code: "82A01",
+            text: "Outside Fire",
+            recResponse: 569,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 247
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 569
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 248
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 570
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 569
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 247
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 248
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 249
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "82B00",
+            text: "Override (Bravo)",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          },
+          {
+            code: "82B01",
+            text: "Unkn Situation (Investigation)",
+            recResponse: 209,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 209
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 209
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 210
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 210
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 209
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 209
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 210
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 211
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "82C00",
+            text: "Override (Charlie)",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          },
+          {
+            code: "82C01",
+            text: "Small Wildland Fire",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          },
+          {
+            code: "82C02",
+            text: "Small Brush/Grass Fire, Structures Threatened",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          },
+          {
+            code: "82C03",
+            text: "Small Brush/Grass Fire",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "82D00",
+            text: "Override (Delta)",
+            recResponse: 574,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 574
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 574
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 575
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 574
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 574
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 575
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 577
+              }
+            ]
+          },
+          {
+            code: "82D01",
+            text: "Large Wildland Fire, Structures Involved",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 233
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 233
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 268
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 267
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 233
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 233
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "82D02",
+            text: "Large Wildland Fire, Structures Threatened",
+            recResponse: 574,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 574
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 574
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 575
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 574
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 574
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 575
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 577
+              }
+            ]
+          },
+          {
+            code: "82D03",
+            text: "Large Wildland Fire",
+            recResponse: 574,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 574
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 574
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 575
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 574
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 574
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 575
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 577
+              }
+            ]
+          },
+          {
+            code: "82D04",
+            text: "SMall Wildland Fire, Structures Involved",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 233
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 233
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 268
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 267
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 233
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 233
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "82D05",
+            text: "Small Wildland Fire, Structures Threatened",
+            recResponse: 571,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 571
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 571
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 572
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 572
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 571
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 571
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 572
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 573
+              }
+            ]
+          },
+          {
+            code: "82D06",
+            text: "Large Brush/Grass Fire, Structures Involved",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 233
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 233
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 268
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 267
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 233
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 233
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 269
+              }
+            ]
+          },
+          {
+            code: "82D07",
+            text: "Large Brush/Grass Fire, Structures Threatened",
+            recResponse: 574,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 574
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 574
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 575
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 574
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 574
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 575
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 577
+              }
+            ]
+          },
+          {
+            code: "82D08",
+            text: "Large Brush/Grass Fire",
+            recResponse: 574,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 574
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 574
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 575
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 574
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 574
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 575
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 577
+              }
+            ]
+          },
+          {
+            code: "82D09",
+            text: "Small Brush/Grass Fire, Structures Involved",
+            recResponse: 233,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 233
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 233
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 268
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 267
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 233
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 233
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 268
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 269
+              }
+            ]
+          }
+        ]
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "82E00",
+            text: "Override (Echo)",
+            recResponse: 576,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 576
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 576
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 576
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 576
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 576
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 576
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 576
+              }
+            ]
+          },
+          {
+            code: "82E01",
+            text: "Treatened/Trapped by Wildland Fire",
+            recResponse: 576,
+            subCodes: [
+              {
+                code: "A",
+                text: "Animals Threatened",
+                recResponse: 576
+              },
+              {
+                code: "O",
+                text: "Other Threatened",
+                recResponse: 576
+              },
+              {
+                code: "P",
+                text: "People in Danger",
+                recResponse: 576
+              },
+              {
+                code: "T",
+                text: "Trapped",
+                recResponse: 576
+              },
+              {
+                code: "U",
+                text: "Unkn Threatened",
+                recResponse: 576
+              },
+              {
+                code: "V",
+                text: "Vehicle Threatened",
+                recResponse: 576
+              },
+              {
+                code: "X",
+                text: "Single Sick/Injured Person",
+                recResponse: 576
+              },
+              {
+                code: "Y",
+                text: "Mult Sick/Injured Persons",
+                recResponse: 576
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];

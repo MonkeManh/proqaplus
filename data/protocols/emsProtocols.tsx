@@ -5139,7 +5139,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unwitnessed Cardiac Arrest",
             display: "The cardiac arrest was not witnessed",
             continue: true,
-            updateCode: "09E02",
+            updateCode: "09E01",
           },
           {
             answer: "Suspected Cardiac Arrest (3rd/4th Party)",
@@ -21370,7 +21370,7 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "No cardiac history",
+            display: "No cardiac hx",
             continue: true,
             dependency: (_patient?: IPatientData) => {
               if (!_patient) return undefined;
@@ -21384,7 +21384,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Yes",
-            display: "Has cardiac history",
+            display: "Cardiac hx",
             continue: true,
             dependency: (_patient?: IPatientData) => {
               if (!_patient) return undefined;
@@ -21398,7 +21398,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unk cardiac history",
+            display: "Unk cardiac hx",
             continue: true,
           },
         ],
