@@ -683,7 +683,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             code: "02B01",
-            text: "Unk Code/Other Codes not Applicable",
+            text: "Unkn Status / Other Codes Not Applicable",
             recResponse: 4,
             defaultCode: true,
             subCodes: [
@@ -1289,7 +1289,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             code: "03B03",
-            text: "Unkn Code/Other Codes not Applicable",
+            text: "Unkn Status / Other Codes Not Applicable",
             recResponse: 9,
           },
         ],

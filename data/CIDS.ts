@@ -500,6 +500,103 @@ export const CIDSData: Location[] = [
       D SIDE - DETACHED 1 STRY GAS STATION
       UTILS B SIDE
       HYDRANT ACCESS A/B SIDE`
+  },
+  {
+    id: 31,
+    name: "Dream View Motel",
+    postal: "042",
+    postalRange: ["042", "061"],
+    cids: `MOTEL 2 STRY 200X125 CLASS J (HOTEL)
+      DREAM VIEW MOTEL
+      A SIDE - PYRITE AVE
+      B SIDE - ROUTE 1
+      C SIDE - DETACHED 2 STRY MIXED
+      D SIDE - DETACHED 1 STRY RESTAURANT
+      L-SHAPED STRUCTURE
+      22 UNITS WITH EXTERNAL STAIRCASE ACCESS
+      COMMON COCKLOFT ON 2ND DIVISION
+      OFFICE AT A/D CORNER
+      UTILS AT C/D CORNER
+      HYDRANT ACCESS ON A SIDE`
+  },
+  {
+    id: 32,
+    name: "Clucking Bell Farms Offices",
+    postal: "043",
+    postalRange: ["043", "042"],
+    cids: `OFFICE 2 STRY 80X60 CLASS 3 (ORDINARY)
+      CLUCKING BELL FARMS OFFICES
+      A SIDE - PYRITE AVE
+      B SIDE - PARKING LOT / ROUTE 1
+      C SIDE - DETACHED SCRAPYARD
+      D SIDE - DETACHED 1 STRY COMM
+      DOOR BARS PRESENT
+      HYDRANT ACCESS A SIDE`
+  },
+  {
+    id: 33,
+    name: "Del Vecchio Liqour",
+    postal: "043",
+    postalRange: ["043", "042"],
+    cids: `COMM 1 STRY 25X25 CLASS 3 (ORDINARY)
+      DEL VECCHIO LIQUOR
+      A SIDE - PYRITE AVE
+      B SIDE - 1 STRY INTERCON COMM
+      C SIDE - DETACHED SCRAPYARD
+      D SIDE - 1 STRY INTERCON COMM
+      TAXPAYER WITH INTERCON COCKLOFT
+      HYDRANT ACCESS A SIDE
+      UTILS ON B/C CORNER`
+  },
+  {
+    id: 34,
+    name: "Red's Machine Supplies",
+    postal: "043",
+    postalRange: ["043", "042", "044"],
+    cids: `COMM 1 STRY 40X40 CLASS 5 (METAL)
+      RED'S MACHINE SUPPLIES
+      A SIDE - PALETO BLVD
+      B SIDE - DETACHED 1 STRY TAXPAYER
+      C SIDE - ROUTE 1
+      D SIDE - DETACHED 1 STRY TAXPAYER
+      EXPOSURE TO 440 CUBIC FT TANK
+      UNK EXPOSURE TANK CONTENTS (H1/F3/R0)
+      HYDRANT ACCESS ON A SIDE
+      !!!CAUTION!!!
+      TRIP HAZARDS
+      STACKED PALLETS THROUGHOUT SCRAPYARD
+      VARIOUS HAZMATS, CONSIDER SPECIALIZED RESPONSE`
+  },
+  {
+    id: 35,
+    name: "The Chrome Dome",
+    postal: "044",
+    postalRange: ["044", "043", "045"],
+    cids: `MVRS 1 STRY 120X75 CLASS 3 (ORDINARY)
+      THE CHROME DOME
+      A SIDE - ALLEYWAY
+      B SIDE - DETACHED SCRAPYARD
+      C SIDE - PARKING LOT
+      D SIDE - INTERCONN 1 STRY COMM
+      ENTER OFF DULOUZ AVE
+      UTILS ON C SIDE
+      HYDRANT ACCESS OFF DULOUZ AVE
+      INTERCONN COCKLOFT WITH D EXPOSURE`
+  },
+  {
+    id: 36,
+    name: "Pixel Pete's Arcade",
+    postal: "044",
+    postalRange: ["044", "043", "045"],
+    cids: `COMM 1 STRY 50X75 CLASS 3 (ORDINARY)
+      PIXEL PETE'S ARCADE
+      A SIDE - DULOUZ AVE
+      B SIDE - DETACHED 1 STRY TAXPAYER
+      C SIDE - INTERCONN 1 STRY MVRS
+      D SIDE - PARKING LOT
+      INTERCONN COCKLOFT WITH C EXPOSURE
+      UTILS AT B/C CORNER
+      HYDRANT ACCESS ON A SIDE ACROSS STREET`
   }
   // {
   //   id: 23,
