@@ -46,9 +46,11 @@ interface CallData {
 const formatPersonDescription = (answer: string): string => {
   if (!answer.includes("Subject: {")) return answer;
 
+  // Extract the label from the first subject entry
+  const firstSubject = answer.split(" | ")[0];
+  const baseLabel = firstSubject.split("Subject: {")[0].trim().replace(/:$/, ''); // Remove trailing colon
+
   const parseSubject = (subjectStr: string) => {
-    // Extract the prefix/label from the original answer
-    const label = subjectStr.split("Subject: {")[0].trim();
     const fields = subjectStr.match(/\{([^}]+)\}/)?.[1].split(", ") || [];
     const data: Record<string, string> = {};
 
@@ -59,65 +61,66 @@ const formatPersonDescription = (answer: string): string => {
       }
     });
 
-    // Race/Gender abbreviations
-    const raceAbbr: Record<string, string> = {
-      White: "W",
-      white: "W",
-      Black: "B",
-      black: "B",
-      Hispanic: "H",
-      hispanic: "H",
-      Asian: "A",
-      asian: "A",
-      "Pacific Islander": "PI",
-      "Native American": "NA",
-    };
-
-    const race = raceAbbr[data.Race] || data.Race?.[0] || "";
-    const gender = data.Gender?.[0] || "";
-    const raceGender = (race + gender).toUpperCase();
+    // Handle race/gender format
+    let raceGender = "";
+    if (data.Gender) {
+      if (data.Race && data.Race !== "Unknown") {
+        const raceAbbr: Record<string, string> = {
+          White: "W",
+          Black: "B",
+          Hispanic: "H",
+          Asian: "A",
+          "Pacific Islander": "PI",
+          "Native American": "NA",
+        };
+        const race = raceAbbr[data.Race] || data.Race[0];
+        raceGender = race + data.Gender[0];
+      } else {
+        raceGender = data.Gender; // Just use full gender if no race
+      }
+    }
 
     // Build description parts
     const parts = [];
-
-    // Core description
-    if (raceGender) parts.push(raceGender);
+    if (raceGender) parts.push(raceGender.toUpperCase());
     if (data.Age) parts.push(`${data.Age}YO`);
-    if (data.Hair) parts.push(`w/ ${data.Hair} hair`);
+    if (data.Hair) parts.push(`w/${data.Hair} hair`);
 
-    // Physical description
     const physical = [];
-    if (data.Height) physical.push(`- ${data.Height}`);
+    if (data.Height) physical.push(data.Height);
     if (data.Weight) physical.push(data.Weight);
+    if (data.DOB) physical.push(`DOB: ${data.DOB}`);
+    if (data.EyeColor) physical.push(`w/${data.EyeColor} eyes`);
+    if (data.Complexion) physical.push(data.Complexion);
+    if (data.Demeanor) physical.push(data.Demeanor);
     if (physical.length) parts.push(physical.join("/"));
 
-    // Clothing
     if (data.Clothing) parts.push(`// WEARING: ${data.Clothing}`);
-
-    // Additional details
     if (data.Name) parts.push(`// NAME: ${data.Name}`);
-    if (data.Other) parts.push(`// ${data.Other}`);
+    if (data.Relationship) parts.push(`// RELATIONSHIP: ${data.Relationship}`);
+    if (data.Address) parts.push(`// ADDRESS: ${data.Address}`);
+    if (data.Phone) parts.push(`// PHONE: ${data.Phone}`);
+    if (data.Other) parts.push(`// OTHER: ${data.Other}`);
 
-    return `${label} ${parts.join(" ")}`;
+    return parts.join(" ");
   };
 
-  // Handle multiple subjects
   const subjects = answer.split(" | ");
-  return subjects
-    .map((subject) => {
-      if (subject.includes("Subject: {")) {
-        return `-- ${parseSubject(subject)}`;
-      }
-      return `-- ${subject}`;
-    })
-    .join("\n");
+  const pluralLabel = subjects.length > 1 ? `${baseLabel}s` : baseLabel;
+
+  return [
+    `-- ${pluralLabel} (${subjects.length}):`,
+    ...subjects.map((subject, index) =>
+      `--  {${index + 1}} ${parseSubject(subject)}`
+    ),
+  ].join("\n");
 };
 
+// Do the same for vehicles - always use grouped format
 const formatVehicleDescription = (vehicleStr: string): string => {
   if (!vehicleStr.includes("Vehicle: {")) return vehicleStr;
 
   const formatSingleVehicle = (singleVehicleStr: string) => {
-    const label = singleVehicleStr.split("Vehicle: {")[0].trim();
     const fields = singleVehicleStr.match(/\{([^}]+)\}/)?.[1].split(", ") || [];
     const data: Record<string, string> = {};
 
@@ -134,18 +137,23 @@ const formatVehicleDescription = (vehicleStr: string): string => {
     if (data.Year) core.push(data.Year);
     if (data.Make) core.push(data.Make);
     if (data.Model) core.push(data.Model);
-    if (core.length) parts.push(core.join(" "));
+    if (core.length) parts.push(core.join("/"));
 
     if (data.LP) parts.push(`// LP: ${data.LP}`);
     if (data.Occ) parts.push(`// ${data.Occ}x OCC`);
     if (data.Other) parts.push(`// ${data.Other}`);
 
-    return `-- ${label} ${parts.join(" ")}`;
+    return parts.join(" ");
   };
 
-  // Handle multiple vehicles
-  const vehicles = vehicleStr.split("|");
-  return vehicles.map(formatSingleVehicle).join("\n");
+  const vehicles = vehicleStr.split(" | ");
+  // Remove the single-vehicle condition and always use grouped format
+  return [
+    "-- Vehicles (" + vehicles.length + "):",
+    ...vehicles.map((vehicle, index) =>
+      `-- {${index + 1}} ${formatSingleVehicle(vehicle)}`
+    ),
+  ].join("\n");
 };
 
 export default function FireSummaryPage() {

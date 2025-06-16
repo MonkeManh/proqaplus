@@ -16469,7 +16469,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "None of These",
             display: "No priority sx (ALPHA 2-12 not ID'd)",
-            end: true,
+            continue: true,
             updateCode: "26A01",
           },
           {
@@ -16552,7 +16552,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "None of These",
             display: "No priority sx (OMEGA 2-28 not ID'd)",
-            continue: true,
+            end: true,
           },
           {
             answer: "Boils",

@@ -18,15 +18,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { ICallData } from "@/models/interfaces/ICallData";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { IPoliceData } from "@/models/interfaces/complaints/police/IPoliceData";
-import { Input } from "@/components/ui/input";
 
 interface CaseEntryProps {
   onContinue: (
@@ -38,7 +30,6 @@ interface CaseEntryProps {
 }
 
 const formSchema = z.object({
-  callerName: z.string().optional(),
   chiefComplaint: z.string({
     required_error: "Please select a chief complaint",
   }),
@@ -48,7 +39,6 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const [storedData, setStoredData] = useState<ICallData | null>(null);
-  const callerName = useRef<HTMLInputElement>(null);
   const chiefComplaint = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const complaintOptions = getPoliceComplaintOptions();
@@ -68,7 +58,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      callerName: "",
       chiefComplaint: "",
     },
   });
@@ -87,7 +76,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
 
   const onSubmit = (data: FormValues) => {
     const callData = {
-      callerName: data.callerName || "",
       chiefComplaint: data.chiefComplaint,
     };
 
@@ -110,28 +98,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
               <div className="space-y-6">
                 <FormField
                   control={form.control}
-                  name="callerName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Caller Name</FormLabel>
-                      <FormDescription className="mb-1">
-                        The name of the person calling
-                      </FormDescription>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter caller name"
-                          {...field}
-                          ref={callerName}
-                          autoFocus
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
                   name="chiefComplaint"
                   render={({ field }) => (
                     <FormItem>
@@ -147,6 +113,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                           placeholder="Select chief complaint"
                           searchPlaceholder="Search complaints..."
                           ref={chiefComplaint}
+                          autoFocus
                         />
                       </FormControl>
                       <FormMessage />
@@ -171,7 +138,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
                         onContinue(
                           complaint,
                           {
-                            callerName: form.getValues().callerName || "",
                             chiefComplaint: complaint,
                           },
                           true

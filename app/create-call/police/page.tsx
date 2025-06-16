@@ -19,12 +19,12 @@ export default function PoliceCallPage() {
     buildingInfo: "",
     crossStreet1: "",
     crossStreet2: "",
+    callerName: "",
     callerNumber: "",
     callerText: "",
     service: "Police",
   });
   const [policeData, setPoliceData] = useState<IPoliceData>({
-    callerName: "",
     chiefComplaint: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
@@ -120,7 +120,6 @@ export default function PoliceCallPage() {
         complaintShort: policeProtocols.find(
           (c) => c.name === selectedComplaint
         )?.shortName,
-        callerName: policeData.callerName,
         code: code,
         codeText: text,
         plan: plan,
@@ -139,7 +138,6 @@ export default function PoliceCallPage() {
         complaintShort: policeProtocols.find(
           (c) => c.name === selectedComplaint
         )?.shortName,
-        callerName: policeData.callerName,
         code: code,
         codeText: text,
         plan: plan,

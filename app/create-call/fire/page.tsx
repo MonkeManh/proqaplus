@@ -19,6 +19,7 @@ export default function FireCallPage() {
     buildingInfo: "",
     crossStreet1: "",
     crossStreet2: "",
+    callerName: "",
     callerNumber: "",
     callerText: "",
     service: "Fire",
