@@ -26905,7 +26905,245 @@ export const fireProtocols: IFireComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 569,
-    questions: [],
+    questions: [
+      {
+        text: <p><b>What</b> is on <b className="text-red-400">fire</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Brush/Grass/Vegitation",
+            display: "Brush/Grass on fire",
+            continue: true
+          },
+          {
+            answer: "Wildland",
+            display: "Wildland on fire",
+            continue: true
+          },
+          {
+            answer: "Other:",
+            display: "{input} on fire",
+            continue: true,
+            input: true,
+            updateCode: "82A01"
+          },
+          {
+            answer: "Structure",
+            display: "Structure on fire",
+            goto: 69
+          },
+          {
+            answer: "PERSON",
+            display: "PERSON ON FIRE",
+            end: true,
+            updateCode: "82E01",
+            updateSubCode: "P"
+          },
+          {
+            answer: "Controlled burn",
+            display: "Controlled burn",
+            continue: true,
+            updateCode: "82O01"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk what is on fire",
+            continue: true,
+            updateCode: "82B01"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b className="text-red-400">trapped</b> or <b className="text-red-400">threatened</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one rptd trapped or threatened",
+            continue: true
+          },
+          {
+            answer: "Yes",
+            display: "Person(s) rptd trapped or threatened",
+            end: true,
+            updateCode: "82E01",
+            updateSubCode: "P"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anyone trapped or threatened",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>What is the <b>size</b> of the <b className="text-red-400">fire</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "< 1 acre",
+            display: "< 1 acre in size",
+            continue: true,
+            dependency: (answers) => {
+              const contentAnswer = answers?.find((a) => a.defaultQuestion === "What is on fire?")?.defaultAnswer;
+              if(contentAnswer === "Brush/Grass/Vegitation") {
+                return { code: "82C03" }
+              } else if( contentAnswer === "Wildland") {
+                return { code: "82C01" }
+              }
+            }
+          },
+          {
+            answer: "> 1 acre",
+            display: "> 1 acre in size",
+            continue: true,
+            dependency: (answers) => {
+              const contentAnswer = answers?.find((a) => a.defaultQuestion === "What is on fire?")?.defaultAnswer;
+              if(contentAnswer === "Brush/Grass/Vegitation") {
+                return { code: "82D08" }
+              } else if( contentAnswer === "Wildland") {
+                return { code: "82D03" }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk size of fire",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Are any <b>structures or buildings</b> <b className="text-red-400">threatened or involved</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No bldgs rptd involved or threatened",
+            continue: true
+          },
+          {
+            answer: "Yes - Threatened",
+            display: "Bldgs rptd threatened",
+            continue: true,
+            dependency: (answers) => {
+              const contentAnswer = answers?.find((a) => a.defaultQuestion === "What is on fire?")?.defaultAnswer;
+              const sizeAnswer = answers?.find((a) => a.defaultQuestion === "What is the size of the fire?")?.defaultAnswer;
+              if(contentAnswer === "Brush/Grass/Vegitation") {
+                if(sizeAnswer === "< 1 acre") {
+                  return { code: "82C02" }
+                } else {
+                  return { code: "82D07" }
+                }
+              } else if(contentAnswer === "Wildland") {
+                if(sizeAnswer === "< 1 acre") {
+                  return { code: "82D05" }
+                } else {
+                  return { code: "82D02" }
+                }
+              }
+            }
+          },
+          {
+            answer: "Yes - Involved",
+            display: "Bldgs rptd involved",
+            continue: true,
+            dependency: (answers) => {
+              const contentAnswer = answers?.find((a) => a.defaultQuestion === "What is on fire?")?.defaultAnswer;
+              const sizeAnswer = answers?.find((a) => a.defaultQuestion === "What is the size of the fire?")?.defaultAnswer;
+              if(contentAnswer === "Brush/Grass/Vegitation") {
+                if(sizeAnswer === "< 1 acre") {
+                  return { code: "82D09" }
+                } else {
+                  return { code: "82D06" }
+                }
+              } else if(contentAnswer === "Wildland") {
+                if(sizeAnswer === "< 1 acre") {
+                  return { code: "82D04" }
+                } else {
+                  return { code: "82D01" }
+                }
+              }
+            }
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bldgs involved or threatened",
+            continue: true
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anything else <b className="text-red-400">threatened</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Nothing else rptd threatened",
+            continue: true
+          },
+          {
+            answer: "Animals",
+            display: "Animals rptd threatened",
+            continue: true,
+            updateSubCode: "A"
+          },
+          {
+            answer: "Vehicles",
+            display: "Vehicles rptd threatened",
+            continue: true,
+            updateSubCode: "V"
+          },
+          {
+            answer: "Other:",
+            display: "{input} rptd threatened",
+            continue: true,
+            input: true,
+            updateSubCode: "O"
+          },
+          {
+            answer: "Unknown",
+            display: "Unkn if anything threatened",
+            continue: true,
+            updateSubCode: "U"
+          }
+        ]
+      },
+
+      {
+        text: <p>Is anyone <b>sick or injured</b>?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            end: true
+          },
+          {
+            answer: "Yes - Single",
+            display: "Single sick/inj'd person rptd",
+            end: true,
+            updateSubCode: "X"
+          },
+          {
+            answer: "Yes - Multiple:",
+            display: "{input} sick/inj'd persons rptd",
+            end: true,
+            updateSubCode: "Y"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if sick/inj'd persons",
+            end: true
+          }
+        ]
+      }
+    ],
     availableDeterminants: [
       {
         priority: "O",
@@ -27112,6 +27350,7 @@ export const fireProtocols: IFireComplaint[] = [
             code: "82B01",
             text: "Unkn Situation (Investigation)",
             recResponse: 209,
+            defaultCode: true,
             subCodes: [
               {
                 code: "A",
@@ -27543,7 +27782,7 @@ export const fireProtocols: IFireComplaint[] = [
           },
           {
             code: "82D04",
-            text: "SMall Wildland Fire, Structures Involved",
+            text: "Small Wildland Fire, Structures Involved",
             recResponse: 233,
             subCodes: [
               {
@@ -27877,7 +28116,7 @@ export const fireProtocols: IFireComplaint[] = [
           },
           {
             code: "82E01",
-            text: "Treatened/Trapped by Wildland Fire",
+            text: "Threatened/Trapped by Wildland Fire",
             recResponse: 576,
             subCodes: [
               {

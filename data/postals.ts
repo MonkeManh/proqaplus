@@ -13931,10 +13931,20 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["1", "8", "10", "7", "2", "6", "5", "4", "3", "9", "11"],
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Lake Vinewood Dr",
-      crossStreet1: "Baytree Canyon Rd",
-      crossStreet2: "Marlowe Dr",
+      availableRoads: {
+        "Marlowe Dr": {
+          crossStreet1: "Baytree Canyon Rd",
+          crossStreet2: "Vinewood Access Rd"
+        },
+        "Lake Vinewood Dr Ext": {
+          crossStreet1: "Baytree Canyon Rd",
+          crossStreet2: "Marlowe Dr"
+        },
+        "Baytree Canyon Rd": {
+          crossStreet1: "N. Conker Ave",
+          crossStreet2: "Lake Vinewood Dr"
+        }
+      }
     },
   },
   {
