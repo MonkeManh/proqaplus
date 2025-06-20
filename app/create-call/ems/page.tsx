@@ -46,7 +46,7 @@ export default function EMSCallPage() {
     if (!callData) return router.push("/create-call");
     if (callData.service !== "EMS") return router.push("/create-call");
     setCallData(callData);
-  }, []);
+  }, [router]);
 
   const handleInitialContinue = (
     complaintName: string,

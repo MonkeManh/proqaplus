@@ -13,20 +13,16 @@ import { useEffect, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { usePathname } from "next/navigation";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
-type Preferences = {
-  advancedMode: boolean;
-  soundEffects: boolean;
-};
-
-const defaultPreferences: Preferences = {
+const defaultPreferences: IPreferences = {
   advancedMode: false,
   soundEffects: true,
 };
 
 export function SettingsMenu() {
   const [preferences, setPreferences] =
-    useState<Preferences>(defaultPreferences);
+    useState<IPreferences>(defaultPreferences);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -40,7 +36,7 @@ export function SettingsMenu() {
         savePreferences(defaultPreferences);
         return;
       }
-      const loadedPrefs = JSON.parse(rawPrefs) as Preferences;
+      const loadedPrefs = JSON.parse(rawPrefs) as IPreferences;
       setPreferences(loadedPrefs);
     } catch (error) {
       console.error("Failed to load preferences:", error);
@@ -48,7 +44,7 @@ export function SettingsMenu() {
     }
   }
 
-  function savePreferences(prefs: Preferences) {
+  function savePreferences(prefs: IPreferences) {
     try {
       localStorage.setItem("PREFERENCES", JSON.stringify(prefs));
       setPreferences(prefs);
@@ -59,7 +55,7 @@ export function SettingsMenu() {
     }
   }
 
-  function changePreference(name: keyof Preferences, value: boolean) {
+  function changePreference(name: keyof IPreferences, value: boolean) {
     const updatedPreferences = {
       ...preferences,
       [name]: value,

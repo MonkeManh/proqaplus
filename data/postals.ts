@@ -1299,7 +1299,7 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Pyrite Ave": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Paleto Blvd": {
           crossStreet1: "Pyrite Ave",
@@ -1342,7 +1342,7 @@ export const postalData: IPostal[] = [
         },
         "Pyrite Ave": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Rt 1 SB": {
           crossStreet1: "Duluoz Ave",
@@ -1377,7 +1377,7 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Duluoz Ave": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Paleto Blvd": {
           crossStreet1: "Duluoz Ave",
@@ -1415,12 +1415,12 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Paleto Blvd": {
-          crossStreet1: "Great Ocean Hwy",
+          crossStreet1: "Rt 1 SB",
           crossStreet2: "Duluoz Ave",
         },
         "Duluoz Ave": {
           crossStreet1: "Paleto Blvd",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Rt 1 SB": {
           crossStreet1: "Rt 1 MM06.00",
@@ -1454,7 +1454,7 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Paleto Blvd": {
-          crossStreet1: "Great Ocean Hwy",
+          crossStreet1: "Rt 1 SB",
           crossStreet2: "Procopio Dr",
         },
         "Rt 1 SB": {
@@ -1490,7 +1490,7 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Paleto Blvd": {
           crossStreet1: "Procopio Dr",
-          crossStreet2: "Great Ocean Hwy",
+          crossStreet2: "Rt 1 SB",
         },
         "Rt 1 SB": {
           crossStreet1: "Paleto Blvd",
@@ -4352,10 +4352,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Fishery Ln",
-      crossStreet1: "N. Calfia Way",
-      crossStreet2: "Dead End",
+      availableRoads: {
+        "Fishery Ln": {
+          crossStreet1: "N. Calfia Way",
+          crossStreet2: "Dead End",
+        },
+        "N. Calfia Way": {
+          crossStreet1: "Carlo Ln",
+          crossStreet2: "Fishery Ln"
+        }
+      }
     },
   },
   {
@@ -6685,12 +6691,16 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
+        "Rt 68 EB": {
           crossStreet1: "Rt 68 Approach",
-          crossStreet2: "Rt 68 MM03.00",
+          crossStreet2: "Rt 68 MM03.00"
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Rt 68 MM03.00",
+          crossStreet2: "Rt 68 Approach"
         },
         "Rt 68 Approach": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 WB",
           crossStreet2: "Joshua Rd",
         },
       },
@@ -6717,14 +6727,18 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Harmony Ln": {
           crossStreet1: "Cat-Tail Rd",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 EB",
         },
-        "Rt 68": {
-          crossStreet1: "Joshua Rd",
-          crossStreet2: "Rt 68 Approach",
+        "Rt 68 WB": {
+          crossStreet1: "Jobe Ln",
+          crossStreet2: "Senora Rd",
+        },
+        "Rt 68 EB": {
+          crossStreet1: "Senora Rd",
+          crossStreet2: "Jobe Ln",
         },
         "Senora Rd": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 EB",
           crossStreet2: "Harmony Ln",
         },
       },
@@ -6750,7 +6764,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Joshua Rd",
-      crossStreet1: "Rt 68",
+      crossStreet1: "Rt 68 WB",
       crossStreet2: "Rt 68 Approach",
     },
   },
@@ -6774,12 +6788,12 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Rt 68 Approach": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 WB",
           crossStreet2: "Joshua Rd",
         },
         "Joshua Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 EB",
         },
       },
     },
@@ -7042,7 +7056,7 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Joshua Rd": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 WB",
           crossStreet2: "Rt 68 Approach",
         },
         "Rt 68 Bypass": {
@@ -7051,7 +7065,7 @@ export const postalData: IPostal[] = [
         },
         "Harmony Loop Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68"
+          crossStreet2: "Rt 68 WB"
         }
       }
     }
@@ -7076,12 +7090,12 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Joshua Rd": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 WB",
           crossStreet2: "Rt 68 Approach",
         },
         "Harmony Loop Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68"
+          crossStreet2: "Rt 68 WB"
         }
       }
     }
@@ -7106,15 +7120,19 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Senora Rd": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 EB",
           crossStreet2: "Cat-Tail Rd",
         },
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Senora Rd",
+          crossStreet2: "Orbit's Folly Ln",
+        },
+        "Rt 68 WB": {
           crossStreet1: "Senora Rd",
           crossStreet2: "Orbit's Folly Ln",
         },
         "Harmony View": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 EB",
           crossStreet2: "Harmony Ln",
         },
         "Harmony Ln": {
@@ -7144,16 +7162,20 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Orbit's Folly Ln": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 EB",
           crossStreet2: "Harmony Ln",
         },
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Orbit's Folly Ln",
+          crossStreet2: "Harmony Ln",
+        },
+        "Rt 68 WB": {
           crossStreet1: "Orbit's Folly Ln",
           crossStreet2: "Harmony Ln",
         },
         "Harmony Ln": {
           crossStreet1: "Orbit's Folly Ln",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 EB",
         },
       },
     },
@@ -7177,12 +7199,16 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Harmony Ln",
+          crossStreet2: "Harmony Loop Rd",
+        },
+        "Rt 68 WB": {
           crossStreet1: "Harmony Ln",
           crossStreet2: "Harmony Loop Rd",
         },
         "Rebel Rd": {
-          crossStreet1: "Rt 68",
+          crossStreet1: "Rt 68 EB",
           crossStreet2: "Cat-Tail Rd",
         },
       },
@@ -7207,7 +7233,7 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       autoFill: true,
-      mainStreet: "Rt 68",
+      mainStreet: "Rt 68 EB",
       crossStreet1: "Orbit's Folly Ln",
       crossStreet2: "Rebel Rd",
     },
@@ -7231,13 +7257,17 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Orbit's Folly Ln",
+          crossStreet2: "Rebel Rd",
+        },
+        "Rt 68 WB": {
           crossStreet1: "Orbit's Folly Ln",
           crossStreet2: "Rebel Rd",
         },
         "Harmony Loop Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 WB",
         },
       },
     },
@@ -7261,13 +7291,17 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Orbit's Folly Ln",
+          crossStreet2: "Rebel Rd",
+        },
+        "Rt 68 WB": {
           crossStreet1: "Orbit's Folly Ln",
           crossStreet2: "Rebel Rd",
         },
         "Harmony Loop Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 WB",
         },
       },
     },
@@ -7290,10 +7324,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 68",
-      crossStreet1: "Rebel Rd",
-      crossStreet2: "Harmony Loop Rd",
+      availableRoads: {
+        "Rt 68 WB": {
+          crossStreet1: "Rebel Rd",
+          crossStreet2: "Harmony Loop Rd",
+        },
+        "Rt 68 EB": {
+          crossStreet1: "Rebel Rd",
+          crossStreet2: "Harmony Loop Rd",
+        }
+      }
     },
   },
   {
@@ -7317,7 +7357,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Harmony Loop Rd",
       crossStreet1: "Rt 68 Bypass",
-      crossStreet2: "Rt 68",
+      crossStreet2: "Rt 68 WB",
     },
   },
   {
@@ -7341,12 +7381,12 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Harmony Loop Rd",
       crossStreet1: "Rt 68 Bypass",
-      crossStreet2: "Rt 68",
+      crossStreet2: "Rt 68 WB",
     },
   },
   {
     postal: "250",
-    twp: "Sandy Shores",
+    twp: "Harmony",
     fdDistrict: "02",
     policeDistrict: "BCSO",
     fireBox: "0259",
@@ -7365,7 +7405,7 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Rt 68 Bypass": {
           crossStreet1: "Harmony Loop Rd",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 WB",
         },
         "Airfield Access Rd": {
           crossStreet1: "Rt 68 Bypass",
@@ -7579,7 +7619,7 @@ export const postalData: IPostal[] = [
         },
         "Harmony Loop Rd": {
           crossStreet1: "Rt 68 Bypass",
-          crossStreet2: "Rt 68",
+          crossStreet2: "Rt 68 WB",
         },
       },
     },
@@ -7605,7 +7645,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Harmony Loop Rd",
       crossStreet1: "Rt 68 Bypass",
-      crossStreet2: "Rt 68",
+      crossStreet2: "Rt 68 WB",
     },
   },
   {
@@ -7631,9 +7671,13 @@ export const postalData: IPostal[] = [
           crossStreet1: "Rt 68 Bypass",
           crossStreet2: "Rt 68",
         },
-        "Rt 68": {
+        "Rt 68 EB": {
           crossStreet1: "Harmony Loop Rd",
-          crossStreet2: "Chancy Ln",
+          crossStreet2: "Rt 68 MM04.00",
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Harmony Loop Rd",
+          crossStreet2: "Rt 68 MM04.00",
         },
       },
     },
@@ -7669,7 +7713,11 @@ export const postalData: IPostal[] = [
           crossStreet1: "Rt 68 Bypass",
           crossStreet2: "Dead End",
         },
-        "Rt 68": {
+        "Rt 68 EB": {
+          crossStreet1: "Harmony Loop Rd",
+          crossStreet2: "Rt 68 MM04.00"
+        },
+        "Rt 68 WB": {
           crossStreet1: "Harmony Loop Rd",
           crossStreet2: "Rt 68 MM04.00"
         }
@@ -7694,10 +7742,16 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 68",
-      crossStreet1: "Chancy Ln",
-      crossStreet2: "Rt 68 MM04.00",
+      availableRoads: {
+        "Rt 68 EB": {
+          crossStreet1: "Chancy Ln",
+          crossStreet2: "Rt 68 MM04.00",
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Chancy Ln",
+          crossStreet2: "Rt 68 MM04.00",
+        }
+      }
     },
   },
   {
@@ -7718,10 +7772,20 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 68",
-      crossStreet1: "Chancy Ln",
-      crossStreet2: "Rt 68 MM04.00",
+      availableRoads: {
+        "Rt 68 EB": {
+          crossStreet1: "Chancy Ln",
+          crossStreet2: "Stinger Rd",
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Chancy Ln",
+          crossStreet2: "Stinger Rd",
+        },
+        "Rt 68 Bypass": {
+          crossStreet1: "Harmony Loop Rd",
+          crossStreet2: "Panorama Dr",
+        },
+      }
     },
   },
   {
@@ -7743,8 +7807,12 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
-          crossStreet1: "Chancy Ln",
+        "Rt 68 EB": {
+          crossStreet1: "Rt 68 MM04.00",
+          crossStreet2: "Stinger Rd",
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Rt 68 MM04.00",
           crossStreet2: "Stinger Rd",
         },
         "Rt 68 Bypass": {
@@ -7773,8 +7841,12 @@ export const postalData: IPostal[] = [
     ],
     streets: {
       availableRoads: {
-        "Rt 68": {
-          crossStreet1: "Chancy Ln",
+        "Rt 68 EB": {
+          crossStreet1: "Rt 68 MM04.00",
+          crossStreet2: "Stinger Rd",
+        },
+        "Rt 68 WB": {
+          crossStreet1: "Rt 68 MM04.00",
           crossStreet2: "Stinger Rd",
         },
         "Rt 68 Bypass": {
@@ -9002,6 +9074,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "305",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9035,6 +9108,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "306",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9068,6 +9142,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "307",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9097,6 +9172,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "308",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9126,6 +9202,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "309",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9149,6 +9226,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "310",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9202,6 +9280,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "312",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9225,6 +9304,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "313",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9258,6 +9338,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "314",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9291,6 +9372,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "315",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9314,6 +9396,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "316",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9367,7 +9450,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "318",
-    twp: "Grapeseed",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9401,7 +9484,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "319",
-    twp: "Grapeseed",
+    twp: "Sandy Shores",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "9538",
@@ -9439,6 +9522,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "320",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0935",
@@ -9476,6 +9560,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "321",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9499,6 +9584,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "322",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9532,6 +9618,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "323",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9561,6 +9648,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "324",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9594,6 +9682,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "325",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9617,6 +9706,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "326",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9640,6 +9730,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "327",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -9663,6 +9754,7 @@ export const postalData: IPostal[] = [
   },
   {
     postal: "328",
+    twp: "Grapeseed",
     fdDistrict: "09",
     policeDistrict: "BCSO",
     fireBox: "0952",
@@ -10280,19 +10372,19 @@ export const postalData: IPostal[] = [
     streets: {
       availableRoads: {
         "Rt 13 NB": {
-          crossStreet1: "Interstate 1",
+          crossStreet1: "I1 NB to Rt 13 NB",
           crossStreet2: "Rt 68 Exit",
         },
         "Rt 13 SB": {
-          crossStreet1: "Interstate 1",
+          crossStreet1: "I1 to Rt 13 SB",
           crossStreet2: "Rt 68 Exit",
         },
         "Rt 15 NB": {
           crossStreet1: "Senora Way Exit",
-          crossStreet2: "Rt 13 NB",
+          crossStreet2: "Rt 15 NB to Rt 13 NB",
         },
         "Rt 15 SB": {
-          crossStreet1: "Rt 13 SB",
+          crossStreet1: "Rt 13 SB to Rt 15 SB",
           crossStreet2: "Senora Way Exit",
         }
       },
@@ -10318,7 +10410,7 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Rt 15 NB": {
           crossStreet1: "Senora Way Exit",
-          crossStreet2: "Rt 13 NB",
+          crossStreet2: "Rt 15 NB to Rt 13 NB",
         },
         "Windmill View": {
           crossStreet1: "Windmill Access Rd",
@@ -10764,8 +10856,8 @@ export const postalData: IPostal[] = [
           crossStreet1: "Roadrunner Rd",
           crossStreet2: "Chancy Ln",
         },
-        "Star Ln Extension": {
-          crossStreet1: "Star Ln",
+        "Star Ln Ext": {
+          crossStreet1: "Chancy Ln",
           crossStreet2: "Dead End",
         },
         "Chancy Ln": {
@@ -12262,7 +12354,11 @@ export const postalData: IPostal[] = [
           crossStreet1: "N. Rockford Dr",
           crossStreet2: "Dead End",
         },
-        "Great Ocean Hwy": {
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM01.00",
+          crossStreet2: "Inesno Rd",
+        },
+        "Rt 1 SB": {
           crossStreet1: "Rt 1 MM01.00",
           crossStreet2: "Inesno Rd",
         }
@@ -12280,7 +12376,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Barbareno Dr",
-      crossStreet1: "Rt 1",
+      crossStreet1: "Rt 1 SB",
       crossStreet2: "Dead End",
     },
   },
@@ -12295,7 +12391,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Barbareno Dr",
-      crossStreet1: "Rt 1",
+      crossStreet1: "Rt 1 SB",
       crossStreet2: "Dead End",
     },
   },
@@ -12313,7 +12409,11 @@ export const postalData: IPostal[] = [
           crossStreet1: "Rt 1",
           crossStreet2: "Dead End",
         },
-        "Rt 1": {
+        "Rt 1 NB": {
+          crossStreet1: "Barbareno Dr",
+          crossStreet2: "Inesno Rd",
+        },
+        "Rt 1 SB": {
           crossStreet1: "Barbareno Dr",
           crossStreet2: "Inesno Rd",
         },
@@ -12330,13 +12430,17 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Rt 1": {
+        "Rt 1 SB": {
           crossStreet1: "Barbareno Dr",
-          crossStreet2: "Inesno Rd",
+          crossStreet2: "Rt 1 MM01.00",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Barbareno Dr",
+          crossStreet2: "Rt 1 MM01.00",
         },
         "Inesno Rd": {
-          crossStreet1: "Rt 1",
-          crossStreet2: "Rt 1 MM01.00",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Rt 1 SB @ MM01.00",
         },
       },
     },
@@ -12351,13 +12455,17 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Rt 1": {
+        "Rt 1 SB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "Rt 1 MM01.00",
+        },
+        "Rt 1 NB": {
           crossStreet1: "Inesno Rd",
           crossStreet2: "Rt 1 MM01.00",
         },
         "Inesno Rd": {
-          crossStreet1: "Rt 1",
-          crossStreet2: "Rt 1 MM01.00",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Rt 1 SB @ MM01.00",
         },
       },
     },
@@ -12372,13 +12480,17 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Rt 1": {
+        "Rt 1 SB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "Rt 1 MM01.00",
+        },
+        "Rt 1 NB": {
           crossStreet1: "Inesno Rd",
           crossStreet2: "Rt 1 MM01.00",
         },
         "Inesno Rd": {
-          crossStreet1: "Rt 1",
-          crossStreet2: "Rt 1 MM01.00",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Rt 1 SB @ MM01.00",
         },
       },
     },
@@ -12393,13 +12505,17 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["LSPD", "LCSO", "SAHP", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Rt 1": {
-          crossStreet1: "Inesno Rd",
+        "Rt 1 SB": {
+          crossStreet1: "Rt 1 MM01.00",
+          crossStreet2: "W. Eclipse Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Rt 1 MM01.00",
           crossStreet2: "W. Eclipse Blvd",
         },
         "Inesno Rd": {
-          crossStreet1: "Rt 1",
-          crossStreet2: "Rt 1",
+          crossStreet1: "Rt 1 SB",
+          crossStreet2: "Rt 1 SB @ MM01.00",
         },
       },
     },
@@ -12413,10 +12529,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["8", "1", "10", "4", "2", "6", "7", "5", "3", "9", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 1",
-      crossStreet1: "Inesno Rd",
-      crossStreet2: "W. Eclipse Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "W. Eclipse Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "W. Eclipse Blvd",
+        },
+      }
     },
   },
   {
@@ -12428,10 +12550,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["8", "1", "10", "4", "2", "6", "7", "5", "3", "9", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 1",
-      crossStreet1: "Inesno Rd",
-      crossStreet2: "W. Eclipse Blvd",
+      availableRoads: {
+        "Rt 1 SB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "W. Eclipse Blvd",
+        },
+        "Rt 1 NB": {
+          crossStreet1: "Inesno Rd",
+          crossStreet2: "W. Eclipse Blvd",
+        },
+      }
     },
   },
   {
@@ -14300,13 +14428,13 @@ export const postalData: IPostal[] = [
           crossStreet1: "Elgin Ave",
           crossStreet2: "Mirror Park Blvd",
         },
-        "Interstate 1 SB": {
-          crossStreet1: "Interstate 1 MM01.00",
-          crossStreet2: "Interstate 1 MM02.00",
+        "I1 SB": {
+          crossStreet1: "I1 MM01.00",
+          crossStreet2: "I1 MM02.00",
         },
-        "Interstate 1 NB": {
-          crossStreet1: "Interstate 1 MM01.00",
-          crossStreet2: "Interstate 1 MM02.00",
+        "I1 NB": {
+          crossStreet1: "I1 MM01.00",
+          crossStreet2: "I1 MM02.00",
         },
       },
     },
@@ -14350,10 +14478,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Marlowe Dr",
           crossStreet2: "Star Ln",
         },
-        "Interstate 1": {
+        "I1 SB": {
           crossStreet1: "Vinewood Park Dr Exit",
-          crossStreet2: "Interstate 1 MM02.00",
+          crossStreet2: "I1 MM02.00"
         },
+        "I2 NB": {
+          crossStreet1: "Vinewood Park Dr Exit",
+          crossStreet2: "Tataviam Dr"
+        }
       },
     },
   },
@@ -14422,10 +14554,14 @@ export const postalData: IPostal[] = [
           crossStreet1: "Vinewood Park Dr",
           crossStreet2: "Star Ln",
         },
-        "Interstate 1": {
+        "I1 SB": {
           crossStreet1: "Vinewood Park Dr Exit",
-          crossStreet2: "Chancy Ln",
+          crossStreet2: "Chancy Ln"
         },
+        "I1 NB": {
+          crossStreet1: "I1 NB to Rt 13 NB",
+          crossStreet2: "Tataviam Dr"
+        }
       },
     },
   },
@@ -14504,10 +14640,22 @@ export const postalData: IPostal[] = [
           crossStreet1: "Interstate 1 SB",
           crossStreet2: "Roadrunner Rd",
         },
-        "Interstate 1": {
+        "I1 SB": {
           crossStreet1: "Chancy Ln",
-          crossStreet2: "Rt 68 Exit",
+          crossStreet2: "Rt 13 SB to I1 SB"
         },
+        "I1 NB": {
+          crossStreet1: "I1 MM02.00",
+          crossStreet2: "I1 NB to Rt 13 NB"
+        },
+        "Rt 13 SB": {
+          crossStreet1: "Rt 13 SB to I1 SB",
+          crossStreet2: "Rt 13 SB to Rt 15 SB"
+        },
+        "Rt 13 NB": {
+          crossStreet1: "I1 NB to Rt 13 NB",
+          crossStreet2: "Rt 15 NB to Rt 13 NB",
+        }
       },
     },
   },
@@ -14521,14 +14669,18 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Palomino Fwy Exit": {
-          crossStreet1: "Interstate 1 NB",
-          crossStreet2: "Rt 15 SB",
+        "Rt 15 Exit": {
+          crossStreet1: "I1 NB to Rt 15 SB",
+          crossStreet2: "Rt 15 SB"
         },
-        "Rt 15": {
-          crossStreet1: "Rt 15 Senora Way Exit",
-          crossStreet2: "Rt 13 Rt 68 Exit",
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM03.00",
+          crossStreet2: "Senora Way Exit",
         },
+        "Rt 15 NB": {
+          crossStreet1: "Senora Way Exit",
+          crossStreet2: "Rt 15 MM03.00",
+        }
       },
     },
   },
@@ -14590,9 +14742,13 @@ export const postalData: IPostal[] = [
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
       availableRoads: {
-        "Rt 15": {
+        "Rt 15 NB": {
           crossStreet1: "Rt 15 MM02.00",
-          crossStreet2: "Rt 13 Rt 68 Exit",
+          crossStreet2: "Rt 15 MM03.00",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Rt 15 MM03.00",
         },
         "Tataviam Dr": {
           crossStreet1: "Rt 15 SB",
@@ -14609,10 +14765,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Senora Way Exit",
-      crossStreet2: "Rt 15 MM02.00",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        }
+      }
     },
   },
   {
@@ -14626,7 +14788,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Rt 15",
+      crossStreet2: "Rt 15 SB",
     },
   },
   {
@@ -14640,7 +14802,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Interstate 1 NB",
+      crossStreet2: "I1 NB",
     },
   },
   {
@@ -14654,7 +14816,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Interstate 1 NB",
+      crossStreet2: "I1 NB",
     },
   },
   {
@@ -14668,7 +14830,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Interstate 1 NB",
+      crossStreet2: "I1 NB",
     },
   },
   {
@@ -14682,7 +14844,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Rt 15",
+      crossStreet2: "Rt 15 SB",
     },
   },
   {
@@ -14693,10 +14855,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Rt 15 MM02.00",
-      crossStreet2: "Senora Way Exit",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        }
+      }
     },
   },
   {
@@ -14707,10 +14875,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Rt 15 MM02.00",
-      crossStreet2: "Senora Way Exit",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        }
+      }
     },
   },
   {
@@ -14721,10 +14895,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Rt 15 MM02.00",
-      crossStreet2: "Senora Way Exit",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Senora Way Exit",
+        }
+      }
     },
   },
   {
@@ -14735,10 +14915,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "9", "10", "6", "1", "2", "8", "5", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Sustancia Rd Exit",
-      crossStreet2: "Rt 15 MM02.00",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Sustancia Rd Exit",
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 MM02.00",
+          crossStreet2: "Sustancia Rd Exit",
+        }
+      }
     },
   },
   {
@@ -14752,7 +14938,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Rt 15",
+      crossStreet2: "Rt 15 SB",
     },
   },
   {
@@ -14766,7 +14952,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Interstate 1 NB",
+      crossStreet2: "I1 NB",
     },
   },
   {
@@ -14781,11 +14967,11 @@ export const postalData: IPostal[] = [
       availableRoads: {
         "Tataviam Dr [E]": {
           crossStreet1: "Reservoir Access Rd",
-          crossStreet2: "Rt 15",
+          crossStreet2: "Rt 15 SB",
         },
         "Tataviam Dr [W]": {
           crossStreet1: "Reservoir Access Rd",
-          crossStreet2: "Interstate 1 NB",
+          crossStreet2: "I1 NB",
         },
         "Reservoir Access Rd": {
           crossStreet1: "Mirror Park Blvd",
@@ -14806,7 +14992,7 @@ export const postalData: IPostal[] = [
       autoFill: true,
       mainStreet: "Tataviam Dr",
       crossStreet1: "Reservoir Access Rd",
-      crossStreet2: "Rt 15",
+      crossStreet2: "Rt 15 SB",
     },
   },
   {
@@ -14823,9 +15009,13 @@ export const postalData: IPostal[] = [
           crossStreet1: "Reservoir Access Rd",
           crossStreet2: "Rt 15",
         },
-        "Rt 15": {
-          crossStreet1: "Interstate 4",
-          crossStreet2: "Sustancia Rd. Exit"
+        "Rt 15 NB": {
+          crossStreet1: "I4 EB to Rt 15 NB",
+          crossStreet2: "Rt 15 MM01.00"
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 SB to I4 WB",
+          crossStreet2: "Rt 15 MM01.00"
         }
       }
     }
@@ -14905,10 +15095,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LCSO", "LSPD", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Interstate 2 Exit",
-      crossStreet2: "Sustancia Rd Exit",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "I4 EB to Rt 15 NB",
+          crossStreet2: "Sustancia Rd Exit"
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 SB to I4 WB",
+          crossStreet2: "Sustancia Rd Exit"
+        }
+      }
     },
   },
   {
@@ -14920,10 +15116,16 @@ export const postalData: IPostal[] = [
     fdRunOrder: ["7", "10", "6", "1", "5", "2", "8", "9", "4", "3", "11"],
     policeRunOrder: ["SAHP", "LSPD", "LCSO", "BCSO", "SSPD", "PBPD", "MBPD"],
     streets: {
-      autoFill: true,
-      mainStreet: "Rt 15",
-      crossStreet1: "Interstate 2 Exit",
-      crossStreet2: "Rt 15 MM01.00",
+      availableRoads: {
+        "Rt 15 NB": {
+          crossStreet1: "I4 EB to Rt 15 NB",
+          crossStreet2: "Rt 15 MM01.00"
+        },
+        "Rt 15 SB": {
+          crossStreet1: "Rt 15 SB to I4 WB",
+          crossStreet2: "Rt 15 MM01.00"
+        }
+      }
     },
   },
   {

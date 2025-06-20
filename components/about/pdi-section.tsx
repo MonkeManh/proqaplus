@@ -58,24 +58,24 @@ export default function PDISection() {
               <div className="bg-muted/50 p-4 rounded-md">
                 <h4 className="font-medium text-red-600 mb-2">Medical Emergencies</h4>
                 <p className="text-sm text-muted-foreground">
-                  "Place the patient on their back on a hard surface. Place the heel of your hand on the center of their
-                  chest and push hard and fast at a rate of 100-120 compressions per minute."
+                  &quot;Place the patient on their back on a hard surface. Place the heel of your hand on the center of their
+                  chest and push hard and fast at a rate of 100-120 compressions per minute.&quot;
                 </p>
               </div>
 
               <div className="bg-muted/50 p-4 rounded-md">
                 <h4 className="font-medium text-blue-600 mb-2">Police Incidents</h4>
                 <p className="text-sm text-muted-foreground">
-                  "Stay on the line with me. Lock your doors and windows if safe to do so. Move to an interior room away
-                  from doors and windows. Do not confront the intruder."
+                  &quot;Stay on the line with me. Lock your doors and windows if safe to do so. Move to an interior room away
+                  from doors and windows. Do not confront the intruder.&quot;
                 </p>
               </div>
 
               <div className="bg-muted/50 p-4 rounded-md">
                 <h4 className="font-medium text-amber-600 mb-2">Fire Emergencies</h4>
                 <p className="text-sm text-muted-foreground">
-                  "Evacuate the building immediately. Do not stop to gather possessions. Stay low to avoid smoke. Close
-                  doors behind you if possible. Meet responders at the designated meeting point."
+                  &quot;Evacuate the building immediately. Do not stop to gather possessions. Stay low to avoid smoke. Close
+                  doors behind you if possible. Meet responders at the designated meeting point.&quot;
                 </p>
               </div>
 

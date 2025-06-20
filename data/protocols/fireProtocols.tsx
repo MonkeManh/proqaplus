@@ -1541,7 +1541,7 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Single sick person",
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              const lastAnswer = answers?.[1]?.defaultAnswer;
               if (lastAnswer === "Carbon Monoxide Detector") {
                 return { subCode: "X" };
               } else if (lastAnswer === "Industrial Gas Detector") {
@@ -1555,7 +1555,7 @@ export const fireProtocols: IFireComplaint[] = [
             input: true,
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
-              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              const lastAnswer = answers?.[1]?.defaultAnswer;
               if (lastAnswer === "Carbon Monoxide Detector") {
                 return { subCode: "Y" };
               } else if (lastAnswer === "Industrial Gas Detector") {
@@ -2912,24 +2912,28 @@ export const fireProtocols: IFireComplaint[] = [
             display: "OFI follow-up",
             continue: true,
             updateSubCode: "S",
+            updateCode: "53A05"
           },
           {
             answer: "OFI Code Enforcement",
             display: "OFI code enforcement",
             continue: true,
             updateSubCode: "T",
+            updateCode: "53A05"
           },
           {
             answer: "OFI Investigation",
             display: "OFI investigation",
             continue: true,
             updateSubCode: "U",
+            updateCode: "53A05"
           },
           {
             answer: "OFI Other",
             display: "OFI other",
             continue: true,
             updateSubCode: "V",
+            updateCode: "53A05"
           },
         ],
       },
@@ -3613,7 +3617,7 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            Is anyone <b>trapped</b>?
+            Is anyone <b className="text-red-400">TRAPPED</b>?
           </p>
         ),
         questionType: "select",
@@ -3653,7 +3657,7 @@ export const fireProtocols: IFireComplaint[] = [
         ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
-          const firstAnswer = answers?.[0]?.defaultAnswer;
+          const firstAnswer = answers?.[answers?.length - 1]?.defaultAnswer;
           return (
             firstAnswer === "Yes (Confirmed)" ||
             firstAnswer === "Yes (Suspected)"
@@ -3669,6 +3673,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Multiple People:",
             display: "{input} persons trapped",
             continue: true,
+            input: true,
           },
           {
             answer: "Unknown",
@@ -8336,7 +8341,7 @@ export const fireProtocols: IFireComplaint[] = [
     defaultPlan: 200,
     questions: [
       {
-        text: <p>Do you know where the leak is? (Is coming from)?</p>,
+        text: <p><span className="text-blue-400">(Appropriate)</span> Do you know where the leak is? <span className="text-blue-400">(Is coming from)</span></p>,
         questionType: "select",
         answers: [
           {
@@ -8617,6 +8622,7 @@ export const fireProtocols: IFireComplaint[] = [
                 return { subCode: "Y" };
               }
             },
+            input: true,
             end: true,
           },
           {
@@ -13147,7 +13153,7 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            Can you see <b>smoke</b>?
+            <span className="text-blue-400">(Appropriate)</span> Can you see <b>smoke</b>?
           </p>
         ),
         questionType: "select",
@@ -13255,6 +13261,11 @@ export const fireProtocols: IFireComplaint[] = [
             input: true,
             continue: true,
           },
+          {
+            answer: "Brush/Vegitation",
+            display: "Smoke coming from brush/vegitation",
+            goto: 82
+          }, 
           {
             answer: "Structure",
             display: "Smoke coming from structure",
@@ -13387,7 +13398,7 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            Are you <b>at that location now</b>?
+            <b className="text-blue-400">(Appropriate)</b> Are you <b>at that location now</b>?
           </p>
         ),
         questionType: "select",
@@ -13611,7 +13622,7 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            Is <b>anyone trapped</b>?
+            Is anyone <b className="text-red-400">trapped</b>?
           </p>
         ),
         questionType: "select",
@@ -13638,7 +13649,7 @@ export const fireProtocols: IFireComplaint[] = [
       {
         text: (
           <p>
-            Is <b>anyone injured</b>?
+            Is anyone <b className="text-red-400">injured</b>?
           </p>
         ),
         questionType: "select",
@@ -26895,7 +26906,7 @@ export const fireProtocols: IFireComplaint[] = [
 
   {
     protocol: 82,
-    name: "Vegitation/Wildland/Burhs/Grass Fire",
+    name: "Vegitation/Wildland/Brush/Grass Fire",
     shortName: "Brush Fire",
     description: <></>,
     services: [

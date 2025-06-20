@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "ProQA Plus",
   description:
     "A tool used for generating 911 calls and other emergency calls.",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({

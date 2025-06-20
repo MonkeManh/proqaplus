@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { policeProtocols } from "@/data/protocols/policeProtocols";
 import { cn } from "@/lib/utils";
 import {
@@ -430,6 +431,14 @@ export default function PoliceProQA({
     return true;
   };
 
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+    }
+  };
+
   if (!complaint) {
     return null;
   }
@@ -524,6 +533,18 @@ export default function PoliceProQA({
                   )
                 )}
               </div>
+
+              {currentQuestionIndex > 0 && (
+                <div className="flex justify-end mt-4">
+                  <Button
+                    variant="outline"
+                    onClick={handleBackClick}
+                    className="text-sm"
+                  >
+                    Back
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

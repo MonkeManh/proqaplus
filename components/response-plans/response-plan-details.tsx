@@ -17,6 +17,8 @@ import {
   Wrench,
   PawPrint,
   Anchor,
+  Star,
+  Search,
 } from "lucide-react"
 
 interface ResponsePlanDetailsProps {
@@ -32,6 +34,10 @@ export default function ResponsePlanDetails({ plan, serviceType }: ResponsePlanD
       return <Truck className="h-4 w-4 text-red-600" />
     } else if (unitType.includes("Police") || unitType.includes("Patrol")) {
       return <ShieldAlert className="h-4 w-4 text-blue-600" />
+    } else if (unitType.includes("Supervisor")) {
+      return <ShieldAlert className="h-4 w-4 text-yellow-600" />
+    } else if (unitType.includes("Watch Commander")) {
+      return <Star className="h-4 w-4 text-yellow-600" />
     } else if(unitType.includes("Wildlife")) {
       return <PawPrint className="h-4 w-4 text-green-600" />
     } else if (unitType.includes("Hazmat")) {
@@ -48,10 +54,12 @@ export default function ResponsePlanDetails({ plan, serviceType }: ResponsePlanD
       return <Users className="h-4 w-4 text-slate-600" />
     } else if (unitType.includes("Dozer") || unitType.includes("Tender") || unitType.includes("Water")) {
       return <Wrench className="h-4 w-4 text-zinc-600" />
-    } else if(unitType.includes("Port")) {
+    } else if(unitType.includes("Port") || unitType.includes("Marine Unit")) {
       return <Anchor className="h-4 w-4 text-teal-600" />
     } else if(unitType.includes("Crash")) {
       return <Siren className="h-4 w-4 text-red-600" />
+    } else if(unitType.includes("Investigator")) {
+      return <Search className="h-4 w-4 text-red-600" />
     }
     return null
   }

@@ -292,6 +292,7 @@ export const policePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendEMS: true,
   },
   {
     id: 22,
@@ -326,6 +327,7 @@ export const policePlans: IResponsePlan[] = [
         quantity: 2,
       },
     ],
+    sendEMS: true,
   },
   {
     id: 24,
@@ -345,6 +347,7 @@ export const policePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendEMS: true,
   },
   {
     id: 25,
@@ -364,6 +367,7 @@ export const policePlans: IResponsePlan[] = [
         quantity: 2,
       },
     ],
+    sendEMS: true,
   },
   {
     id: 26,
@@ -383,6 +387,7 @@ export const policePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendEMS: true,
   },
   {
     id: 27,

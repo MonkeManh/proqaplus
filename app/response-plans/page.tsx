@@ -10,19 +10,20 @@ import ResponsePlanList from "@/components/response-plans/response-plan-list"
 import { emsPlans } from "@/data/plans/emsPlans"
 import { firePlans } from "@/data/plans/firePlans"
 import { policePlans } from "@/data/plans/policePlans"
+import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan"
 
 export default function ResponsePlansPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [expandedPlan, setExpandedPlan] = useState<number | null>(null)
 
   // Filter response plans based on search query
-  const filterPlans = (plans: any[]) => {
+  const filterPlans = (plans: IResponsePlan[]) => {
     return plans.filter(
       (plan) =>
         plan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         plan.incidentType.toLowerCase().includes(searchQuery.toLowerCase()) ||
         plan.text?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        plan.units.some((unit: any) => unit.type.toLowerCase().includes(searchQuery.toLowerCase())),
+        plan.units.some((unit) => unit.type.toLowerCase().includes(searchQuery.toLowerCase())),
     )
   }
 

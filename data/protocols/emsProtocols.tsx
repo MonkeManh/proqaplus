@@ -531,12 +531,12 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Insect Sting",
-            display: "Caused by Insect Sting",
+            display: "Caused by insect sting",
             continue: true,
           },
           {
             answer: "Spider Bite",
-            display: "Caused by Spider Bite",
+            display: "Caused by spider bite",
             continue: true,
             updateCode: "02A02",
           },
@@ -570,8 +570,9 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "Time of reaction...",
+            answer: "Time of reaction:",
             display: "Rx started {input}",
+            input: true,
             continue: true,
           },
           {
@@ -621,13 +622,13 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Yes - Injection",
-            display: "Injection Administered or Advised",
+            display: "Injection administered or advised",
             end: true,
             updateSubCode: "I",
           },
           {
             answer: "Yes - Medication",
-            display: "Medication Administered or Advised",
+            display: "Medication administered or advised",
             end: true,
             updateSubCode: "M",
           },
@@ -1003,12 +1004,12 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "< 6 hours ago",
-            display: "Happened Now (< 6 hours ago)",
+            display: "Happened now (< 6 hours ago)",
             continue: true,
           },
           {
             answer: ">= 6 hours ago",
-            display: "Happened Eariler (>= 6 hours ago)",
+            display: "Happened eariler (>= 6 hours ago)",
             continue: true,
             updateCode: "03A02",
           },
@@ -1107,7 +1108,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Yes",
-            display: "Serious bleeding",
+            display: "SERIOUS bleeding",
             continue: true,
             updateCode: "03B02",
             override: true,
@@ -1159,14 +1160,14 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "Not Dangerous Body Area:",
+            answer: "Not dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
             updateCode: "03A01",
           },
           {
-            answer: "Possibly Dangerous Body Area:",
+            answer: "Possibly dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
@@ -1191,7 +1192,7 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "03D05",
           },
           {
-            answer: "Dangerous Body Area:",
+            answer: "Dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
@@ -1646,10 +1647,11 @@ export const emsComplaints: IEMSComplaint[] = [
           const { isBreathing } = _patient;
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
           return (
-            lastAnswer === "Chest" ||
-            lastAnswer === "Neck" ||
-            lastAnswer === "Head"
-          ) && isBreathing !== false;
+            (lastAnswer === "Chest" ||
+              lastAnswer === "Neck" ||
+              lastAnswer === "Head") &&
+            isBreathing !== false
+          );
         },
         answers: [
           {
@@ -2107,7 +2109,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Trauma",
             display: "Pn from a recent trauma",
-            continue: true
+            continue: true,
           },
           {
             answer: "Non-Traumatic",
@@ -2126,15 +2128,18 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>When did the trauma happen?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "Trauma"
+          return firstAnswer === "Trauma";
         },
         answers: [
           {
             answer: "Just now (< 6 hours ago)",
             display: "Occurred just now (< 6 hours ago)",
-            goto: 30
+            goto: 30,
           },
           {
             answer: "Earlier (>= 6 hours ago)",
@@ -2146,8 +2151,8 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk when trauma happened",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -2533,7 +2538,12 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 22,
     questions: [
       {
-        text: <p>Is **pronoun** able to talk to you <span className='text-blue-400'>(cry)</span> at all?</p>,
+        text: (
+          <p>
+            Is **pronoun** able to talk to you{" "}
+            <span className="text-blue-400">(cry)</span> at all?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -2636,6 +2646,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT responding nlly",
             updateCode: "06D01",
+            override: true,
             continue: true,
           },
           {
@@ -6004,7 +6015,6 @@ export const emsComplaints: IEMSComplaint[] = [
         ],
       },
 
-
       {
         text: (
           <p>
@@ -6373,11 +6383,18 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: <p>Has the seizure been <b>longer</b> than 5 minutes?</p>,
+        text: (
+          <p>
+            Has the seizure been <b>longer</b> than 5 minutes?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "No"
+          return firstAnswer === "No";
         },
         answers: [
           {
@@ -6389,14 +6406,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "> 5 minutes long",
             continue: true,
-            updateCode: "12D02"
+            updateCode: "12D02",
           },
           {
             answer: "Unknown",
             display: "Unk if > 5 minutes long",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
@@ -6525,14 +6542,6 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "PT has stopped seizing",
             continue: true,
-            dependency: (_patient?: IPatientData) => {
-              if (!_patient) return undefined;
-              if (_patient.age < 35) {
-                return { code: "12B01" };
-              } else if (_patient.age >= 35) {
-                return { code: "12D04" };
-              }
-            },
           },
           {
             answer: "No",
@@ -6581,6 +6590,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
+            updateCode: "12D04"
           },
         ],
       },
@@ -8056,8 +8066,8 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Unknown",
             display: "Unk type of incident",
-            continue: true
-          }
+            continue: true,
+          },
         ],
       },
 
@@ -9071,8 +9081,17 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Deformity",
             display: "Inj has deformity",
             continue: true,
-            updateCode: "17A01",
-            override: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const lengthOfFall = answers?.[1]?.defaultAnswer || "";
+              const dissallowed = [
+                "Fall down (not on) stairs",
+                "LONG FALL - 10-29ft (3-9m)",
+                "EXTREME FALL - >= 30ft (>= 10m)",
+                "Unknown",
+              ];
+              if (dissallowed.includes(lengthOfFall)) return;
+              return { code: "17A01" };
+            },
           },
           {
             answer: "No Deformity",
@@ -12475,6 +12494,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Mechanical Equipment",
             display: "Trapped in mechanical equipment",
             continue: true,
+            updateCode: "22D01",
           },
           {
             answer: "Confined Space",
@@ -13247,7 +13267,7 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: (
-          <p>
+          <p className="text-red-400">
             Does **pronoun** have or have access to <b>weapons</b>?
           </p>
         ),
@@ -13267,6 +13287,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes:",
             display: "Access to or has wpns - {input}",
             continue: true,
+            input: true,
             updateSubCode: "W",
           },
           {
@@ -18312,12 +18333,13 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               if (!_patient) return undefined;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               const { age } = _patient;
-              if (age >= 35) {
+              if (age >= 35 && lastAnswer !== "No") {
                 return { code: "28C11" };
-              } else {
+              } else if (lastAnswer !== "No") {
                 return { code: "28A01" };
               }
             },
@@ -18643,7 +18665,7 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: (
-          <p>Was **pronoun** able to say it correctly and understandably</p>
+          <p>Was **pronoun** able to say it correctly and understandably?</p>
         ),
         questionType: "select",
         preRenderInstructions: (
@@ -19983,12 +20005,12 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Single vehicle",
             display: "Single veh",
-            continue: true
+            continue: true,
           },
           {
             answer: "Two vehicles",
             display: "Two vehicles",
-            continue: true
+            continue: true,
           },
           {
             answer: "Multiple (< 10):",
@@ -20002,38 +20024,42 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             input: true,
             updateCode: "29D01",
-            updateSubCode: "f"
+            updateSubCode: "f",
           },
           {
             answer: "Unknown",
             display: "Unk num of vehs",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Was anyone <b className="text-red-400">thrown</b> from the vehicle?</p>,
+        text: (
+          <p>
+            Was anyone <b className="text-red-400">thrown</b> from the vehicle?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No one thrown out",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "Person thrown from veh",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "n"
+            updateSubCode: "n",
           },
           {
             answer: "Unknown",
             display: "Unk if person thrown out",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
@@ -20043,43 +20069,48 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "No one trapped/pinned",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "Trapped/pinned victim(s)",
             continue: true,
-            updateCode: "29D05"
+            updateCode: "29D05",
           },
           {
             answer: "Unknown",
             display: "Unk if anyone trapped/pinned",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Are any <b className="text-green-400">hazardous materials</b> involved?</p>,
+        text: (
+          <p>
+            Are any <b className="text-green-400">hazardous materials</b>{" "}
+            involved?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No chems/hazmat involved",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes",
             display: "Chems/hazmat involved",
             continue: true,
-            updateCode: "29D04"
+            updateCode: "29D04",
           },
           {
             answer: "Unknown",
             display: "Unk if chems/hazmat involved",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
@@ -20092,33 +20123,45 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes (1st party)" || firstAnswer === "Yes (2nd party)") {
-                return { code: "29O01" }
+              if (
+                firstAnswer === "Yes (1st party)" ||
+                firstAnswer === "Yes (2nd party)"
+              ) {
+                return { code: "29O01" };
               } else {
-                return { code: "29A02" }
+                return { code: "29A02" };
               }
-            }
+            },
           },
           {
             answer: "Injuries",
             display: "Injuries rptd",
             continue: true,
-            updateCode: "29B01"
+            updateCode: "29B01",
           },
           {
             answer: "Unknown",
             display: "Unk if injs",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Is there any <b className="text-red-400">bleeding</b>?</p>,
+        text: (
+          <p>
+            Is there any <b className="text-red-400">bleeding</b>?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-          const lastAnswer = answers?.find((q) => q.defaultQuestion === "Are there any injuries?")?.defaultAnswer;
-          return lastAnswer === "Injuries"
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (q) => q.defaultQuestion === "Are there any injuries?"
+          )?.defaultAnswer;
+          return lastAnswer === "Injuries";
         },
         answers: [
           {
@@ -20130,7 +20173,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "SERIOUS bleeding",
             display: "SERIOUS bleeding",
             continue: true,
-            updateCode: "29B02"
+            updateCode: "29B02",
           },
           {
             answer: "No bleeding",
@@ -20140,48 +20183,62 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Unknown",
             display: "Unk if bleeding",
-            continue: true
-          }
-        ]
+            continue: true,
+          },
+        ],
       },
 
       {
-        text: <p>Is everyone involved <b>completely alert</b> <span className="text-red-400">(responding appropriately)</span>?</p>,
+        text: (
+          <p>
+            Is everyone involved <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "Yes",
             display: "Everyone completetly awake",
-            continue: true
+            continue: true,
           },
           {
             answer: "No",
             display: "Person(s) not completely awake",
             continue: true,
-            updateCode: "29D09"
+            updateCode: "29D09",
           },
           {
             answer: "Unknown",
             display: "Unk if everyone completely awake",
             continue: true,
-            updateCode: "29B05"
-          }
-        ]
+            updateCode: "29B05",
+          },
+        ],
       },
 
       {
-        text: <p>What is the <b className="text-red-400">nature</b> of the injury?</p>,
+        text: (
+          <p>
+            What is the <b className="text-red-400">nature</b> of the injury?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: IAnswerData[]) => {
-          const lastAnswer = answers?.find((q) => q.defaultQuestion === "Are there any injuries?")?.defaultAnswer;
-          return lastAnswer === "Injuries"
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (q) => q.defaultQuestion === "Are there any injuries?"
+          )?.defaultAnswer;
+          return lastAnswer === "Injuries";
         },
         answers: [
           {
             answer: "Possibly dangerous body area:",
             display: "Inj to {input}",
             continue: true,
-            input: true
+            input: true,
           },
           {
             answer: "Not dangerous body area:",
@@ -20190,9 +20247,9 @@ export const emsComplaints: IEMSComplaint[] = [
             input: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes (1st party)") {
-                return { code: "29A01" }
-              } 
+              if (firstAnswer === "Yes (1st party)") {
+                return { code: "29A01" };
+              }
             },
           },
           {
@@ -20201,56 +20258,63 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.defaultAnswer;
-              if(firstAnswer === "Yes (1st party)" || firstAnswer === "Yes (2nd party)") {
-                return { code: "29B04" }
+              if (
+                firstAnswer === "Yes (1st party)" ||
+                firstAnswer === "Yes (2nd party)"
+              ) {
+                return { code: "29B04" };
               }
-            }
+            },
           },
           {
             answer: "Rollover",
             display: "Veh rollover",
             continue: true,
             updateCode: "29D02",
-            updateSubCode: "p"
+            updateSubCode: "p",
           },
           {
             answer: "High velocity impact?",
             display: "High velocity impact rptd",
             continue: true,
-            updateCode: "29D03"
+            updateCode: "29D03",
           },
           {
             answer: "Unknown",
             display: "Unk extent/nature of inj",
             continue: true,
-            updateCode: "29B05"
-          }
-        ]
+            updateCode: "29B05",
+          },
+        ],
       },
 
       {
-        text: <p>Are there any other <b className="text-green-400">hazards</b>?</p>,
+        text: (
+          <p>
+            Are there any other <b className="text-green-400">hazards</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
             answer: "No",
             display: "No other hazards",
-            continue: true
+            continue: true,
           },
           {
             answer: "Yes:",
             display: "Other hazards - {input}",
             continue: true,
             input: true,
-            updateCode: "29B03"
+            updateCode: "29B03",
           },
           {
             answer: "Unknown",
             display: "Unk if other hazards",
-            continue: true
-          }
-        ]
-      }
+            continue: true,
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -21066,8 +21130,13 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes deformity",
             display: "Deformity from inj",
+            dependency: (_patient, answers) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (lastAnswer === "Not Dangerous:") {
+                return { code: "30A01" };
+              }
+            },
             continue: true,
-            updateCode: "30A01",
           },
           {
             answer: "Unknown",

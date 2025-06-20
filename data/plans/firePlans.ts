@@ -12400,7 +12400,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 488,
@@ -12428,7 +12428,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 489,
@@ -12460,7 +12460,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 490,
@@ -12492,7 +12492,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 491,
@@ -12516,7 +12516,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 492,
@@ -12544,7 +12544,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 493,
@@ -12576,7 +12576,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 494,
@@ -12612,7 +12612,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 495,
@@ -12648,7 +12648,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 496,
@@ -12684,7 +12684,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 497,
@@ -12720,7 +12720,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 498,
@@ -12760,7 +12760,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 499,
@@ -12792,7 +12792,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 500,
@@ -12828,7 +12828,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 501,
@@ -12864,7 +12864,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 502,
@@ -12904,7 +12904,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 503,
@@ -12940,7 +12940,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 504,
@@ -12976,7 +12976,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 505,
@@ -13012,7 +13012,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 506,
@@ -13052,7 +13052,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 507,
@@ -13084,7 +13084,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 508,
@@ -13116,7 +13116,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 509,
@@ -13152,7 +13152,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 510,
@@ -13188,7 +13188,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 511,
@@ -13216,7 +13216,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 512,
@@ -13248,7 +13248,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 513,
@@ -13280,7 +13280,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 514,
@@ -13316,7 +13316,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 515,
@@ -13336,7 +13336,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 516,
@@ -13360,7 +13360,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 517,
@@ -13388,7 +13388,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 518,
@@ -13424,7 +13424,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 519,
@@ -13444,7 +13444,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 520,
@@ -13468,7 +13468,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 521,
@@ -13496,7 +13496,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 522,
@@ -13559,7 +13559,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 524,
@@ -13595,7 +13595,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 525,
@@ -13635,7 +13635,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 526,
@@ -13675,7 +13675,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 21,
+    sendPolice: true,
   },
   {
     id: 527,
@@ -15043,7 +15043,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 25,
+    sendPolice: true,
   },
   {
     id: 564,
@@ -15087,7 +15087,7 @@ export const firePlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    policePlan: 25,
+    sendPolice: true,
   },
   {
     id: 565,
@@ -15097,8 +15097,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Engine",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 566,
@@ -15108,8 +15108,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Engine",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 567,
@@ -15123,8 +15123,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Transport (BLS)",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 568,
@@ -15146,8 +15146,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "EMS Officer",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 569,
@@ -15157,8 +15157,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Engine",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 570,
@@ -15179,7 +15179,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15192,8 +15192,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 571,
@@ -15210,7 +15210,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15223,8 +15223,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 572,
@@ -15241,7 +15241,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15254,8 +15254,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 573,
@@ -15280,7 +15280,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15293,8 +15293,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 574,
@@ -15311,7 +15311,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15336,8 +15336,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 575,
@@ -15354,7 +15354,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15379,8 +15379,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 576,
@@ -15405,7 +15405,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15430,8 +15430,8 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
+      },
+    ],
   },
   {
     id: 577,
@@ -15452,7 +15452,7 @@ export const firePlans: IResponsePlan[] = [
       },
       {
         type: "Tanker",
-        quantity: 1
+        quantity: 1,
       },
       {
         type: "Type III Engine",
@@ -15477,7 +15477,7 @@ export const firePlans: IResponsePlan[] = [
       {
         type: "Chief",
         quantity: 1,
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];

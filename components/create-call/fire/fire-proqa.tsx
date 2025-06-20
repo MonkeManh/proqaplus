@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { fireProtocols } from "@/data/protocols/fireProtocols";
 import { cn } from "@/lib/utils";
 import {
@@ -83,6 +84,7 @@ export default function FireProQA({
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
+  const [questionStates, setQuestionStates] = useState<any[]>([]);
   const answersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -243,6 +245,7 @@ export default function FireProQA({
       setShouldComplete(false);
       setPreviousAnswers([]);
       setCurrentSubCode("");
+      setQuestionStates([]);
 
       // Switch to new protocol
       if (onSwitchProtocol) {
@@ -258,6 +261,16 @@ export default function FireProQA({
       setPendingAnswerIndex(answerIndex);
       return;
     }
+
+    // Store current state before making changes
+    const currentState = {
+      questionIndex: currentQuestionIndex,
+      code: currentCode,
+      subCode: currentSubCode,
+      plan: currentPlan,
+      isCodeOverridden: isCodeOverridden,
+      answersLength: previousAnswers.length,
+    };
 
     const displayText = selectedAnswer.display.replace(
       "{input}",
@@ -326,6 +339,11 @@ export default function FireProQA({
         }
       }
     }
+
+    // Store the state after changes for potential rollback
+    const updatedStates = [...questionStates];
+    updatedStates[currentQuestionIndex] = currentState;
+    setQuestionStates(updatedStates);
 
     saveProQAState(updatedAnswers);
 
@@ -399,6 +417,39 @@ export default function FireProQA({
     return true;
   };
 
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      const previousIndex = currentQuestionIndex - 1;
+
+      // Get the state from before the current question was answered
+      const previousState = questionStates[currentQuestionIndex];
+
+      if (previousState) {
+        // Restore the previous state
+        setCurrentCode(previousState.code);
+        setCurrentSubCode(previousState.subCode);
+        setCurrentPlan(previousState.plan);
+        setIsCodeOverridden(previousState.isCodeOverridden);
+
+        // Remove answers that came after the previous question
+        const filteredAnswers = previousAnswers.filter(
+          (answer) => answer.questionIndex < currentQuestionIndex
+        );
+        setPreviousAnswers(filteredAnswers);
+      }
+
+      // Move to previous question
+      setCurrentQuestionIndex(previousIndex);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+
+      // Update stored state
+      saveProQAState(
+        previousAnswers.filter((answer) => answer.questionIndex < currentQuestionIndex)
+      );
+    }
+  };
+
   if (!complaint) {
     return null;
   }
@@ -445,13 +496,14 @@ export default function FireProQA({
                 {currentQuestion.questionType === "select" ? (
                   <div ref={answersRef} className="space-y-2 overflow-y-auto">
                     {currentQuestion.answers
-                      .filter(answer => 
-                        !answer.preRenderInstructions || 
-                        evaluateFirePreRenderInstructions(
-                          answer.preRenderInstructions, 
-                          previousAnswers,
-                          currentCode
-                        )
+                      .filter(
+                        (answer) =>
+                          !answer.preRenderInstructions ||
+                          evaluateFirePreRenderInstructions(
+                            answer.preRenderInstructions,
+                            previousAnswers,
+                            currentCode
+                          )
                       )
                       .map((answer, index) => (
                         <div
@@ -468,7 +520,7 @@ export default function FireProQA({
                         >
                           {answer.answer}
                         </div>
-                    ))}
+                      ))}
                   </div>
                 ) : (
                   currentQuestion.questionType === "input" && (
@@ -492,6 +544,18 @@ export default function FireProQA({
                   )
                 )}
               </div>
+
+              {currentQuestionIndex > 0 && (
+                <div className="flex justify-start mt-8">
+                  <Button
+                    variant="outline"
+                    onClick={handleBackClick}
+                    className="text-sm"
+                  >
+                    Back
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

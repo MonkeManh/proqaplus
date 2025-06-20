@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { policePlans } from "@/data/plans/policePlans";
 import { getPostal } from "@/data/postals";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -14,6 +15,7 @@ import { toast } from "sonner";
 interface CallData {
   buildingInfo: string;
   callerNumber: string;
+  callerName: string;
   code: string;
   codeText: string;
   complaint: string;
@@ -36,7 +38,6 @@ interface CallData {
   tandem: boolean;
   timestamp: string;
   isOverriden?: boolean;
-  callerName?: string;
   units: string[];
   reconfigured?: string;
   fromOther?: boolean;
@@ -48,7 +49,10 @@ const formatPersonDescription = (answer: string): string => {
 
   // Extract the label from the first subject entry
   const firstSubject = answer.split(" | ")[0];
-  const baseLabel = firstSubject.split("Subject: {")[0].trim().replace(/:$/, ''); // Remove trailing colon
+  const baseLabel = firstSubject
+    .split("Subject: {")[0]
+    .trim()
+    .replace(/:$/, ""); // Remove trailing colon
 
   const parseSubject = (subjectStr: string) => {
     const fields = subjectStr.match(/\{([^}]+)\}/)?.[1].split(", ") || [];
@@ -110,8 +114,8 @@ const formatPersonDescription = (answer: string): string => {
 
   return [
     `-- ${pluralLabel} (${subjects.length}):`,
-    ...subjects.map((subject, index) =>
-      `--  {${index + 1}} ${parseSubject(subject)}`
+    ...subjects.map(
+      (subject, index) => `--  {${index + 1}} ${parseSubject(subject)}`
     ),
   ].join("\n");
 };
@@ -150,8 +154,8 @@ const formatVehicleDescription = (vehicleStr: string): string => {
   // Remove the single-vehicle condition and always use grouped format
   return [
     "-- Vehicles (" + vehicles.length + "):",
-    ...vehicles.map((vehicle, index) =>
-      `-- {${index + 1}} ${formatSingleVehicle(vehicle)}`
+    ...vehicles.map(
+      (vehicle, index) => `-- {${index + 1}} ${formatSingleVehicle(vehicle)}`
     ),
   ].join("\n");
 };
@@ -192,7 +196,9 @@ export default function FireSummaryPage() {
         `Complaint: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
-        `Caller: ${dispatchData.callerName || "Unknown"} | Phone: ${dispatchData.callerNumber || "N/A"}`,
+        `Caller: ${dispatchData.callerName || "Unknown"} | Phone: ${
+          dispatchData.callerNumber || "N/A"
+        }`,
         "ProQA Information:",
         dispatchData.reconfigured
           ? `-- Call reconfigured from ${dispatchData.reconfigured}`
@@ -201,8 +207,8 @@ export default function FireSummaryPage() {
           ? "-- ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
-                .filter((qa: any) => !qa.omit)
-                .map((qa: any) => {
+                .filter((qa) => !qa.omit)
+                .map((qa) => {
                   if (qa.answer.includes("Subject: {")) {
                     return formatPersonDescription(qa.answer);
                   }
@@ -256,11 +262,11 @@ export default function FireSummaryPage() {
       .writeText(summaryText)
       .then(() => {
         const hasEMStoAssign =
-          (policePlans.find((p) => p.id === dispatchData?.plan)?.emsPlan ?? 0) >
-          0;
+          policePlans.find((p) => p.id === dispatchData?.plan)?.sendEMS ===
+          true;
         const hasFiretoAssign =
-          (policePlans.find((p) => p.id === dispatchData?.plan)?.firePlan ??
-            0) > 0;
+          policePlans.find((p) => p.id === dispatchData?.plan)?.sendFire ===
+          true;
 
         if (hasEMStoAssign && !dispatchData.fromOther) {
           return handleContinue("EMS");
@@ -271,10 +277,12 @@ export default function FireSummaryPage() {
         toast.success("Case Created", {
           description: "Dispatch summary has been copied",
         });
-        const preferences: any = localStorage.getItem("PREFERENCES");
-        const parsedPreferences = JSON.parse(preferences);
+        
+        const preferences: IPreferences = JSON.parse(
+          localStorage.getItem("PREFERENCES") || "{}"
+        );
 
-        if (parsedPreferences && parsedPreferences.soundEffects) {
+        if (preferences && preferences.soundEffects) {
           const audio = new Audio("/Dispatch.mp3");
           audio.play();
           audio.volume = 0.5;
@@ -307,6 +315,7 @@ export default function FireSummaryPage() {
         crossStreet1: dispatchData?.crossStreet1 || "",
         crossStreet2: dispatchData?.crossStreet2 || "",
         callerNumber: dispatchData?.callerNumber || "",
+        callerName: dispatchData?.callerName || "",
         callerStatement: dispatchData?.callerStatement || "",
         service: type,
         notSecure: true,

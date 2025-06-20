@@ -118,7 +118,7 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
 
   const onSubmit = (data: FormValues) => {
     const callData = {
-      location: data.location,
+      location: data.location || storedData?.buildingInfo,
       boxType: data.boxType,
       chiefComplaint: data.chiefComplaint,
     };

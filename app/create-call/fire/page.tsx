@@ -40,7 +40,7 @@ export default function FireCallPage() {
     if (!callData) return router.push("/create-call");
     if (callData.service !== "Fire") return router.push("/create-call");
     setCallData(callData);
-  }, []);
+  }, [router]);
 
   const handleInitialContinue = (
     complaintName: string,

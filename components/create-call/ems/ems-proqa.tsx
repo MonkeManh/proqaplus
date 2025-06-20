@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { emsComplaints } from "@/data/protocols/emsProtocols";
 import { cn } from "@/lib/utils";
 import {
@@ -484,6 +485,14 @@ export default function EmsProQA({
     return null;
   }
 
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+    }
+  };
+
   return (
     <Card className="max-w-5xl mx-auto h-fit w-full">
       <CardHeader>
@@ -552,6 +561,18 @@ export default function EmsProQA({
                   )
                 )}
               </div>
+
+              {currentQuestionIndex > 0 && (
+                <div className="flex justify-end mt-4">
+                  <Button
+                    variant="outline"
+                    onClick={handleBackClick}
+                    className="text-sm"
+                  >
+                    Back
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

@@ -8,14 +8,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLocation } from "@/data/CIDS";
 import { firePlans } from "@/data/plans/firePlans";
 import { getPostal } from "@/data/postals";
-import { fireProtocols } from "@/data/protocols/fireProtocols";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { toast } from "sonner";
 
 interface CallData {
   buildingInfo: string;
   callerNumber: string;
+  callerName: string;
   code: string;
   codeText: string;
   complaint: string;
@@ -44,12 +45,12 @@ interface CallData {
   fromPolice?: boolean;
 }
 
+const UNIT_TYPE_ORDER = ["Engine", "Truck", "Rescue", "Medic", "Chief"];
+
 export default function FireSummaryPage() {
   const [dispatchData, setDispatchData] = useState<CallData | null>(null);
   const [summaryText, setSummaryText] = useState("");
   const router = useRouter();
-
-  const UNIT_TYPE_ORDER = ["Engine", "Truck", "Rescue", "Medic", "Chief"];
 
   const isLawEnforcement = (unit: string) => {
     return (
@@ -59,7 +60,7 @@ export default function FireSummaryPage() {
     );
   };
 
-  function sortFDUnits(units: string[], postal: string): string[] {
+  const sortFDUnits = useCallback((units: string[], postal: string): string[] => {
     const postalData = getPostal(postal);
     const runOrder = postalData?.fdRunOrder || [];
 
@@ -109,7 +110,7 @@ export default function FireSummaryPage() {
 
       return 0;
     });
-  }
+  }, []);
 
   useEffect(() => {
     const history = localStorage.getItem("DISPATCH_HISTORY");
@@ -123,11 +124,11 @@ export default function FireSummaryPage() {
     }
   }, []);
 
-  function getCIDS() {
+  const getCIDS = useCallback(() => {
     const location = getLocation(dispatchData?.buildingInfo || "");
     if (!location) return "Not Available";
     return location.cids;
-  }
+  }, [dispatchData?.buildingInfo]);
 
   useEffect(() => {
     if (dispatchData) {
@@ -170,8 +171,8 @@ export default function FireSummaryPage() {
           ? "-- ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
-                .filter((qa: any) => !qa.omit)
-                .map((qa: any) => `-- ${qa.answer}`),
+                .filter((qa) => !qa.omit)
+                .map((qa) => `-- ${qa.answer}`),
             ],
         `ProQA completed by: Dispatcher ${
           localStorage.getItem("CALLSIGN") || "UNKNOWN"
@@ -182,7 +183,7 @@ export default function FireSummaryPage() {
         .join("\n");
       setSummaryText(text);
     }
-  }, [dispatchData]);
+  }, [dispatchData, sortFDUnits, getCIDS]);
 
   function getRecommendedUnits(planId: number) {
     const plan = firePlans.find((p) => p.id === planId);
@@ -217,8 +218,8 @@ export default function FireSummaryPage() {
       .writeText(summaryText)
       .then(() => {
         const hasPolicetoAssign =
-          (firePlans.find((p) => p.id === dispatchData?.plan)?.policePlan ?? 0) >
-          0;
+          firePlans.find((p) => p.id === dispatchData?.plan)?.sendPolice ===
+          true;
 
         if (hasPolicetoAssign && !dispatchData.fromPolice) {
           return handleContinue();
@@ -227,33 +228,34 @@ export default function FireSummaryPage() {
         toast.success("Case Created", {
           description: "Dispatch summary has been copied",
         });
-        const storedUnits = localStorage.getItem("FIRE_UNITS");
-        if (storedUnits) {
-          const units = JSON.parse(storedUnits);
-          const updatedUnits = units.map((unit: any) => {
-            if (dispatchData.units.includes(unit.name)) {
-              return { ...unit, status: "On Call" };
-            }
+        // const storedUnits = localStorage.getItem("FIRE_UNITS");
+        // if (storedUnits) {
+        //   const units = JSON.parse(storedUnits);
+        //   const updatedUnits = units.map((unit: any) => {
+        //     if (dispatchData.units.includes(unit.name)) {
+        //       return { ...unit, status: "On Call" };
+        //     }
 
-            const isUnitCrossStaffed = unit.crossStaffing?.some(
-              (staffedUnit: any) =>
-                dispatchData.units.includes(staffedUnit.name)
-            );
+        //     const isUnitCrossStaffed = unit.crossStaffing?.some(
+        //       (staffedUnit: any) =>
+        //         dispatchData.units.includes(staffedUnit.name)
+        //     );
 
-            if (isUnitCrossStaffed) {
-              return { ...unit, status: "Out of Service" };
-            }
+        //     if (isUnitCrossStaffed) {
+        //       return { ...unit, status: "Out of Service" };
+        //     }
 
-            return unit;
-          });
+        //     return unit;
+        //   });
 
-          localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
-        }
+        //   localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
+        // }
 
-        const preferences: any = localStorage.getItem("PREFERENCES");
-        const parsedPreferences = JSON.parse(preferences);
+        const preferences: IPreferences = JSON.parse(
+          localStorage.getItem("PREFERENCES") || "{}"
+        );
 
-        if (parsedPreferences && parsedPreferences.soundEffects) {
+        if (preferences && preferences.soundEffects) {
           const audio = new Audio("/Dispatch.mp3");
           audio.play();
           audio.volume = 0.5;
@@ -287,6 +289,7 @@ export default function FireSummaryPage() {
         crossStreet1: dispatchData?.crossStreet1 || "",
         crossStreet2: dispatchData?.crossStreet2 || "",
         callerNumber: dispatchData?.callerNumber || "",
+        callerName: dispatchData?.callerName || "",
         callerStatement: dispatchData?.callerStatement || "",
         service: "Police",
         fromOther: true,
