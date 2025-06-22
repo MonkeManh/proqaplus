@@ -4,7 +4,7 @@ import { fireProtocols } from "@/data/protocols/fireProtocols";
 import { firePlans } from "@/data/plans/firePlans";
 import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
 import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -121,8 +121,16 @@ export default function FireDeterminantSelection({
       if (recommendedIndex >= 0) {
         setFocusedIndex(recommendedIndex);
       }
-    }
-  }, [complaintName, recommendedCode]);
+    }  }, [complaintName, recommendedCode]);
+
+  const handleSelectDeterminant = useCallback((
+    code: string,
+    plan: number,
+    text: string
+  ) => {
+    setSelectedCode(code);
+    onSelect(code, plan, text);
+  }, [onSelect]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -149,7 +157,7 @@ export default function FireDeterminantSelection({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [allDeterminants, focusedIndex]);
+  }, [allDeterminants, focusedIndex, handleSelectDeterminant]);
 
   useEffect(() => {
     if (determinantsRef.current) {
@@ -176,17 +184,7 @@ export default function FireDeterminantSelection({
           block: "center"
         });
       }
-    }
-  }, [recommendedCode, complaint]);
-
-  const handleSelectDeterminant = (
-    code: string,
-    plan: number,
-    text: string
-  ) => {
-    setSelectedCode(code);
-    onSelect(code, plan, text);
-  };
+    }  }, [recommendedCode, complaint]);
 
   if (!complaint || !complaint.availableDeterminants) {
     return <div>Loading determinants...</div>;

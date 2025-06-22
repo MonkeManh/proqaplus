@@ -121,7 +121,8 @@ export default function FireCallPage() {
         buildingInfo: fireData.location,
         boxType: fireData.boxType,
         complaint: selectedComplaint,
-        complaintShort: fireProtocols.find((c) => c.name === selectedComplaint)?.shortName,
+        complaintShort: fireProtocols.find((c) => c.name === selectedComplaint)
+          ?.shortName,
         code: code,
         codeText: text,
         plan: plan,
@@ -164,17 +165,15 @@ export default function FireCallPage() {
             handleBack={handleBack}
           />
         )}
-
+        
         {currentStep === 2 && (
           <FireProQA
-            fireData={fireData}
             complaintName={selectedComplaint}
             onComplete={handleCompleteProQA}
             onBack={handleBack}
             onSwitchProtocol={handleProtocolSwitch}
           />
         )}
-
         {currentStep === 3 && (
           <FireDeterminantSelection
             complaintName={selectedComplaint}

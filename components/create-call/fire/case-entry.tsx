@@ -52,8 +52,6 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const [storedData, setStoredData] = useState<ICallData | null>(null);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const location = useRef<HTMLButtonElement>(null);
   const boxType = useRef<HTMLButtonElement>(null);
   const chiefComplaint = useRef<HTMLButtonElement>(null);
@@ -86,18 +84,11 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-
   useEffect(() => {
     if (!location.current) return;
     location.current.focus();
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const subscription = form.watch((vale, { name }) => {
-      const state = form.getValues();
-      const isValid = state.chiefComplaint ? true : false;
-      setIsFormValid(isValid);
+  }, []);  useEffect(() => {
+    const subscription = form.watch((value, { name }) => {
       if (name === "location") {
         setTimeout(() => {
           boxType.current?.focus();

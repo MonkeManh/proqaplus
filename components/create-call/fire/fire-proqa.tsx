@@ -9,17 +9,36 @@ import {
   evaluateFireDependencies,
   evaluateFirePreRenderInstructions,
 } from "@/lib/utils/evaluators";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { InputModal } from "@/components/modals/input-modal";
 import { IFireData } from "@/models/interfaces/complaints/fire/IFireData";
 import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
 
 interface FireProQAProps {
-  fireData: IFireData;
+  fireData?: IFireData;
   complaintName: string;
   onComplete: (code: string, baseCode?: string, subType?: string) => void;
   onBack: () => void;
   onSwitchProtocol: (protocol: number) => void;
+}
+
+interface ProQAAnswer {
+  question: string;
+  defaultQuestion: string;
+  defaultAnswer: string;
+  answer: string;
+  questionIndex: number;
+  omit: boolean;
+  timestamp: string;
+}
+
+interface QuestionState {
+  questionIndex: number;
+  code: string;
+  subCode: string;
+  plan: number;
+  isCodeOverridden: boolean;
+  answersLength: number;
 }
 
 const getPriorityLevel = (code: string): number => {
@@ -61,8 +80,39 @@ const findLowestPriorityDeterminant = (complaint: IFireComplaint): string => {
   return lowestCode;
 };
 
+const processQuestionText = (text: React.ReactNode): string => {
+  if (typeof text === "string") return text;
+  if (React.isValidElement(text)) {
+    let content = "";
+    const element = text as React.ReactElement<{
+      children?: React.ReactNode;
+    }>;
+
+    if (element.props.children) {
+      React.Children.forEach(
+        element.props.children,
+        (child: React.ReactNode) => {
+          if (typeof child === "string") {
+            content += child;
+          } else if (React.isValidElement(child)) {
+            content += processQuestionText(child);
+          }
+        }
+      );
+    }
+    return content;
+  }
+  return "";
+};
+
+const isHigherPriority = (newCode: string, currentCode: string): boolean => {
+  if (!currentCode) return true;
+  const currentPriority = getPriorityLevel(currentCode);
+  const newPriority = getPriorityLevel(newCode);
+  return newPriority > currentPriority;
+};
+
 export default function FireProQA({
-  fireData,
   complaintName,
   onComplete,
   onBack,
@@ -78,14 +128,271 @@ export default function FireProQA({
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [isCodeOverridden, setIsCodeOverridden] = useState<boolean>(false);
   const [shouldComplete, setShouldComplete] = useState<boolean>(false);
-  const [previousAnswers, setPreviousAnswers] = useState<any[]>([]);
+  const [previousAnswers, setPreviousAnswers] = useState<ProQAAnswer[]>([]);
   const [currentSubCode, setCurrentSubCode] = useState<string>("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
-  const [questionStates, setQuestionStates] = useState<any[]>([]);
+  const [questionStates, setQuestionStates] = useState<QuestionState[]>([]);
   const answersRef = useRef<HTMLDivElement>(null);
+
+  const saveProQAState = useCallback(
+    (answers: ProQAAnswer[]) => {
+      const proqaState = {
+        complaint: complaintName,
+        currentQuestion: currentQuestionIndex,
+        selectedAnswers: answers,
+        currentCode,
+        currentSubCode,
+        currentPlan,
+        determinant: currentCode
+          ? currentSubCode
+            ? `${currentCode}${currentSubCode}`
+            : currentCode
+          : "DEFAULT",
+        protocol: complaint?.name,
+        startTime:
+          localStorage.getItem("DISPATCH_PROQA_START") ||
+          new Date().toISOString(),
+      };
+
+      localStorage.setItem("FIRE_PROQA_ANSWERS", JSON.stringify(answers));
+      localStorage.setItem("FIRE_PROQA_DATA", JSON.stringify(proqaState));
+    },
+    [
+      complaintName,
+      currentQuestionIndex,
+      currentCode,
+      currentSubCode,
+      currentPlan,
+      complaint?.name,
+    ]
+  );
+
+  const moveToNextQuestion = useCallback(() => {
+    if (!complaint) return;
+
+    const nextIndex = currentQuestionIndex + 1;
+
+    if (nextIndex >= complaint.questions.length) {
+      setShouldComplete(true);
+      localStorage.removeItem("FIRE_PROQA_DATA");
+      return;
+    }
+
+    setCurrentQuestionIndex(nextIndex);
+    setSelectedAnswerIndex(null);
+    setHoverAnswerIndex(0);
+  }, [complaint, currentQuestionIndex]);
+
+  const shouldRenderCurrentQuestion = () => {
+    if (!complaint) return false;
+
+    const currentQuestion = complaint.questions[currentQuestionIndex];
+    if (!currentQuestion) return false;
+
+    if (currentQuestion.preRenderInstructions) {
+      return evaluateFirePreRenderInstructions(
+        currentQuestion.preRenderInstructions,
+        previousAnswers,
+        currentCode
+      );
+    }
+    return true;
+  };
+
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      const previousIndex = currentQuestionIndex - 1;
+
+      // Get the state from before the current question was answered
+      const previousState = questionStates[currentQuestionIndex];
+
+      if (previousState) {
+        // Restore the previous state
+        setCurrentCode(previousState.code);
+        setCurrentSubCode(previousState.subCode);
+        setCurrentPlan(previousState.plan);
+        setIsCodeOverridden(previousState.isCodeOverridden);
+
+        // Remove answers that came after the previous question
+        const filteredAnswers = previousAnswers.filter(
+          (answer) => answer.questionIndex < currentQuestionIndex
+        );
+        setPreviousAnswers(filteredAnswers);
+      }
+
+      // Move to previous question
+      setCurrentQuestionIndex(previousIndex);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+
+      // Update stored state
+      saveProQAState(
+        previousAnswers.filter(
+          (answer) => answer.questionIndex < currentQuestionIndex
+        )
+      );
+    } else {
+      // Go back to case entry
+      onBack();
+    }
+  };
+
+  const handleAnswerSelect = useCallback(
+    (answerIndex: number, inputValue?: string) => {
+      if (!complaint) return;
+
+      const currentQuestion = complaint.questions[currentQuestionIndex];
+      const selectedAnswer = currentQuestion?.answers[answerIndex];
+
+      if (!currentQuestion || !selectedAnswer) return;
+
+      // Handle protocol switching first, before any other operations
+      if (selectedAnswer.goto !== undefined) {
+        // Clear all state and storage
+        localStorage.removeItem("FIRE_PROQA_DATA");
+        localStorage.removeItem("FIRE_PROQA_ANSWERS");
+        setCurrentQuestionIndex(0);
+        setSelectedAnswerIndex(null);
+        setHoverAnswerIndex(0);
+        setCurrentCode("");
+        setCurrentPlan(0);
+        setIsCodeOverridden(false);
+        setShouldComplete(false);
+        setPreviousAnswers([]);
+        setCurrentSubCode("");
+        setQuestionStates([]);
+
+        // Switch to new protocol
+        if (onSwitchProtocol) {
+          onSwitchProtocol(selectedAnswer.goto);
+        }
+        return;
+      }
+
+      setSelectedAnswerIndex(answerIndex);
+
+      if (selectedAnswer.input && !inputValue) {
+        setIsInputModalOpen(true);
+        setPendingAnswerIndex(answerIndex);
+        return;
+      }
+
+      // Store current state before making changes
+      const currentState = {
+        questionIndex: currentQuestionIndex,
+        code: currentCode,
+        subCode: currentSubCode,
+        plan: currentPlan,
+        isCodeOverridden: isCodeOverridden,
+        answersLength: previousAnswers.length,
+      };
+
+      const displayText = selectedAnswer.display.replace(
+        "{input}",
+        inputValue || selectedAnswer.answer
+      );
+
+      const rawQuestionText = processQuestionText(currentQuestion.text);
+
+      const newAnswer = {
+        question: rawQuestionText,
+        defaultQuestion: rawQuestionText,
+        defaultAnswer: selectedAnswer.answer,
+        answer: displayText,
+        questionIndex: currentQuestionIndex,
+        omit: currentQuestion.omitQuestion || false,
+        timestamp: new Date().toISOString(),
+      };
+
+      const updatedAnswers = [...previousAnswers];
+      const existingIndex = updatedAnswers.findIndex(
+        (ans) => ans.questionIndex === currentQuestionIndex
+      );
+      if (existingIndex >= 0) {
+        updatedAnswers[existingIndex] = newAnswer;
+      } else {
+        updatedAnswers.push(newAnswer);
+      }
+      setPreviousAnswers(updatedAnswers);
+
+      if (selectedAnswer.updateSubCode) {
+        setCurrentSubCode(selectedAnswer.updateSubCode);
+      }
+
+      if (selectedAnswer.dependency) {
+        console.log("Checking dependency with answers:", previousAnswers);
+        const dependencyResult = evaluateFireDependencies(
+          selectedAnswer.dependency,
+          previousAnswers
+        );
+        console.log("Dependency result:", dependencyResult); // Add debug
+        if (dependencyResult) {
+          if (dependencyResult.code) {
+            setCurrentCode(dependencyResult.code);
+          }
+          if (dependencyResult.subCode) {
+            setCurrentSubCode(dependencyResult.subCode);
+          }
+          if (dependencyResult.plan) {
+            setCurrentPlan(dependencyResult.plan);
+          }
+          if (dependencyResult.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      if (selectedAnswer.updateCode && !isCodeOverridden) {
+        // Only update code if it's higher priority or has override
+        if (
+          selectedAnswer.override ||
+          isHigherPriority(selectedAnswer.updateCode, currentCode)
+        ) {
+          setCurrentCode(selectedAnswer.updateCode);
+          if (selectedAnswer.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      // Store the state after changes for potential rollback
+      const updatedStates = [...questionStates];
+      updatedStates[currentQuestionIndex] = currentState;
+      setQuestionStates(updatedStates);
+
+      saveProQAState(updatedAnswers);
+
+      setSelectedAnswerIndex(answerIndex);
+
+      // End questioning immediately if end: true
+      if (selectedAnswer.end) {
+        setShouldComplete(true);
+        localStorage.removeItem("FIRE_PROQA_DATA");
+        return;
+      }
+
+      // Only move to next question if not ending and continue is true
+      if (selectedAnswer.continue) {
+        moveToNextQuestion();
+      }
+    },
+    [
+      complaint,
+      currentQuestionIndex,
+      previousAnswers,
+      currentCode,
+      currentSubCode,
+      currentPlan,
+      isCodeOverridden,
+      questionStates,
+      onSwitchProtocol,
+      moveToNextQuestion,
+      saveProQAState,
+    ]
+  );
 
   useEffect(() => {
     const savedState = localStorage.getItem("FIRE_PROQA_DATA");
@@ -177,7 +484,13 @@ export default function FireProQA({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [complaint, currentQuestionIndex, hoverAnswerIndex, isInputModalOpen]);
+  }, [
+    complaint,
+    currentQuestionIndex,
+    hoverAnswerIndex,
+    isInputModalOpen,
+    handleAnswerSelect,
+  ]);
 
   useEffect(() => {
     if (answersRef.current) {
@@ -190,265 +503,6 @@ export default function FireProQA({
       }
     }
   }, [hoverAnswerIndex]);
-
-  const processQuestionText = (text: React.ReactNode): string => {
-    if (typeof text === "string") return text;
-    if (React.isValidElement(text)) {
-      let content = "";
-      const element = text as React.ReactElement<{
-        children?: React.ReactNode;
-      }>;
-
-      if (element.props.children) {
-        React.Children.forEach(
-          element.props.children,
-          (child: React.ReactNode) => {
-            if (typeof child === "string") {
-              content += child;
-            } else if (React.isValidElement(child)) {
-              content += processQuestionText(child);
-            }
-          }
-        );
-      }
-      return content;
-    }
-    return "";
-  };
-
-  const isHigherPriority = (newCode: string, currentCode: string): boolean => {
-    if (!currentCode) return true;
-    const currentPriority = getPriorityLevel(currentCode);
-    const newPriority = getPriorityLevel(newCode);
-    return newPriority > currentPriority;
-  };
-
-  const handleAnswerSelect = (answerIndex: number, inputValue?: string) => {
-    if (!complaint) return;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    const selectedAnswer = currentQuestion?.answers[answerIndex];
-
-    if (!currentQuestion || !selectedAnswer) return;
-
-    // Handle protocol switching first, before any other operations
-    if (selectedAnswer.goto !== undefined) {
-      // Clear all state and storage
-      localStorage.removeItem("FIRE_PROQA_DATA");
-      localStorage.removeItem("FIRE_PROQA_ANSWERS");
-      setCurrentQuestionIndex(0);
-      setSelectedAnswerIndex(null);
-      setHoverAnswerIndex(0);
-      setCurrentCode("");
-      setCurrentPlan(0);
-      setIsCodeOverridden(false);
-      setShouldComplete(false);
-      setPreviousAnswers([]);
-      setCurrentSubCode("");
-      setQuestionStates([]);
-
-      // Switch to new protocol
-      if (onSwitchProtocol) {
-        onSwitchProtocol(selectedAnswer.goto);
-      }
-      return;
-    }
-
-    setSelectedAnswerIndex(answerIndex);
-
-    if (selectedAnswer.input && !inputValue) {
-      setIsInputModalOpen(true);
-      setPendingAnswerIndex(answerIndex);
-      return;
-    }
-
-    // Store current state before making changes
-    const currentState = {
-      questionIndex: currentQuestionIndex,
-      code: currentCode,
-      subCode: currentSubCode,
-      plan: currentPlan,
-      isCodeOverridden: isCodeOverridden,
-      answersLength: previousAnswers.length,
-    };
-
-    const displayText = selectedAnswer.display.replace(
-      "{input}",
-      inputValue || selectedAnswer.answer
-    );
-
-    const rawQuestionText = processQuestionText(currentQuestion.text);
-
-    const newAnswer = {
-      question: rawQuestionText,
-      defaultQuestion: rawQuestionText,
-      defaultAnswer: selectedAnswer.answer,
-      answer: displayText,
-      questionIndex: currentQuestionIndex,
-      omit: currentQuestion.omitQuestion || false,
-      timestamp: new Date().toISOString(),
-    };
-
-    const updatedAnswers = [...previousAnswers];
-    const existingIndex = updatedAnswers.findIndex(
-      (ans) => ans.questionIndex === currentQuestionIndex
-    );
-    if (existingIndex >= 0) {
-      updatedAnswers[existingIndex] = newAnswer;
-    } else {
-      updatedAnswers.push(newAnswer);
-    }
-    setPreviousAnswers(updatedAnswers);
-
-    if (selectedAnswer.updateSubCode) {
-      setCurrentSubCode(selectedAnswer.updateSubCode);
-    }
-
-    if (selectedAnswer.dependency) {
-      console.log("Checking dependency with answers:", previousAnswers);
-      const dependencyResult = evaluateFireDependencies(
-        selectedAnswer.dependency,
-        previousAnswers
-      );
-      console.log("Dependency result:", dependencyResult); // Add debug
-      if (dependencyResult) {
-        if (dependencyResult.code) {
-          setCurrentCode(dependencyResult.code);
-        }
-        if (dependencyResult.subCode) {
-          setCurrentSubCode(dependencyResult.subCode);
-        }
-        if (dependencyResult.plan) {
-          setCurrentPlan(dependencyResult.plan);
-        }
-        if (dependencyResult.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    if (selectedAnswer.updateCode && !isCodeOverridden) {
-      // Only update code if it's higher priority or has override
-      if (
-        selectedAnswer.override ||
-        isHigherPriority(selectedAnswer.updateCode, currentCode)
-      ) {
-        setCurrentCode(selectedAnswer.updateCode);
-        if (selectedAnswer.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    // Store the state after changes for potential rollback
-    const updatedStates = [...questionStates];
-    updatedStates[currentQuestionIndex] = currentState;
-    setQuestionStates(updatedStates);
-
-    saveProQAState(updatedAnswers);
-
-    setSelectedAnswerIndex(answerIndex);
-
-    // End questioning immediately if end: true
-    if (selectedAnswer.end) {
-      setShouldComplete(true);
-      localStorage.removeItem("FIRE_PROQA_DATA");
-      return;
-    }
-
-    // Only move to next question if not ending and continue is true
-    if (selectedAnswer.continue) {
-      moveToNextQuestion();
-    }
-  };
-
-  const saveProQAState = (answers: any[]) => {
-    const proqaState = {
-      complaint: complaintName,
-      currentQuestion: currentQuestionIndex,
-      selectedAnswers: answers,
-      currentCode,
-      currentSubCode,
-      currentPlan,
-      determinant: currentCode
-        ? currentSubCode
-          ? `${currentCode}${currentSubCode}`
-          : currentCode
-        : "DEFAULT",
-      protocol: complaint?.name,
-      startTime:
-        localStorage.getItem("DISPATCH_PROQA_START") ||
-        new Date().toISOString(),
-    };
-
-    localStorage.setItem("FIRE_PROQA_ANSWERS", JSON.stringify(answers));
-    localStorage.setItem("FIRE_PROQA_DATA", JSON.stringify(proqaState));
-  };
-
-  const moveToNextQuestion = () => {
-    if (!complaint) return;
-
-    let nextIndex = currentQuestionIndex + 1;
-
-    if (nextIndex >= complaint.questions.length) {
-      setShouldComplete(true);
-      localStorage.removeItem("FIRE_PROQA_DATA");
-      return;
-    }
-
-    setCurrentQuestionIndex(nextIndex);
-    setSelectedAnswerIndex(null);
-    setHoverAnswerIndex(0);
-  };
-
-  const shouldRenderCurrentQuestion = () => {
-    if (!complaint) return false;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    if (!currentQuestion) return false;
-
-    if (currentQuestion.preRenderInstructions) {
-      return evaluateFirePreRenderInstructions(
-        currentQuestion.preRenderInstructions,
-        previousAnswers,
-        currentCode
-      );
-    }
-    return true;
-  };
-
-  const handleBackClick = () => {
-    if (currentQuestionIndex > 0) {
-      const previousIndex = currentQuestionIndex - 1;
-
-      // Get the state from before the current question was answered
-      const previousState = questionStates[currentQuestionIndex];
-
-      if (previousState) {
-        // Restore the previous state
-        setCurrentCode(previousState.code);
-        setCurrentSubCode(previousState.subCode);
-        setCurrentPlan(previousState.plan);
-        setIsCodeOverridden(previousState.isCodeOverridden);
-
-        // Remove answers that came after the previous question
-        const filteredAnswers = previousAnswers.filter(
-          (answer) => answer.questionIndex < currentQuestionIndex
-        );
-        setPreviousAnswers(filteredAnswers);
-      }
-
-      // Move to previous question
-      setCurrentQuestionIndex(previousIndex);
-      setSelectedAnswerIndex(null);
-      setHoverAnswerIndex(0);
-
-      // Update stored state
-      saveProQAState(
-        previousAnswers.filter((answer) => answer.questionIndex < currentQuestionIndex)
-      );
-    }
-  };
 
   if (!complaint) {
     return null;
@@ -543,16 +597,17 @@ export default function FireProQA({
                     </form>
                   )
                 )}
-              </div>
-
-              {currentQuestionIndex > 0 && (
+              </div>{" "}
+              {currentQuestionIndex >= 0 && (
                 <div className="flex justify-start mt-8">
                   <Button
                     variant="outline"
                     onClick={handleBackClick}
                     className="text-sm"
                   >
-                    Back
+                    {currentQuestionIndex > 0
+                      ? "Previous Question"
+                      : "Back to Case Entry"}
                   </Button>
                 </div>
               )}
