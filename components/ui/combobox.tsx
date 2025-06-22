@@ -70,7 +70,7 @@ export const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(({
       }, 0);
       hasInitiallyMounted.current = true;
     }
-  }, [autoFocus]);
+  }, [autoFocus, setOpen]);
 
   // Memoize selected option lookup
   const selectedOption = useMemo(() => 
@@ -90,7 +90,7 @@ export const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(({
   const handleSelect = useCallback((optionValue: string) => {
     onValueChange(optionValue);
     setOpen(false);
-  }, [onValueChange]);
+  }, [onValueChange, setOpen]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

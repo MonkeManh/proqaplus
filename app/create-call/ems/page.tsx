@@ -152,7 +152,7 @@ export default function EMSCallPage() {
         timestamp: new Date().toISOString(),
       };
       localStorage.setItem("PENDING_ASSIGN_EMS", JSON.stringify(finalCallData));
-      window.location.href = "/assign/ems";
+      router.push("/assign/ems");
     } else {
       const finalCallData = {
         ...callData,
@@ -168,7 +168,7 @@ export default function EMSCallPage() {
         dispatchTime: new Date().toISOString(),
       };
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
-      window.location.href = "/summary/ems";
+      router.push("/summary/ems");
     }
   };
 

@@ -130,7 +130,7 @@ export default function PoliceCallPage() {
         "PENDING_ASSIGN_POLICE",
         JSON.stringify(finalCallData)
       );
-      window.location.href = "/assign/police";
+      router.push("/assign/police");
     } else {
       const finalCallData = {
         ...callData,
@@ -147,7 +147,7 @@ export default function PoliceCallPage() {
         dispatchTime: new Date().toISOString(),
       };
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
-      window.location.href = "/summary/police";
+      router.push("/summary/police");
     }
   };
 

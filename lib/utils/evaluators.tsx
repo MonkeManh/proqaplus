@@ -5,9 +5,9 @@ import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData";
 import { FireDependencyFunction } from "@/models/interfaces/complaints/fire/IFireAnswer";
 
 export function evaluatePreRenderInstructions(
-  instructions: ((patient?: IPatientData, answers?: any[], currentCode?: string) => boolean) | undefined,
+  instructions: ((patient?: IPatientData, answers?: IAnswerData[], currentCode?: string) => boolean) | undefined,
   patient?: IPatientData,
-  answers?: any[],
+  answers?: IAnswerData[],
   currentCode?: string
 ): boolean {
   if (!instructions) return true;
@@ -71,7 +71,7 @@ export function replacePronounInNode(node: ReactNode, pronoun: string): ReactNod
   }
 
   if (isValidElement(node)) {
-    const element = node as ReactElement<any>;
+    const element = node as ReactElement<{ children?: ReactNode }>
     const newChildren = replacePronounInNode(element.props.children, pronoun);
     return React.cloneElement(element, { ...element.props }, newChildren);
   }

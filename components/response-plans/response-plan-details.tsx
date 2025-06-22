@@ -8,7 +8,6 @@ import {
   Truck,
   ShieldAlert,
   AlertTriangle,
-  LifeBuoy,
   BirdIcon as Helicopter,
   Car,
   Dog,

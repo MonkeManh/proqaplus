@@ -133,7 +133,7 @@ export default function FireCallPage() {
         "PENDING_ASSIGN_FIRE",
         JSON.stringify(finalCallData)
       );
-      window.location.href = "/assign/fire";
+      router.push("/assign/fire");
     } else {
       const finalCallData = {
         ...callData,
@@ -151,7 +151,7 @@ export default function FireCallPage() {
         dispatchTime: new Date().toISOString(),
       };
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
-      window.location.href = "/summary/fire";
+      router.push("/summary/fire");
     }
   };
 

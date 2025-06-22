@@ -256,7 +256,7 @@ export default function FireSummaryPage() {
         );
 
         if (preferences && preferences.soundEffects) {
-          const audio = new Audio("/Dispatch.mp3");
+          const audio = new Audio("/audio/Dispatch.mp3");
           audio.play();
           audio.volume = 0.5;
         }
@@ -296,7 +296,7 @@ export default function FireSummaryPage() {
       };
 
       localStorage.setItem("NEW_CALL", JSON.stringify(newCall));
-      window.location.href = "/create-call/police";
+      router.push("/create-call/police");
     });
   }
 

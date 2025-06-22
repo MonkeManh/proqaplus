@@ -11,9 +11,8 @@ export function replacePronounInNode(node: ReactNode, pronoun = "the patient"): 
   if (Array.isArray(node)) {
     return node.map((child, index) => <Fragment key={index}>{replacePronounInNode(child, pronoun)}</Fragment>)
   }
-
   if (isValidElement(node)) {
-    const element = node as ReactElement<any>
+    const element = node as ReactElement<{ children?: ReactNode }>
     const newChildren = replacePronounInNode(element.props.children, pronoun)
     return React.cloneElement(element, { ...element.props }, newChildren)
   }
@@ -21,7 +20,7 @@ export function replacePronounInNode(node: ReactNode, pronoun = "the patient"): 
   return node
 }
 
-export function formatQuestionText(text: any): ReactNode {
+export function formatQuestionText(text: ReactNode): ReactNode {
   if (!text) return ""
 
   if (typeof text === "string") {
@@ -93,8 +92,8 @@ export const getResponseLevelText = (code: string, type: string) => {
   const match = code.match(/^(\d{2,3})([A-Z])(\d{2})([A-Z]?)$/);
   if (!match) return "Unknown";
 
-  let protocol: any = match[1];
-  let responseLevel: any = match[2];
+  let protocol: string | number = match[1];
+  const responseLevel: string = match[2];
 
   switch (type) {
     case "EMS":

@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { usePathname } from "next/navigation";
@@ -25,11 +25,7 @@ export function SettingsMenu() {
     useState<IPreferences>(defaultPreferences);
   const pathname = usePathname();
 
-  useEffect(() => {
-    loadPreferences();
-  }, []);
-
-  function loadPreferences() {
+  const loadPreferences = useCallback(() => {
     try {
       const rawPrefs = localStorage.getItem("PREFERENCES");
       if (!rawPrefs) {
@@ -42,7 +38,7 @@ export function SettingsMenu() {
       console.error("Failed to load preferences:", error);
       savePreferences(defaultPreferences);
     }
-  }
+  }, []);
 
   function savePreferences(prefs: IPreferences) {
     try {
@@ -62,6 +58,10 @@ export function SettingsMenu() {
     };
     savePreferences(updatedPreferences);
   }
+
+  useEffect(() => {
+    loadPreferences();
+  }, [loadPreferences]);
 
   if (pathname === "/" || pathname === "/about" || pathname === "/start") {
     return null;

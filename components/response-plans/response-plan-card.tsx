@@ -23,7 +23,6 @@ export default function ResponsePlanCard({
 }: ResponsePlanCardProps) {
   // Parse incident type parts
   const incidentParts = plan.incidentType.split("|");
-  const mainIncidentType = incidentParts[0];
   const subTypes = incidentParts.slice(1);
 
   const getServiceColor = () => {
