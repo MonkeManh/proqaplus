@@ -43,8 +43,8 @@ export default function ResponsePlanDetails({ plan, serviceType }: ResponsePlanD
     } else if (unitType.includes("Hazmat")) {
       return <AlertTriangle className="h-4 w-4 text-green-600" />
     } else if (unitType.includes("Rescue") || unitType.includes("Dive")) {
-      return <LifeBuoy className="h-4 w-4 text-purple-600" />
-    } else if (unitType.includes("Helicopter") || unitType.includes("Air")) {
+      return <Wrench className="h-4 w-4 text-purple-600" />
+    } else if (unitType.includes("Helo") || unitType.includes("Air")) {
       return <Helicopter className="h-4 w-4 text-cyan-600" />
     } else if (unitType.includes("Traffic") || unitType.includes("Command") || unitType.includes("Safety") || unitType.includes("Battalion") || unitType.includes("Chief") || unitType.includes("EMS Officer")) {
       return <Car className="h-4 w-4 text-indigo-600" />

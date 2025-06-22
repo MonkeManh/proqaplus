@@ -67,7 +67,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue }: CaseEntryProps) {
-  const [data, setData] = useState<FormValues>({
+  const [_data, setData] = useState<FormValues>({
     patientProximity: "Yes",
     patientCount: 1,
     patientAge: 0,
@@ -188,7 +188,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       value: `${c.protocol} - ${c.value}`,
       label: `${c.protocol} - ${c.value}`,
     }));
-  }, [breathingStatus]);
+  }, [breathingStatus, concsiousness]);
 
   useEffect(() => {
     const subscription = form.watch((value, { name }) => {
@@ -370,7 +370,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                   name="gender"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>What is the patient's gender?</FormLabel>
+                      <FormLabel>What is the patient&apos;s gender?</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}

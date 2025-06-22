@@ -141,7 +141,7 @@ export default function CreateCallForm() {
         );
       }
     }
-  }, []);
+  }, [form]);
 
   useEffect(() => {
     if (initialValues.postal) {

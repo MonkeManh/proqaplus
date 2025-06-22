@@ -69,6 +69,15 @@ export default function EMSDeterminantSelection({
     return plan?.incidentType || `Plan ${planId}`;
   };
 
+  const handleSelectDeterminant = (
+    code: string,
+    plan: number,
+    text: string
+  ) => {
+    setSelectedCode(code);
+    onSelect(code, plan, text);
+  };
+
   useEffect(() => {
     const foundComplaint = emsComplaints.find(
       (c: IEMSComplaint) => c.name === complaintName
@@ -149,7 +158,7 @@ export default function EMSDeterminantSelection({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [allDeterminants, focusedIndex]);
+  }, [allDeterminants, focusedIndex, handleSelectDeterminant]);
 
   useEffect(() => {
     if (determinantsRef.current) {
@@ -181,15 +190,6 @@ export default function EMSDeterminantSelection({
       }, 100);
     }
   }, [recommendedCode, complaint]);
-
-  const handleSelectDeterminant = (
-    code: string,
-    plan: number,
-    text: string
-  ) => {
-    setSelectedCode(code);
-    onSelect(code, plan, text);
-  };
 
   if (!complaint || !complaint.availableDeterminants) {
     return <div>Loading determinants...</div>;

@@ -88,13 +88,13 @@ const formatPersonDescription = (answer: string): string => {
     const parts = [];
     if (raceGender) parts.push(raceGender.toUpperCase());
     if (data.Age) parts.push(`${data.Age}YO`);
-    if (data.Hair) parts.push(`w/${data.Hair} hair`);
+    if (data.Hair) parts.push(`w/ ${data.Hair} hair`);
 
     const physical = [];
     if (data.Height) physical.push(data.Height);
     if (data.Weight) physical.push(data.Weight);
     if (data.DOB) physical.push(`DOB: ${data.DOB}`);
-    if (data.EyeColor) physical.push(`w/${data.EyeColor} eyes`);
+    if (data.EyeColor) physical.push(`w/ ${data.EyeColor} eyes`);
     if (data.Complexion) physical.push(data.Complexion);
     if (data.Demeanor) physical.push(data.Demeanor);
     if (physical.length) parts.push(physical.join("/"));

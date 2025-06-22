@@ -21293,6 +21293,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
+            updateCode: "31D00"
           },
         ],
       },

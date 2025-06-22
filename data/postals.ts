@@ -11388,6 +11388,7 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
+      autoFill: true,
       mainStreet: "Galileo Rd",
       crossStreet1: "Mt Vinewood Dr",
       crossStreet2: "Baytree Canyon Rd",
@@ -11410,6 +11411,7 @@ export const postalData: IPostal[] = [
       "LSPD",
     ],
     streets: {
+      autoFill: true,
       mainStreet: "Galileo Trails",
       crossStreet1: "Observatory Approach",
       crossStreet2: "E. Galileo Ave",
