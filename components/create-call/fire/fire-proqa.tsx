@@ -119,10 +119,11 @@ export default function FireProQA({
   onSwitchProtocol,
 }: FireProQAProps) {
   const [complaint, setComplaint] = useState<IFireComplaint | null>(null);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);  // Original index in the answers array for the selected answer
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(
     null
   );
+  // Index in the filtered visible answers array for hover highlight
   const [hoverAnswerIndex, setHoverAnswerIndex] = useState<number>(0);
   const [currentCode, setCurrentCode] = useState<string>("");
   const [currentPlan, setCurrentPlan] = useState<number>(0);
@@ -246,6 +247,8 @@ export default function FireProQA({
 
       const currentQuestion = complaint.questions[currentQuestionIndex];
       const selectedAnswer = currentQuestion?.answers[answerIndex];
+
+      console.log(`Selected answer index: ${answerIndex}, answer:`, selectedAnswer);
 
       if (!currentQuestion || !selectedAnswer) return;
 
@@ -468,7 +471,21 @@ export default function FireProQA({
       const currentQuestion = complaint.questions[currentQuestionIndex];
       if (!currentQuestion || currentQuestion.questionType !== "select") return;
 
-      const answerCount = currentQuestion.answers.length;
+      // Get visible answers (those that pass the preRenderInstructions filter)
+      const visibleAnswers = currentQuestion.answers
+        .map((answer, index) => ({ answer, index }))
+        .filter(
+          ({ answer }) =>
+            !answer.preRenderInstructions ||
+            evaluateFirePreRenderInstructions(
+              answer.preRenderInstructions,
+              previousAnswers,
+              currentCode
+            )
+        );
+
+      const answerCount = visibleAnswers.length;
+      if (answerCount === 0) return;
 
       if (e.key === "ArrowDown") {
         e.preventDefault();
@@ -478,7 +495,10 @@ export default function FireProQA({
         setHoverAnswerIndex((prev) => (prev - 1 + answerCount) % answerCount);
       } else if (e.key === "Enter") {
         e.preventDefault();
-        handleAnswerSelect(hoverAnswerIndex);
+        const originalIndex = visibleAnswers[hoverAnswerIndex]?.index;
+        if (originalIndex !== undefined) {
+          handleAnswerSelect(originalIndex);
+        }
       }
     };
 
@@ -490,6 +510,8 @@ export default function FireProQA({
     hoverAnswerIndex,
     isInputModalOpen,
     handleAnswerSelect,
+    previousAnswers,
+    currentCode,
   ]);
 
   useEffect(() => {
@@ -545,36 +567,40 @@ export default function FireProQA({
               <div className="mb-4">
                 <h4 className="text-lg font-medium mb-4">
                   {currentQuestion.text}
-                </h4>
-
-                {currentQuestion.questionType === "select" ? (
+                </h4>                {currentQuestion.questionType === "select" ? (
                   <div ref={answersRef} className="space-y-2 overflow-y-auto">
-                    {currentQuestion.answers
-                      .filter(
-                        (answer) =>
-                          !answer.preRenderInstructions ||
-                          evaluateFirePreRenderInstructions(
-                            answer.preRenderInstructions,
-                            previousAnswers,
-                            currentCode
-                          )
-                      )
-                      .map((answer, index) => (
+                    {(() => {
+                      // Create the filtered array of visible answers with their original indices
+                      const visibleAnswers = currentQuestion.answers
+                        .map((answer, originalIndex) => ({ answer, originalIndex }))
+                        .filter(
+                          ({ answer }) =>
+                            !answer.preRenderInstructions ||
+                            evaluateFirePreRenderInstructions(
+                              answer.preRenderInstructions,
+                              previousAnswers,
+                              currentCode
+                            )
+                        );
+                      
+                      return visibleAnswers.map(({ answer, originalIndex }, visibleIndex) => (
                         <div
-                          key={index}
-                          onClick={() => handleAnswerSelect(index)}
+                          key={originalIndex}
+                          onClick={() => handleAnswerSelect(originalIndex)}
                           className={cn(
                             "answer-option p-3 rounded-md transition-colors cursor-pointer",
-                            selectedAnswerIndex === index
+                            selectedAnswerIndex === originalIndex
                               ? "bg-primary text-primary-foreground"
-                              : hoverAnswerIndex === index
+                              : hoverAnswerIndex === visibleIndex
                               ? "bg-green-500 text-white"
                               : "bg-muted hover:bg-muted/80"
                           )}
+                          onMouseEnter={() => setHoverAnswerIndex(visibleIndex)}
                         >
                           {answer.answer}
                         </div>
-                      ))}
+                      ));
+                    })()}
                   </div>
                 ) : (
                   currentQuestion.questionType === "input" && (

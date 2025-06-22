@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
   images: {
-    domains: ["test.monkemanh.com"],
+    remotePatterns: [new URL("https://test.monkemanh.com/images/**")]
   }
 };
 
