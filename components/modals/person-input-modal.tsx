@@ -122,8 +122,6 @@ export function PersonInputModal({
 
   const handleKeyDown = (
     e: React.KeyboardEvent,
-    index: number,
-    field: keyof PersonData
   ) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -226,7 +224,7 @@ export function PersonInputModal({
                     updatePerson(currentIndex, "clothing", e.target.value)
                   }
                   onKeyDown={(e) =>
-                    handleKeyDown(e, currentIndex, "clothing")
+                    handleKeyDown(e)
                   }
                   placeholder="Clothing description"
                 />
@@ -239,7 +237,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "age", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "age")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Age"
                 />
               </div>
@@ -251,7 +249,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "dob", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "dob")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                 />
               </div>
               <div>
@@ -262,7 +260,7 @@ export function PersonInputModal({
                     updatePerson(currentIndex, "demeanor", e.target.value)
                   }
                   onKeyDown={(e) =>
-                    handleKeyDown(e, currentIndex, "demeanor")
+                    handleKeyDown(e)
                   }
                   placeholder="Demeanor"
                 />
@@ -274,7 +272,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "name", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "name")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Full name"
                 />
               </div>
@@ -286,7 +284,7 @@ export function PersonInputModal({
                     updatePerson(currentIndex, "relationship", e.target.value)
                   }
                   onKeyDown={(e) =>
-                    handleKeyDown(e, currentIndex, "relationship")
+                    handleKeyDown(e)
                   }
                   placeholder="Relationship"
                 />
@@ -298,7 +296,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "height", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "height")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Height"
                 />
               </div>
@@ -309,7 +307,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "weight", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "weight")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Weight"
                 />
               </div>
@@ -320,7 +318,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "hair", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "hair")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Hair color/length/style"
                 />
               </div>
@@ -331,7 +329,7 @@ export function PersonInputModal({
                   onChange={(e) =>
                     updatePerson(currentIndex, "eyeColor", e.target.value)
                   }
-                  onKeyDown={(e) => handleKeyDown(e, currentIndex, "eyeColor")}
+                  onKeyDown={(e) => handleKeyDown(e)}
                   placeholder="Eye color"
                 />
               </div>
@@ -343,7 +341,7 @@ export function PersonInputModal({
                     updatePerson(currentIndex, "complexion", e.target.value)
                   }
                   onKeyDown={(e) =>
-                    handleKeyDown(e, currentIndex, "complexion")
+                    handleKeyDown(e)
                   }
                   placeholder="Complexion"
                 />
@@ -360,7 +358,7 @@ export function PersonInputModal({
                     )
                   }
                   onKeyDown={(e) =>
-                    handleKeyDown(e, currentIndex, "otherCharacteristics")
+                    handleKeyDown(e)
                   }
                   placeholder="Additional characteristics"
                 />

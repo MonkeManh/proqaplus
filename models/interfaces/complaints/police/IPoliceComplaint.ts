@@ -80,7 +80,7 @@ export interface IPoliceAnswer {
   vehicleInput?: boolean;
   personInput?: boolean;
   goto?: number;
-  updateSubType?: string;
+  updateSubCode?: string;
   dependency?: DependencyFunction;
   preRenderInstructions?: (answers: IAnswerData[], currentCode?: string) => boolean;
   send?: boolean;

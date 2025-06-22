@@ -1,8 +1,11 @@
+import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint"
 import ProtocolCard from "./protocol-card"
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint"
+import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint"
 
 interface ProtocolListProps {
   title: string
-  complaints: any[]
+  complaints: IEMSComplaint[] | IFireComplaint[] | IPoliceComplaint[]
   type: "EMS" | "Fire" | "Police"
   expandedProtocol: string | null
   setExpandedProtocol: (protocol: string | null) => void

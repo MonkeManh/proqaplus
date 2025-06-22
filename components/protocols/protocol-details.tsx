@@ -1,6 +1,6 @@
 "use client";
 
-import { Ambulance, CarTaxiFront, Flame, Link } from "lucide-react";
+import { Ambulance, CarTaxiFront, Flame } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -16,9 +16,11 @@ import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint"
 import { getEmsResponsePlan } from "@/data/plans/emsPlans"; // Adjust the import based on your project structure
 import { getFireResponsePlan } from "@/data/plans/firePlans";
 import { getPoliceResponsePlan } from "@/data/plans/policePlans";
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
+import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint";
 
 interface ProtocolDetailsProps {
-  complaint: IEMSComplaint;
+  complaint: IEMSComplaint | IFireComplaint | IPoliceComplaint;
   type: "EMS" | "Fire" | "Police";
 }
 
@@ -89,15 +91,15 @@ export default function ProtocolDetails({
     if (!complaint.availableDeterminants) return [];
 
     const allSubCodes = complaint.availableDeterminants.flatMap(
-      (priority: any) =>
+      (priority) =>
         priority.determinants.flatMap(
-          (determinant: any) => determinant.subCodes || []
+          (determinant) => determinant.subCodes || []
         )
     );
 
     // Remove duplicates
     return allSubCodes.filter(
-      (subCode: any, index: number, self: any[]) =>
+      (subCode, index: number, self) =>
         index ===
         self.findIndex(
           (s) => s.code === subCode.code && s.text === subCode.text
@@ -113,10 +115,10 @@ export default function ProtocolDetails({
 
     // Get all response plan IDs
     const allResponseIds = complaint.availableDeterminants.flatMap(
-      (priority: any) =>
-        priority.determinants.flatMap((determinant: any) => [
+      (priority) =>
+        priority.determinants.flatMap((determinant) => [
           determinant.recResponse,
-          ...(determinant.subCodes?.map((sub: any) => sub.recResponse) || []),
+          ...(determinant.subCodes?.map((sub) => sub.recResponse) || []),
         ])
     );
 
@@ -172,7 +174,7 @@ export default function ProtocolDetails({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {complaint.services.map((service: any) => (
+            {complaint.services.map((service) => (
               <TableRow key={service.name}>
                 <TableCell>
                   <div className="flex items-center gap-2">
@@ -211,8 +213,8 @@ export default function ProtocolDetails({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {complaint.availableDeterminants.map((priority: any) =>
-                priority.determinants.map((determinant: any) => (
+              {complaint.availableDeterminants.map((priority) =>
+                priority.determinants.map((determinant) => (
                   <TableRow key={determinant.code}>
                     <TableCell>
                       <Badge
@@ -253,7 +255,7 @@ export default function ProtocolDetails({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {uniqueSuffixes.map((subCode: any) => (
+              {uniqueSuffixes.map((subCode) => (
                 <TableRow key={subCode.code + subCode.text}>
                   <TableCell>
                     <Badge variant="outline">{subCode.code}</Badge>

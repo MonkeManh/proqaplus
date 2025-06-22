@@ -5,8 +5,17 @@ import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { formatQuestionText, isPatientDependent, isAnswerDependent } from "@/lib/protocol-helpers"
 import { motion } from "framer-motion"
+import { IEMSQuestions } from "@/models/interfaces/complaints/ems/IEMSComplaint"
+import { IFireQuestions } from "@/models/interfaces/complaints/fire/IFireComplaint"
+import { IPoliceQuestions } from "@/models/interfaces/complaints/police/IPoliceComplaint"
+import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData"
+import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData"
+import { DependencyResult as EMSDependencyResult } from "@/models/interfaces/complaints/ems/IEMSAnswer"
+import { DependencyResult as FireDependencyResult } from "@/models/interfaces/complaints/fire/IFireComplaint"
+import { DependencyResult as PoliceDependencyResult } from "@/models/interfaces/complaints/police/IPoliceComplaint"
 
-interface IEMSAnswer {
+// Union type for all possible answer types
+type UnifiedAnswer = {
   answer: string
   display: string
   continue?: boolean
@@ -14,24 +23,21 @@ interface IEMSAnswer {
   override?: boolean
   end?: boolean
   input?: boolean
+  vehicleInput?: boolean
+  personInput?: boolean
   goto?: number
   updateSubCode?: string
-  dependency?: any
-  preRenderInstructions?: any
   send?: boolean
-}
-
-interface Question {
-  text: any
-  questionType: string
-  answers: IEMSAnswer[]
-  preRenderInstructions?: any
-  isConscious?: boolean
-  omitQuestion?: boolean
+  dependency?: 
+    | ((patient?: IPatientData, answers?: IAnswerData[]) => EMSDependencyResult | undefined)
+    | ((answers: IAnswerData[]) => FireDependencyResult | PoliceDependencyResult | undefined)
+  preRenderInstructions?: 
+    | ((patient?: IPatientData) => boolean)
+    | ((answers?: IAnswerData[], currentCode?: string) => boolean)
 }
 
 interface QuestionsAccordionProps {
-  questions: Question[]
+  questions: IEMSQuestions[] | IFireQuestions[] | IPoliceQuestions[]
 }
 
 export function QuestionsAccordion({ questions }: QuestionsAccordionProps) {
@@ -76,7 +82,7 @@ export function QuestionsAccordion({ questions }: QuestionsAccordionProps) {
 }
 
 interface QuestionDetailsProps {
-  question: Question
+  question: IEMSQuestions | IFireQuestions | IPoliceQuestions
 }
 
 function QuestionDetails({ question }: QuestionDetailsProps) {
@@ -122,7 +128,7 @@ function QuestionDetails({ question }: QuestionDetailsProps) {
 }
 
 interface AnswerItemProps {
-  answer: IEMSAnswer
+  answer: UnifiedAnswer
 }
 
 function AnswerItem({ answer }: AnswerItemProps) {
@@ -165,6 +171,18 @@ function AnswerItem({ answer }: AnswerItemProps) {
           {answer.input && (
             <Badge className="ml-2" variant="outline">
               Input Required
+            </Badge>
+          )}
+
+          {answer.personInput && (
+            <Badge className="ml-2" variant="outline">
+              Person Input Required
+            </Badge>
+          )}
+
+          {answer.vehicleInput && (
+            <Badge className="ml-2" variant="outline">
+              Vehicle Input Required
             </Badge>
           )}
         </div>

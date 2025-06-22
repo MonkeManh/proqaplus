@@ -6,9 +6,12 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import ProtocolDetails from "./protocol-details"
 import { motion, AnimatePresence } from "framer-motion"
+import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint"
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint"
+import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint"
 
 interface ProtocolCardProps {
-  complaint: any
+  complaint: IEMSComplaint | IFireComplaint | IPoliceComplaint
   type: "EMS" | "Fire" | "Police"
   isExpanded: boolean
   setExpandedProtocol: (protocol: string | null) => void

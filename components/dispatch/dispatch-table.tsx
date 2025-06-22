@@ -32,10 +32,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Checkbox } from "../ui/checkbox";
 import CreateFireUnitDialog from "./create-fire-unit";
 import LoadingState from "../loading-state";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
 export default function DispatchTable() {
   const [units, setUnits] = useState<IFireUnitData[]>([]);
-  const [preferences, setPreferences] = useState<any>(null);
+  const [preferences, setPreferences] = useState<IPreferences>({
+    advancedMode: false,
+    soundEffects: false,
+  });
   const [filteredUnits, setFilteredUnits] = useState<IFireUnitData[]>([]);
   const [assignmentFilter, setAssignmentFilter] = useState<string>("all");
   const [unitTypeFilter, setUnitTypeFilter] = useState<string>("all");
@@ -72,7 +76,7 @@ export default function DispatchTable() {
     const preferences = localStorage.getItem("PREFERENCES");
     if (!preferences) return null;
 
-    const parsedPreferences = JSON.parse(preferences);
+    const parsedPreferences = JSON.parse(preferences) as IPreferences;
     setPreferences(parsedPreferences);
   };
 

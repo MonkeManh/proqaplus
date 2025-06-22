@@ -37,7 +37,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
     other: "",
   }]);
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
@@ -124,8 +124,9 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.color}
                     onChange={(e) => updateVehicle(index, 'color', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Vehicle color"
+                    autoFocus={index === 0}
                   />
                 </div>
                 <div>
@@ -133,7 +134,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.year}
                     onChange={(e) => updateVehicle(index, 'year', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Year"
                   />
                 </div>
@@ -142,9 +143,8 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.make}
                     onChange={(e) => updateVehicle(index, 'make', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Vehicle make"
-                    autoFocus={index === 0}
                   />
                 </div>
                 <div>
@@ -152,7 +152,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.model}
                     onChange={(e) => updateVehicle(index, 'model', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Vehicle model"
                   />
                 </div>
@@ -162,7 +162,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                     type="number"
                     value={vehicle.occupied}
                     onChange={(e) => updateVehicle(index, 'occupied', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Number of occupants"
                   />
                 </div>
@@ -171,7 +171,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.licensePlate}
                     onChange={(e) => updateVehicle(index, 'licensePlate', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="License plate"
                   />
                 </div>
@@ -180,7 +180,7 @@ export function VehicleInputModal({ isOpen, onClose, onSubmit, title }: VehicleI
                   <Input
                     value={vehicle.other}
                     onChange={(e) => updateVehicle(index, 'other', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     placeholder="Additional details"
                   />
                 </div>

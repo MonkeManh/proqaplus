@@ -1,10 +1,10 @@
-import { JSX } from "react";
+import { JSX, ReactNode } from "react";
 import { IPatientData } from "./IPatientData";
 import { DependencyResult } from "./IEMSAnswer";
 import { IAnswerData } from "../IAnswerData";
 
 export interface IEMSQuestions {
-    text: JSX.Element;
+    text: ReactNode;
     questionType: 'input' | 'select' | 'hybrid-select' | 'description';
     preRenderInstructions?: (patient?: IPatientData) => boolean;
     isConscious?: boolean;

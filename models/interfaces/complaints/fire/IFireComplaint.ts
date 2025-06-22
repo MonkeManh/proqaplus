@@ -76,7 +76,7 @@ export interface IFireAnswer {
   end?: boolean;
   input?: boolean;
   goto?: number;
-  updateSubType?: string;
+  updateSubCode?: string;
   dependency?: DependencyFunction;
   preRenderInstructions?: (answers: IAnswerData[], currentCode?: string) => boolean;
   send?: boolean;
