@@ -4,7 +4,7 @@ import { emsComplaints } from "@/data/protocols/emsProtocols";
 import { emsPlans } from "@/data/plans/emsPlans";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -69,14 +69,13 @@ export default function EMSDeterminantSelection({
     return plan?.incidentType || `Plan ${planId}`;
   };
 
-  const handleSelectDeterminant = (
-    code: string,
-    plan: number,
-    text: string
-  ) => {
-    setSelectedCode(code);
-    onSelect(code, plan, text);
-  };
+  const handleSelectDeterminant = useCallback(
+    (code: string, plan: number, text: string) => {
+      setSelectedCode(code);
+      onSelect(code, plan, text);
+    },
+    [onSelect]
+  );
 
   useEffect(() => {
     const foundComplaint = emsComplaints.find(

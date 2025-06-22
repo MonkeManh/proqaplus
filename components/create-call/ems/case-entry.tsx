@@ -67,16 +67,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue }: CaseEntryProps) {
-  const [_data, setData] = useState<FormValues>({
-    patientProximity: "Yes",
-    patientCount: 1,
-    patientAge: 0,
-    ageUnit: "Years",
-    gender: "Unknown",
-    isConscious: "Unknown",
-    isBreathing: "Unknown",
-    chiefComplaint: "",
-  });
   const [isFormValid, setIsFormValid] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const callerType = useRef<HTMLButtonElement>(null);
@@ -240,8 +230,6 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       isConscious: data.isConscious,
       isBreathing: data.isBreathing,
     };
-
-    setData(data);
 
     localStorage.setItem("PATIENT_DATA", JSON.stringify(patientData));
 

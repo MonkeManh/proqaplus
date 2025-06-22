@@ -25,16 +25,6 @@ export default function EMSCallPage() {
     callerText: "",
     service: "EMS",
   });
-  const [emsData, setEMSData] = useState<IEMSData>({
-    patientProximity: "Yes",
-    patientCount: 1,
-    patientAge: 0,
-    ageUnit: "Years",
-    gender: "Unknown",
-    isConscious: "Unknown",
-    isBreathing: "Unknown",
-    chiefComplaint: "",
-  });
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedComplaint, setSelectedComplaint] = useState<string>("");
   const [recommendedCode, setRecommendedCode] = useState<string>("");
@@ -53,7 +43,6 @@ export default function EMSCallPage() {
     data: IEMSData,
     skipQuestions?: boolean
   ) => {
-    setEMSData(data);
     setSelectedComplaint(complaintName);
     return setCurrentStep(skipQuestions ? 3 : 2);
   };
@@ -191,7 +180,6 @@ export default function EMSCallPage() {
 
         {currentStep === 2 && (
           <EmsProQA
-            emsData={emsData}
             complaintName={selectedComplaint}
             patientData={getPatientData()}
             onComplete={handleCompleteProQA}
