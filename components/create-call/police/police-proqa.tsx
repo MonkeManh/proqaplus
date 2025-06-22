@@ -9,7 +9,7 @@ import {
   evaluateFireDependencies,
   evaluateFirePreRenderInstructions,
 } from "@/lib/utils/evaluators";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { InputModal } from "@/components/modals/input-modal";
 import { VehicleInputModal } from "@/components/modals/vehicle-input-modal";
 import { PersonInputModal } from "@/components/modals/person-input-modal";
@@ -17,11 +17,30 @@ import { IPoliceData } from "@/models/interfaces/complaints/police/IPoliceData";
 import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint";
 
 interface PoliceProQAProps {
-  policeData: IPoliceData;
+  policeData?: IPoliceData;
   complaintName: string;
   onComplete: (code: string, baseCode?: string, subType?: string) => void;
   onBack: () => void;
   onSwitchProtocol: (protocol: number) => void;
+}
+
+interface ProQAAnswer {
+  question: string;
+  defaultQuestion: string;
+  defaultAnswer: string;
+  answer: string;
+  questionIndex: number;
+  omit: boolean;
+  timestamp: string;
+}
+
+interface QuestionState {
+  questionIndex: number;
+  code: string;
+  subCode: string;
+  plan: number;
+  isCodeOverridden: boolean;
+  answersLength: number;
 }
 
 const getPriorityLevel = (code: string): number => {
@@ -63,8 +82,39 @@ const findLowestPriorityDeterminant = (complaint: IPoliceComplaint): string => {
   return lowestCode;
 };
 
+const processQuestionText = (text: React.ReactNode): string => {
+  if (typeof text === "string") return text;
+  if (React.isValidElement(text)) {
+    let content = "";
+    const element = text as React.ReactElement<{
+      children?: React.ReactNode;
+    }>;
+
+    if (element.props.children) {
+      React.Children.forEach(
+        element.props.children,
+        (child: React.ReactNode) => {
+          if (typeof child === "string") {
+            content += child;
+          } else if (React.isValidElement(child)) {
+            content += processQuestionText(child);
+          }
+        }
+      );
+    }
+    return content;
+  }
+  return "";
+};
+
+const isHigherPriority = (newCode: string, currentCode: string): boolean => {
+  if (!currentCode) return true;
+  const currentPriority = getPriorityLevel(currentCode);
+  const newPriority = getPriorityLevel(newCode);
+  return newPriority > currentPriority;
+};
+
 export default function PoliceProQA({
-  policeData,
   complaintName,
   onComplete,
   onBack,
@@ -80,7 +130,7 @@ export default function PoliceProQA({
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [isCodeOverridden, setIsCodeOverridden] = useState<boolean>(false);
   const [shouldComplete, setShouldComplete] = useState<boolean>(false);
-  const [previousAnswers, setPreviousAnswers] = useState<any[]>([]);
+  const [previousAnswers, setPreviousAnswers] = useState<ProQAAnswer[]>([]);
   const [currentSubCode, setCurrentSubCode] = useState<string>("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
   const [isVehicleModalOpen, setIsVehicleModalOpen] = useState(false);
@@ -88,7 +138,311 @@ export default function PoliceProQA({
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
+  const [questionStates, setQuestionStates] = useState<QuestionState[]>([]);
   const answersRef = useRef<HTMLDivElement>(null);
+
+  const saveProQAState = useCallback(
+    (answers: ProQAAnswer[]) => {
+      const proqaState = {
+        complaint: complaintName,
+        currentQuestion: currentQuestionIndex,
+        selectedAnswers: answers,
+        currentCode,
+        currentSubCode,
+        currentPlan,
+        determinant: currentCode
+          ? currentSubCode
+            ? `${currentCode}${currentSubCode}`
+            : currentCode
+          : "DEFAULT",
+        protocol: complaint?.name,
+        startTime:
+          localStorage.getItem("DISPATCH_PROQA_START") ||
+          new Date().toISOString(),
+      };
+
+      localStorage.setItem("POLICE_PROQA_ANSWERS", JSON.stringify(answers));
+      localStorage.setItem("POLICE_PROQA_DATA", JSON.stringify(proqaState));
+    },
+    [
+      complaintName,
+      currentCode,
+      currentQuestionIndex,
+      currentPlan,
+      currentSubCode,
+      complaint?.name,
+    ]
+  );
+
+  const moveToNextQuestion = useCallback(() => {
+    if (!complaint) return;
+
+    const nextIndex = currentQuestionIndex + 1;
+
+    if (nextIndex >= complaint.questions.length) {
+      setShouldComplete(true);
+      localStorage.removeItem("POLICE_PROQA_DATA");
+      return;
+    }
+
+    setCurrentQuestionIndex(nextIndex);
+    setSelectedAnswerIndex(null);
+    setHoverAnswerIndex(0);
+  }, [complaint, currentQuestionIndex]);
+
+  const shouldRenderCurrentQuestion = () => {
+    if (!complaint) return false;
+
+    const currentQuestion = complaint.questions[currentQuestionIndex];
+    if (!currentQuestion) return false;
+
+    if (currentQuestion.preRenderInstructions) {
+      return evaluateFirePreRenderInstructions(
+        currentQuestion.preRenderInstructions,
+        previousAnswers,
+        currentCode
+      );
+    }
+    return true;
+  };
+
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      const previousIndex = currentQuestionIndex - 1;
+
+      // Get the state from before the current question was answered
+      const previousState = questionStates[currentQuestionIndex];
+
+      if (previousState) {
+        // Restore the previous state
+        setCurrentCode(previousState.code);
+        setCurrentSubCode(previousState.subCode);
+        setCurrentPlan(previousState.plan);
+        setIsCodeOverridden(previousState.isCodeOverridden);
+
+        // Remove answers that came after the previous question
+        const filteredAnswers = previousAnswers.filter(
+          (answer) => answer.questionIndex < currentQuestionIndex
+        );
+        setPreviousAnswers(filteredAnswers);
+      }
+
+      // Move to previous question
+      setCurrentQuestionIndex(previousIndex);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+
+      // Update stored state
+      saveProQAState(
+        previousAnswers.filter(
+          (answer) => answer.questionIndex < currentQuestionIndex
+        )
+      );
+    } else {
+      // Go back to case entry
+      onBack();
+    }
+  };
+
+  const handleAnswerSelect = useCallback(
+    (
+      answerIndex: number,
+      inputValue?: string,
+      nextQuestion: boolean = true
+    ) => {
+      if (!complaint) return;
+
+      const currentQuestion = complaint.questions[currentQuestionIndex];
+      const selectedAnswer = currentQuestion?.answers[answerIndex];
+
+      if (!currentQuestion || !selectedAnswer) return;
+
+      if (selectedAnswer.goto !== undefined) {
+        // Clear all state and storage
+        localStorage.removeItem("POLICE_PROQA_DATA");
+        localStorage.removeItem("POLICE_PROQA_ANSWERS");
+        setCurrentQuestionIndex(0);
+        setSelectedAnswerIndex(null);
+        setHoverAnswerIndex(0);
+        setCurrentCode("");
+        setCurrentPlan(0);
+        setIsCodeOverridden(false);
+        setShouldComplete(false);
+        setPreviousAnswers([]);
+        setCurrentSubCode("");
+        setQuestionStates([]);
+
+        // Switch to new protocol
+        if (onSwitchProtocol) {
+          onSwitchProtocol(selectedAnswer.goto);
+        }
+        return;
+      }
+
+      // Handle special input types first - early return to prevent state updates
+      if (selectedAnswer.vehicleInput && !inputValue) {
+        setIsVehicleModalOpen(true);
+        setPendingAnswerIndex(answerIndex);
+        return;
+      }
+
+      if (selectedAnswer.personInput && !inputValue) {
+        setIsPersonModalOpen(true);
+        setPendingAnswerIndex(answerIndex);
+        return;
+      }
+
+      // Set selected answer index after confirming we're not showing a modal
+      setSelectedAnswerIndex(answerIndex);
+
+      if (selectedAnswer.input && !inputValue) {
+        setIsInputModalOpen(true);
+        setPendingAnswerIndex(answerIndex);
+        return;
+      }
+
+      // Modify the display text based on the input type
+      let displayText = selectedAnswer.display;
+      if (inputValue) {
+        if (selectedAnswer.vehicleInput) {
+          displayText = selectedAnswer.display.replace("{vehicle}", inputValue);
+        } else if (selectedAnswer.personInput) {
+          displayText = selectedAnswer.display.replace("{person}", inputValue);
+        } else {
+          displayText = selectedAnswer.display.replace("{input}", inputValue);
+        }
+      } else {
+        displayText = selectedAnswer.display.replace(
+          "{input}",
+          selectedAnswer.answer
+        );
+      }
+
+      const currentState = {
+        questionIndex: currentQuestionIndex,
+        code: currentCode,
+        subCode: currentSubCode,
+        plan: currentPlan,
+        isCodeOverridden: isCodeOverridden,
+        answersLength: previousAnswers.length,
+      };
+
+      const rawQuestionText = processQuestionText(currentQuestion.text);
+
+      const newAnswer = {
+        question: rawQuestionText,
+        defaultQuestion: rawQuestionText,
+        defaultAnswer: selectedAnswer.answer,
+        answer: displayText,
+        questionIndex: currentQuestionIndex,
+        omit: currentQuestion.omitQuestion || false,
+        timestamp: new Date().toISOString(),
+      };
+
+      const updatedAnswers = [...previousAnswers];
+      const existingIndex = updatedAnswers.findIndex(
+        (ans) => ans.questionIndex === currentQuestionIndex
+      );
+      if (existingIndex >= 0) {
+        updatedAnswers[existingIndex] = newAnswer;
+      } else {
+        updatedAnswers.push(newAnswer);
+      }
+      setPreviousAnswers(updatedAnswers);
+
+      if (selectedAnswer.updateSubCode) {
+        setCurrentSubCode(selectedAnswer.updateSubCode);
+      }
+
+      if (selectedAnswer.dependency) {
+        console.log("Checking dependency with answers:", previousAnswers);
+        const dependencyResult = evaluateFireDependencies(
+          selectedAnswer.dependency,
+          previousAnswers
+        );
+        if (dependencyResult) {
+          if (dependencyResult.goto !== undefined) {
+            localStorage.removeItem("POLICE_PROQA_DATA");
+            localStorage.removeItem("POLICE_PROQA_ANSWERS");
+            setCurrentQuestionIndex(0);
+            setSelectedAnswerIndex(null);
+            setHoverAnswerIndex(0);
+            setCurrentCode("");
+            setCurrentPlan(0);
+            setIsCodeOverridden(false);
+            setShouldComplete(false);
+            setPreviousAnswers([]);
+            setCurrentSubCode("");
+
+            // Switch to new protocol
+            if (onSwitchProtocol) {
+              onSwitchProtocol(dependencyResult.goto);
+            }
+            return;
+          }
+          if (dependencyResult.code) {
+            setCurrentCode(dependencyResult.code);
+          }
+          if (dependencyResult.subCode) {
+            setCurrentSubCode(dependencyResult.subCode);
+          }
+          if (dependencyResult.plan) {
+            setCurrentPlan(dependencyResult.plan);
+          }
+          if (dependencyResult.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      if (selectedAnswer.updateCode && !isCodeOverridden) {
+        // Only update code if it's higher priority or has override
+        if (
+          selectedAnswer.override ||
+          isHigherPriority(selectedAnswer.updateCode, currentCode)
+        ) {
+          setCurrentCode(selectedAnswer.updateCode);
+          if (selectedAnswer.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      // Store the state after changes for potential rollback
+      const updatedStates = [...questionStates];
+      updatedStates[currentQuestionIndex] = currentState;
+      setQuestionStates(updatedStates);
+
+      saveProQAState(updatedAnswers);
+
+      setSelectedAnswerIndex(answerIndex);
+
+      // End questioning immediately if end: true
+      if (selectedAnswer.end) {
+        setShouldComplete(true);
+        localStorage.removeItem("POLICE_PROQA_DATA");
+        return;
+      }
+
+      // Only move to next question if not ending and continue is true or nextQuestion is true
+      if ((selectedAnswer.continue || nextQuestion) && !selectedAnswer.end) {
+        moveToNextQuestion();
+      }
+    },
+    [
+      complaint,
+      currentQuestionIndex,
+      previousAnswers,
+      currentCode,
+      currentSubCode,
+      currentPlan,
+      isCodeOverridden,
+      questionStates,
+      onSwitchProtocol,
+      moveToNextQuestion,
+      saveProQAState,
+    ]
+  );
 
   useEffect(() => {
     const savedState = localStorage.getItem("POLICE_PROQA_DATA");
@@ -180,7 +534,13 @@ export default function PoliceProQA({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [complaint, currentQuestionIndex, hoverAnswerIndex, isInputModalOpen]);
+  }, [
+    complaint,
+    currentQuestionIndex,
+    hoverAnswerIndex,
+    isInputModalOpen,
+    handleAnswerSelect,
+  ]);
 
   useEffect(() => {
     if (answersRef.current) {
@@ -193,251 +553,6 @@ export default function PoliceProQA({
       }
     }
   }, [hoverAnswerIndex]);
-
-  const processQuestionText = (text: React.ReactNode): string => {
-    if (typeof text === "string") return text;
-    if (React.isValidElement(text)) {
-      let content = "";
-      const element = text as React.ReactElement<{
-        children?: React.ReactNode;
-      }>;
-
-      if (element.props.children) {
-        React.Children.forEach(
-          element.props.children,
-          (child: React.ReactNode) => {
-            if (typeof child === "string") {
-              content += child;
-            } else if (React.isValidElement(child)) {
-              content += processQuestionText(child);
-            }
-          }
-        );
-      }
-      return content;
-    }
-    return "";
-  };
-
-  const isHigherPriority = (newCode: string, currentCode: string): boolean => {
-    if (!currentCode) return true;
-    const currentPriority = getPriorityLevel(currentCode);
-    const newPriority = getPriorityLevel(newCode);
-    return newPriority > currentPriority;
-  };
-
-  const handleAnswerSelect = (
-    answerIndex: number,
-    inputValue?: string,
-    nextQuestion: boolean = true
-  ) => {
-    if (!complaint) return;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    const selectedAnswer = currentQuestion?.answers[answerIndex];
-
-    if (!currentQuestion || !selectedAnswer) return;
-
-    // Handle special input types first - early return to prevent state updates
-    if (selectedAnswer.vehicleInput && !inputValue) {
-      setIsVehicleModalOpen(true);
-      setPendingAnswerIndex(answerIndex);
-      return;
-    }
-
-    if (selectedAnswer.personInput && !inputValue) {
-      setIsPersonModalOpen(true);
-      setPendingAnswerIndex(answerIndex);
-      return;
-    }
-
-    // Set selected answer index after confirming we're not showing a modal
-    setSelectedAnswerIndex(answerIndex);
-
-    if (selectedAnswer.input && !inputValue) {
-      setIsInputModalOpen(true);
-      setPendingAnswerIndex(answerIndex);
-      return;
-    }
-
-    // Modify the display text based on the input type
-    let displayText = selectedAnswer.display;
-    if (inputValue) {
-      if (selectedAnswer.vehicleInput) {
-        displayText = selectedAnswer.display.replace("{vehicle}", inputValue);
-      } else if (selectedAnswer.personInput) {
-        displayText = selectedAnswer.display.replace("{person}", inputValue);
-      } else {
-        displayText = selectedAnswer.display.replace("{input}", inputValue);
-      }
-    } else {
-      displayText = selectedAnswer.display.replace(
-        "{input}",
-        selectedAnswer.answer
-      );
-    }
-
-    const rawQuestionText = processQuestionText(currentQuestion.text);
-
-    const newAnswer = {
-      question: rawQuestionText,
-      defaultQuestion: rawQuestionText,
-      defaultAnswer: selectedAnswer.answer,
-      answer: displayText,
-      questionIndex: currentQuestionIndex,
-      omit: currentQuestion.omitQuestion || false,
-      timestamp: new Date().toISOString(),
-    };
-
-    const updatedAnswers = [...previousAnswers];
-    const existingIndex = updatedAnswers.findIndex(
-      (ans) => ans.questionIndex === currentQuestionIndex
-    );
-    if (existingIndex >= 0) {
-      updatedAnswers[existingIndex] = newAnswer;
-    } else {
-      updatedAnswers.push(newAnswer);
-    }
-    setPreviousAnswers(updatedAnswers);
-
-    if (selectedAnswer.updateSubCode) {
-      setCurrentSubCode(selectedAnswer.updateSubCode);
-    }
-
-    if (selectedAnswer.dependency) {
-      console.log("Checking dependency with answers:", previousAnswers);
-      const dependencyResult = evaluateFireDependencies(
-        selectedAnswer.dependency,
-        previousAnswers
-      );
-      console.log("Dependency result:", dependencyResult); // Add debug
-      if (dependencyResult) {
-        if (dependencyResult.goto !== undefined) {
-          localStorage.removeItem("POLICE_PROQA_DATA");
-          localStorage.removeItem("POLICE_PROQA_ANSWERS");
-          setCurrentQuestionIndex(0);
-          setSelectedAnswerIndex(null);
-          setHoverAnswerIndex(0);
-          setCurrentCode("");
-          setCurrentPlan(0);
-          setIsCodeOverridden(false);
-          setShouldComplete(false);
-          setPreviousAnswers([]);
-          setCurrentSubCode("");
-
-          // Switch to new protocol
-          if (onSwitchProtocol) {
-            onSwitchProtocol(dependencyResult.goto);
-          }
-          return;
-        }
-        if (dependencyResult.code) {
-          setCurrentCode(dependencyResult.code);
-        }
-        if (dependencyResult.subCode) {
-          setCurrentSubCode(dependencyResult.subCode);
-        }
-        if (dependencyResult.plan) {
-          setCurrentPlan(dependencyResult.plan);
-        }
-        if (dependencyResult.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    if (selectedAnswer.updateCode && !isCodeOverridden) {
-      // Only update code if it's higher priority or has override
-      if (
-        selectedAnswer.override ||
-        isHigherPriority(selectedAnswer.updateCode, currentCode)
-      ) {
-        setCurrentCode(selectedAnswer.updateCode);
-        if (selectedAnswer.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    saveProQAState(updatedAnswers);
-
-    setSelectedAnswerIndex(answerIndex);
-
-    // End questioning immediately if end: true
-    if (selectedAnswer.end) {
-      setShouldComplete(true);
-      localStorage.removeItem("POLICE_PROQA_DATA");
-      return;
-    }
-
-    // Only move to next question if not ending and continue is true or nextQuestion is true
-    if ((selectedAnswer.continue || nextQuestion) && !selectedAnswer.end) {
-      moveToNextQuestion();
-    }
-  };
-
-  const saveProQAState = (answers: any[]) => {
-    const proqaState = {
-      complaint: complaintName,
-      currentQuestion: currentQuestionIndex,
-      selectedAnswers: answers,
-      currentCode,
-      currentSubCode,
-      currentPlan,
-      determinant: currentCode
-        ? currentSubCode
-          ? `${currentCode}${currentSubCode}`
-          : currentCode
-        : "DEFAULT",
-      protocol: complaint?.name,
-      startTime:
-        localStorage.getItem("DISPATCH_PROQA_START") ||
-        new Date().toISOString(),
-    };
-
-    localStorage.setItem("POLICE_PROQA_ANSWERS", JSON.stringify(answers));
-    localStorage.setItem("POLICE_PROQA_DATA", JSON.stringify(proqaState));
-  };
-
-  const moveToNextQuestion = () => {
-    if (!complaint) return;
-
-    let nextIndex = currentQuestionIndex + 1;
-
-    if (nextIndex >= complaint.questions.length) {
-      setShouldComplete(true);
-      localStorage.removeItem("POLICE_PROQA_DATA");
-      return;
-    }
-
-    setCurrentQuestionIndex(nextIndex);
-    setSelectedAnswerIndex(null);
-    setHoverAnswerIndex(0);
-  };
-
-  const shouldRenderCurrentQuestion = () => {
-    if (!complaint) return false;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    if (!currentQuestion) return false;
-
-    if (currentQuestion.preRenderInstructions) {
-      return evaluateFirePreRenderInstructions(
-        currentQuestion.preRenderInstructions,
-        previousAnswers,
-        currentCode
-      );
-    }
-    return true;
-  };
-
-  const handleBackClick = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedAnswerIndex(null);
-      setHoverAnswerIndex(0);
-    }
-  };
 
   if (!complaint) {
     return null;

@@ -14,10 +14,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ICallData } from "@/models/interfaces/ICallData";
 import { IPoliceData } from "@/models/interfaces/complaints/police/IPoliceData";
 
 interface CaseEntryProps {
@@ -38,7 +37,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
-  const [storedData, setStoredData] = useState<ICallData | null>(null);
   const chiefComplaint = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const complaintOptions = getPoliceComplaintOptions();
@@ -47,13 +45,6 @@ export default function CaseEntry({ onContinue, handleBack }: CaseEntryProps) {
     value: `${c.protocol} - ${c.value}`,
     label: `${c.protocol} - ${c.value}`,
   }));
-
-  useEffect(() => {
-    const stored = localStorage.getItem("NEW_CALL");
-    if (stored) {
-      setStoredData(JSON.parse(stored) as ICallData);
-    }
-  }, []);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
