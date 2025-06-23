@@ -8,13 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { emsPlans } from "@/data/plans/emsPlans";
 import { getPostal } from "@/data/postals";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { toast } from "sonner";
 
 interface CallData {
   buildingInfo: string;
   callerNumber: string;
+  callerName: string;
   code: string;
   codeText: string;
   complaint: string;
@@ -45,9 +47,11 @@ interface CallData {
   street: string;
   tandem?: boolean;
   timestamp: string;
+  notSecure?: boolean;
   isOverriden?: boolean;
   units: string[];
   reconfigured?: string;
+  fromPolice?: boolean;
 }
 
 export default function EMSSummaryPage() {
@@ -55,7 +59,10 @@ export default function EMSSummaryPage() {
   const [summaryText, setSummaryText] = useState("");
   const router = useRouter();
 
-  const UNIT_TYPE_ORDER = ["Engine", "Truck", "Rescue", "Medic", "Chief"];
+  const UNIT_TYPE_ORDER = useMemo(
+    () => ["Engine", "Truck", "Rescue", "Medic", "Chief"],
+    []
+  );
 
   const isLawEnforcement = (unit: string) => {
     return (
@@ -65,57 +72,60 @@ export default function EMSSummaryPage() {
     );
   };
 
-  function sortFDUnits(units: string[], postal: string): string[] {
-    const postalData = getPostal(postal);
-    const runOrder = postalData?.fdRunOrder || [];
+  const sortFDUnits = useCallback(
+    (units: string[], postal: string): string[] => {
+      const postalData = getPostal(postal);
+      const runOrder = postalData?.fdRunOrder || [];
 
-    return units.sort((a, b) => {
-      // Check for law enforcement units first
-      const isLawA = isLawEnforcement(a);
-      const isLawB = isLawEnforcement(b);
-      if (isLawA && !isLawB) return 1;
-      if (!isLawA && isLawB) return -1;
-      if (isLawA && isLawB) return 0;
+      return units.sort((a, b) => {
+        // Check for law enforcement units first
+        const isLawA = isLawEnforcement(a);
+        const isLawB = isLawEnforcement(b);
+        if (isLawA && !isLawB) return 1;
+        if (!isLawA && isLawB) return -1;
+        if (isLawA && isLawB) return 0;
 
-      // Check if units are FD units (contain numbers or known unit types)
-      const isFDA =
-        UNIT_TYPE_ORDER.some((type) => a.includes(type)) || /\d+/.test(a);
-      const isFDB =
-        UNIT_TYPE_ORDER.some((type) => b.includes(type)) || /\d+/.test(b);
+        // Check if units are FD units (contain numbers or known unit types)
+        const isFDA =
+          UNIT_TYPE_ORDER.some((type) => a.includes(type)) || /\d+/.test(a);
+        const isFDB =
+          UNIT_TYPE_ORDER.some((type) => b.includes(type)) || /\d+/.test(b);
 
-      // If one is FD and other isn't, put non-FD at end
-      if (isFDA && !isFDB) return -1;
-      if (!isFDA && isFDB) return 1;
-      if (!isFDA && !isFDB) return 0;
+        // If one is FD and other isn't, put non-FD at end
+        if (isFDA && !isFDB) return -1;
+        if (!isFDA && isFDB) return 1;
+        if (!isFDA && !isFDB) return 0;
 
-      const stationA = a.match(/\d+/)?.[0] || "";
-      const stationB = b.match(/\d+/)?.[0] || "";
+        const stationA = a.match(/\d+/)?.[0] || "";
+        const stationB = b.match(/\d+/)?.[0] || "";
 
-      const orderA = runOrder.indexOf(stationA);
-      const orderB = runOrder.indexOf(stationB);
+        const orderA = runOrder.indexOf(stationA);
+        const orderB = runOrder.indexOf(stationB);
 
-      // If both stations are in the run order, sort by run order
-      if (orderA !== -1 && orderB !== -1) {
-        if (orderA !== orderB) {
-          return orderA - orderB;
+        // If both stations are in the run order, sort by run order
+        if (orderA !== -1 && orderB !== -1) {
+          if (orderA !== orderB) {
+            return orderA - orderB;
+          }
         }
-      }
 
-      if (orderA === -1 && orderB !== -1) return 1;
-      if (orderA !== -1 && orderB === -1) return -1;
+        if (orderA === -1 && orderB !== -1) return 1;
+        if (orderA !== -1 && orderB === -1) return -1;
 
-      const typeA = UNIT_TYPE_ORDER.findIndex((type) => a.includes(type));
-      const typeB = UNIT_TYPE_ORDER.findIndex((type) => b.includes(type));
+        const typeA = UNIT_TYPE_ORDER.findIndex((type) => a.includes(type));
+        const typeB = UNIT_TYPE_ORDER.findIndex((type) => b.includes(type));
 
-      if (typeA !== -1 && typeB !== -1) {
-        return typeA - typeB;
-      }
-      if (typeA === -1 && typeB !== -1) return 1;
-      if (typeA !== -1 && typeB === -1) return -1;
+        if (typeA !== -1 && typeB !== -1) {
+          return typeA - typeB;
+        }
+        if (typeA === -1 && typeB !== -1) return 1;
+        if (typeA !== -1 && typeB === -1) return -1;
 
-      return 0;
-    });
-  }
+        return 0;
+      });
+    },
+    [UNIT_TYPE_ORDER]
+  );
 
   useEffect(() => {
     const history = localStorage.getItem("DISPATCH_HISTORY");
@@ -134,12 +144,12 @@ export default function EMSSummaryPage() {
       const sortedUnits = dispatchData.units
         ? sortFDUnits([...dispatchData.units], dispatchData.postal)
         : [];
-        const township = getPostal(dispatchData.postal)?.twp
+      const township = getPostal(dispatchData.postal)?.twp;
       const text = [
         `Code: ${dispatchData.code}`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${township && `, ${township}`}${
-          dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""
-        }`,
+        `Location: ${dispatchData.postal} ${dispatchData.street}${
+          township ? `, ${township}` : ""
+        }${dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""}`,
         `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
           dispatchData.crossStreet2 || "N/A"
         }`,
@@ -148,7 +158,7 @@ export default function EMSSummaryPage() {
         `Problem: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
         `Caller Statement: ${dispatchData.callerStatement}`,
         "==============================",
-        "Scene Status: Secure",
+        `Scene Status: ${dispatchData?.notSecure ? "Not Secure" : "Secure"}`,
         "Scene Com: Not Established",
         "Channel: Fire Response",
         "Staging Location: N/A",
@@ -180,15 +190,15 @@ export default function EMSSummaryPage() {
             }`
           : "",
         dispatchData.reconfigured
-          ? `- Call reconfigured from ${dispatchData.reconfigured}`
+          ? `-- Call reconfigured from ${dispatchData.reconfigured}`
           : "",
 
         !dispatchData?.proqaAnswers || dispatchData?.isOverriden
-          ? "- ProQA Override"
+          ? "-- ProQA Override"
           : [
               ...(dispatchData.proqaAnswers || [])
-                .filter((qa: any) => !qa.omit)
-                .map((qa: any) => `- ${qa.answer}`),
+                .filter((qa) => !qa.omit)
+                .map((qa) => `-- ${qa.answer}`),
             ],
         `ProQA completed by: Dispatcher ${
           localStorage.getItem("CALLSIGN") || "UNKNOWN"
@@ -199,7 +209,7 @@ export default function EMSSummaryPage() {
         .join("\n");
       setSummaryText(text);
     }
-  }, [dispatchData]);
+  }, [dispatchData, sortFDUnits]);
 
   function getRecommendedUnits(planId: number) {
     const plan = emsPlans.find((p) => p.id === planId);
@@ -233,47 +243,54 @@ export default function EMSSummaryPage() {
     navigator.clipboard
       .writeText(summaryText)
       .then(() => {
+        const hasPolicetoAssign =
+          emsPlans.find((p) => p.id === dispatchData?.plan)?.sendPolice ===
+          true;
+
+        if (hasPolicetoAssign && !dispatchData.fromPolice) {
+          return handleContinue();
+        }
+
         toast.success("Case Created", {
           description: "Dispatch summary has been copied",
         });
-        const storedUnits = localStorage.getItem("FIRE_UNITS");
-        if (storedUnits) {
-          const units = JSON.parse(storedUnits);
-          const updatedUnits = units.map((unit: any) => {
-            if (dispatchData.units.includes(unit.name)) {
-              return { ...unit, status: "On Call" };
-            }
+        // const storedUnits = localStorage.getItem("FIRE_UNITS");
+        // if (storedUnits) {
+        //   const units = JSON.parse(storedUnits);
+        //   const updatedUnits = units.map((unit) => {
+        //     if (dispatchData.units.includes(unit.name)) {
+        //       return { ...unit, status: "On Call" };
+        //     }
 
-            const isUnitCrossStaffed = unit.crossStaffing?.some(
-              (staffedUnit: any) =>
-                dispatchData.units.includes(staffedUnit.name)
-            );
+        //     const isUnitCrossStaffed = unit.crossStaffing?.some(
+        //       (staffedUnit: any) =>
+        //         dispatchData.units.includes(staffedUnit.name)
+        //     );
 
-            if (isUnitCrossStaffed) {
-              return { ...unit, status: "Out of Service" };
-            }
+        //     if (isUnitCrossStaffed) {
+        //       return { ...unit, status: "Out of Service" };
+        //     }
 
-            return unit;
-          });
+        //     return unit;
+        //   });
 
-          localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
+        //   localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
+        // }
 
-          const preferences: any = localStorage.getItem("PREFERENCES");
-          const parsedPreferences = JSON.parse(preferences);
+        const preferences: IPreferences = JSON.parse(localStorage.getItem("PREFERENCES") || "{}");
 
-          if (parsedPreferences && parsedPreferences.soundEffects) {
-            const audio = new Audio("/Dispatch.mp3");
-            audio.play();
-            audio.volume = 0.5;
-          }
-
-          localStorage.removeItem("NEW_CALL");
-          localStorage.removeItem("EMS_DATA");
-
-          window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
-
-          router.push("/dispatch");
+        if (preferences && preferences.soundEffects) {
+          const audio = new Audio("/audio/Dispatch.mp3");
+          audio.play();
+          audio.volume = 0.5;
         }
+
+        localStorage.removeItem("NEW_CALL");
+        localStorage.removeItem("EMS_DATA");
+
+        window.dispatchEvent(new CustomEvent("dispatch-storage-update"));
+
+        router.push("/dispatch");
       })
       .catch((err) => {
         console.error("Failed to copy:", err);
@@ -286,34 +303,23 @@ export default function EMSSummaryPage() {
   function handleContinue() {
     navigator.clipboard.writeText(summaryText).then(() => {
       toast.success("Case Created", {
-        description: "Create fire call before starting the LEO call",
+        description: "Call created, creating dispatch for POLICE",
       });
 
-      const storedUnits = localStorage.getItem("FIRE_UNITS");
-      if (storedUnits) {
-        const units = JSON.parse(storedUnits);
-        if (!dispatchData) return;
-        const updatedUnits = units.map((unit: any) => {
-          if (dispatchData.units.includes(unit.name)) {
-            return { ...unit, status: "On Call" };
-          }
+      const newCall = {
+        postal: dispatchData?.postal || "",
+        buildingInfo: dispatchData?.buildingInfo || "",
+        street: dispatchData?.street || "",
+        crossStreet1: dispatchData?.crossStreet1 || "",
+        crossStreet2: dispatchData?.crossStreet2 || "",
+        callerNumber: dispatchData?.callerNumber || "",
+        callerStatement: dispatchData?.callerStatement || "",
+        service: "Police",
+        fromOther: true,
+      };
 
-          const isUnitCrossStaffed = dispatchData.units.some(
-            (dispatchedUnit: string) =>
-              unit.crossStaffing?.includes(dispatchedUnit)
-          );
-
-          if (isUnitCrossStaffed) {
-            return { ...unit, status: "Out of Service" };
-          }
-
-          return unit;
-        });
-
-        localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
-
-        router.push("/dispatch");
-      }
+      localStorage.setItem("NEW_CALL", JSON.stringify(newCall));
+      router.push("/create-call/police");
     });
   }
 

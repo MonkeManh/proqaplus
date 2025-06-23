@@ -9,46 +9,38 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { usePathname } from "next/navigation";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
-type Preferences = {
-  advancedMode: boolean;
-  soundEffects: boolean;
-};
-
-const defaultPreferences: Preferences = {
+const defaultPreferences: IPreferences = {
   advancedMode: false,
   soundEffects: true,
 };
 
 export function SettingsMenu() {
   const [preferences, setPreferences] =
-    useState<Preferences>(defaultPreferences);
+    useState<IPreferences>(defaultPreferences);
   const pathname = usePathname();
 
-  useEffect(() => {
-    loadPreferences();
-  }, []);
-
-  function loadPreferences() {
+  const loadPreferences = useCallback(() => {
     try {
       const rawPrefs = localStorage.getItem("PREFERENCES");
       if (!rawPrefs) {
         savePreferences(defaultPreferences);
         return;
       }
-      const loadedPrefs = JSON.parse(rawPrefs) as Preferences;
+      const loadedPrefs = JSON.parse(rawPrefs) as IPreferences;
       setPreferences(loadedPrefs);
     } catch (error) {
       console.error("Failed to load preferences:", error);
       savePreferences(defaultPreferences);
     }
-  }
+  }, []);
 
-  function savePreferences(prefs: Preferences) {
+  function savePreferences(prefs: IPreferences) {
     try {
       localStorage.setItem("PREFERENCES", JSON.stringify(prefs));
       setPreferences(prefs);
@@ -59,13 +51,17 @@ export function SettingsMenu() {
     }
   }
 
-  function changePreference(name: keyof Preferences, value: boolean) {
+  function changePreference(name: keyof IPreferences, value: boolean) {
     const updatedPreferences = {
       ...preferences,
       [name]: value,
     };
     savePreferences(updatedPreferences);
   }
+
+  useEffect(() => {
+    loadPreferences();
+  }, [loadPreferences]);
 
   if (pathname === "/" || pathname === "/about" || pathname === "/start") {
     return null;

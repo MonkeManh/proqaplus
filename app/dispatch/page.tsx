@@ -7,9 +7,13 @@ import { Phone, Settings } from "lucide-react";
 import DispatchTable from "@/components/dispatch/dispatch-table";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
 export default function DispatchPage() {
-  const [preferences, setPreferences] = useState<any>(null);
+  const [preferences, setPreferences] = useState<IPreferences>({
+    advancedMode: false,
+    soundEffects: true,
+  });
 
   const getPreferences = () => {
     const storedPreferences = localStorage.getItem("PREFERENCES");

@@ -138,11 +138,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 9,
@@ -154,6 +151,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 10,
@@ -180,6 +178,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 12,
@@ -198,15 +197,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
-      {
-        type: "Wildlife Ranger",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 13,
@@ -226,6 +218,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 14,
@@ -236,11 +229,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 15,
@@ -249,10 +239,6 @@ export const emsPlans: IResponsePlan[] = [
     units: [
       {
         type: "Transport (BLS)",
-        quantity: 1,
-      },
-      {
-        type: "Police Patrol",
         quantity: 1,
       },
     ],
@@ -270,11 +256,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (ALS)",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 17,
@@ -293,11 +276,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 18,
@@ -316,11 +296,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 19,
@@ -339,11 +316,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 20,
@@ -433,11 +407,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 26,
@@ -662,11 +633,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 37,
@@ -748,6 +716,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 40,
@@ -951,11 +920,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 48,
@@ -971,6 +937,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 49,
@@ -1016,6 +983,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 52,
@@ -1098,11 +1066,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 57,
@@ -1181,11 +1146,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 62,
@@ -1230,11 +1192,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 65,
@@ -1265,7 +1224,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 3,
       },
       {
-        type: "Air Rescue",
+        type: "Helo",
         quantity: 1,
       },
       {
@@ -1356,11 +1315,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 71,
@@ -1399,7 +1355,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1445,11 +1401,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
-        quantity: 1,
-      },
-      {
-        type: "Police Patrol",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1471,11 +1423,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 76,
@@ -1539,6 +1488,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 81,
@@ -1576,7 +1526,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1599,14 +1549,11 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
-        quantity: 1,
-      },
-      {
-        type: "Police Patrol",
+        type: "Helo",
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 85,
@@ -1626,7 +1573,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helo",
         quantity: 1,
       },
     ],
@@ -1649,14 +1596,11 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
       {
-        type: "Air Rescue",
+        type: "Helo",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 87,
@@ -1675,11 +1619,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 88,
@@ -2078,11 +2019,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 117,
@@ -2101,11 +2039,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 118,
@@ -2124,11 +2059,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 119,
@@ -2375,11 +2307,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (BLS)",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 132,
@@ -2394,11 +2323,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "Transport (ALS)",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 133,
@@ -2455,11 +2381,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 1,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 136,
@@ -2478,11 +2401,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 137,
@@ -2501,11 +2421,8 @@ export const emsPlans: IResponsePlan[] = [
         type: "EMS Officer",
         quantity: 1,
       },
-      {
-        type: "Police Patrol",
-        quantity: 2,
-      },
     ],
+    sendPolice: true,
   },
   {
     id: 138,
@@ -2554,5 +2471,1276 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-  }
+  },
+  {
+    id: 142,
+    name: "BLSU9",
+    incidentType: "PSYCH|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 143,
+    name: "BLSU9",
+    incidentType: "PSYCH|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 144,
+    name: "ALS1",
+    incidentType: "PSYCH|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 145,
+    name: "ALS1",
+    incidentType: "PSYCH|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 146,
+    name: "AL2D",
+    incidentType: "PSYCH|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 147,
+    name: "BLSR",
+    incidentType: "SICK|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 148,
+    name: "BLSU9",
+    incidentType: "SICK|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 149,
+    name: "ALS1",
+    incidentType: "SICK|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 150,
+    name: "ALS1",
+    incidentType: "DECLOC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 151,
+    name: "ALSR",
+    incidentType: "SICK|ALSR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 152,
+    name: "BLSU9",
+    incidentType: "SHOT|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 153,
+    name: "BLSU9",
+    incidentType: "TRAUMA|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 154,
+    name: "BLSU9",
+    incidentType: "STAB|w/PD|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 155,
+    name: "AL1D",
+    incidentType: "SHOT|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 156,
+    name: "AL1D",
+    incidentType: "TRAUMA|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 157,
+    name: "AL1D",
+    incidentType: "STAB|w/PD|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 158,
+    name: "AL2D",
+    incidentType: "CPRTRAUMA|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 159,
+    name: "AL2D",
+    incidentType: "CPRSHOT|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 160,
+    name: "AL2D",
+    incidentType: "CPRSTAB|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 3,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 161,
+    name: "AL2D",
+    incidentType: "SHOT|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 162,
+    name: "AL2D",
+    incidentType: "TRAUMA|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 163,
+    name: "AL2D",
+    incidentType: "STAB|w/PD|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 164,
+    name: "MLTP",
+    incidentType: "SHOT|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 165,
+    name: "MLTP",
+    incidentType: "TRAUMA|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 166,
+    name: "MLTP",
+    incidentType: "STAB|w/PD|MULT",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 167,
+    name: "BLSU9",
+    incidentType: "STROKE|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 168,
+    name: "MVCB",
+    incidentType: "MVC|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 169,
+    name: "PDC",
+    incidentType: "PropertyDamageCollision",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 170,
+    name: "MVCMCIB",
+    incidentType: "MVC|MULT|BLS",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 2,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 171,
+    name: "MVC1",
+    incidentType: "MVC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 172,
+    name: "MVCMCI1",
+    incidentType: "MVC|MULT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 173,
+    name: "MVC2",
+    incidentType: "MVC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 174,
+    name: "MVCMCI2",
+    incidentType: "MVC|MULT|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 175,
+    name: "HMFULL",
+    incidentType: "AIR|CRASH|LARGE",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Crash",
+        quantity: 2,
+      },
+      {
+        type: "Hazmat",
+        quantity: 2,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 176,
+    name: "TRC",
+    incidentType: "TRAIN|CRASH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 3,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 4,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 177,
+    name: "WTRALS2",
+    incidentType: "BOATCRASH",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Marine",
+        quantity: 2,
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 178,
+    name: "MVCBLDG1",
+    incidentType: "MVC|STRUC|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 2,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 179,
+    name: "MVCPC1",
+    incidentType: "MVC|CYCLE|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 1,
+      },
+      {
+        type: "Traffic",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 180,
+    name: "MVCMECH1",
+    incidentType: "MVC|MECH|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 181,
+    name: "MVCPC1",
+    incidentType: "MVC|PED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 182,
+    name: "MVCEJEC2",
+    incidentType: "MVC|EJEC|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 183,
+    name: "MVCROLL1",
+    incidentType: "MVC|ROLL|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 184,
+    name: "MVCMECH2",
+    incidentType: "MVC|MECH|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 2,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 185,
+    name: "WTR2RS",
+    incidentType: "VEH|SINKING|TRAP",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Swift Water",
+        quantity: 2,
+      },
+      {
+        type: "Rescue Boat",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 186,
+    name: "TRAT",
+    incidentType: "TRAIN|PED",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Helo",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 187,
+    name: "MVCHM1",
+    incidentType: "MVC|HM|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Hazmat",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+      {
+        type: "Traffic",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 188,
+    name: "MVCTRAP1",
+    incidentType: "MVC|TRAP|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 189,
+    name: "MVCMCI1",
+    incidentType: "MVC|TRAP|MULT|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Truck",
+        quantity: 1,
+      },
+      {
+        type: "Rescue",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+      {
+        type: "Chief",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 190,
+    name: "BLSU9",
+    incidentType: "INJURED|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 191,
+    name: "BLSR",
+    incidentType: "INJURED|ROUTINE",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 192,
+    name: "ALS1",
+    incidentType: "INJURED|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 193,
+    name: "AL2D",
+    incidentType: "INJURED|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 194,
+    name: "BLSU9",
+    incidentType: "FAINT|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 195,
+    name: "ALS1",
+    incidentType: "UNCON|ALS1",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 196,
+    name: "ALS2",
+    incidentType: "UNCON|ALS2",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 197,
+    name: "AL2D",
+    incidentType: "UNCON|INEFF",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 198,
+    name: "AL2D",
+    incidentType: "UNCON|CPR",
+    units: [
+      {
+        type: "Engine",
+        quantity: 1,
+      },
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+      {
+        type: "EMS Officer",
+        quantity: 1,
+      },
+    ],
+    sendPolice: true,
+  },
+  {
+    id: 199,
+    name: "BLSU9",
+    incidentType: "ONEDOWN|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 200,
+    name: "BLSM",
+    incidentType: "MedicalAlertAlarm",
+    units: [
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 201,
+    name: "BLS9",
+    incidentType: "TRANSPORT|BLS",
+    units: [
+      {
+        type: "Transport (BLS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 202,
+    name: "ALS1",
+    incidentType: "TRANSPORT|ALS1",
+    units: [
+      {
+        type: "Transport (ALS)",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    id: 203,
+    name: "ALS1",
+    incidentType: "CRITTRANSPORT|ALS1",
+    units: [
+      {
+        type: "Transport (ACLS)",
+        quantity: 1,
+      },
+    ],
+  },
 ];

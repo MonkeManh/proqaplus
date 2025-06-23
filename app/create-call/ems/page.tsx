@@ -21,18 +21,9 @@ export default function EMSCallPage() {
     crossStreet1: "",
     crossStreet2: "",
     callerNumber: "",
+    callerName: "",
     callerText: "",
     service: "EMS",
-  });
-  const [emsData, setEMSData] = useState<IEMSData>({
-    patientProximity: "Yes",
-    patientCount: 1,
-    patientAge: 0,
-    ageUnit: "Years",
-    gender: "Unknown",
-    isConscious: "Unknown",
-    isBreathing: "Unknown",
-    chiefComplaint: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedComplaint, setSelectedComplaint] = useState<string>("");
@@ -45,14 +36,13 @@ export default function EMSCallPage() {
     if (!callData) return router.push("/create-call");
     if (callData.service !== "EMS") return router.push("/create-call");
     setCallData(callData);
-  }, []);
+  }, [router]);
 
   const handleInitialContinue = (
     complaintName: string,
     data: IEMSData,
     skipQuestions?: boolean
   ) => {
-    setEMSData(data);
     setSelectedComplaint(complaintName);
     return setCurrentStep(skipQuestions ? 3 : 2);
   };
@@ -162,7 +152,7 @@ export default function EMSCallPage() {
         timestamp: new Date().toISOString(),
       };
       localStorage.setItem("PENDING_ASSIGN_EMS", JSON.stringify(finalCallData));
-      window.location.href = "/assign/ems";
+      router.push("/assign/ems");
     } else {
       const finalCallData = {
         ...callData,
@@ -178,7 +168,7 @@ export default function EMSCallPage() {
         dispatchTime: new Date().toISOString(),
       };
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
-      window.location.href = "/summary/ems";
+      router.push("/summary/ems");
     }
   };
 
@@ -190,7 +180,6 @@ export default function EMSCallPage() {
 
         {currentStep === 2 && (
           <EmsProQA
-            emsData={emsData}
             complaintName={selectedComplaint}
             patientData={getPatientData()}
             onComplete={handleCompleteProQA}

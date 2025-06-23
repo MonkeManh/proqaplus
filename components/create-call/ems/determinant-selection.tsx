@@ -4,7 +4,7 @@ import { emsComplaints } from "@/data/protocols/emsProtocols";
 import { emsPlans } from "@/data/plans/emsPlans";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -68,6 +68,14 @@ export default function EMSDeterminantSelection({
     const plan = emsPlans.find((plan: IResponsePlan) => plan.id === planId);
     return plan?.incidentType || `Plan ${planId}`;
   };
+
+  const handleSelectDeterminant = useCallback(
+    (code: string, plan: number, text: string) => {
+      setSelectedCode(code);
+      onSelect(code, plan, text);
+    },
+    [onSelect]
+  );
 
   useEffect(() => {
     const foundComplaint = emsComplaints.find(
@@ -149,7 +157,7 @@ export default function EMSDeterminantSelection({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [allDeterminants, focusedIndex]);
+  }, [allDeterminants, focusedIndex, handleSelectDeterminant]);
 
   useEffect(() => {
     if (determinantsRef.current) {
@@ -158,20 +166,29 @@ export default function EMSDeterminantSelection({
       if (determinants[focusedIndex]) {
         determinants[focusedIndex].scrollIntoView({
           behavior: "smooth",
-          block: "nearest",
+          block: "center",
         });
       }
     }
   }, [focusedIndex]);
 
-  const handleSelectDeterminant = (
-    code: string,
-    plan: number,
-    text: string
-  ) => {
-    setSelectedCode(code);
-    onSelect(code, plan, text);
-  };
+  // Add new useEffect for initial recommended code scroll
+  useEffect(() => {
+    if (determinantsRef.current && recommendedCode) {
+      setTimeout(() => {
+        const determinants = determinantsRef.current?.querySelectorAll(".determinant-item");
+        const recommendedIndex = Array.from(determinants || []).findIndex(
+          el => el.textContent?.includes(recommendedCode)
+        );
+        if (recommendedIndex >= 0 && determinants?.[recommendedIndex]) {
+          determinants[recommendedIndex].scrollIntoView({
+            behavior: "auto",
+            block: "center"
+          });
+        }
+      }, 100);
+    }
+  }, [recommendedCode, complaint]);
 
   if (!complaint || !complaint.availableDeterminants) {
     return <div>Loading determinants...</div>;

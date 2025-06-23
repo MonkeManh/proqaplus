@@ -3,6 +3,7 @@ import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"
 import CardRow from "@/components/home/card-row"
 import HowItWorks from "@/components/home/how-it-works"
+import ServiceSections from "@/components/home/services-section"
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
       <CardRow />
 
       <HowItWorks />
+
+      <ServiceSections />
 
       <div className="mt-auto">
         <Footer />

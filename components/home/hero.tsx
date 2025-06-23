@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Dispatch.png"
+          src="/images/Dispatch.png"
           alt="Emergency dispatch center"
           fill
           className="object-cover brightness-25"

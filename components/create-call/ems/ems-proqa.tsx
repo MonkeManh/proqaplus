@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { emsComplaints } from "@/data/protocols/emsProtocols";
 import { cn } from "@/lib/utils";
 import {
@@ -10,15 +11,21 @@ import {
   replacePronounInNode,
 } from "@/lib/utils/evaluators";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
-import { IEMSData } from "@/models/interfaces/complaints/ems/IEMSData";
 import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
-
-import { ICallData } from "@/models/interfaces/ICallData";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { InputModal } from "@/components/modals/input-modal";
 
+interface ProQAAnswer {
+  question: string;
+  defaultQuestion: string;
+  defaultAnswer: string;
+  answer: string;
+  questionIndex: number;
+  omit: boolean;
+  timestamp: string;
+}
+
 interface EMSProQAProps {
-  emsData: IEMSData;
   complaintName: string;
   patientData: IPatientData;
   onComplete: (code: string, baseCode?: string, subType?: string) => void;
@@ -110,12 +117,41 @@ const getProperPronoun = (gender: string): string => {
     case "Female":
       return "she";
     default:
-      return "they";
+      return "the patient";
   }
 };
 
+const processQuestionText = (text: React.ReactNode): string => {
+  if (typeof text === "string") return text;
+  if (React.isValidElement(text)) {
+    let content = "";
+    const element = text as React.ReactElement<{ children?: React.ReactNode }>;
+
+    if (element.props.children) {
+      React.Children.forEach(
+        element.props.children,
+        (child: React.ReactNode) => {
+          if (typeof child === "string") {
+            content += child;
+          } else if (React.isValidElement(child)) {
+            content += processQuestionText(child);
+          }
+        }
+      );
+    }
+    return content;
+  }
+  return "";
+};
+
+const isHigherPriority = (newCode: string, currentCode: string): boolean => {
+  if (!currentCode) return true;
+  const currentPriority = getPriorityLevel(currentCode);
+  const newPriority = getPriorityLevel(newCode);
+  return newPriority > currentPriority;
+};
+
 export default function EmsProQA({
-  emsData,
   complaintName,
   patientData,
   onComplete,
@@ -132,13 +168,69 @@ export default function EmsProQA({
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [isCodeOverridden, setIsCodeOverridden] = useState<boolean>(false);
   const [shouldComplete, setShouldComplete] = useState<boolean>(false);
-  const [previousAnswers, setPreviousAnswers] = useState<any[]>([]);
+  const [previousAnswers, setPreviousAnswers] = useState<ProQAAnswer[]>([]);
   const [currentSubCode, setCurrentSubCode] = useState<string>("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
   const answersRef = useRef<HTMLDivElement>(null);
+
+  const saveProQAState = useCallback((answers: ProQAAnswer[]) => {
+    const proqaState = {
+      complaint: complaintName,
+      currentQuestion: currentQuestionIndex,
+      selectedAnswers: answers,
+      currentCode,
+      currentSubCode,
+      currentPlan,
+      determinant: currentCode
+        ? currentSubCode
+          ? `${currentCode}${currentSubCode}`
+          : currentCode
+        : "DEFAULT",
+      protocol: complaint?.name,
+      startTime:
+        localStorage.getItem("DISPATCH_PROQA_START") ||
+        new Date().toISOString(),
+    };
+
+    localStorage.setItem("EMS_PROQA_ANSWERS", JSON.stringify(answers));
+    localStorage.setItem("EMS_PROQA_DATA", JSON.stringify(proqaState));
+  }, [complaintName, currentQuestionIndex, currentCode, currentSubCode, currentPlan, complaint?.name]);
+
+  const moveToNextQuestion = useCallback(() => {
+    if (!complaint) return;
+
+    const nextIndex = currentQuestionIndex + 1;
+
+    if (nextIndex >= complaint.questions.length) {
+      setShouldComplete(true);
+      localStorage.removeItem("EMS_PROQA_DATA");
+      return;
+    }
+
+    setCurrentQuestionIndex(nextIndex);
+    setSelectedAnswerIndex(null);
+    setHoverAnswerIndex(0);
+  }, [complaint, currentQuestionIndex]);
+
+  const shouldRenderCurrentQuestion = () => {
+    if (!complaint) return false;
+
+    const currentQuestion = complaint.questions[currentQuestionIndex];
+    if (!currentQuestion) return false;
+
+    if (currentQuestion.preRenderInstructions) {
+      return evaluatePreRenderInstructions(
+        currentQuestion.preRenderInstructions,
+        patientData,
+        previousAnswers,
+        currentCode
+      );
+    }
+    return true;
+  };
 
   useEffect(() => {
     const savedState = localStorage.getItem("EMS_PROQA_DATA");
@@ -216,9 +308,159 @@ export default function EmsProQA({
     }
   }, [complaintName, patientData]);
 
+  const handleAnswerSelect = useCallback(
+    (answerIndex: number, inputValue?: string) => {
+      if (!complaint) return;
+
+      const currentQuestion = complaint.questions[currentQuestionIndex];
+      const selectedAnswer = currentQuestion?.answers[answerIndex];
+
+      if (!currentQuestion || !selectedAnswer) return;
+
+      // Handle protocol switching first, before any other operations
+      if (selectedAnswer.goto !== undefined) {
+        // Clear all state and storage
+        localStorage.removeItem("EMS_PROQA_DATA");
+        localStorage.removeItem("EMS_PROQA_ANSWERS");
+        setCurrentQuestionIndex(0);
+        setSelectedAnswerIndex(null);
+        setHoverAnswerIndex(0);
+        setCurrentCode("");
+        setCurrentPlan(0);
+        setIsCodeOverridden(false);
+        setShouldComplete(false);
+        setPreviousAnswers([]);
+        setCurrentSubCode("");
+
+        // Switch to new protocol
+        if (onSwitchProtocol) {
+          onSwitchProtocol(selectedAnswer.goto);
+        }
+        return;
+      }
+
+      setSelectedAnswerIndex(answerIndex);
+
+      if (selectedAnswer.input && !inputValue) {
+        setIsInputModalOpen(true);
+        setPendingAnswerIndex(answerIndex);
+        return;
+      }
+
+      const displayText = selectedAnswer.display.replace(
+        "{input}",
+        inputValue || selectedAnswer.answer
+      );
+
+      const rawQuestionText = processQuestionText(currentQuestion.text);
+      const processedQuestion = rawQuestionText.replace(
+        /\*\*pronoun\*\*/g,
+        getProperPronoun(patientData.gender)
+      );
+
+      const newAnswer: ProQAAnswer = {
+        question: processedQuestion,
+        defaultQuestion: rawQuestionText,
+        defaultAnswer: selectedAnswer.answer,
+        answer: displayText,
+        questionIndex: currentQuestionIndex,
+        omit: currentQuestion.omitQuestion || false,
+        timestamp: new Date().toISOString(),
+      };
+
+      const updatedAnswers = [...previousAnswers];
+      const existingIndex = updatedAnswers.findIndex(
+        (ans) => ans.questionIndex === currentQuestionIndex
+      );
+      if (existingIndex >= 0) {
+        updatedAnswers[existingIndex] = newAnswer;
+      } else {
+        updatedAnswers.push(newAnswer);
+      }
+      setPreviousAnswers(updatedAnswers);
+
+      const criticalResult = findHighestPriorityDeterminant(
+        complaint,
+        patientData
+      );
+      if (criticalResult && criticalResult.override) {
+        setCurrentCode(criticalResult.code);
+        setIsCodeOverridden(true);
+      }
+
+      if (selectedAnswer.updateSubCode) {
+        setCurrentSubCode(selectedAnswer.updateSubCode);
+      }
+
+      if (selectedAnswer.dependency) {
+        console.log("Checking dependency with answers:", previousAnswers); // Add debug
+        const dependencyResult = evaluateDependencies(
+          selectedAnswer.dependency,
+          patientData,
+          previousAnswers
+        );
+        console.log("Dependency result:", dependencyResult); // Add debug
+        if (dependencyResult) {
+          if (dependencyResult.code) {
+            setCurrentCode(dependencyResult.code);
+          }
+          if (dependencyResult.subCode) {
+            setCurrentSubCode(dependencyResult.subCode);
+          }
+          if (dependencyResult.plan) {
+            setCurrentPlan(dependencyResult.plan);
+          }
+          if (dependencyResult.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      if (selectedAnswer.updateCode && !isCodeOverridden) {
+        // Only update code if it's higher priority or has override
+        if (
+          selectedAnswer.override ||
+          isHigherPriority(selectedAnswer.updateCode, currentCode)
+        ) {
+          setCurrentCode(selectedAnswer.updateCode);
+          if (selectedAnswer.override) {
+            setIsCodeOverridden(true);
+          }
+        }
+      }
+
+      saveProQAState(updatedAnswers);
+
+      setSelectedAnswerIndex(answerIndex);
+
+      // End questioning immediately if end: true
+      if (selectedAnswer.end) {
+        setShouldComplete(true);
+        localStorage.removeItem("EMS_PROQA_DATA");
+        return;
+      }
+
+      // Only move to next question if not ending and continue is true
+      if (selectedAnswer.continue) {
+        moveToNextQuestion();
+      }
+    },
+    [
+      complaint,
+      currentQuestionIndex,
+      patientData,
+      previousAnswers,
+      isCodeOverridden,
+      currentCode,
+      onSwitchProtocol,
+      moveToNextQuestion,
+      saveProQAState,
+    ]
+  );
+
   useEffect(() => {
     const handleKeyDown = (e: globalThis.KeyboardEvent) => {
-      if (!complaint || isInputModalOpen) return; // Add modal check
+      if (!complaint || isInputModalOpen) return;
 
       const currentQuestion = complaint.questions[currentQuestionIndex];
       if (!currentQuestion || currentQuestion.questionType !== "select") return;
@@ -239,7 +481,13 @@ export default function EmsProQA({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [complaint, currentQuestionIndex, hoverAnswerIndex, isInputModalOpen]); // Add isInputModalOpen to deps
+  }, [
+    complaint,
+    currentQuestionIndex,
+    hoverAnswerIndex,
+    isInputModalOpen,
+    handleAnswerSelect,
+  ]);
 
   useEffect(() => {
     if (answersRef.current) {
@@ -252,207 +500,6 @@ export default function EmsProQA({
       }
     }
   }, [hoverAnswerIndex]);
-
-  const processQuestionText = (text: React.ReactNode): string => {
-    if (typeof text === "string") return text;
-    if (React.isValidElement(text)) {
-      let content = "";
-      const element = text as React.ReactElement<{ children?: React.ReactNode }>;
-
-      if (element.props.children) {
-        React.Children.forEach(element.props.children, (child: React.ReactNode) => {
-          if (typeof child === "string") {
-            content += child;
-          } else if (React.isValidElement(child)) {
-            content += processQuestionText(child);
-          }
-        });
-      }
-      return content;
-    }
-    return "";
-  };
-
-  const isHigherPriority = (newCode: string, currentCode: string): boolean => {
-    if (!currentCode) return true;
-    const currentPriority = getPriorityLevel(currentCode);
-    const newPriority = getPriorityLevel(newCode);
-    return newPriority > currentPriority;
-  };
-
-  const handleAnswerSelect = (answerIndex: number, inputValue?: string) => {
-    if (!complaint) return;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    const selectedAnswer = currentQuestion?.answers[answerIndex];
-
-    if (!currentQuestion || !selectedAnswer) return;
-
-    setSelectedAnswerIndex(answerIndex);
-
-    if (selectedAnswer.input && !inputValue) {
-      setIsInputModalOpen(true);
-      setPendingAnswerIndex(answerIndex);
-      return;
-    }
-
-    const displayText = selectedAnswer.display.replace(
-      "{input}",
-      inputValue || selectedAnswer.answer
-    );
-
-    const rawQuestionText = processQuestionText(currentQuestion.text);
-    const processedQuestion = rawQuestionText.replace(
-      /\*\*pronoun\*\*/g,
-      getProperPronoun(patientData.gender)
-    );
-
-    const newAnswer = {
-      question: processedQuestion,
-      defaultQuestion: rawQuestionText,
-      defultAnswer: selectedAnswer.answer,
-      answer: displayText,
-      questionIndex: currentQuestionIndex,
-      omit: currentQuestion.omitQuestion || false,
-      timestamp: new Date().toISOString(),
-    };
-
-    if (selectedAnswer.goto !== undefined) {
-      localStorage.removeItem("EMS_PROQA_DATA");
-      localStorage.removeItem("EMS_PROQA_ANSWERS");
-      setPreviousAnswers([]);
-
-      if (onSwitchProtocol) {
-        onSwitchProtocol(selectedAnswer.goto);
-        return;
-      }
-    }
-
-    const updatedAnswers = [...previousAnswers];
-    const existingIndex = updatedAnswers.findIndex(
-      (ans) => ans.questionIndex === currentQuestionIndex
-    );
-    if (existingIndex >= 0) {
-      updatedAnswers[existingIndex] = newAnswer;
-    } else {
-      updatedAnswers.push(newAnswer);
-    }
-    setPreviousAnswers(updatedAnswers);
-
-    const criticalResult = findHighestPriorityDeterminant(complaint, patientData);
-    if (criticalResult && criticalResult.override) {
-      setCurrentCode(criticalResult.code);
-      setIsCodeOverridden(true);
-    }
-
-    if (selectedAnswer.updateSubCode) {
-      setCurrentSubCode(selectedAnswer.updateSubCode);
-    }
-
-    if (selectedAnswer.dependency) {
-      const dependencyResult = evaluateDependencies(
-        selectedAnswer.dependency,
-        patientData,
-        previousAnswers
-      );
-      if (dependencyResult) {
-        if (dependencyResult.code) {
-          setCurrentCode(dependencyResult.code);
-        }
-        if (dependencyResult.subCode) {
-          setCurrentSubCode(dependencyResult.subCode);
-        }
-        if (dependencyResult.plan) {
-          setCurrentPlan(dependencyResult.plan);
-        }
-        if (dependencyResult.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    if (selectedAnswer.updateCode && !isCodeOverridden) {
-      // Only update code if it's higher priority or has override
-      if (selectedAnswer.override || isHigherPriority(selectedAnswer.updateCode, currentCode)) {
-        setCurrentCode(selectedAnswer.updateCode);
-        if (selectedAnswer.override) {
-          setIsCodeOverridden(true);
-        }
-      }
-    }
-
-    saveProQAState(updatedAnswers);
-
-    setSelectedAnswerIndex(answerIndex);
-
-    // End questioning immediately if end: true
-    if (selectedAnswer.end) {
-      setShouldComplete(true);
-      localStorage.removeItem("EMS_PROQA_DATA");
-      return;
-    }
-
-    // Only move to next question if not ending and continue is true
-    if (selectedAnswer.continue) {
-      moveToNextQuestion();
-    }
-  };
-
-  const saveProQAState = (answers: any[]) => {
-    const proqaState = {
-      complaint: complaintName,
-      currentQuestion: currentQuestionIndex,
-      selectedAnswers: answers,
-      currentCode,
-      currentSubCode,
-      currentPlan,
-      determinant: currentCode
-        ? currentSubCode
-          ? `${currentCode}${currentSubCode}`
-          : currentCode
-        : "DEFAULT",
-      protocol: complaint?.name,
-      startTime:
-        localStorage.getItem("DISPATCH_PROQA_START") ||
-        new Date().toISOString(),
-    };
-
-    localStorage.setItem("EMS_PROQA_ANSWERS", JSON.stringify(answers));
-    localStorage.setItem("EMS_PROQA_DATA", JSON.stringify(proqaState));
-  };
-
-  const moveToNextQuestion = () => {
-    if (!complaint) return;
-
-    let nextIndex = currentQuestionIndex + 1;
-
-    if (nextIndex >= complaint.questions.length) {
-      setShouldComplete(true);
-      localStorage.removeItem("EMS_PROQA_DATA");
-      return;
-    }
-
-    setCurrentQuestionIndex(nextIndex);
-    setSelectedAnswerIndex(null);
-    setHoverAnswerIndex(0);
-  };
-
-  const shouldRenderCurrentQuestion = () => {
-    if (!complaint) return false;
-
-    const currentQuestion = complaint.questions[currentQuestionIndex];
-    if (!currentQuestion) return false;
-
-    if (currentQuestion.preRenderInstructions) {
-      return evaluatePreRenderInstructions(
-        currentQuestion.preRenderInstructions,
-        patientData,
-        previousAnswers,
-        currentCode
-      );
-    }
-    return true;
-  };
 
   if (!complaint) {
     return null;
@@ -472,6 +519,17 @@ export default function EmsProQA({
     moveToNextQuestion();
     return null;
   }
+
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+    } else {
+      // Go back to case-entry
+      onBack();
+    }
+  };
 
   return (
     <Card className="max-w-5xl mx-auto h-fit w-full">
@@ -541,6 +599,18 @@ export default function EmsProQA({
                   )
                 )}
               </div>
+
+              <div className="flex justify-between mt-8">
+                <Button
+                  variant="outline"
+                  onClick={handleBackClick}
+                  className="text-sm"
+                >
+                  {currentQuestionIndex > 0
+                    ? "Previous Question"
+                    : "Back to Case Entry"}
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -563,7 +633,14 @@ export default function EmsProQA({
             handleAnswerSelect(savedIndex, value);
           }
         }}
-        title={currentQuestion ? processQuestionText(currentQuestion.text).replace(/\*\*pronoun\*\*/g, getProperPronoun(patientData.gender)) : ""}
+        title={
+          currentQuestion
+            ? processQuestionText(currentQuestion.text).replace(
+                /\*\*pronoun\*\*/g,
+                getProperPronoun(patientData.gender)
+              )
+            : ""
+        }
       />
     </Card>
   );

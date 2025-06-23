@@ -1,6 +1,6 @@
 "use client";
 
-import { Ambulance, CarTaxiFront, Flame, Link } from "lucide-react";
+import { Ambulance, CarTaxiFront, Flame } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -14,9 +14,13 @@ import { QuestionsAccordion } from "./questions-accordion";
 import { motion } from "framer-motion";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { getEmsResponsePlan } from "@/data/plans/emsPlans"; // Adjust the import based on your project structure
+import { getFireResponsePlan } from "@/data/plans/firePlans";
+import { getPoliceResponsePlan } from "@/data/plans/policePlans";
+import { IFireComplaint } from "@/models/interfaces/complaints/fire/IFireComplaint";
+import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint";
 
 interface ProtocolDetailsProps {
-  complaint: IEMSComplaint;
+  complaint: IEMSComplaint | IFireComplaint | IPoliceComplaint;
   type: "EMS" | "Fire" | "Police";
 }
 
@@ -70,42 +74,32 @@ export default function ProtocolDetails({
     }
   };
 
-  const getResponseLevelText = (code: string, service: string) => {
-    // Extract the priority level from the code (e.g., "01D01" -> "D")
-    const priorityLevel = code.charAt(2);
-
-    switch (priorityLevel) {
-      case "A":
-        return "Alpha Response";
-      case "B":
-        return "Bravo Response";
-      case "C":
-        return "Charlie Response";
-      case "D":
-        return "Delta Response";
-      case "E":
-        return "Echo Response";
-      case "O":
-        return "Omega Response";
-      default:
-        return "Standard Response";
+  const getResponsePlan = (id: number) => {
+    if(type === "EMS") {
+      return getEmsResponsePlan(id);
+    } else if(type === "Fire") {
+      return getFireResponsePlan(id);
+    } else if(type === "Police") {
+      return getPoliceResponsePlan(id);
     }
-  };
+  }
+
+
 
   // Extract unique suffixes from determinants if they exist
   const getUniqueSuffixes = () => {
     if (!complaint.availableDeterminants) return [];
 
     const allSubCodes = complaint.availableDeterminants.flatMap(
-      (priority: any) =>
+      (priority) =>
         priority.determinants.flatMap(
-          (determinant: any) => determinant.subCodes || []
+          (determinant) => determinant.subCodes || []
         )
     );
 
     // Remove duplicates
     return allSubCodes.filter(
-      (subCode: any, index: number, self: any[]) =>
+      (subCode, index: number, self) =>
         index ===
         self.findIndex(
           (s) => s.code === subCode.code && s.text === subCode.text
@@ -121,10 +115,10 @@ export default function ProtocolDetails({
 
     // Get all response plan IDs
     const allResponseIds = complaint.availableDeterminants.flatMap(
-      (priority: any) =>
-        priority.determinants.flatMap((determinant: any) => [
+      (priority) =>
+        priority.determinants.flatMap((determinant) => [
           determinant.recResponse,
-          ...(determinant.subCodes?.map((sub: any) => sub.recResponse) || []),
+          ...(determinant.subCodes?.map((sub) => sub.recResponse) || []),
         ])
     );
 
@@ -133,7 +127,7 @@ export default function ProtocolDetails({
 
     // Get plan details for each ID
     return uniqueIds
-      .map((id) => getEmsResponsePlan(id))
+      .map((id) => getResponsePlan(id))
       .filter((plan): plan is NonNullable<typeof plan> => plan !== undefined)
       .sort((a, b) => a.id - b.id);
   };
@@ -180,7 +174,7 @@ export default function ProtocolDetails({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {complaint.services.map((service: any) => (
+            {complaint.services.map((service) => (
               <TableRow key={service.name}>
                 <TableCell>
                   <div className="flex items-center gap-2">
@@ -219,8 +213,8 @@ export default function ProtocolDetails({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {complaint.availableDeterminants.map((priority: any) =>
-                priority.determinants.map((determinant: any) => (
+              {complaint.availableDeterminants.map((priority) =>
+                priority.determinants.map((determinant) => (
                   <TableRow key={determinant.code}>
                     <TableCell>
                       <Badge
@@ -232,18 +226,14 @@ export default function ProtocolDetails({
                     <TableCell>{determinant.code}</TableCell>
                     <TableCell>{determinant.text}</TableCell>
                     <TableCell>
-                      {type === "EMS" ? (
                         <Badge variant="outline">
-                          {getEmsResponsePlan(determinant?.recResponse)
+                          {getResponsePlan(determinant?.recResponse)
                             ?.incidentType || (
                             <span className="text-muted-foreground">
                               No Response Plan
                             </span>
                           )}
                         </Badge>
-                      ) : (
-                        <></>
-                      )}
                     </TableCell>
                   </TableRow>
                 ))
@@ -265,7 +255,7 @@ export default function ProtocolDetails({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {uniqueSuffixes.map((subCode: any) => (
+              {uniqueSuffixes.map((subCode) => (
                 <TableRow key={subCode.code + subCode.text}>
                   <TableCell>
                     <Badge variant="outline">{subCode.code}</Badge>

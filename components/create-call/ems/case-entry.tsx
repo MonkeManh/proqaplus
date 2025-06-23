@@ -67,16 +67,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CaseEntry({ onContinue }: CaseEntryProps) {
-  const [data, setData] = useState<FormValues>({
-    patientProximity: "Yes",
-    patientCount: 1,
-    patientAge: 0,
-    ageUnit: "Years",
-    gender: "Unknown",
-    isConscious: "Unknown",
-    isBreathing: "Unknown",
-    chiefComplaint: "",
-  });
   const [isFormValid, setIsFormValid] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const callerType = useRef<HTMLButtonElement>(null);
@@ -121,6 +111,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
   };
 
   const breathingStatus = form.watch("isBreathing");
+  const concsiousness = form.watch("isConscious");
 
   const sortedComplaintOptions = useMemo(() => {
     const allComplaints = getEMSComplaintOptions();
@@ -153,13 +144,41 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       }));
 
       return [...priorityOptions, ...otherOptions];
+    } else if(concsiousness === "No") {
+      const priorityComplaints = [31, 9, 11, 12, 14, 15];
+
+      const priority = allComplaints.filter((c) =>
+        priorityComplaints.includes(c.protocol)
+      );
+      const others = allComplaints.filter(
+        (c) => !priorityComplaints.includes(c.protocol)
+      );
+
+      priority.sort((a, b) => {
+        const aIndex = priorityComplaints.indexOf(a.protocol);
+        const bIndex = priorityComplaints.indexOf(b.protocol);
+        return aIndex - bIndex;
+      });
+
+      const priorityOptions = priority.map((c) => ({
+        value: `${c.protocol} - ${c.value}`,
+        label: `${c.protocol} - ${c.label}`,
+        className: "bg-red-500/20 hover:bg-red-500/40 transition-colors",
+      }));
+
+      const otherOptions = others.map((c) => ({
+        value: `${c.protocol} - ${c.value}`,
+        label: `${c.protocol} - ${c.value}`,
+      }));
+
+      return [...priorityOptions, ...otherOptions];
     }
 
     return allComplaints.map((c) => ({
       value: `${c.protocol} - ${c.value}`,
       label: `${c.protocol} - ${c.value}`,
     }));
-  }, [breathingStatus]);
+  }, [breathingStatus, concsiousness]);
 
   useEffect(() => {
     const subscription = form.watch((value, { name }) => {
@@ -211,8 +230,6 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       isConscious: data.isConscious,
       isBreathing: data.isBreathing,
     };
-
-    setData(data);
 
     localStorage.setItem("PATIENT_DATA", JSON.stringify(patientData));
 
@@ -341,7 +358,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                   name="gender"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>What is the patient's gender?</FormLabel>
+                      <FormLabel>What is the patient&apos;s gender?</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}

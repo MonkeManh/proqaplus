@@ -31,10 +31,15 @@ import { Badge } from "../ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Checkbox } from "../ui/checkbox";
 import CreateFireUnitDialog from "./create-fire-unit";
+import LoadingState from "../loading-state";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
 export default function DispatchTable() {
   const [units, setUnits] = useState<IFireUnitData[]>([]);
-  const [preferences, setPreferences] = useState<any>(null);
+  const [preferences, setPreferences] = useState<IPreferences>({
+    advancedMode: false,
+    soundEffects: false,
+  });
   const [filteredUnits, setFilteredUnits] = useState<IFireUnitData[]>([]);
   const [assignmentFilter, setAssignmentFilter] = useState<string>("all");
   const [unitTypeFilter, setUnitTypeFilter] = useState<string>("all");
@@ -71,7 +76,7 @@ export default function DispatchTable() {
     const preferences = localStorage.getItem("PREFERENCES");
     if (!preferences) return null;
 
-    const parsedPreferences = JSON.parse(preferences);
+    const parsedPreferences = JSON.parse(preferences) as IPreferences;
     setPreferences(parsedPreferences);
   };
 
@@ -85,14 +90,14 @@ export default function DispatchTable() {
 
     const handlePreferencesChange = () => {
       getPreferences();
-    }
+    };
 
     window.addEventListener("fire-units-updated", handleStorageChange);
-    window.addEventListener('storage', handlePreferencesChange);
+    window.addEventListener("storage", handlePreferencesChange);
 
     return () => {
       window.removeEventListener("fire-units-updated", handleStorageChange);
-      window.removeEventListener('storage', handlePreferencesChange);
+      window.removeEventListener("storage", handlePreferencesChange);
     };
   }, []);
 
@@ -335,237 +340,241 @@ export default function DispatchTable() {
       }));
   };
 
-  return preferences && preferences.advancedMode ? (
-    <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row justify-between gap-4">
-        <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-          <Select
-            value={assignmentFilter}
-            onValueChange={(value: string) => setAssignmentFilter(value)}
-          >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by Assignment" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              {fireUnits.map((station: IStation) => (
-                <SelectItem key={station.station} value={station.station}>
-                  {station.station}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+  return preferences ? (
+    preferences.advancedMode ? (
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row justify-between gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+            <Select
+              value={assignmentFilter}
+              onValueChange={(value: string) => setAssignmentFilter(value)}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by Assignment" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All</SelectItem>
+                {fireUnits.map((station: IStation) => (
+                  <SelectItem key={station.station} value={station.station}>
+                    {station.station}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
-          <Select
-            value={unitTypeFilter}
-            onValueChange={(value: string) => setUnitTypeFilter(value)}
-          >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by Unit Type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              {fireUnitTypes.map((unitType: IFireUnitType, index: number) => (
-                <SelectItem key={index} value={unitType.name}>
-                  {unitType.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+            <Select
+              value={unitTypeFilter}
+              onValueChange={(value: string) => setUnitTypeFilter(value)}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by Unit Type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All</SelectItem>
+                {fireUnitTypes.map((unitType: IFireUnitType, index: number) => (
+                  <SelectItem key={index} value={unitType.name}>
+                    {unitType.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
-          <Input
-            placeholder="Search units..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="max-w-xs"
-          />
+            <Input
+              placeholder="Search units..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="max-w-xs"
+            />
+          </div>
+
+          <div className="flex gap-2">
+            <Button
+              onClick={() => {
+                setIsDialogOpen(true);
+              }}
+              className="whitespace-nowrap cursor-pointer"
+            >
+              <PlusCircle className="h-4 w-4" />
+              Add Unit
+            </Button>
+          </div>
         </div>
 
-        <div className="flex gap-2">
-          <Button
-            onClick={() => {
-              setIsDialogOpen(true);
-            }}
-            className="whitespace-nowrap cursor-pointer"
-          >
-            <PlusCircle className="h-4 w-4" />
-            Add Unit
-          </Button>
-        </div>
-      </div>
-
-      <div className="rounded-mb border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Unit</TableHead>
-              <TableHead>Apparatus Type</TableHead>
-              <TableHead>Assignment</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Cross Staffing</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredUnits.length > 0 ? (
-              sortedFilteredUnits().map(({ station, units }) => (
-                <React.Fragment key={station}>
-                  <TableRow className="bg-muted/50">
-                    <TableCell colSpan={7} className="font-medium">
-                      {station}
-                    </TableCell>
-                  </TableRow>
-                  {units.map((unit: IFireUnitData) => (
-                    <TableRow key={unit.name}>
-                      <TableCell>{unit.name}</TableCell>
-                      <TableCell>{unit.type}</TableCell>
-                      <TableCell>{unit.station}</TableCell>
-                      <TableCell>
-                        <Select
-                          value={unit.status}
-                          onValueChange={(value: IUnitStatus) =>
-                            handleStatusChange(unit.name, value)
-                          }
-                        >
-                          <SelectTrigger
-                            className={`w-[140px] ${getStatusColor(
-                              unit.status
-                            )}`}
-                          >
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="In Service">
-                              In Service
-                            </SelectItem>
-                            <SelectItem value="Out of Service">
-                              Out of Service
-                            </SelectItem>
-                            <SelectItem value="On Call">On Call</SelectItem>
-                            <SelectItem value="Mobile Service">
-                              Mobile Service
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </TableCell>
-                      <TableCell>
-                        {(unit.crossStaffing ?? []).length > 0 ? (
-                          <div className="flex flex-wrap gap-1">
-                            {unit.crossStaffing?.map((crossUnit) => (
-                              <Badge key={crossUnit.name} variant="outline">
-                                {crossUnit.name}
-                              </Badge>
-                            ))}
-                          </div>
-                        ) : (
-                          <span className="text-muted-foreground text-sm">
-                            None
-                          </span>
-                        )}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                <Edit className="h-4 w-4" />
-                                <span className="sr-only">
-                                  Edit Cross-Staffing
-                                </span>
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-80">
-                              <div className="space-y-4">
-                                <h4 className="font-medium">
-                                  Cross-staffing for {unit.name}
-                                </h4>
-                                <div className="space-y-2">
-                                  {units
-                                    .filter(
-                                      (u) =>
-                                        u.station === unit.station &&
-                                        u.name !== unit.name
-                                    )
-                                    .map((stationUnit) => (
-                                      <div
-                                        key={stationUnit.name}
-                                        className="flex items-center space-x-2"
-                                      >
-                                        <Checkbox
-                                          id={`${unit.name}-${stationUnit.name}`}
-                                          checked={(
-                                            unit.crossStaffing ?? []
-                                          ).some(
-                                            (crossUnit: IFireUnitData) =>
-                                              crossUnit.name ===
-                                              stationUnit.name
-                                          )}
-                                          onCheckedChange={(checked) =>
-                                            handleCrossStaffingChange(
-                                              unit,
-                                              stationUnit.name,
-                                              checked as boolean
-                                            )
-                                          }
-                                        />
-                                        <label
-                                          htmlFor={`${unit.name}-${stationUnit.name}`}
-                                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                        >
-                                          {stationUnit.name}
-                                        </label>
-                                      </div>
-                                    ))}
-                                </div>
-                              </div>
-                            </PopoverContent>
-                          </Popover>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleDeleteUnit(unit.name)}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                            <span className="sr-only">Delete</span>
-                          </Button>
-                        </div>
+        <div className="rounded-mb border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Unit</TableHead>
+                <TableHead>Apparatus Type</TableHead>
+                <TableHead>Assignment</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Cross Staffing</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredUnits.length > 0 ? (
+                sortedFilteredUnits().map(({ station, units }) => (
+                  <React.Fragment key={station}>
+                    <TableRow className="bg-muted/50">
+                      <TableCell colSpan={7} className="font-medium">
+                        {station}
                       </TableCell>
                     </TableRow>
-                  ))}
-                </React.Fragment>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={7} className="h-24 text-center">
-                  No units found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+                    {units.map((unit: IFireUnitData) => (
+                      <TableRow key={unit.name}>
+                        <TableCell>{unit.name}</TableCell>
+                        <TableCell>{unit.type}</TableCell>
+                        <TableCell>{unit.station}</TableCell>
+                        <TableCell>
+                          <Select
+                            value={unit.status}
+                            onValueChange={(value: IUnitStatus) =>
+                              handleStatusChange(unit.name, value)
+                            }
+                          >
+                            <SelectTrigger
+                              className={`w-[140px] ${getStatusColor(
+                                unit.status
+                              )}`}
+                            >
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="In Service">
+                                In Service
+                              </SelectItem>
+                              <SelectItem value="Out of Service">
+                                Out of Service
+                              </SelectItem>
+                              <SelectItem value="On Call">On Call</SelectItem>
+                              <SelectItem value="Mobile Service">
+                                Mobile Service
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </TableCell>
+                        <TableCell>
+                          {(unit.crossStaffing ?? []).length > 0 ? (
+                            <div className="flex flex-wrap gap-1">
+                              {unit.crossStaffing?.map((crossUnit) => (
+                                <Badge key={crossUnit.name} variant="outline">
+                                  {crossUnit.name}
+                                </Badge>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground text-sm">
+                              None
+                            </span>
+                          )}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <div className="flex justify-end gap-2">
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <Button variant="ghost" size="icon">
+                                  <Edit className="h-4 w-4" />
+                                  <span className="sr-only">
+                                    Edit Cross-Staffing
+                                  </span>
+                                </Button>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-80">
+                                <div className="space-y-4">
+                                  <h4 className="font-medium">
+                                    Cross-staffing for {unit.name}
+                                  </h4>
+                                  <div className="space-y-2">
+                                    {units
+                                      .filter(
+                                        (u) =>
+                                          u.station === unit.station &&
+                                          u.name !== unit.name
+                                      )
+                                      .map((stationUnit) => (
+                                        <div
+                                          key={stationUnit.name}
+                                          className="flex items-center space-x-2"
+                                        >
+                                          <Checkbox
+                                            id={`${unit.name}-${stationUnit.name}`}
+                                            checked={(
+                                              unit.crossStaffing ?? []
+                                            ).some(
+                                              (crossUnit: IFireUnitData) =>
+                                                crossUnit.name ===
+                                                stationUnit.name
+                                            )}
+                                            onCheckedChange={(checked) =>
+                                              handleCrossStaffingChange(
+                                                unit,
+                                                stationUnit.name,
+                                                checked as boolean
+                                              )
+                                            }
+                                          />
+                                          <label
+                                            htmlFor={`${unit.name}-${stationUnit.name}`}
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                          >
+                                            {stationUnit.name}
+                                          </label>
+                                        </div>
+                                      ))}
+                                  </div>
+                                </div>
+                              </PopoverContent>
+                            </Popover>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleDeleteUnit(unit.name)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                              <span className="sr-only">Delete</span>
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </React.Fragment>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={7} className="h-24 text-center">
+                    No units found.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
 
-      <CreateFireUnitDialog
-        open={isDialogOpen}
-        onOpenChange={(open) => {
-          setIsDialogOpen(open);
-        }}
-        onSave={handleSaveUnit}
-        existingUnits={units}
-      />
-    </div>
+        <CreateFireUnitDialog
+          open={isDialogOpen}
+          onOpenChange={(open) => {
+            setIsDialogOpen(open);
+          }}
+          onSave={handleSaveUnit}
+          existingUnits={units}
+        />
+      </div>
+    ) : (
+      <div className="w-full flex justify-center items-center h-100">
+        <Link href="/create-call">
+          <Button
+            variant="destructive"
+            className="flex-1 sm:flex-none cursor-pointer"
+            style={{ scale: "1.5" }}
+          >
+            <Phone className="mr-2 h-5 w-5" />
+            Create Call
+          </Button>
+        </Link>
+      </div>
+    )
   ) : (
-    <div className="w-full flex justify-center items-center h-100">
-      <Link href="/create-call">
-        <Button
-          variant="destructive"
-          className="flex-1 sm:flex-none cursor-pointer"
-          style={{ scale: "1.5" }}
-        >
-          <Phone className="mr-2 h-5 w-5" />
-          Create Call
-        </Button>
-      </Link>
-    </div>
+    <LoadingState />
   );
 }

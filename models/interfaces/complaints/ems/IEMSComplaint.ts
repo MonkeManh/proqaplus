@@ -1,4 +1,5 @@
 import { IComplaintServices } from "../IComplaintServices";
+import { IAnswerData } from "../IAnswerData";
 import { DependencyResult } from "./IEMSAnswer";
 import { IPatientData } from "./IPatientData";
 import { JSX, ReactNode } from "react";
@@ -13,7 +14,7 @@ export interface IEMSComplaint {
   defaultPlan: number;
   questions: IEMSQuestions[];
   availableDeterminants: {
-    priority: string;
+    priority: "O" | "A" | "B" | "C" | "D" | "E";
     determinants: {
       code: string;
       text: string;
@@ -26,33 +27,36 @@ export interface IEMSComplaint {
         code: string;
         text: string;
         recResponse: number;
-      }[]
+      }[];
     }[];
   }[];
 }
 
 export interface IEMSQuestions {
-    text: JSX.Element;
-    questionType: 'input' | 'select' | 'hybrid-select' | 'description';
-    preRenderInstructions?: (patient?: IPatientData) => boolean;
-    isConscious?: boolean;
-    isBreathing?: boolean;
-    omitQuestion?: boolean;
-    answers: IAnswers[];
+  text: JSX.Element;
+  questionType: "input" | "select" | "hybrid-select" | "description";
+  preRenderInstructions?: (patient?: IPatientData) => boolean;
+  isConscious?: boolean;
+  isBreathing?: boolean;
+  omitQuestion?: boolean;
+  answers: IAnswers[];
 }
 
 interface IAnswers {
-    answer: string;
-    display: string;
-    preRenderInstructions?: (patient?: IPatientData) => boolean;
-    input?: boolean;
-    send?: boolean;
-    continue?: boolean;
-    end?: boolean;
-    goto?: number;
-    gotoInstructions?: number;
-    updateCode?: string;
-    updateSubCode?: string;
-    override?: boolean;
-    dependency?: (patient?: IPatientData, answers?: any[]) => DependencyResult | undefined;
+  answer: string;
+  display: string;
+  preRenderInstructions?: (patient?: IPatientData) => boolean;
+  input?: boolean;
+  send?: boolean;
+  continue?: boolean;
+  end?: boolean;
+  goto?: number;
+  gotoInstructions?: number;
+  updateCode?: string;
+  updateSubCode?: string;
+  override?: boolean;
+  dependency?: (
+    patient?: IPatientData,
+    answers?: IAnswerData[]
+  ) => DependencyResult | undefined;
 }

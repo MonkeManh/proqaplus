@@ -1,3 +1,4 @@
+import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData";
 import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint";
 import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 
@@ -80,7 +81,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "NOT responding nlly",
             continue: true,
             updateCode: "01D01",
-            send: true,
+            override: true,
           },
           {
             answer: "Unknown",
@@ -137,15 +138,7 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Ashen or grey",
-            dependency: (patient?: IPatientData) => {
-              if (!patient) return undefined;
-              const { age } = patient;
-              if (age >= 50) {
-                return { code: "01D02" };
-              }
-              return undefined;
-            },
-            send: true,
+            updateCode: "01D02",
             continue: true,
           },
           {
@@ -246,8 +239,12 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Above the navel",
             display: "Pn above the navel",
-            dependency: (patient?: IPatientData) => {
+            dependency: (patient?: IPatientData, answers?: IAnswerData[], currentCode?: string) => {
               if (!patient) return undefined;
+              const alert = answers?.find((a) => a.defaultQuestion === "Is **pronoun** completely alert (responding appropriately)?")?.defaultAnswer === "No";
+              const gray = answers?.find((a) => a.defaultQuestion === "Does **pronoun** appear ashen or grey (compared to usual color)?")?.defaultAnswer === "Yes";
+              if(currentCode === "01D01" || currentCode === "01D02") return undefined;
+              if (alert || gray) return undefined;
               const { age, gender } = patient;
               if (gender === "Male" && age >= 35) {
                 return { code: "01C05" };
@@ -267,6 +264,17 @@ export const emsComplaints: IEMSComplaint[] = [
             },
             display: "Pn in groin/testicles",
             updateCode: "01A02",
+            end: true,
+          },
+          {
+            answer: "Other:",
+            display: "Pn in {input}",
+            input: true,
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pn is",
             end: true,
           },
         ],
@@ -470,7 +478,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "INEFFECTIVE/AGONAL BREATHING",
-            display: "INEFFECTIVE/AGONAL BREATHING",
+            display: "INEFFECTIVE/AGONAL breathing",
             end: true,
             updateCode: "02E01",
           },
@@ -486,7 +494,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty speaking between breaths?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Diff breathing or swallowing";
         },
@@ -515,32 +526,42 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "Insect Sting",
-            display: "Caused by Insect Sting",
+            answer: "Insect sting:",
+            display: "Caused by insect sting - {input}",
+            input: true,
             continue: true,
           },
           {
             answer: "Spider Bite",
-            display: "Caused by Spider Bite",
+            display: "Caused by spider bite",
             continue: true,
             updateCode: "02A02",
           },
           {
-            answer: "SWARMING ATTACK",
-            display: "Caused by SWARMING ATTACK (Bees, Wasps, Hornets)",
+            answer: "SWARMING ATTACK:",
+            display: "Caused by SWARMING ATTACK - {input}",
+            input: true,
             continue: true,
             updateCode: "02D03",
           },
           {
-            answer: "SNAKE BITE",
-            display: "Caused by SNAKE BITE",
+            answer: "SNAKE BITE:",
+            display: "Caused by SNAKE BITE - {input}",
+            input: true,
             continue: true,
             updateCode: "02D04",
+          },
+          {
+            answer: "Food:",
+            display: "Caused by food - {input}",
+            input: true,
+            continue: true,
           },
           {
             answer: "Other:",
             display: "Caused by {input}",
             input: true,
+            continue: true,
           },
           {
             answer: "Unknown",
@@ -552,11 +573,17 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: <p>When did the reaction start?</p>,
-        questionType: "input",
+        questionType: "select",
         answers: [
           {
-            answer: "Time of reaction...",
+            answer: "Time of reaction:",
             display: "Rx started {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when rx started",
             continue: true,
           },
         ],
@@ -572,8 +599,13 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
           },
           {
-            answer: "Yes",
+            answer: "Yes - Mild",
             display: "Hx of allergic rx",
+            continue: true,
+          },
+          {
+            answer: "Yes - SEVERE",
+            display: "Hx of SEVERE allergic rx",
             continue: true,
             updateCode: "02C02",
           },
@@ -601,13 +633,13 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Yes - Injection",
-            display: "Injection Administered or Advised",
+            display: "Injection administered or advised",
             end: true,
             updateSubCode: "I",
           },
           {
             answer: "Yes - Medication",
-            display: "Medication Administered or Advised",
+            display: "Medication administered or advised",
             end: true,
             updateSubCode: "M",
           },
@@ -663,8 +695,9 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             code: "02B01",
-            text: "Unk Code/Other Codes not Applicable",
+            text: "Unkn Status / Other Codes Not Applicable",
             recResponse: 4,
+            defaultCode: true,
             subCodes: [
               {
                 code: "I",
@@ -944,7 +977,6 @@ export const emsComplaints: IEMSComplaint[] = [
         </p>
       </>
     ),
-
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -959,20 +991,14 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "Attack not happening now",
+            display: "Not happening now",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "Attack is happening now",
-            end: true,
+            display: "Happening now",
             updateCode: "03D09",
-          },
-          {
-            answer: "Unknown",
-            display: "Unk if attack is happening now",
-            continue: true,
-            updateCode: "03B03",
+            end: true,
           },
         ],
       },
@@ -983,12 +1009,12 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "< 6 hours ago",
-            display: "Happened Now (< 6 hours ago)",
+            display: "Happened now (< 6 hours ago)",
             continue: true,
           },
           {
             answer: ">= 6 hours ago",
-            display: "Happened Eariler (>= 6 hours ago)",
+            display: "Happened eariler (>= 6 hours ago)",
             continue: true,
             updateCode: "03A02",
           },
@@ -1001,12 +1027,42 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
+        text: <p>Were there <b>multiple</b> animals?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No - Single animal",
+            display: "Single animal",
+            continue: true,
+          },
+          {
+            answer: "Yes - Multiple animals:",
+            display: "Multiple animals - {input}",
+            input: true,
+            continue: true,
+            updateCode: "03D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if num of animals",
+            continue: true,
+          }
+        ]
+      },
+
+      {
         text: <p>What kind of animal bit the patient?</p>,
         questionType: "select",
         answers: [
           {
-            answer: "Insect",
-            display: "Insect Bite",
+            answer: "Insect:",
+            display: "Insect bite - {input}",
+            input: true,
+            continue: true,
+          },
+          {
+            answer: "Dog",
+            display: "Dog bite",
             continue: true,
           },
           {
@@ -1029,8 +1085,8 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "03D07",
           },
           {
-            answer: "MULTIPLE ANIMALS/MAULING",
-            display: "Multiple Animals or Mauling",
+            answer: "MAULING",
+            display: "MAULING attack",
             continue: true,
             updateCode: "03D08",
           },
@@ -1055,7 +1111,7 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Location:",
-            display: "Animal is at {input}",
+            display: "Animal location - {input}",
             input: true,
             continue: true,
           },
@@ -1081,13 +1137,19 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
+            answer: "Not bleeding at all",
+            display: "Not bleeding",
+            updateCode: "03A03",
+            continue: true,
+          },
+          {
             answer: "No",
             display: "No serious bleeding",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "Serious bleeding",
+            display: "SERIOUS bleeding",
             continue: true,
             updateCode: "03B02",
             override: true,
@@ -1109,6 +1171,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -1134,27 +1201,39 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "Not Dangerous Body Area:",
+            answer: "Not dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
             updateCode: "03A01",
           },
           {
-            answer: "Possibly Dangerous Body Area:",
+            answer: "Possibly dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
             updateCode: "03B01",
           },
           {
-            answer: "Chest/Neck/Head",
-            display: "Bit on Chest/Neck/Head",
+            answer: "Chest",
+            display: "Bit on Chest",
             continue: true,
             updateCode: "03D05",
           },
           {
-            answer: "Dangerous Body Area:",
+            answer: "Neck",
+            display: "Bit on Neck",
+            continue: true,
+            updateCode: "03D05",
+          },
+          {
+            answer: "Head",
+            display: "Bit on Head",
+            continue: true,
+            updateCode: "03D05",
+          },
+          {
+            answer: "Dangerous body area:",
             display: "Bit on {input}",
             input: true,
             end: true,
@@ -1172,9 +1251,16 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const lastAnswer = answers?.[answers.length - 1]?.answer;
-          return lastAnswer === "Bit on Chest/Neck/Head";
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return (
+            lastAnswer === "Chest" ||
+            lastAnswer === "Neck" ||
+            lastAnswer === "Head"
+          );
         },
         answers: [
           {
@@ -1245,7 +1331,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             code: "03B03",
-            text: "Unkn Code/Other Codes not Applicable",
+            text: "Unkn Status / Other Codes Not Applicable",
             recResponse: 9,
           },
         ],
@@ -1414,22 +1500,17 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 14,
     questions: [
       {
-        text: <p>When did this incident happen?</p>,
+        text: <p>When did this occur?</p>,
         questionType: "select",
         answers: [
           {
-            answer: "Just Now",
-            display: "Happened just now",
+            answer: "Now (less than 6hrs ago)",
+            display: "Happened now (< 6hrs)",
             continue: true,
           },
           {
-            answer: "< 6 hours ago",
-            display: "Happened < 6 hours ago",
-            continue: true,
-          },
-          {
-            answer: ">= 6 hours ago",
-            display: "Happened >= 6 hours ago",
+            answer: "More than 6hrs ago",
+            display: "Happened earlier (>= 6hrs)",
             continue: true,
             updateCode: "04A03",
           },
@@ -1448,22 +1529,27 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Assault",
-            display: "Assault",
+            display: "Assault incident",
             continue: true,
             updateSubCode: "A",
           },
           {
-            answer: "Sexual Assault",
-            display: "Sexual Assault",
+            answer: "Sexual assault",
+            display: "Sexual assault incident",
             continue: true,
             updateSubCode: "S",
           },
           {
-            answer: "Stun Gun",
-            display: "Stun Gun",
+            answer: "Stun gun",
+            display: "Stun gun incident",
             continue: true,
             updateSubCode: "T",
           },
+          {
+            answer: "Unknown",
+            display: "Unk specific type of incident",
+            continue: true,
+          }
         ],
       },
 
@@ -1476,6 +1562,11 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Assailant is {input}",
             continue: true,
             input: true,
+          },
+          {
+            answer: "Not Applicable",
+            display: "No assailant",
+            continue: true,
           },
           {
             answer: "Unknown",
@@ -1495,20 +1586,19 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "No serious bleeding",
+            display: "No SERIOUS bleeding",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "Serious bleeding",
+            display: "SERIOUS bleeding",
             continue: true,
             updateCode: "04B02",
           },
           {
             answer: "Unknown",
-            display: "Unk if serious bleeding",
+            display: "Unk if SERIOUS bleeding",
             continue: true,
-            updateCode: "04B03",
           },
         ],
       },
@@ -1521,6 +1611,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -1537,6 +1632,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if responding nlly",
             continue: true,
+            updateCode: "04B03",
           },
         ],
       },
@@ -1560,8 +1656,20 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "04B01",
           },
           {
-            answer: "Chest/Neck/Head",
-            display: "Injury to Chest/Neck/Head",
+            answer: "Chest",
+            display: "Injury to chest",
+            updateCode: "04B01",
+            continue: true,
+          },
+          {
+            answer: "Neck",
+            display: "Injury to neck",
+            updateCode: "04B01",
+            continue: true,
+          },
+          {
+            answer: "Head",
+            display: "Injury to head",
             updateCode: "04B01",
             continue: true,
           },
@@ -1577,9 +1685,19 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** having difficulty breathing or speaking?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const lastAnswer = answers?.[answers.length - 1]?.answer;
-          return lastAnswer === "Injured on Chest/Neck/Head";
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          if (!_patient) return false;
+          const { isBreathing } = _patient;
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return (
+            (lastAnswer === "Chest" ||
+              lastAnswer === "Neck" ||
+              lastAnswer === "Head") &&
+            isBreathing !== false
+          );
         },
         answers: [
           {
@@ -1595,7 +1713,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "INEFFECTIVE/AGONAL BREATHING",
-            display: "INEFFECTIVE/AGONAL BREATHING",
+            display: "INEFFECTIVE/AGONAL breathing",
             end: true,
             updateCode: "04D01",
           },
@@ -1610,11 +1728,14 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is there any deformity from the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.question === "What part of the body was/is injured?"
           );
-          return answer?.defultAnswer === "Not Dangerous Body Area:";
+          return answer?.defaultAnswer === "Not Dangerous Body Area:";
         },
         answers: [
           {
@@ -1831,6 +1952,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "04D01",
             text: "Arrest",
             recResponse: 17,
+            notBreathing: true,
             subCodes: [
               {
                 code: "A",
@@ -1853,6 +1975,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "04D02",
             text: "Unconscious",
             recResponse: 18,
+            notConscious: true,
             subCodes: [
               {
                 code: "A",
@@ -1949,46 +2072,62 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Back pain—especially when non-traumatic—may seem low acuity, but can conceal
-          <span className="text-red-500 font-semibold"> life-threatening vascular conditions</span> in older adults.
-          Always distinguish between <span className="font-medium">traumatic vs. non-traumatic</span> causes and assess
-          for associated symptoms such as chest pain, fainting, or changes in skin color.
+          Back pain—especially when non-traumatic—may seem low acuity, but can
+          conceal
+          <span className="text-red-500 font-semibold">
+            {" "}
+            life-threatening vascular conditions
+          </span>{" "}
+          in older adults. Always distinguish between{" "}
+          <span className="font-medium">traumatic vs. non-traumatic</span>{" "}
+          causes and assess for associated symptoms such as chest pain,
+          fainting, or changes in skin color.
         </p>
 
         <p className="mt-2">
           <span className="text-yellow-400 font-semibold">Key concern:</span>{" "}
           Sudden, severe pain described as{" "}
-          <span className="text-red-500 font-semibold">"ripping" or "tearing"</span>{" "}
-          in patients over 50 may indicate an <i>aortic aneurysm</i> and warrants immediate ALS response.
+          <span className="text-red-500 font-semibold">
+            "ripping" or "tearing"
+          </span>{" "}
+          in patients over 50 may indicate an <i>aortic aneurysm</i> and
+          warrants immediate ALS response.
         </p>
 
-        <p className="mt-2">
-          Use the following to guide triage:
-        </p>
+        <p className="mt-2">Use the following to guide triage:</p>
 
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="font-semibold">Non-traumatic onset</span> → often Alpha, unless other risk factors present
+            <span className="font-semibold">Non-traumatic onset</span> → often
+            Alpha, unless other risk factors present
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Fainting, grey skin tone, or altered mental status</span> → escalate to Charlie or Delta
+            <span className="text-red-500 font-semibold">
+              Fainting, grey skin tone, or altered mental status
+            </span>{" "}
+            → escalate to Charlie or Delta
           </li>
           <li>
-            <span className="font-semibold">Chest pain + back pain</span> → suspect vascular or cardiac cause
+            <span className="font-semibold">Chest pain + back pain</span> →
+            suspect vascular or cardiac cause
           </li>
           <li>
-            <span className="font-semibold">Known or suspected aneurysm</span> → treat as high-priority
+            <span className="font-semibold">Known or suspected aneurysm</span> →
+            treat as high-priority
           </li>
         </ul>
 
         <p className="mt-2">
-          For <span className="font-medium">traumatic back pain</span> (e.g., from a recent fall), escalate based on the time of injury and signs
-          of spinal involvement. Old injuries without new symptoms may qualify as Alpha-level.
+          For <span className="font-medium">traumatic back pain</span> (e.g.,
+          from a recent fall), escalate based on the time of injury and signs of
+          spinal involvement. Old injuries without new symptoms may qualify as
+          Alpha-level.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> In patients over 50, always ask about chest involvement and
-          check for signs of vascular collapse, even if the chief complaint is "just back pain."
+          <span className="font-medium">REMEMBER:</span> In patients over 50,
+          always ask about chest involvement and check for signs of vascular
+          collapse, even if the chief complaint is "just back pain."
         </p>
       </>
     ),
@@ -2009,30 +2148,54 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "Recent Fall",
+            answer: "Recent fall (< 6 hours ago)",
             display: "Pain from a recent fall",
             goto: 17,
           },
           {
-            answer: "Recent Trauma",
-            display: "Pain from a recent trauma",
-            goto: 30,
+            answer: "Trauma",
+            display: "Pn from trauma",
+            continue: true,
           },
           {
-            answer: "Non-Traumatic",
+            answer: "Non-traumatic",
             display: "Caused by non-trauma",
             continue: true,
             updateCode: "05A01",
           },
           {
-            answer: "Non-Recent (>= 6hrs ago) Trauma",
-            display: "Caused by non-recent trauma",
+            answer: "Unknown",
+            display: "Unk cause of pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>When did the trauma happen?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "Trauma";
+        },
+        answers: [
+          {
+            answer: "Just now (< 6 hours ago)",
+            display: "Occurred just now (< 6 hours ago)",
+            goto: 30,
+          },
+          {
+            answer: "Earlier (>= 6 hours ago)",
+            display: "Occurred earlier (>= 6 hours ago)",
             continue: true,
             updateCode: "05A02",
           },
           {
             answer: "Unknown",
-            display: "Unk cause of pn",
+            display: "Unk when trauma happened",
             continue: true,
           },
         ],
@@ -2128,14 +2291,15 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             continue: true,
-            display: "Not ashen or grey",
+            display: "Ashen or grey not rptd",
           },
           {
             answer: "Yes",
-            display: "Ashen or grey",
-            dependency: (patient?: IPatientData) => {
+            display: "Ashen or grey color rptd",
+            dependency: (patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
               if (!patient) return undefined;
               const { age } = patient;
+              if(currentCode === "05D01") return;
               if (age >= 50) {
                 return { code: "05D02" };
               }
@@ -2225,9 +2389,10 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "RIPPING/TEARING",
             display: "Pn is ripping or tearing",
             continue: true,
-            dependency: (patient?: IPatientData) => {
+            dependency: (patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
               if (!patient) return undefined;
               const { age } = patient;
+              if(currentCode === "05D01" || currentCode === "05D02") return;
               if (age >= 50) {
                 return { code: "05C01" };
               }
@@ -2238,6 +2403,34 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Unable to describe pn",
             continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Has **pronoun** been diagnosed with an Aortic Aneurysm</p>,
+        questionType: "select",
+        preRenderInstructions: (patient?: IPatientData) => {
+          if (!patient) return false;
+          const { age } = patient;
+          return age >= 50;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No diagnosed aortic aneurysm",
+            end: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diagnosed aortic aneurysm",
+            end: true,
+            updateCode: "05C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diagnosed aority aneurysm",
+            end: true,
           },
         ],
       },
@@ -2319,51 +2512,68 @@ export const emsComplaints: IEMSComplaint[] = [
       <>
         <p>
           Breathing issues should always be approached with urgency—airway
-          compromise can evolve <span className="text-red-500 font-semibold">rapidly</span>. Start by evaluating
+          compromise can evolve{" "}
+          <span className="text-red-500 font-semibold">rapidly</span>. Start by
+          evaluating
           <span className="font-medium"> alertness</span> and the ability to
-          <span className="text-red-500 font-semibold"> speak between breaths</span>.
-          If the patient can't talk, is changing color, or has cold sweats, assume
-          deteriorating respiratory status and escalate immediately.
+          <span className="text-red-500 font-semibold">
+            {" "}
+            speak between breaths
+          </span>
+          . If the patient can't talk, is changing color, or has cold sweats,
+          assume deteriorating respiratory status and escalate immediately.
         </p>
 
         <p className="mt-2">
           If the patient has a history of
           <span className="text-yellow-400 font-semibold"> asthma</span>,
-          <span className="text-yellow-400 font-semibold"> COPD</span>, or uses a
-          <span className="text-yellow-400 font-semibold"> tracheostomy</span>,
+          <span className="text-yellow-400 font-semibold"> COPD</span>, or uses
+          a<span className="text-yellow-400 font-semibold"> tracheostomy</span>,
           assess for distress and confirm whether a prescribed
-          <span className="font-medium"> inhaler or nebulizer</span> is available and in use.
-          These factors inform both determinant level and field management instructions.
+          <span className="font-medium"> inhaler or nebulizer</span> is
+          available and in use. These factors inform both determinant level and
+          field management instructions.
         </p>
 
         <p className="mt-2">
-          Watch for the following <span className="text-red-500 font-semibold">red flags</span> that indicate ALS or Echo priority:
+          Watch for the following{" "}
+          <span className="text-red-500 font-semibold">red flags</span> that
+          indicate ALS or Echo priority:
         </p>
 
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="font-semibold">Cannot speak or cry</span> → assess for choking or ineffective breathing
+            <span className="font-semibold">Cannot speak or cry</span> → assess
+            for choking or ineffective breathing
           </li>
           <li>
-            <span className="font-semibold">Not alert</span> → possible hypoxia or declining mental status
+            <span className="font-semibold">Not alert</span> → possible hypoxia
+            or declining mental status
           </li>
           <li>
             <span className="font-semibold">Changing skin color</span> or
-            <span className="font-semibold"> clammy/cold sweats</span> → signs of decompensation
+            <span className="font-semibold"> clammy/cold sweats</span> → signs
+            of decompensation
           </li>
           <li>
-            <span className="font-semibold">Known lung disease</span> without meds/inhaler access → increased risk
+            <span className="font-semibold">Known lung disease</span> without
+            meds/inhaler access → increased risk
           </li>
           <li>
-            <span className="font-semibold">Ineffective breathing</span> → treat as an
-            <span className="text-red-500 font-semibold"> Echo-level emergency</span>
+            <span className="font-semibold">Ineffective breathing</span> → treat
+            as an
+            <span className="text-red-500 font-semibold">
+              {" "}
+              Echo-level emergency
+            </span>
           </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> A patient with asthma or COPD may appear stable,
-          but still rapidly deteriorate without proper intervention. If symptoms
-          persist after inhaler/nebulizer use, response level should not be downgraded.
+          <span className="font-medium">REMEMBER:</span> A patient with asthma
+          or COPD may appear stable, but still rapidly deteriorate without
+          proper intervention. If symptoms persist after inhaler/nebulizer use,
+          response level should not be downgraded.
         </p>
       </>
     ),
@@ -2376,9 +2586,13 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 22,
     questions: [
       {
-        text: <p>Is **pronoun** able to talk to you (cry) at all?</p>,
+        text: (
+          <p>
+            Is **pronoun** able to talk to you{" "}
+            <span className="text-blue-400">(cry)</span> at all?
+          </p>
+        ),
         questionType: "select",
-        omitQuestion: true,
         answers: [
           {
             answer: "Yes",
@@ -2406,7 +2620,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Can talk or cry";
         },
@@ -2433,7 +2650,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Did **pronoun** choke on anything first?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Cannot talk or cry";
         },
@@ -2474,6 +2694,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT responding nlly",
             updateCode: "06D01",
+            override: true,
             continue: true,
           },
           {
@@ -2574,6 +2795,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Has other lung problems: {input}",
             input: true,
             continue: true,
+            updateSubCode: "O",
           },
           {
             answer: "Unknown",
@@ -2591,7 +2813,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Has asthma" || lastAnswer === "Has COPD";
         },
@@ -2623,7 +2848,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Has **pronoun** used it yet?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) =>
               a.question ===
@@ -2661,7 +2889,10 @@ export const emsComplaints: IEMSComplaint[] = [
         ),
         questionType: "select",
         omitQuestion: true,
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.question === "Has **pronoun** used it yet?"
           )?.answer;
@@ -2684,9 +2915,13 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Give instructions on using nebulizer/inhaler</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
-            (a) => a.question === "Can you, or someone there, go get it now?"
+            (a) =>
+              a.defaultQuestion === "Can you, or someone there, go get it now?"
           )?.answer;
           return answer === "Can get inhaler/nebulizer now";
         },
@@ -2952,55 +3187,92 @@ export const emsComplaints: IEMSComplaint[] = [
       <>
         <p>
           Burn and explosion injuries require immediate triage to assess for:
-          <span className="text-red-500 font-semibold"> airway involvement</span>,
-          <span className="text-red-500 font-semibold"> extent of burn area</span>,
-          and
-          <span className="text-yellow-400 font-semibold"> active hazards</span> (e.g., structure fire or smoldering debris).
-          Always determine whether this is part of a
-          <span className="text-red-400 font-semibold"> structure fire</span> and if
+          <span className="text-red-500 font-semibold">
+            {" "}
+            airway involvement
+          </span>
+          ,
+          <span className="text-red-500 font-semibold">
+            {" "}
+            extent of burn area
+          </span>
+          , and
+          <span className="text-yellow-400 font-semibold">
+            {" "}
+            active hazards
+          </span>{" "}
+          (e.g., structure fire or smoldering debris). Always determine whether
+          this is part of a
+          <span className="text-red-400 font-semibold">
+            {" "}
+            structure fire
+          </span>{" "}
+          and if
           <span className="font-medium"> victims are still inside</span>.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">Critical Indicators</span> of severe burn injury include:
+          <span className="font-medium">Critical Indicators</span> of severe
+          burn injury include:
         </p>
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
           <li>
-            <span className="text-red-500 font-semibold">Burns ≥ 18%</span> of total body surface area
+            <span className="text-red-500 font-semibold">Burns ≥ 18%</span> of
+            total body surface area
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Significant facial burns</span> or burns involving
+            <span className="text-red-500 font-semibold">
+              Significant facial burns
+            </span>{" "}
+            or burns involving
             <span className="font-medium"> the airway</span>
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Difficulty breathing or speaking</span> after inhalation injury
+            <span className="text-red-500 font-semibold">
+              Difficulty breathing or speaking
+            </span>{" "}
+            after inhalation injury
           </li>
           <li>
-            <span className="text-red-500 font-semibold">Victim on fire</span> or presence of smoldering clothing
+            <span className="text-red-500 font-semibold">Victim on fire</span>{" "}
+            or presence of smoldering clothing
           </li>
           <li>
-            <span className="text-yellow-400 font-semibold">Explosive mechanisms</span> → consider
-            <span className="font-medium"> blast injuries, barotrauma, or penetrating debris</span>
+            <span className="text-yellow-400 font-semibold">
+              Explosive mechanisms
+            </span>{" "}
+            → consider
+            <span className="font-medium">
+              {" "}
+              blast injuries, barotrauma, or penetrating debris
+            </span>
           </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium text-yellow-400">Scene safety</span> is a priority.
-          Explosions and fireworks often involve
+          <span className="font-medium text-yellow-400">Scene safety</span> is a
+          priority. Explosions and fireworks often involve
           <span className="font-semibold"> multiple victims</span> and
-          <span className="font-semibold"> toxic smoke inhalation</span>. When active fire or smoldering materials are present,
-          coordinate with fire services for scene control and potential rescue operations.
+          <span className="font-semibold"> toxic smoke inhalation</span>. When
+          active fire or smoldering materials are present, coordinate with fire
+          services for scene control and potential rescue operations.
         </p>
 
         <p className="mt-2">
-          For <span className="font-medium">sunburns</span> or minor burns <span className="text-muted-foreground">(under 9%)</span>,
-          a lower response level may be appropriate—unless complicated by age, location (e.g., face), or other comorbidities.
+          For <span className="font-medium">sunburns</span> or minor burns{" "}
+          <span className="text-muted-foreground">(under 9%)</span>, a lower
+          response level may be appropriate—unless complicated by age, location
+          (e.g., face), or other comorbidities.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span>{" "}
-          Any indication of altered consciousness, respiratory distress, or blast-related polytrauma should
-          escalate immediately to a <span className="text-red-500 font-semibold">Delta or Echo-level</span> response.
+          <span className="font-medium">REMEMBER:</span> Any indication of
+          altered consciousness, respiratory distress, or blast-related
+          polytrauma should escalate immediately to a{" "}
+          <span className="text-red-500 font-semibold">
+            Delta or Echo-level
+          </span>{" "}
+          response.
         </p>
       </>
     ),
@@ -3015,7 +3287,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is this a <b className="text-red-400">building fire</b>?
+            <span className="text-blue-400">(Appropriate)</span> Is this a <b className="text-red-400">building fire</b>?
           </p>
         ),
         questionType: "select",
@@ -3052,7 +3324,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Structure on fire";
         },
@@ -3080,7 +3355,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is <b>anything</b> still <b className="text-red-400">burning</b> or{" "}
+            <span className="text-blue-400">(If not obvious)</span> Is <b>anything</b> still <b className="text-red-400">burning</b> or{" "}
             <b className="text-red-400">smoldering</b>?
           </p>
         ),
@@ -3120,6 +3395,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -3175,7 +3455,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -3284,8 +3567,9 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: ">= 18% Body Area",
             display: "Burns >= 18% body area",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[], currentCode?: string) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
+              if (currentCode?.includes("D")) return;
               if (lastAnswer === "Burns to face/head") {
                 return { code: "07C04" };
               } else {
@@ -3313,20 +3597,20 @@ export const emsComplaints: IEMSComplaint[] = [
         questionType: "select",
         answers: [
           {
-            answer: "< 6 hours ago",
-            display: "Occurred < 6 hours ago",
-            continue: true,
+            answer: "Now (less than 6hrs ago)",
+            display: "Happened now (< 6hrs)",
+            end: true,
           },
           {
-            answer: ">= 6 hours ago",
-            display: "Occurred >= 6 hours ago",
-            continue: true,
+            answer: "More than 6hrs ago",
+            display: "Happened earlier (>= 6hrs)",
             updateCode: "07A05",
+            end: true,
           },
           {
             answer: "Unknown",
-            display: "Unk when occurred",
-            continue: true,
+            display: "Unk when incident happened",
+            end: true,
           },
         ],
       },
@@ -3825,6 +4109,7 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  // Needs final review
   {
     protocol: 8,
     name: "Carbon Monoxide/Inhalation/Hazmat/CBRN",
@@ -3832,41 +4117,85 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses emergencies involving inhaled toxins, including
-          <span className="text-green-400 font-semibold"> hazardous materials</span>,
-          <span className="text-green-400 font-semibold"> carbon monoxide</span>, and
-          <span className="text-green-400 font-semibold"> CBRN agents</span> (chemical, biological, radiological, nuclear).
-          Always assess the <span className="font-medium">scene safety</span> and whether exposure is ongoing or contained.
+          This protocol addresses emergencies involving inhaled toxins,
+          including
+          <span className="text-green-400 font-semibold">
+            {" "}
+            hazardous materials
+          </span>
+          ,
+          <span className="text-green-400 font-semibold"> carbon monoxide</span>
+          , and
+          <span className="text-green-400 font-semibold">
+            {" "}
+            CBRN agents
+          </span>{" "}
+          (chemical, biological, radiological, nuclear). Always assess the{" "}
+          <span className="font-medium">scene safety</span> and whether exposure
+          is ongoing or contained.
         </p>
 
-        <p className="mt-2">
-          Key clinical concerns include:
-        </p>
+        <p className="mt-2">Key clinical concerns include:</p>
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
-          <li><span className="font-medium">Alertness</span> and ability to respond appropriately</li>
-          <li><span className="font-medium">Breathing effectiveness</span> and respiratory effort</li>
-          <li><span className="text-red-400 font-semibold">Difficulty speaking between breaths</span> → possible airway irritation or hypoxia</li>
-          <li><span className="text-red-400 font-semibold">Multiple patients</span> → suspect scene-wide contamination</li>
-          <li><span className="text-green-400 font-semibold">Type of material involved</span> → drives response escalation and containment needs</li>
+          <li>
+            <span className="font-medium">Alertness</span> and ability to
+            respond appropriately
+          </li>
+          <li>
+            <span className="font-medium">Breathing effectiveness</span> and
+            respiratory effort
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Difficulty speaking between breaths
+            </span>{" "}
+            → possible airway irritation or hypoxia
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Multiple patients
+            </span>{" "}
+            → suspect scene-wide contamination
+          </li>
+          <li>
+            <span className="text-green-400 font-semibold">
+              Type of material involved
+            </span>{" "}
+            → drives response escalation and containment needs
+          </li>
         </ul>
 
         <p className="mt-2">
-          Exposure to substances such as chlorine gas, carbon monoxide, or unknown fumes may cause
-          <span className="text-red-400 font-semibold"> delayed onset symptoms</span> such as dizziness, confusion, or fainting.
-          For CO detector calls, symptoms like headache or nausea can appear subtle but signal dangerous buildup.
+          Exposure to substances such as chlorine gas, carbon monoxide, or
+          unknown fumes may cause
+          <span className="text-red-400 font-semibold">
+            {" "}
+            delayed onset symptoms
+          </span>{" "}
+          such as dizziness, confusion, or fainting. For CO detector calls,
+          symptoms like headache or nausea can appear subtle but signal
+          dangerous buildup.
         </p>
 
         <p className="mt-2">
-          For <span className="text-green-400 font-semibold">chemical or radiological releases</span>,
-          dispatch Fire and HazMat units. Victims may require
-          <span className="font-medium"> decontamination</span> and transport to specialized toxicology-capable facilities.
+          For{" "}
+          <span className="text-green-400 font-semibold">
+            chemical or radiological releases
+          </span>
+          , dispatch Fire and HazMat units. Victims may require
+          <span className="font-medium"> decontamination</span> and transport to
+          specialized toxicology-capable facilities.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">REMEMBER:</span> If the substance is still present,
-          unknown, or actively spreading—assume a
-          <span className="text-green-400 font-semibold"> hazardous materials</span> situation until proven otherwise.
-          Always protect responders and prioritize scene isolation.
+          <span className="font-medium">REMEMBER:</span> If the substance is
+          still present, unknown, or actively spreading—assume a
+          <span className="text-green-400 font-semibold">
+            {" "}
+            hazardous materials
+          </span>{" "}
+          situation until proven otherwise. Always protect responders and
+          prioritize scene isolation.
         </p>
       </>
     ),
@@ -3921,7 +4250,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Completely Unknown",
-            display: "Completely unknown incident",
+            display: "Completely unk incident",
             continue: true,
             updateCode: "08D06",
           },
@@ -3935,7 +4264,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const secondAnswer = answers?.[1]?.answer;
           return secondAnswer === "CO alarm activated";
         },
@@ -4064,6 +4396,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -4097,7 +4434,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "08B01" };
@@ -4109,7 +4446,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "08C01" };
@@ -4133,7 +4470,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "NOT breathing nlly";
         },
@@ -4773,35 +5113,68 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Cardiac Arrest cases require <span className="font-medium">immediate identification</span> of whether the arrest is
-          <span className="text-red-400 font-semibold"> workable</span> or if there are
-          <span className="text-muted-foreground"> obvious/expected signs of death</span>.
-          Early determination drives both dispatch priority and whether CPR or defibrillator instructions should begin.
+          Cardiac Arrest cases require{" "}
+          <span className="font-medium">immediate identification</span> of
+          whether the arrest is
+          <span className="text-red-400 font-semibold"> workable</span> or if
+          there are
+          <span className="text-muted-foreground">
+            {" "}
+            obvious/expected signs of death
+          </span>
+          . Early determination drives both dispatch priority and whether CPR or
+          defibrillator instructions should begin.
         </p>
 
         <p className="mt-2">
-          <span className="font-medium">ALS resources</span> are always required unless death is clearly irreversible.
-          If the patient has a known <span className="text-muted-foreground">DNR</span> or terminal condition, adjust appropriately.
-          If not, prioritize resuscitation attempts and get an
-          <span className="text-red-400 font-semibold"> AED</span> to the patient if available.
+          <span className="font-medium">ALS resources</span> are always required
+          unless death is clearly irreversible. If the patient has a known{" "}
+          <span className="text-muted-foreground">DNR</span> or terminal
+          condition, adjust appropriately. If not, prioritize resuscitation
+          attempts and get an
+          <span className="text-red-400 font-semibold"> AED</span> to the
+          patient if available.
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground space-y-1">
-          <li><span className="font-medium">Witnessed vs. Unwitnessed</span> arrest affects survivability and CPR timing.</li>
-          <li><span className="text-red-400 font-semibold">Not Breathing or Agonal</span> → Initiate CPR if appropriate.</li>
-          <li><span className="font-medium">Expected Death</span> (DNR/terminal) may still require unit response for verification.</li>
-          <li><span className="font-medium">Obvious Death</span> signs include decomposition, incineration, or decapitation.</li>
+          <li>
+            <span className="font-medium">Witnessed vs. Unwitnessed</span>{" "}
+            arrest affects survivability and CPR timing.
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Not Breathing or Agonal
+            </span>{" "}
+            → Initiate CPR if appropriate.
+          </li>
+          <li>
+            <span className="font-medium">Expected Death</span> (DNR/terminal)
+            may still require unit response for verification.
+          </li>
+          <li>
+            <span className="font-medium">Obvious Death</span> signs include
+            decomposition, incineration, or decapitation.
+          </li>
         </ul>
 
         <p className="mt-2">
-          <b className="text-red-500">!!!CAUTION!!!</b> Always consider scene safety.
-          For cases involving <span className="text-red-400 font-semibold">hanging, suffocation, strangulation,</span> or suspicious death,
-          <span className="font-bold text-red-500"> law enforcement MUST be dispatched</span> for scene control and investigation.
+          <b className="text-red-500">!!!CAUTION!!!</b> Always consider scene
+          safety. For cases involving{" "}
+          <span className="text-red-400 font-semibold">
+            hanging, suffocation, strangulation,
+          </span>{" "}
+          or suspicious death,
+          <span className="font-bold text-red-500">
+            {" "}
+            law enforcement MUST be dispatched
+          </span>{" "}
+          for scene control and investigation.
         </p>
 
         <p className="mt-2">
-          Dispatcher action may include CPR coaching, AED setup guidance, and emotional support for bystanders.
-          Gather clear information on last seen alive time, current condition, and any advance directives.
+          Dispatcher action may include CPR coaching, AED setup guidance, and
+          emotional support for bystanders. Gather clear information on last
+          seen alive time, current condition, and any advance directives.
         </p>
       </>
     ),
@@ -4827,7 +5200,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unwitnessed Cardiac Arrest",
             display: "The cardiac arrest was not witnessed",
             continue: true,
-            updateCode: "09E02",
+            updateCode: "09E01",
           },
           {
             answer: "Suspected Cardiac Arrest (3rd/4th Party)",
@@ -4867,7 +5240,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "The cardiac arrest was witnessed" ||
@@ -4900,8 +5276,11 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Type of incident?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const firstAnswer = answers?.[0]?.answer;
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
           return firstAnswer === "EXPECTED DEATH";
         },
         answers: [
@@ -4919,6 +5298,107 @@ export const emsComplaints: IEMSComplaint[] = [
           },
         ],
       },
+
+      {
+        text: <p><b>Why</b> do you think **pronoun** is <b>dead</b>?</p>,
+        questionType: "select",
+        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "OBVIOUS DEATH (suspected)" || firstAnswer === "EXPECTED DEATH";
+        },
+        answers: [
+          {
+            answer: "Body decomposition",
+            display: "Body decomposition rptd",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "c",
+            end: true,
+          },
+          {
+            answer: "Rigor mortis (cold & stiff)",
+            display: "Rigor mortis rptd",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "a",
+            end: true,
+          },
+          {
+            answer: "Dependent lividity",
+            display: "Dependent lividity rptd",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "d",
+            end: true,
+          },
+          {
+            answer: "Decapitation",
+            display: "Decapitation rptd",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "b",
+            end: true,
+          },
+          {
+            answer: "Burned beyond recognition",
+            display: "Burned beyond recognition",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "d",
+            end: true,
+          },
+          {
+            answer: "Submerged more than one error",
+            display: "Submerged >= 1hr",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "OBVIOUS DEATH (suspected)") {
+                return { code: "09B01" };
+              } else if (firstAnswer === "EXPECTED DEATH") {
+                return { code: "09O01" };
+              }
+            },
+            updateSubCode: "e",
+            end: true,
+          },
+          {
+            answer: "None of these",
+            display: "No obvious death criteria met",
+            updateCode: "09D02",
+            end: true,
+          }
+        ]
+      }
     ],
     availableDeterminants: [
       {
@@ -4927,12 +5407,12 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             code: "09O01",
             text: "Expected Death Unquestionable",
-            recResponse: 47,
+            recResponse: 48,
             subCodes: [
               {
                 code: "x",
                 text: "Terminal Illness",
-                recResponse: 47,
+                recResponse: 48,
               },
               {
                 code: "y",
@@ -5187,34 +5667,63 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Chest pain should always be treated as <span className="font-bold text-red-400">potentially cardiac</span> until ruled out.
-          Key factors include <span className="font-medium">alertness, breathing status</span>, age, and history of
-          <a className="text-primary ml-1" href="/glossary#mi">MI</a> or
-          <a className="text-primary ml-1" href="/glossary#angina">angina</a>.
-          Additional red flags include:
+          Chest pain should always be treated as{" "}
+          <span className="font-bold text-red-400">potentially cardiac</span>{" "}
+          until ruled out. Key factors include{" "}
+          <span className="font-medium">alertness, breathing status</span>, age,
+          and history of
+          <a className="text-primary ml-1" href="/glossary#mi">
+            MI
+          </a>{" "}
+          or
+          <a className="text-primary ml-1" href="/glossary#angina">
+            angina
+          </a>
+          . Additional red flags include:
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
-          <li><span className="text-red-400 font-semibold">Cold sweats</span> or <span className="text-red-400 font-semibold">color changes</span></li>
-          <li><span className="text-red-400 font-semibold">Difficulty speaking</span> between breaths</li>
-          <li><span className="font-medium">Known cardiac history</span> or recent drug use</li>
-          <li><span className="font-medium">Abnormal breathing</span> or altered mental status</li>
+          <li>
+            <span className="text-red-400 font-semibold">Cold sweats</span> or{" "}
+            <span className="text-red-400 font-semibold">color changes</span>
+          </li>
+          <li>
+            <span className="text-red-400 font-semibold">
+              Difficulty speaking
+            </span>{" "}
+            between breaths
+          </li>
+          <li>
+            <span className="font-medium">Known cardiac history</span> or recent
+            drug use
+          </li>
+          <li>
+            <span className="font-medium">Abnormal breathing</span> or altered
+            mental status
+          </li>
         </ul>
 
         <p className="mt-2">
-          Patients <b>35 and older</b> are treated with higher suspicion even if breathing is normal. 
-          <span className="text-red-400 font-semibold">ALS response is indicated</span> for any abnormal signs,
-          especially if <span className="text-red-400">cocaine</span> or similar stimulants are reported, due to risk of arrhythmia or MI.
+          Patients <b>35 and older</b> are treated with higher suspicion even if
+          breathing is normal.
+          <span className="text-red-400 font-semibold">
+            ALS response is indicated
+          </span>{" "}
+          for any abnormal signs, especially if{" "}
+          <span className="text-red-400">cocaine</span> or similar stimulants
+          are reported, due to risk of arrhythmia or MI.
         </p>
 
         <p className="mt-2">
-          Collect info about medications taken (e.g., <i>aspirin</i>) and prior events. ALS crews may need to initiate 
-          <span className="font-medium">advanced airway support, cardiac monitoring,</span> or pharmacological treatment.
+          Collect info about medications taken (e.g., <i>aspirin</i>) and prior
+          events. ALS crews may need to initiate
+          <span className="font-medium">
+            advanced airway support, cardiac monitoring,
+          </span>{" "}
+          or pharmacological treatment.
         </p>
 
-        <p className="mt-2 text-muted-foreground">
-          When in doubt, escalate.
-        </p>
+        <p className="mt-2 text-muted-foreground">When in doubt, escalate.</p>
       </>
     ),
     services: [
@@ -5266,9 +5775,10 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData) => {
+            dependency: (_patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
               if (!_patient) return undefined;
               const { age } = _patient;
+              if(currentCode?.includes("D")) return;
               if (age >= 35) {
                 return { code: "10C03" };
               } else {
@@ -5298,7 +5808,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -5402,7 +5915,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Unknown",
-            display: "Unk if cardiac hx",
+            display: "Unk cardiac hx",
             continue: true,
           },
         ],
@@ -5419,24 +5932,24 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "No",
             display: "No drugs or meds < 12 hrs",
-            continue: true,
-          },
-          {
-            answer: "Yes:",
-            display: "Took {input} < 12 hrs ago",
-            continue: true,
-            input: true,
+            end: true,
           },
           {
             answer: "Yes - Cocaine",
             display: "Cocaine < 12 hrs ago",
-            continue: true,
+            end: true,
             updateCode: "10C02",
+          },
+          {
+            answer: "Yes:",
+            display: "Took {input} (< 12 hrs ago)",
+            end: true,
+            input: true,
           },
           {
             answer: "Unknown",
             display: "Unk if took drugs or meds < 12 hrs",
-            continue: true,
+            end: true,
           },
         ],
       },
@@ -5522,29 +6035,49 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Choking incidents require <span className="text-red-400 font-semibold">immediate assessment</span> of airway patency. The priority is to distinguish between:
+          Choking incidents require{" "}
+          <span className="text-red-400 font-semibold">
+            immediate assessment
+          </span>{" "}
+          of airway patency. The priority is to distinguish between:
         </p>
 
         <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
-          <li><b>Complete obstruction</b> – No breathing, no speech, silent attempts</li>
-          <li><b>Partial obstruction</b> – Noisy breathing, struggling, limited speech</li>
-          <li><b>Resolved episodes</b> – Breathing normally, may still need evaluation</li>
+          <li>
+            <b>Complete obstruction</b> – No breathing, no speech, silent
+            attempts
+          </li>
+          <li>
+            <b>Partial obstruction</b> – Noisy breathing, struggling, limited
+            speech
+          </li>
+          <li>
+            <b>Resolved episodes</b> – Breathing normally, may still need
+            evaluation
+          </li>
         </ul>
 
         <p className="mt-2">
-          <span className="font-medium">High-acuity codes</span> are triggered by signs of
-          <span className="text-red-400 font-semibold"> ineffective or absent breathing</span>,
-          <b> not being alert</b>, or <b>unknown breathing status</b>. These require Echo-level response.
+          <span className="font-medium">High-acuity codes</span> are triggered
+          by signs of
+          <span className="text-red-400 font-semibold">
+            {" "}
+            ineffective or absent breathing
+          </span>
+          ,<b> not being alert</b>, or <b>unknown breathing status</b>. These
+          require Echo-level response.
         </p>
 
         <p className="mt-2">
-          The <b>object involved</b> (e.g., <i>food, candy, liquid, toy</i>) helps anticipate complications
-          like aspiration or persistent airway compromise. Infants and older adults are at particular risk.
+          The <b>object involved</b> (e.g., <i>food, candy, liquid, toy</i>)
+          helps anticipate complications like aspiration or persistent airway
+          compromise. Infants and older adults are at particular risk.
         </p>
 
         <p className="mt-2 text-muted-foreground">
-          Dispatchers should be ready to give <b>Heimlich/back blow instructions</b> or proceed to
-          CPR if patient becomes unresponsive.
+          Dispatchers should be ready to give{" "}
+          <b>Heimlich/back blow instructions</b> or proceed to CPR if patient
+          becomes unresponsive.
         </p>
       </>
     ),
@@ -5556,6 +6089,96 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPriority: 4,
     defaultPlan: 53,
     questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** breathing <b>normally</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "11D01",
+            override: true,
+          },
+          {
+            answer: "COMPLETE OBSTRUCTION",
+            display: "Complete obstruction of airway",
+            updateCode: "11E01",
+            continue: true,
+            override: true,
+          },
+          {
+            answer: "NOT BREATHING",
+            display: "Not breathing at all",
+            updateCode: "11E01",
+            continue: true,
+            override: true,
+          },
+          {
+            answer: "INEFFECTIVE BREATHING",
+            display: "Ineffective breathing",
+            updateCode: "11E01",
+            continue: true,
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing",
+            updateCode: "11D00",
+            end: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is a <b className="text-red-400">defibrillator (AED)</b> available?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return (
+            firstAnswer === "COMPLETE OBSTRUCTION" ||
+            firstAnswer === "NOT BREATHING" ||
+            firstAnswer === "INEFFECTIVE BREATHING"
+          );
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No AED available",
+            gotoInstructions: 1,
+            end: true,
+          },
+          {
+            answer: "Yes",
+            display: "AED available",
+            gotoInstructions: 2,
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if AED available",
+            gotoInstructions: 1,
+            end: true,
+          },
+        ],
+      },
+
       {
         text: (
           <p>
@@ -5587,66 +6210,19 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is **pronoun** breathing <b>normally</b>?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "Yes",
-            display: "Breathing nlly",
-            continue: true,
-          },
-          {
-            answer: "No",
-            display: "Not breathing nlly",
-            continue: true,
-            updateCode: "11D01",
-            override: true,
-          },
-          {
-            answer: "COMPLETE OBSTRUCTION",
-            display: "Complete obstruction of airway",
-            end: true,
-            updateCode: "11E01",
-            override: true,
-          },
-          {
-            answer: "NOT BREATHING",
-            display: "Not breathing at all",
-            end: true,
-            updateCode: "11E01",
-            override: true,
-          },
-          {
-            answer: "INEFFECTIVE BREATHING",
-            display: "Ineffective breathing",
-            end: true,
-            updateCode: "11E01",
-            override: true,
-          },
-          {
-            answer: "Unknown",
-            display: "Unk if breathing",
-            end: true,
-            updateCode: "11E00",
-          },
-        ],
-      },
-
-      {
-        text: (
-          <p>
             Is **pronoun** able to <b>talk</b> (or <b>cry</b>)?
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           return (
-            firstAnswer === "Responding nlly" &&
-            secondAnswer === "Breathing nlly"
+            firstAnswer === "Breathing nlly" &&
+            secondAnswer === "Responding nlly"
           );
         },
         answers: [
@@ -5899,6 +6475,7 @@ export const emsComplaints: IEMSComplaint[] = [
             code: "11E01",
             text: "Complete Obstruction/Not Breathing/Ineffective Breathing",
             recResponse: 56,
+            notBreathing: true,
             subCodes: [
               {
                 code: "C",
@@ -5974,32 +6551,59 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Has **pronoun** had <b>more than one</b> seizure in row <b>or</b> a
-            seizure longer than <b>5 minutes</b>?
+            Has **pronoun** had <b>more than one</b> seizure in row?
           </p>
         ),
         questionType: "select",
         answers: [
           {
             answer: "No",
-            display: "No more than one seizure or seizure > 5 min",
+            display: "Single seizure episode",
             continue: true,
           },
           {
-            answer: "Yes - More than one seizure",
+            answer: "Yes",
             display: "More than one seizure",
             continue: true,
             updateCode: "12D02",
           },
           {
-            answer: "Yes - Seizure > 5 minutes",
-            display: "Seizure > 5 minutes",
+            answer: "Unknown",
+            display: "Unk if more than one seizure",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Has the seizure been <b>longer</b> than 5 minutes?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const firstAnswer = answers?.[0]?.defaultAnswer;
+          return firstAnswer === "No";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "< 5 minutes long",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "> 5 minutes long",
             continue: true,
             updateCode: "12D02",
           },
           {
             answer: "Unknown",
-            display: "Unk if more than one seizure or seizure > 5 min",
+            display: "Unk if > 5 minutes long",
             continue: true,
           },
         ],
@@ -6047,7 +6651,6 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "PT is diabetic",
             continue: true,
             updateCode: "12C03",
-            override: true,
           },
           {
             answer: "Unknown",
@@ -6131,20 +6734,12 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "PT has stopped seizing",
             continue: true,
-            dependency: (_patient?: IPatientData) => {
-              if (!_patient) return undefined;
-              if (_patient.age < 35) {
-                return { code: "12B01" };
-              } else if (_patient.age >= 35) {
-                return { code: "12D04" };
-              }
-            },
           },
           {
             answer: "No",
             display: "PT is still seizing",
             continue: true,
-            updateCode: "12C06",
+            updateCode: "12C07",
           },
           {
             answer: "Unknown",
@@ -6158,7 +6753,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT has stopped seizing";
         },
@@ -6184,6 +6782,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
+            updateCode: "12D04"
           },
         ],
       },
@@ -6196,7 +6795,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No hx of seizures or diagnoses",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               if (!_patient) return undefined;
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
@@ -6213,7 +6812,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Seizure or eplepsy hx",
             continue: true,
             updateSubCode: "E",
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
               return { code: "12A01" };
@@ -6223,7 +6822,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk hx of seizures or diagnoses",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer !== "Breathing nlly") return undefined;
               return { code: "12A02" };
@@ -6482,18 +7081,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Key considerations for Diabetic Problems include the patient's level of consciousness, respiratory status,
-          and behavior. Hypoglycemia and hyperglycemia can both present with altered mental status, abnormal behavior,
-          or unresponsiveness, requiring prompt assessment and intervention.
+          Key considerations for Diabetic Problems include the patient's level
+          of consciousness, respiratory status, and behavior. Hypoglycemia and
+          hyperglycemia can both present with altered mental status, abnormal
+          behavior, or unresponsiveness, requiring prompt assessment and
+          intervention.
         </p>
         <p className="mt-2">
-          Patients who are alert, breathing normally, and behaving appropriately are typically low acuity. However,
-          abnormal breathing, confusion, or unresponsiveness may indicate a serious glucose imbalance or underlying
-          complication requiring ALS care.
+          Patients who are alert, breathing normally, and behaving appropriately
+          are typically low acuity. However, abnormal breathing, confusion, or
+          unresponsiveness may indicate a serious glucose imbalance or
+          underlying complication requiring ALS care.
         </p>
         <p className="mt-2">
-          Combative or aggressive behavior, especially in patients with known diabetes, may be the result of severe
-          hypoglycemia. Ensure appropriate safety precautions are taken during response, and prepare for possible
+          Combative or aggressive behavior, especially in patients with known
+          diabetes, may be the result of severe hypoglycemia. Ensure appropriate
+          safety precautions are taken during response, and prepare for possible
           de-escalation or sedation protocols if needed.
         </p>
       </>
@@ -6513,6 +7116,11 @@ export const emsComplaints: IEMSComplaint[] = [
             <span className="text-red-400">(responding appropriately)</span>?
           </p>
         ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         questionType: "select",
         answers: [
           {
@@ -6546,7 +7154,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Behaving nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "Responding nlly") {
                 return { code: "13A01" };
@@ -6619,12 +7227,15 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: (
-          <p>
+          <p className="text-red-400">
             Does **pronoun** have <b>access to weapons</b>?
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Acting aggressively or combative";
         },
@@ -6745,6 +7356,7 @@ export const emsComplaints: IEMSComplaint[] = [
       },
     ],
   },
+  // Needs final review
   {
     protocol: 14,
     name: "Drowning (Near) / Diving / SCUBA Accident",
@@ -6849,7 +7461,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "No AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -6862,7 +7474,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -6875,7 +7487,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if AED available",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               if (firstAnswer === "PT is in water") {
                 return { code: "14E02" };
@@ -6891,7 +7503,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is it easy to get to the patient?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Pt is underwater";
         },
@@ -6925,7 +7540,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Unk where pt is";
         },
@@ -6956,7 +7574,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -6987,7 +7608,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** breathing normally?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -6999,7 +7623,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[0]?.answer;
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (
@@ -7019,7 +7643,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "Not breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (lastAnswer === "Responding nlly") {
                 return { code: "14C01" };
@@ -7045,7 +7669,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is **pronoun** injured at all?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return (
             firstAnswer === "Pt is out of water" ||
@@ -7063,7 +7690,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Injuries: {input}",
             continue: true,
             input: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const isBreathingNlly =
                 answers?.find((a) => a.answer === "Breathing nlly")?.answer ===
                 "Breathing nlly";
@@ -7597,7 +8224,7 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Location:",
-            display: "Pt is located at {input}",
+            display: "Pt is located: {input}",
             continue: true,
             input: true,
           },
@@ -7629,6 +8256,11 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
             updateSubCode: "L",
           },
+          {
+            answer: "Unknown",
+            display: "Unk type of incident",
+            continue: true,
+          },
         ],
       },
 
@@ -7639,9 +8271,12 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const secondAnswer = answers?.[1]?.answer;
-          return secondAnswer === "Pt was electrocuted";
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Electrocution";
         },
         answers: [
           {
@@ -7671,9 +8306,12 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const secondAnswer = answers?.[1]?.answer;
-          return secondAnswer === "Pt was electrocuted";
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Lightning";
         },
         answers: [
           {
@@ -7705,12 +8343,12 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "PT did not fall",
+            display: "Did not fall",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "PT fell after incident",
+            display: "Fell after incident",
             continue: true,
           },
           {
@@ -7724,30 +8362,43 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>How far did **pronoun** fall?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "PT fell after incident";
         },
         answers: [
           {
             answer: "Ground Level",
-            display: "Ground level fall",
+            display: "Fell at ground level",
             continue: true,
           },
           {
-            answer: "< 6ft",
-            display: "Fall < 6ft",
+            answer: "< 10ft/3m (1 story)",
+            display: "Fell < 10ft/3m (1 story)",
             continue: true,
           },
           {
-            answer: "Long Fall (>= 6ft)",
-            display: "PT fell >= 6ft",
+            answer: "Fall down (not on) stairs",
+            display: "Fell down stairs",
+            continue: true,
+          },
+          {
+            answer: "Fall on (not down) stairs",
+            display: "Fell on stairs",
+            continue: true,
+          },
+          {
+            answer: "LONG FALL - 10-29ft (3-9m)",
+            display: "LONG FALL - 10-29ft (3-9m)",
             continue: true,
             updateCode: "15D05",
           },
           {
-            answer: "EXTREME FALL (>= 30ft/10m)",
-            display: "PT fell >= 30ft/10m",
+            answer: "EXTREME FALL - >= 30ft (>= 10m)",
+            display: "EXTREME FALL - >= 30ft (>= 10m)",
             continue: true,
             updateCode: "15D06",
           },
@@ -7755,6 +8406,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk how far pt fell",
             continue: true,
+            updateCode: "15D09",
           },
         ],
       },
@@ -7800,12 +8452,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
-              const lastAnswer = answers?.[answers.length - 1]?.answer;
-              if (lastAnswer === "Responding nlly") {
-                return { code: "15C01" };
-              }
-            },
+            updateCode: "15C01",
           },
           {
             answer: "No",
@@ -8235,8 +8882,12 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
+          if (!lastAnswer) return false;
           return (
             lastAnswer.includes("Caused by penetrating object") ||
             lastAnswer.includes("Caused by flying object") ||
@@ -8365,8 +9016,8 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "More than 6hrs ago",
             display: "Fell earlier (>= 6hrs)",
-            continue: true,
             updateCode: "17A03",
+            continue: true,
           },
           {
             answer: "Unknown",
@@ -8459,7 +9110,6 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk reason for fall",
             continue: true,
-            updateCode: "17B04",
           },
         ],
       },
@@ -8467,8 +9117,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Is there any <b>SERIOUS</b> <span className="text-4">bleeding</span>
-            ?
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
           </p>
         ),
         questionType: "select",
@@ -8500,6 +9149,11 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
         answers: [
           {
             answer: "Yes",
@@ -8530,18 +9184,21 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "Chest",
-            display: "Injured chest",
+            display: "Inj to chest",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "Head",
-            display: "Injured head",
+            display: "Inj to head",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "Neck",
-            display: "Injured neck",
+            display: "Inj to neck",
             continue: true,
+            updateCode: "17B01",
           },
           {
             answer: "POSSIBLY DANGEROUS (not Chest/Neck/Head):",
@@ -8565,7 +9222,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "No injuries",
-            display: "No injuries rptd",
+            display: "No injs rptd",
             continue: true,
             updateCode: "17A04",
           },
@@ -8579,7 +9236,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           if (!lastAnswer) return false;
           return (
@@ -8611,16 +9271,30 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What is the extent of the injury?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
-          const injuryAnswer = answers?.[answers.length - 1]?.answer;
-          return injuryAnswer.includes("Inj to");
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const injuryAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          if (!injuryAnswer) return false;
+          return injuryAnswer === "Not Dangerous:";
         },
         answers: [
           {
             answer: "Deformity",
             display: "Inj has deformity",
             continue: true,
-            updateCode: "17A01",
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const lengthOfFall = answers?.[1]?.defaultAnswer || "";
+              const dissallowed = [
+                "Fall down (not on) stairs",
+                "LONG FALL - 10-29ft (3-9m)",
+                "EXTREME FALL - >= 30ft (>= 10m)",
+                "Unknown",
+              ];
+              if (dissallowed.includes(lengthOfFall)) return;
+              return { code: "17A01" };
+            },
           },
           {
             answer: "No Deformity",
@@ -8653,6 +9327,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Public place",
             display: "In public place",
             continue: true,
+            updateSubCode: "P",
           },
           {
             answer: "Unknown",
@@ -9237,18 +9912,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          Headache calls can range from benign to life-threatening. Protocol 18 captures critical signs of stroke,
-          hemorrhage, or neurologic compromise by assessing alertness, breathing, speech, pain onset, and motor function.
+          Headache calls can range from benign to life-threatening. Protocol 18
+          captures critical signs of stroke, hemorrhage, or neurologic
+          compromise by assessing alertness, breathing, speech, pain onset, and
+          motor function.
         </p>
         <p className="mt-2">
-          A structured stroke evaluation—based on smile symmetry, arm strength, and speech—generates a FAST score and time-based
-          subcode. These differentiate between possible TIA, evolving stroke, or severe neurovascular events, and help
-          prioritize ALS vs. BLS response.
+          A structured stroke evaluation—based on smile symmetry, arm strength,
+          and speech—generates a FAST score and time-based subcode. These
+          differentiate between possible TIA, evolving stroke, or severe
+          neurovascular events, and help prioritize ALS vs. BLS response.
         </p>
         <p className="mt-2">
-          Fire or EMS may be dispatched ALS when stroke is suspected, airway is compromised, or there's behavioral change,
-          paralysis, or abnormal vitals. Proximity-based assessments allow guided testing even via bystanders, improving pre-arrival
-          stroke recognition.
+          Fire or EMS may be dispatched ALS when stroke is suspected, airway is
+          compromised, or there's behavioral change, paralysis, or abnormal
+          vitals. Proximity-based assessments allow guided testing even via
+          bystanders, improving pre-arrival stroke recognition.
         </p>
       </>
     ),
@@ -9396,7 +10075,7 @@ export const emsComplaints: IEMSComplaint[] = [
           },
           {
             answer: "Both Numbness and Paralysis",
-            display: "Numbness and Paralysis",
+            display: "Numbness and paralysis",
             continue: true,
             updateCode: "18C06",
           },
@@ -9414,18 +10093,18 @@ export const emsComplaints: IEMSComplaint[] = [
         answers: [
           {
             answer: "No",
-            display: "No change in behavior",
+            display: "No chng in behavior",
             continue: true,
           },
           {
             answer: "Yes",
-            display: "Change in behavior (<= 3hrs)",
+            display: "Chng in behavior (<= 3hrs)",
             continue: true,
             updateCode: "18C07",
           },
           {
             answer: "Unknown",
-            display: "Unk if change in behavior",
+            display: "Unk if chng in behavior",
             continue: true,
           },
         ],
@@ -9467,7 +10146,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           const secondAnswer = answers?.[1]?.answer;
           const thirdAnswer = answers?.[2]?.answer;
@@ -9517,7 +10199,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say "Can you have the patient smile"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9540,7 +10225,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Smile instructions given"
           )?.answer;
@@ -9575,7 +10263,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Say: "Have the patient raise both arms above their head"</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9594,7 +10285,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>What was **pronoun** able to do?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Raise arms instructions given"
           )?.answer;
@@ -9630,7 +10324,10 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9651,7 +10348,10 @@ export const emsComplaints: IEMSComplaint[] = [
           <p>Was **pronoun** able to say it correctly and understandably</p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Speech instructions given"
           )?.answer;
@@ -9685,7 +10385,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Calculate Score</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.answer === "Starting test..."
           )?.answer;
@@ -9697,7 +10400,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Calculate Score",
             display: "Stroke test score calculated",
             end: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const smileAnswer = answers?.find((a) =>
                 a.answer.includes("1: ")
               )?.answer;
@@ -9709,7 +10412,17 @@ export const emsComplaints: IEMSComplaint[] = [
               )?.answer;
               const symptomStart = answers?.find(
                 (a) => a.question === "When did these symptoms start?"
-              )?.defultAnswer;
+              )?.defaultAnswer;
+              if (!smileAnswer || !armsAnswer || !speechAnswer) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                }
+                return { subCode: "z" };
+              }
               const smileScore = parseInt(smileAnswer.split(": ")[1]);
               const armsScore = parseInt(armsAnswer.split(": ")[1]);
               const speechScore = parseInt(speechAnswer.split(": ")[1]);
@@ -10458,16 +11171,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses a broad range of cardiac-related complaints, from chest discomfort to AICD (Automated Implantable
-          Cardioverter Defibrillator) activity. It screens for unstable vitals, ischemic symptoms, and high-risk cardiac history.
+          This protocol addresses a broad range of cardiac-related complaints,
+          from chest discomfort to AICD (Automated Implantable Cardioverter
+          Defibrillator) activity. It screens for unstable vitals, ischemic
+          symptoms, and high-risk cardiac history.
         </p>
         <p className="mt-2">
-          Determinants prioritize abnormal breathing, altered mental status, recent AICD firing, or stimulant use (e.g., cocaine)
-          for ALS response. Chest pain is age-differentiated, recognizing younger vs. older cardiac risk profiles.
+          Determinants prioritize abnormal breathing, altered mental status,
+          recent AICD firing, or stimulant use (e.g., cocaine) for ALS response.
+          Chest pain is age-differentiated, recognizing younger vs. older
+          cardiac risk profiles.
         </p>
         <p className="mt-2">
-          ALS is typically dispatched for patients with AICDs, hemodynamic instability, or priority symptoms like color change,
-          clammy skin, or dyspnea. BLS may suffice if symptoms are mild and vitals stable without concerning history.
+          ALS is typically dispatched for patients with AICDs, hemodynamic
+          instability, or priority symptoms like color change, clammy skin, or
+          dyspnea. BLS may suffice if symptoms are mild and vitals stable
+          without concerning history.
         </p>
       </>
     ),
@@ -10538,7 +11257,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return lastAnswer === "Not breathing nlly";
         },
@@ -10669,8 +11391,12 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
+          if (!lastAnswer) return false;
           return (
             lastAnswer === "Pt has an AICD" ||
             lastAnswer.includes("AICD") ||
@@ -10913,16 +11639,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses environmental emergencies related to both heat and cold exposure, including heat exhaustion,
-          heat stroke, hypothermia, and frostbite. It evaluates alertness, skin temperature, and cardiac history to assess the risk.
+          This protocol addresses environmental emergencies related to both heat
+          and cold exposure, including heat exhaustion, heat stroke,
+          hypothermia, and frostbite. It evaluates alertness, skin temperature,
+          and cardiac history to assess the risk.
         </p>
         <p className="mt-2">
-          Patients who are not alert, have abnormal skin color, or a cardiac history are considered for ALS responses. Differentiation
-          by skin temperature helps determine whether the condition is heat- or cold-related.
+          Patients who are not alert, have abnormal skin color, or a cardiac
+          history are considered for ALS responses. Differentiation by skin
+          temperature helps determine whether the condition is heat- or
+          cold-related.
         </p>
         <p className="mt-2">
-          Bravo-level responses are typically dispatched when symptoms are unclear or moderate. Multiple victims or severe symptoms
-          escalate the response to Delta or specialized resources.
+          Bravo-level responses are typically dispatched when symptoms are
+          unclear or moderate. Multiple victims or severe symptoms escalate the
+          response to Delta or specialized resources.
         </p>
       </>
     ),
@@ -11033,7 +11764,7 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            Does **pronoun** had a <b>change</b> in <b>skin color</b>?
+            Has **pronoun** had a <b>change</b> in <b>skin color</b>?
           </p>
         ),
         questionType: "select",
@@ -11271,15 +12002,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol evaluates both traumatic and non-traumatic bleeding incidents, ranging from minor cuts to life-threatening hemorrhages.
-          It also accounts for bleeding from medical devices or body openings, such as dialysis fistulas or internal bleeding.
+          This protocol evaluates both traumatic and non-traumatic bleeding
+          incidents, ranging from minor cuts to life-threatening hemorrhages. It
+          also accounts for bleeding from medical devices or body openings, such
+          as dialysis fistulas or internal bleeding.
         </p>
         <p className="mt-2">
-          Key factors include bleeding severity, patient consciousness, and complicating factors like anticoagulant use or pregnancy.
-          Subtypes distinguish between traumatic (T) and medical (M) causes, influencing response type and resource allocation.
+          Key factors include bleeding severity, patient consciousness, and
+          complicating factors like anticoagulant use or pregnancy. Subtypes
+          distinguish between traumatic (T) and medical (M) causes, influencing
+          response type and resource allocation.
         </p>
         <p className="mt-2">
-          ALS responses are prioritized for patients with significant hemorrhage, altered mental status, or compromised breathing. Determinant codes escalate accordingly.
+          ALS responses are prioritized for patients with significant
+          hemorrhage, altered mental status, or compromised breathing.
+          Determinant codes escalate accordingly.
         </p>
       </>
     ),
@@ -11389,7 +12126,10 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: <p>Is she pregnant?</p>,
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const lastAnswer = answers?.[answers.length - 1]?.answer;
           return (
             lastAnswer === "Bleeding from genitourinary area" &&
@@ -11479,7 +12219,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Traumatic cause";
         },
@@ -11510,7 +12253,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.answer;
           return firstAnswer === "Medical cause";
         },
@@ -11889,15 +12635,21 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol addresses incidents involving patients who are currently or were recently trapped in hazardous environments, such as machinery, collapsed structures, trenches, or confined spaces.
-          It prioritizes scene safety, entrapment type, and rescue accessibility.
+          This protocol addresses incidents involving patients who are currently
+          or were recently trapped in hazardous environments, such as machinery,
+          collapsed structures, trenches, or confined spaces. It prioritizes
+          scene safety, entrapment type, and rescue accessibility.
         </p>
         <p className="mt-2">
-          Factors including entrapment severity (e.g., whole-body vs. peripheral), presence of injuries, and difficulty in reaching the patient guide determinant selection.
-          SubCodes account for above/below-ground location and multiple victim scenarios.
+          Factors including entrapment severity (e.g., whole-body vs.
+          peripheral), presence of injuries, and difficulty in reaching the
+          patient guide determinant selection. SubCodes account for
+          above/below-ground location and multiple victim scenarios.
         </p>
         <p className="mt-2">
-          Higher-level Delta determinants are triggered for active extrications, structural failures, or complex rescue environments requiring specialized teams.
+          Higher-level Delta determinants are triggered for active extrications,
+          structural failures, or complex rescue environments requiring
+          specialized teams.
         </p>
       </>
     ),
@@ -11945,6 +12697,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Mechanical Equipment",
             display: "Trapped in mechanical equipment",
             continue: true,
+            updateCode: "22D01",
           },
           {
             answer: "Confined Space",
@@ -11978,12 +12731,6 @@ export const emsComplaints: IEMSComplaint[] = [
             continue: true,
           },
           {
-            answer: "Other:",
-            display: "Trapped in/by {input}",
-            continue: true,
-            updateCode: "22B03",
-          },
-          {
             answer: "Unknown",
             display: "Unk what pt is trapped in/by",
             continue: true,
@@ -11999,7 +12746,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -12033,7 +12783,10 @@ export const emsComplaints: IEMSComplaint[] = [
           </p>
         ),
         questionType: "select",
-        preRenderInstructions: (_patient?: IPatientData, answers?: any[]) => {
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const answer = answers?.find(
             (a) => a.defaultQuestion === "What is **pronoun** trapped in/by?"
           )?.defaultAnswer;
@@ -12050,7 +12803,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Whole Body Entrapment",
             display: "Whole body is trapped",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -12075,7 +12828,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "{input} is trapped",
             continue: true,
             input: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -12099,7 +12852,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk what part of body is trapped",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const answer = answers?.find(
                 (a) =>
                   a.defaultQuestion === "What is **pronoun** trapped in/by?"
@@ -12616,15 +13369,22 @@ export const emsComplaints: IEMSComplaint[] = [
     description: (
       <>
         <p>
-          This protocol handles cases involving actual or suspected overdoses and poisonings, including both accidental and intentional exposures.
-          It supports rapid identification of priority symptoms such as altered consciousness, abnormal breathing, and cardiac arrest.
+          This protocol handles cases involving actual or suspected overdoses
+          and poisonings, including both accidental and intentional exposures.
+          It supports rapid identification of priority symptoms such as altered
+          consciousness, abnormal breathing, and cardiac arrest.
         </p>
         <p className="mt-2">
-          Call-takers are prompted to identify specific substances, intent (e.g., accidental vs. intentional), and behavioral risks such as violence or presence of weapons.
-          Special considerations are made for narcotics, especially fentanyl and carfentanil, due to responder safety concerns.
+          Call-takers are prompted to identify specific substances, intent
+          (e.g., accidental vs. intentional), and behavioral risks such as
+          violence or presence of weapons. Special considerations are made for
+          narcotics, especially fentanyl and carfentanil, due to responder
+          safety concerns.
         </p>
         <p className="mt-2">
-          Determinants escalate based on symptoms, known substances, and scene hazards, involving police where required for combative subjects or security risks.
+          Determinants escalate based on symptoms, known substances, and scene
+          hazards, involving police where required for combative subjects or
+          security risks.
         </p>
       </>
     ),
@@ -12710,7 +13470,7 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: (
-          <p>
+          <p className="text-red-400">
             Does **pronoun** have or have access to <b>weapons</b>?
           </p>
         ),
@@ -12730,6 +13490,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes:",
             display: "Access to or has wpns - {input}",
             continue: true,
+            input: true,
             updateSubCode: "W",
           },
           {
@@ -12865,7 +13626,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Pt took fentanyl",
             continue: true,
             updateCode: "23C05",
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               const violentAnswer = answers?.find(
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
@@ -12892,7 +13653,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Carfentanil",
             display: "Pt took carfentanil",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: any[]) => {
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
               const firstAnswer = answers?.[answers.length - 1]?.defaultAnswer;
               const violentAnswer = answers?.find(
                 (a) => a.defaultQuestion === "Is **pronoun** violent?"
@@ -14040,7 +14801,25 @@ export const emsComplaints: IEMSComplaint[] = [
     protocol: 24,
     name: "Pregnancy / Childbirth / Miscarriage",
     shortName: "Pregnancy",
-    description: <></>,
+    description: (
+      <>
+        <p>
+          This protocol is used for all pregnancy-related complaints including
+          labor, delivery, complications, and miscarriages. It helps determine
+          urgency based on trimester, symptoms, and visible indications of
+          delivery.
+        </p>
+        <p className="mt-2">
+          Key considerations include hemorrhaging, crowning, cord presentation,
+          and whether delivery has occurred, with special attention to
+          complications affecting the mother or baby.
+        </p>
+        <p className="mt-2">
+          Mult birth situations are flagged with subcodes, and responders are
+          guided to escalate response for high-risk or late-stage pregnancies.
+        </p>
+      </>
+    ),
     services: [
       { name: "EMS", priority: true },
       { name: "Fire", priority: 2 },
@@ -14048,7 +14827,283 @@ export const emsComplaints: IEMSComplaint[] = [
     ],
     defaultPriority: 4,
     defaultPlan: 139,
-    questions: [],
+    questions: [
+      {
+        text: (
+          <p>
+            How many <b>weeks</b>{" "}
+            <span className="text-red-400">
+              (or <b>months</b>)
+            </span>{" "}
+            pregnant is she?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "25+ wks (7-9 mos) 3rd TRIMESTER",
+            display: "25+ wks 3rd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "20-24 wks (5-6 mos) 2nd TRIMESTER",
+            display: "20-24 wks 2nd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "13-19 wks (3-4 mos) 2nd TRIMESTER",
+            display: "13-19 wks 2nd TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "0-12 wks (0-2 mos) 1st TRIMESTER",
+            display: "0-12 wks 1st TRIMESTER",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown how many weeks pregnant",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Can you <b>see</b> any part of the <b>baby</b> now?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No baby visible",
+            continue: true,
+          },
+          {
+            answer: "Baby completely out",
+            display: "Baby completely out",
+            continue: true,
+            updateCode: "24C04",
+          },
+          {
+            answer: "Head visible (crowning)",
+            display: "Head visible (crowning)",
+            continue: true,
+            updateCode: "24D02",
+          },
+          {
+            answer: "Head out",
+            display: "Head is out",
+            continue: true,
+            updateCode: "24D02",
+          },
+          {
+            answer: "Umbilical Cord",
+            display: "Umbilical Cord visible",
+            continue: true,
+            updateCode: "24D01",
+          },
+          {
+            answer: "Hands",
+            display: "Hands visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Feet",
+            display: "Feet visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Buttocks",
+            display: "Buttocks visible",
+            continue: true,
+            updateCode: "24D05",
+          },
+          {
+            answer: "Unkown - hasn't checked",
+            display: "Unknown if baby is visible",
+            continue: true,
+            updateCode: "24B02",
+          },
+          {
+            answer: "Unknown - can't check",
+            display: "Unknown if baby is visible",
+            continue: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+
+      // No baby visible
+      {
+        text: <p>Is she having contractions?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "No";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No contractions",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Having contractions",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if having contractions",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>How often is she having contractions?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Having contractions";
+        },
+        answers: [
+          {
+            answer: "< Every 3 minutes",
+            display: "Contractions < every 3 minutes",
+            continue: true,
+            updateCode: "24D03",
+          },
+          {
+            answer: "3-5 minutes apart",
+            display: "Contractions 3-5 minutes apart",
+            continue: true,
+            updateCode: "24D03",
+          },
+          {
+            answer: "> Every 5 minutes",
+            display: "Contractions > every 5 minutes",
+            continue: true,
+            updateCode: "24B01",
+          },
+          {
+            answer: "No contractions",
+            display: "No contractions",
+            continue: true,
+            updateCode: "24O01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown how often contractions are",
+            continue: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+
+      {
+        text: <p>Is there any bleeding?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Minor Bleeding",
+            display: "Minor bleeding",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
+                return { code: "24D04" };
+              } else if (firstAnswer === "20-24 wks (5-6 mos) 2nd TRIMESTER") {
+                return { code: "24C01" };
+              } else if (firstAnswer === "13-19 wks (3-4 mos) 2nd TRIMESTER") {
+                return { code: "24C01" };
+              } else if (firstAnswer === "0-12 wks (0-2 mos) 1st TRIMESTER") {
+                return { code: "24A01" };
+              }
+            },
+          },
+          {
+            answer: "SERIOUS Bleeding",
+            display: "Serious bleeding",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "25+ wks (7-9 mos) 3rd TRIMESTER") {
+                return { code: "24D04" };
+              } else if (firstAnswer === "20-24 wks (5-6 mos) 2nd TRIMESTER") {
+                return { code: "24D00" };
+              } else if (firstAnswer === "13-19 wks (3-4 mos) 2nd TRIMESTER") {
+                return { code: "24D00" };
+              } else if (firstAnswer === "0-12 wks (0-2 mos) 1st TRIMESTER") {
+                return { code: "24C02" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if bleeding",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Are there any complications?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const secondAnswer = answers?.[1]?.defaultAnswer;
+          return secondAnswer === "Baby completely out";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No complications",
+            end: true,
+            updateCode: "24C04",
+            override: true,
+          },
+          {
+            answer: "Yes - With Mother:",
+            display: "Complications with mother: {input}",
+            end: true,
+            input: true,
+            updateCode: "24D07",
+          },
+          {
+            answer: "Yes - With Baby:",
+            display: "Complications with baby: {input}",
+            end: true,
+            input: true,
+            updateCode: "24D06",
+          },
+          {
+            answer: "Unknown",
+            display: "Unknown if complications",
+            end: true,
+            updateCode: "24B02",
+          },
+        ],
+      },
+    ],
     availableDeterminants: [
       {
         priority: "O",
@@ -14062,10 +15117,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 139,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "A",
@@ -14079,8 +15134,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24A01",
@@ -14091,8 +15146,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24A02",
@@ -14103,10 +15158,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "B",
@@ -14120,8 +15175,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24B01",
@@ -14132,8 +15187,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24B02",
@@ -14145,10 +15200,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "C",
@@ -14162,8 +15217,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C01",
@@ -14174,8 +15229,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C02",
@@ -14186,8 +15241,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C03",
@@ -14198,8 +15253,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 140,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24C04",
@@ -14210,10 +15265,10 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -14227,8 +15282,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D01",
@@ -14239,8 +15294,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D02",
@@ -14251,8 +15306,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D03",
@@ -14263,8 +15318,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D04",
@@ -14275,8 +15330,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D05",
@@ -14287,8 +15342,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D06",
@@ -14299,8 +15354,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D07",
@@ -14311,8 +15366,8 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
-              }
-            ]
+              },
+            ],
           },
           {
             code: "24D08",
@@ -14323,11 +15378,7374 @@ export const emsComplaints: IEMSComplaint[] = [
                 code: "M",
                 text: "Mult Birth",
                 recResponse: 141,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 25,
+    name: "Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
+    shortName: "Psych/Abn Beh",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 142,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "Altered LOC",
+            display: "Altered LOC",
+            continue: true,
+            updateCode: "25C02",
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "25D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** talking or thinking about self-harm?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not thinking about self-injury",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              if (!_patient) return;
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const { patientProximity } = _patient;
+              if (firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O01" };
+              } else if (firstAnswer === "Yes") {
+                return { code: "25A01" };
               }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+            },
+          },
+          {
+            answer: "Yes",
+            display: "Thinking about self-injury",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              if (!_patient) return;
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const { patientProximity } = _patient;
+              if (firstAnswer === "Yes" && patientProximity === "First Party") {
+                return { code: "25O02" };
+              } else if (firstAnswer === "Yes") {
+                return { code: "25A02" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if thinking about self-injury",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** suicidal?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not thinking about killing self",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Thinking about killing self",
+            continue: true,
+            updateCode: "25A02",
+          },
+          {
+            answer: "Yes - Intending",
+            display: "Intending to kill self",
+            continue: true,
+            updateCode: "25B03",
+          },
+          {
+            answer: "Yes - Threatening to Jump",
+            display: "Threatening suicide",
+            continue: true,
+            updateCode: "25B04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if thinking about killing self",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Where is **pronoun**</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Location:",
+            display: "Pt is {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Inside same structure",
+            display: "Pt inside same structure",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where pt is",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** violent?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not violent",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Violent",
+            continue: true,
+            updateSubCode: "V",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if violent",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Does **pronoun** have or have access to weapons?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No wpns",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Pt has or has access to wpns: {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (lastAnswer === "Yes:") {
+                return { subCode: "B" };
+              } else {
+                return { subCode: "W" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has wpns",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Does **pronoun** have any mental health conditions?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Dementia",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
+              }
+            },
+          },
+          {
+            answer: "Depression",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
+              }
+            },
+          },
+          {
+            answer: "Bi-Polar",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
+              }
+            },
+          },
+          {
+            answer: "Schizophrenia",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
+              }
+            },
+          },
+          {
+            answer: "Other:",
+            display: "MENTAL HEALTH CONDITIONS",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C01" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "No mental health conditions",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C02" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if mental health conditions",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Altered LOC") {
+                return { code: "25C02" };
+              }
+            },
+          },
+        ],
+      },
+
+      {
+        text: <p>Does **pronoun** have any injures?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Hemorrhage/Laceration",
+            display: "Pt has a hemorrhage/laceration",
+            continue: true,
+          },
+          {
+            answer: "Near Hanging",
+            display: "Pt was near hanging",
+            continue: true,
+          },
+          {
+            answer: "Near Strangulation",
+            display: "Pt was near strangulation",
+            continue: true,
+          },
+          {
+            answer: "Near Suffocation",
+            display: "Pt was near suffocation",
+            continue: true,
+          },
+          {
+            answer: "JUMPED NOW",
+            display: "Pt jumped now",
+            continue: true,
+            updateCode: "25D06",
+          },
+          {
+            answer: "Other:",
+            display: "Pt has injs: {input}",
+            continue: true,
+          },
+          {
+            answer: "No Injuries",
+            display: "No inj to self",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs to self",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Hemorrhage/Laceration";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+            updateCode: "25B02",
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "25B01",
+          },
+          {
+            answer: "DANGEROUS HEMORRHAGE",
+            display: "DANGEROUS bleeding",
+            end: true,
+            updateCode: "25D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent of bleeding?",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return (
+            lastAnswer === "Near Hanging" ||
+            lastAnswer === "Near Strangulation" ||
+            lastAnswer === "Near Suffocation"
+          );
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Yes") {
+                return { code: "25B05" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Yes") {
+                return { code: "25D05" };
+              }
+            },
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "25O01",
+            text: "Non-Suicidal & Alert (w/ 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O02",
+            text: "Suicide Ideation & Alert (w/ 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O03",
+            text: "Non-Suicidal & Alert (w/ 1st Pty Verification & HX of Mental Health Conditions)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+          {
+            code: "25O04",
+            text: "Suicide Ideation & Alert (w/ 1st Pty Verification & HX of Mental Health Conditions)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 142,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 142,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "25A01",
+            text: "Non-Suicidal & Alert (w/o 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25A02",
+            text: "Suicide Ideation & Alert (w/o 1st Pty Verification)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "25B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25B01",
+            text: "Serious Hemorrhage",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25B02",
+            text: "Non-Serious or Minor Hemorrhage",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25B03",
+            text: "Intending Suicide",
+            recResponse: 142,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25B04",
+            text: "Jumper (Threatening)",
+            recResponse: 80,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 80,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 80,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 80,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 80,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 80,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 80,
+              },
+            ],
+          },
+          {
+            code: "25B05",
+            text: "Near Hanging, Strangulation, or Suffocation (Alert w/o Diff Breathing)",
+            recResponse: 143,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+          {
+            code: "25B06",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 142,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 143,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 143,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 143,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 143,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 143,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "25C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25C01",
+            text: "Altered LOC (Hx of Mental Health Conditions)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25C02",
+            text: "Altered LOC (No or Unk HX of Mental Health Conditions)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25C03",
+            text: "Altered LOC (Ingestion of Medications/Substances)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25C04",
+            text: "Altered LOC (Sudden Change in Behavior/Personality)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "C",
+                text: "Crisis Team/Alternate Response",
+                recResponse: 145,
+              },
+              {
+                code: "D",
+                text: "Crisis Team/Alternate Response w/ Violence or Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "25D00",
+            text: "ALS Override (Delta)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25D01",
+            text: "Arrest",
+            recResponse: 146,
+            notBreathing: true,
+          },
+          {
+            code: "25D02",
+            text: "Unconscious",
+            recResponse: 144,
+            notConscious: true,
+          },
+          {
+            code: "25D03",
+            text: "Not Alert",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25D04",
+            text: "Dangerous Hemorrhage",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25D05",
+            text: "Near Hanging, Strangulation, or Suffocation (Alert w/ Diff Breathing)",
+            recResponse: 144,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 145,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 145,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 145,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 145,
+              },
+            ],
+          },
+          {
+            code: "25D06",
+            text: "Jumped Now",
+            recResponse: 84,
+            subCodes: [
+              {
+                code: "B",
+                text: "Both Violent & Weapons",
+                recResponse: 84,
+              },
+              {
+                code: "T",
+                text: "Threateneing Self-Immolation",
+                recResponse: 84,
+              },
+              {
+                code: "V",
+                text: "Violent",
+                recResponse: 84,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 84,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 26,
+    name: "Sick Person (Specfic Diagnosis)",
+    shortName: "Sick Person",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 147,
+    questions: [
+      {
+        text: <p>Does **pronoun** have chest pain?</p>,
+        questionType: "select",
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { age } = _patient;
+          return age >= 35;
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No chest pn",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Chest pn",
+            goto: 10,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has chest pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** bleeding or vomitting blood at all?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not bleeiding (or vomit) blood",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Bleeding (or vomit) blood",
+            goto: 21,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bleeding (or vomit) blood",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** breathing normally?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "26C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "26B01",
+          },
+        ],
+      },
+
+      {
+        text: <p>Is **pronoun** completely alert?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "26D01",
+          },
+          {
+            answer: "Altered LOC",
+            display: "Altered LOC",
+            continue: true,
+            updateCode: "26C01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is the "Primary Problem" one of the listed ALPHA-LEVEL complaints?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "None of These",
+            display: "No priority sx (ALPHA 2-12 not ID'd)",
+            continue: true,
+            updateCode: "26A01",
+          },
+          {
+            answer: "Blood pressure abnormality (asymptomatic)",
+            display: "Pt has blood pressure abnormality (asymptomatic)",
+            end: true,
+            updateCode: "26A02",
+          },
+          {
+            answer: "Dizziness/Vertigo",
+            display: "Pt has dizziness/vertigo",
+            end: true,
+            updateCode: "26A03",
+          },
+          {
+            answer: "Fever/Chills",
+            display: "Pt has fever/chills",
+            end: true,
+            updateCode: "26A04",
+          },
+          {
+            answer: "General weakness",
+            display: "Pt has general weakness",
+            end: true,
+            updateCode: "26A05",
+          },
+          {
+            answer: "Nausea",
+            display: "Pt has nausea",
+            end: true,
+            updateCode: "26A06",
+          },
+          {
+            answer: "New (not sudden) onset of immobility",
+            display: "Pt has new (not sudden) onset of immobility",
+            end: true,
+            updateCode: "26A07",
+          },
+          {
+            answer: "Other Pain",
+            display: "Pt has other pain",
+            end: true,
+            updateCode: "26A08",
+          },
+          {
+            answer: "Transportation Only",
+            display: "Pt needs transport only",
+            end: true,
+            updateCode: "26A09",
+          },
+          {
+            answer: "Unwell/Ill",
+            display: "Pt is unwell/ill",
+            end: true,
+            updateCode: "26A10",
+          },
+          {
+            answer: "Vomiting",
+            display: "Pt is vomiting",
+            end: true,
+            updateCode: "26A11",
+          },
+          {
+            answer: "Possible Contaigious Disease",
+            display: "Pt has possible contaigious disease",
+            end: true,
+            updateCode: "26A12",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is the "Primary Problem" one of the listed OMEGA-Level complaints?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "None of These",
+            display: "No priority sx (OMEGA 2-28 not ID'd)",
+            end: true,
+          },
+          {
+            answer: "Boils",
+            display: "Pt has boils",
+            end: true,
+            updateCode: "26O02",
+          },
+          {
+            answer: "Bumps (Non-Traumatic)",
+            display: "Pt has bumps (non-traumatic)",
+            end: true,
+            updateCode: "26O03",
+          },
+          {
+            answer: "Can't Sleep",
+            display: "Pt can't sleep",
+            end: true,
+            updateCode: "26O04",
+          },
+          {
+            answer: "Can't Urinate (w/o Abdominal Pain)",
+            display: "Pt can't urinate (w/o abdominal pain)",
+            end: true,
+            updateCode: "26O05",
+          },
+          {
+            answer: "Catheter (Urinary-In/Out w/o Hemorrhaging)",
+            display: "Pt has urinary catheter (in/out w/o hemorrhaging)",
+            end: true,
+            updateCode: "26O06",
+          },
+          {
+            answer: "Constipation",
+            display: "Pt has constipation",
+            end: true,
+            updateCode: "26O07",
+          },
+          {
+            answer: "Cramps/Spasms/Join Pain (In Extremities & Non-Traumatic)",
+            display:
+              "Pt has cramps/spasms/joint pn (in extremities & non-traumatic)",
+            end: true,
+            updateCode: "26O08",
+          },
+          {
+            answer: "Cut-Off Ring Request",
+            display: "Cut-off ring request",
+            end: true,
+            updateCode: "26O09",
+          },
+          {
+            answer: "Deafness",
+            display: "Pt has deafness",
+            end: true,
+            updateCode: "26O10",
+          },
+          {
+            answer: "Defecation/Diarrhea",
+            display: "Pt has defecation/diarrhea",
+            end: true,
+            updateCode: "26O11",
+          },
+          {
+            answer: "Earache",
+            display: "Pt has earache",
+            end: true,
+            updateCode: "26O12",
+          },
+          {
+            answer: "Enema",
+            display: "Pt has enema",
+            end: true,
+            updateCode: "26O13",
+          },
+          {
+            answer: "Gout",
+            display: "Pt has gout",
+            end: true,
+            updateCode: "26O14",
+          },
+          {
+            answer: "Hemorrhoids/Piles",
+            display: "Pt has hemorrhoids/piles",
+            end: true,
+            updateCode: "26O15",
+          },
+          {
+            answer: "Hepatitis",
+            display: "Pt has hepatitis",
+            end: true,
+            updateCode: "26O16",
+          },
+          {
+            answer: "Hiccups",
+            display: "Pt has hiccups",
+            end: true,
+            updateCode: "26O17",
+          },
+          {
+            answer: "Itching",
+            display: "Pt has itching",
+            end: true,
+            updateCode: "26O18",
+          },
+          {
+            answer: "Nervous",
+            display: "Pt is nervous",
+            end: true,
+            updateCode: "26O19",
+          },
+          {
+            answer: "Object Stuck (Nose, Ear, Vagina, Rectum, etc.):",
+            display: "Object stuck: {input}",
+            end: true,
+            input: true,
+            updateCode: "26O20",
+          },
+          {
+            answer: "Object Swallowed (No Choking or Diff Breathing):",
+            display: "Swallowed {input} (w/o choking or diff breathing)",
+            end: true,
+            input: true,
+            updateCode: "26O21",
+          },
+          {
+            answer: "Painful Urination",
+            display: "Pt has painful urnination",
+            end: true,
+            updateCode: "26O22",
+          },
+          {
+            answer: "Penis Problems/Pain",
+            display: "Pt has penis problems or pain",
+            end: true,
+            updateCode: "26O23",
+          },
+          {
+            answer: "Rash/Skin Disorder (w/o Diff Breathing or Swallowing)",
+            display:
+              "Pt has rash or skin disorder (no diff breathing or swallowing)",
+            end: true,
+            updateCode: "26O24",
+          },
+          {
+            answer: "Sexually Transmitted Disease (STD)",
+            display: "Pt has sexually transmitted disease (std)",
+            end: true,
+            updateCode: "26O25",
+          },
+          {
+            answer: "Sore Throat (w/o diff breathing or swallowing)",
+            display: "Pt has sore throat (w/o diff breathing or swallowing)",
+            continue: true,
+            updateCode: "26O26",
+          },
+          {
+            answer: "Toothache (w/o Jaw Pain)",
+            display: "Pt has toothache (w/o jaw pain)",
+            continue: true,
+            updateCode: "26O27",
+          },
+          {
+            answer: "Infected Wound (Focal or Surface)",
+            display: "Pt has an infected wound (focal or surface)",
+            end: true,
+            updateCode: "26O28",
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "26O01",
+            text: "Code Not in Use",
+            recResponse: 147,
+          },
+          {
+            code: "26O02",
+            text: "Boils",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O03",
+            text: "Bumps (Non-Traumatic)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O04",
+            text: "Can't Sleep",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O05",
+            text: "Can't Urinate (w/o Abdominal Pain)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O06",
+            text: "Catheter (Urinary-In/Out w/o Hemorrhaging)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O07",
+            text: "Constipation",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O08",
+            text: "Cramps/Spasms/Joint Pain (In Extremities & Non-Traumatic)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O09",
+            text: "Cut-Off Ring Request",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O10",
+            text: "Deafness",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O11",
+            text: "Defecation/Diarrhea",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O12",
+            text: "Earache",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O13",
+            text: "Enema",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O14",
+            text: "Gout",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O15",
+            text: "Hemorrhoids/Piles",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O16",
+            text: "Hepatitis",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O17",
+            text: "Hiccups",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O18",
+            text: "Itching",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O19",
+            text: "Nervous",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O20",
+            text: "Object Stuck (Nose, Ear, Vagina, Rectum, etc.)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O21",
+            text: "Object Swallowed (w/o Choking or Diff Breathing, Can Talk)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O22",
+            text: "Painful Urination",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O23",
+            text: "Penis Problems/Pain",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O24",
+            text: "Rash/Skin Disorder (w/o Diff Breathing or Swallowing)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O25",
+            text: "Sexually Transmitted Disease (STD)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O26",
+            text: "Sore Throat (w/o Diff Breathing or Swallowing)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O27",
+            text: "Toothache (w/o Jaw Pain)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26O28",
+            text: "Wound Infected (Focal or Surface)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "26A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A01",
+            text: "No Priority Symptoms",
+            defaultCode: true,
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A02",
+            text: "Blood Pressure Abnormality (Asymptomatic)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A03",
+            text: "Dizziness/Vertigo",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A04",
+            text: "Fever/Chills",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A05",
+            text: "General Weakness",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A06",
+            text: "Nausea",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A07",
+            text: "New Onset of Immobility (Not-Sudden)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26A08",
+            text: "Other Pain (Non-Omega-Level)",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A09",
+            text: "Transportation Only",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A10",
+            text: "Unwell/Ill",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A11",
+            text: "Vomiting",
+            recResponse: 147,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 147,
+              },
+            ],
+          },
+          {
+            code: "26A12",
+            text: "Possible Contagious Disease",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "26B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+          {
+            code: "26B01",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 148,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 148,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "26C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 149,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 149,
+              },
+            ],
+          },
+          {
+            code: "26C01",
+            text: "Altered Level of Consciousness",
+            recResponse: 150,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 150,
+              },
+            ],
+          },
+          {
+            code: "26C02",
+            text: "Abnormal Breathing",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C03",
+            text: "Sickle Cell Crisis/Thalassemia",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C04",
+            text: "Autonomic Dysreflexia/Hyperreflexia",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+          {
+            code: "26C05",
+            text: "Acute Adrenal Insufficiency/Crisis or Addison's Disease",
+            recResponse: 151,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 151,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "26D00",
+            text: "ALS Override (Delta)",
+            recResponse: 149,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 149,
+              },
+            ],
+          },
+          {
+            code: "26D01",
+            text: "Not Alert",
+            recResponse: 150,
+            subCodes: [
+              {
+                code: "C",
+                text: "Suspected Coronavirus Illness",
+                recResponse: 150,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 27,
+    name: "Stab/Gunshot/Penetrating Trauma",
+    shortName: "Stab/Shot/Trauma",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 152,
+    questions: [
+      {
+        text: <p>When did this happen?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Happening Now",
+            display: "Incident in progress",
+            continue: true,
+          },
+          {
+            answer: "< 6 Hours Ago",
+            display: "Happened Now (< 6 hours ago)",
+            continue: true,
+          },
+          {
+            answer: ">= 6 Hours Ago",
+            display: "Happened Earlier (>= 6 hours ago)",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when incident happened",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What <b>type</b> of <b>incident</b> is this?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Gunshot",
+            display: "Pt is shot",
+            continue: true,
+            updateSubCode: "G",
+          },
+          {
+            answer: "Stabbed",
+            display: "Pt is stabbed",
+            continue: true,
+            updateSubCode: "S",
+          },
+          {
+            answer: "Penetrating Wound",
+            display: "Pt has penetrating wound",
+            continue: true,
+            updateSubCode: "P",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk type of incident",
+            goto: 30,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is it a <b>self-inflicted</b> wound?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Pt is shot" || lastAnswer === "Pt is stabbed";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Wound is not self-inflicted",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Wound is self-inflicted",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (lastAnswer === "Gunshot") {
+                return { subCode: "X" };
+              } else if (lastAnswer === "Stabbed") {
+                return { subCode: "Y" };
+              } else {
+                return undefined;
+              }
+            },
+          },
+          {
+            answer: "Accidental",
+            display: "Wound is accidental",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if wound is self-inflicted",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is the object still impaled?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Penetrating Wound";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "Object is not impaled",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Object is impaled",
+            continue: true,
+            updateSubCode: "I",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if object is impaled",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are there <b className="text-red-400">MULTIPLE</b> wounds?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single Wound",
+            display: "Pt has single wound",
+            continue: true,
+          },
+          {
+            answer: "Multiple Wounds",
+            display: "Pt has multiple wounds",
+            continue: true,
+            updateCode: "27D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt has multiple wounds",
+            continue: true,
+            updateCode: "27B04",
+          },
+        ],
+      },
+
+      {
+        text: <p>Where is **pronoun** injured?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Peripheral Wound(s) Only",
+            display: "Inj(s) to peripheral area only",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (lastAnswer === "Single Wound") {
+                return { code: "27B02" };
+              } else if (firstAnswer === ">= 6 Hours Ago") {
+                return { code: "27A01" };
+              }
+            },
+          },
+          {
+            answer: "Head",
+            display: "Inj(s) to head",
+            continue: true,
+            updateCode: "27D04",
+          },
+          {
+            answer: "Central Wound(s)",
+            display: "Inj(s) to central body area",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (
+                firstAnswer === ">= 6 Hours Ago" &&
+                lastAnswer === "Single Wound"
+              ) {
+                return { code: "27B01" };
+              } else {
+                return { code: "27D04" };
+              }
+            },
+          },
+          {
+            answer: "OBVIOUS DEATH",
+            display: "Possible obvious death",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk where inj(s) are",
+            continue: true,
+            updateCode: "27B04",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            <b>Why</b> do you think **pronoun** is{" "}
+            <b className="text-red-400">dead</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "OBVIOUS DEATH";
+        },
+        answers: [
+          {
+            answer: "Head Missing",
+            display: "Pt's head is missing",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Injs not compatable with life",
+            display: "Pt has injs not compatable w/ life",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Not Recognizeable",
+            display: "Pt is not recognizeable",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Rigor Mortis",
+            display: "Pt has rigor mortis",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Decomposition",
+            display: "Pt has decomposition",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Dependent Lividity",
+            display: "Pt has dependent lividity",
+            end: true,
+            updateCode: "27B05",
+            override: true,
+          },
+          {
+            answer: "Unknown / Unable to Determine",
+            display: "Unk / unable to determine why Obvious Death",
+            end: true,
+            updateCode: "27D01",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "27B03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            end: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            end: true,
+            updateCode: "27D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            end: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "27A01",
+            text: "Non-Recent (>= 6hrs) Peripheral Wounds (w/o Pririty Symptoms)",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "27B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+          {
+            code: "27B01",
+            text: "Non-Recent (>= 6hrs) Single Central Wound",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+          {
+            code: "27B02",
+            text: "Known Single Peripheral Wound",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+          {
+            code: "27B03",
+            text: "Serious Hemorrhage",
+            recResponse: 153,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+          {
+            code: "27B04",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 153,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 152,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 153,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 153,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 154,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 152,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 154,
+              },
+            ],
+          },
+          {
+            code: "27B05",
+            text: "Obvious Death",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "27D00",
+            text: "ALS Override (Delta)",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157,
+              },
+            ],
+          },
+          {
+            code: "27D01",
+            text: "Arrest",
+            recResponse: 158,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 159,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 158,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 158,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 160,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 159,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 160,
+              },
+            ],
+          },
+          {
+            code: "27D02",
+            text: "Unconscious",
+            recResponse: 162,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 161,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 162,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 162,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 163,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 161,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 163,
+              },
+            ],
+          },
+          {
+            code: "27D03",
+            text: "Not Alert",
+            recResponse: 162,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 161,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 162,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 162,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 163,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 161,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 163,
+              },
+            ],
+          },
+          {
+            code: "27D04",
+            text: "Central Wounds",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157,
+              },
+            ],
+          },
+          {
+            code: "27D05",
+            text: "Mult Wounds",
+            recResponse: 156,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 155,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 156,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 156,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 157,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 155,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 157,
+              },
+            ],
+          },
+          {
+            code: "27D06",
+            text: "Mult Victims",
+            recResponse: 165,
+            multVictim: true,
+            subCodes: [
+              {
+                code: "G",
+                text: "Gunshot",
+                recResponse: 164,
+              },
+              {
+                code: "I",
+                text: "Impaled Currently",
+                recResponse: 165,
+              },
+              {
+                code: "P",
+                text: "Penetrating Wound (Not Impaled Now)",
+                recResponse: 165,
+              },
+              {
+                code: "S",
+                text: "Stab",
+                recResponse: 166,
+              },
+              {
+                code: "X",
+                text: "Self-Inflicted GSW (Intentional)",
+                recResponse: 164,
+              },
+              {
+                code: "Y",
+                text: "Self-Inflicted Knife/Stab Wound (Intentional)",
+                recResponse: 166,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 28,
+    name: "Stroke (CVA)/Transient Ischemic Attack (TIA)",
+    shortName: "Stroke",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 167,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "28C01",
+            override: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>breathing</b> normally?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              if (!_patient) return undefined;
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              const { age } = _patient;
+              if (age >= 35 && lastAnswer !== "No") {
+                return { code: "28C11" };
+              } else if (lastAnswer !== "No") {
+                return { code: "28A01" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            updateCode: "28C02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "28C12",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            <b className="text-blue-400">(No STROKE symptoms mentioned yet)</b>{" "}
+            Tell me <b>why</b> you think it's a{" "}
+            <b className="text-green-400">STROKE</b>{" "}
+            <b className="text-blue-400">
+              (Select the specific symptoms only if a sudden onset was reported)
+            </b>
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Speech problems",
+            display: "Sudden speech problems",
+            continue: true,
+            updateCode: "28C03",
+          },
+          {
+            answer: "Loss of balance or coordination",
+            display: "Sudden loss of balance or coordination",
+            continue: true,
+            updateCode: "28C06",
+          },
+          {
+            answer: "Weakness or numbness (one side)",
+            display: "Sudden weakness or numbness (one side)",
+            continue: true,
+            updateCode: "28C04",
+          },
+          {
+            answer: "Paralysis or facial droop (one side)",
+            display: "Sudden paralysis or facial droop (one side)",
+            continue: true,
+            updateCode: "28C05",
+          },
+          {
+            answer: "Vision problems",
+            display: "Sudden vision problems",
+            continue: true,
+            updateCode: "28C07",
+          },
+          {
+            answer: "Severe headache",
+            display: "Sudden severe headache",
+            continue: true,
+            updateCode: "28C08",
+          },
+          {
+            answer: 'Only "stroke" mentioned',
+            display: 'Only "stroke" mentioned',
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "{input}",
+            continue: true,
+            input: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Exactly <b>what time</b> did these symptoms{" "}
+            <span className="text-red-400">(problem)</span> <b>start</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Less than 4.5 hours ago (< 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "L",
+          },
+          {
+            answer: "More than 4.5 hours ago (> 4.5hrs):",
+            display: "Symptoms started {input}",
+            continue: true,
+            input: true,
+            updateSubCode: "G",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk when symptoms started",
+            continue: true,
+            updateSubCode: "U",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Has **pronoun** ever had a <b className="text-green-400">STROKE</b>{" "}
+            before?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "STROKE",
+            display: "Stroke hx",
+            continue: true,
+            updateCode: "28C09",
+          },
+          {
+            answer: "TIA or mini-stroke",
+            display: "TIA hx",
+            continue: true,
+            updateCode: "28C10",
+          },
+          {
+            answer: "No",
+            display: "No hx of stroke or TIA",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk hx of stroke or TIA",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Say: 'I am going to have you complete a quick test before the medics
+            show up ok?'
+          </p>
+        ),
+        questionType: "select",
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Ready",
+            display: "Starting test...",
+            continue: true,
+          },
+          {
+            answer: "Refused to do test",
+            display: "Refused to do test",
+            end: true,
+          },
+          {
+            answer: "Skip",
+            display: "Skip test",
+            end: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say "Can you have the patient smile"</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Smile instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Say: "Was the smile equal on both sides of the patient's mouth?"
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Smile instructions given"
+          )?.answer;
+          return answer === "Smile instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Normal Smile",
+            display: "1: 0",
+            continue: true,
+          },
+          {
+            answer: "Slight difference in smile (possible difference)",
+            display: "1: 1",
+            continue: true,
+          },
+          {
+            answer:
+              "Only one side of mouth or face shows a smile (obvious difference)",
+            display: "1: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "1: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Say: "Have the patient raise both arms above their head"</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Raise arms instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What was **pronoun** able to do?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Raise arms instructions given"
+          )?.answer;
+          return answer === "Raise arms instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Both arms raised equally",
+            display: "2: 0",
+            continue: true,
+          },
+          {
+            answer: "One arm raised higher than the other",
+            display: "2: 1",
+            continue: true,
+          },
+          {
+            answer: "Only one arm raised",
+            display: "2: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "2: 2",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Say: "Ask the patient to say 'The early bird catches the worm'"</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Instructions given",
+            display: "Speech instructions given",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>Was **pronoun** able to say it correctly and understandably?</p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Speech instructions given"
+          )?.answer;
+          return answer === "Speech instructions given";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Said correctly",
+            display: "3: 0",
+            continue: true,
+          },
+          {
+            answer: "Slurred speech",
+            display: "3: 1",
+            continue: true,
+          },
+          {
+            answer: "Garbled or not understandable speech",
+            display: "3: 2",
+            continue: true,
+          },
+          {
+            answer: "Cannot complete request at all",
+            display: "3: 0",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Calculate Score</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const answer = answers?.find(
+            (a) => a.answer === "Starting test..."
+          )?.answer;
+          return answer === "Starting test...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Calculate Score",
+            display: "Stroke test score calculated",
+            end: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const smileAnswer = answers?.find((a) =>
+                a.answer.includes("1: ")
+              )?.answer;
+              const armsAnswer = answers?.find((a) =>
+                a.answer.includes("2: ")
+              )?.answer;
+              const speechAnswer = answers?.find((a) =>
+                a.answer.includes("3: ")
+              )?.answer;
+              const symptomStart = answers?.find(
+                (a) =>
+                  a.question ===
+                  "Exactly what time did these symptoms (problem) start?"
+              )?.defaultAnswer;
+              if (!smileAnswer || !armsAnswer || !speechAnswer) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                }
+                return { subCode: "z" };
+              }
+              const smileScore = parseInt(smileAnswer.split(": ")[1]);
+              const armsScore = parseInt(armsAnswer.split(": ")[1]);
+              const speechScore = parseInt(speechAnswer.split(": ")[1]);
+              const totalScore = smileScore + armsScore + speechScore;
+              if (totalScore === 0) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "X" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "Y" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "Z" };
+                }
+              } else if (totalScore > 0 && totalScore <= 2) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "C" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "D" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "E" };
+                }
+              } else if (totalScore > 2 && totalScore <= 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "F" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "H" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "I" };
+                }
+              } else if (totalScore > 4) {
+                if (symptomStart === "Less than 4.5 hours ago (< 4.5hrs):") {
+                  return { subCode: "J" };
+                } else if (
+                  symptomStart === "More than 4.5 hours ago (> 4.5hrs):"
+                ) {
+                  return { subCode: "K" };
+                } else if (symptomStart === "Unknown") {
+                  return { subCode: "M" };
+                }
+              }
+              return undefined;
+            },
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "28A01",
+            text: "Breathing Normally (< 35)",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "28C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C01",
+            text: "Not Alert",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C02",
+            text: "Abnormal Breathing",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C03",
+            text: "Sudden Speech Problems",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C04",
+            text: "Sudden Weakness or Numbness",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C05",
+            text: "Sudden Paralysis or Facial Droop (One Side)",
+            recResponse: 91,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 91,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 91,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+            ],
+          },
+          {
+            code: "28C06",
+            text: "Sudden Loss of Balance or Coordination",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C07",
+            text: "Sudden Vision Problems",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C08",
+            text: "Sudden Onset of Severe Headache",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C09",
+            text: "Stroke Hx",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C10",
+            text: "TIA (Mini-Stroke) Hx",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C11",
+            text: "Breathing Normally (>= 35)",
+            recResponse: 167,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+          {
+            code: "28C12",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 167,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "C",
+                text: "Partial Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "D",
+                text: "Partial Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "E",
+                text: "Partial Evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "F",
+                text: "Strong Evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "G",
+                text: "> 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "H",
+                text: "Strong Evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "I",
+                text: "Strong Evidence (Unkn Time Frame)",
+                recResponse: 167,
+              },
+              {
+                code: "J",
+                text: "Clear Evidence (< 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "K",
+                text: "Clear Evidence (> 4.5hrs)",
+                recResponse: 91,
+              },
+              {
+                code: "L",
+                text: "< 4.5hrs since symptoms started",
+                recResponse: 167,
+              },
+              {
+                code: "M",
+                text: "Clear Evidence (Unk Time Frame)",
+                recResponse: 91,
+              },
+              {
+                code: "U",
+                text: "Unkn When Symptoms Started",
+                recResponse: 167,
+              },
+              {
+                code: "X",
+                text: "No test evidence (< 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Y",
+                text: "No test evidence (> 4.5hrs)",
+                recResponse: 167,
+              },
+              {
+                code: "Z",
+                text: "No test evidence (Unk Time Frame)",
+                recResponse: 167,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  // Questions still required
+  {
+    protocol: 29,
+    name: "Traffic/Transportation Incidents",
+    shortName: "Traffic/Transportation Incidents",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: true },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 168,
+    questions: [
+      {
+        text: (
+          <p>
+            Are you <b>at that location now</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes (1st party)",
+            display: "Caller is on scene (1st pty)",
+            continue: true,
+          },
+          {
+            answer: "Yes (2nd party)",
+            display: "Caller is on scene (2nd pty)",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Caller is not on scene",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>How many vehicles are involved?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Single vehicle",
+            display: "Single veh",
+            continue: true,
+          },
+          {
+            answer: "Two vehicles",
+            display: "Two vehicles",
+            continue: true,
+          },
+          {
+            answer: "Multiple (< 10):",
+            display: "{input} vehicles",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Multiple (>= 10):",
+            display: "{input} vehicles",
+            continue: true,
+            input: true,
+            updateCode: "29D01",
+            updateSubCode: "f",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk num of vehs",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Was anyone <b className="text-red-400">thrown</b> from the vehicle?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one thrown out",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Person thrown from veh",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "n",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if person thrown out",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Is anyone trapped or pinned in the vehicle?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No one trapped/pinned",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Trapped/pinned victim(s)",
+            continue: true,
+            updateCode: "29D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if anyone trapped/pinned",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are any <b className="text-green-400">hazardous materials</b>{" "}
+            involved?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No chems/hazmat involved",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Chems/hazmat involved",
+            continue: true,
+            updateCode: "29D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if chems/hazmat involved",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Are there any injuries?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "No injuries",
+            display: "No injs rptd",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (
+                firstAnswer === "Yes (1st party)" ||
+                firstAnswer === "Yes (2nd party)"
+              ) {
+                return { code: "29O01" };
+              } else {
+                return { code: "29A02" };
+              }
+            },
+          },
+          {
+            answer: "Injuries",
+            display: "Injuries rptd",
+            continue: true,
+            updateCode: "29B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there any <b className="text-red-400">bleeding</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (q) => q.defaultQuestion === "Are there any injuries?"
+          )?.defaultAnswer;
+          return lastAnswer === "Injuries";
+        },
+        answers: [
+          {
+            answer: "No bleeding (now)",
+            display: "No bleeding now",
+            continue: true,
+          },
+          {
+            answer: "SERIOUS bleeding",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "29B02",
+          },
+          {
+            answer: "No bleeding",
+            display: "No bleeding",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if bleeding",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is everyone involved <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Everyone completetly awake",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Person(s) not completely awake",
+            continue: true,
+            updateCode: "29D09",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if everyone completely awake",
+            continue: true,
+            updateCode: "29B05",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What is the <b className="text-red-400">nature</b> of the injury?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (q) => q.defaultQuestion === "Are there any injuries?"
+          )?.defaultAnswer;
+          return lastAnswer === "Injuries";
+        },
+        answers: [
+          {
+            answer: "Possibly dangerous body area:",
+            display: "Inj to {input}",
+            continue: true,
+            input: true,
+          },
+          {
+            answer: "Not dangerous body area:",
+            display: "Inj to {input}",
+            continue: true,
+            input: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (firstAnswer === "Yes (1st party)") {
+                return { code: "29A01" };
+              }
+            },
+          },
+          {
+            answer: "Low mechanism",
+            display: "Low mechanism rptd",
+            continue: true,
+            dependency: (_patient?: IPatientData, answers?: IAnswerData[]) => {
+              const firstAnswer = answers?.[0]?.defaultAnswer;
+              if (
+                firstAnswer === "Yes (1st party)" ||
+                firstAnswer === "Yes (2nd party)"
+              ) {
+                return { code: "29B04" };
+              }
+            },
+          },
+          {
+            answer: "Rollover",
+            display: "Veh rollover",
+            continue: true,
+            updateCode: "29D02",
+            updateSubCode: "p",
+          },
+          {
+            answer: "High velocity impact?",
+            display: "High velocity impact rptd",
+            continue: true,
+            updateCode: "29D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent/nature of inj",
+            continue: true,
+            updateCode: "29B05",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are there any other <b className="text-green-400">hazards</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No other hazards",
+            continue: true,
+          },
+          {
+            answer: "Yes:",
+            display: "Other hazards - {input}",
+            continue: true,
+            input: true,
+            updateCode: "29B03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if other hazards",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "29O01",
+            text: "No Injs (Confirmed for All Persons Up to 4)",
+            recResponse: 169,
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "29A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29A01",
+            text: "1st Party Caller w/ Inj to Not Dangerous Body Area",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29A02",
+            text: "No Injs Rptd (Unconfirmed or >= 5 Persons Involed)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "29B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29B01",
+            text: "Injs",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29B02",
+            text: "Serious Hemorrhage",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29B03",
+            text: "Other Hazards",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29B04",
+            text: "Low Mechanism (1st or 2nd Party Caller)",
+            recResponse: 168,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+          {
+            code: "29B05",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 168,
+            defaultCode: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 168,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 170,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 168,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 170,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "29D00",
+            text: "ALS Override (Delta)",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174,
+              },
+            ],
+          },
+          {
+            code: "29D01",
+            text: "Major Incident",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "a",
+                text: "Aircraft",
+                recResponse: 175,
+              },
+              {
+                code: "B",
+                text: "Bus",
+                recResponse: 172,
+              },
+              {
+                code: "C",
+                text: "Subway/Metro",
+                recResponse: 176,
+              },
+              {
+                code: "d",
+                text: "Train",
+                recResponse: 176,
+              },
+              {
+                code: "E",
+                text: "Watercraft",
+                recResponse: 177,
+              },
+              {
+                code: "f",
+                text: "Multi-Vehicle (>= 10) Pile-Up",
+                recResponse: 172,
+              },
+              {
+                code: "g",
+                text: "Street Car/Tram/Light Rail",
+                recResponse: 176,
+              },
+              {
+                code: "h",
+                text: "Vehicle vs. Building",
+                recResponse: 178,
+              },
+            ],
+          },
+          {
+            code: "29D02",
+            text: "High Mechanism",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "i",
+                text: "Auto vs. Bicycle",
+                recResponse: 179,
+              },
+              {
+                code: "k",
+                text: "All-Terrain/Snowmobile",
+                recResponse: 180,
+              },
+              {
+                code: "l",
+                text: "Auto vs. Motorcycle",
+                recResponse: 179,
+              },
+              {
+                code: "m",
+                text: "Auto vs. Pedestrain",
+                recResponse: 181,
+              },
+              {
+                code: "n",
+                text: "Ejection",
+                recResponse: 182,
+              },
+              {
+                code: "o",
+                text: "Personal Watercraft",
+                recResponse: 177,
+              },
+              {
+                code: "p",
+                text: "Rollovers",
+                recResponse: 183,
+              },
+              {
+                code: "q",
+                text: "Vehicle Off Bridge/Height",
+                recResponse: 184,
+              },
+              {
+                code: "r",
+                text: "Possible Death at Scene",
+                recResponse: 173,
+              },
+              {
+                code: "s",
+                text: "Sinking Vehicle/Vehicle in Floodwater",
+                recResponse: 185,
+              },
+              {
+                code: "t",
+                text: "Train/Light Rail vs. Pedestrian",
+                recResponse: 186,
+              },
+            ],
+          },
+          {
+            code: "29D03",
+            text: "High Velocity Impact",
+            recResponse: 180,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 180,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 180,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 180,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 180,
+              },
+            ],
+          },
+          {
+            code: "29D04",
+            text: "Hazmat",
+            recResponse: 187,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 187,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 187,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 187,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 187,
+              },
+            ],
+          },
+          {
+            code: "29D05",
+            text: "Trapped or Pinned Victim",
+            recResponse: 188,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 187,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 189,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 187,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 189,
+              },
+            ],
+          },
+          {
+            code: "29D06",
+            text: "Arrest",
+            recResponse: 173,
+            notBreathing: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174,
+              },
+            ],
+          },
+          {
+            code: "29D07",
+            text: "Unconscious",
+            recResponse: 171,
+            notConscious: true,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 171,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 172,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 171,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 172,
+              },
+            ],
+          },
+          {
+            code: "29D08",
+            text: "Alert w/ Noisy Breathing (Abnormal)",
+            recResponse: 173,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 173,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 174,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 173,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 174,
+              },
+            ],
+          },
+          {
+            code: "29D09",
+            text: "Not Alert w/ Normal Breathing",
+            recResponse: 171,
+            subCodes: [
+              {
+                code: "U",
+                text: "Unkn Number of Patients",
+                recResponse: 171,
+              },
+              {
+                code: "V",
+                text: "Mult Patients",
+                recResponse: 172,
+              },
+              {
+                code: "X",
+                text: "Unkn Number of Patients & Additional Response Required",
+                recResponse: 171,
+              },
+              {
+                code: "Y",
+                text: "Mult Patients & Additional Response Required",
+                recResponse: 172,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 30,
+    name: "Traumatic Injs (Specific)",
+    shortName: "Traumatic Injs",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 190,
+    questions: [
+      {
+        text: (
+          <p>
+            <b>When</b> did this injury occur?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Just Now (< 6hrs)",
+            display: "Happened just now (< 6hrs)",
+            continue: true,
+          },
+          {
+            answer: "Earlier (>= 6hrs)",
+            display: "Happened earlier (>= 6hrs)",
+            continue: true,
+            updateCode: "30A03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unkn when happened",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        preRenderInstructions: (_patient?: IPatientData) => {
+          if (!_patient) return false;
+          const { isConscious } = _patient;
+          return isConscious !== false;
+        },
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "30D03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there any <b className="text-red-400">SERIOUS</b> bleeding?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No SERIOUS bleeding",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "SERIOUS bleeding",
+            continue: true,
+            updateCode: "30B02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if SERIOUS bleeding",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What <b>part</b> of the <b>body</b> is injured?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Not Dangerous:",
+            display: "Inj to: {input}",
+            continue: true,
+            input: true,
+            updateCode: "30A02",
+          },
+          {
+            answer: "Possibly Dangerous:",
+            display: "Inj to: {input}",
+            continue: true,
+            input: true,
+            updateCode: "30B01",
+          },
+          {
+            answer: "Chest",
+            display: "Inj to chest",
+            continue: true,
+            updateCode: "30B01",
+          },
+          {
+            answer: "Neck",
+            display: "Inj to neck",
+            continue: true,
+            updateCode: "30B01",
+          },
+          {
+            answer: "Head",
+            display: "Inj to head",
+            continue: true,
+            updateCode: "30B01",
+          },
+          {
+            answer: "MASSIVE INJ or HIGH VELOCITY IMPACT",
+            display: "MASSIVE INJ or HIGH VELOCITY IMPACT",
+            continue: true,
+            updateCode: "30D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Inj to unk location",
+            continue: true,
+            updateCode: "30B03",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>breathing</b> normally?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return (
+            lastAnswer === "Chest" ||
+            lastAnswer === "Neck" ||
+            lastAnswer === "Head"
+          );
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            end: true,
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            end: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there any <b>deformity</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Not Dangerous:";
+        },
+        answers: [
+          {
+            answer: "No deformity",
+            display: "No deformity",
+            continue: true,
+          },
+          {
+            answer: "Yes deformity",
+            display: "Deformity from inj",
+            dependency: (_patient, answers) => {
+              const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+              if (lastAnswer === "Not Dangerous:") {
+                return { code: "30A01" };
+              }
+            },
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk extent of inj",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "30A01",
+            text: "Not Dangerous Body Area w/ Deformity",
+            recResponse: 190,
+          },
+          {
+            code: "30A02",
+            text: "Not Dangerous Body Area",
+            recResponse: 190,
+          },
+          {
+            code: "30A03",
+            text: "Non-Recent (>= 6hrs) Injs (w/o Priority Symptoms)",
+            recResponse: 191,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "30B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 190,
+          },
+          {
+            code: "30B01",
+            text: "Possibly Dangerous Body Area",
+            recResponse: 190,
+          },
+          {
+            code: "30B02",
+            text: "Serious Hemorrhage",
+            recResponse: 190,
+          },
+          {
+            code: "30B03",
+            text: "Unkn Body Area (Remote Patient Location)",
+            recResponse: 190,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "30D00",
+            text: "ALS Override (Delta)",
+            recResponse: 192,
+          },
+          {
+            code: "30D01",
+            text: "Arrest",
+            recResponse: 158,
+            notBreathing: true,
+          },
+          {
+            code: "30D02",
+            text: "Unconscious",
+            recResponse: 193,
+          },
+          {
+            code: "30D03",
+            text: "Not Alert",
+            recResponse: 192,
+          },
+          {
+            code: "30D04",
+            text: "Chec/Neck/Head Inj (w/ Diff Breathing)",
+            recResponse: 192,
+          },
+          {
+            code: "30D05",
+            text: "High Velocity Impact/Mass Inj",
+            recResponse: 192,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 31,
+    name: "Unconscious/Fainting (Near)",
+    shortName: "Unco/Fainting",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 194,
+    questions: [
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>breathing normally</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { isConscious } = _patient;
+              if (!isConscious) {
+                return { code: "31D03" };
+              }
+            },
+          },
+          {
+            answer: "No",
+            display: "Not breathing nlly",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { isConscious } = _patient;
+              if (!isConscious) {
+                return { code: "31D02" };
+              } else {
+                return { code: "31C01" };
+              }
+            },
+          },
+          {
+            answer: "Ineffective/Agonal",
+            display: "Ineffective/Agonal breathing",
+            updateCode: "31D01",
+            end: true,
+          },
+          {
+            answer: "Not Breathing AT ALL",
+            display: "Not breathing",
+            updateCode: "31E01",
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if breathing nlly",
+            continue: true,
+            updateCode: "31D00"
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>chainging color</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "Not changing color",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Changing color",
+            continue: true,
+            updateCode: "31D05",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if changing color",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Are they awake now?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Conscious",
+            display: "Pt is conscious",
+            continue: true,
+          },
+          {
+            answer: "Still unconscious",
+            display: "Pt is still unconscious",
+            continue: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if pt is still unconscious",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Does she have abdominal pain?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          if (!_patient) return false;
+          const { age, gender } = _patient;
+          const lastAnswer = answers?.find(
+            (a) => a.defaultQuestion === "Are they awake now?"
+          )?.defaultAnswer;
+          return (
+            lastAnswer === "Conscious" &&
+            age >= 12 &&
+            age <= 50 &&
+            gender === "Female"
+          );
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No abdo pn",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Has abdo pn",
+            continue: true,
+            updateCode: "31C03",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if has abdo pn",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (a) => a.defaultQuestion === "Are they awake now?"
+          )?.defaultAnswer;
+          return lastAnswer === "Conscious";
+        },
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "Not responding nlly",
+            continue: true,
+            updateCode: "31D04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Does **pronoun** have a cardiac history</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.find(
+            (a) =>
+              a.defaultQuestion ===
+              "Is **pronoun** completely alert (responding appropriately)?"
+          )?.defaultAnswer;
+          return lastAnswer === "Yes";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No cardiac hx",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { age } = _patient;
+              if (age >= 35) {
+                return { code: "31A01" };
+              } else {
+                return { code: "31A03" };
+              }
+            },
+          },
+          {
+            answer: "Yes",
+            display: "Cardiac hx",
+            continue: true,
+            dependency: (_patient?: IPatientData) => {
+              if (!_patient) return undefined;
+              const { age } = _patient;
+              if (age >= 35) {
+                return { code: "31C02" };
+              } else {
+                return { code: "31A02" };
+              }
+            },
+          },
+          {
+            answer: "Unknown",
+            display: "Unk cardiac hx",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "31A01",
+            text: "Fainting Episode(s) & Alert >= 35 (w/o Cardiac Hx)",
+            recResponse: 194,
+          },
+          {
+            code: "31A02",
+            text: "Fainting Episode(s) & Alert < 35 (w/ Cardiac Hx)",
+            recResponse: 194,
+          },
+          {
+            code: "31A03",
+            text: "Fainting Episode(s) & Alert < 35 (w/o Cardiac Hx)",
+            recResponse: 194,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "31C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 195,
+          },
+          {
+            code: "31C01",
+            text: "Alert & Abnormal Breathing",
+            recResponse: 195,
+          },
+          {
+            code: "31C02",
+            text: "Fainting Episode(s) & Alert >= 35 (w/ Cardiac Hx)",
+            recResponse: 195,
+          },
+          {
+            code: "31C03",
+            text: "Females 12-50 w/ Abdominal Pain",
+            recResponse: 195,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "31D00",
+            text: "ALS Override (Delta)",
+            recResponse: 196,
+          },
+          {
+            code: "31D01",
+            text: "Unconscious - Agonal/Ineffective Breathing",
+            recResponse: 197,
+          },
+          {
+            code: "31D02",
+            text: "Unconscious - Abnormal Breathing",
+            recResponse: 196,
+          },
+          {
+            code: "31D03",
+            text: "Unconscious - Effective Breathing Verified",
+            recResponse: 195,
+          },
+          {
+            code: "31D04",
+            text: "Not Alert",
+            recResponse: 150,
+          },
+          {
+            code: "31D05",
+            text: "Changing Color",
+            recResponse: 195,
+          },
+        ],
+      },
+      {
+        priority: "E",
+        determinants: [
+          {
+            code: "31E00",
+            text: "ALS Override (Echo)",
+            recResponse: 198,
+          },
+          {
+            code: "31E01",
+            text: "Not Breathing/Obvious Arrest",
+            notBreathing: true,
+            recResponse: 198,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 32,
+    name: "Unkn Problem (Person Down)",
+    shortName: "Unkn Problem",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: 2 },
+      { name: "Police", priority: undefined },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 199,
+    questions: [
+      {
+        text: <p>What type of situation is this?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Medical Alarm Activation",
+            display: "Medical alarm activation",
+            continue: true,
+          },
+          {
+            answer: "Caller's Language Not Understood",
+            display: "Caller's language not understood",
+            continue: true,
+            updateCode: "32B04",
+          },
+          {
+            answer: "Completely Unknown",
+            display: "Completely unk situation",
+            updateCode: "32B03",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is there any <b>voice contact</b>?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Medical Alarm Activation";
+        },
+        answers: [
+          {
+            answer: "No Voice Contact",
+            display: "No voice contact",
+            continue: true,
+            updateCode: "32B02",
+          },
+          {
+            answer: "Voice Contact Made",
+            display: "Voice contact made",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>What is the chief complaint?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Voice Contact Made";
+        },
+        answers: [
+          {
+            answer: "1 - Abdominal Pains/Problems",
+            display: "Changing protocols...",
+            goto: 1,
+          },
+          {
+            answer: "2 - Allergies (Reactions) / Envenomations (Stings, Bites)",
+            display: "Changing protocols...",
+            goto: 2,
+          },
+          {
+            answer: "3 - Animal Bites/Attacks",
+            display: "Changing protocols...",
+            goto: 3,
+          },
+          {
+            answer: "4 - Assault/Sexual Assault",
+            display: "Changing protocols...",
+            goto: 4,
+          },
+          {
+            answer: "5 - Back Pain (Non-Traumatic or Non-Recent Trauma)",
+            display: "Changing protocols...",
+            goto: 5,
+          },
+          {
+            answer: "6 - Breathing Problems",
+            display: "Changing protocols...",
+            goto: 6,
+          },
+          {
+            answer: "7 - Burns (Scalds) / Explosion (Blast)",
+            display: "Changing protocols...",
+            goto: 7,
+          },
+          {
+            answer: "8 - Carbon Monoxide/Inhalation/Hazmat/CBRN",
+            display: "Changing protocols...",
+            goto: 8,
+          },
+          {
+            answer: "9 - Cardiac or Repiratory Arrest / Death",
+            display: "Changing protocols...",
+            goto: 9,
+          },
+          {
+            answer: "10 - Chest Pain (Non-Traumatic)",
+            display: "Changing protocols...",
+            goto: 10,
+          },
+          {
+            answer: "11 - Choking",
+            display: "Changing protocols...",
+            goto: 11,
+          },
+          {
+            answer: "12 - Convulsions/Seizures",
+            display: "Changing protocols...",
+            goto: 12,
+          },
+          {
+            answer: "13 - Diabetic Problems",
+            display: "Changing protocols...",
+            goto: 13,
+          },
+          {
+            answer: "14 - Drowning (Near) / Diving / SCUBA Accident",
+            display: "Changing protocols...",
+            goto: 14,
+          },
+          {
+            answer: "15 - Electrocution/Lightning",
+            display: "Changing protocols...",
+            goto: 15,
+          },
+          {
+            answer: "16 - Eye Problems / Injuries",
+            display: "Changing protocols...",
+            goto: 16,
+          },
+          {
+            answer: "17 - Falls",
+            display: "Changing protocols...",
+            goto: 17,
+          },
+          {
+            answer: "18 - Headache",
+            display: "Changing protocols...",
+            goto: 18,
+          },
+          {
+            answer: "19 - Heart Problems / A.I.C.D.",
+            display: "Changing protocols...",
+            goto: 19,
+          },
+          {
+            answer: "20 - Heat/Cold Exposure",
+            display: "Changing protocols...",
+            goto: 20,
+          },
+          {
+            answer: "21 - Hemorrhage/Lacerations",
+            display: "Changing protocols...",
+            goto: 21,
+          },
+          {
+            answer:
+              "22 - Inaccessible Incident / Other Entrapments (Non-Traffic)",
+            display: "Changing protocols...",
+            goto: 22,
+          },
+          {
+            answer: "23 - Overdose/Poisoning (Ingestion)",
+            display: "Changing protocols...",
+            goto: 23,
+          },
+          {
+            answer: "24 - Pregnancy / Childbirth / Miscarriage",
+            display: "Changing protocols...",
+            goto: 24,
+          },
+          {
+            answer:
+              "25 - Psychiatric / Mental Health Conditions / Suicide Attempt / Abnormal Behavior",
+            display: "Changing protocols...",
+            goto: 25,
+          },
+          {
+            answer: "26 - Sick Person (Specfic Diagnosis)",
+            display: "Changing protocols...",
+            goto: 26,
+          },
+          {
+            answer: "27 - Stab/Gunshot/Penetrating Trauma",
+            display: "Changing protocols...",
+            goto: 27,
+          },
+          {
+            answer: "28 - Stroke (CVA)/Transient Ischemic Attack (TIA)",
+            display: "Changing protocols...",
+            goto: 28,
+          },
+          {
+            answer: "29 - Traffic/Transportation Incidents",
+            display: "Changing protocols...",
+            goto: 29,
+          },
+          {
+            answer: "30 - Traumatic Injs (Specific)",
+            display: "Changing protocols...",
+            goto: 30,
+          },
+          {
+            answer: "31 - Unconscious/Fainting (Near)",
+            display: "Changing protocols...",
+            goto: 31,
+          },
+          {
+            answer: "Unknown",
+            display: "Completely unknown situation",
+            updateCode: "32B02",
+          },
+        ],
+      },
+
+      {
+        text: <p>Placeholder</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.answer;
+          return lastAnswer === "Changing protocols...";
+        },
+        omitQuestion: true,
+        answers: [
+          {
+            answer: "Continue...",
+            display: "Continue...",
+            continue: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "32B01",
+            text: "Standing, Sitting, Moving, or Talking",
+            recResponse: 199,
+          },
+          {
+            code: "32B02",
+            text: "Medical Alarm (Alert) Notifications (No Patient Info)",
+            recResponse: 200,
+          },
+          {
+            code: "32B03",
+            text: "Unkn Status / Other Codes Not Applicable",
+            recResponse: 199,
+          },
+          {
+            code: "32B04",
+            text: "Caller's Language Not Understood",
+            recResponse: 199,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "32D00",
+            text: "ALS Override (Delta)",
+            recResponse: 199,
+          },
+          {
+            code: "32D01",
+            text: "Life Status Questionable",
+            recResponse: 199,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 33,
+    name: "Transfer / Interfacility / Palliative Care",
+    shortName: "Transport",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: true },
+      { name: "Fire", priority: false },
+      { name: "Police", priority: false },
+    ],
+    defaultPriority: 4,
+    defaultPlan: 201,
+    questions: [
+      {
+        text: <p>Referring Location</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Roxwood",
+            display: "Requested by Roxwood",
+            continue: true,
+          },
+          {
+            answer: "The Bay Care Medical Center",
+            display: "Requested by The Bay Care Medical Center (TBCMC)",
+            continue: true,
+          },
+          {
+            answer: "Sandy Shores Medical Center",
+            display: "Requested by Sandy Shores Medical Center (SSMC)",
+            continue: true,
+          },
+          {
+            answer: "Mount Zonah Medical Center",
+            display: "Requested by Mount Zonah Medical Center (MZMC)",
+            continue: true,
+          },
+          {
+            answer: "Portola Trinity Medical Center",
+            display: "Requested by Portola Trinity Medical Center (PTMC)",
+            continue: true,
+          },
+          {
+            answer: "Pillbox Hill Medical Center",
+            display: "Requested by Pillbox Hill Medical Center (PBMC)",
+            continue: true,
+          },
+          {
+            answer: "Central Los Santos Medical Center",
+            display: "Requested by Central Los Santos Medical Center (CLS)",
+            continue: true,
+          },
+          {
+            answer: "St. Fiacre Hospital",
+            display: "Requested by St. Fiacre Hospital (SFH)",
+            continue: true,
+          },
+          {
+            answer: "Private Residence",
+            display: "Requested by Private Residence",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Requested by {input}",
+            input: true,
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Receiving Location</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Roxwood",
+            display: "To Roxwood",
+            continue: true,
+          },
+          {
+            answer: "The Bay Care Medical Center",
+            display: "To The Bay Care Medical Center (TBCMC)",
+            continue: true,
+          },
+          {
+            answer: "Sandy Shores Medical Center",
+            display: "To Sandy Shores Medical Center (SSMC)",
+            continue: true,
+          },
+          {
+            answer: "Mount Zonah Medical Center",
+            display: "To Mount Zonah Medical Center (MZMC)",
+            continue: true,
+          },
+          {
+            answer: "Portola Trinity Medical Center",
+            display: "To Portola Trinity Medical Center (PTMC)",
+            continue: true,
+          },
+          {
+            answer: "Pillbox Hill Medical Center",
+            display: "To Pillbox Hill Medical Center (PBMC)",
+            continue: true,
+          },
+          {
+            answer: "Central Los Santos Medical Center",
+            display: "To Central Los Santos Medical Center (CLS)",
+            continue: true,
+          },
+          {
+            answer: "St. Fiacre Hospital",
+            display: "To St. Fiacre Hospital (SFH)",
+            continue: true,
+          },
+          {
+            answer: "Private Residence",
+            display: "To Private Residence",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "To {input}",
+            input: true,
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What is the <b>type</b> of transport?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Routine",
+            display: "Routine transport",
+            continue: true,
+          },
+          {
+            answer: "Critical",
+            display: "Critical transport",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What is the <b>reason</b> for the transport?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Routine";
+        },
+        answers: [
+          {
+            answer: "Acuity Level I (Immediate Transport but Not Critical)",
+            display: "Immediate transport but not critical",
+            continue: true,
+            updateCode: "33A01",
+          },
+          {
+            answer: "Acuity Level II (Time-Specific Transport)",
+            display: "Time-specific transport",
+            continue: true,
+            updateCode: "33A02",
+          },
+          {
+            answer: "Acuity Level III (Non-Time Specific Transport)",
+            display: "Non-time specific transport",
+            continue: true,
+            updateCode: "33A03",
+          },
+          {
+            answer: "None of These",
+            display: "Routine transport rsns not ID'd",
+            continue: true,
+          },
+          {
+            answer: "Other:",
+            display: "Other reason for transport: {input}",
+            continue: true,
+            input: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            What is the <b>reason</b> for the transport?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Critical" || lastAnswer === "None of These";
+        },
+        answers: [
+          {
+            answer: "Suspected Cardiac or Respiration Arrest",
+            display: "Suspected cardiac or respiration arrest",
+            continue: true,
+            updateCode: "33D01",
+          },
+          {
+            answer: "Just Resuscitated and/or Defibrillated",
+            display: "Just resuscitated and/or defibrillated",
+            continue: true,
+            updateCode: "33D02",
+          },
+          {
+            answer: "Not Alert (Acute Change)",
+            display: "Not alert (acute change)",
+            continue: true,
+            updateCode: "33C01",
+          },
+          {
+            answer: "Abnormal Breathing (Acute Onset)",
+            display: "Abnormal breathing (acute onset)",
+            continue: true,
+            updateCode: "33C02",
+          },
+          {
+            answer: "Significant Hemorrhage or Shock",
+            display: "Significant hemorrhage or shock",
+            continue: true,
+            updateCode: "33C03",
+          },
+          {
+            answer: "Possibly Acute Heart Problems or MI",
+            display: "Possibly acute heart problems or MI",
+            continue: true,
+            updateCode: "33C04",
+          },
+          {
+            answer: "Acute Severe Pain",
+            display: "Acute severe pain",
+            continue: true,
+            updateCode: "33C05",
+          },
+          {
+            answer: "Emergency Response Requested",
+            display: "Emergency response requested",
+            continue: true,
+          },
+          {
+            answer: "Critical Transport",
+            display: "Critical transport",
+            continue: true,
+            updateCode: "33D00",
+          },
+          {
+            answer: "ALS Transport",
+            display: "ALS transport",
+            continue: true,
+            updateCode: "33C00",
+          },
+          {
+            answer: "Other:",
+            display: "Other reason for transport: {input}",
+            continue: true,
+            input: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Are there any <b>special instructions</b>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No special instructions",
+            end: true,
+          },
+          {
+            answer: "Yes:",
+            input: true,
+            display: "Special instructions: {input}",
+            end: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if special instrcutions",
+            end: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "33A01",
+            text: "Acuity Level I",
+            recResponse: 201,
+          },
+          {
+            code: "33A02",
+            text: "Acuity Level II",
+            recResponse: 201,
+          },
+          {
+            code: "33A03",
+            text: "Acuity Level III",
+            recResponse: 201,
+          },
+        ],
+      },
+      {
+        priority: "C",
+        determinants: [
+          {
+            code: "33C00",
+            text: "ALS Override (Charlie)",
+            recResponse: 202,
+          },
+          {
+            code: "33C01",
+            text: "Not Alert (Acute Change)",
+            recResponse: 202,
+          },
+          {
+            code: "33C02",
+            text: "Abnormal Breathing (Acute Onset)",
+            recResponse: 202,
+          },
+          {
+            code: "23C03",
+            text: "Significant Hemorrhage or Shock",
+            recResponse: 202,
+          },
+          {
+            code: "33C04",
+            text: "Possibly Acute Heart Problems or MI",
+            recResponse: 202,
+          },
+          {
+            code: "33C05",
+            text: "Acute Severe Pain",
+            recResponse: 202,
+          },
+          {
+            code: "33C06",
+            text: "Emergency Response Requested",
+            recResponse: 202,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "33D00",
+            text: "ALS Override (Delta)",
+            recResponse: 203,
+          },
+          {
+            code: "33D01",
+            text: "Suspected Cardiac or Respiratory Arrest",
+            recResponse: 203,
+          },
+          {
+            code: "33D02",
+            text: "Just Resuscitated and/or Defibrillated",
+            recResponse: 203,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    protocol: 34,
+    name: "Automatic Crash Notification (ACN)",
+    shortName: "Crash Notification",
+    description: <></>,
+    services: [
+      { name: "EMS", priority: 3 },
+      { name: "Fire", priority: 3 },
+      { name: "Police", priority: true },
+    ],
+    defaultPriority: 3,
+    defaultPlan: 168,
+    questions: [
+      {
+        text: <p>Button push, airbag deploy, or other automatic sensor?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Airbag",
+            display: "Airbag sensor",
+            continue: true,
+            updateCode: "34B04",
+          },
+          {
+            answer: "Button push",
+            display: "Button push notification",
+            continue: true,
+            updateCode: "34B04",
+          },
+          {
+            answer: "Other automatic sensor",
+            display: "Other automatic sensor",
+            continue: true,
+            updateCode: "34B04",
+          },
+          {
+            answer: "Other:",
+            display: "{input}",
+            continue: true,
+            updateCode: "34B04",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk situation",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is the <b>voice contact</b> inside the vehicle?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Voice contact",
+            continue: true,
+          },
+          {
+            answer: "No contact at all",
+            display: "No voice contact",
+            continue: true,
+          },
+          {
+            answer: "Yes - critical noise(s) heard",
+            display: "Critical noises heard",
+            continue: true,
+            updateCode: "34D04",
+          },
+          {
+            answer: "Yes - normal voice(s) heard",
+            display: "Normal voices heard",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Are there any injuries?</p>,
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Yes - normal voice(s) heard";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No injs rptd",
+            updateCode: "34O01",
+            end: true,
+            override: true,
+          },
+          {
+            answer: "Yes",
+            display: "Injs rptd",
+            updateCode: "34B01",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: <p>Any vehicle descriptions?</p>,
+        questionType: "select",
+        answers: [
+          {
+            answer: "Description:",
+            display: "Vehicles: {input}",
+            end: true,
+            input: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk vehicle description(s)",
+            end: true,
+          },
+        ],
+      },
+    ],
+    availableDeterminants: [
+      {
+        priority: "O",
+        determinants: [
+          {
+            code: "34O01",
+            text: "No Injuries",
+            recResponse: 169,
+          },
+        ],
+      },
+      {
+        priority: "A",
+        determinants: [
+          {
+            code: "34A00",
+            text: "BLS Override (Alpha)",
+            recResponse: 168,
+          },
+          {
+            code: "34A01",
+            text: "Not Dangerous Injs (1st party)",
+            recResponse: 168,
+          },
+        ],
+      },
+      {
+        priority: "B",
+        determinants: [
+          {
+            code: "34B00",
+            text: "BLS Override (Bravo)",
+            recResponse: 168,
+          },
+          {
+            code: "34B01",
+            text: "Injuries",
+            recResponse: 168,
+          },
+          {
+            code: "34B02",
+            text: "Mult Victims (One Unit)",
+            recResponse: 168,
+          },
+          {
+            code: "34B03",
+            text: "Mulitple Victims",
+            recResponse: 170,
+          },
+          {
+            code: "34B04",
+            text: "Air Bag/Other Automatic Sensor",
+            recResponse: 168,
+          },
+        ],
+      },
+      {
+        priority: "D",
+        determinants: [
+          {
+            code: "34D00",
+            text: "ALS Override (Delta)",
+            recResponse: 171,
+          },
+          {
+            code: "34D01",
+            text: "Arrest",
+            recResponse: 173,
+            notBreathing: true,
+          },
+          {
+            code: "34D02",
+            text: "Unconscious",
+            recResponse: 173,
+            notConscious: true,
+          },
+          {
+            code: "34D03",
+            text: "High Mechanism",
+            recResponse: 180,
+            subCodes: [
+              {
+                code: "i",
+                text: "Auto vs. Bicycle",
+                recResponse: 179,
+              },
+              {
+                code: "k",
+                text: "All-Terrain/Snowmobile",
+                recResponse: 180,
+              },
+              {
+                code: "l",
+                text: "Auto vs. Motorcycle",
+                recResponse: 179,
+              },
+              {
+                code: "m",
+                text: "Auto vs. Pedestrain",
+                recResponse: 181,
+              },
+              {
+                code: "n",
+                text: "Ejection",
+                recResponse: 182,
+              },
+              {
+                code: "o",
+                text: "Personal Watercraft",
+                recResponse: 177,
+              },
+              {
+                code: "p",
+                text: "Rollovers",
+                recResponse: 183,
+              },
+              {
+                code: "q",
+                text: "Vehicle Off Bridge/Height",
+                recResponse: 184,
+              },
+              {
+                code: "r",
+                text: "Possible Death at Scene",
+                recResponse: 173,
+              },
+              {
+                code: "s",
+                text: "Sinking Vehicle/Vehicle in Floodwater",
+                recResponse: 185,
+              },
+              {
+                code: "t",
+                text: "Train/Light Rail vs. Pedestrian",
+                recResponse: 186,
+              },
+            ],
+          },
+          {
+            code: "34D04",
+            text: "Life Status Questionable",
+            recResponse: 173,
+          },
+        ],
+      },
+    ],
+  },
 ];

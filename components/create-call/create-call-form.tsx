@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { set, z } from "zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -41,6 +41,7 @@ const formSchema = z.object({
   buildingInfo: z.string().optional(),
   crossStreet1: z.string().min(1, "Cross street 1 is required"),
   crossStreet2: z.string().min(1, "Cross street 2 is required"),
+  callerName: z.string().optional(),
   callerNumber: z.string().optional(),
   callerStatement: z.string().optional(),
   service: z.enum(["Police", "Fire", "EMS"], {
@@ -73,6 +74,7 @@ export default function CreateCallForm() {
   const crossStreet1Ref = useRef<HTMLButtonElement>(null);
   const crossStreet2Ref = useRef<HTMLButtonElement>(null);
   const callerNumberRef = useRef<HTMLInputElement>(null);
+  const callerNameRef = useRef<HTMLInputElement>(null);
   const callerStatementRef = useRef<HTMLTextAreaElement>(null);
   const createCallRef = useRef<HTMLButtonElement>(null);
   const postalOptions = useMemo(
@@ -122,6 +124,7 @@ export default function CreateCallForm() {
           buildingInfo: parsed.buildingInfo || "",
           crossStreet1: parsed.crossStreet1 || "",
           crossStreet2: parsed.crossStreet2 || "",
+          callerName: parsed.callerName || "",
           callerNumber: parsed.callerNumber || "",
           callerStatement: parsed.callerStatement || "",
           service: parsed.service || undefined,
@@ -138,7 +141,7 @@ export default function CreateCallForm() {
         );
       }
     }
-  }, []);
+  }, [form]);
 
   useEffect(() => {
     if (initialValues.postal) {
@@ -206,6 +209,7 @@ export default function CreateCallForm() {
       buildingInfo: values.buildingInfo,
       crossStreet1: values.crossStreet1,
       crossStreet2: values.crossStreet2,
+      callerName: values.callerName,
       callerNumber: values.callerNumber,
       callerStatement: values.callerStatement,
       service: values.service,
@@ -522,9 +526,29 @@ export default function CreateCallForm() {
 
               <FormField
                 control={form.control}
+                name="callerName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Caller Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Name"
+                        {...field}
+                        value={field.value || ""}
+                        onChange={field.onChange}
+                        ref={callerNameRef}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="callerNumber"
                 render={({ field }) => (
-                  <FormItem className="md:col-span-2">
+                  <FormItem>
                     <FormLabel>Caller Number</FormLabel>
                     <FormControl>
                       <Input
@@ -580,6 +604,8 @@ export default function CreateCallForm() {
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
+                      {...field}
+                      value={field.value || ""}
                     >
                       <FormControl>
                         <SelectTrigger>
