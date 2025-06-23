@@ -248,6 +248,8 @@ export default function FireSummaryPage() {
           unitType = "Transport (ALS)";
         } else if (unitType === "AMR 800 Series (ACLS") {
           unitType = "Transport (ACLS)";
+        } else if(unitType === "EMS Notification") {
+          return "EMS Notification";
         }
 
         return `${u.quantity}x ${unitType}`;

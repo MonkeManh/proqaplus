@@ -101,7 +101,6 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    sendPolice: true,
   },
   {
     id: 7,
@@ -121,7 +120,6 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
-    sendPolice: true,
   },
   {
     id: 8,
@@ -180,6 +178,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 12,
@@ -219,6 +218,7 @@ export const emsPlans: IResponsePlan[] = [
         quantity: 1,
       },
     ],
+    sendPolice: true,
   },
   {
     id: 14,

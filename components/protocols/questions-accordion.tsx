@@ -136,7 +136,7 @@ function AnswerItem({ answer }: AnswerItemProps) {
     <li className="text-sm">
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="font-medium">{answer.display || answer.answer}</span>
+          <span className="font-medium">{answer.answer} - {answer.display}</span>
           {answer.updateCode && (
             <Badge className="ml-2" variant="outline">
               Updates Code to: {answer.updateCode}

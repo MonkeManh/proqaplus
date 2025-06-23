@@ -1,7 +1,6 @@
 import { IAnswerData } from "@/models/interfaces/complaints/IAnswerData";
 import { IPoliceComplaint } from "@/models/interfaces/complaints/police/IPoliceComplaint";
 
-
 export function getPoliceComplaintOptions() {
   return policeProtocols.map((complaint: IPoliceComplaint) => ({
     value: complaint.name,
@@ -25,16 +24,33 @@ export const policeProtocols: IPoliceComplaint[] = [
     defaultPlan: 27,
     questions: [
       {
-        text: <p><b className="text-red-400">Override</b></p>,
+        text: (
+          <p>
+            Is anyone injured?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
-            answer: "Continue",
-            display: "ProQA Override",
-            end: true
+            answer: "No",
+            display: "No injs rptd",
+            end: true,
+            updateCode: "100E01",
+          },
+          {
+            answer: "Yes",
+            display: "Injuries rptd",
+            end: true,
+            updateCode: "100E02",
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if injs",
+            end: true,
+            updateCode: "100E01",
           }
-        ]
-      }
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -43,11 +59,16 @@ export const policeProtocols: IPoliceComplaint[] = [
           {
             code: "100E01",
             text: "Caller in Danger",
-            recResponse: 27
+            recResponse: 27,
+          },
+          {
+            code: "100E02",
+            text: "Caller in Danger, Injuries",
+            recResponse: 34,
           }
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   {
     protocol: 101,
@@ -63,7 +84,11 @@ export const policeProtocols: IPoliceComplaint[] = [
     defaultPlan: 28,
     questions: [
       {
-        text: <p>Are you <b>at that location now</b>?</p>,
+        text: (
+          <p>
+            Are you <b>at that location now</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -75,8 +100,8 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "No",
             display: "Caller not on location",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -107,12 +132,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Suspect",
             display: "RP is suspect",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>When</b> did this <b>happen</b>?</p>,
+        text: (
+          <p>
+            <b>When</b> did this <b>happen</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -137,8 +166,8 @@ export const policeProtocols: IPoliceComplaint[] = [
             display: "Unk when incident occurred",
             continue: true,
             updateCode: "101C09",
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -151,16 +180,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "In progress") {
-                return { code: "101D02" }
-              } else if(lastAnswer === "Just occurred:") {
-                return { code: "101C02" }
-              } else if(lastAnswer === "Past:") {
-                return { code: "101C06" }
+              if (lastAnswer === "In progress") {
+                return { code: "101D02" };
+              } else if (lastAnswer === "Just occurred:") {
+                return { code: "101C02" };
+              } else if (lastAnswer === "Past:") {
+                return { code: "101C06" };
               } else {
-                return { code: "101C09" }
+                return { code: "101C09" };
               }
-            }
+            },
           },
           {
             answer: "Hostage situation",
@@ -168,16 +197,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "In progress") {
-                return { code: "101D01" }
-              } else if(lastAnswer === "Just occurred:") {
-                return { code: "101C01" }
-              } else if(lastAnswer === "Past:") {
-                return { code: "101C05" }
+              if (lastAnswer === "In progress") {
+                return { code: "101D01" };
+              } else if (lastAnswer === "Just occurred:") {
+                return { code: "101C01" };
+              } else if (lastAnswer === "Past:") {
+                return { code: "101C05" };
               } else {
-                return { code: "101C09" }
+                return { code: "101C09" };
               }
-            }
+            },
           },
           {
             answer: "Parental/custodial abduction",
@@ -185,16 +214,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "In progress") {
-                return { code: "101D03" }
-              } else if(lastAnswer === "Just occurred:") {
-                return { code: "101C03" }
-              } else if(lastAnswer === "Past:") {
-                return { code: "101C07" }
+              if (lastAnswer === "In progress") {
+                return { code: "101D03" };
+              } else if (lastAnswer === "Just occurred:") {
+                return { code: "101C03" };
+              } else if (lastAnswer === "Past:") {
+                return { code: "101C07" };
               } else {
-                return { code: "101C09" }
+                return { code: "101C09" };
               }
-            }
+            },
           },
           {
             answer: "Attempted abduction",
@@ -202,28 +231,32 @@ export const policeProtocols: IPoliceComplaint[] = [
             continue: true,
             dependency: (answers?: IAnswerData[]) => {
               const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-              if(lastAnswer === "In progress") {
-                return { code: "101D04" }
-              } else if(lastAnswer === "Just occurred:") {
-                return { code: "101C04" }
-              } else if(lastAnswer === "Past:") {
-                return { code: "101C08" }
+              if (lastAnswer === "In progress") {
+                return { code: "101D04" };
+              } else if (lastAnswer === "Just occurred:") {
+                return { code: "101C04" };
+              } else if (lastAnswer === "Past:") {
+                return { code: "101C08" };
               } else {
-                return { code: "101C09" }
+                return { code: "101C09" };
               }
-            }
+            },
           },
           {
             answer: "Unknown",
             display: "Completely unk situation",
             continue: true,
             updateCode: "101C09",
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p className="text-red-400">Were <b>weapons</b> involved or mentioned?</p>,
+        text: (
+          <p className="text-red-400">
+            Were <b>weapons</b> involved or mentioned?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -241,12 +274,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk if wpns involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
-      
+
       {
-        text: <p>What <b>type</b>?</p>,
+        text: (
+          <p>
+            What <b>type</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
@@ -287,12 +324,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk type of wpns involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>Where</b> are the weapons <b>now</b>?</p>,
+        text: (
+          <p>
+            <b>Where</b> are the weapons <b>now</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 2]?.defaultAnswer;
@@ -318,12 +359,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk where wpns are now",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>Decision point</b></p>,
+        text: (
+          <p>
+            <b>Decision point</b>
+          </p>
+        ),
         questionType: "select",
         omitQuestion: true,
         answers: [
@@ -336,12 +381,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Proceed to dispatch",
             display: "Proceed to dispatch",
             end: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>How <b>many</b> people are <b>involved</b>?</p>,
+        text: (
+          <p>
+            How <b>many</b> people are <b>involved</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -359,12 +408,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk how many persons involved",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b>Where's</b> the <b>suspect/person responsible now</b>?</p>,
+        text: (
+          <p>
+            <b>Where's</b> the <b>suspect/person responsible now</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -397,15 +450,22 @@ export const policeProtocols: IPoliceComplaint[] = [
             display: "Unk where suspect(s) is now",
             continue: true,
           },
-        ]
+        ],
       },
 
       {
-        text: <p><b>How</b> did s/he <b>leave</b>?</p>,
+        text: (
+          <p>
+            <b>How</b> did s/he <b>leave</b>?
+          </p>
+        ),
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Left/leaving area" || lastAnswer === "Circulating the area";
+          return (
+            lastAnswer === "Left/leaving area" ||
+            lastAnswer === "Circulating the area"
+          );
         },
         answers: [
           {
@@ -443,8 +503,8 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk how suspect(s) left",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -452,25 +512,34 @@ export const policeProtocols: IPoliceComplaint[] = [
         questionType: "select",
         preRenderInstructions: (answers?: IAnswerData[]) => {
           const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
-          return lastAnswer === "Vehicle" || lastAnswer === "Motorcycle" || lastAnswer === "Bicycle" || lastAnswer === "Boat";
+          return (
+            lastAnswer === "Vehicle" ||
+            lastAnswer === "Motorcycle" ||
+            lastAnswer === "Bicycle" ||
+            lastAnswer === "Boat"
+          );
         },
         answers: [
           {
             answer: "Info:",
             display: "Suspect Veh: {vehicle}",
             continue: true,
-            vehicleInput: true
+            vehicleInput: true,
           },
           {
             answer: "Unknown",
             display: "Unk vehicle description",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>What <b>direction</b> was s/he going?</p>,
+        text: (
+          <p>
+            What <b>direction</b> was s/he going?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -483,12 +552,16 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk direction of travel",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p>Do you know <b>where</b> s/he's going?</p>,
+        text: (
+          <p>
+            Do you know <b>where</b> s/he's going?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -501,8 +574,8 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk destination",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -511,16 +584,16 @@ export const policeProtocols: IPoliceComplaint[] = [
         answers: [
           {
             answer: "Info:",
-            display: "Suspect: {person}",  // Changed this - remove "Suspect description: " prefix
+            display: "Suspect: {person}", // Changed this - remove "Suspect description: " prefix
             continue: true,
-            personInput: true
+            personInput: true,
           },
           {
             answer: "Unknown",
             display: "Unk suspect description",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -529,20 +602,25 @@ export const policeProtocols: IPoliceComplaint[] = [
         answers: [
           {
             answer: "Info:",
-            display: "Victim: {person}",  // Changed this - remove "Victim description: " prefix
+            display: "Victim: {person}", // Changed this - remove "Victim description: " prefix
             continue: true,
-            personInput: true
+            personInput: true,
           },
           {
             answer: "Unknown",
             display: "Unk victim description",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
-        text: <p><b className="text-blue-400">(Appropriate)</b> <b>Where's</b> the <b>victim</b>?</p>,
+        text: (
+          <p>
+            <b className="text-blue-400">(Appropriate)</b> <b>Where's</b> the{" "}
+            <b>victim</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -556,11 +634,15 @@ export const policeProtocols: IPoliceComplaint[] = [
             display: "Unk where victim is",
             continue: true,
           },
-        ]
+        ],
       },
 
       {
-        text: <p>Is anyone <b>injured</b> or <b>sick</b>?</p>,
+        text: (
+          <p>
+            Is anyone <b>injured</b> or <b>sick</b>?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -572,6 +654,25 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Yes - Medical needed",
             display: "Injs & medical required",
             continue: true,
+            dependency: (answers?: IAnswerData[]) => {
+              const weaponsAnswer = answers?.find(
+                (a) =>
+                  a.defaultQuestion === "Were weapons involved or mentioned?"
+              )?.defaultAnswer;
+              const numberInvolved = answers?.find(
+                (a) => a.defaultQuestion === "How many people are involved?"
+              )?.defaultAnswer;
+              if (
+                weaponsAnswer === "Yes" &&
+                numberInvolved === "More than one (enter number):"
+              ) {
+                return { subCode: "Y" };
+              } else if (weaponsAnswer === "Yes") {
+                return { subCode: "X" };
+              } else {
+                return { subCode: "I" };
+              }
+            },
           },
           {
             answer: "Yes - Medical not needed",
@@ -582,9 +683,9 @@ export const policeProtocols: IPoliceComplaint[] = [
             answer: "Unknown",
             display: "Unk if injs or sick",
             continue: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -596,31 +697,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C02",
@@ -628,31 +735,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C03",
@@ -660,31 +773,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C04",
@@ -692,36 +811,75 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C05",
             text: "Hostage Situation, Occurred Earlier",
-            recResponse: 29
+            recResponse: 29,
+            subCodes: [
+              {
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
+              },
+              {
+                code: "M",
+                text: "Mult persons",
+                recResponse: 29,
+              },
+              {
+                code: "P",
+                text: "Public place",
+                recResponse: 29,
+              },
+              {
+                code: "W",
+                text: "Weapons",
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
+              },
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
+              },
+            ],
           },
           {
             code: "101C06",
@@ -729,31 +887,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C07",
@@ -761,31 +925,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C08",
@@ -793,31 +963,37 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
+              },
+
+              {
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
               },
-            ]
+            ],
           },
           {
             code: "101C09",
@@ -825,33 +1001,38 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 29,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 29
+                code: "I",
+                text: "Injuries",
+                recResponse: 30,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 29
+                recResponse: 29,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 29
+                recResponse: 29,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 29
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 30,
               },
-            ]
-          }
-        ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 31,
+              },
+            ],
+          },
+        ],
       },
       {
         priority: "D",
@@ -862,31 +1043,36 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 28,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 28
+                code: "I",
+                text: "Injuries",
+                recResponse: 32,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 28
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 32,
               },
-            ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 33,
+              },
+            ],
           },
           {
             code: "101D01",
@@ -894,31 +1080,36 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 28,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 28
+                code: "I",
+                text: "Injuries",
+                recResponse: 32,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 28
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 32,
               },
-            ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 33,
+              },
+            ],
           },
           {
             code: "101D02",
@@ -926,31 +1117,36 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 28,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 28
+                code: "I",
+                text: "Injuries",
+                recResponse: 32,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 28
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 32,
               },
-            ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 33,
+              },
+            ],
           },
           {
             code: "101D03",
@@ -958,31 +1154,36 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 28,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 28
+                code: "I",
+                text: "Injuries",
+                recResponse: 32,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 28
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 32,
               },
-            ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 33,
+              },
+            ],
           },
           {
             code: "101D04",
@@ -990,34 +1191,39 @@ export const policeProtocols: IPoliceComplaint[] = [
             recResponse: 28,
             subCodes: [
               {
-                code: "C",
-                text: "Child involved (minor)",
-                recResponse: 28
+                code: "I",
+                text: "Injuries",
+                recResponse: 32,
               },
               {
                 code: "M",
                 text: "Mult persons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "P",
                 text: "Public place",
-                recResponse: 28
+                recResponse: 28,
               },
               {
                 code: "W",
                 text: "Weapons",
-                recResponse: 28
+                recResponse: 28,
               },
               {
-                code: "V",
-                text: "Vehicle abduction",
-                recResponse: 28
+                code: "X",
+                text: "Injuries and Weapons",
+                recResponse: 32,
               },
-            ]
+              {
+                code: "Y",
+                text: "Injuries and Mult persons",
+                recResponse: 33,
+              },
+            ],
           },
-        ]
+        ],
       },
-    ]
-  }
-]
+    ],
+  },
+];

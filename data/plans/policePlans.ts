@@ -425,5 +425,101 @@ export const policePlans: IResponsePlan[] = [
         quantity: 2,
       }
     ]
-  }
+  },
+  {
+    id: 30,
+    name: "2PEMS",
+    incidentType: "HOSTO|INJS",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 2,
+      },
+      {
+        type: "EMS Notification",
+        quantity: 1,
+      }
+    ],
+    sendEMS: true,
+  },
+  {
+    id: 31,
+    name: "3P1SEMS",
+    incidentType: "HOSTO|INJS|MULT",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 3,
+      },
+      {
+        type: "Supervisor",
+        quantity: 1,
+      },
+      {
+        type: "EMS Notification",
+        quantity: 1,
+      },
+    ],
+    sendEMS: true,
+  },
+  {
+    id: 32,
+    name: "4P1SEMS",
+    incidentType: "HOSTI|INJS",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 4,
+      },
+      {
+        type: "Supervisor",
+        quantity: 1,
+      },
+      {
+        type: "EMS Notification",
+        quantity: 1,
+      },
+    ],
+    sendEMS: true,
+  },
+  {
+    id: 33,
+    name: "4P1S1WEMS",
+    incidentType: "HOSTI|INJS|MULT",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 4,
+      },
+      {
+        type: "Supervisor",
+        quantity: 1,
+      },
+      {
+        type: "Watch Commander",
+        quantity: 1,
+      },
+      {
+        type: "EMS Notification",
+        quantity: 1,
+      },
+    ],
+    sendEMS: true,
+  },
+  {
+    id: 34,
+    name: "4PEMS",
+    incidentType: "CID|INJS",
+    units: [
+      {
+        type: "Police Patrol",
+        quantity: 4,
+      },
+      {
+        type: "EMS Notification",
+        quantity: 1,
+      }
+    ],
+    sendEMS: true,
+  },
 ];

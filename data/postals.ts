@@ -3576,6 +3576,10 @@ export const postalData: IPostal[] = [
           crossStreet1: "Boar Ln",
           crossStreet2: "Seaview Rd",
         },
+        "Boar Ln": {
+          crossStreet1: "Seaview Rd",
+          crossStreet2: "Phire Way"
+        }
       },
     },
   },
@@ -14538,7 +14542,7 @@ export const postalData: IPostal[] = [
     streets: {
       autoFill: true,
       mainStreet: "Senora Rd",
-      crossStreet1: "Vinewood Park Dr",
+      crossStreet1: "Marlowe Dr",
       crossStreet2: "Star Ln",
     },
   },
