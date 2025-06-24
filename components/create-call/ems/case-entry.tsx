@@ -31,28 +31,31 @@ import { z } from "zod";
 const calculateAgeFromDate = (
   dateString: string
 ): { value: number; unit: "Years" | "Months" | "Days" } => {
-  // Try to parse the date string
-  const inputDate = new Date(dateString);
-
-  // Check if it's a valid date
-  if (isNaN(inputDate.getTime())) {
-    return { value: 0, unit: "Years" };
-  }
+  const birth = new Date(dateString);
+  if (isNaN(birth.getTime())) return { value: 0, unit: "Years" };
 
   const today = new Date();
-  const diffTime = Math.abs(today.getTime() - inputDate.getTime());
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-  // Calculate years, months, days
-  if (diffDays >= 365) {
-    const years = Math.floor(diffDays / 365);
+  const years = today.getFullYear() - birth.getFullYear();
+  const months = today.getMonth() - birth.getMonth();
+  const days = today.getDate() - birth.getDate();
+
+  if (
+    years > 1 ||
+    (years === 1 && (months > 0 || (months === 0 && days >= 0)))
+  ) {
     return { value: years, unit: "Years" };
-  } else if (diffDays >= 30) {
-    const months = Math.floor(diffDays / 30);
-    return { value: months, unit: "Months" };
-  } else {
-    return { value: diffDays, unit: "Days" };
   }
+
+  const totalMonths = years * 12 + months + (days < 0 ? -1 : 0);
+  if (totalMonths >= 1) {
+    return { value: totalMonths, unit: "Months" };
+  }
+
+  // If less than 1 month
+  const diffTime = today.getTime() - birth.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  return { value: diffDays, unit: "Days" };
 };
 
 // Helper to check if input is a valid date string
@@ -350,31 +353,33 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                             type="text"
                             value={patientAgeInput}
                             onChange={(e) => {
-                              const value = e.target.value.trim();
-                              setPatientAgeInput(value);
+                              const raw = e.target.value.trim();
+                              setPatientAgeInput(raw);
 
-                              // Allow empty string, numbers, or date-like strings
+                              const num = Number(raw);
                               if (
-                                value === "" ||
-                                (!isNaN(Number(value)) && Number(value) >= 0) ||
-                                isValidDateString(value)
+                                raw === "" ||
+                                (!isNaN(num) && num >= 0) ||
+                                isValidDateString(raw)
                               ) {
-                                field.onChange(
-                                  !isNaN(Number(value)) ? Number(value) : 0
-                                );
+                                field.onChange(!isNaN(num) ? num : 0);
                               }
                             }}
                             onBlur={() => {
-                              // When the input loses focus, check if it's a date string
-                              if (isValidDateString(patientAgeInput)) {
-                                const ageResult = calculateAgeFromDate(patientAgeInput);
+                              const raw = patientAgeInput;
+                              const num = Number(raw);
+
+                              if (isValidDateString(raw)) {
+                                const ageResult = calculateAgeFromDate(raw);
                                 field.onChange(ageResult.value);
                                 form.setValue("ageUnit", ageResult.unit);
                                 setPatientAgeInput(ageResult.value.toString());
-                              } else if (!isNaN(Number(patientAgeInput))) {
-                                field.onChange(Number(patientAgeInput) || 0);
-                              } else if (patientAgeInput !== "") {
-                                setPatientAgeInput(field.value?.toString() || "0");
+                              } else if (!isNaN(num)) {
+                                field.onChange(num || 0);
+                              } else if (raw !== "") {
+                                setPatientAgeInput(
+                                  field.value?.toString() || "0"
+                                );
                               }
                             }}
                             placeholder="Age or Date (e.g., 1/1/2000)"
