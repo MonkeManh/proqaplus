@@ -27,6 +27,40 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+// Helper function to calculate age from date string
+const calculateAgeFromDate = (
+  dateString: string
+): { value: number; unit: "Years" | "Months" | "Days" } => {
+  // Try to parse the date string
+  const inputDate = new Date(dateString);
+
+  // Check if it's a valid date
+  if (isNaN(inputDate.getTime())) {
+    return { value: 0, unit: "Years" };
+  }
+
+  const today = new Date();
+  const diffTime = Math.abs(today.getTime() - inputDate.getTime());
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  // Calculate years, months, days
+  if (diffDays >= 365) {
+    const years = Math.floor(diffDays / 365);
+    return { value: years, unit: "Years" };
+  } else if (diffDays >= 30) {
+    const months = Math.floor(diffDays / 30);
+    return { value: months, unit: "Months" };
+  } else {
+    return { value: diffDays, unit: "Days" };
+  }
+};
+
+// Helper to check if input is a valid date string
+const isValidDateString = (str: string): boolean => {
+  const date = new Date(str);
+  return !isNaN(date.getTime());
+};
+
 interface CaseEntryProps {
   onContinue: (
     complaintName: string,
@@ -69,6 +103,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function CaseEntry({ onContinue }: CaseEntryProps) {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [patientAgeInput, setPatientAgeInput] = useState<string>("");
   const callerType = useRef<HTMLButtonElement>(null);
   const patientCountRef = useRef<HTMLInputElement>(null);
   const isConsciousRef = useRef<HTMLButtonElement>(null);
@@ -144,7 +179,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       }));
 
       return [...priorityOptions, ...otherOptions];
-    } else if(concsiousness === "No") {
+    } else if (concsiousness === "No") {
       const priorityComplaints = [31, 9, 11, 12, 14, 15];
 
       const priority = allComplaints.filter((c) =>
@@ -312,13 +347,37 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                         <FormLabel>How old is the patient?</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
-                            min={0}
-                            {...field}
-                            value={field.value || 0}
-                            onChange={(e) =>
-                              field.onChange(e.target.valueAsNumber || 0)
-                            }
+                            type="text"
+                            value={patientAgeInput}
+                            onChange={(e) => {
+                              const value = e.target.value.trim();
+                              setPatientAgeInput(value);
+
+                              // Allow empty string, numbers, or date-like strings
+                              if (
+                                value === "" ||
+                                (!isNaN(Number(value)) && Number(value) >= 0) ||
+                                isValidDateString(value)
+                              ) {
+                                field.onChange(
+                                  !isNaN(Number(value)) ? Number(value) : 0
+                                );
+                              }
+                            }}
+                            onBlur={() => {
+                              // When the input loses focus, check if it's a date string
+                              if (isValidDateString(patientAgeInput)) {
+                                const ageResult = calculateAgeFromDate(patientAgeInput);
+                                field.onChange(ageResult.value);
+                                form.setValue("ageUnit", ageResult.unit);
+                                setPatientAgeInput(ageResult.value.toString());
+                              } else if (!isNaN(Number(patientAgeInput))) {
+                                field.onChange(Number(patientAgeInput) || 0);
+                              } else if (patientAgeInput !== "") {
+                                setPatientAgeInput(field.value?.toString() || "0");
+                              }
+                            }}
+                            placeholder="Age or Date (e.g., 1/1/2000)"
                           />
                         </FormControl>
                         <FormMessage />
@@ -335,6 +394,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
+                          value={field.value}
                         >
                           <FormControl>
                             <SelectTrigger>
