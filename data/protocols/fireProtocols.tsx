@@ -13603,10 +13603,11 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "> 7 stories:",
             display: "Bldg has {input} stories",
             continue: true,
+            input: true,
             updateCode: "69D02",
           },
           {
-            answer: "3-7 stories:",
+            answer: "2-7 stories:",
             display: "Bldg has {input} stories",
             input: true,
             continue: true,
