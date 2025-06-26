@@ -47,7 +47,7 @@ export function evaluateDependencies(
   }
 }
 
-export function evaluateFireDependencies(dependency: FireDependencyFunction | undefined, answers: IAnswerData[]) {
+export function evaluateFireDependencies(dependency: FireDependencyFunction | undefined, answers: IAnswerData[], currentCode?: string) {
   if (!dependency) return undefined;
   try {
     return dependency(answers);

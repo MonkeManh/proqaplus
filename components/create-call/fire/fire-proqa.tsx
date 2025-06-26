@@ -329,7 +329,8 @@ export default function FireProQA({
         console.log("Checking dependency with answers:", previousAnswers);
         const dependencyResult = evaluateFireDependencies(
           selectedAnswer.dependency,
-          previousAnswers
+          previousAnswers,
+          currentCode
         );
         console.log("Dependency result:", dependencyResult); // Add debug
         if (dependencyResult) {

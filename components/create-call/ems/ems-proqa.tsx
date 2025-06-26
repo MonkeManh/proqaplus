@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { emsComplaints } from "@/data/protocols/emsProtocols";
-import { cn } from "@/lib/utils";
+import { cn, getPriorityLevel } from "@/lib/utils";
 import {
   evaluateDependencies,
   evaluatePreRenderInstructions,
@@ -14,6 +14,7 @@ import { IEMSComplaint } from "@/models/interfaces/complaints/ems/IEMSComplaint"
 import { IPatientData } from "@/models/interfaces/complaints/ems/IPatientData";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { InputModal } from "@/components/modals/input-modal";
+import { IPreferences } from "@/models/interfaces/IPreferences";
 
 interface ProQAAnswer {
   question: string;
@@ -28,30 +29,16 @@ interface ProQAAnswer {
 interface EMSProQAProps {
   complaintName: string;
   patientData: IPatientData;
-  onComplete: (code: string, baseCode?: string, subType?: string) => void;
+  hasCalledBack?: boolean;
+  onComplete: (
+    code: string,
+    baseCode?: string,
+    subType?: string,
+    shouldCallBack?: boolean
+  ) => void;
   onBack: () => void;
   onSwitchProtocol: (protocol: number) => void;
 }
-
-const getPriorityLevel = (code: string): number => {
-  const priority = code.match(/[A-E]/)?.[0] || "";
-  switch (priority) {
-    case "E":
-      return 5;
-    case "D":
-      return 4;
-    case "C":
-      return 3;
-    case "B":
-      return 2;
-    case "A":
-      return 1;
-    case "O":
-      return 0;
-    default:
-      return 0;
-  }
-};
 
 const findHighestPriorityDeterminant = (
   complaint: IEMSComplaint,
@@ -154,6 +141,7 @@ const isHigherPriority = (newCode: string, currentCode: string): boolean => {
 export default function EmsProQA({
   complaintName,
   patientData,
+  hasCalledBack = false,
   onComplete,
   onBack,
   onSwitchProtocol,
@@ -174,30 +162,53 @@ export default function EmsProQA({
   const [pendingAnswerIndex, setPendingAnswerIndex] = useState<number | null>(
     null
   );
+  const [preferences] = useState<IPreferences>(() => {
+    const rawPrefs = localStorage.getItem("PREFERENCES");
+    if (!rawPrefs) {
+      return {
+        advancedMode: false,
+        soundEffects: true,
+        quickSend: false,
+      };
+    } else {
+      return JSON.parse(rawPrefs) as IPreferences;
+    }
+  });
+  const [shouldCallback, setShouldCallback] = useState<boolean>(false);
   const answersRef = useRef<HTMLDivElement>(null);
 
-  const saveProQAState = useCallback((answers: ProQAAnswer[]) => {
-    const proqaState = {
-      complaint: complaintName,
-      currentQuestion: currentQuestionIndex,
-      selectedAnswers: answers,
+  const saveProQAState = useCallback(
+    (answers: ProQAAnswer[]) => {
+      const proqaState = {
+        complaint: complaintName,
+        currentQuestion: currentQuestionIndex,
+        selectedAnswers: answers,
+        currentCode,
+        currentSubCode,
+        currentPlan,
+        determinant: currentCode
+          ? currentSubCode
+            ? `${currentCode}${currentSubCode}`
+            : currentCode
+          : "DEFAULT",
+        protocol: complaint?.name,
+        startTime:
+          localStorage.getItem("DISPATCH_PROQA_START") ||
+          new Date().toISOString(),
+      };
+
+      localStorage.setItem("EMS_PROQA_ANSWERS", JSON.stringify(answers));
+      localStorage.setItem("EMS_PROQA_DATA", JSON.stringify(proqaState));
+    },
+    [
+      complaintName,
+      currentQuestionIndex,
       currentCode,
       currentSubCode,
       currentPlan,
-      determinant: currentCode
-        ? currentSubCode
-          ? `${currentCode}${currentSubCode}`
-          : currentCode
-        : "DEFAULT",
-      protocol: complaint?.name,
-      startTime:
-        localStorage.getItem("DISPATCH_PROQA_START") ||
-        new Date().toISOString(),
-    };
-
-    localStorage.setItem("EMS_PROQA_ANSWERS", JSON.stringify(answers));
-    localStorage.setItem("EMS_PROQA_DATA", JSON.stringify(proqaState));
-  }, [complaintName, currentQuestionIndex, currentCode, currentSubCode, currentPlan, complaint?.name]);
+      complaint?.name,
+    ]
+  );
 
   const moveToNextQuestion = useCallback(() => {
     if (!complaint) return;
@@ -233,21 +244,39 @@ export default function EmsProQA({
   };
 
   useEffect(() => {
-    const savedState = localStorage.getItem("EMS_PROQA_DATA");
-    if (!savedState) return;
-    const state = JSON.parse(savedState);
-    if (state.complaint === complaintName) {
-      setCurrentQuestionIndex(state.currentQuestion);
-      setCurrentCode(state.currentCode || "");
-      setCurrentPlan(state.currentPlan);
-      setCurrentSubCode(state.currentSubCode || "");
+    if (!hasCalledBack) return;
+
+    const savedData = localStorage.getItem("EMS_PROQA_DATA");
+    const savedAnswers = localStorage.getItem("EMS_PROQA_ANSWERS");
+
+    if (savedData) {
+      const state = JSON.parse(savedData);
+      if (state.complaint === complaintName) {
+        setCurrentQuestionIndex(state.currentQuestion + 1);
+        setCurrentCode(state.determinant || "DEFAULT");
+        setCurrentPlan(state.currentPlan || 0);
+        setCurrentSubCode(state.currentSubCode || "");
+      }
     }
-  }, [complaintName]);
+
+    if (savedAnswers) {
+      setPreviousAnswers(JSON.parse(savedAnswers));
+    }
+  }, [complaintName, hasCalledBack]);
 
   useEffect(() => {
     if (!shouldComplete) return;
 
+    
+
     let finalCode = currentCode;
+
+    if(hasCalledBack) {
+      const rawDispatchHistory = localStorage.getItem("DISPATCH_HISTORY");
+      const dispatchHistory = JSON.parse(rawDispatchHistory || "[]");
+      finalCode = dispatchHistory.code;
+    }
+
     const storedState = localStorage.getItem("EMS_PROQA_DATA");
     const storedData = storedState ? JSON.parse(storedState) : null;
 
@@ -266,9 +295,9 @@ export default function EmsProQA({
     const subType = currentSubCode || storedData?.currentSubCode || "";
 
     if (finalCode !== "DEFAULT") {
-      onComplete(finalCode, finalCode, subType);
+      onComplete(finalCode, finalCode, subType, shouldCallback);
     } else {
-      onComplete(finalCode, finalCode, subType);
+      onComplete(finalCode, finalCode, subType, shouldCallback);
     }
 
     setShouldComplete(false);
@@ -279,6 +308,7 @@ export default function EmsProQA({
     currentPlan,
     onComplete,
     complaint,
+    shouldCallback,
   ]);
 
   useEffect(() => {
@@ -288,15 +318,18 @@ export default function EmsProQA({
     if (!foundComplaint) return;
     setComplaint(foundComplaint);
     setCurrentPlan(foundComplaint.defaultPlan);
-    setCurrentQuestionIndex(0);
-    setSelectedAnswerIndex(null);
-    setHoverAnswerIndex(0);
-    setCurrentCode("");
-    setCurrentPlan(foundComplaint.defaultPlan);
-    setIsCodeOverridden(false);
-    setShouldComplete(false);
-    setPreviousAnswers([]);
-    setCurrentSubCode("");
+
+    if(!hasCalledBack) {
+      setCurrentQuestionIndex(0);
+      setSelectedAnswerIndex(null);
+      setHoverAnswerIndex(0);
+      setCurrentCode("");
+      setCurrentPlan(foundComplaint.defaultPlan);
+      setIsCodeOverridden(false);
+      setShouldComplete(false);
+      setPreviousAnswers([]);
+      setCurrentSubCode("");
+    }
 
     const criticalResult = findHighestPriorityDeterminant(
       foundComplaint,
@@ -383,6 +416,7 @@ export default function EmsProQA({
         complaint,
         patientData
       );
+
       if (criticalResult && criticalResult.override) {
         setCurrentCode(criticalResult.code);
         setIsCodeOverridden(true);
@@ -413,10 +447,15 @@ export default function EmsProQA({
           if (dependencyResult.override) {
             setIsCodeOverridden(true);
           }
+          if (dependencyResult.send) {
+            setShouldCallback(true);
+            setShouldComplete(true);
+          }
         }
       }
 
       if (selectedAnswer.updateCode && !isCodeOverridden) {
+        console.log("Updating code with:", selectedAnswer.updateCode);
         // Only update code if it's higher priority or has override
         if (
           selectedAnswer.override ||
@@ -433,8 +472,11 @@ export default function EmsProQA({
 
       setSelectedAnswerIndex(answerIndex);
 
-      // End questioning immediately if end: true
-      if (selectedAnswer.end) {
+      if (selectedAnswer.send && preferences.quickSend && !hasCalledBack) {
+        setShouldCallback(true);
+        setShouldComplete(true);
+        return;
+      } else if (selectedAnswer.end) {
         setShouldComplete(true);
         localStorage.removeItem("EMS_PROQA_DATA");
         return;

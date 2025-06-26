@@ -30,9 +30,9 @@ import { z } from "zod";
 // Helper function to calculate age from date string
 const calculateAgeFromDate = (
   dateString: string
-): { value: number; unit: "Years" | "Months" | "Days" } => {
+): { value: number; unit: "year" | "month" | "day" } => {
   const birth = new Date(dateString);
-  if (isNaN(birth.getTime())) return { value: 0, unit: "Years" };
+  if (isNaN(birth.getTime())) return { value: 0, unit: "year" };
 
   const today = new Date();
 
@@ -44,24 +44,23 @@ const calculateAgeFromDate = (
     years > 1 ||
     (years === 1 && (months > 0 || (months === 0 && days >= 0)))
   ) {
-    return { value: years, unit: "Years" };
+    return { value: years, unit: "year" };
   }
 
   const totalMonths = years * 12 + months + (days < 0 ? -1 : 0);
   if (totalMonths >= 1) {
-    return { value: totalMonths, unit: "Months" };
+    return { value: totalMonths, unit: "month" };
   }
 
   // If less than 1 month
   const diffTime = today.getTime() - birth.getTime();
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  return { value: diffDays, unit: "Days" };
+  return { value: diffDays, unit: "day" };
 };
 
 // Helper to check if input is a valid date string
 const isValidDateString = (str: string): boolean => {
-  const date = new Date(str);
-  return !isNaN(date.getTime());
+  return /^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(str) && !isNaN(new Date(str).getTime());
 };
 
 interface CaseEntryProps {
@@ -84,7 +83,7 @@ const formSchema = z.object({
     .min(1, "Must be at least 1")
     .max(99, "Must be less than 100"),
   patientAge: z.coerce.number().min(0, "Must be a positive number"),
-  ageUnit: z.enum(["Years", "Months", "Days"], {
+  ageUnit: z.enum(["year", "month", "day"], {
     required_error: "Please select an age unit",
   }),
   gender: z.enum(["Male", "Female", "Unknown"], {
@@ -127,7 +126,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       patientProximity: "Yes",
       patientCount: 1,
       patientAge: 0,
-      ageUnit: "Years",
+      ageUnit: "year",
       gender: undefined,
       isConscious: undefined,
       isBreathing: undefined,
@@ -267,6 +266,7 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
       count: data.patientCount,
       isConscious: data.isConscious,
       isBreathing: data.isBreathing,
+      patientProximity: data.patientProximity,
     };
 
     localStorage.setItem("PATIENT_DATA", JSON.stringify(patientData));
@@ -407,9 +407,9 @@ export default function CaseEntry({ onContinue }: CaseEntryProps) {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="Years">Years</SelectItem>
-                            <SelectItem value="Months">Months</SelectItem>
-                            <SelectItem value="Days">Days</SelectItem>
+                            <SelectItem value="year">Years</SelectItem>
+                            <SelectItem value="month">Months</SelectItem>
+                            <SelectItem value="day">Days</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />

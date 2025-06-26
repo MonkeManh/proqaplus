@@ -5,6 +5,7 @@ export type DependencyResult = {
   subCode?: string;
   plan?: number;
   override?: boolean;
+  send?: boolean;
 };
 
 export type DependencyFunction = (patient: IPatientData | undefined, answers?: any[]) => DependencyResult | undefined;

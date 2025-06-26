@@ -12,6 +12,19 @@ import { ICallData } from "@/models/interfaces/ICallData";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+type StoredHistoryPartial = {
+  complaint: string;
+  patient: {
+    patientProximity: string;
+    age: number;
+    ageUnit: string;
+    gender: string;
+    count: number;
+    isConscious: boolean | string;
+    isBreathing: boolean | string;
+  };
+}
+
 export default function EMSCallPage() {
   const router = useRouter();
   const [callData, setCallData] = useState<ICallData>({
@@ -27,6 +40,8 @@ export default function EMSCallPage() {
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedComplaint, setSelectedComplaint] = useState<string>("");
+  const [callbackOnComplete, setCallbackOnComplete] = useState<boolean>(false);
+  const [hasCalledBack, setHasCalledBack] = useState<boolean>(false);
   const [recommendedCode, setRecommendedCode] = useState<string>("");
 
   useEffect(() => {
@@ -36,6 +51,37 @@ export default function EMSCallPage() {
     if (!callData) return router.push("/create-call");
     if (callData.service !== "EMS") return router.push("/create-call");
     setCallData(callData);
+  }, [router]);
+
+  useEffect(() => {
+    // If url param callback=true then set the current step to 2
+    const urlParams = new URLSearchParams(window.location.search);
+    const callbackParam = urlParams.get("callback");
+    if (callbackParam === "true") {
+      setHasCalledBack(true);
+      setCurrentStep(2);
+      const rawStoredHistory = localStorage.getItem("DISPATCH_HISTORY");
+      const storedHistory = JSON.parse(rawStoredHistory || "{}") as StoredHistoryPartial;
+      const {
+        age,
+        ageUnit,
+        gender,
+        isConscious,
+        isBreathing,
+        count,
+        patientProximity,
+      } = storedHistory.patient;
+      handleInitialContinue(storedHistory.complaint, {
+        patientAge: age,
+        ageUnit: ageUnit,
+        gender: gender,
+        isConscious: isConscious === "Unknown" ? "Unknown" : isConscious,
+        isBreathing: isBreathing === "Unknown" ? "Unknown" : isBreathing,
+        patientProximity: patientProximity,
+        patientCount: count,
+        chiefComplaint: storedHistory.complaint,
+      });
+    }
   }, [router]);
 
   const handleInitialContinue = (
@@ -110,9 +156,12 @@ export default function EMSCallPage() {
   const handleCompleteProQA = (
     code: string,
     baseCode?: string,
-    subType?: string
+    subType?: string,
+    shouldCallBack?: boolean
   ) => {
     const finalCode = baseCode && subType ? `${baseCode}${subType}` : code;
+
+    if (shouldCallBack) setCallbackOnComplete(true);
 
     if (!recommendedCode || isPriorityHigher(finalCode, recommendedCode)) {
       setRecommendedCode(finalCode);
@@ -133,10 +182,6 @@ export default function EMSCallPage() {
       getProQAAnswers(),
     ]);
 
-    localStorage.removeItem("PATIENT_DATA");
-    localStorage.removeItem("EMS_PROQA_DATA");
-    localStorage.removeItem("EMS_PROQA_ANSWERS");
-
     const preferences_raw = localStorage.getItem("PREFERENCES");
     const preferences = preferences_raw ? JSON.parse(preferences_raw) : {};
 
@@ -150,6 +195,7 @@ export default function EMSCallPage() {
         patient: patientData,
         proqaAnswers: proqaAnswers,
         timestamp: new Date().toISOString(),
+        callBack: hasCalledBack ? false : callbackOnComplete,
       };
       localStorage.setItem("PENDING_ASSIGN_EMS", JSON.stringify(finalCallData));
       router.push("/assign/ems");
@@ -157,7 +203,8 @@ export default function EMSCallPage() {
       const finalCallData = {
         ...callData,
         complaint: selectedComplaint,
-        complaintShort: emsComplaints.find((c) => c.name === selectedComplaint)?.shortName,
+        complaintShort: emsComplaints.find((c) => c.name === selectedComplaint)
+          ?.shortName,
         code: code,
         codeText: text,
         plan: plan,
@@ -166,7 +213,15 @@ export default function EMSCallPage() {
         timestamp: new Date().toISOString(),
         units: ["Pending"],
         dispatchTime: new Date().toISOString(),
+        callBack: hasCalledBack ? false : callbackOnComplete,
       };
+
+      if (hasCalledBack || !callbackOnComplete) {
+        localStorage.removeItem("PATIENT_DATA");
+        localStorage.removeItem("EMS_PROQA_DATA");
+        localStorage.removeItem("EMS_PROQA_ANSWERS");
+      }
+
       localStorage.setItem("DISPATCH_HISTORY", JSON.stringify(finalCallData));
       router.push("/summary/ems");
     }
@@ -184,6 +239,7 @@ export default function EMSCallPage() {
             patientData={getPatientData()}
             onComplete={handleCompleteProQA}
             onBack={handleBack}
+            hasCalledBack={hasCalledBack}
             onSwitchProtocol={handleProtocolSwitch}
           />
         )}

@@ -13587,6 +13587,33 @@ export const fireProtocols: IFireComplaint[] = [
       },
 
       {
+        text: <p>Are there any <b className="text-green-400">hazardous materials</b> present or in the building?</p>,
+        questionType: "select",
+        preRenderInstructions: (answers?: IAnswerData[]) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Commercial/Industrial building"
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No hazmat or chems rptd",
+            continue: true
+          },
+          {
+            answer: "Yes:",
+            display: "Hazmat or chems - {input}",
+            continue: true,
+            updateCode: "69D04"
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if hazmat or chems",
+            continue: true
+          }
+        ]
+      },
+
+      {
         text: (
           <p>
             How many <b>floors</b> or <b>stories</b> are there?
@@ -13638,6 +13665,15 @@ export const fireProtocols: IFireComplaint[] = [
             display: "Person(s) rptd trapped",
             continue: true,
             updateSubCode: "R",
+            dependency: (_answers?: IAnswerData[], currentCode?: string) => {
+              // The current code should contain a D - replace the D with E. If it doesn't have a D, then return code 69E00
+              alert(currentCode);
+              if (currentCode?.includes("D")) {
+                return { code: currentCode.replace("D", "E") };
+              } else {
+                return { code: "69E01" };
+              }
+            }
           },
           {
             answer: "Unknown",
@@ -18693,6 +18729,7 @@ export const fireProtocols: IFireComplaint[] = [
             answer: "Other watercraft:",
             display: "Struck other watercraft: {input}",
             continue: true,
+            input: true,
           },
           {
             answer: "Dock/wharf",

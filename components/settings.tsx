@@ -18,6 +18,7 @@ import { IPreferences } from "@/models/interfaces/IPreferences";
 const defaultPreferences: IPreferences = {
   advancedMode: false,
   soundEffects: true,
+  quickSend: false,
 };
 
 export function SettingsMenu() {
@@ -100,6 +101,18 @@ export function SettingsMenu() {
               checked={preferences.soundEffects}
               onCheckedChange={(checked: boolean) =>
                 changePreference("soundEffects", checked)
+              }
+            />
+          </div>
+          <div className="flex items-center justify-between space-x-2 py-2">
+            <Label htmlFor="quick-send" className="flex-1 cursor-pointer">
+              Quick Send
+            </Label>
+            <Switch
+              id="quick-send"
+              checked={preferences.quickSend}
+              onCheckedChange={(checked: boolean) =>
+                changePreference("quickSend", checked)
               }
             />
           </div>

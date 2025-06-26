@@ -7,7 +7,7 @@ import { IResponsePlan } from "@/models/interfaces/plans/fire-ems/IResponsePlan"
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, getPriorityColor } from "@/lib/utils";
 import LoadingState from "@/components/loading-state";
 
 interface DetermiantSelectionProps {
@@ -30,25 +30,6 @@ interface FlattenedDeterminant {
 const getPlanName = (planId: number) => {
   const plan = policePlans.find((plan: IResponsePlan) => plan.id === planId);
   return plan?.incidentType || `Plan ${planId}`;
-};
-
-const getPriorityColor = (priority: string) => {
-  switch (priority) {
-    case "O":
-      return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
-    case "A":
-      return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-    case "B":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
-    case "C":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
-    case "D":
-      return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
-    case "E":
-      return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
-    default:
-      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
-  }
 };
 
 export default function PoliceDeterminantSelection({

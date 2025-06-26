@@ -63,35 +63,6 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 1,
     questions: [
       {
-        text: (
-          <p>
-            Is **pronoun** <b>completely alert</b>{" "}
-            <span className="text-red-400">(responding appropriately)</span>?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "Yes",
-            display: "Responding nlly",
-            continue: true,
-          },
-          {
-            answer: "No",
-            display: "NOT responding nlly",
-            continue: true,
-            updateCode: "01D01",
-            override: true,
-          },
-          {
-            answer: "Unknown",
-            display: "Unk if responding nlly",
-            continue: true,
-          },
-        ],
-      },
-
-      {
         text: <p>Is she pregnant?</p>,
         questionType: "select",
         preRenderInstructions: (patient?: IPatientData) => {
@@ -121,6 +92,35 @@ export const emsComplaints: IEMSComplaint[] = [
 
       {
         text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            continue: true,
+            updateCode: "01D01",
+            send: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
           <p>Does **pronoun** appear ashen or grey (compared to usual color)</p>
         ),
         preRenderInstructions: (patient?: IPatientData) => {
@@ -140,6 +140,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Ashen or grey",
             updateCode: "01D02",
             continue: true,
+            send: true,
           },
           {
             answer: "Unknown",
@@ -161,13 +162,26 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Fainted or feeling faint",
-            dependency: (patient?: IPatientData) => {
-              if (!patient) return undefined;
+            dependency: (patient?: IPatientData, answers?: IAnswerData[]) => {
+              if (!patient) return;
               const { age, gender } = patient;
+              const isAlert =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Is **pronoun** completely alert (responding appropriately)?"
+                )?.defaultAnswer === "No";
+              const isAshen =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does **pronoun** appear ashen or grey (compared to usual color)?"
+                )?.defaultAnswer === "Yes";
+              if (isAlert || isAshen) return;
               if (age >= 50) {
-                return { code: "01C03" };
+                return { code: "01C03", send: true };
               } else if (age >= 12 && age <= 50 && gender === "Female") {
-                return { code: "01C04" };
+                return { code: "01C04", send: true };
               }
               return undefined;
             },
@@ -204,6 +218,67 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
+        text: (
+          <p>
+            Is there <b className="text-red-400">blood</b> in the vomit?
+          </p>
+        ),
+        questionType: "select",
+        preRenderInstructions: (
+          _patient?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
+          const lastAnswer = answers?.[answers.length - 1]?.defaultAnswer;
+          return lastAnswer === "Yes";
+        },
+        answers: [
+          {
+            answer: "No",
+            display: "No blood in vomit",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Blood in vomit",
+            goto: 21,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if vomiting blood",
+            continue: true,
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Does **pronoun** have a <b>diagnosed</b> aoritc aneurysm
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "No",
+            display: "No diagnosed aortic aneurysm",
+            continue: true,
+          },
+          {
+            answer: "Yes",
+            display: "Diagnosed aortic aneurysm",
+            continue: true,
+            updateCode: "01C02",
+            send: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if diagnosed aortic aneurysm",
+            continue: true,
+          },
+        ],
+      },
+
+      {
         text: <p>Can you describe the pain?</p>,
         questionType: "select",
         answers: [
@@ -218,6 +293,27 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Ripping/Tearing pn",
             updateCode: "01C01",
             continue: true,
+            dependency: (patient?: IPatientData, answers?: IAnswerData[]) => {
+              const isAlert =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Is **pronoun** completely alert (responding appropriately)?"
+                )?.defaultAnswer === "No";
+              const isAshen =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does **pronoun** appear ashen or grey (compared to usual color)?"
+                )?.defaultAnswer === "Yes";
+              if (isAlert || isAshen) return;
+
+              if (!patient) return;
+              const { age } = patient;
+              if (age >= 50) {
+                return { code: "01C01", send: true };
+              }
+            },
           },
           {
             answer: "No",
@@ -239,12 +335,28 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Above the navel",
             display: "Pn above the navel",
-            dependency: (patient?: IPatientData, answers?: IAnswerData[], currentCode?: string) => {
+            dependency: (
+              patient?: IPatientData,
+              answers?: IAnswerData[],
+              currentCode?: string
+            ) => {
+              const alert =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Is **pronoun** completely alert (responding appropriately)?"
+                )?.defaultAnswer === "No";
+              const gray =
+                answers?.find(
+                  (a) =>
+                    a.defaultQuestion ===
+                    "Does **pronoun** appear ashen or grey (compared to usual color)?"
+                )?.defaultAnswer === "Yes";
+              if (currentCode === "01D01" || currentCode === "01D02")
+                return undefined;
+              if (alert || gray) return;
+
               if (!patient) return undefined;
-              const alert = answers?.find((a) => a.defaultQuestion === "Is **pronoun** completely alert (responding appropriately)?")?.defaultAnswer === "No";
-              const gray = answers?.find((a) => a.defaultQuestion === "Does **pronoun** appear ashen or grey (compared to usual color)?")?.defaultAnswer === "Yes";
-              if(currentCode === "01D01" || currentCode === "01D02") return undefined;
-              if (alert || gray) return undefined;
               const { age, gender } = patient;
               if (gender === "Male" && age >= 35) {
                 return { code: "01C05" };
@@ -256,6 +368,12 @@ export const emsComplaints: IEMSComplaint[] = [
             end: true,
           },
           {
+            answer: "Other:",
+            display: "Pn in {input}",
+            input: true,
+            end: true,
+          },
+          {
             answer: "Groin/Testical",
             preRenderInstructions: (patient?: IPatientData) => {
               if (!patient) return false;
@@ -264,12 +382,6 @@ export const emsComplaints: IEMSComplaint[] = [
             },
             display: "Pn in groin/testicles",
             updateCode: "01A02",
-            end: true,
-          },
-          {
-            answer: "Other:",
-            display: "Pn in {input}",
-            input: true,
             end: true,
           },
           {
@@ -433,34 +545,6 @@ export const emsComplaints: IEMSComplaint[] = [
     defaultPlan: 4,
     questions: [
       {
-        text: (
-          <p>
-            Is **pronoun** <b>completely alert</b>{" "}
-            <span className="text-red-400">(responding appropriately)</span>?
-          </p>
-        ),
-        questionType: "select",
-        answers: [
-          {
-            answer: "Yes",
-            display: "Responding nlly",
-            continue: true,
-          },
-          {
-            answer: "No",
-            display: "NOT responding nlly",
-            continue: true,
-            updateCode: "02D01",
-          },
-          {
-            answer: "Unknown",
-            display: "Unk if responding nlly",
-            continue: true,
-          },
-        ],
-      },
-
-      {
         text: <p>Is **pronoun** having difficulty breathing or swallowing?</p>,
         questionType: "select",
         answers: [
@@ -481,12 +565,43 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "INEFFECTIVE/AGONAL breathing",
             end: true,
             updateCode: "02E01",
+            override: true,
+            send: true,
           },
           {
             answer: "Unknown",
             display: "Unk if diff breathing or swallowing",
             continue: true,
             updateCode: "02B01",
+          },
+        ],
+      },
+
+      {
+        text: (
+          <p>
+            Is **pronoun** <b>completely alert</b>{" "}
+            <span className="text-red-400">(responding appropriately)</span>?
+          </p>
+        ),
+        questionType: "select",
+        answers: [
+          {
+            answer: "Yes",
+            display: "Responding nlly",
+            continue: true,
+          },
+          {
+            answer: "No",
+            display: "NOT responding nlly",
+            continue: true,
+            updateCode: "02D01",
+            send: true,
+          },
+          {
+            answer: "Unknown",
+            display: "Unk if responding nlly",
+            continue: true,
           },
         ],
       },
@@ -512,6 +627,7 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "Diff speaking between breaths",
             continue: true,
             updateCode: "02D02",
+            send: true,
           },
           {
             answer: "Unknown",
@@ -543,6 +659,7 @@ export const emsComplaints: IEMSComplaint[] = [
             input: true,
             continue: true,
             updateCode: "02D03",
+            send: true,
           },
           {
             answer: "SNAKE BITE:",
@@ -550,6 +667,7 @@ export const emsComplaints: IEMSComplaint[] = [
             input: true,
             continue: true,
             updateCode: "02D04",
+            send: true,
           },
           {
             answer: "Food:",
@@ -998,7 +1116,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Happening now",
             updateCode: "03D09",
-            end: true,
+            send: true,
           },
         ],
       },
@@ -1027,7 +1145,11 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: <p>Were there <b>multiple</b> animals?</p>,
+        text: (
+          <p>
+            Were there <b>multiple</b> animals?
+          </p>
+        ),
         questionType: "select",
         answers: [
           {
@@ -1039,15 +1161,15 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes - Multiple animals:",
             display: "Multiple animals - {input}",
             input: true,
-            continue: true,
             updateCode: "03D04",
+            continue: true,
           },
           {
             answer: "Unknown",
             display: "Unk if num of animals",
             continue: true,
-          }
-        ]
+          },
+        ],
       },
 
       {
@@ -1074,20 +1196,20 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Large:",
             display: "Bit by {input}",
             input: true,
-            continue: true,
+            send: true,
             updateCode: "03D06",
           },
           {
             answer: "Exotic:",
             display: "Bit by {input}",
             input: true,
-            continue: true,
+            send: true,
             updateCode: "03D07",
           },
           {
             answer: "MAULING",
             display: "MAULING attack",
-            continue: true,
+            send: true,
             updateCode: "03D08",
           },
           {
@@ -1186,7 +1308,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "No",
             display: "NOT responding nlly",
             updateCode: "03D03",
-            continue: true,
+            send: true,
           },
           {
             answer: "Unknown",
@@ -1549,7 +1671,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk specific type of incident",
             continue: true,
-          }
+          },
         ],
       },
 
@@ -2296,10 +2418,14 @@ export const emsComplaints: IEMSComplaint[] = [
           {
             answer: "Yes",
             display: "Ashen or grey color rptd",
-            dependency: (patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
+            dependency: (
+              patient?: IPatientData,
+              _answers?: IAnswerData[],
+              currentCode?: string
+            ) => {
               if (!patient) return undefined;
               const { age } = patient;
-              if(currentCode === "05D01") return;
+              if (currentCode === "05D01") return;
               if (age >= 50) {
                 return { code: "05D02" };
               }
@@ -2389,10 +2515,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "RIPPING/TEARING",
             display: "Pn is ripping or tearing",
             continue: true,
-            dependency: (patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
+            dependency: (
+              patient?: IPatientData,
+              _answers?: IAnswerData[],
+              currentCode?: string
+            ) => {
               if (!patient) return undefined;
               const { age } = patient;
-              if(currentCode === "05D01" || currentCode === "05D02") return;
+              if (currentCode === "05D01" || currentCode === "05D02") return;
               if (age >= 50) {
                 return { code: "05C01" };
               }
@@ -3287,7 +3417,8 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            <span className="text-blue-400">(Appropriate)</span> Is this a <b className="text-red-400">building fire</b>?
+            <span className="text-blue-400">(Appropriate)</span> Is this a{" "}
+            <b className="text-red-400">building fire</b>?
           </p>
         ),
         questionType: "select",
@@ -3355,7 +3486,8 @@ export const emsComplaints: IEMSComplaint[] = [
       {
         text: (
           <p>
-            <span className="text-blue-400">(If not obvious)</span> Is <b>anything</b> still <b className="text-red-400">burning</b> or{" "}
+            <span className="text-blue-400">(If not obvious)</span> Is{" "}
+            <b>anything</b> still <b className="text-red-400">burning</b> or{" "}
             <b className="text-red-400">smoldering</b>?
           </p>
         ),
@@ -3567,7 +3699,11 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: ">= 18% Body Area",
             display: "Burns >= 18% body area",
             continue: true,
-            dependency: (_patient?: IPatientData, answers?: IAnswerData[], currentCode?: string) => {
+            dependency: (
+              _patient?: IPatientData,
+              answers?: IAnswerData[],
+              currentCode?: string
+            ) => {
               const lastAnswer = answers?.[answers.length - 1]?.answer;
               if (currentCode?.includes("D")) return;
               if (lastAnswer === "Burns to face/head") {
@@ -5300,11 +5436,21 @@ export const emsComplaints: IEMSComplaint[] = [
       },
 
       {
-        text: <p><b>Why</b> do you think **pronoun** is <b>dead</b>?</p>,
+        text: (
+          <p>
+            <b>Why</b> do you think **pronoun** is <b>dead</b>?
+          </p>
+        ),
         questionType: "select",
-        preRenderInstructions: (_paitnet?: IPatientData, answers?: IAnswerData[]) => {
+        preRenderInstructions: (
+          _paitnet?: IPatientData,
+          answers?: IAnswerData[]
+        ) => {
           const firstAnswer = answers?.[0]?.defaultAnswer;
-          return firstAnswer === "OBVIOUS DEATH (suspected)" || firstAnswer === "EXPECTED DEATH";
+          return (
+            firstAnswer === "OBVIOUS DEATH (suspected)" ||
+            firstAnswer === "EXPECTED DEATH"
+          );
         },
         answers: [
           {
@@ -5396,9 +5542,9 @@ export const emsComplaints: IEMSComplaint[] = [
             display: "No obvious death criteria met",
             updateCode: "09D02",
             end: true,
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
     availableDeterminants: [
       {
@@ -5775,10 +5921,14 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Yes",
             display: "Breathing nlly",
             continue: true,
-            dependency: (_patient?: IPatientData, _answers?: IAnswerData[], currentCode?: string) => {
+            dependency: (
+              _patient?: IPatientData,
+              _answers?: IAnswerData[],
+              currentCode?: string
+            ) => {
               if (!_patient) return undefined;
               const { age } = _patient;
-              if(currentCode?.includes("D")) return;
+              if (currentCode?.includes("D")) return;
               if (age >= 35) {
                 return { code: "10C03" };
               } else {
@@ -6782,7 +6932,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-            updateCode: "12D04"
+            updateCode: "12D04",
           },
         ],
       },
@@ -9215,16 +9365,16 @@ export const emsComplaints: IEMSComplaint[] = [
             updateCode: "17A02",
           },
           {
-            answer: "Unknown area",
-            display: "Unk area of inj",
-            continue: true,
-            updateCode: "17B04",
-          },
-          {
             answer: "No injuries",
             display: "No injs rptd",
             continue: true,
             updateCode: "17A04",
+          },
+          {
+            answer: "Unknown area",
+            display: "Unk area of inj",
+            continue: true,
+            updateCode: "17B04",
           },
         ],
       },
@@ -21496,7 +21646,7 @@ export const emsComplaints: IEMSComplaint[] = [
             answer: "Unknown",
             display: "Unk if breathing nlly",
             continue: true,
-            updateCode: "31D00"
+            updateCode: "31D00",
           },
         ],
       },

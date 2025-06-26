@@ -32,7 +32,7 @@ interface CallData {
     gender: string;
     isBreathing: boolean;
     isConscious: boolean;
-    proximity: string;
+    patientProximity: string;
   };
   plan: number;
   postal: string;
@@ -52,6 +52,7 @@ interface CallData {
   units: string[];
   reconfigured?: string;
   fromPolice?: boolean;
+  callBack?: boolean;
 }
 
 export default function EMSSummaryPage() {
@@ -144,15 +145,71 @@ export default function EMSSummaryPage() {
       const sortedUnits = dispatchData.units
         ? sortFDUnits([...dispatchData.units], dispatchData.postal)
         : [];
+
       const township = getPostal(dispatchData.postal)?.twp;
+
+      const location = `${dispatchData.postal} ${dispatchData.street}${
+        township ? `, ${township}` : ""
+      }${dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""}`;
+
+      const crossStreets = `${dispatchData.crossStreet1 || "N/A"} / ${
+        dispatchData.crossStreet2 || "N/A"
+      }`;
+
+      const proximity = dispatchData.patient?.patientProximity || "Unknown";
+      const count = dispatchData.patient?.count || "Unk";
+      const age = dispatchData.patient?.age || "Unk";
+      const ageUnit = dispatchData.patient?.ageUnit || "year";
+      const gender = dispatchData.patient?.gender;
+      const consciousness =
+        dispatchData.patient?.isConscious === true
+          ? "Conscious"
+          : dispatchData.patient?.isConscious === false
+          ? "Unconscious"
+          : "Unk Consciousness";
+      const breathing =
+        dispatchData.patient?.isBreathing === true
+          ? "Breathing"
+          : dispatchData.patient?.isBreathing === false
+          ? "Not Breathing"
+          : "Unk Breathing";
+      const patientInfo = `${
+        proximity === "Yes"
+          ? "2nd Party"
+          : proximity === "No"
+          ? "3rd Party"
+          : proximity === "First Party"
+          ? "1st Party"
+          : proximity === "Fourth Party (Referral)"
+          ? "4th Party"
+          : "Unk Caller"
+      } - ${count}x ${age}-${ageUnit}-old, ${gender}, ${consciousness}, ${breathing}`;
+
+      const reconfigured = dispatchData.reconfigured
+        ? `-- Call reconfigured from ${dispatchData.reconfigured}`
+        : "";
+
+      const answers =
+        !dispatchData.proqaAnswers || dispatchData.isOverriden
+          ? "-- ProQA Overridden"
+          : [
+              ...(dispatchData.proqaAnswers || [])
+                .filter((qa) => !qa.omit)
+                .map((qa) => `-- ${qa.answer}`),
+            ];
+
+      const dispatch = `${
+        dispatchData.callBack
+          ? ""
+          : `ProQA completed by: Dispatcher ${
+              localStorage.getItem("CALLSIGN") || "UNKNOWN"
+            }`
+      }`;
+
       const text = [
         `Code: ${dispatchData.code}`,
-        `Location: ${dispatchData.postal} ${dispatchData.street}${
-          township ? `, ${township}` : ""
-        }${dispatchData.buildingInfo ? ` - ${dispatchData.buildingInfo}` : ""}`,
-        `Cross: ${dispatchData.crossStreet1 || "N/A"} / ${
-          dispatchData.crossStreet2 || "N/A"
-        }`,
+        `Location: ${location}`,
+        `Cross Streets: ${crossStreets}`,
         `Recc: ${getRecommendedUnits(dispatchData.plan)}`,
         `Disp: ${sortedUnits.join(", ") || "None"}`,
         `Problem: ${dispatchData.complaintShort} - ${dispatchData.codeText}`,
@@ -164,45 +221,10 @@ export default function EMSSummaryPage() {
         "Staging Location: N/A",
         "==============================",
         "ProQA Information:",
-        dispatchData.patient
-          ? `${dispatchData.patient.count || "Unk"}x ${
-              dispatchData.patient.age && dispatchData.patient.age !== 0
-                ? dispatchData.patient.age
-                : "Unk"
-            }-${dispatchData.patient.ageUnit}-old, ${
-              dispatchData.patient.gender !== "Unknown"
-                ? dispatchData.patient.gender
-                : "Unk Gender"
-            }, ` +
-            `${
-              dispatchData.patient.isConscious === true
-                ? "Conscious"
-                : dispatchData.patient.isConscious === false
-                ? "Unconscious"
-                : "Unk Consciousness"
-            }, ` +
-            `${
-              dispatchData.patient.isBreathing === true
-                ? "Breathing"
-                : dispatchData.patient.isBreathing === false
-                ? "Not Breathing"
-                : "Unk Breathing"
-            }`
-          : "",
-        dispatchData.reconfigured
-          ? `-- Call reconfigured from ${dispatchData.reconfigured}`
-          : "",
-
-        !dispatchData?.proqaAnswers || dispatchData?.isOverriden
-          ? "-- ProQA Override"
-          : [
-              ...(dispatchData.proqaAnswers || [])
-                .filter((qa) => !qa.omit)
-                .map((qa) => `-- ${qa.answer}`),
-            ],
-        `ProQA completed by: Dispatcher ${
-          localStorage.getItem("CALLSIGN") || "UNKNOWN"
-        }`,
+        patientInfo,
+        reconfigured,
+        answers,
+        dispatch,
       ]
         .flat()
         .filter(Boolean)
@@ -247,6 +269,12 @@ export default function EMSSummaryPage() {
           emsPlans.find((p) => p.id === dispatchData?.plan)?.sendPolice ===
           true;
 
+        console.log(dispatchData);
+
+        if (dispatchData.callBack) {
+          return router.push("/create-call/ems?callback=true");
+        }
+
         if (hasPolicetoAssign && !dispatchData.fromPolice) {
           return handleContinue();
         }
@@ -277,7 +305,9 @@ export default function EMSSummaryPage() {
         //   localStorage.setItem("FIRE_UNITS", JSON.stringify(updatedUnits));
         // }
 
-        const preferences: IPreferences = JSON.parse(localStorage.getItem("PREFERENCES") || "{}");
+        const preferences: IPreferences = JSON.parse(
+          localStorage.getItem("PREFERENCES") || "{}"
+        );
 
         if (preferences && preferences.soundEffects) {
           const audio = new Audio("/audio/Dispatch.mp3");
